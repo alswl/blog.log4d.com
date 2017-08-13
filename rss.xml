@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>Log4D</title><link>https://blog.alswl.com/</link><description></description><lastBuildDate>Thu, 08 Jun 2017 15:40:41 +0800</lastBuildDate><item><title>当我们在聊监控，我们在聊什么？</title><link>https://blog.alswl.com/2017/06/monitoring-introducing/</link><description>&lt;p&gt;最近在团队中给大家做了一个分享，泛泛地聊了一些有关「监控」的话题。
+<rss version="2.0"><channel><title>Log4D</title><link>http://lo:8000/</link><description></description><lastBuildDate>Thu, 08 Jun 2017 15:40:41 +0800</lastBuildDate><item><title>当我们在聊监控，我们在聊什么？</title><link>http://lo:8000/2017/06/monitoring-introducing/</link><description>&lt;p&gt;最近在团队中给大家做了一个分享，泛泛地聊了一些有关「监控」的话题。
 其实做分享对分享者的作用往往大于参与者。
 这是一次将自己知识的梳理的过程，于是我将这次分享整理成这篇文章。&lt;/p&gt;
 &lt;p&gt;&lt;img alt="201706/stock-exchange.png" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201706/stock-exchange.png"/&gt;&lt;/p&gt;
@@ -163,7 +163,7 @@ Brend Gregg 是 Netflix 的首席 SRE，著有 &lt;a href="http://www.brendangre
    &lt;small&gt;3a1ff193cee606bd1e2ea554a16353ee&lt;/small&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">alswl</dc:creator><pubDate>Thu, 08 Jun 2017 15:40:41 +0800</pubDate><guid isPermaLink="false">tag:blog.alswl.com,2017-06-08:2017/06/monitoring-introducing/</guid><category>Monitoring</category></item><item><title>XSS 攻击的处理</title><link>https://blog.alswl.com/2017/05/xss/</link><description>&lt;p&gt;这是一年前写的项目笔记，一直在我的待办事项里等待做总结，今天偶然翻到，就整理成文章发出来。
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">alswl</dc:creator><pubDate>Thu, 08 Jun 2017 15:40:41 +0800</pubDate><guid isPermaLink="false">tag:lo:8000,2017-06-08:2017/06/monitoring-introducing/</guid><category>Monitoring</category></item><item><title>XSS 攻击的处理</title><link>http://lo:8000/2017/05/xss/</link><description>&lt;p&gt;这是一年前写的项目笔记，一直在我的待办事项里等待做总结，今天偶然翻到，就整理成文章发出来。
 谨以此文怀念 &lt;a href="http://wooyun.org/"&gt;乌云&lt;/a&gt;。&lt;/p&gt;
 &lt;p&gt;&lt;img alt="201705/wooyun.jpg" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201705/wooyun.jpg"/&gt;&lt;/p&gt;
 &lt;hr/&gt;
@@ -258,7 +258,7 @@ Freemarker 居然在 2.3.24-rc01 才支持，现在都没有发布，唉&amp;hel
    &lt;small&gt;3a1ff193cee606bd1e2ea554a16353ee&lt;/small&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">alswl</dc:creator><pubDate>Wed, 31 May 2017 22:04:00 +0800</pubDate><guid isPermaLink="false">tag:blog.alswl.com,2017-05-31:2017/05/xss/</guid><category>security</category></item><item><title>👁️ 预测未来？</title><link>https://blog.alswl.com/2017/01/prophecy/</link><description>&lt;h2 id="la-pu-la-si-zhi-yao"&gt;拉普拉斯之妖&lt;/h2&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">alswl</dc:creator><pubDate>Wed, 31 May 2017 22:04:00 +0800</pubDate><guid isPermaLink="false">tag:lo:8000,2017-05-31:2017/05/xss/</guid><category>security</category></item><item><title>👁️ 预测未来？</title><link>http://lo:8000/2017/01/prophecy/</link><description>&lt;h2 id="la-pu-la-si-zhi-yao"&gt;拉普拉斯之妖&lt;/h2&gt;
 &lt;p&gt;未来是可以被预测的么？&lt;/p&gt;
 &lt;p&gt;&lt;img alt="201702/zhu-ge-liang.jpg" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201702/zhu-ge-liang.jpg"/&gt;&lt;/p&gt;
 &lt;p&gt;专家在预测股票趋势变化，天气预报员可以预测未来一周甚至更长时间的天气。
@@ -331,7 +331,7 @@ IFS（Iterated Function System）是迭代函数系统，即在数学上被认�
    &lt;small&gt;3a1ff193cee606bd1e2ea554a16353ee&lt;/small&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">alswl</dc:creator><pubDate>Tue, 31 Jan 2017 11:12:43 +0800</pubDate><guid isPermaLink="false">tag:blog.alswl.com,2017-01-31:2017/01/prophecy/</guid><category>Math</category></item><item><title>👷如何做年前大扫除</title><link>https://blog.alswl.com/2017/01/spring-cleaning/</link><description>&lt;p&gt;今年过年特别早，离春节只剩下二十多天了。
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">alswl</dc:creator><pubDate>Tue, 31 Jan 2017 11:12:43 +0800</pubDate><guid isPermaLink="false">tag:lo:8000,2017-01-31:2017/01/prophecy/</guid><category>Math</category></item><item><title>👷如何做年前大扫除</title><link>http://lo:8000/2017/01/spring-cleaning/</link><description>&lt;p&gt;今年过年特别早，离春节只剩下二十多天了。
 为期 7 天的春节里，工程师们不上班，那万一线上业务出现了故障怎么办？
 大公司的朋友们会安排专门的人进行值班（此处心疼一下那些需要大年三十还要值班保证高峰的工程师们），
 而作为创业团队人少，难做到在线值守，就需要对线上进行一些整理盘点，找出潜在问题，为春节长假做一些准备。&lt;/p&gt;
@@ -412,7 +412,7 @@ TPS 、Latency 和 Capacity。
    &lt;small&gt;3a1ff193cee606bd1e2ea554a16353ee&lt;/small&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">alswl</dc:creator><pubDate>Tue, 03 Jan 2017 23:20:50 +0800</pubDate><guid isPermaLink="false">tag:blog.alswl.com,2017-01-03:2017/01/spring-cleaning/</guid><category>Infrastructure</category><category>DevOps</category></item><item><title>🔑 也谈 HTTPS - 如何内测</title><link>https://blog.alswl.com/2016/12/https-2/</link><description>&lt;p&gt;&lt;img alt="201612/mouse.jpeg" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201612/mouse.jpeg"/&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">alswl</dc:creator><pubDate>Tue, 03 Jan 2017 23:20:50 +0800</pubDate><guid isPermaLink="false">tag:lo:8000,2017-01-03:2017/01/spring-cleaning/</guid><category>Infrastructure</category><category>DevOps</category></item><item><title>🔑 也谈 HTTPS - 如何内测</title><link>http://lo:8000/2016/12/https-2/</link><description>&lt;p&gt;&lt;img alt="201612/mouse.jpeg" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201612/mouse.jpeg"/&gt;
 (图片来自 &lt;a href="https://www.duitang.com/blog/?id=48013745"&gt;茶杯中的可爱小白鼠 壁纸 - 2560x1920－堆糖，美好生活研究所&lt;/a&gt;)&lt;/p&gt;
 &lt;p&gt;在上篇文章 &lt;a href="https://blog.alswl.com/2016/11/https-1/"&gt;🔒 也谈 HTTPS - HTTPDNS + HTTPS&lt;/a&gt; 中，
 我们谈了如何基于 HTTPDNS 来部署无坚不摧的 HTTPS 通信环境，
@@ -508,7 +508,7 @@ Domain Validation / Orgnization Validation / Extented Validation。
    &lt;small&gt;3a1ff193cee606bd1e2ea554a16353ee&lt;/small&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">alswl</dc:creator><pubDate>Thu, 08 Dec 2016 20:16:26 +0800</pubDate><guid isPermaLink="false">tag:blog.alswl.com,2016-12-08:2016/12/https-2/</guid><category>HTTPS</category><category>HTTPDNS</category><category>MikroTik</category></item><item><title>教你在上海挑房子</title><link>https://blog.alswl.com/2016/12/house/</link><description>&lt;p&gt;&lt;img alt="201612/shanghai.jpg" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201612/shanghai.jpg"/&gt;&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">alswl</dc:creator><pubDate>Thu, 08 Dec 2016 20:16:26 +0800</pubDate><guid isPermaLink="false">tag:lo:8000,2016-12-08:2016/12/https-2/</guid><category>HTTPS</category><category>HTTPDNS</category><category>MikroTik</category></item><item><title>教你在上海挑房子</title><link>http://lo:8000/2016/12/house/</link><description>&lt;p&gt;&lt;img alt="201612/shanghai.jpg" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201612/shanghai.jpg"/&gt;&lt;/p&gt;
 &lt;p&gt;点开的同学别失望，这并不是教你如何快速致富的 😂 &amp;hellip;&amp;hellip;&lt;/p&gt;
 &lt;hr/&gt;
 &lt;p&gt;上海政府在 11-28 出了房屋新政 &lt;a href="http://sh.xinhuanet.com/2016-11/28/c_135864791.htm"&gt;via&lt;/a&gt;，对房价进行进一步调控。
@@ -598,7 +598,7 @@ Indicator 的含义是建立一系列评价指标，比如价格、户型、位�
    &lt;small&gt;3a1ff193cee606bd1e2ea554a16353ee&lt;/small&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">alswl</dc:creator><pubDate>Mon, 05 Dec 2016 21:29:37 +0800</pubDate><guid isPermaLink="false">tag:blog.alswl.com,2016-12-05:2016/12/house/</guid><category>Shanghai</category></item><item><title>🔒 也谈 HTTPS - HTTPDNS + HTTPS</title><link>https://blog.alswl.com/2016/11/https-1/</link><description>&lt;p&gt;最近谈论 HTTPS 的文章很多，其原因之一是运营商作恶底线越来越低，动不动就插播广告，
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">alswl</dc:creator><pubDate>Mon, 05 Dec 2016 21:29:37 +0800</pubDate><guid isPermaLink="false">tag:lo:8000,2016-12-05:2016/12/house/</guid><category>Shanghai</category></item><item><title>🔒 也谈 HTTPS - HTTPDNS + HTTPS</title><link>http://lo:8000/2016/11/https-1/</link><description>&lt;p&gt;最近谈论 HTTPS 的文章很多，其原因之一是运营商作恶底线越来越低，动不动就插播广告，
 前两天小米还联合几家公司发文 &lt;a href="http://weibo.com/1771925961/Da1aopxLQ?refer_flag=1001030103_&amp;amp;type=comment#_rnd1480392491936"&gt;关于抵制流量劫持等违法行为的联合声明&lt;/a&gt; 痛斥某些运营商。
 另一方面也是苹果 &lt;a href="https://techcrunch.com/2016/06/14/apple-will-require-https-connections-for-ios-apps-by-the-end-of-2016/"&gt;ATS&lt;/a&gt; 政策的大力推动，逼迫大家在 APP 中全部使用 HTTPS 通信。
 上 HTTPS 的好处很多：保护用户的数据不外泄，避免中间人篡改数据，
@@ -677,7 +677,7 @@ APP 无法在发起连接时候，也没有权限直接操作 socket。
    &lt;small&gt;3a1ff193cee606bd1e2ea554a16353ee&lt;/small&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">alswl</dc:creator><pubDate>Wed, 30 Nov 2016 22:02:23 +0800</pubDate><guid isPermaLink="false">tag:blog.alswl.com,2016-11-30:2016/11/https-1/</guid><category>HTTPS</category><category>HTTPDNS</category></item><item><title>API 集成测试实践</title><link>https://blog.alswl.com/2016/08/api-integration-test/</link><description>&lt;p&gt;&lt;img alt="abao.png" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201608/abao_thumbnail.png"/&gt;&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">alswl</dc:creator><pubDate>Wed, 30 Nov 2016 22:02:23 +0800</pubDate><guid isPermaLink="false">tag:lo:8000,2016-11-30:2016/11/https-1/</guid><category>HTTPS</category><category>HTTPDNS</category></item><item><title>API 集成测试实践</title><link>http://lo:8000/2016/08/api-integration-test/</link><description>&lt;p&gt;&lt;img alt="abao.png" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201608/abao_thumbnail.png"/&gt;&lt;/p&gt;
 &lt;p&gt;为了提高测试，工程师需要对自己提交的产物进行测试，一般是单元测试、集成测试。
 之后提交物流转到 QA 团队，QA 团队根据需求描述对提交物进行测试，
 这个测试过程非常耗费人力。
@@ -905,7 +905,7 @@ APP 无法在发起连接时候，也没有权限直接操作 socket。
    &lt;small&gt;3a1ff193cee606bd1e2ea554a16353ee&lt;/small&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">alswl</dc:creator><pubDate>Sun, 14 Aug 2016 19:08:20 +0800</pubDate><guid isPermaLink="false">tag:blog.alswl.com,2016-08-14:2016/08/api-integration-test/</guid><category>Test</category><category>API</category></item><item><title>搞定暴涨的流量</title><link>https://blog.alswl.com/2016/06/capacity-planning/</link><description>&lt;p&gt;2013 年左右，我司业务发展迅速，每天晚上都会面临服务器濒临崩溃情况。
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">alswl</dc:creator><pubDate>Sun, 14 Aug 2016 19:08:20 +0800</pubDate><guid isPermaLink="false">tag:lo:8000,2016-08-14:2016/08/api-integration-test/</guid><category>Test</category><category>API</category></item><item><title>搞定暴涨的流量</title><link>http://lo:8000/2016/06/capacity-planning/</link><description>&lt;p&gt;2013 年左右，我司业务发展迅速，每天晚上都会面临服务器濒临崩溃情况。
 我相信每个高速发展的互联网企业在某个阶段都会面临这样的情形，比如去年爆红的「足迹」。
 过程往往是：线上出现故障，手机会收到报警，然后登录到服务器上去解决问题。
 处理这种问题工种现在有一个时髦的名称，叫做「SRE（Site Reliability Engineer）」系统可用性工程师。&lt;/p&gt;
@@ -1004,7 +1004,7 @@ APP 无法在发起连接时候，也没有权限直接操作 socket。
    &lt;small&gt;3a1ff193cee606bd1e2ea554a16353ee&lt;/small&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">alswl</dc:creator><pubDate>Sun, 19 Jun 2016 23:57:39 +0800</pubDate><guid isPermaLink="false">tag:blog.alswl.com,2016-06-19:2016/06/capacity-planning/</guid></item><item><title>一次「分答」记录</title><link>https://blog.alswl.com/2016/06/q-and-a/</link><description>&lt;p&gt;尝试在团队内部发起一次类似「分答」的沟通方式，一对一面聊。
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">alswl</dc:creator><pubDate>Sun, 19 Jun 2016 23:57:39 +0800</pubDate><guid isPermaLink="false">tag:lo:8000,2016-06-19:2016/06/capacity-planning/</guid></item><item><title>一次「分答」记录</title><link>http://lo:8000/2016/06/q-and-a/</link><description>&lt;p&gt;尝试在团队内部发起一次类似「分答」的沟通方式，一对一面聊。
 回答其他工程师的问题，这种沟通的方式暨在提供一个特定的场合，帮助加强双方了解，
 解决团队中其他工程师的一些实际的问题。&lt;/p&gt;
 &lt;p&gt;在征得对方同意之后，我将他的问题和我的回答 PO 出来。&lt;/p&gt;
@@ -1085,7 +1085,7 @@ APP 无法在发起连接时候，也没有权限直接操作 socket。
    &lt;small&gt;3a1ff193cee606bd1e2ea554a16353ee&lt;/small&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">alswl</dc:creator><pubDate>Wed, 15 Jun 2016 09:59:16 +0800</pubDate><guid isPermaLink="false">tag:blog.alswl.com,2016-06-15:2016/06/q-and-a/</guid></item><item><title>海贼王和创业团队</title><link>https://blog.alswl.com/2016/04/onepiece-startup/</link><description>&lt;p&gt;一个同事在知乎提了一个问题 &lt;a href="https://www.zhihu.com/question/35037806"&gt;如果把草帽海贼团比作一个创业团队,这个Team的组织架构是怎样的?有哪些优势,又有哪些不足?&lt;/a&gt;&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">alswl</dc:creator><pubDate>Wed, 15 Jun 2016 09:59:16 +0800</pubDate><guid isPermaLink="false">tag:lo:8000,2016-06-15:2016/06/q-and-a/</guid></item><item><title>海贼王和创业团队</title><link>http://lo:8000/2016/04/onepiece-startup/</link><description>&lt;p&gt;一个同事在知乎提了一个问题 &lt;a href="https://www.zhihu.com/question/35037806"&gt;如果把草帽海贼团比作一个创业团队,这个Team的组织架构是怎样的?有哪些优势,又有哪些不足?&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img alt="201604/onepiece.jpg" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201604/onepiece.jpg"/&gt;&lt;/p&gt;
 &lt;p&gt;这个话题很有趣，作为追了多年的 fans ，又是身处互联网创业团队的我要来强答一记。&lt;/p&gt;
 &lt;p&gt;海贼王的世界很大，富有个性的角色和团队也很多，恰好可以和显示世界中的互联网创业团队进行对比。
@@ -1201,7 +1201,7 @@ APP 无法在发起连接时候，也没有权限直接操作 socket。
    &lt;small&gt;3a1ff193cee606bd1e2ea554a16353ee&lt;/small&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">alswl</dc:creator><pubDate>Wed, 27 Apr 2016 00:36:10 +0800</pubDate><guid isPermaLink="false">tag:blog.alswl.com,2016-04-27:2016/04/onepiece-startup/</guid></item><item><title>Windows management for hacker</title><link>https://blog.alswl.com/2016/04/windows-management-for-hacker/</link><description>&lt;p&gt;团队里的同学有时看见我键指如飞，可以用快捷键将 Mac 的窗口玩转于手心。他们表示酷炫非常，
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">alswl</dc:creator><pubDate>Wed, 27 Apr 2016 00:36:10 +0800</pubDate><guid isPermaLink="false">tag:lo:8000,2016-04-27:2016/04/onepiece-startup/</guid></item><item><title>Windows management for hacker</title><link>http://lo:8000/2016/04/windows-management-for-hacker/</link><description>&lt;p&gt;团队里的同学有时看见我键指如飞，可以用快捷键将 Mac 的窗口玩转于手心。他们表示酷炫非常，
 心生羡慕的同时，希望掌握这门技艺，我就把使用的 Phoenix 介绍给大家。结果过了一段时间，
 发现普及率并不高，本着好为人师的精神，今天我就来八一八这款优秀的桌面管理工具。&lt;/p&gt;
 &lt;p&gt;在介绍我使用的工具之前，我要先介绍一下我选择的原因和历史。&lt;/p&gt;
@@ -1355,7 +1355,7 @@ APP 无法在发起连接时候，也没有权限直接操作 socket。
    &lt;small&gt;3a1ff193cee606bd1e2ea554a16353ee&lt;/small&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">alswl</dc:creator><pubDate>Sun, 24 Apr 2016 16:36:16 +0800</pubDate><guid isPermaLink="false">tag:blog.alswl.com,2016-04-24:2016/04/windows-management-for-hacker/</guid><category>Mac</category></item><item><title>技术之外</title><link>https://blog.alswl.com/2016/02/team-geek/</link><description>&lt;p&gt;这是一天一本书的第二次执行，这次选了一本比较薄的书，上周的书看了一天，脑仁疼。&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">alswl</dc:creator><pubDate>Sun, 24 Apr 2016 16:36:16 +0800</pubDate><guid isPermaLink="false">tag:lo:8000,2016-04-24:2016/04/windows-management-for-hacker/</guid><category>Mac</category></item><item><title>技术之外</title><link>http://lo:8000/2016/02/team-geek/</link><description>&lt;p&gt;这是一天一本书的第二次执行，这次选了一本比较薄的书，上周的书看了一天，脑仁疼。&lt;/p&gt;
 &lt;hr/&gt;
 &lt;p&gt;在我组织团队新兵训练营（入职之后一段时间内容集中的培训）时候，
 经常和新同事聊到一个词：软实力。
@@ -1474,7 +1474,7 @@ Google 的一种做法，可以很好解决这个问题。分离 TL（techlead�
    &lt;small&gt;3a1ff193cee606bd1e2ea554a16353ee&lt;/small&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">alswl</dc:creator><pubDate>Sun, 28 Feb 2016 18:16:01 +0800</pubDate><guid isPermaLink="false">tag:blog.alswl.com,2016-02-28:2016/02/team-geek/</guid><category>读书笔记</category></item><item><title>一例 Timeout 故障</title><link>https://blog.alswl.com/2016/02/a-timeout-fault/</link><description>&lt;p&gt;&lt;img alt="i_love_timeouts_digital_design_mugs.jpg" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201602/i_love_timeouts_digital_design_mugs.jpg"/&gt;&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">alswl</dc:creator><pubDate>Sun, 28 Feb 2016 18:16:01 +0800</pubDate><guid isPermaLink="false">tag:lo:8000,2016-02-28:2016/02/team-geek/</guid><category>读书笔记</category></item><item><title>一例 Timeout 故障</title><link>http://lo:8000/2016/02/a-timeout-fault/</link><description>&lt;p&gt;&lt;img alt="i_love_timeouts_digital_design_mugs.jpg" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201602/i_love_timeouts_digital_design_mugs.jpg"/&gt;&lt;/p&gt;
 &lt;p&gt;早晨刚到公司， HAProxy 报警，Trtornis（第三方云存储网关，用来统一管理阿里云和七牛云的对象存储） 全飘红。&lt;/p&gt;
 &lt;!-- more --&gt;
 &lt;p&gt;检查日志，并没有 ERROR 信息，但是大量 WARN 报错。&lt;/p&gt;
@@ -1546,7 +1546,7 @@ public static int RESPONSE_TIMEOUT = 30000;
    &lt;small&gt;3a1ff193cee606bd1e2ea554a16353ee&lt;/small&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">alswl</dc:creator><pubDate>Tue, 02 Feb 2016 23:34:44 +0800</pubDate><guid isPermaLink="false">tag:blog.alswl.com,2016-02-02:2016/02/a-timeout-fault/</guid><category>Qiniu</category><category>TCP</category></item><item><title>一次艰难的 Wiki 升级</title><link>https://blog.alswl.com/2016/01/confluence-upgrade/</link><description>&lt;p&gt;公司使用 &lt;a href="https://www.atlassian.com/software/confluence"&gt;Confluence&lt;/a&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">alswl</dc:creator><pubDate>Tue, 02 Feb 2016 23:34:44 +0800</pubDate><guid isPermaLink="false">tag:lo:8000,2016-02-02:2016/02/a-timeout-fault/</guid><category>Qiniu</category><category>TCP</category></item><item><title>一次艰难的 Wiki 升级</title><link>http://lo:8000/2016/01/confluence-upgrade/</link><description>&lt;p&gt;公司使用 &lt;a href="https://www.atlassian.com/software/confluence"&gt;Confluence&lt;/a&gt;
 管理自己的知识库，
 现在使用的版本还是 3.0.1，而最新的 Confluence 版本已经是 5.4+。
 新版本加入的一些现代化 Web 系统的新特性很吸引人（拖拽上传，可见即所得编辑），
@@ -1640,7 +1640,7 @@ awk '{s=s $0}END{gsub(/&amp;gt;&lt;span class="err"&gt;&amp;lt;&lt;/span&gt;/,"&
    &lt;small&gt;3a1ff193cee606bd1e2ea554a16353ee&lt;/small&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">alswl</dc:creator><pubDate>Tue, 12 Jan 2016 22:53:55 +0800</pubDate><guid isPermaLink="false">tag:blog.alswl.com,2016-01-12:2016/01/confluence-upgrade/</guid><category>confluence</category></item><item><title>SS with Haproxy</title><link>https://blog.alswl.com/2015/11/ss-with-haproxy/</link><description>&lt;p&gt;&lt;img alt="shadowsocks.png" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201512/shadowsocks.png"/&gt;&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">alswl</dc:creator><pubDate>Tue, 12 Jan 2016 22:53:55 +0800</pubDate><guid isPermaLink="false">tag:lo:8000,2016-01-12:2016/01/confluence-upgrade/</guid><category>confluence</category></item><item><title>SS with Haproxy</title><link>http://lo:8000/2015/11/ss-with-haproxy/</link><description>&lt;p&gt;&lt;img alt="shadowsocks.png" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201512/shadowsocks.png"/&gt;&lt;/p&gt;
 &lt;p&gt;以前用自己的 SS，Linode 美国，后来 Linode 日本，但是始终拼不过上海电信的国际带宽。
 经常不稳定，丢一半的包。&lt;/p&gt;
 &lt;p&gt;于是买了 &lt;a href="https://portal.shadowsocks.com.hk/aff.php?aff=4215"&gt;SS&lt;/a&gt; 服务，
@@ -1727,7 +1727,7 @@ update: 2015-12-13，添加 &lt;code&gt;redispatch&lt;/code&gt;  / &lt;code&gt;r
    &lt;small&gt;3a1ff193cee606bd1e2ea554a16353ee&lt;/small&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">alswl</dc:creator><pubDate>Fri, 27 Nov 2015 20:23:24 +0800</pubDate><guid isPermaLink="false">tag:blog.alswl.com,2015-11-27:2015/11/ss-with-haproxy/</guid><category>SS</category><category>HAProxy</category></item><item><title>几步拥有一个安全密码</title><link>https://blog.alswl.com/2015/10/a-security-password/</link><description>&lt;p&gt;&lt;img alt="password.jpg" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201512/password.jpg"/&gt;&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">alswl</dc:creator><pubDate>Fri, 27 Nov 2015 20:23:24 +0800</pubDate><guid isPermaLink="false">tag:lo:8000,2015-11-27:2015/11/ss-with-haproxy/</guid><category>SS</category><category>HAProxy</category></item><item><title>几步拥有一个安全密码</title><link>http://lo:8000/2015/10/a-security-password/</link><description>&lt;p&gt;&lt;img alt="password.jpg" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201512/password.jpg"/&gt;&lt;/p&gt;
 &lt;p&gt;给团队非开发同学写的邮件，对其他人也有些意义，遂贴出来。&lt;/p&gt;
 &lt;hr/&gt;
 &lt;p&gt;这个互联网越来越不安全 &lt;a href="https://www.baidu.com/s?wd=%E5%AF%86%E7%A0%81%E6%B3%84%E9%9C%B2%E4%BA%8B%E4%BB%B6&amp;amp;rsp=3&amp;amp;f=1&amp;amp;oq=%E5%AF%86%E7%A0%81%E6%B3%84%E9%9C%B2&amp;amp;ie=utf-8&amp;amp;usm=2&amp;amp;rsv_idx=1&amp;amp;rsv_pq=f9362ac90000f994&amp;amp;rsv_t=31d7A5Zyu36Hn4omAU5F9llRh3WBGl5tInDRywq%2FbPEwdPnyjCCcfGLdnNA&amp;amp;rsv_ers=xn0&amp;amp;rs_src=0"&gt;https://www.baidu.com/s?wd=%E5%AF%86%E7%A0%81%E6%B3%84%E9%9C%B2%E4%BA%8B%E4%BB%B6&lt;/a&gt;。密码数据库泄露，黑客暴库攻击，社会工程学攻击层出不穷。我给大家介绍几个小方法，轻松提高自己各类密码的安全等级。&lt;/p&gt;
@@ -1775,7 +1775,7 @@ update: 2015-12-13，添加 &lt;code&gt;redispatch&lt;/code&gt;  / &lt;code&gt;r
    &lt;small&gt;3a1ff193cee606bd1e2ea554a16353ee&lt;/small&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">alswl</dc:creator><pubDate>Wed, 28 Oct 2015 00:17:44 +0800</pubDate><guid isPermaLink="false">tag:blog.alswl.com,2015-10-28:2015/10/a-security-password/</guid><category>Security</category></item><item><title>怎么打日志</title><link>https://blog.alswl.com/2015/10/how-to-log/</link><description>&lt;p&gt;&lt;img alt="logger" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201510/logger.jpg"/&gt;&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">alswl</dc:creator><pubDate>Wed, 28 Oct 2015 00:17:44 +0800</pubDate><guid isPermaLink="false">tag:lo:8000,2015-10-28:2015/10/a-security-password/</guid><category>Security</category></item><item><title>怎么打日志</title><link>http://lo:8000/2015/10/how-to-log/</link><description>&lt;p&gt;&lt;img alt="logger" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201510/logger.jpg"/&gt;&lt;/p&gt;
 &lt;p&gt;需要解决的问题：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;业务日志打太乱，没有位置和格式约束&lt;/li&gt;
@@ -1844,7 +1844,7 @@ ERROR [2010-04-06 06:42:35,275] com.example.dw.Thing: This may get ugly.
    &lt;small&gt;3a1ff193cee606bd1e2ea554a16353ee&lt;/small&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">alswl</dc:creator><pubDate>Sun, 18 Oct 2015 14:25:28 +0800</pubDate><guid isPermaLink="false">tag:blog.alswl.com,2015-10-18:2015/10/how-to-log/</guid><category>Logger</category></item><item><title>Redis 集群扩容</title><link>https://blog.alswl.com/2015/07/redis-migration/</link><description>&lt;p&gt;几乎每一个网站都需要用户登录状态系统，其中核心是存储 Session 的用户登录状态存储系统。
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">alswl</dc:creator><pubDate>Sun, 18 Oct 2015 14:25:28 +0800</pubDate><guid isPermaLink="false">tag:lo:8000,2015-10-18:2015/10/how-to-log/</guid><category>Logger</category></item><item><title>Redis 集群扩容</title><link>http://lo:8000/2015/07/redis-migration/</link><description>&lt;p&gt;几乎每一个网站都需要用户登录状态系统，其中核心是存储 Session 的用户登录状态存储系统。
 主流的实现之一是使用 Redis 存储用户登录信息，Redis 特点是功能简单、无依赖、
 存储结构丰富、有持久化功能。
 我大堆糖的 Session 存储系统也正是基于 Redis。&lt;/p&gt;
@@ -1933,7 +1933,7 @@ Twitter 出品，&lt;a href="https://github.com/twitter/twemproxy"&gt;链接&lt;
    &lt;small&gt;3a1ff193cee606bd1e2ea554a16353ee&lt;/small&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">alswl</dc:creator><pubDate>Sun, 26 Jul 2015 15:33:49 +0800</pubDate><guid isPermaLink="false">tag:blog.alswl.com,2015-07-26:2015/07/redis-migration/</guid><category>Redis</category></item><item><title>带理想的执行者 - 柳比歇夫的一生</title><link>https://blog.alswl.com/2015/07/liu-bi-xie-fu/</link><description>&lt;p&gt;作为战斗民族的俄罗斯民族，不但能在热带风暴级的灿鸿中进行正常起降，
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">alswl</dc:creator><pubDate>Sun, 26 Jul 2015 15:33:49 +0800</pubDate><guid isPermaLink="false">tag:lo:8000,2015-07-26:2015/07/redis-migration/</guid><category>Redis</category></item><item><title>带理想的执行者 - 柳比歇夫的一生</title><link>http://lo:8000/2015/07/liu-bi-xie-fu/</link><description>&lt;p&gt;作为战斗民族的俄罗斯民族，不但能在热带风暴级的灿鸿中进行正常起降，
 历来也盛产各种奇葩人物。
 最近我有看到一本描述一个科学家的如何生活的书，叫「奇特的一生」。
 让人拍案称奇。&lt;/p&gt;
@@ -1982,4 +1982,4 @@ Twitter 出品，&lt;a href="https://github.com/twitter/twemproxy"&gt;链接&lt;
    &lt;small&gt;3a1ff193cee606bd1e2ea554a16353ee&lt;/small&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">alswl</dc:creator><pubDate>Sun, 12 Jul 2015 17:29:19 +0800</pubDate><guid isPermaLink="false">tag:blog.alswl.com,2015-07-12:2015/07/liu-bi-xie-fu/</guid><category>读书笔记</category></item></channel></rss>
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">alswl</dc:creator><pubDate>Sun, 12 Jul 2015 17:29:19 +0800</pubDate><guid isPermaLink="false">tag:lo:8000,2015-07-12:2015/07/liu-bi-xie-fu/</guid><category>读书笔记</category></item></channel></rss>
