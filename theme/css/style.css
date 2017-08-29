@@ -3,28 +3,28 @@ body {
 }
 
 .article-detail .title, .article-list .title {
-	font-size: 36px;
+	font-size: 40px;
 	margin-bottom: 40px;
 	text-align: center;
 }
 
 article h2 {
-	font-size: 24px;
+	font-size: 40px;
 	margin-bottom: 24px;
 }
 
 article h3 {
-	font-size: 18px;
+	font-size: 32px;
 	margin-bottom: 18px;
 }
 
 article h4, article h5, article h6 {
-	font-size: 18px;
+	font-size: 24px;
 	margin-bottom: 18px;
 }
 
 article p, article li, article dd, article dt, article form input {
-	font-size: 16px;
+	font-size: 20px;
 }
 
 article p {
