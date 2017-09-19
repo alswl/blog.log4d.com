@@ -67,6 +67,28 @@ Log4D            </a>
         <div class="col-lg-8 col-lg-offset-2">
 
             <article class="article-list">
+                <h2 class="title"><a href="https://blog.alswl.com/2009/08/wordpress-to-add-robots-txt/">给WordPress加上robots.txt</a></h2>
+                <div class="summary"><p>在Google搜索我的页面，能出来400+页面，但好多都是额外的页面，比如分页下的信息，比如说wap下的信息，最可怕的是甚至登录页面都暴露在Google搜索
+结果中，这让我有点害怕了。</p>
+<p>参考下面两篇文章《<a href="http://wangyueblog.com/2009/02/11/wordpress-robots-
+txt/">善用 robots.txt 优化 Wordpress 博客 |
+望月的博客</a>》、《<a href="http://www.itokit.com/bbs/viewthread.php?tid=45">总结一下Meta的用法及robot.txt的讲解 - SEO搜索引擎优化 -&nbsp; ITOKIT.COM |WEB开发技术,站长交流论坛 -
+Powered by Discuz!</a>》</p>
+<p>为了优化WordPress的SEO效率，我们可以使用<a href="http://log4d.com/robots.txt">robots.txt</a>文件来对搜索引擎搜索范
+围进行限制。</p>
+<p>下面是我的robots.txt内容：</p>
+<div class="highlight"><pre><span></span>User-agent: *
+Disallow: /wp-
+Disallow: /feed/
+Disallow: /page/
+Disallow: /comments/feed
+Disallow: /index-wap.php/
+# BEGIN XML-SITEMAP-PLUGIN …</pre></div>
+                </div>
+                <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/08/wordpress-to-add-robots-txt/"><i class="icon-circle-arrow-right"></i>more ...</a>
+            </article>
+            <hr/>
+            <article class="article-list">
                 <h2 class="title"><a href="https://blog.alswl.com/2009/08/use-delicious/">使用Delicious</a></h2>
                 <div class="summary"><p>很久之前就想找一个管理自己书签的地方，尝试了好几个中文网站，甚至当年尝试过百度的搜藏（百度的这个产品真是烂的一B）。但是都没有找到自己心仪的而作罢。</p>
 <p>久闻<a href="http://delicious.com/">delicious</a>的大名，一直没有机会尝试，今天终于去试用了一下，果然用户体验非常好，很满足自己需要。</p>
@@ -230,22 +252,6 @@ themes/fusion">Fusion</a>，很喜欢这个主题，可惜没有中文汉化。<
 <p>换主题之前记得一定要备份文件哦。</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/07/chinese-theme-wordpress/"><i class="icon-circle-arrow-right"></i>more ...</a>
-            </article>
-            <hr/>
-            <article class="article-list">
-                <h2 class="title"><a href="https://blog.alswl.com/2009/07/to-rearrange-the-structure-of-the-site/">重新整理网站的结构</a></h2>
-                <div class="summary"><p>整理分为两个步骤：1.整理分类和标签。2.整理网页静态格式。</p>
-<h2 id="1zheng-li-fen-lei-he-biao-qian">1.整理分类和标签</h2>
-<p>WordPress的分类和标签都是支持多对多形式的，也就是说一篇文章可以对应多个分类和多个标签，这样给作者带来了很大的方便，但同时也有了困惑，分类和标签到底
-怎么区分。</p>
-<p>千鸟志的大大在「<a href="http://blog.rexsong.com/?p=975">内容、标签和分类</a>」中提到内容、标签和分类的三个阶段，其中一句话「标签(t
-ags)的情况和分类类似，在传统组织方式中，分类必须创建于内容之前，而标签必须创建于内容之后。也就是说，分类和标签的根本区别在于创建先后顺序。」让我豁然开朗
-。</p>
-<p>我本身职业是程序员，所以我把我的标签定义为一些专业名词和一些特定名词，分类则是正常的分类。下面列举一下我的分类和标签。</p>
-<p>分类：AJAX， C/C++， cinderella， Eclipse， FCKeditor， FireFox， Google， Hibernate， I,
-Programer， IBM， Java， JavaScript， Linux， log4j …</p>
-                </div>
-                <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/07/to-rearrange-the-structure-of-the-site/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
             <hr/>
 

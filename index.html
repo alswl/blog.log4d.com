@@ -67,6 +67,28 @@ Log4D            </a>
         <div class="col-lg-8 col-lg-offset-2">
 
             <article class="article-list">
+                <h2 class="title"><a href="https://blog.alswl.com/2017/09/sql-server-nolock/">一个关于 nolock 的故事</a></h2>
+                <div class="summary"><p><img alt="sql-server.png" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201709/sql-server.png"/></p>
+<p>加入沪江不久，我就被扔到一个将集团 SQL Sever 的数据库迁移到 MySQL 的项目里，
+同时伴随进行的还有 .net 系统迁移到 Java 系统。
+在这个过程中我发现了一个很有趣的现象：历史遗留的 .net 项目中，
+几乎所有的 SQL 中都会使用一个关键字：<code>nolock</code>。
+这让我很困惑，<code>nolock</code> 的字面意思是对当前技术不使用锁技术，为什么要这样用呢？</p>
+<!-- more -->
+<p>我找了一个范例如下：</p>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="p">[</span><span class="n">id</span><span class="p">]</span> 
+<span class="k">FROM</span>   <span class="p">[</span><span class="n">dbo</span><span class="p">].[</span><span class="n">foos</span><span class="p">]</span> <span class="k">WITH</span><span class="p">(</span><span class="n">nolock</span><span class="p">)</span> 
+<span class="k">WHERE</span>  <span class="n">aField</span> <span class="o">=</span> <span class="mi">42</span> 
+       <span class="k">AND</span> <span class="n">bField</span> <span class="o">=</span> <span class="mi">1</span> 
+</pre></div>
+<p>作为横向支持工程师，开发工程师会问我：「数据库即将从 SQL Server
+迁移到 MySQL，我们编码中还需要使用 <code>nolock</code> 么？
+MySQL 里面对应的写法是什么 …</p>
+                </div>
+                <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2017/09/sql-server-nolock/"><i class="icon-circle-arrow-right"></i>more ...</a>
+            </article>
+            <hr/>
+            <article class="article-list">
                 <h2 class="title"><a href="https://blog.alswl.com/2017/06/monitoring-introducing/">当我们在聊监控，我们在聊什么？</a></h2>
                 <div class="summary"><p>最近在团队中给大家做了一个分享，泛泛地聊了一些有关「监控」的话题。
 其实做分享对分享者的作用往往大于参与者。
@@ -270,31 +292,6 @@ Indicator 的含义是建立一系列评价指标，比如价格、户型、位�
 呃 …</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2016/06/capacity-planning/"><i class="icon-circle-arrow-right"></i>more ...</a>
-            </article>
-            <hr/>
-            <article class="article-list">
-                <h2 class="title"><a href="https://blog.alswl.com/2016/06/q-and-a/">一次「分答」记录</a></h2>
-                <div class="summary"><p>尝试在团队内部发起一次类似「分答」的沟通方式，一对一面聊。
-回答其他工程师的问题，这种沟通的方式暨在提供一个特定的场合，帮助加强双方了解，
-解决团队中其他工程师的一些实际的问题。</p>
-<p>在征得对方同意之后，我将他的问题和我的回答 PO 出来。</p>
-<p><img alt="201606/questions-and-answers.jpg" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201606/questions-and-answers.jpg"/></p>
-<ol>
-<li>喜欢什么游戏，玩游戏的问题<ul>
-<li>喜欢和人玩游戏，不喜欢和不认识网友玩游戏</li>
-<li>小学从红月开始玩，传奇、CS、魔兽、真三、DOTA，大学时候和舍友玩游戏，毕业后不玩</li>
-<li>minecraft 尝试着玩过，没有玩下去，找不到人</li>
-<li>日活的桌面游戏，三国杀等蛮喜欢</li>
-<li>不喜欢浪费时间，怕没控制</li>
-<li>从玩游戏里面学习什么么？不，就是纯粹享受游戏，不会想这么多</li>
-</ul>
-</li>
-<li>喜欢什么语言<ul>
-<li>看场合，小东西，小场景用 Python，生产环境用 Java，生产环境又有时间，考虑 Scala</li>
-<li>只允许选一门语言，就用 Python</li>
-<li>最吸引的特点 …</li></ul></li></ol>
-                </div>
-                <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2016/06/q-and-a/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
             <hr/>
 

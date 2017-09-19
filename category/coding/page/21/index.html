@@ -68,6 +68,28 @@ Log4D            </a>
         <div class="col-lg-8 col-lg-offset-2">
 
             <article class="article-list">
+                <h2 class="title"><a href="https://blog.alswl.com/2009/03/early-contact-with-openssl/">OpenSSL初接触</a></h2>
+                <div class="summary"><p>Boss昨个儿说，这两天把SSL上面的相关东西给他去看一下</p>
+<p>苦命啊，最近都在做Ajax，SSL几乎没有什么动静。唉，今天中午没吃饭，没睡觉，就开始做SSL</p>
+<p>耗费了很多时间，才正确的编译完OpenSSL</p>
+<p>要做的东西是基于C#的、利用OpenSSL开源代码完成的SSL分级服务器，很是麻烦，要用C#来调用C程序，而且OpenSSL本来就很难使用，唉，残念啊。</p>
+<p>下面把我今天的成果分享一下：</p>
+<p><a href="http://www.cnblogs.com/zhengyun_ustc/archive/2005/04/11/135821.aspx">[C#]用HttpWebRequest加载证书建立SSL通道时发生异常的解决办法- 旁观
+...</a></p>
+<p><a href="http://i.cn.yahoo.com/suntongo/blog/p_2/">OpenSSL- .net，C++/CLI语言的一次实践</a></p>
+<p><a href="http://www.openssl.org/">OpenSSL: The Open Source toolkit for SSL/TLS</a></p>
+<p><a href="http://www.ibm.com/developerworks/cn/linux/l-openssl.html">使用OpenSSL API
+进行安全编程</a></p>
+<p><a href="http://www.cnblogs.com/sleepingwit/archive/2008/11/03/132333
+4.html">在C#工程中使用OPENSSL</a></p>
+<p><a href="http://www.cnblogs.com/gleam/archive/2008/05/07/1187154.html">本文介绍在VC 6.0中编译和使用OpenSSL的过程- 微光的闪现-
+博客园</a></p>
+<p><a href="http://www.sinfors.com/cn/news/913.htm">深信服SSL VPN M4.0正式发布 …</a></p>
+                </div>
+                <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/03/early-contact-with-openssl/"><i class="icon-circle-arrow-right"></i>more ...</a>
+            </article>
+            <hr/>
+            <article class="article-list">
                 <h2 class="title"><a href="https://blog.alswl.com/2009/03/continue-to-recommend-the-book-ajax-in-action/">继续推荐书：Ajax实战</a></h2>
                 <div class="summary"><p>本来关于Ajax的学习可以告一段落，原因是看的一本国内的教材有点错误，耗了好多时间才改对，让我对Ajax的热情稍微降低</p>
 <p>不过很"可惜"的是，今天在China-pub上看到一本五星评价的书，《Ajax实战》，抱着试一试的态度，居然在图书馆找到了这本书。</p>
@@ -296,28 +318,6 @@ ation(WPF)。在此之前，它已经完成了从演示软件到开始阶段alph
 <p>source xxx.sql;</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2008/10/mysql-database-export-import/"><i class="icon-circle-arrow-right"></i>more ...</a>
-            </article>
-            <hr/>
-            <article class="article-list">
-                <h2 class="title"><a href="https://blog.alswl.com/2008/09/e7-bd-91-e7-bb-9c-e7-bc-96-e7-a8-8b-e5-ad-a6-e4-b9-a0-e6-97-a5-e8-ae-b03_-e5-88-a9-e7-94-a8winpcap-e5-ae-9e-e7-8e-b0arp-e7-9a-84-e5-8f-91-e9-80-81-e5-92-8c-e6-8e-a5-e5-8f-97/">网络编程学习日记(3)_利用WinPcap实现ARP的发送和接受</a></h2>
-                <div class="summary"><p>网络编程学习日记(2)_利用WinPcap实现ARP的发送和接受</p>
-<p>网络编程学完以太网帧的结构，就开始正式进入IP层的学习了，在学习编程之前，对网络协议的有一定的了解，而且还要知道每个数据包，或者是报文，或者是帧他们每个字节
-的含义</p>
-<p>玩ARP么，肯定得知道他的原理，我就不做什么说明了，书上一大堆的</p>
-<p>首先是ARP的接收，来看一下程序的流程</p>
-<p>获取网络设备列表</p>
-<p>pcap_findalldevs_ex(PCAP_SRC_IF_STRING, NULL, &amp;alldevs, errbuf)</p>
-<p>然后人机交互一下，获得需要工作的网卡</p>
-<p>打开需要的网卡</p>
-<p>(adhandle= pcap_open(d-&gt;name, // 设备名</p>
-<p>&amp;nbsp_place_holder;&amp;nbsp_place_holder; 65536, // 要捕捉的数据包的部分</p>
-<p>&amp;nbsp_place_holder;&amp;nbsp_place_holder; // 65535保证能捕获到不同数据链路层上的每个数据包的全部内容</p>
-<p>&amp;nbsp_place_holder;&amp;nbsp_place_holder;
-PCAP_OPENFLAG_PROMISCUOUS,&amp;nbsp_place_holder;&amp;nbsp_place_holder; // 混杂模式</p>
-<p>&amp;nbsp_place_holder;&amp;nbsp_place_holder;
-1000,&amp;nbsp_place_holder;&amp;nbsp_place_holder; // 读取超时时间 …</p>
-                </div>
-                <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2008/09/e7-bd-91-e7-bb-9c-e7-bc-96-e7-a8-8b-e5-ad-a6-e4-b9-a0-e6-97-a5-e8-ae-b03_-e5-88-a9-e7-94-a8winpcap-e5-ae-9e-e7-8e-b0arp-e7-9a-84-e5-8f-91-e9-80-81-e5-92-8c-e6-8e-a5-e5-8f-97/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
             <hr/>
 

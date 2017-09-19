@@ -68,6 +68,18 @@ Log4D            </a>
         <div class="col-lg-8 col-lg-offset-2">
 
             <article class="article-list">
+                <h2 class="title"><a href="https://blog.alswl.com/2009/06/return-s-if-the-use-of/">再谈s:if的使用</a></h2>
+                <div class="summary"><p>上次遇到过<s:if>的问题，费了好久才弄好，这次又遇到，有了一点新的体验。</s:if></p>
+<p><s:if test="">中的判断，如果是数字判断一般都没有问题，问题会在字符串时候凸显出来。</s:if></p>
+<p>尤其是中文字符串，几乎没有能够通过的，上一次是曲线救国，用了true和false着两个英文，如果非得用中文怎么办？</p>
+<p>其实使用<s:if test='str=="中文"'>，就可以了，请注意，是单引号-双引号-中文-双引号-
+单引号的顺序，这样才能够正确的解析中文字符串是否相等。</s:if></p>
+<p>唔。。。终于可以做下一个部分了</p>
+                </div>
+                <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/06/return-s-if-the-use-of/"><i class="icon-circle-arrow-right"></i>more ...</a>
+            </article>
+            <hr/>
+            <article class="article-list">
                 <h2 class="title"><a href="https://blog.alswl.com/2009/06/affixed-to-it-the-progress-report-on-the-medium-term/">贴吧中期进度汇报</a></h2>
                 <div class="summary"><p>查看sql更新版本，我才发现这个项目已经做了将近2个月了。</p>
 <p>之前一个多月都是我有空就做做，一边要写OpenSSL的模型，还要应付平时学习和考试，最近的1个星期，才开始全身心投入的，使这个项目变成了一个课程设计，但决不
@@ -217,19 +229,6 @@ Gears可以对IE进行缓存加速，而IE并没有崩溃，说明问题出在Fi
 <p>我又尝试了删除Google Gears缓存，崩溃依旧，重新更新Word Press缓存，崩溃依旧 …</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/06/firefox-frequently-collapse-under-the-wordpress-upload-solution/"><i class="icon-circle-arrow-right"></i>more ...</a>
-            </article>
-            <hr/>
-            <article class="article-list">
-                <h2 class="title"><a href="https://blog.alswl.com/2009/05/the-education-network-ubuntu8-04-source/">Ubuntu8.04的教育网源</a></h2>
-                <div class="summary"><p>Google的话有很多源，北大的宣称5M，结果我都连不上，交大的宣称2M，我发现只有20kb/s，连更新语言包都超级慢。</p>
-<p>最后经过我的测试，是成都电子科技大学的最快，2M左右，推荐使用。</p>
-<p>特别注意，这是8.04的源，虽然8.10大部分能用，但会出现某些软件包找不到，请大家使用前做好备份。</p>
-<p>速度的话，还是得自己测试，我只是推荐，下面的内容都是我复制过来自带的，不是我增加的。（PS:晚上时候我用官方的Mirror也3M/s）</p>
-<p>` #北京市清华大学更新服务器（教育网，推荐校园网和网通用户使用）：</p>
-<p>deb http://mirror9.net9.org/ubuntu/ hardy main multiverse restricted universe</p>
-<p>deb http://mirror9.net9.org/ubuntu/ hardy-backports main multiverse restricted …</p>
-                </div>
-                <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/05/the-education-network-ubuntu8-04-source/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
             <hr/>
 

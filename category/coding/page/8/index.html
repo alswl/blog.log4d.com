@@ -68,6 +68,24 @@ Log4D            </a>
         <div class="col-lg-8 col-lg-offset-2">
 
             <article class="article-list">
+                <h2 class="title"><a href="https://blog.alswl.com/2011/02/dataconnectiondialog/">使用DataConnectionDialog来获取连接字符串</a></h2>
+                <div class="summary"><p>在系统开发中，数据库连接字符串经常被保存到.config/.ini等配置文件中，以提高系统的灵活性。上大学时候，为了实现灵活配置数据库的效果，用拼字符串的方
+法来动态生成连接字符串，这种方法充满了Bad Smell。</p>
+<p>昨天用CodeSmith时候，看到它的数据连接配置界面，如此的眼熟，如下图。</p>
+<p><img alt="image" src="https://ohsolnxaa.qnssl.com/2011/02/DataConnectionDialog.jpg"/></p>
+<p>Google了一下，原来这家伙的名字叫做DataConnectionDialog，所属命名空间为Microsoft.VisualStudio.Data。</p>
+<p>使用的方法也很简单，引用Microsoft.Data.ConnectionUI.dll和Microsoft.Data.ConnectionUI.Dialog
+.dll，这两个文件位于Microsoft Visual Studio 9.0Common7IDE下面。</p>
+<p>这两个dll并没有其他依赖关系，可以放心的放到自己的程序中使用。</p>
+<p>使用代码如下</p>
+<div class="highlight"><pre><span></span>DataConnectionDialog dataConnectionDialog = new DataConnectionDialog();
+DataSource.AddStandardDataSources(dataConnectionDialog);
+if (DataConnectionDialog.Show(dataConnectionDialog) == DialogResult.OK …</pre></div>
+                </div>
+                <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2011/02/dataconnectiondialog/"><i class="icon-circle-arrow-right"></i>more ...</a>
+            </article>
+            <hr/>
+            <article class="article-list">
                 <h2 class="title"><a href="https://blog.alswl.com/2011/01/gac/">在.net中使用GAC</a></h2>
                 <div class="summary"><h2 id="gac">GAC</h2>
 <p>GAC是什么？是用来干嘛的？GAC的全称叫做全局程序集缓存，通俗的理解就是存放各种.net平台下面需要使用的dll的地方。GAC的具体目录在windows/
@@ -248,26 +266,6 @@ met的实现方式有两种：基于 AJAX 的长轮询（long-polling）方式�
 <h3 id="2-xuan-ze-cakephp">2. 选择CakePHP …</h3>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2010/08/azaajaxchat-notes-frame/"><i class="icon-circle-arrow-right"></i>more ...</a>
-            </article>
-            <hr/>
-            <article class="article-list">
-                <h2 class="title"><a href="https://blog.alswl.com/2010/07/get-daily-bing-picture/">获取每日Bing图片</a></h2>
-                <div class="summary"><p>在使用公司一个Redirect开发工具页面时候，想个性化一下，就想添加一个背景，最好每天能自动变化，我第一个想到的就是Bing。</p>
-<p>放狗搜索，发现一篇文章 <a href="http://blog.csdn.net/huangc
-t/archive/2009/10/27/4734844.aspx">抓取每天必应bing背景图片 - huangct的专栏 - CSDN博客</a>，文中提供了抓取程式的Python代码，我摘录如下。</p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">urllib</span>
-<span class="kn">import</span> <span class="nn">time</span>
-<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="s1">'http://www.bing.com'</span>
-    <span class="n">f</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-    <span class="n">html</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-    <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-    <span class="n">a</span> <span class="o">=</span> <span class="n">html</span><span class="p">[</span><span class="n">html</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">'/fd/hpk2'</span><span class="p">):]</span>
-    <span class="n">data</span> <span class="o">=</span> <span class="n">a</span><span class="p">[:</span><span class="n">a</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">''</span><span class="p">,</span><span class="nb">id</span><span class="p">:</span><span class="s1">')]</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">'</span><span class="se">\'</span><span class="s1">, '')</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="s1">'http://www.bing …</span></pre></div>
-                </div>
-                <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2010/07/get-daily-bing-picture/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
             <hr/>
 

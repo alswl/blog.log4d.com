@@ -67,6 +67,21 @@ Log4D            </a>
         <div class="col-lg-8 col-lg-offset-2">
 
             <article class="article-list">
+                <h2 class="title"><a href="https://blog.alswl.com/2009/05/log4j-problems/">Log4j 遇到的问题</a></h2>
+                <div class="summary"><p>今天使用 Log4j 遇到问题是只能打印ERROR级别</p>
+<p>最简单的 Log4j.properties 设置</p>
+<h1>Set root logger level to DEBUG and its only appender to A1.</h1>
+<p>log4j.rootLogger=INFO,A1</p>
+<h1>A1 is set to be a ConsoleAppender.</h1>
+<p>log4j.appender.A1=org.apache.log4j.ConsoleAppender</p>
+<h1>A1 uses PatternLayout.</h1>
+<p>log4j.appender.A1.layout=org.apache.log4j.PatternLayout</p>
+<p>log4j.appender …</p>
+                </div>
+                <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/05/log4j-problems/"><i class="icon-circle-arrow-right"></i>more ...</a>
+            </article>
+            <hr/>
+            <article class="article-list">
                 <h2 class="title"><a href="https://blog.alswl.com/2009/05/no-configuration-found-for-the-specified-action/">No configuration found for the specified action</a></h2>
                 <div class="summary"><p>Tomcat 控制台打出如下警告：</p>
 <p>WARN - No configuration found for the specified action: &lsquo;xxxxx&rsquo;in namespace:
@@ -203,28 +218,6 @@ layer security)是ietf的tls工作组在ssl3.0基础之上提出的安全通信�
 证,证书生成等功能,甚至可以用其建立一个完整的ca.与其同时,它也提供了一套完整的库函数,可用开发用ssl/tls的通信程序. apache的https两种 …</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/03/openssl-prepared-using-ssl-tls-instance/"><i class="icon-circle-arrow-right"></i>more ...</a>
-            </article>
-            <hr/>
-            <article class="article-list">
-                <h2 class="title"><a href="https://blog.alswl.com/2009/03/programming-with-openssl-for-ssl/">用openssl进行SSL编程【转载-月光】</a></h2>
-                <div class="summary"><p>主要介绍openssl进行SSL通信的一些函数以及过程，主要是初始化过程，至于数据的接收以及后续处理可以具体问题具体分析。</p>
-<p>load所有的SSL算法</p>
-<p>OpenSSL_add_ssl_algorithms();</p>
-<p>建立SSL所用的method</p>
-<p>SSL_METHOD *meth=SSLv23_method();</p>
-<p>初始化上下文情景</p>
-<p>SSL_CTX *ctx=SSL_CTX_new(meth);</p>
-<p>ret-&gt;quiet_shutdown=1;默认的是ret-&gt;quiet_shutdown=0;他相当于SSL_set_shutdown函数将参数设置为SS
-L_SENT_SHUTDOWN|SSL_RECEIVED_SHUTDOWN</p>
-<p>当设置为1时，假如关闭后，不通知对方，这样不适合TLS标准</p>
-<p>SSL_CTX_set_quiet_shutdown(ctx,1);</p>
-<p>ctx-&gt;options|=SSL_OP_ALL，SSL/TLS有几个公认的bug,这样设置会使出错的可能更小</p>
-<p>SSL_CTX_set_options(ctx,SSL_OP_ALL);</p>
-<p>设置cache的大小，默认的为1024*20=20000，这个也就是可以存多少个session_id，一般都不需要更改的。假如为0的话将是无限</p>
-<p>SSL_CTX_sess_set_cache_size(ctx,128);</p>
-<p>SSL_CTX_load_verify_locations用于加载受信任的CA证书 …</p>
-                </div>
-                <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/03/programming-with-openssl-for-ssl/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
             <hr/>
 

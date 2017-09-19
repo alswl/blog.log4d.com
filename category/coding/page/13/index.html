@@ -68,6 +68,24 @@ Log4D            </a>
         <div class="col-lg-8 col-lg-offset-2">
 
             <article class="article-list">
+                <h2 class="title"><a href="https://blog.alswl.com/2009/11/mailtocommenter-of-the-spam-problem/">MailToCommenter的垃圾邮件问题</a></h2>
+                <div class="summary"><p>Mail To Commenter发出的邮件会被GMail判定为垃圾邮件，这个问题我曾经发现，不过没有重视起来。鸵鸟理论告诉我说也许只有自己的GMail这样
+，别人都是完好的，直到<a href="http://www.derekblog.cn/">derek</a>同学提出来。</p>
+<p>于是乎我开始修改，经过十余次的发送垃圾邮件，我反复查看邮件源码，检查<code>Mail To
+Commenter的</code>mailtocommenter_send_email<code>函数，终于修改如下代码。</code></p>
+<p><code>代码部分分别参考</code><a href="http://xfuxing.com/2009/modify-the-mail-to-commenter-so-that-more-
+user-friendly-e-mail-notification.html">修改 mail to commenter,让邮件通知更加友好 |&amp;nbsp_place_holder; Simple
+happiness</a>和<a href="http://www.evlos.org/2009/11/03/edit-the-poster-of-
+mailtocomments/#comment-1278">邪罗刹的菠萝阁 &raquo;
+如何修改MailToCommenter插件的发件人</a>，html部分代码是模仿<a href="http://www.evlos.org/">邪 罗刹</a>的回复修改。</p>
+<p>修改<code>wp-content/plugins/mailtocommenter</code>下面的<code>mailtocommenter_functions.php</code></p>
+<div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">mailtocommenter_send_email</span><span class="p">(</span><span class="nx">$to</span><span class="p">,</span><span class="nx">$subject</span><span class="p">,</span><span class="nx">$message</span><span class="p">){</span>
+    <span class="nx">$hostname</span> <span class="o">=</span> <span class="nx">get_option …</span></pre></div>
+                </div>
+                <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/11/mailtocommenter-of-the-spam-problem/"><i class="icon-circle-arrow-right"></i>more ...</a>
+            </article>
+            <hr/>
+            <article class="article-list">
                 <h2 class="title"><a href="https://blog.alswl.com/2009/11/note-the-use-of-java-reflection-to-improve-the-basedao/">Java笔记 使用反射来改进BaseDao</a></h2>
                 <div class="summary"><h2 id="guan-yu-fan-she">关于反射</h2>
 <p>反射的定义（via <a href="http://zh.wikipedia.org/zh-cn/%E5%8F%8D%E5%B0%84_%28%E8%AE%A1
@@ -232,20 +250,6 @@ Ship(微软推出的一个Asp.NET的权限系统)。</p>
 以编译完成，但是如果在其中存在uniqueidentifier这种类型的表，就会产生错误 …</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/10/membership-moving-soft-issue-of-builder-under-the-userid/"><i class="icon-circle-arrow-right"></i>more ...</a>
-            </article>
-            <hr/>
-            <article class="article-list">
-                <h2 class="title"><a href="https://blog.alswl.com/2009/10/python-enter-the-16-hex-save-to-file/">Python输入16进制保存到文件</a></h2>
-                <div class="summary"><p>（题目有点勉强，不过问题真的很难描述，希望Google/Baidu到这里的童鞋不要失望） 前几天给<a href="http://zww.me/">zwwooooo</a>写一个
-小工具，其中遇到一个输入的问题。具体描述就是："输入4个16进制的数字，如'00a0'，输入之后必须能够把这个输入给保存到文件中存为2进制格式，必须是原始的
-16进制，而不是字符串类型。如'x00xa0'"。（其实这是用在处理文本上的） 不知道各位大大有没有明白我的意思，我花了很长时间没有一个好的解决方案。
-第一种方案，先用int()转换，然后转换hex()，直接失败，hex()转换后格式为'0x00a0'，是字符串格式，根本不是我需要的内容。
-我苦思冥想三天，终于找到一个最傻，也最好用的方法，用list进行匹配。 下面是生成匹配list的脚本：</p>
-<div class="highlight"><pre><span></span>lst = '{'
-for i in range(int('0x00', 16), int('0xff', 16) + 1):
-    hv = hex(i).replace …</pre></div>
-                </div>
-                <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/10/python-enter-the-16-hex-save-to-file/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
             <hr/>
 

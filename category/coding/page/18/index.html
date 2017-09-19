@@ -68,6 +68,19 @@ Log4D            </a>
         <div class="col-lg-8 col-lg-offset-2">
 
             <article class="article-list">
+                <h2 class="title"><a href="https://blog.alswl.com/2009/05/the-education-network-ubuntu8-04-source/">Ubuntu8.04的教育网源</a></h2>
+                <div class="summary"><p>Google的话有很多源，北大的宣称5M，结果我都连不上，交大的宣称2M，我发现只有20kb/s，连更新语言包都超级慢。</p>
+<p>最后经过我的测试，是成都电子科技大学的最快，2M左右，推荐使用。</p>
+<p>特别注意，这是8.04的源，虽然8.10大部分能用，但会出现某些软件包找不到，请大家使用前做好备份。</p>
+<p>速度的话，还是得自己测试，我只是推荐，下面的内容都是我复制过来自带的，不是我增加的。（PS:晚上时候我用官方的Mirror也3M/s）</p>
+<p>` #北京市清华大学更新服务器（教育网，推荐校园网和网通用户使用）：</p>
+<p>deb http://mirror9.net9.org/ubuntu/ hardy main multiverse restricted universe</p>
+<p>deb http://mirror9.net9.org/ubuntu/ hardy-backports main multiverse restricted …</p>
+                </div>
+                <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/05/the-education-network-ubuntu8-04-source/"><i class="icon-circle-arrow-right"></i>more ...</a>
+            </article>
+            <hr/>
+            <article class="article-list">
                 <h2 class="title"><a href="https://blog.alswl.com/2009/05/ubuntu8-10-under-the-mysql-installation/">Ubuntu8.10下MySQL的安装</a></h2>
                 <div class="summary"><p>Ubuntu下的MySQL安装本应该很简单，但是如果因为修改了软件源的话，反而变得麻烦起来。</p>
 <p>为了加快更新一些组件的速度，我加入了清华的、交大等大学的源，是8.04下Ubuntu版本的，这个直接导致了之后安装MySQL的问题。</p>
@@ -229,24 +242,6 @@ find action or result</p>
 <p>这一段的作用是在原先webapps的目录下添加虚拟目录/postbar …</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/05/eclipse-in-the-development-of-jave-ee-projects-in-the-deployment-of-tomcat/"><i class="icon-circle-arrow-right"></i>more ...</a>
-            </article>
-            <hr/>
-            <article class="article-list">
-                <h2 class="title"><a href="https://blog.alswl.com/2009/05/station-restoration-of-mind/">小站恢复记</a></h2>
-                <div class="summary"><p>由于原来服务器被攻击，销售代表给我重新安排了一台主机，之前我做过一次数据备份，但是文件没有备份，左等右等，都不见服务器恢复，于是打定主意自己恢复自己的数据，
-重建博客。</p>
-<p>首先得确保手头有原始的数据，我当时在phpMyAdmin中导出了所有的数据保存为sql文档。</p>
-<p>1.重新创建原始的WordPress，并把原来的一些插件和主题重新安装好。重新创建的数据库名称可能与原来的数据库名称有出入，就需要修改导出的sql文件。</p>
-<p>2.比如我原始的数据库名称是alswl_wp，现在创建的数据库是dddspace_wp（记住哦，是全称，不是自己填的部分）。找到sql文件 ` --</p>
-<h2 id="-shu-ju-ku-alswl_wp">-- 数据库: <code>alswl_wp</code></h2>
-<p>CREATE DATABASE <code>alswl_wp</code> DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;</p>
-<p>USE <code>alswl_wp</code>;`</p>
-<p>只保留 USE 'alswl_wp'，并且修改为USE
-'dddspace_wp'，之所以不在这里创建，是因为一般空间管理器取消了phpMyAdmin创建数据库权限，只能在面板创建。</p>
-<p>如果当初备份数据库是全部备份的话可能还会有其他的系统数据库，这些必须删除，保证sql文件只对dddspace_wp这个数据库进行增加表的操作</p>
-<p>3.为了保证数据库数据正确，把WP自动创建的表删除，然后就可以导入sql文件执行了 …</p>
-                </div>
-                <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/05/station-restoration-of-mind/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
             <hr/>
 

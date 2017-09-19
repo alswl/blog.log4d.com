@@ -68,6 +68,20 @@ Log4D            </a>
         <div class="col-lg-8 col-lg-offset-2">
 
             <article class="article-list">
+                <h2 class="title"><a href="https://blog.alswl.com/2009/10/python-enter-the-16-hex-save-to-file/">Python输入16进制保存到文件</a></h2>
+                <div class="summary"><p>（题目有点勉强，不过问题真的很难描述，希望Google/Baidu到这里的童鞋不要失望） 前几天给<a href="http://zww.me/">zwwooooo</a>写一个
+小工具，其中遇到一个输入的问题。具体描述就是："输入4个16进制的数字，如'00a0'，输入之后必须能够把这个输入给保存到文件中存为2进制格式，必须是原始的
+16进制，而不是字符串类型。如'x00xa0'"。（其实这是用在处理文本上的） 不知道各位大大有没有明白我的意思，我花了很长时间没有一个好的解决方案。
+第一种方案，先用int()转换，然后转换hex()，直接失败，hex()转换后格式为'0x00a0'，是字符串格式，根本不是我需要的内容。
+我苦思冥想三天，终于找到一个最傻，也最好用的方法，用list进行匹配。 下面是生成匹配list的脚本：</p>
+<div class="highlight"><pre><span></span>lst = '{'
+for i in range(int('0x00', 16), int('0xff', 16) + 1):
+    hv = hex(i).replace …</pre></div>
+                </div>
+                <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/10/python-enter-the-16-hex-save-to-file/"><i class="icon-circle-arrow-right"></i>more ...</a>
+            </article>
+            <hr/>
+            <article class="article-list">
                 <h2 class="title"><a href="https://blog.alswl.com/2009/10/python-django-mtv-framework-and-php-mvc-framework/">python+django MTV框架 和php MVC框架</a></h2>
                 <div class="summary"><p>首先，祝福祖国60华诞，我爱这个国家。</p>
 <p>刚才在GR读到<a href="http://www.classicning.com">Here Comes The Sun</a>的<a href="http://www.classicning.com/blog/2009/09/a-shorten-url-app/-shorten-url-
@@ -241,24 +255,6 @@ wiki.moxiecode.com/index.php/TinyMCE:Configuration/entity_encoding">TinyMCE:Conf
 <p><a href="http://drupal.org/node/72570">TinyMCE wipes out non-breaking …</a></p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/09/about-wordpress-spaces-in-tinymce/"><i class="icon-circle-arrow-right"></i>more ...</a>
-            </article>
-            <hr/>
-            <article class="article-list">
-                <h2 class="title"><a href="https://blog.alswl.com/2009/09/inove-changes-under-the-heading-style/">iNove下的heading样式修改</a></h2>
-                <div class="summary"><p>前段时间主体选择了7color，但是后来发现还是iNove对各种插件的兼容性好，又转回了iNove。</p>
-<p>而iNove在我看来并不是完美的，存在些许问题，Heading问题就是我尤其不能忍受的问题。</p>
-<p>看看一般的heading，下图是LightWord的</p>
-<p>[caption id="attachment_12635" align="alignnone" width="250"
-caption="lightWord的heading"]<a href="https://ohsolnxaa.qnssl.com/2009/09/7colorHeading.jpg"><img alt="7color的heading" src="https://ohsolnxaa.qnssl.com/2009/09/7colorHeading.jpg"/></a>[/caption]</p>
-<p>再看看iNove的</p>
-<p>[caption id="attachment_12636" align="alignnone" width="200"
-caption="iNove的Heading"]<a href="https://ohsolnxaa.qnssl.com/2009/09/iNoveHeading.jpg"><img alt="iNove的Heading" src="https://ohsolnxaa.qnssl.com/2009/09/iNoveHeading.jpg"/></a>[/caption]</p>
-<p>iNove的文章内容Heading CSS和主题的Heading混合在一起，非常不雅观。我稍作修改，在iNove的style.css最后加上一些样式。</p>
-<p>`/<em> dddspace.cn heading fix STAET </em>/</p>
-<p>.post .content h1 {</p>
-<p>font-family:Georgia,"Times New Roman","Bitstream Charter …</p>
-                </div>
-                <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/09/inove-changes-under-the-heading-style/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
             <hr/>
 

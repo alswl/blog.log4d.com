@@ -68,6 +68,22 @@ Log4D            </a>
         <div class="col-lg-8 col-lg-offset-2">
 
             <article class="article-list">
+                <h2 class="title"><a href="https://blog.alswl.com/2011/06/urllib2-urlopen-unicode/">urllib2.urlopen的中文URL问题</a></h2>
+                <div class="summary"><p>在url中使用中文其实是一个坏习惯，会带来一系列的转码问题， 我更喜欢英文译名或者id来标识某个uri。但是现实往往是残酷的，
+特别是在我们调用别人服务时候，有时候被逼无奈使用中文URL。</p>
+<p>Python中unicode转码一向是让人头疼的问题。数次碰壁之后，我也摸出了一些门道，
+研读完<a href="http://ipie.blogbus.com/logs/19379694.html">Python字符串的encode与decode</a>
+之后，就自认为找到了万金油，谁知道这次又碰上这个老冤家。</p>
+<div class="highlight"><pre><span></span>Traceback (most recent call last):
+  File "&lt;stdin&gt;", line 1, in &lt;module&gt;
+  File "/usr/lib/python2.6/urllib2.py", line 126, in urlopen
+    return _opener.open(url, data, timeout)
+  File "/usr/lib/python2.6/urllib2.py", line …</pre></div>
+                </div>
+                <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2011/06/urllib2-urlopen-unicode/"><i class="icon-circle-arrow-right"></i>more ...</a>
+            </article>
+            <hr/>
+            <article class="article-list">
                 <h2 class="title"><a href="https://blog.alswl.com/2011/06/ddns-ssh/">使用DDNS+SSH连通家庭/工作电脑</a></h2>
                 <div class="summary"><h2 id="1-bei-jing">1. 背景</h2>
 <p>我目前有两台电脑，一台是家里使用的Linux笔记本（Dell 6400，4年）， 一台是公司使用的Windows笔记本（IBM X201，1个月）。
@@ -243,24 +259,6 @@ mvn archetype:create -DgroupId=com.dddspace.java -DartifactId=helloworld
 <h1>神奇的命令，帮助创建Eclipse项目 …</h1>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2011/03/maven-eclipse/"><i class="icon-circle-arrow-right"></i>more ...</a>
-            </article>
-            <hr/>
-            <article class="article-list">
-                <h2 class="title"><a href="https://blog.alswl.com/2011/02/dataconnectiondialog/">使用DataConnectionDialog来获取连接字符串</a></h2>
-                <div class="summary"><p>在系统开发中，数据库连接字符串经常被保存到.config/.ini等配置文件中，以提高系统的灵活性。上大学时候，为了实现灵活配置数据库的效果，用拼字符串的方
-法来动态生成连接字符串，这种方法充满了Bad Smell。</p>
-<p>昨天用CodeSmith时候，看到它的数据连接配置界面，如此的眼熟，如下图。</p>
-<p><img alt="image" src="https://ohsolnxaa.qnssl.com/2011/02/DataConnectionDialog.jpg"/></p>
-<p>Google了一下，原来这家伙的名字叫做DataConnectionDialog，所属命名空间为Microsoft.VisualStudio.Data。</p>
-<p>使用的方法也很简单，引用Microsoft.Data.ConnectionUI.dll和Microsoft.Data.ConnectionUI.Dialog
-.dll，这两个文件位于Microsoft Visual Studio 9.0Common7IDE下面。</p>
-<p>这两个dll并没有其他依赖关系，可以放心的放到自己的程序中使用。</p>
-<p>使用代码如下</p>
-<div class="highlight"><pre><span></span>DataConnectionDialog dataConnectionDialog = new DataConnectionDialog();
-DataSource.AddStandardDataSources(dataConnectionDialog);
-if (DataConnectionDialog.Show(dataConnectionDialog) == DialogResult.OK …</pre></div>
-                </div>
-                <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2011/02/dataconnectiondialog/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
             <hr/>
 
