@@ -89,6 +89,38 @@ MySQL 里面对应的写法是什么 …</p>
             </article>
             <hr/>
             <article class="article-list">
+                <h2 class="title"><a href="https://blog.alswl.com/2017/09//"></a></h2>
+                <div class="summary">
+<div id="TOC">
+<ul>
+<li><a href="#第一个问题nolock-是什么">第一个问题：nolock 是什么？</a><ul>
+<li><a href="#隔离级别">隔离级别</a><ul>
+<li><a href="#read-uncommitted">Read Uncommitted</a></li>
+</ul></li>
+<li><a href="#read-committed">Read Committed</a></li>
+<li><a href="#repeatable-read">Repeatable Read</a></li>
+<li><a href="#serializable">Serializable</a></li>
+<li><a href="#db-的默认隔离级别">DB 的默认隔离级别</a></li>
+</ul></li>
+<li><a href="#第二个问题为什么要使用-nolock">第二个问题：为什么要使用 nolock？</a><ul>
+<li><a href="#nolock-测试">nolock 测试</a></li>
+<li><a href="#mvcc">MVCC</a></li>
+<li><a href="#sql-server-2005-之后还需要使用-nolock-么">SQL Server 2005 之后还需要使用 nolock 么？</a></li>
+</ul></li>
+<li><a href="#第三个问题mysql-的对应写法是什么">第三个问题：MySQL 的对应写法是什么？</a></li>
+<li><a href="#回顾一下">回顾一下</a></li>
+<li><a href="#相关资料">相关资料</a></li>
+</ul>
+</div>
+<p>Title: 一个关于 nolock 的故事 Author: alswl Slug: sql-server-nolock Date: 2017-09-19 16:43:45 Tags: SQL Server, MySQL Category: Coding</p>
+<div class="figure">
+<img alt="sql-server.png" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201709/sql-server.png"/>
+<p class="caption">sql-server …</p></div>
+                </div>
+                <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2017/09//"><i class="icon-circle-arrow-right"></i>more ...</a>
+            </article>
+            <hr/>
+            <article class="article-list">
                 <h2 class="title"><a href="https://blog.alswl.com/2017/06/monitoring-introducing/">当我们在聊监控，我们在聊什么？</a></h2>
                 <div class="summary"><p>最近在团队中给大家做了一个分享，泛泛地聊了一些有关「监控」的话题。
 其实做分享对分享者的作用往往大于参与者。
@@ -272,28 +304,6 @@ Indicator 的含义是建立一系列评价指标，比如价格、户型、位�
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2016/08/api-integration-test/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
             <hr/>
-            <article class="article-list">
-                <h2 class="title"><a href="https://blog.alswl.com/2016/06/capacity-planning/">搞定暴涨的流量</a></h2>
-                <div class="summary"><p>2013 年左右，我司业务发展迅速，每天晚上都会面临服务器濒临崩溃情况。
-我相信每个高速发展的互联网企业在某个阶段都会面临这样的情形，比如去年爆红的「足迹」。
-过程往往是：线上出现故障，手机会收到报警，然后登录到服务器上去解决问题。
-处理这种问题工种现在有一个时髦的名称，叫做「SRE（Site Reliability Engineer）」系统可用性工程师。</p>
-<p>虽然我常常救火，但是我还是想尽可能避免线上发生故障。「最好的消息，就是没有消息。」
-减少故障出现概率，增强系统可用性，降低故障处理时间是 SRE 的最大课题。
-在这里有最常用的两个手段，一个是优化性能，一个是做好容量规划和扩展。
-这里我着重讨论后者「容量规划」。</p>
-<p><img alt="看我的一堆报警消息" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201606/message.png"/></p>
-<p>^ 看我的一堆报警消息</p>
-<!-- more -->
-<h2 id="mian-lin-de-wen-ti">面临的问题</h2>
-<p>面对暴涨流量，一边是业务方的满心欢喜，一边就是工程师的烦恼和压力了。
-也许是一个受欢迎的功能上线了，或者是某个社会活动导致流量爆发，系统开始出现高延迟，磁盘 IO 不够用了。
-也许是 DB 第一个倒下，也许是 RPC 系统第一个倒下&hellip;&hellip;
-呃 …</p>
-                </div>
-                <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2016/06/capacity-planning/"><i class="icon-circle-arrow-right"></i>more ...</a>
-            </article>
-            <hr/>
 
         <ul class="pagination">
                 <li class="prev disabled"><a href="#">&laquo;</a></li>
@@ -442,6 +452,11 @@ Indicator 的含义是建立一系列评价指标，比如价格、户型、位�
                         <li class="list-group-item">
                             <a href="https://blog.alswl.com/category/managment/">
                                 <i class="fa fa-folder-open fa-lg"></i> Managment
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="https://blog.alswl.com/category/misc/">
+                                <i class="fa fa-folder-open fa-lg"></i> misc
                             </a>
                         </li>
                         <li class="list-group-item">

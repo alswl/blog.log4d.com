@@ -139,7 +139,7 @@ Log4D            </a>
 <h3 id="21-shi-yong-moinmoinzhuo-mian-ban-zui-jian-dan">2.1. 使用MoinMoin桌面版（最简单）</h3>
 <p>好在有MoinMoin下载包里面包含了简单的可执行版本，只需3个步骤就可以运行了。</p>
 <ol>
-<li>下载MoinMoin <a href="http://moinmo.in/MoinMoinDownload">http://moinmo.in/MoinMoinDownload</a></li>
+<li>下载 MoinMoin <a href="https://moinmo.in/MoinMoinDownload">MoinMoinDownload - MoinMoin</a></li>
 <li>解压缩到合适的目录（安装目录）</li>
 <li>运行目录下面的 <code>wikiserver.py</code><ol>
 <li>Linux/Unix：在命令行里面运行 <code>wikiserver.py</code></li>
@@ -152,8 +152,8 @@ Log4D            </a>
 <p>PS：如果你将MoinMoin安装的优盘，甚至可以做成移动知识库哦~</p>
 <p>更多可以参考 <a href="http://moinmo.in/DesktopEdition">官方DesktopEdition帮助文档（英文）</a></p>
 <h3 id="22-nginxuwsgifang-shi-cheng-xu-yuan-gua-yong">2.2. nginx+uWsgi方式（程序员适用）</h3>
-<p><code>wikiserver.py</code> 虽然可以运行，但是作为开发者，我当然要使用效率更高的方式。 运行Python Web应用需要 <code>Appach / ngnix
-+ CGI / FastCGI / uWSGI</code> 环境。 我这里使用nginx + uWSGI进行环境配置。</p>
+<p><code>wikiserver.py</code> 虽然可以运行，但是作为开发者，我当然要使用效率更高的方式。 运行Python Web应用需要
+<code>Appach / ngnix + CGI / FastCGI / uWSGI</code> 环境。 我这里使用nginx + uWSGI进行环境配置。</p>
 <p>Google了N多资料之后，这篇 <a href="http://typedef.me/2011/08/30/archlinux-nginx-uwsgi-moinmoin-setup">ArchLinux 下使用 Nginx + uWSGI 部署
 MoinMoin</a>
 最是详细，另外还可以参考 <a href="http://garfileo.is-
@@ -167,7 +167,7 @@ yaourt uwsgi
 <h4 id="222-pei-zhi-moinmoin">2.2.2. 配置MoinMoin</h4>
 <p>默认情况下，moinmoin 被安装在了 <code>/usr/lib/python2.7/site-packages/MoinMoin</code> 和
 <code>/usr/moin/share</code> 这两个目录下。</p>
-<div class="highlight"><pre><span></span>cd /usr/share/moin/
+<div class="highlight"><pre><span></span><span class="nb">cd</span> /usr/share/moin/
 ln -s /usr/share/moin/server/moin.wsgi .
 ln -s /usr/share/moin/config/wikiconfig.py .
 </pre></div>
@@ -176,63 +176,65 @@ ln -s /usr/share/moin/config/wikiconfig.py .
 Sock，这样相对安全一些。</p>
 <p>ps：貌似这个版本的uwsgi 0.9.9.2有点小问题，无法在 <code>/var/run</code> 里面创建sock， 我只能将 <code>uwsgi.sock</code> 放在
 <code>/tmp</code> 里面</p>
-<div class="highlight"><pre><span></span><span class="nt">server</span> <span class="p">{</span>
-        <span class="err">listen</span>       <span class="err">80</span><span class="p">;</span>
-        <span class="err">server_name</span>  <span class="err">wiki.localhost</span><span class="p">;</span>
-        <span class="err">location</span> <span class="err">/{</span>
-                <span class="err">include</span> <span class="err">uwsgi_params</span><span class="p">;</span>
-                <span class="err">#uwsgi_pass</span> <span class="err">127.0.0.1:9090</span><span class="p">;</span>
-                <span class="err">uwsgi_pass</span> <span class="n">unix</span><span class="p">:</span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">uwsgi</span><span class="o">.</span><span class="n">sock</span><span class="p">;</span>
-                <span class="err">uwsgi_param</span> <span class="err">UWSGI_PYHOME</span> <span class="err">/usr/lib/python2.7/site-packages/MoinMoin</span><span class="p">;</span>
-                <span class="err">uwsgi_param</span> <span class="err">UWSGI_CHDIR</span> <span class="err">/usr/share/moin</span><span class="p">;</span>
-                <span class="err">uwsgi_param</span> <span class="err">UWSGI_SCRIPT</span> <span class="err">moin_wsgi</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><span class="k">server</span> <span class="p">{</span>
+        <span class="kn">listen</span>       <span class="mi">80</span><span class="p">;</span>
+        <span class="kn">server_name</span>  <span class="s">wiki.localhost</span><span class="p">;</span>
+        <span class="kn">location</span> <span class="s">/</span><span class="p">{</span>
+                <span class="kn">include</span> <span class="s">uwsgi_params</span><span class="p">;</span>
+                <span class="c1">#uwsgi_pass 127.0.0.1:9090;</span>
+                <span class="kn">uwsgi_pass</span> <span class="s">unix:/tmp/uwsgi.sock</span><span class="p">;</span>
+                <span class="kn">uwsgi_param</span> <span class="s">UWSGI_PYHOME</span> <span class="s">/usr/lib/python2.7/site-packages/MoinMoin</span><span class="p">;</span>
+                <span class="kn">uwsgi_param</span> <span class="s">UWSGI_CHDIR</span> <span class="s">/usr/share/moin</span><span class="p">;</span>
+                <span class="kn">uwsgi_param</span> <span class="s">UWSGI_SCRIPT</span> <span class="s">moin_wsgi</span><span class="p">;</span>
         <span class="p">}</span>
-<span class="err">}</span>
+<span class="p">}</span>
+
+<span class="c1"># vim: set ft=conf:</span>
 </pre></div>
-<h1>vim: set ft=conf:</h1>
 <h4 id="224-pei-zhi-qi-dong-wen-jian">2.2.4. 配置启动文件</h4>
 <p>因为使用 UNIX Sock 连接，所以 <code>/etc/rc.d/uwsgi</code> 启动文件也略做修改（ Ubunt 的启动配置文件在
 <code>/etc/init.d/</code> 下面）， 加入了 <code>SOCK</code> ，同时我为 uwsgi 指定运行用户 <code>http</code> ，避免root启动带来的安全隐患。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+
+<span class="c1">#PORT=9090</span>
+
+<span class="nv">SOCK</span><span class="o">=</span>/tmp/uwsgi.sock
+<span class="nv">PROCESSES</span><span class="o">=</span><span class="m">4</span>
+<span class="nv">USER</span><span class="o">=</span><span class="nv">httpLOG</span><span class="o">=</span>/var/log/uwsgi.log
+<span class="nv">PID</span><span class="o">=</span><span class="sb">`</span>pidof -o %PPID /usr/bin/uwsgi<span class="sb">`</span>
+
+. /etc/rc.conf
+. /etc/rc.d/functions
+
+<span class="k">case</span> <span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span> in
+    start<span class="o">)</span>
+        stat_busy <span class="s2">"Starting uwsgi"</span>
+        <span class="k">if</span> <span class="o">[</span> -n <span class="s2">"</span><span class="nv">$PID</span><span class="s2">"</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+            stat_busy <span class="s2">"uwsgi is already running"</span>
+            stat_die
+        <span class="k">else</span>
+            <span class="c1">#uwsgi --uid $USER -s ":$PORT" -M -p $PROCESSES -d $LOG &amp;&gt; /dev/null # use socket port</span>
+            uwsgi --uid <span class="nv">$USER</span> --socket <span class="nv">$SOCK</span> -M -p <span class="nv">$PROCESSES</span> -d <span class="nv">$LOG</span> <span class="p">&amp;</span>&gt; /dev/null <span class="c1"># use unix sock</span>
+            add_daemon uwsgi
+            stat_done
+        <span class="k">fi</span>
+        <span class="p">;;</span>
+    stop<span class="o">)</span>
+        stat_busy <span class="s2">"Stopping uwsgi"</span>
+        killall -QUIT uwsgi <span class="p">&amp;</span>&gt; /dev/null
+        rm_daemon uwsgi
+        stat_done
+        <span class="p">;;</span>
+    restart<span class="o">)</span>
+        <span class="nv">$0</span> stop
+        sleep <span class="m">1</span>
+        <span class="nv">$0</span> start
+        <span class="p">;;</span>
+    *<span class="o">)</span>
+        <span class="nb">echo</span> <span class="s2">"usage: </span><span class="nv">$0</span><span class="s2"> {start|stop|restart}"</span>
+<span class="k">esac</span>
+<span class="nb">exit</span> <span class="m">0</span>
 </pre></div>
-</td></tr></table>
-<h1>PORT=9090</h1>
-<p>SOCK=/tmp/uwsgi.sock</p>
-<p>PROCESSES=4</p>
-<p>USER=httpLOG=/var/log/uwsgi.log</p>
-<p>PID=<code>pidof -o %PPID /usr/bin/uwsgi</code></p>
-<p>. /etc/rc.conf</p>
-<p>. /etc/rc.d/functions</p>
-<p>case "$1" in</p>
-<p>start)</p>
-<p>stat_busy "Starting uwsgi"</p>
-<p>if [ -n "$PID" ]; then</p>
-<p>stat_busy "uwsgi is already running"</p>
-<p>stat_die</p>
-<p>else</p>
-<h1>uwsgi --uid $USER -s ":$PORT" -M -p $PROCESSES -d $LOG &amp;&gt; /dev/null # use</h1>
-<p>socket port</p>
-<p>uwsgi --uid $USER --socket $SOCK -M -p $PROCESSES -d $LOG &amp;&gt; /dev/null # use
-unix sock</p>
-<p>add_daemon uwsgi</p>
-<p>stat_done</p>
-<p>fi</p>
-<p>;;</p>
-<p>stop)</p>
-<p>stat_busy "Stopping uwsgi"</p>
-<p>killall -QUIT uwsgi &amp;&gt; /dev/null</p>
-<p>rm_daemon uwsgi</p>
-<p>stat_done</p>
-<p>;;</p>
-<p>restart)</p>
-<p>$0 stop</p>
-<p>sleep 1</p>
-<p>$0 start</p>
-<p>;;</p>
-<p>*)<br/>
-echo "usage: $0 {start|stop|restart}"</p>
-<p>esac</p>
-<p>exit 0</p>
 <h2 id="3-image2attach_2">3. Image2Attach</h2>
 <p>去年我选择Wiz而不选择Wiki类产品时候，是考虑到一个图片保存本地化的问题。 即保存一篇网页时候，要将里面的图片保存到本地，而不是使用链接方式保存，
 因为由于各种不可预测的原因，原始图片数据很有可能丢失或者无法连接。</p>
@@ -248,9 +250,7 @@ released</a></p>
 <h3 id="an-zhuang-yu-yan-bao">安装语言包</h3>
 <ul>
 <li>首先请确保当前登录账户是超级用户，超级用户设置在 <code>/usr/share/moin/wikiconfig.py</code> （可能路径有所差异）里面的 <code>superuser = [u"yourid"]</code> ，加入你需要设定的用户id</li>
-<li>
-<p>中文界面会根据浏览器语言设定获取，而相应的中文帮助文件默认没有安装，我建议安装。安装步骤如下：  </p>
-<ul>
+<li>中文界面会根据浏览器语言设定获取，而相应的中文帮助文件默认没有安装，我建议安装。安装步骤如下：<ul>
 <li>访问http://localhost/LanguageSetup，里面有安装文档链接http://localhost/LanguageSetup?action=language_setup</li>
 <li>在http://wiki.localhost/LanguageSetup?action=language_setup中，选择 <code>Simplified_Chinese</code> 点击最下面 <code>all_pages</code></li>
 <li>同时我也建议安装英文版本的 <code>all_pages</code> ，因为中文有一些翻译不全。</li>
@@ -271,8 +271,7 @@ released</a></p>
 </ul>
 <h2 id="5-moinmoinde-yi-xie-xiu-gai_1">5. MoinMoin的一些修改</h2>
 <p>在使用MoinMoin这段时间，我发现了一些小问题，就对源码做了一些小修改。 当然如果你觉得麻烦，不做这些修改也一样可以使用的很好。</p>
-<p>我修改了 <code>/usr/lib/python2.7/site-
-packages/MoinMoin/converter/text_html_text_moin_wiki.py</code> 这个文件。点击 <a href="https://ohsolnxaa.qnssl.com/2011/12/moinmoin.diff">diff文件</a>下载。</p>
+<p>我修改了 <code>/usr/lib/python2.7/site-packages/MoinMoin/converter/text_html_text_moin_wiki.py</code> 这个文件。点击 <a href="https://ohsolnxaa.qnssl.com/2011/12/moinmoin.diff">diff文件</a>下载。</p>
 <h2 id="6-wizzhuan-moinmoinjing-yan">6. wiz转MoinMoin经验</h2>
 <p>Wiz中数据存储格式其实是mht，微软的鸟东西，数据转换颇为不方便。</p>
 <p>第一种方法是借助Wiz Web服务，Wiz小组推出的 <a href="http://service.wiz.cn/web">Web服务</a> 可以很方便的查看所有同步
@@ -380,6 +379,11 @@ packages/MoinMoin/converter/text_html_text_moin_wiki.py</code> 这个文件。�
                         <li class="list-group-item">
                             <a href="https://blog.alswl.com/category/managment/">
                                 <i class="fa fa-folder-open fa-lg"></i> Managment
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="https://blog.alswl.com/category/misc/">
+                                <i class="fa fa-folder-open fa-lg"></i> misc
                             </a>
                         </li>
                         <li class="list-group-item">
