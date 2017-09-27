@@ -78,13 +78,7 @@ Log4D            </a>
 <p>安装 Postfix 的方法可以参见 <a href="http://www.postfix.org/INSTALL.html">安装方法</a>。</p>
 <p>特殊场景用途的配置方式，如邮件中枢，防火墙，拨号环境客户端的说明可以在
 <a href="http://www.postfix.org/STANDARD_CONFIGURATION_README.html">标准配置说明</a> 里面查看。</p>
-<!-- more -->
-<h2 id="postfix-pei-zhi-yu-fa">Postfix 配置语法</h2>
-<p>Postfix 的配置文件默认在 <code>/etc/postfix</code>。主力配置文件是 <a href="http://www.postfix.org/postconf.5.html">main.cf</a> 和
-<a href="http://www.postfix.org/master.5.html">master.cf</a>。用户权限必须是 root 的。</p>
-<p><code>/etc/postfix/main.cf</code> 配置语法有两个要点：不用引号，可以使用 <code>$</code> 来引用参数。</p>
-<div class="highlight"><pre><span></span># 定义一个参数
-/etc …</pre></div>
+
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2013/11/postfix-basic-configuration/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -96,13 +90,7 @@ Log4D            </a>
 现在的这个 VPS 跑的系统也是 Arch。
 然而随着时间变化，我从最早的天天更新狂，到一周、一个月、三个月和不主动更新。
 彻底从从不折腾会死星人变成了一个尽量避免变更的老用户。</p>
-<!-- more -->
-<p>Arch 很适合作为第二个（第一个是新手使用的 Ubuntu），它的哲学 KISS 非常优雅，
-Keep It Simple And Stupid。基于这原则，它将 Linux 内部的使用、运维细节都展现出来。
-毫不夸张的说，被 Arch 折腾几年，就能胜任 Linux SA 的角色了（笑）。</p>
-<p>可是这种深入带来的学习成本也很高，需要不停地跟着 Arch 社区的变化而变化。
-每次更新之前需要先阅读官方升级指南，搞不好就升级给挂了。
-而且 Arch 社区升级激进得有些可怕 …</p>
+
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2013/04/buy-arch/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -116,7 +104,9 @@ Keep It Simple And Stupid。基于这原则，它将 Linux 内部的使用、运
 <p>我的环境是 <strong>ArchLinux / xmonad 0.10 / awesome v3.4.11 / GDM 3.4.1 / NetworkManager 0.9.4.0</strong>，
 下面我用 awesome 做示例，其他非 Gnome WM 也应该是类似配置。</p>
 <p>我的 WM 启动流程是：
-通过 GDM 启动 xmonad / awesome，启动 …</p>
+通过 GDM 启动 xmonad / awesome，启动 xsession 是 <code>/usr/share/xsessions/awesome.desktop</code>，
+内容如下</p>
+
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2012/05/networkmanager-policykit-consolekit/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -126,15 +116,15 @@ Keep It Simple And Stupid。基于这原则，它将 Linux 内部的使用、运
                 <div class="summary"><h2 id="fcitx">Fcitx</h2>
 <p><img alt="Fcitx" src="https://ohsolnxaa.qnssl.com/2012/04/fcitx.png"/></p>
 <p>Fcitx 简介：</p>
-<div class="highlight"><pre><span></span>小企鹅中文输入法（Free Chinese Input Toy for X，fcitx）
-是一个以 GPL 方式发布的输入法框架， 编写它的目是为桌面环境提供一个灵活的输入方案。
+<div class="highlight"><pre><span class="err">小企鹅中文输入法（</span><span class="n">Free</span> <span class="n">Chinese</span> <span class="n">Input</span> <span class="n">Toy</span> <span class="k">for</span> <span class="n">X</span><span class="err">，</span><span class="n">fcitx</span><span class="err">）</span>
+<span class="err">是一个以</span> <span class="n">GPL</span> <span class="err">方式发布的输入法框架，</span> <span class="err">编写它的目是为桌面环境提供一个灵活的输入方案。</span>
 </pre></div>
 <p>本程序目前可以支持XIM和GTK2，GTK3，QT4的IM Module，可为支持</p>
 <p>XIM 的 X 应用程序提供输入服务。 fcitx 的源码包内提供了区位和全/简/双拼，</p>
 <p>并支持基于码表的输入法（自带五笔、二笔和仓颉等输入码表）。</p>
 <p>您可以从 http://fcitx.googlecode.com 下载最新的发布版本。</p>
 <p>当年刚开始使用 Linux 时候，使用的是 iBus，随后发现 Fcitx 这个输入法， 试用了一下就发现自己所需要的 双拼 / 模糊音 / 自定义输入
-功能都有提供 …</p>
+功能都有提供 ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2012/04/fcitx-config/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -151,7 +141,7 @@ Keep It Simple And Stupid。基于这原则，它将 Linux 内部的使用、运
 a）。客服很快确认，Arch在目前VPS无法正常使用，坑爹阿。</p>
 <p>我继续捣鼓，尝试Ubunt/Cent OS，发现都无法启动vps（症状是启动一下下之后立马又变成离线状态）。</p>
 <p>继续找客服，最后客服给我重新分配了vps和ip，问题解决。</p>
-<p>然我我又开始吭次吭次的装软件，最近系统装多了 …</p>
+<p>然我我又开始吭次吭次的装软件，最近系统装多了 ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2011/12/transfer-vps/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -168,7 +158,7 @@ a）。客服很快确认，Arch在目前VPS无法正常使用，坑爹阿。</p
 <p>前天将arch32位换成64位的系统，想充分利用4G内存。 在mountpoint时候，我mount了 <code>/root</code> 和<code>/home</code>
 盘，然后arch问需要 <code>(re)create</code> 分区么。 选项有 <code>Yes</code> 和 <code>No</code> ，看上去不选 <code>No</code> 就进行不下去，我就点了一下。</p>
 <p>结果就悲剧了有没有！！！！！！！！！</p>
-<p><code>home</code> 盘有150G左右有木有 …</p>
+<p><code>home</code> 盘有150G左右有木有 ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2011/12/linux-application/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -191,7 +181,7 @@ Thinkpad爱好者也组建了一个专门的
 <h2 id="xiao-hong-mao-de-zhong-jian">小红帽的中键</h2>
 <p>罗嗦完了，进入正题，我的环境是</p>
 <ul>
-<li>arch(Linux version …</li></ul>
+<li>arch(Linux version ...</li></ul>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2011/11/archlinux-thinkpad-trackpoint/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -208,7 +198,9 @@ Thinkpad爱好者也组建了一个专门的
 <p>月付5.95美元，使用优惠码 <code>TENOFF</code> 或 <code>PHOTONLEB</code> 可以打7折，
 换算汇率之后是26人民币每月。</p>
 <p>这款VPS的内存只有128,我们就要精打细算考虑如何省内存。经过我几天琢磨，
-我终于配置的可用率比较高，使用 <code>siege -c 100 -t 100</code> 时候可以保持 …</p>
+我终于配置的可用率比较高，使用 <code>siege -c 100 -t 100</code> 时候可以保持 100% 可用率。
+（其实做不到这么高的并发，大概10个并发每秒）下面就是我记录的安装配置过程。</p>
+
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2011/11/vps-lnmp-setup-config/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -226,7 +218,7 @@ Thinkpad爱好者也组建了一个专门的
 <p>很久很久以前，那时候我还喝三鹿，我开始用TotalCmd来做同步文件， 依稀记得那个功能是在 <code>命令</code> 里面的 <code>比较文件夹</code> 。
 这个功能满足我当时简单粗糙的需求。只要把需要同步的文件夹分列TotalCmd两侧， 然后就可以通过命令自动查找相异的文件。</p>
 <p>当时在我看来，尤其神奇的是文件过滤功能和按照 <code>日期</code> 、 <code>文件内容</code> 比较功能。 着实帮了我很大忙。</p>
-<p>再过了几年，TotalCmd不能满足我了，我不想每次都选择需要同步的文件， 再用肉眼比对，同步功能也偏少。我搜寻到一款老牌的同步工具 …</p>
+<p>再过了几年，TotalCmd不能满足我了，我不想每次都选择需要同步的文件， 再用肉眼比对，同步功能也偏少。我搜寻到一款老牌的同步工具 ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2011/09/unison/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -251,10 +243,7 @@ diawiki到html，原文会有更多的wiki模板样式便于查看，有问题�
 <li>VPN密码</li>
 </ul>
 <h2 id="bian-ji-pei-zhi-wen-jian_1">编辑配置文件</h2>
-<p>用你称手的编辑器打开/etc/ppp/options.pptp。这个文件为你的VPN连接启用了一系列默认安全设置。如果你连接时候出现问题，你可以自定义配置。
-你的options.pptp文件最少需要包含以下内容：</p>
-<div class="highlight"><pre><span></span>lock
-noauth …</pre></div>
+<p>用你称手的编辑器打开/etc ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2011/09/pptpclient/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -325,11 +314,6 @@ noauth …</pre></div>
                         <li class="list-group-item">
                             <a href="https://blog.alswl.com/category/managment/">
                                 <i class="fa fa-folder-open fa-lg"></i> Managment
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="https://blog.alswl.com/category/misc/">
-                                <i class="fa fa-folder-open fa-lg"></i> misc
                             </a>
                         </li>
                         <li class="list-group-item">

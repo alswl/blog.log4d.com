@@ -16,7 +16,7 @@
 
         <meta name="author" content="alswl" />
         <meta name="keywords" content="综合技术,Database,MySQL,编码" />
-        <meta name="description" content="以前用MySQL时候都是可视化界面，如MySQL Admin使用，现在学着使用MySQL Command Line client，初次接触，就遇到乱码问题。 乱码是中文字符串的，Google后，找到一些解决方案。摘录如下： 引用自今天去祸害哪家的闺女呢？&lt;猛击这里打开&gt; 1:改变数据库的默认编码配置，在MYSQL的安装目录中，找到my.ini，修改默认编 码为：default-character-set=utf8 2:建立数据库时，CREATE DATABASE ms_db CHARACTER SET utf8 COLLATE utf8_general_ci; 3:执行脚本：指定编码格式set names utf8(注意，不是UTF-8) 4:如果你采用的是外部接入的方式，在连接中确定请求的编码格式如： jdbc:mysql://localhost:3306 /ms_db? useUnicode …" />
+        <meta name="description" content="以前用MySQL时候都是可视化界面，如MySQL Admin使用，现在学着使用MySQL Command Line client，初次接触，就遇到乱码问题。 乱码是中文字符串的，Google后，找到一些解决方案。摘录如下： 引用自今天去祸害哪家的闺女呢？&lt;猛击这里打开&gt; 1:改变数据库的默认编码配置，在MYSQL的安装目录中，找到my.ini，修改默认编 码为：default-character-set=utf8 2:建立数据库时，CREATE DATABASE ms_db CHARACTER SET utf8 COLLATE utf8_general_ci; 3:执行脚本：指定编码格式set names utf8(注意，不是UTF-8) 4:如果你采用的是外部接入的方式，在连接中确定请求的编码格式如： jdbc:mysql://localhost:3306 /ms_db? useUnicode ..." />
 
 
 
@@ -80,7 +80,7 @@ Log4D            </a>
 <footer class="post-info">
     <span class="label label-default">Date</span>
     <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2009-07-06T00:00:00+08:00"> 2009-07-06</time>
+        <i class="fa fa-calendar"></i><time datetime="2009-07-06T00:00:00"> 2009-07-06</time>
     </span>
 
 
@@ -208,11 +208,6 @@ Log4D            </a>
                         <li class="list-group-item">
                             <a href="https://blog.alswl.com/category/managment/">
                                 <i class="fa fa-folder-open fa-lg"></i> Managment
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="https://blog.alswl.com/category/misc/">
-                                <i class="fa fa-folder-open fa-lg"></i> misc
                             </a>
                         </li>
                         <li class="list-group-item">

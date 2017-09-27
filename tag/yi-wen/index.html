@@ -68,19 +68,31 @@ Log4D            </a>
         <div class="col-lg-8 col-lg-offset-2">
 
             <article class="article-list">
+                <h2 class="title"><a href="https://blog.alswl.com/2017/09/https-on-stack-overflow/">Stack Overflow 的 HTTPS 化：漫漫长路的终点</a></h2>
+                <div class="summary"><p><a href="https://ohsolnxaa.qnssl.com/upload_dropbox/201709/stack-overflow.png">Stack Overflow</a></p>
+<ul>
+<li>原文作者：Nick Craver</li>
+<li>翻译作者：罗晟 &amp; 狄敬超（沪江工程师）</li>
+<li>原文地址：<a href="https://nickcraver.com/blog/2017/05/22/https-on-stack-overflow/">Nick Craver - HTTPS on Stack Overflow: The End of a Long Road</a></li>
+<li>本文为原创翻译文章，已经获得原作者授权，转载请注明作者及出处。</li>
+</ul>
+<hr/>
+<p>今天，我们默认在&nbsp;<a href="https://stackoverflow.com/">Stack Overflow</a>&nbsp;上部署了 HTTPS。目前所有的流量都将跳转到&nbsp;<code>https://</code>&nbsp;上。与此同时，Google 链接也会在接下去的几周内更改。启用的过程本身只是举手之劳，但在此之前我们却花了好几年的时间。到目前为止，HTTPS 在我们所有的 Q&amp;A 网站上都默认启用了。</p>
+<p><a href="https://meta.stackoverflow.com/q/345012/13249">在过去的两个月里</a>，我们在 Stack Exchange 全网维持发布 HTTPS。Stack Overflow 是最后，也是迄今最大的的一个站点。这对我们来说是一个巨大里程碑，但决不意味着是终点。<a href="#next-steps">后文会提到</a>，我们仍有很多需要做的事情。但现在我们总算能看得见终点了，耶！</p>
+<p>友情提示：这篇文章讲述的是一个漫长的旅程。非常漫长。你可能已经注意到你的滚动条现在非常小。我们遇到的问题并不是只在 Stack Exchange/Overflow 才有，但这些问题的组合还挺罕见。我在文章中会讲到我们的一些尝试、折腾、错误、成功，也会包括一些开源项目&mdash;&mdash;希望这些细节对你们有所帮助。由于它们的关系错综复杂，我难以用时间顺序来组织这篇文章，所以我会将文章拆解成架构、应用层、错误等几个主题。</p>
+
+                </div>
+                <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2017/09/https-on-stack-overflow/"><i class="icon-circle-arrow-right"></i>more ...</a>
+            </article>
+            <hr/>
+            <article class="article-list">
                 <h2 class="title"><a href="https://blog.alswl.com/2014/02/redis-benchmarks/">Redis 到底有多快[译文]</a></h2>
                 <div class="summary"><p>原文地址 <a href="http://redis.io/topics/benchmarks">http://redis.io/topics/benchmarks</a>。</p>
 <p>拖了一个半月的稿子~</p>
 <hr/>
 <p>Redis 自带了一个叫 <code>redis-benchmark</code> 的工具来模拟 N 个客户端同时发出 M 个请求。
 （类似于 Apache <code>ab</code> 程序）。你可以使用 <code>redis-benchmark -h</code> 来查看基准参数。</p>
-<!-- more -->
-<div class="highlight"><pre><span></span>以下参数被支持：
 
-    Usage: redis-benchmark [-h &lt;host&gt;] [-p &lt;port&gt;] [-c &lt;clients&gt;] [-n &lt;requests]&gt; [-k &lt;boolean&gt;]
-
-     -h &lt;hostname&gt;      Server hostname (default 127.0.0.1)
-     -p &lt;port&gt;          Server port (default …</pre></div>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2014/02/redis-benchmarks/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -96,13 +108,7 @@ Log4D            </a>
 <p>安装 Postfix 的方法可以参见 <a href="http://www.postfix.org/INSTALL.html">安装方法</a>。</p>
 <p>特殊场景用途的配置方式，如邮件中枢，防火墙，拨号环境客户端的说明可以在
 <a href="http://www.postfix.org/STANDARD_CONFIGURATION_README.html">标准配置说明</a> 里面查看。</p>
-<!-- more -->
-<h2 id="postfix-pei-zhi-yu-fa">Postfix 配置语法</h2>
-<p>Postfix 的配置文件默认在 <code>/etc/postfix</code>。主力配置文件是 <a href="http://www.postfix.org/postconf.5.html">main.cf</a> 和
-<a href="http://www.postfix.org/master.5.html">master.cf</a>。用户权限必须是 root 的。</p>
-<p><code>/etc/postfix/main.cf</code> 配置语法有两个要点：不用引号，可以使用 <code>$</code> 来引用参数。</p>
-<div class="highlight"><pre><span></span># 定义一个参数
-/etc …</pre></div>
+
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2013/11/postfix-basic-configuration/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -119,7 +125,10 @@ Jython 推翻重做了主要业务，效果立竿见影，但同时也把真实�
 就是想对性能遇到瓶颈的 Python Process 进行线上侦测。
 这篇文章就是开始的第一步。</p>
 <p>PS:这篇文章理论上是可行的，但是在我机器（Ubuntu 12.04 / 系统自带 Python）
-无法正常执行，会爆出 <code>unable to …</code></p>
+无法正常执行，会爆出 <code>unable to read python frame information</code>
+的问题。解决方法我会在下篇文章中写出。这里只是单纯翻译一下原文。</p>
+<p>原文可以移步 <a href="https://wiki.python.org/moin/DebuggingWithGdb">https://wiki.python.org/moin/DebuggingWithGdb</a>。</p>
+
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2013/11/python-gdb/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -133,7 +142,11 @@ R 语言教程翻译出来。话说 Learn X in Y minuts 里面的中文贡献还
 <p>Learn X in Y minuts 的源码托管在 <a href="https://github.com/adambard/learnxinyminutes-docs">Github</a>。
 小柒被我逼着把这篇 <a href="http://learnxinyminutes.com/docs/r/">R 语言教程</a>
 翻译到 <a href="http://learnxinyminutes.com/docs/zh-cn/r-cn/">R 语言教程中文版</a>。</p>
-<p>下面是译文，有不妥的地方可以留言或者直接去 Github 上面 Pull request …</p>
+<p>下面是译文，有不妥的地方可以留言或者直接去 Github 上面 Pull request。</p>
+<hr/>
+<p>R 是一门统计语言。它有很多数据分析和挖掘程序包。可以用来统计、分析和制图。
+你也可以在 LaTeX 文档中运行 <code>R</code> 命令。</p>
+
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2013/10/r-tutorial/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -146,13 +159,7 @@ R 语言教程翻译出来。话说 Learn X in Y minuts 里面的中文贡献还
 <h2 id="jie-shao">介绍</h2>
 <p>Python 从 2.6 开始支持 <a href="http://linux.die.net/man/4/epoll">epoll</a>。现在我们用 Python3 来写基于这些 API
 的 epoll 范例。</p>
-<!-- more -->
-<h2 id="zu-sai-de-socket-tong-xin-fan-li">阻塞的 Socket 通信范例</h2>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">socket</span>
 
-<span class="n">EOL1</span> <span class="o">=</span> <span class="sa">b</span><span class="s1">'</span><span class="se">\n\n</span><span class="s1">'</span>
-<span class="n">EOL2</span> <span class="o">=</span> <span class="sa">b</span><span class="s1">'</span><span class="se">\n\r\n</span><span class="s1">'</span>
-<span class="n">response</span>  <span class="o">=</span> <span class="sa">b</span><span class="s1">'HTTP/1.0 200 OK</span><span class="se">\r\n</span><span class="s1">Date: Mon, 1 Jan 1996 …</span></pre></div>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2013/01/python-epoll/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -165,13 +172,7 @@ R 语言教程翻译出来。话说 Learn X in Y minuts 里面的中文贡献还
 最近这几周我们一直（在基础设施方面）做负载计划，为所有可能发生的事故做准备。
 尽管如此，在发布那天，最大的挑战仍然是如何快速定位问题，找到瓶颈并尽快修复他们。
 在这里我们将分享一些帮助我们解决问题的工具和技术。</p>
-<!-- more -->
-<h2 id="statsd">statsd</h2>
-<p><a href="http://github.com/etsy/statsd/">statsd</a> 在 Instagram 很受欢迎。这是 <a href="http://github.com/etsy/">Etsy</a> 写的一个网络监控器，
-能够统计并图形化数据。它有两种核心的统计方式：计数器和计时器。
-我们用计数器来跟踪许多信息，从每秒钟注册数到喜欢数量统计。
-同时我们使用计时器来跟踪 feeds 变化，用户停留在 feeds 多久，和其他的主要操作。</p>
-<p>我们喜欢 statsd 的最大原因是它能迅速将状态显示并图形化出来 …</p>
+
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2012/11/keeping-instagram-up-with-over-a-million-new-users-in-twelve-hours/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -192,7 +193,17 @@ R 语言教程翻译出来。话说 Learn X in Y minuts 里面的中文贡献还
 </blockquote>
 <p>在我的上一篇日志中，我写到如何
 <a href="http://jimmyg.org/blog/2009/python-command-line-interface-%28cli%29-with-sub-commands.html">build a command line interface with sub-commands in Python</a>。
-这次我来尝试如何通过 …</p>
+这次我来尝试如何通过 Python 的 <code>subprocess</code> 模块来和命令行指令进行交互。</p>
+<p>我想达到的目标是：</p>
+<ul>
+<li>查看当你键入命令时究竟发生了什么</li>
+<li>如何确认一个命令是否存在并找出到底在哪</li>
+<li>通过 Python 或 shell 执行命令</li>
+<li>向一个运行中的进程读取 STDOUT 或写入 STDIN</li>
+<li>检查进程的退出返回状态</li>
+<li>理解 Bash 在命令中断中扮演的角色，并如何将它们发送给程序</li>
+</ul>
+
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2012/10/working-with-python-subprocess/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -212,7 +223,8 @@ R 语言教程翻译出来。话说 Learn X in Y minuts 里面的中文贡献还
 <h2 id="na-xie-ji-yu-javascript-de-tu-xing-hua-gong-ju">那些基于 javascript 的图形化工具</h2>
 <p>有很多 javascript 图形化库，从极简到复杂绚丽的风格，都极为丰富。</p>
 <p>最流行的可能就是 <a href="http://d3js.org/">d3.js</a> 和 <a href="http://raphaeljs.com/">Raphael</a> 了。
-他们用起来<em>相当</em>麻烦，但却能实现绚丽到超越你想象的可视化效果 …</p>
+他们用起来<em>相当</em>麻烦，但却能实现绚丽到超越你想象的可视化效果。</p>
+
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2012/06/flotr2/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -237,75 +249,9 @@ diawiki到html，原文会有更多的wiki模板样式便于查看，有问题�
 <li>VPN密码</li>
 </ul>
 <h2 id="bian-ji-pei-zhi-wen-jian_1">编辑配置文件</h2>
-<p>用你称手的编辑器打开/etc/ppp/options.pptp。这个文件为你的VPN连接启用了一系列默认安全设置。如果你连接时候出现问题，你可以自定义配置。
-你的options.pptp文件最少需要包含以下内容：</p>
-<div class="highlight"><pre><span></span>lock
-noauth …</pre></div>
+<p>用你称手的编辑器打开/etc ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2011/09/pptpclient/"><i class="icon-circle-arrow-right"></i>more ...</a>
-            </article>
-            <hr/>
-            <article class="article-list">
-                <h2 class="title"><a href="https://blog.alswl.com/2010/07/7-crucial-tips-for-designing-and-maintaining-a-large-site/">7条大型网站设计和维护的关键技巧[译文]</a></h2>
-                <div class="summary"><p>原文出处：<a href="http://net.tutsplus.com/articles/general/7-crucial-tips-for-
-designing-and-maintaining-a-large-site/">7 Crucial Tips for Designing and Maintaining a Large Site |
-Nettuts+</a></p>
-<p>译者：<a href="http://log4d.com">alswl</a></p>
-<ul>
-<li>
-<ul>
-<li>
-<ul>
-<li>
-<ul>
-<li>
-<ul>
-<li>
-<ul>
-<li>
-<ul>
-<li>
-<ul>
-<li>
-<ul>
-<li>
-<ul>
-<li>
-<ul>
-<li>以下为译文 * <em> * </em> * <em> * </em> * <em> * </em> *</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p>项目范围和规模各不相同，他们带来的挑战各不相同一样。作为一个独立的网页设计师，我最大的职责就是负责FlashDen。随着成千上万的活动用户聊天，上传和购物，
-网站处理着大额的金钱和巨大的流量。</p>
-<p>设计，重构，维护和开发团队的工作给了我一些能使事情变得更容易的用用的见解和技巧。而且，就在昨天，我们开始了对网站最大的一次重构，着看上去是一次很好的机会来记
-录我最有用的7个秘诀。</p>
-<h3 id="1-ke-wei-hu-de-she-ji-he-dai-ma">1. 可维护的设计和代码</h3>
-<p><img alt="image" src="https://ohsolnxaa.qnssl.com/2010/07/button.jpg"/></p>
-<p>我给的第一条也是最条一条秘诀是设计站点保证可以轻松维护。很多时候，当你设计一个站点，你可能为了美学牺牲一些东西。例如，你可能使用一个图片而文字或者样式就可以
-应付。或者你可能故意使用一个没有空间缩放的菜单结构。当网站变大时，这将将成为一个非常糟糕的设计。</p>
-<p>当我两年前建成FlashDen的第一个版本时，我使用图片按钮。他们看起来很漂亮，但同时我被100多个不同的按钮图片库拖累着，更谈不上修改图片了。之后在接下来
-的几个月中，当一个开发者需要一个新按钮时候他们向我要一个新图片 …</p>
-                </div>
-                <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2010/07/7-crucial-tips-for-designing-and-maintaining-a-large-site/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
             <hr/>
 
@@ -377,11 +323,6 @@ Nettuts+</a></p>
                             </a>
                         </li>
                         <li class="list-group-item">
-                            <a href="https://blog.alswl.com/category/misc/">
-                                <i class="fa fa-folder-open fa-lg"></i> misc
-                            </a>
-                        </li>
-                        <li class="list-group-item">
                             <a href="https://blog.alswl.com/category/thinking/">
                                 <i class="fa fa-folder-open fa-lg"></i> Thinking
                             </a>
@@ -410,7 +351,7 @@ Nettuts+</a></p>
    <div class="container">
       <hr>
       <div class="row">
-         <div class="col-xs-10">&copy; 2014 alswl
+         <div class="col-xs-10">&copy; 2017 alswl
             &middot; Powered by <a href="https://github.com/alswl/pelican-bootstrap3" target="_blank" style="font-weight: bold">pelican-bootstrap3</a>,
             <a href="http://docs.getpelican.com/" target="_blank" style="font-weight: bold">Pelican</a>,
             <a href="http://getbootstrap.com" target="_blank" style="font-weight: bold">Bootstrap</a>,

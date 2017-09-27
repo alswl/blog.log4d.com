@@ -16,7 +16,7 @@
 
         <meta name="author" content="alswl" />
         <meta name="keywords" content="Python,image2attach,MoinMoin" />
-        <meta name="description" content="1. 使用 MoinMoin 前些日子，我写了一篇使用MoinMoin作为个人KMS 大赞MoinMoin的各种好处。MoinMoin的其中一个好处是基于GPL的开源， 我们可以方便的给MoinMoin撰写自己的插件（当然也可以去官方的wiki上获取大量现成插件）。 MoinMoin开发者wiki地址 MoinMoin开发API文档（这个官方wiki居然很少提及） MoinMoin的多国语翻译组wiki地址 我在使用MoinMoin过程中，有一个急迫需要的功能： 保存一篇网页时候，要将里面的图片保存到本地，而不是使用外链接方式保存， 因为由于各种不可预测的原因，原始图片数据很有可能丢失或者无法连接。 这个功能对于将Wiki产品转化为KMS应用非常需要，可惜MoinMoin官方并没有提供， 我也没在MoinMoin的开发者插件库中找到类似功能，就自己写了一个插件image2attach。 MoinMoin插件库 image2attach在MoinMoin官方Wiki的地址 现在我分享一下如何写MoinMoin插件，技术大牛可以直接移步官方开发文档， 我这里只是写一些简单的内容，帮助像我一样的同学。 以下内容需要Python编程基础～ 2. MoinMoin 系统结构 MoinMoin的UML图： 3. MoinMoin 常用对象 3.1. request 这个request和普通jsp/asp中request很类似（实际上这个request就是继承 werkzeug的Request）。 除了正常的web request功能，Moin的request还带了Wiki自身的信息 …" />
+        <meta name="description" content="1. 使用 MoinMoin 前些日子，我写了一篇使用MoinMoin作为个人KMS 大赞MoinMoin的各种好处。MoinMoin的其中一个好处是基于GPL的开源， 我们可以方便的给MoinMoin撰写自己的插件（当然也可以去官方的wiki上获取大量现成插件）。 MoinMoin开发者wiki地址 MoinMoin开发API文档（这个官方wiki居然很少提及） MoinMoin的多国语翻译组wiki地址 我在使用MoinMoin过程中，有一个急迫需要的功能： 保存一篇网页时候，要将里面的图片保存到本地，而不是使用外链接方式保存， 因为由于各种不可预测的原因，原始图片数据很有可能丢失或者无法连接。 这个功能对于将Wiki产品转化为KMS应用非常需要，可惜MoinMoin官方并没有提供， 我也没在MoinMoin的开发者插件库中找到类似功能，就自己写了一个插件image2attach。 MoinMoin插件库 image2attach在MoinMoin官方Wiki的地址 现在我分享一下如何写MoinMoin插件，技术大牛可以直接移步官方开发文档， 我这里只是写一些简单的内容，帮助像我一样的同学。 以下内容需要Python编程基础～ 2. MoinMoin 系统结构 MoinMoin的UML图： 3. MoinMoin 常用对象 3.1. request 这个request和普通jsp/asp中request很类似（实际上这个request就是继承 werkzeug的Request）。 除了正常的web request功能，Moin的request还带了Wiki自身的信息 ..." />
 
 
 
@@ -80,7 +80,7 @@ Log4D            </a>
 <footer class="post-info">
     <span class="label label-default">Date</span>
     <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2012-02-10T00:00:00+08:00"> 2012-02-10</time>
+        <i class="fa fa-calendar"></i><time datetime="2012-02-10T00:00:00"> 2012-02-10</time>
     </span>
 
 
@@ -182,7 +182,7 @@ Log4D            </a>
 <h3 id="38-parser">3.8. parser</h3>
 <p>formatter完成的工作是展现解析后的wiki内容，而负责解析的就是parser了。</p>
 <p>流程是这样的：</p>
-<div class="highlight"><pre><span></span>wiki -&gt; parser -&gt; formatter
+<div class="highlight"><pre><span class="n">wiki</span> <span class="o">-&gt;</span> <span class="n">parser</span> <span class="o">-&gt;</span> <span class="n">formatter</span>
 </pre></div>
 <p>每一个parser都对应一个或者多个formatter。系统内置的 parser/formatter 有：</p>
 <ul>
@@ -211,12 +211,12 @@ Log4D            </a>
 <p>在文件 <code>/usr/lib/python2.7/site-packages/MoinMoin/config/multiconfig.py</code>
 的第815行左右，修改 <code>options_no_group_name</code> 中的 <code>cache</code> 时间。</p>
 <p>当改为0时候，就不使用 <code>pyc</code> 缓存，这样就不用重启服务器来清楚缓存了。</p>
-<div class="highlight"><pre><span></span>options_no_group_name = {
-        # ...
-        #'cache': (600, 30), # cache action is very cheap/efficient
-        'cache': (0, 0), # cache action is very cheap/efficient #XXX alswl
-        # ...
-}
+<div class="highlight"><pre><span class="n">options_no_group_name</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="err">#</span> <span class="p">...</span>
+        <span class="err">#'</span><span class="n">cache</span><span class="err">'</span><span class="o">:</span> <span class="p">(</span><span class="mi">600</span><span class="p">,</span> <span class="mi">30</span><span class="p">),</span> <span class="err">#</span> <span class="n">cache</span> <span class="n">action</span> <span class="n">is</span> <span class="n">very</span> <span class="n">cheap</span><span class="o">/</span><span class="n">efficient</span>
+        <span class="err">'</span><span class="n">cache</span><span class="err">'</span><span class="o">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="err">#</span> <span class="n">cache</span> <span class="n">action</span> <span class="n">is</span> <span class="n">very</span> <span class="n">cheap</span><span class="o">/</span><span class="n">efficient</span> <span class="err">#</span><span class="n">XXX</span> <span class="n">alswl</span>
+        <span class="err">#</span> <span class="p">...</span>
+<span class="p">}</span>
 </pre></div>
 <h2 id="6-image2attach-fan-li_1">6. image2attach 范例</h2>
 <p>image2attach这个插件功能很简单，就是读取wiki文本内容，找出所有图片，
@@ -341,11 +341,6 @@ Moin作为一款久经考研的Wiki系统，开放的代码也有很多地方可
                         <li class="list-group-item">
                             <a href="https://blog.alswl.com/category/managment/">
                                 <i class="fa fa-folder-open fa-lg"></i> Managment
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="https://blog.alswl.com/category/misc/">
-                                <i class="fa fa-folder-open fa-lg"></i> misc
                             </a>
                         </li>
                         <li class="list-group-item">

@@ -16,7 +16,7 @@
 
         <meta name="author" content="alswl" />
         <meta name="keywords" content="security" />
-        <meta name="description" content="这是一年前写的项目笔记，一直在我的待办事项里等待做总结，今天偶然翻到，就整理成文章发出来。 谨以此文怀念 乌云。 事情缘由 春节前的某一天，收到一封来自乌云（国内知名白帽子团队）的邮件， 告知我厂网站上出现一例 XSS 漏洞。 因为以前对 XSS 输入做过防御，还以为是某个前端 DOM 上的 XSS 漏洞， 后来仔细一看，不妙，是个影响甚大的存储型 XSS 漏洞。 这里简单科普一下 XSS 跨网站脚本 -维基百科，自由的百科全书 中介绍到： 跨网站脚本（Cross-site scripting，通常简称为XSS或跨站脚本或跨站脚本攻击）是一种网站应用程序的安全漏洞攻击，是代码注入的一种。 它允许恶意用户将代码注入到网页上，其他用户在观看网页时就会受到影响。这类攻击通常包含了HTML以及用户端脚本语言。 XSS 攻击可以分成两种，反射性 XSS / 存储型 XSS。前者是需要用户触发的 XSS …" />
+        <meta name="description" content="这是一年前写的项目笔记，一直在我的待办事项里等待做总结，今天偶然翻到，就整理成文章发出来。 谨以此文怀念 乌云。 事情缘由 春节前的某一天，收到一封来自乌云（国内知名白帽子团队）的邮件， 告知我厂网站上出现一例 XSS 漏洞。 因为以前对 XSS 输入做过防御，还以为是某个前端 DOM 上的 XSS 漏洞， 后来仔细一看，不妙，是个影响甚大的存储型 XSS 漏洞。 这里简单科普一下 XSS 跨网站脚本 -维基百科，自由的百科全书 中介绍到： 跨网站脚本（Cross-site scripting，通常简称为XSS或跨站脚本或跨站脚本攻击）是一种网站应用程序的安全漏洞攻击，是代码注入的一种。 它允许恶意用户将代码注入到网页上，其他用户在观看网页时就会受到影响。这类攻击通常包含了HTML以及用户端脚本语言。 XSS 攻击可以分成两种，反射性 XSS / 存储型 XSS。前者是需要用户触发的 XSS ..." />
 
 
 
@@ -80,7 +80,7 @@ Log4D            </a>
 <footer class="post-info">
     <span class="label label-default">Date</span>
     <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2017-05-31T22:04:00+08:00"> 2017-05-31</time>
+        <i class="fa fa-calendar"></i><time datetime="2017-05-31T22:04:00"> 2017-05-31</time>
     </span>
 
 
@@ -123,16 +123,16 @@ Log4D            </a>
 让这些构建的数据破坏 DOM 结构，从而让自己预先构造数据中的 JS 脚本被执行。</p>
 <p>检查存储型 XSS 漏洞的方法，可以在对应的 input field 里放入一些构造的数据，如果保存后可以被执行，就说明存在 XSS 漏洞。</p>
 <p>常见的检测方法（来自&nbsp;<a href="https://zh.wikipedia.org/zh-cn/%E8%B7%A8%E7%B6%B2%E7%AB%99%E6%8C%87%E4%BB%A4%E7%A2%BC#.E6.A3.80.E6.B5.8B.E6.96.B9.E6.B3.95">跨网站脚本 - 维基百科，自由的百科全书</a>：</p>
-<div class="highlight"><pre><span></span>&gt;<span class="nt">&lt;script&gt;</span>alert(document.cookie)<span class="nt">&lt;/script&gt;</span>
-='&gt;<span class="nt">&lt;script&gt;</span>alert(document.cookie)<span class="nt">&lt;/script&gt;</span>
-"&gt;<span class="nt">&lt;script&gt;</span>alert(document.cookie)<span class="nt">&lt;/script&gt;</span>
-<span class="nt">&lt;script&gt;</span>alert(document.cookie)<span class="nt">&lt;/script&gt;</span>
-<span class="nt">&lt;script&gt;</span>alert (vulnerable)<span class="nt">&lt;/script&gt;</span>
-%3Cscript%3Ealert('XSS')%3C/script%3E
-<span class="nt">&lt;script&gt;</span>alert('XSS')<span class="nt">&lt;/script&gt;</span>
-<span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"javascript:alert('XSS')"</span><span class="nt">&gt;</span>
-<span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"http://xxx.com/yyy.png"</span> <span class="na">onerror=</span><span class="s">"alert('XSS')"</span><span class="nt">&gt;</span>
-（这个仅限IE有效）
+<div class="highlight"><pre><span class="o">&gt;&lt;</span><span class="nb">script</span><span class="o">&gt;</span><span class="nx">alert</span><span class="p">(</span><span class="nx">document.cookie</span><span class="p">)</span><span class="o">&lt;/</span><span class="nb">script</span><span class="o">&gt;</span>
+<span class="o">=</span><span class="s1">'&gt;&lt;script&gt;alert(document.cookie)&lt;/script&gt;</span>
+<span class="s1">"&gt;&lt;script&gt;alert(document.cookie)&lt;/script&gt;</span>
+<span class="s1">&lt;script&gt;alert(document.cookie)&lt;/script&gt;</span>
+<span class="s1">&lt;script&gt;alert (vulnerable)&lt;/script&gt;</span>
+<span class="s1">%3Cscript%3Ealert('</span><span class="nx">XSS</span><span class="s1">')%3C/script%3E</span>
+<span class="s1">&lt;script&gt;alert('</span><span class="nx">XSS</span><span class="s1">')&lt;/script&gt;</span>
+<span class="s1">&lt;img src="javascript:alert('</span><span class="nx">XSS</span><span class="s1">')"&gt;</span>
+<span class="s1">&lt;img src="http://xxx.com/yyy.png" onerror="alert('</span><span class="nx">XSS</span><span class="s1">')"&gt;</span>
+<span class="s1">（这个仅限IE有效）</span>
 </pre></div>
 <p>攻击者通过 XSS 可以窃取用户的相关信息，如果用户是管理员，那么影响更大。
 通过这些身份信息，攻击者可以进一步篡改信息或者进行诈骗，后果不堪设想。
@@ -281,11 +281,6 @@ Freemarker 居然在 2.3.24-rc01 才支持，现在都没有发布，唉&hellip;
                         <li class="list-group-item">
                             <a href="https://blog.alswl.com/category/managment/">
                                 <i class="fa fa-folder-open fa-lg"></i> Managment
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="https://blog.alswl.com/category/misc/">
-                                <i class="fa fa-folder-open fa-lg"></i> misc
                             </a>
                         </li>
                         <li class="list-group-item">

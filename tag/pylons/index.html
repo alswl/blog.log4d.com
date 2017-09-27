@@ -76,7 +76,7 @@ Log4D            </a>
 <h2 id="zai-python-zhong-diao-shi">在 Python 中调试</h2>
 <h3 id="pdb">pdb</h3>
 <p>在代码中加入下列语句即可启用交互式调试。</p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pdb</span><span class="p">;</span><span class="n">pdb</span><span class="o">.</span><span class="n">set_trace</span><span class="p">()</span>
+<div class="highlight"><pre><span class="n">import</span> <span class="n">pdb</span><span class="p">;</span><span class="n">pdb</span><span class="p">.</span><span class="n">set_trace</span><span class="p">()</span>
 </pre></div>
 <p>在 pdb 中，可以使用 <code>h / l / b / n / s / c / j / a / p / ! / q</code> 这些命令所代表的含义可以通过
 <code>h(elp)</code> 打印出来。</p>
@@ -85,7 +85,7 @@ Log4D            </a>
 <li><a href="http://magustest.com/blog/python/use-pdb-debug-python/comment-page-1">用PDB库调试Python程序</a></li>
 </ul>
 <h3 id="ipdb">ipdb</h3>
-<p>比 pdb 更好用的是 …</p>
+<p>比 pdb 更好用的是 ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2012/03/python-debug/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -111,12 +111,12 @@ Log4D            </a>
 <p>Pylons的测试主要使用的其中的 Paste / nose / WebOb / WebTest。 遇到问题的时候，可以去翻一翻上面的文档。</p>
 <h2 id="2-pylonszhong-ce-shi-mu-lu-jie-gou">2. Pylons中测试目录结构</h2>
 <p>目录结构如下</p>
-<div class="highlight"><pre><span></span>├─config
-├─controllers
-├─lib
-├─model
-├─public
-├─templates …</pre></div>
+<div class="highlight"><pre><span class="err">├─</span><span class="nx">config</span>
+<span class="err">├─</span><span class="nx">controllers</span>
+<span class="err">├─</span><span class="nx">lib</span>
+<span class="err">├─</span><span class="nx">model</span>
+<span class="err">├─</span><span class="kr">public</span>
+<span class="err">├─</span><span class="nx">templates ...</span></pre></div>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2011/09/nose/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -125,12 +125,12 @@ Log4D            </a>
                 <h2 class="title"><a href="https://blog.alswl.com/2011/08/go-pylons-py-in-python2-7/">go-pylons.py在Python2.7下错误解决</a></h2>
                 <div class="summary"><p>当使用 Python2.7 +<a href="http://pylonshq.com/download/1.0/go-pylons.py"> go-pylons.py</a>
 创建 Pylons 运行环境的话，会报一下错误。</p>
-<div class="highlight"><pre><span></span><span class="p">[</span><span class="n">alswl</span><span class="nd">@arch</span><span class="o">-</span><span class="n">vm</span> <span class="n">xingtong</span><span class="p">]</span><span class="err">$</span> <span class="n">python</span> <span class="n">go</span><span class="o">-</span><span class="n">pylons</span><span class="o">.</span><span class="n">py</span> <span class="n">myb_env</span>
-<span class="n">New</span> <span class="n">python</span> <span class="n">executable</span> <span class="ow">in</span> <span class="n">myb_env</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">python</span>
-<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
-  <span class="n">File</span> <span class="s2">"/home/alswl/work/xingtong/myb_env/lib/python2.7/site.py"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">67</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-    <span class="kn">import</span> <span class="nn">os</span>
-  <span class="n">File</span> <span class="s2">"/home/alswl …</span></pre></div>
+<div class="highlight"><pre><span class="cp">[</span><span class="nx">alswl</span><span class="p">@</span><span class="nx">arch</span><span class="na">-vm</span> <span class="nx">xingtong</span><span class="cp">]</span>$ python go-pylons.py myb_env
+New python executable in myb_env/bin/python
+Traceback (most recent call last):
+  File "/home/alswl/work/xingtong/myb_env/lib/python2.7/site.py", line 67, in <span class="nt">&lt;module&gt;</span>
+    import os
+  File "/home/alswl/work ...</pre></div>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2011/08/go-pylons-py-in-python2-7/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -147,11 +147,7 @@ ORM映射。使用BSD作为授权协议。</p>
 web框架的纷杂。我这里选择Pylons（其实是被选择），并不是说Pylons一定最好，而是比较适合当前项目。更多的Python
 web框架对比建议看这篇<a href="http://feilong.me/2011/01/talk-about-python-web-
 framework">浅谈Python web框架</a>，另外，这个<a href="http://www.bestwebframeworks.com/python/">Best Web-
-Framework</a>有直观的对比。</p>
-<h2 id="pylonshuan-jing-pei-zhi">Pylons环境配置</h2>
-<p>因为开发机是刚到手的ThinkPad，没有冒险安装Linux，所以这里的安装环境是Win7 + Python 2.6 + MySQL5.1。</p>
-<h3 id="1-an-zhuang-pylons">1、安装Pylons</h3>
-<p>Pylons似乎没有方便的easy_install，原因是由于Pylons在安装过程中，会生成一个目标环境 …</p>
+Framework ...</a></p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2011/05/pylons/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -171,8 +167,7 @@ development.ini来运行应用实例。而整天在任务栏跑着一个黑乎�
 <p>不出意外的话，就可以通过Run跑起整个应用了。</p>
 <p>很可惜的是，这样做还是不能对应用进行Debug，pylons的debug依然依赖于pylons的"交互调试页面"。</p>
 <p>参考<a href="http://stackoverflow.com/questions/147650/debug-pylons-application-
-through-eclipse">http://stackoverflow.com/questions/147650/debug-pylons-application-through-
-eclipse</a></p>
+through-eclipse">http://stackoverflow.com ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2011/05/run-pylons-in-eclipse/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -234,11 +229,6 @@ eclipse</a></p>
                         <li class="list-group-item">
                             <a href="https://blog.alswl.com/category/managment/">
                                 <i class="fa fa-folder-open fa-lg"></i> Managment
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="https://blog.alswl.com/category/misc/">
-                                <i class="fa fa-folder-open fa-lg"></i> misc
                             </a>
                         </li>
                         <li class="list-group-item">

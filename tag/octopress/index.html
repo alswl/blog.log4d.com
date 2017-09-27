@@ -73,13 +73,13 @@ Log4D            </a>
 于是为了让人人网的同学能看见我那些技术宅，又或非技术宅的文章，
 我只能昧着良心，给 Octopress 加上过时的 RSS2.0 输出。</p>
 <p>在 <code>source/</code> 下创建新文件 <code>rss.xml</code> ，内容如下：</p>
-<div class="highlight"><pre><span></span>---
-layout: nil
----
-<span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<div class="highlight"><pre><span class="o">---</span>
+<span class="nx">layout</span><span class="p">:</span> <span class="nx">nil</span>
+<span class="o">---</span>
+<span class="o">&lt;?</span><span class="kt">xml</span> <span class="n">version</span><span class="o">=</span><span class="s2">"1.0"</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"UTF-8"</span><span class="cp">?&gt;</span>
 <span class="nt">&lt;rss</span> <span class="na">xmlns:dc=</span><span class="s">"http://purl.org/dc/elements/1.1/"</span> <span class="na">version=</span><span class="s">"2.0"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;channel&gt;</span>
-        <span class="nt">&lt;description&gt;</span><span class="cp">&lt;![CDATA[{{</span> <span class="nv">site …</span></pre></div>
+        <span class="nt">&lt;description&gt;</span><span class="cp">&lt;![</span><span class="nx">CDATA</span><span class="err">[</span><span class="p">{{</span> <span class="nx">site ...</span></pre></div>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2012/05/support-rss/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -94,7 +94,9 @@ layout: nil
 tag 都给予了保留。具体使用方法可以参见<a href="http://blog.dayanjia.com/2012/04/migration-to-octopress-from-wordpress/">从Wordpress迁移到Octopress</a>。</p>
 <p>只是虽然 tag 的数据保留了，但是 <strong>Octopress 仅支持 category 的分类，而完全忽略
 tag</strong>。这是我不能容忍的：category 和 tag 分别代表 有序 / 无序 的知识点归纳方法。
-<strong>一篇文章只能属于一个 category …</strong></p>
+<strong>一篇文章只能属于一个 category，但可以同时属于多个 tag</strong>。
+Octopress 的设计方法显然和我长期养成的知识归纳体系冲突，我开始吭次吭次寻找插件。</p>
+
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2012/05/tag-cloud/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -156,11 +158,6 @@ tag</strong>。这是我不能容忍的：category 和 tag 分别代表 有序 /
                         <li class="list-group-item">
                             <a href="https://blog.alswl.com/category/managment/">
                                 <i class="fa fa-folder-open fa-lg"></i> Managment
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="https://blog.alswl.com/category/misc/">
-                                <i class="fa fa-folder-open fa-lg"></i> misc
                             </a>
                         </li>
                         <li class="list-group-item">

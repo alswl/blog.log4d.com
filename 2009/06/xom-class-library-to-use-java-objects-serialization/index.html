@@ -16,7 +16,7 @@
 
         <meta name="author" content="alswl" />
         <meta name="keywords" content="Java,JavaSE,Lib" />
-        <meta name="description" content="校内工具需要保存用户名和帐号，我就想把帐号信息作为一个XiaoneiUser类，然后对其进行对象持久化。 Google下的方法有好几种方法进行持久化，JDOM， DOM4J, SAX等。我看了之后，感觉都比较麻烦，我个人比较喜欢使用jdk自带的工具，但是查阅jdk api之后，感觉使用javax.xml.*下工具开发更加困难。 我仅仅是需要对一个简单的对象进行持久化来保存数据，并不需要太多太复杂的功能。最后我决定使用《Thinking in Java》推荐的开源类库：XOM 猛击这里打开www.xom.nu 友情提示一下，网站可以打开，但是下载的连接貌似被墙了，至少我教育网连不上去。推荐 一个在线代理服务器古狗在线代理（猛击这里打开），通过它就可以下载类库了。 使用类库非常简单，我这里提供个小例子。XiaoneiUser类 package cn.dddspace.xiaonei.bean; import java.io.OutputStream; import nu.xom.*; public …" />
+        <meta name="description" content="校内工具需要保存用户名和帐号，我就想把帐号信息作为一个XiaoneiUser类，然后对其进行对象持久化。 Google下的方法有好几种方法进行持久化，JDOM， DOM4J, SAX等。我看了之后，感觉都比较麻烦，我个人比较喜欢使用jdk自带的工具，但是查阅jdk api之后，感觉使用javax.xml.*下工具开发更加困难。 我仅仅是需要对一个简单的对象进行持久化来保存数据，并不需要太多太复杂的功能。最后我决定使用《Thinking in Java》推荐的开源类库：XOM 猛击这里打开www.xom.nu 友情提示一下，网站可以打开，但是下载的连接貌似被墙了，至少我教育网连不上去。推荐 一个在线代理服务器古狗在线代理（猛击这里打开），通过它就可以下载类库了。 使用类库非常简单，我这里提供个小例子。XiaoneiUser类 package cn.dddspace.xiaonei.bean; import java.io.OutputStream; import nu.xom.*; public ..." />
 
 
 
@@ -80,7 +80,7 @@ Log4D            </a>
 <footer class="post-info">
     <span class="label label-default">Date</span>
     <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2009-06-10T00:00:00+08:00"> 2009-06-10</time>
+        <i class="fa fa-calendar"></i><time datetime="2009-06-10T00:00:00"> 2009-06-10</time>
     </span>
 
 
@@ -101,7 +101,7 @@ SAX等。我看了之后，感觉都比较麻烦，我个人比较喜欢使用jd
 <a href="http://www.xom.nu">猛击这里打开www.xom.nu</a> 友情提示一下，网站可以打开，但是下载的连接貌似被墙了，至少我教育网连不上去。推荐
 一个在线代理服务器古狗在线代理（<a href="http://www.ggproxy.com/">猛击这里打开</a>），通过它就可以下载类库了。
 使用类库非常简单，我这里提供个小例子。XiaoneiUser类</p>
-<div class="highlight"><pre><span></span>package cn.dddspace.xiaonei.bean;
+<div class="highlight"><pre><span class="n">package</span> <span class="n">cn</span><span class="p">.</span><span class="n">dddspace</span><span class="p">.</span><span class="n">xiaonei</span><span class="p">.</span><span class="n">bean</span><span class="p">;</span>
 </pre></div>
 <p>import java.io.OutputStream;</p>
 <p>import nu.xom.*;</p>
@@ -189,13 +189,13 @@ public void format(OutputStream os, Document doc) throws Exception {</li>
 <p>}</p>
 <p>}</p>
 <p>Test类入口函数</p>
-<div class="highlight"><pre><span></span><span class="cm">/**</span>
+<div class="highlight"><pre><span class="cm">/**</span>
 <span class="cm"> * @title Test.java</span>
 <span class="cm"> * @author ddd</span>
 <span class="cm"> * @time 2009-6-10 16:35:36</span>
 <span class="cm"> * @site http://log4d.com</span>
-<span class="cm"> */</span><span class="w"></span>
-package<span class="w"> </span>cn<span class="o">.</span>dddspace<span class="o">.</span>xiaonei<span class="o">.</span>test<span class="err">;</span><span class="w"></span>
+<span class="cm"> */</span>
+<span class="kn">package</span> <span class="n">cn</span><span class="p">.</span><span class="n">dddspace</span><span class="p">.</span><span class="n">xiaonei</span><span class="p">.</span><span class="n">test</span><span class="p">;</span>
 </pre></div>
 <p>import java.io.BufferedOutputStream;</p>
 <p>import java.io.File;</p>
@@ -331,11 +331,6 @@ public static void main(String[] args) throws FileNotFoundException, Exception
                         <li class="list-group-item">
                             <a href="https://blog.alswl.com/category/managment/">
                                 <i class="fa fa-folder-open fa-lg"></i> Managment
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="https://blog.alswl.com/category/misc/">
-                                <i class="fa fa-folder-open fa-lg"></i> misc
                             </a>
                         </li>
                         <li class="list-group-item">

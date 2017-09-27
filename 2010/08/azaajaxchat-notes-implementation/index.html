@@ -16,7 +16,7 @@
 
         <meta name="author" content="alswl" />
         <meta name="keywords" content="PHP,AzaAjaxChat,Comet,Flex,FMS,JavaScript,RTMP" />
-        <meta name="description" content="唔，继续整理笔记，这些是在代码编写中遇到的问题和解决办法的总结，不是Turtial，问题有针对性，内容枯燥，路人可以直接忽略~ 一、Comet服务器推技术 Comet推技术，一句话概括，就是形成一个不断开的连接，使得服务器能主动向客户端发送信息。这种技术在交互性强的Web产品中应用的非常多，比如GMail。Co met的实现方式有两种：基于 AJAX 的长轮询（long-polling）方式和基于 Iframe 及 htmlfile 的流（streaming）方式，具体两种实现方式可以参考Comet：基于 HTTP 长连接的&#34;服务器推&#34;技术。 我计划把这个技术引入，成为一个亮点，第二种Comet实现方式过于复杂（GMail使用的就是这种），我就尝试第一种。我在测试环境测试了基于 AJAX 的长轮询 （long-polling）方式。这种方式说白了就是在Ajax获取返回数据时候，在状态吗为4（数据传输完成）情况随后进行下次查询。进行循环的查询 …" />
+        <meta name="description" content="唔，继续整理笔记，这些是在代码编写中遇到的问题和解决办法的总结，不是Turtial，问题有针对性，内容枯燥，路人可以直接忽略~ 一、Comet服务器推技术 Comet推技术，一句话概括，就是形成一个不断开的连接，使得服务器能主动向客户端发送信息。这种技术在交互性强的Web产品中应用的非常多，比如GMail。Co met的实现方式有两种：基于 AJAX 的长轮询（long-polling）方式和基于 Iframe 及 htmlfile 的流（streaming）方式，具体两种实现方式可以参考Comet：基于 HTTP 长连接的&#34;服务器推&#34;技术。 我计划把这个技术引入，成为一个亮点，第二种Comet实现方式过于复杂（GMail使用的就是这种），我就尝试第一种。我在测试环境测试了基于 AJAX 的长轮询 （long-polling）方式。这种方式说白了就是在Ajax获取返回数据时候，在状态吗为4（数据传输完成）情况随后进行下次查询。进行循环的查询 ..." />
 
 
 
@@ -80,7 +80,7 @@ Log4D            </a>
 <footer class="post-info">
     <span class="label label-default">Date</span>
     <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2010-08-22T00:00:00+08:00"> 2010-08-22</time>
+        <i class="fa fa-calendar"></i><time datetime="2010-08-22T00:00:00"> 2010-08-22</time>
     </span>
 
 
@@ -162,23 +162,23 @@ yrock.spaces.live.com/Blog/cns!B8CBEB7169880B1D!1279.entry?wa=wsignin1.0&amp;sa=
 博客园</a>。</p>
 <h4 id="42-azaajaxchatshi-pin-yu-yin-he-xin-dai-ma">4.2 AzaAjaxChat视频语音核心代码</h4>
 <p>下面是核心代码。</p>
-<div class="highlight"><pre><span></span>protected function starChat(event:MouseEvent):void {
-    //同时开始监听
-    doReceive();
-    //初始化一个网络连接 
-    publicNc = new NetConnection();
-    //开始连接 
-    publicNc.connect(rtmpUrl); 
-    //为这个连接添加事件,这个事件有返回连接状态 
-    publicNc.addEventListener(NetStatusEvent.NET_STATUS,onPublishNetStatusHandler); 
-    microphone = Microphone.getMicrophone();
-    camera = Camera.getCamera();
-    if(!camera) {
-        Alert.show('没有开启摄像头或者没有安装摄像头');
-    } else {
-        this.videoPublish.attachCamera(camera);
-    }
-}
+<div class="highlight"><pre><span class="kr">protected</span> <span class="kd">function</span> <span class="nx">starChat</span><span class="p">(</span><span class="nx">event</span><span class="o">:</span><span class="nx">MouseEvent</span><span class="p">)</span><span class="o">:</span><span class="k">void</span> <span class="p">{</span>
+    <span class="c1">//同时开始监听</span>
+    <span class="nx">doReceive</span><span class="p">();</span>
+    <span class="c1">//初始化一个网络连接 </span>
+    <span class="nx">publicNc</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">NetConnection</span><span class="p">();</span>
+    <span class="c1">//开始连接 </span>
+    <span class="nx">publicNc</span><span class="p">.</span><span class="nx">connect</span><span class="p">(</span><span class="nx">rtmpUrl</span><span class="p">);</span> 
+    <span class="c1">//为这个连接添加事件,这个事件有返回连接状态 </span>
+    <span class="nx">publicNc</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="nx">NetStatusEvent</span><span class="p">.</span><span class="nx">NET_STATUS</span><span class="p">,</span><span class="nx">onPublishNetStatusHandler</span><span class="p">);</span> 
+    <span class="nx">microphone</span> <span class="o">=</span> <span class="nx">Microphone</span><span class="p">.</span><span class="nx">getMicrophone</span><span class="p">();</span>
+    <span class="nx">camera</span> <span class="o">=</span> <span class="nx">Camera</span><span class="p">.</span><span class="nx">getCamera</span><span class="p">();</span>
+    <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">camera</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">Alert</span><span class="p">.</span><span class="nx">show</span><span class="p">(</span><span class="s1">'没有开启摄像头或者没有安装摄像头'</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">videoPublish</span><span class="p">.</span><span class="nx">attachCamera</span><span class="p">(</span><span class="nx">camera</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 <p>private function onPublishNetStatusHandler(event:NetStatusEvent):void {</p>
 <p>//根据连接返回的状态信息判断是滞连接成功</p>
@@ -247,12 +247,12 @@ c.connect("rtmp://localhost/oflaDemo");</p>
 <h3 id="wu-javascripthe-flexde-jiao-hu_1">五、JavaScript和Flex的交互</h3>
 <p>页面上的Flex必须响应页面JavaScript的触发事件，Adboe在设计Flex时候，预留了相互调用的端口ExternalInterface，详情可以G
 oogle之，类似代码如下。</p>
-<div class="highlight"><pre><span></span>if (ExternalInterface.available) {
-    ExternalInterface.addCallback("initParams", initParams);
-    ExternalInterface.addCallback("playSound", playSound);
-} else {
-    this.appMessage.text += "nJS无法调用Flash，请检查Flash环境";
-}
+<div class="highlight"><pre><span class="k">if</span> <span class="p">(</span><span class="n">ExternalInterface</span><span class="p">.</span><span class="n">available</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">ExternalInterface</span><span class="p">.</span><span class="n">addCallback</span><span class="p">(</span><span class="s">"initParams"</span><span class="p">,</span> <span class="n">initParams</span><span class="p">);</span>
+    <span class="n">ExternalInterface</span><span class="p">.</span><span class="n">addCallback</span><span class="p">(</span><span class="s">"playSound"</span><span class="p">,</span> <span class="n">playSound</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="n">this</span><span class="p">.</span><span class="n">appMessage</span><span class="p">.</span><span class="n">text</span> <span class="o">+=</span> <span class="s">"nJS无法调用Flash，请检查Flash环境"</span><span class="p">;</span>
+<span class="p">}</span>
 </pre></div>
 <p>但是这种调用方法存在着一个致命的问题：创建一个swf的Object，当对这个swf做隐藏/显示的时候(display:none,display:block)
 的时候，swf的所有的注册的javascritp函数都会被干掉(ExternalInterface.addCall方法)。这个是Flex的一个BUG，现在也
@@ -261,12 +261,12 @@ oogle之，类似代码如下。</p>
 JavaEye技术网站</a>，文中详细讨论了这个问题，并给出一个解决方案。</p>
 <p>有一个折中的方案：即通过LocationConnection(本地通讯,利用两个swf来进行交互)来处理，初始化一个调用的client
 swf，负责调用被隐藏的swf中的方法，这样就避开了直接通过javascript调用被隐藏的swf中的方法。</p>
-<div class="highlight"><pre><span></span><span class="o">//</span><span class="nt">1</span><span class="err">：</span><span class="nt">client</span> <span class="err">发送端</span><span class="o">:</span>
-<span class="nt">private</span> <span class="nt">var</span> <span class="nt">ucallswfconn</span><span class="p">:</span><span class="nd">LocalConnection</span><span class="o">;</span>
-<span class="nt">public</span> <span class="nt">function</span> <span class="nt">init</span><span class="o">()</span><span class="p">:</span><span class="nd">void</span> <span class="p">{</span>
-    <span class="err">ucallswfconn</span> <span class="err">=</span> <span class="err">new</span> <span class="err">LocalConnection()</span><span class="p">;</span>
-    <span class="err">//注册Javascritp方法，网页调用该flex的方法，通过该方法中转，调用另外一个flex的方法</span>
-    <span class="err">ExternalInterface.addCallback("selectCallControl",flexSelectCallControl)</span><span class="p">;</span>
+<div class="highlight"><pre><span class="c1">//1：client 发送端:</span>
+<span class="n">private</span> <span class="k">var</span> <span class="nl">ucallswfconn:</span><span class="n">LocalConnection</span><span class="p">;</span>
+<span class="n">public</span> <span class="k">function</span> <span class="n">init</span><span class="p">()</span><span class="o">:</span><span class="k">void</span> <span class="p">{</span>
+    <span class="n">ucallswfconn</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LocalConnection</span><span class="p">();</span>
+    <span class="c1">//注册Javascritp方法，网页调用该flex的方法，通过该方法中转，调用另外一个flex的方法</span>
+    <span class="n">ExternalInterface</span><span class="p">.</span><span class="n">addCallback</span><span class="p">(</span><span class="s">"selectCallControl"</span><span class="p">,</span><span class="n">flexSelectCallControl</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 <p>public function flexSelectCallControl(method:String,param:String):void {</p>
@@ -389,11 +389,6 @@ ucallswfconn.send("ucallexternconn",""+method,""+param);</p>
                         <li class="list-group-item">
                             <a href="https://blog.alswl.com/category/managment/">
                                 <i class="fa fa-folder-open fa-lg"></i> Managment
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="https://blog.alswl.com/category/misc/">
-                                <i class="fa fa-folder-open fa-lg"></i> misc
                             </a>
                         </li>
                         <li class="list-group-item">

@@ -67,21 +67,6 @@ Log4D            </a>
         <div class="col-lg-8 col-lg-offset-2">
 
             <article class="article-list">
-                <h2 class="title"><a href="https://blog.alswl.com/2012/05/tag-cloud/">给 Octopress 加上标签功能</a></h2>
-                <div class="summary"><p>上周，我将 Log4D 由 Wordpress 转换为 Octopress，略加打理，颇为顺手。
-自动分类 / 评论转移 / 代码高亮 / 图床 的问题一一解决之后，
-就只剩下 tag 的问题没有搞定了。</p>
-<p>我当时使用了YORKXIN的<a href="https://gist.github.com/1394128">修改版本</a>来处理 Wordpress
-的数据迁移，这个脚本很好用，数据没有遗失，甚至是让我担心的 category /
-tag 都给予了保留。具体使用方法可以参见<a href="http://blog.dayanjia.com/2012/04/migration-to-octopress-from-wordpress/">从Wordpress迁移到Octopress</a>。</p>
-<p>只是虽然 tag 的数据保留了，但是 <strong>Octopress 仅支持 category 的分类，而完全忽略
-tag</strong>。这是我不能容忍的：category 和 tag 分别代表 有序 / 无序 的知识点归纳方法。
-<strong>一篇文章只能属于一个 category …</strong></p>
-                </div>
-                <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2012/05/tag-cloud/"><i class="icon-circle-arrow-right"></i>more ...</a>
-            </article>
-            <hr/>
-            <article class="article-list">
                 <h2 class="title"><a href="https://blog.alswl.com/2012/05/the-non-designers-design-book/">《写给大家看的设计书》读后感</a></h2>
                 <div class="summary"><p>我读过两本关于视觉设计的书，一本是<a href="http://book.douban.com/subject/6783748/">《写给程序员的Web设计书》</a>，
 这是第二本<a href="http://book.douban.com/subject/3323633/">《写给大家看的设计书》</a>。</p>
@@ -90,14 +75,7 @@ tag</strong>。这是我不能容忍的：category 和 tag 分别代表 有序 /
 本来想从书中获取更多布局、色彩、字体的内容，发现还是太少了。图灵系的书翻译不错。」</p>
 <p>相对应的，《写给大家看的设计书》是我真心想看的设计入门书。作者的文字功底好，经验丰富，
 范例适合，取材广泛，总之，是不可多得的一本好书。</p>
-<!-- more -->
-<p>书中提到了设计四大原则：亲密性 / 对齐 / 重复 / 对比。依靠这四个原则，
-就可以设计出效果不错的出版物（包括书籍、文档、幻灯片、网页等等）</p>
-<ul>
-<li>
-<p>对比（Contrast）：对比的基本思想是，要避免页面上的元素过于相似，如果元素
-（字体、颜色、大小、线宽、形状、空间等）不相同，那就干脆让它们截然不同。
-要让页面引人注目，对比通常是最重要的一个因素，正是它能使读者首先看到这个页面 …</p></li></ul>
+
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2012/05/the-non-designers-design-book/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -111,7 +89,9 @@ tag</strong>。这是我不能容忍的：category 和 tag 分别代表 有序 /
 <p>我的环境是 <strong>ArchLinux / xmonad 0.10 / awesome v3.4.11 / GDM 3.4.1 / NetworkManager 0.9.4.0</strong>，
 下面我用 awesome 做示例，其他非 Gnome WM 也应该是类似配置。</p>
 <p>我的 WM 启动流程是：
-通过 GDM 启动 xmonad / awesome，启动 …</p>
+通过 GDM 启动 xmonad / awesome，启动 xsession 是 <code>/usr/share/xsessions/awesome.desktop</code>，
+内容如下</p>
+
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2012/05/networkmanager-policykit-consolekit/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -134,27 +114,7 @@ tag</strong>。这是我不能容忍的：category 和 tag 分别代表 有序 /
 </ul>
 <p>于是我踏上了「考古之旅」，先后试用了 MiniGal Nano / MG2 /
 CF Image Host Script / minishowcase 等等图床软件，评测记录如下。</p>
-<!-- more -->
-<h2 id="can-sai-xuan-shou">参赛选手</h2>
-<h3 id="minigal-nano"><a href="http://www.minigal.dk/minigal-nano.html">MiniGal Nano</a></h3>
-<p><img alt="MG Nano" src="https://ohsolnxaa.qnssl.com/2012/05/mg-nano.png" title="MiniGal Nano"/></p>
-<ul>
-<li>没有上传功能</li>
-<li>没有后台管理功能</li>
-<li>2010年最后更新</li>
-</ul>
-<h3 id="mg2"><a href="http://www.minigal.dk/mg2.html">MG2</a></h3>
-<p><img alt="MG2 前台" src="https://ohsolnxaa.qnssl.com/2012/05/mg2-front.png"/>
-<img alt="MG2 管理界面" src="https://ohsolnxaa.qnssl.com/2012/05/mg2-admin.png"/></p>
-<ul>
-<li>假目录，其实所有照片在同一目录下面</li>
-<li>界面丑</li>
-<li>09年更新</li>
-</ul>
-<h3 id="mei-you-wang-meiu-studiophpxiang-ce-xi-tong"><a href="http://meiu.cn/">美优网 Meiu Studio|php相册系统</a></h3>
-<ul>
-<li>国产</li>
-<li>需要 …</li></ul>
+
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2012/05/image-host/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -173,11 +133,11 @@ CF Image Host Script / minishowcase 等等图床软件，评测记录如下。</
                 <h2 class="title"><a href="https://blog.alswl.com/2012/04/vim-emacs-key-binding/">Vim 下模拟 Emacs 键绑定</a></h2>
                 <div class="summary"><p>Vimer 需要 Emacs 键绑定？看上去很蛋疼的需求吧。其实不然，大部分的 Shell / Readline 默认绑定的是 Emacs 键位绑定（处于输入状态下，Emacs 的键位很好用）。Vim 的模式切换很牛逼，但是 Insert 模式下面，只有寥寥几个快捷键，我修改了配置文件，绑定需要的 Emcas 按键到 Vim 中来。</p>
 <p>Github 中搜索关键字 Vim Emcas key bind，出来一些结果，不是很完美，我又慢慢调教了几个星期，放出我的 .vimrc。</p>
-<div class="highlight"><pre><span></span><span class="s2">" 模拟 Emacs 键绑定</span>
+<div class="highlight"><pre><span class="s2">" 模拟 Emacs 键绑定</span>
 <span class="s2">"</span> Move
 inoremap &lt;C-a&gt; &lt;Home&gt;
 inoremap &lt;C-e&gt; &lt;End&gt;
-<span class="s2">"inoremap &lt;C-p …</span></pre></div>
+<span class="s2">"inoremap &lt;C-p ...</span></pre></div>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2012/04/vim-emacs-key-binding/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -203,10 +163,7 @@ inoremap &lt;C-e&gt; &lt;End&gt;
 <p>我最会选择了 Vundle，通过子目录管理插件，支持 Git 更新。
 我其实不太喜欢子目录，觉得目录太多看着烦，但是考虑到在没有一个良好的 PKG
 包描述文件的前提下，分子目录是一种简单有效的方法。</p>
-<!-- more -->
-<p>Vundle 通过 git 来对插件进行更新，有三种源可以添加：</p>
-<ul>
-<li>github 中 vim-scripts 的项目（这个账号是为 …</li></ul>
+
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2012/04/vundle/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -216,15 +173,15 @@ inoremap &lt;C-e&gt; &lt;End&gt;
                 <div class="summary"><h2 id="fcitx">Fcitx</h2>
 <p><img alt="Fcitx" src="https://ohsolnxaa.qnssl.com/2012/04/fcitx.png"/></p>
 <p>Fcitx 简介：</p>
-<div class="highlight"><pre><span></span>小企鹅中文输入法（Free Chinese Input Toy for X，fcitx）
-是一个以 GPL 方式发布的输入法框架， 编写它的目是为桌面环境提供一个灵活的输入方案。
+<div class="highlight"><pre><span class="err">小企鹅中文输入法（</span><span class="n">Free</span> <span class="n">Chinese</span> <span class="n">Input</span> <span class="n">Toy</span> <span class="k">for</span> <span class="n">X</span><span class="err">，</span><span class="n">fcitx</span><span class="err">）</span>
+<span class="err">是一个以</span> <span class="n">GPL</span> <span class="err">方式发布的输入法框架，</span> <span class="err">编写它的目是为桌面环境提供一个灵活的输入方案。</span>
 </pre></div>
 <p>本程序目前可以支持XIM和GTK2，GTK3，QT4的IM Module，可为支持</p>
 <p>XIM 的 X 应用程序提供输入服务。 fcitx 的源码包内提供了区位和全/简/双拼，</p>
 <p>并支持基于码表的输入法（自带五笔、二笔和仓颉等输入码表）。</p>
 <p>您可以从 http://fcitx.googlecode.com 下载最新的发布版本。</p>
 <p>当年刚开始使用 Linux 时候，使用的是 iBus，随后发现 Fcitx 这个输入法， 试用了一下就发现自己所需要的 双拼 / 模糊音 / 自定义输入
-功能都有提供 …</p>
+功能都有提供 ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2012/04/fcitx-config/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -244,7 +201,7 @@ inoremap &lt;C-e&gt; &lt;End&gt;
 <li>数据存储 Datastore（实体 / 查询 / 索引 / 事务）</li>
 <li>服务（Memcache / GAccount / 任务队列 / 计划任务）</li>
 <li>工具（SDK / appcfg / dev_appserver / 控制台）</li>
-<li>入门（安装 / GAccount / webapp / app …</li></ul></li></ul>
+<li>入门（安装 / GAccount / webapp / app ...</li></ul></li></ul>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2012/03/gae/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -258,7 +215,7 @@ inoremap &lt;C-e&gt; &lt;End&gt;
 <h2 id="zai-python-zhong-diao-shi">在 Python 中调试</h2>
 <h3 id="pdb">pdb</h3>
 <p>在代码中加入下列语句即可启用交互式调试。</p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pdb</span><span class="p">;</span><span class="n">pdb</span><span class="o">.</span><span class="n">set_trace</span><span class="p">()</span>
+<div class="highlight"><pre><span class="n">import</span> <span class="n">pdb</span><span class="p">;</span><span class="n">pdb</span><span class="p">.</span><span class="n">set_trace</span><span class="p">()</span>
 </pre></div>
 <p>在 pdb 中，可以使用 <code>h / l / b / n / s / c / j / a / p / ! / q</code> 这些命令所代表的含义可以通过
 <code>h(elp)</code> 打印出来。</p>
@@ -267,9 +224,25 @@ inoremap &lt;C-e&gt; &lt;End&gt;
 <li><a href="http://magustest.com/blog/python/use-pdb-debug-python/comment-page-1">用PDB库调试Python程序</a></li>
 </ul>
 <h3 id="ipdb">ipdb</h3>
-<p>比 pdb 更好用的是 …</p>
+<p>比 pdb 更好用的是 ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2012/03/python-debug/"><i class="icon-circle-arrow-right"></i>more ...</a>
+            </article>
+            <hr/>
+            <article class="article-list">
+                <h2 class="title"><a href="https://blog.alswl.com/2012/03/chrome-proxy/">Chrome 独立代理设置</a></h2>
+                <div class="summary"><p>Chrome 在2011年4月份时候，加入了两个新的实验性扩展分支，分别是 Web Navigation Extension API 以及 Proxy
+Extension API， 通过他们，可以让 Chrome 使用自己独立的代理。</p>
+<p>借助这个新功能，我们可以通过 SwitchySharp 使用某个 list 完成部分网址代理。</p>
+<p>我的环境： Arch Linux / Chromiun(17.0.963.78) / Proxy SwitchySharp 1.9.38。</p>
+<h2 id="an-zhuang-proxy-switchysharp">安装 Proxy SwitchySharp</h2>
+<p>由于 <a href="http://code.google.com/p/switchyplus/">SwitchyPlus</a> 停止维护， 因此这里我使用 <a href="http://code.google.com/p/switchysharp/">Proxy
+SwitchySharp</a>。</p>
+<p>Proxy SwitchySharp 介绍如下：</p>
+<blockquote>
+<p>轻松快捷地管理和切换多个代理设置。基于 "Proxy ...</p></blockquote>
+                </div>
+                <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2012/03/chrome-proxy/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
             <hr/>
 
@@ -421,11 +394,6 @@ inoremap &lt;C-e&gt; &lt;End&gt;
                         <li class="list-group-item">
                             <a href="https://blog.alswl.com/category/managment/">
                                 <i class="fa fa-folder-open fa-lg"></i> Managment
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="https://blog.alswl.com/category/misc/">
-                                <i class="fa fa-folder-open fa-lg"></i> misc
                             </a>
                         </li>
                         <li class="list-group-item">

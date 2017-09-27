@@ -16,7 +16,7 @@
 
         <meta name="author" content="alswl" />
         <meta name="keywords" content="dotNet,VisualStudio,WinCE" />
-        <meta name="description" content="状况 在VS2005中创建或打开&#34;智能设备&#34;项目时，提示以下错误： &#34;从用户数据存储中检索信息时出错。系统未找到指定的对象。&#34; 和 &#34;由于数据存储中不存在项目引用的设备平台，因此无法打开项目。&#34; 在打开VS2005的&#34;工具&#34;－&#34;设备仿真器管理器&#34;时，提示以下错误： &#34;未能正确加载包&#34;Smart Device Configuration Package&#34;( GUID = {D245F354-3F45-4516-B1E6-04608DA126CC} )。请与包供应商联系以获得帮助。由于可能会发生环境损坏，建议重新启动应用程序。要禁止将来加载此包吗? 可以使用&#34;devenv /resetskippkgs&#34;重新启用包加载。&#34; 不成功的解决办法 有说把.csproj文件中的&lt;PlatformID&gt;4118C335-430C-497f- BE48-11C3316B135E&lt;/PlatformID&gt;改成&lt;PlatformID&gt;3C41C503-53EF-4c2a- 8DD4-A8217CAD115E&lt;/PlatformID&gt;，原因说是&#34;3C41C503-53EF-4c2a- 8DD4-A8217CAD115E&#34;来自任意一个能运行的.net cf2.0项目的.csproj文件 …" />
+        <meta name="description" content="状况 在VS2005中创建或打开&#34;智能设备&#34;项目时，提示以下错误： &#34;从用户数据存储中检索信息时出错。系统未找到指定的对象。&#34; 和 &#34;由于数据存储中不存在项目引用的设备平台，因此无法打开项目。&#34; 在打开VS2005的&#34;工具&#34;－&#34;设备仿真器管理器&#34;时，提示以下错误： &#34;未能正确加载包&#34;Smart Device Configuration Package&#34;( GUID = {D245F354-3F45-4516-B1E6-04608DA126CC} )。请与包供应商联系以获得帮助。由于可能会发生环境损坏，建议重新启动应用程序。要禁止将来加载此包吗? 可以使用&#34;devenv /resetskippkgs&#34;重新启用包加载。&#34; 不成功的解决办法 有说把.csproj文件中的&lt;PlatformID&gt;4118C335-430C-497f- BE48-11C3316B135E&lt;/PlatformID&gt;改成&lt;PlatformID&gt;3C41C503-53EF-4c2a- 8DD4-A8217CAD115E&lt;/PlatformID&gt;，原因说是&#34;3C41C503-53EF-4c2a- 8DD4-A8217CAD115E&#34;来自任意一个能运行的.net cf2.0项目的.csproj文件 ..." />
 
 
 
@@ -80,7 +80,7 @@ Log4D            </a>
 <footer class="post-info">
     <span class="label label-default">Date</span>
     <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2010-03-29T00:00:00+08:00"> 2010-03-29</time>
+        <i class="fa fa-calendar"></i><time datetime="2010-03-29T00:00:00"> 2010-03-29</time>
     </span>
 
 
@@ -229,11 +229,6 @@ SiteID=1</del>链接已失效</p>
                         <li class="list-group-item">
                             <a href="https://blog.alswl.com/category/managment/">
                                 <i class="fa fa-folder-open fa-lg"></i> Managment
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="https://blog.alswl.com/category/misc/">
-                                <i class="fa fa-folder-open fa-lg"></i> misc
                             </a>
                         </li>
                         <li class="list-group-item">

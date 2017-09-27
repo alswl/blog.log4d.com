@@ -16,7 +16,7 @@
 
         <meta name="author" content="alswl" />
         <meta name="keywords" content="Python,nose,Pylons" />
-        <meta name="description" content="不做单元测试的程序员不是好程序员。最近我在Pylons下面做开发， 使用 nose 做单元测试，颇有心得， 在这里分享一下。 1. Pylons中依赖包 先简单介绍一下Pylons, Pylons与其说是一个框架，不如说是一堆框架的组合， Pylons在其中做到一个胶水的作用。Pylons依赖的包如下。 breaker，缓存和Session FormEncode，用户输入检查 Mako，模板渲染 nose，自动化测试 Paste，服务器 Routes, 路由 Tempita，Paste的模板 Weberror WebOb，提供WSGI请求响应等对象 WebTest，Paste自带的测试小框架， 提供TestResponse和TestRequest两个有用的小东西 Pylons的测试主要使用的其中的 Paste / nose / WebOb / WebTest。 遇到问题的时候，可以去翻一翻上面的文档。 2. Pylons中测试目录结构 目录结构如下 ├─config ├─controllers ├─lib ├─model ├─public ├─templates …" />
+        <meta name="description" content="不做单元测试的程序员不是好程序员。最近我在Pylons下面做开发， 使用 nose 做单元测试，颇有心得， 在这里分享一下。 1. Pylons中依赖包 先简单介绍一下Pylons, Pylons与其说是一个框架，不如说是一堆框架的组合， Pylons在其中做到一个胶水的作用。Pylons依赖的包如下。 breaker，缓存和Session FormEncode，用户输入检查 Mako，模板渲染 nose，自动化测试 Paste，服务器 Routes, 路由 Tempita，Paste的模板 Weberror WebOb，提供WSGI请求响应等对象 WebTest，Paste自带的测试小框架， 提供TestResponse和TestRequest两个有用的小东西 Pylons的测试主要使用的其中的 Paste / nose / WebOb / WebTest。 遇到问题的时候，可以去翻一翻上面的文档。 2. Pylons中测试目录结构 目录结构如下 ├─config ├─controllers ├─lib ├─model ├─public ├─templates ..." />
 
 
 
@@ -80,7 +80,7 @@ Log4D            </a>
 <footer class="post-info">
     <span class="label label-default">Date</span>
     <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2011-09-22T00:00:00+08:00"> 2011-09-22</time>
+        <i class="fa fa-calendar"></i><time datetime="2011-09-22T00:00:00"> 2011-09-22</time>
     </span>
 
 
@@ -118,14 +118,14 @@ Log4D            </a>
 <p>Pylons的测试主要使用的其中的 Paste / nose / WebOb / WebTest。 遇到问题的时候，可以去翻一翻上面的文档。</p>
 <h2 id="2-pylonszhong-ce-shi-mu-lu-jie-gou">2. Pylons中测试目录结构</h2>
 <p>目录结构如下</p>
-<div class="highlight"><pre><span></span>├─config
-├─controllers
-├─lib
-├─model
-├─public
-├─templates
-└─tests
-    └─functional
+<div class="highlight"><pre><span class="err">├─</span><span class="nx">config</span>
+<span class="err">├─</span><span class="nx">controllers</span>
+<span class="err">├─</span><span class="nx">lib</span>
+<span class="err">├─</span><span class="nx">model</span>
+<span class="err">├─</span><span class="kr">public</span>
+<span class="err">├─</span><span class="nx">templates</span>
+<span class="err">└─</span><span class="nx">tests</span>
+    <span class="err">└─</span><span class="nx">functional</span>
 </pre></div>
 <p>目录中的 <code>config / controllers / lib / model / public</code>
 在不同的web框架下面可能会略有差别，在这里我不关注他们，我关注 <code>tests / functional</code> 中存放相应的测试脚本，比如
@@ -133,7 +133,7 @@ Log4D            </a>
 <h2 id="3-di-yi-ge-jian-dan-de-ce-shi-yong-li">3. 第一个简单的测试用例</h2>
 <h3 id="31-zhuan-xie-dan-yuan-ce-shi-wen-jian">3.1. 撰写单元测试文件</h3>
 <p>最简单的test脚本如下</p>
-<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">myb.tests</span> <span class="kn">import</span> <span class="o">*</span>
+<div class="highlight"><pre><span class="n">from</span> <span class="n">myb</span><span class="p">.</span><span class="n">tests</span> <span class="n">import</span> <span class="o">*</span>
 </pre></div>
 <p>class TestIndexController(TestController):</p>
 <p>def test_index(self):</p>
@@ -144,8 +144,8 @@ Log4D            </a>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
-4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
-<span class="c1">#coding: utf-8</span>
+4</pre></div></td><td class="code"><div class="highlight"><pre><span class="c">#!/usr/bin/env python</span>
+<span class="c">#coding: utf-8</span>
 <span class="kn">from</span> <span class="nn">webob.headers</span> <span class="kn">import</span> <span class="n">ResponseHeaders</span>
 <span class="kn">from</span> <span class="nn">unittest</span> <span class="kn">import</span> <span class="n">TestCase</span>
 </pre></div>
@@ -171,7 +171,7 @@ Log4D            </a>
 <h3 id="32-zhuan-xie-ce-shi-pei-zhi-wen-jian">3.2. 撰写测试配置文件</h3>
 <p>上文撰写了一个最简单的测试代码，我们接着做一些单元测试配置。</p>
 <p>在app应用的同级文件里面，修改 <code>test.ini</code> 文件。</p>
-<div class="highlight"><pre><span></span><span class="k">[DEFAULT]</span>
+<div class="highlight"><pre><span class="k">[DEFAULT]</span>
 <span class="na">debug</span> <span class="o">=</span> <span class="s">true</span>
 <span class="c1">#email_to = you@yourdomain.com</span>
 <span class="na">smtp_server</span> <span class="o">=</span> <span class="s">localhost</span>
@@ -230,7 +230,7 @@ myb/tests/functional/test_hello world.py</code> 。 之后会出现一些log内�
 <p>在开发过程中，我们需要判定单元测试是否正确，我罗列一些常见的用法</p>
 <h3 id="41-ce-shi-fan-hui-lei-xing-wei-http-statusde-fang-fa">4.1. 测试返回类型为HTTP STATUS的方法</h3>
 <p>每次HTTP请求都会返回HTTP STATUS，正常是200，找不到是404，服务器错误是500， 我们可以根据这些返回状态值来判断测试是否跑通。</p>
-<div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">TestQuestionController</span><span class="p">(</span><span class="nx">TestController</span><span class="p">)</span><span class="o">:</span>
+<div class="highlight"><pre><span class="n">class</span> <span class="n">TestQuestionController</span><span class="p">(</span><span class="n">TestController</span><span class="p">)</span><span class="o">:</span>
 </pre></div>
 <p>def test_suggest_question(self):</p>
 <h1>正常返回200</h1>
@@ -254,61 +254,61 @@ myb/tests/functional/test_hello world.py</code> 。 之后会出现一些log内�
 <p>)</p>
 <p>我习惯使用 <code>url()</code> 方法来生成url，这样一方面不用记住冗长的url， 另外在url路由表发生变化之后，也不用去改变测试代码。</p>
 <h3 id="42-ce-shi-fan-hui-lei-xing-wei-htmlde-fang-fa">4.2. 测试返回类型为html的方法</h3>
-<div class="highlight"><pre><span></span>    def test_register(self):
-        response = self.app.post(url(controller = 'users',
-                                     action = 'register',
-                                     format = 'json'),
-                                 {
-                                     'login_name': 'nose_json',
-                                     'login_pass': '123',
-                                     'user_name': '测试机器人_json',
-                                 },
-                                 status=200
-                                 )
-        assert '202cb962ac59075b964b07152d234b70' in response.body #返回的加密密码
-        #log.debug( u'器' in response.unicode_body) #无法测试中文
-        #log.debug( u'测试机器人_json' in response.unicode_body) #无法测试中文
+<div class="highlight"><pre>    <span class="n">def</span> <span class="n">test_register</span><span class="p">(</span><span class="n">self</span><span class="p">)</span><span class="o">:</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">app</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">(</span><span class="n">controller</span> <span class="o">=</span> <span class="err">'</span><span class="n">users</span><span class="err">'</span><span class="p">,</span>
+                                     <span class="n">action</span> <span class="o">=</span> <span class="err">'</span><span class="k">register</span><span class="err">'</span><span class="p">,</span>
+                                     <span class="n">format</span> <span class="o">=</span> <span class="err">'</span><span class="n">json</span><span class="err">'</span><span class="p">),</span>
+                                 <span class="p">{</span>
+                                     <span class="err">'</span><span class="n">login_name</span><span class="err">'</span><span class="o">:</span> <span class="err">'</span><span class="n">nose_json</span><span class="err">'</span><span class="p">,</span>
+                                     <span class="err">'</span><span class="n">login_pass</span><span class="err">'</span><span class="o">:</span> <span class="err">'</span><span class="mi">123</span><span class="err">'</span><span class="p">,</span>
+                                     <span class="err">'</span><span class="n">user_name</span><span class="err">'</span><span class="o">:</span> <span class="err">'测试机器人</span><span class="n">_json</span><span class="err">'</span><span class="p">,</span>
+                                 <span class="p">},</span>
+                                 <span class="n">status</span><span class="o">=</span><span class="mi">200</span>
+                                 <span class="p">)</span>
+        <span class="n">assert</span> <span class="err">'</span><span class="mi">202</span><span class="n">cb962ac59075b964b07152d234b70</span><span class="err">'</span> <span class="n">in</span> <span class="n">response</span><span class="p">.</span><span class="n">body</span> <span class="err">#返回的加密密码</span>
+        <span class="err">#</span><span class="n">log</span><span class="p">.</span><span class="n">debug</span><span class="p">(</span> <span class="n">u</span><span class="sc">'器'</span> <span class="n">in</span> <span class="n">response</span><span class="p">.</span><span class="n">unicode_body</span><span class="p">)</span> <span class="err">#无法测试中文</span>
+        <span class="err">#</span><span class="n">log</span><span class="p">.</span><span class="n">debug</span><span class="p">(</span> <span class="n">u</span><span class="err">'测试机器人</span><span class="n">_json</span><span class="err">'</span> <span class="n">in</span> <span class="n">response</span><span class="p">.</span><span class="n">unicode_body</span><span class="p">)</span> <span class="err">#无法测试中文</span>
 </pre></div>
 <p>使用 <code>response.body</code> 来判定html里面的内容（这里对中文支持不太好）。</p>
 <h3 id="43-ce-shi-fan-hui-lei-xing-wei-jsonde-fang-fa">4.3. 测试返回类型为json的方法</h3>
 <p>AJAX请求正常返回的状态吗都是200，我们需要判定里面的内容进行assert</p>
-<div class="highlight"><pre><span></span>        response = self.app.post(url=url(controller='invitation',
-                                         action='invite_by_mail'),
-                                 params={
-                                     'to_address': '',
-                                     'to_user_name': '大爷',
-                                 },
-                                 headers=self.headers,
-                                 status=200
-                                )
-        result = response.json
-        assert(result['success'] == False)
-        assert(result['message'] == u'发送失败：你妹不漂亮')
+<div class="highlight"><pre>        <span class="n">response</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">app</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">(</span><span class="n">controller</span><span class="o">=</span><span class="err">'</span><span class="n">invitation</span><span class="err">'</span><span class="p">,</span>
+                                         <span class="n">action</span><span class="o">=</span><span class="err">'</span><span class="n">invite_by_mail</span><span class="err">'</span><span class="p">),</span>
+                                 <span class="n">params</span><span class="o">=</span><span class="p">{</span>
+                                     <span class="err">'</span><span class="n">to_address</span><span class="err">'</span><span class="o">:</span> <span class="err">''</span><span class="p">,</span>
+                                     <span class="err">'</span><span class="n">to_user_name</span><span class="err">'</span><span class="o">:</span> <span class="err">'大爷'</span><span class="p">,</span>
+                                 <span class="p">},</span>
+                                 <span class="n">headers</span><span class="o">=</span><span class="n">self</span><span class="p">.</span><span class="n">headers</span><span class="p">,</span>
+                                 <span class="n">status</span><span class="o">=</span><span class="mi">200</span>
+                                <span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="n">json</span>
+        <span class="n">assert</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="err">'</span><span class="n">success</span><span class="err">'</span><span class="p">]</span> <span class="o">==</span> <span class="n">False</span><span class="p">)</span>
+        <span class="n">assert</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="err">'</span><span class="n">message</span><span class="err">'</span><span class="p">]</span> <span class="o">==</span> <span class="n">u</span><span class="err">'发送失败：你妹不漂亮'</span><span class="p">)</span>
 </pre></div>
 <h3 id="44-ce-shi-fan-hui-lei-xing-wei-zhong-ding-xiang-de-fang-fa">4.4. 测试返回类型为重定向的方法</h3>
 <p>这是HTTP状态吗的特殊形式，比如登录之后做一次跳转之类的。</p>
-<div class="highlight"><pre><span></span>    def test_add(self):
-        #成功之后返回302做跳转，同时判定返回内容中跳转路径
-        response = self.app.post(url=url(controller='question',
-                                         action='add',
-                                         ),
-                                 params={
-                                     'question_title': 'hwti1',
-                                     'question_content': 'wgtinzrs1',
-                                 },
-                                 headers=self.headers,
-                                 status=302,
-                                )
-        assert re.match(r'^http://localhost/question/d*',
-                        response.headers['Location'])
+<div class="highlight"><pre>    <span class="n">def</span> <span class="n">test_add</span><span class="p">(</span><span class="n">self</span><span class="p">)</span><span class="o">:</span>
+        <span class="err">#成功之后返回</span><span class="mi">302</span><span class="err">做跳转，同时判定返回内容中跳转路径</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">app</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">(</span><span class="n">controller</span><span class="o">=</span><span class="err">'</span><span class="n">question</span><span class="err">'</span><span class="p">,</span>
+                                         <span class="n">action</span><span class="o">=</span><span class="err">'</span><span class="n">add</span><span class="err">'</span><span class="p">,</span>
+                                         <span class="p">),</span>
+                                 <span class="n">params</span><span class="o">=</span><span class="p">{</span>
+                                     <span class="err">'</span><span class="n">question_title</span><span class="err">'</span><span class="o">:</span> <span class="err">'</span><span class="n">hwti1</span><span class="err">'</span><span class="p">,</span>
+                                     <span class="err">'</span><span class="n">question_content</span><span class="err">'</span><span class="o">:</span> <span class="err">'</span><span class="n">wgtinzrs1</span><span class="err">'</span><span class="p">,</span>
+                                 <span class="p">},</span>
+                                 <span class="n">headers</span><span class="o">=</span><span class="n">self</span><span class="p">.</span><span class="n">headers</span><span class="p">,</span>
+                                 <span class="n">status</span><span class="o">=</span><span class="mi">302</span><span class="p">,</span>
+                                <span class="p">)</span>
+        <span class="n">assert</span> <span class="n">re</span><span class="p">.</span><span class="n">match</span><span class="p">(</span><span class="n">r</span><span class="err">'</span><span class="o">^</span><span class="n">http</span><span class="o">:</span><span class="c1">//localhost/question/d*',</span>
+                        <span class="n">response</span><span class="p">.</span><span class="n">headers</span><span class="p">[</span><span class="err">'</span><span class="n">Location</span><span class="err">'</span><span class="p">])</span>
 </pre></div>
 <h3 id="45-yong-hu-deng-lu-sheng-cheng-session">4.5. 用户登录生成Session</h3>
 <p>有些方法需要登录后才能运行，这依赖于服务器和浏览器之间的Cookie。如果要对这类
 方法进行测试，我们需要事先获取Cookie，再在每一次请求发出的时候附带这个Cookie。</p>
 <p>在下面的方法中，我实现了用户登录操作。 在test目录下的 <code>__init.py__</code> 中 <code>TestController</code> 加入新方法 <code>login()</code></p>
-<div class="highlight"><pre><span></span>    def login(self, login_name, login_pass):
-        """
-        用户登录操作，获取Cookie
+<div class="highlight"><pre>    <span class="n">def</span> <span class="n">login</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">login_name</span><span class="p">,</span> <span class="n">login_pass</span><span class="p">)</span><span class="o">:</span>
+        <span class="s">"""</span>
+        <span class="err">用户登录操作，获取</span><span class="n">Cookie</span>
 </pre></div>
 <p>"""</p>
 <p>response = self.app.post(url=url(controller='users',</p>
@@ -324,66 +324,66 @@ myb/tests/functional/test_hello world.py</code> 。 之后会出现一些log内�
 <p>这样就可以通过 <code>self.headers</code> 保存登录之后的cookie。</p>
 <h3 id="46-pi-liang-ce-shi">4.6. 批量测试</h3>
 <p>除了制定 <code>test_xxx.py</code> 文件进行单元测试，我们还可以直接使用 <code>nosetests</code> 测试所有测试用例。</p>
-<div class="highlight"><pre><span></span>nosetests
-//该目录下需要存在 test.ini 配置文件
+<div class="highlight"><pre><span class="n">nosetests</span>
+<span class="c1">//该目录下需要存在 test.ini 配置文件</span>
 </pre></div>
 <h2 id="5-yu-dao-de-wen-ti_1">5. 遇到的问题</h2>
 <h3 id="51-bian-ma-wen-ti">5.1. 编码问题</h3>
-<div class="highlight"><pre><span></span>  File "buildbdist.win32eggwebtest__init__.py", line 211, in post
-    content_type=content_type)
-  File "buildbdist.win32eggwebtest__init__.py", line 191, in _gen_request
-    expect_errors=expect_errors)
-  File "buildbdist.win32eggwebtest__init__.py", line 370, in do_request
-    res = req.get_response(app, catch_exc_info=True)
-  File "buildbdist.win32eggwebobrequest.py", line 1004, in get_response
-    application, catch_exc_info=True)
-  File "buildbdist.win32eggwebobrequest.py", line 977, in call_application
-    app_iter = application(self.environ, start_response)
-  File "buildbdist.win32eggwebtestlint.py", line 170, in lint_app
-    iterator = application(environ, start_response_wrapper)
-  File "d:programmingpython26libsite-packagespaste-1.7.5.1-py2.6.eggpastecascade.py", line 130, in __call__
-    return self.apps[-1](environ, start_response)
-  File "d:programmingpython26libsite-packagespaste-1.7.5.1-py2.6.eggpasteregistry.py", line 379, in __call__
-    app_iter = self.application(environ, start_response)
-  File "d:programmingpython26libsite-packagespylons-1.0-py2.6.eggpylonsmiddleware.py", line 150, in __call__
-    self.app, environ, catch_exc_info=True)
-  File "d:programmingpython26libsite-packagespylons-1.0-py2.6.eggpylonsutil.py", line 48, in call_wsgi_application
-    app_iter = application(environ, start_response)
-  File "d:programmingpython26libsite-packagesweberror-0.10.3-py2.6.eggweberrorevalexception.py", line 235, in __call__
-    return self.respond(environ, start_response)
-  File "d:programmingpython26libsite-packagesweberror-0.10.3-py2.6.eggweberrorevalexception.py", line 418, in respond
-    return self.application(environ, start_response)
-  File "d:programmingpython26libsite-packagesbeaker-1.5.4-py2.6.eggbeakermiddleware.py", line 152, in __call__
-    return self.wrap_app(environ, session_start_response)
-  File "d:programmingpython26libsite-packagesroutes-1.12.3-py2.6.eggroutesmiddleware.py", line 131, in __call__
-    response = self.app(environ, start_response)
-  File "d:programmingpython26libsite-packagespylons-1.0-py2.6.eggpylonswsgiapp.py", line 107, in __call__
-    response = self.dispatch(controller, environ, start_response)
-  File "d:programmingpython26libsite-packagespylons-1.0-py2.6.eggpylonswsgiapp.py", line 312, in dispatch
-    return controller(environ, start_response)
-  File "F:workxintongworkspaceMYB_WENDAmybmyblibbase.py", line 52, in __call__
-    return WSGIController.__call__(self, environ, start_response)
-  File "d:programmingpython26libsite-packagespylons-1.0-py2.6.eggpylonscontrollerscore.py", line 266, in __call__
-    return response(environ, self.start_response)
-  File "d:programmingpython26libsite-packageswebob-1.0.7-py2.6.eggwebobexc.py", line 517, in __call__
-    environ, start_response)
-  File "d:programmingpython26libsite-packageswebob-1.0.7-py2.6.eggwebobexc.py", line 341, in __call__
-    return self.generate_response(environ, start_response)
-  File "d:programmingpython26libsite-packageswebob-1.0.7-py2.6.eggwebobexc.py", line 322, in generate_response
-    body = self.plain_body(environ)
-  File "d:programmingpython26libsite-packageswebob-1.0.7-py2.6.eggwebobexc.py", line 301, in plain_body
-    body = self._make_body(environ, no_escape)
-  File "d:programmingpython26libsite-packageswebob-1.0.7-py2.6.eggwebobexc.py", line 294, in _make_body
-    args[k] = escape(v)
-  File "d:programmingpython26libsite-packageswebob-1.0.7-py2.6.eggwebobexc.py", line 182, in no_escape
-    value = str(value)
-  File "d:programmingpython26libsite-packagespylons-1.0-py2.6.eggpylonsutil.py", line 112, in __repr__
-    value_repr = repr(value)
-UnicodeEncodeError: 'ascii' codec can't encode characters in position 8-18: ordinal not in range(128)
+<div class="highlight"><pre>  <span class="n">File</span> <span class="s">"buildbdist.win32eggwebtest__init__.py"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">211</span><span class="p">,</span> <span class="n">in</span> <span class="n">post</span>
+    <span class="n">content_type</span><span class="o">=</span><span class="n">content_type</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s">"buildbdist.win32eggwebtest__init__.py"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">191</span><span class="p">,</span> <span class="n">in</span> <span class="n">_gen_request</span>
+    <span class="n">expect_errors</span><span class="o">=</span><span class="n">expect_errors</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s">"buildbdist.win32eggwebtest__init__.py"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">370</span><span class="p">,</span> <span class="n">in</span> <span class="n">do_request</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">req</span><span class="p">.</span><span class="n">get_response</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">catch_exc_info</span><span class="o">=</span><span class="n">True</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s">"buildbdist.win32eggwebobrequest.py"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1004</span><span class="p">,</span> <span class="n">in</span> <span class="n">get_response</span>
+    <span class="n">application</span><span class="p">,</span> <span class="n">catch_exc_info</span><span class="o">=</span><span class="n">True</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s">"buildbdist.win32eggwebobrequest.py"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">977</span><span class="p">,</span> <span class="n">in</span> <span class="n">call_application</span>
+    <span class="n">app_iter</span> <span class="o">=</span> <span class="n">application</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">environ</span><span class="p">,</span> <span class="n">start_response</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s">"buildbdist.win32eggwebtestlint.py"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">170</span><span class="p">,</span> <span class="n">in</span> <span class="n">lint_app</span>
+    <span class="n">iterator</span> <span class="o">=</span> <span class="n">application</span><span class="p">(</span><span class="n">environ</span><span class="p">,</span> <span class="n">start_response_wrapper</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s">"d:programmingpython26libsite-packagespaste-1.7.5.1-py2.6.eggpastecascade.py"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">130</span><span class="p">,</span> <span class="n">in</span> <span class="n">__call__</span>
+    <span class="k">return</span> <span class="n">self</span><span class="p">.</span><span class="n">apps</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">](</span><span class="n">environ</span><span class="p">,</span> <span class="n">start_response</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s">"d:programmingpython26libsite-packagespaste-1.7.5.1-py2.6.eggpasteregistry.py"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">379</span><span class="p">,</span> <span class="n">in</span> <span class="n">__call__</span>
+    <span class="n">app_iter</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">application</span><span class="p">(</span><span class="n">environ</span><span class="p">,</span> <span class="n">start_response</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s">"d:programmingpython26libsite-packagespylons-1.0-py2.6.eggpylonsmiddleware.py"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">150</span><span class="p">,</span> <span class="n">in</span> <span class="n">__call__</span>
+    <span class="n">self</span><span class="p">.</span><span class="n">app</span><span class="p">,</span> <span class="n">environ</span><span class="p">,</span> <span class="n">catch_exc_info</span><span class="o">=</span><span class="n">True</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s">"d:programmingpython26libsite-packagespylons-1.0-py2.6.eggpylonsutil.py"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">48</span><span class="p">,</span> <span class="n">in</span> <span class="n">call_wsgi_application</span>
+    <span class="n">app_iter</span> <span class="o">=</span> <span class="n">application</span><span class="p">(</span><span class="n">environ</span><span class="p">,</span> <span class="n">start_response</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s">"d:programmingpython26libsite-packagesweberror-0.10.3-py2.6.eggweberrorevalexception.py"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">235</span><span class="p">,</span> <span class="n">in</span> <span class="n">__call__</span>
+    <span class="k">return</span> <span class="n">self</span><span class="p">.</span><span class="n">respond</span><span class="p">(</span><span class="n">environ</span><span class="p">,</span> <span class="n">start_response</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s">"d:programmingpython26libsite-packagesweberror-0.10.3-py2.6.eggweberrorevalexception.py"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">418</span><span class="p">,</span> <span class="n">in</span> <span class="n">respond</span>
+    <span class="k">return</span> <span class="n">self</span><span class="p">.</span><span class="n">application</span><span class="p">(</span><span class="n">environ</span><span class="p">,</span> <span class="n">start_response</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s">"d:programmingpython26libsite-packagesbeaker-1.5.4-py2.6.eggbeakermiddleware.py"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">152</span><span class="p">,</span> <span class="n">in</span> <span class="n">__call__</span>
+    <span class="k">return</span> <span class="n">self</span><span class="p">.</span><span class="n">wrap_app</span><span class="p">(</span><span class="n">environ</span><span class="p">,</span> <span class="n">session_start_response</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s">"d:programmingpython26libsite-packagesroutes-1.12.3-py2.6.eggroutesmiddleware.py"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">131</span><span class="p">,</span> <span class="n">in</span> <span class="n">__call__</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">app</span><span class="p">(</span><span class="n">environ</span><span class="p">,</span> <span class="n">start_response</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s">"d:programmingpython26libsite-packagespylons-1.0-py2.6.eggpylonswsgiapp.py"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">107</span><span class="p">,</span> <span class="n">in</span> <span class="n">__call__</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">dispatch</span><span class="p">(</span><span class="n">controller</span><span class="p">,</span> <span class="n">environ</span><span class="p">,</span> <span class="n">start_response</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s">"d:programmingpython26libsite-packagespylons-1.0-py2.6.eggpylonswsgiapp.py"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">312</span><span class="p">,</span> <span class="n">in</span> <span class="n">dispatch</span>
+    <span class="k">return</span> <span class="n">controller</span><span class="p">(</span><span class="n">environ</span><span class="p">,</span> <span class="n">start_response</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s">"F:workxintongworkspaceMYB_WENDAmybmyblibbase.py"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">52</span><span class="p">,</span> <span class="n">in</span> <span class="n">__call__</span>
+    <span class="k">return</span> <span class="n">WSGIController</span><span class="p">.</span><span class="n">__call__</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">environ</span><span class="p">,</span> <span class="n">start_response</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s">"d:programmingpython26libsite-packagespylons-1.0-py2.6.eggpylonscontrollerscore.py"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">266</span><span class="p">,</span> <span class="n">in</span> <span class="n">__call__</span>
+    <span class="k">return</span> <span class="n">response</span><span class="p">(</span><span class="n">environ</span><span class="p">,</span> <span class="n">self</span><span class="p">.</span><span class="n">start_response</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s">"d:programmingpython26libsite-packageswebob-1.0.7-py2.6.eggwebobexc.py"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">517</span><span class="p">,</span> <span class="n">in</span> <span class="n">__call__</span>
+    <span class="n">environ</span><span class="p">,</span> <span class="n">start_response</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s">"d:programmingpython26libsite-packageswebob-1.0.7-py2.6.eggwebobexc.py"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">341</span><span class="p">,</span> <span class="n">in</span> <span class="n">__call__</span>
+    <span class="k">return</span> <span class="n">self</span><span class="p">.</span><span class="n">generate_response</span><span class="p">(</span><span class="n">environ</span><span class="p">,</span> <span class="n">start_response</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s">"d:programmingpython26libsite-packageswebob-1.0.7-py2.6.eggwebobexc.py"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">322</span><span class="p">,</span> <span class="n">in</span> <span class="n">generate_response</span>
+    <span class="n">body</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">plain_body</span><span class="p">(</span><span class="n">environ</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s">"d:programmingpython26libsite-packageswebob-1.0.7-py2.6.eggwebobexc.py"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">301</span><span class="p">,</span> <span class="n">in</span> <span class="n">plain_body</span>
+    <span class="n">body</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">_make_body</span><span class="p">(</span><span class="n">environ</span><span class="p">,</span> <span class="n">no_escape</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s">"d:programmingpython26libsite-packageswebob-1.0.7-py2.6.eggwebobexc.py"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">294</span><span class="p">,</span> <span class="n">in</span> <span class="n">_make_body</span>
+    <span class="n">args</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">escape</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s">"d:programmingpython26libsite-packageswebob-1.0.7-py2.6.eggwebobexc.py"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">182</span><span class="p">,</span> <span class="n">in</span> <span class="n">no_escape</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="n">str</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s">"d:programmingpython26libsite-packagespylons-1.0-py2.6.eggpylonsutil.py"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">112</span><span class="p">,</span> <span class="n">in</span> <span class="n">__repr__</span>
+    <span class="n">value_repr</span> <span class="o">=</span> <span class="n">repr</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+<span class="nl">UnicodeEncodeError:</span> <span class="err">'</span><span class="n">ascii</span><span class="err">'</span> <span class="n">codec</span> <span class="n">can</span><span class="err">'</span><span class="n">t</span> <span class="n">encode</span> <span class="n">characters</span> <span class="n">in</span> <span class="n">position</span> <span class="mi">8</span><span class="o">-</span><span class="mi">18</span><span class="o">:</span> <span class="n">ordinal</span> <span class="n">not</span> <span class="n">in</span> <span class="n">range</span><span class="p">(</span><span class="mi">128</span><span class="p">)</span>
 </pre></div>
 <p>这是一个明显由编码引起的错误。</p>
 <p>修改pylons-1.0-py2.6.eggPylonsutil.py中112行修改为</p>
-<div class="highlight"><pre><span></span><span class="k">try</span><span class="o">:</span>
+<div class="highlight"><pre><span class="k">try</span><span class="o">:</span>
     <span class="n">value_repr</span> <span class="o">=</span> <span class="n">repr</span><span class="o">(</span><span class="n">value</span><span class="o">)</span>
 <span class="n">except</span> <span class="n">UnicodeEncodeError</span><span class="o">,</span> <span class="n">e</span><span class="o">:</span>
     <span class="n">log</span><span class="o">.</span><span class="na">error</span><span class="o">(</span><span class="s1">'encode error in pylons/utils.py'</span><span class="o">)</span>
@@ -490,11 +490,6 @@ UnicodeEncodeError: 'ascii' codec can't encode characters in position 8-18: ordi
                         <li class="list-group-item">
                             <a href="https://blog.alswl.com/category/managment/">
                                 <i class="fa fa-folder-open fa-lg"></i> Managment
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="https://blog.alswl.com/category/misc/">
-                                <i class="fa fa-folder-open fa-lg"></i> misc
                             </a>
                         </li>
                         <li class="list-group-item">

@@ -78,9 +78,7 @@ collapse.html">猛击这里打开该文章</a>，我也算是个网页开发者�
 Gears，才发现崩溃终于停止了。</p>
 <p>那么问题就应该是在Google Gears上，这个Google Gears是FireFox的一个插件，用来对本地文件进行暂存的，我的系统也装了Google
 Gears，这两个Google Gears不是同一个，系统下的Google
-Gears可以对IE进行缓存加速，而IE并没有崩溃，说明问题出在FireFox下的Google Gears。</p>
-<p>那么，只要把这个组件关闭就可以了，问题就解决了。</p>
-<p>我又尝试了删除Google Gears缓存，崩溃依旧，重新更新Word Press缓存，崩溃依旧 …</p>
+Gears可以对IE进行缓存加速 ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/06/firefox-frequently-collapse-under-the-wordpress-upload-solution/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -89,22 +87,22 @@ Gears可以对IE进行缓存加速，而IE并没有崩溃，说明问题出在Fi
                 <h2 class="title"><a href="https://blog.alswl.com/2009/05/landscaping-postviews/">美化postviews</a></h2>
                 <div class="summary"><p>很多朋友用postviews这个插件，的确很适合国人的风格，但是如果单纯的添加到页面中，会显得很突兀，难看，我做了几个美化工作。</p>
 <p>首先，在用到postviews函数时候都定义span id，比如在single.php中修改，在下面代码</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;span&gt;</span><span class="cp">&lt;?php</span> <span class="nx">the_author_posts_link</span><span class="p">();</span> <span class="cp">?&gt;</span><span class="nt">&lt;/span&gt;</span><span class="cp">&lt;?php</span> <span class="k">endif</span><span class="p">;</span> <span class="cp">?&gt;</span>
+<div class="highlight"><pre><span class="nt">&lt;span&gt;</span><span class="cp">&lt;?php the_author_posts_link(); ?&gt;</span><span class="nt">&lt;/span&gt;</span><span class="cp">&lt;?php endif; ?&gt;</span>
 </pre></div>
 <p>后面跟上一段显示浏览次数的代码</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;span&gt;</span><span class="cp">&lt;?php</span> <span class="nx">the_author_posts_link</span><span class="p">();</span> <span class="cp">?&gt;</span><span class="nt">&lt;/span&gt;</span><span class="cp">&lt;?php</span> <span class="k">endif</span><span class="p">;</span> <span class="cp">?&gt;</span>
+<div class="highlight"><pre><span class="nt">&lt;span&gt;</span><span class="cp">&lt;?php the_author_posts_link(); ?&gt;</span><span class="nt">&lt;/span&gt;</span><span class="cp">&lt;?php endif; ?&gt;</span>
 </pre></div>
 <p>这样就可以显示浏览次数。</p>
 <p>然后修改style.css文件，我的是inove主题，在382行附近修改</p>
-<div class="highlight"><pre><span></span><span class="na">.post</span> <span class="no">.date</span><span class="p">,</span>
-<span class="na">.post</span> <span class="no">.author</span><span class="p">,</span>
-<span class="na">.post</span> <span class="no">.postviews</span><span class="p">,</span>
-<span class="na">.post</span> <span class="no">.editpost</span><span class="p">,</span>
-<span class="na">.post</span> <span class="no">.comments</span><span class="p">,</span>
-<span class="na">.post</span> <span class="no">.addcomment</span><span class="p">,</span>
-<span class="na">.post</span> <span class="no">.addlink</span><span class="p">,</span>
-<span class="na">.post</span> <span class="no">.editlinks</span> <span class="err">{</span>
-<span class="nl">background:</span><span class="nf">url</span><span class="p">(</span><span class="no">img</span><span class="err">/</span><span class="no">icons …</span></pre></div>
+<div class="highlight"><pre><span class="p">.</span><span class="n">post</span> <span class="p">.</span><span class="n">date</span><span class="p">,</span>
+<span class="p">.</span><span class="n">post</span> <span class="p">.</span><span class="n">author</span><span class="p">,</span>
+<span class="p">.</span><span class="n">post</span> <span class="p">.</span><span class="n">postviews</span><span class="p">,</span>
+<span class="p">.</span><span class="n">post</span> <span class="p">.</span><span class="n">editpost</span><span class="p">,</span>
+<span class="p">.</span><span class="n">post</span> <span class="p">.</span><span class="n">comments</span><span class="p">,</span>
+<span class="p">.</span><span class="n">post</span> <span class="p">.</span><span class="n">addcomment</span><span class="p">,</span>
+<span class="p">.</span><span class="n">post</span> <span class="p">.</span><span class="n">addlink</span><span class="p">,</span>
+<span class="p">.</span><span class="n">post</span> <span class="p">.</span><span class="n">editlinks</span> <span class="p">{</span>
+<span class="nl">background:</span><span class="n">url</span><span class="p">(</span><span class="n">img</span><span class="o">/</span><span class="n">icons ...</span></pre></div>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/05/landscaping-postviews/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -123,7 +121,7 @@ Gears可以对IE进行缓存加速，而IE并没有崩溃，说明问题出在Fi
 <p>import postbar.bean.Category;</p>
 <p>import postbar.bean.Topic;</p>
 <p>import postbar.dao.CategoryDAO;</p>
-<p>public …</p>
+<p>public ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/05/finally-created-a-blog-of-their-own/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -196,11 +194,6 @@ Gears可以对IE进行缓存加速，而IE并没有崩溃，说明问题出在Fi
                         <li class="list-group-item">
                             <a href="https://blog.alswl.com/category/managment/">
                                 <i class="fa fa-folder-open fa-lg"></i> Managment
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="https://blog.alswl.com/category/misc/">
-                                <i class="fa fa-folder-open fa-lg"></i> misc
                             </a>
                         </li>
                         <li class="list-group-item">

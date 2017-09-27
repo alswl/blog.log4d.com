@@ -16,7 +16,7 @@
 
         <meta name="author" content="alswl" />
         <meta name="keywords" content="Flash,FMS" />
-        <meta name="description" content="AzaAjaxChat 的语音聊天需要使用的Flex的流媒体传输，我在评估的方案有两套：1.使用原声Socket在客户端进行连接，2.使用FMS 流媒体服务器进行数据传输。 FMS （Flash Media Server）在安装时候，有一个选项是端口使用哪个，默认是1935 和 80端口，安装之后发现在使用两个Apache在80端口发生冲突（FMS使用的也是Apache服务器），需要将这个端口修改。 Google后，发现修改 Flash Media Server 3conffms.ini 删除80留下1935即可。 # IP address and port(s) Flash Media Server should listen on # For example: # ADAPTOR.HOSTPORT = :1935,80 # ADAPTOR.HOSTPORT = :1935 唔～继续搞鼓Flex的流媒体传输了 …" />
+        <meta name="description" content="AzaAjaxChat 的语音聊天需要使用的Flex的流媒体传输，我在评估的方案有两套：1.使用原声Socket在客户端进行连接，2.使用FMS 流媒体服务器进行数据传输。 FMS （Flash Media Server）在安装时候，有一个选项是端口使用哪个，默认是1935 和 80端口，安装之后发现在使用两个Apache在80端口发生冲突（FMS使用的也是Apache服务器），需要将这个端口修改。 Google后，发现修改 Flash Media Server 3conffms.ini 删除80留下1935即可。 # IP address and port(s) Flash Media Server should listen on # For example: # ADAPTOR.HOSTPORT = :1935,80 # ADAPTOR.HOSTPORT = :1935 唔～继续搞鼓Flex的流媒体传输了 ..." />
 
 
 
@@ -80,7 +80,7 @@ Log4D            </a>
 <footer class="post-info">
     <span class="label label-default">Date</span>
     <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2010-05-22T00:00:00+08:00"> 2010-05-22</time>
+        <i class="fa fa-calendar"></i><time datetime="2010-05-22T00:00:00"> 2010-05-22</time>
     </span>
 
 
@@ -97,11 +97,11 @@ Log4D            </a>
 <p>FMS （Flash Media Server）在安装时候，有一个选项是端口使用哪个，默认是1935 和
 80端口，安装之后发现在使用两个Apache在80端口发生冲突（FMS使用的也是Apache服务器），需要将这个端口修改。</p>
 <p>Google后，发现修改 Flash Media Server 3conffms.ini 删除80留下1935即可。</p>
-<div class="highlight"><pre><span></span># IP address and port(s) Flash Media Server should listen on
-# For example:
-#    ADAPTOR.HOSTPORT = :1935,80
-#
-ADAPTOR.HOSTPORT = :1935
+<div class="highlight"><pre><span class="cp"># IP address and port(s) Flash Media Server should listen on</span>
+<span class="cp"># For example:</span>
+<span class="cp">#    ADAPTOR.HOSTPORT = :1935,80</span>
+<span class="cp">#</span>
+<span class="n">ADAPTOR</span><span class="p">.</span><span class="n">HOSTPORT</span> <span class="o">=</span> <span class="o">:</span><span class="mi">1935</span>
 </pre></div>
 <p>唔～继续搞鼓Flex的流媒体传输了，头疼蛋大啊。。。</p>
 <p>相关链接：<a href="http://www.adobe.com/cfusion/tdrc/index.cfm?pr
@@ -206,11 +206,6 @@ oduct=flashmediaserver&amp;loc=zh_cn">Flash Media Server 开发版下载</a>，�
                         <li class="list-group-item">
                             <a href="https://blog.alswl.com/category/managment/">
                                 <i class="fa fa-folder-open fa-lg"></i> Managment
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="https://blog.alswl.com/category/misc/">
-                                <i class="fa fa-folder-open fa-lg"></i> misc
                             </a>
                         </li>
                         <li class="list-group-item">

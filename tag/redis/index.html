@@ -77,7 +77,7 @@ Log4D            </a>
 也是在逐步完善完善过程中
 （2.4 支持 <code>Replication</code>，2.8 加入 <code>Replication partial resynchronization</code> 功能）。
 纵观当下流行的 DB 系统，哪个不是自带这两个特性，这两个分布式特性应该成为新出产的 DB 系统的标配。
-而且作者还经常发布延期，放烟雾弹，不知道 Redis 自带 Sharding …</p>
+而且作者还经常发布延期，放烟雾弹，不知道 Redis 自带 Sharding ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2015/07/redis-migration/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -90,11 +90,7 @@ Log4D            </a>
 <p>Hiredis 是用 C 写的 Redis 客户端，对 Redis 协议进行了简单的封装，
 同时提供了同步和异步的两种 API。Hiredis 的代码位于
 <a href="https://github.com/redis/hiredis">https://github.com/redis/hiredis</a>。</p>
-<!-- more -->
-<h2 id="yi-fen-zhong-shi-yong-ru-men">一分钟使用入门</h2>
-<p>同步 API 的调用方法：</p>
-<div class="highlight"><pre><span></span><span class="nt">redisContext</span> <span class="o">*</span><span class="nt">context</span> <span class="o">=</span> <span class="nt">redisConnect</span><span class="o">(</span><span class="s2">"127.0.0.1"</span><span class="o">,</span> <span class="nt">6379</span><span class="o">);</span>
-<span class="nt">reply</span> <span class="o">=</span> <span class="nt">redisCommand …</span></pre></div>
+
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2014/03/hiredis/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -106,13 +102,7 @@ Log4D            </a>
 <hr/>
 <p>Redis 自带了一个叫 <code>redis-benchmark</code> 的工具来模拟 N 个客户端同时发出 M 个请求。
 （类似于 Apache <code>ab</code> 程序）。你可以使用 <code>redis-benchmark -h</code> 来查看基准参数。</p>
-<!-- more -->
-<div class="highlight"><pre><span></span>以下参数被支持：
 
-    Usage: redis-benchmark [-h &lt;host&gt;] [-p &lt;port&gt;] [-c &lt;clients&gt;] [-n &lt;requests]&gt; [-k &lt;boolean&gt;]
-
-     -h &lt;hostname&gt;      Server hostname (default 127.0.0.1)
-     -p &lt;port&gt;          Server port (default …</pre></div>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2014/02/redis-benchmarks/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -174,11 +164,6 @@ Log4D            </a>
                         <li class="list-group-item">
                             <a href="https://blog.alswl.com/category/managment/">
                                 <i class="fa fa-folder-open fa-lg"></i> Managment
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="https://blog.alswl.com/category/misc/">
-                                <i class="fa fa-folder-open fa-lg"></i> misc
                             </a>
                         </li>
                         <li class="list-group-item">

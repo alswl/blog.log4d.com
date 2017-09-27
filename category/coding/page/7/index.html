@@ -68,17 +68,54 @@ Log4D            </a>
         <div class="col-lg-8 col-lg-offset-2">
 
             <article class="article-list">
+                <h2 class="title"><a href="https://blog.alswl.com/2011/07/eventbug/">Html元素事件查看器Eventbug</a></h2>
+                <div class="summary"><p>Chrome的开发者工具里面有一个小功能：查看当前元素的Event，比如onclick/onblur等事件。</p>
+<p><img alt="image" src="https://ohsolnxaa.qnssl.com/2011/07/chrome_event.png"/></p>
+<p>一直想在Firefox里面也找到类似的插件，今天正好看到这么一个好东西，叫做EventBug。</p>
+<p>官方的介绍如下</p>
+<blockquote>
+<p>Eventbug是一款能够列出所有绑定事件的Firebug扩展，它将这些事件按事件类型排列。</p>
+<ul>
+<li>
+<p>需要Firebug1.5</p>
+</li>
+<li>
+<p>源码沿用Firebug的BSD风格协议</p>
+</li>
+<li>
+<p>请使用Firebug的Bug报告列表来提交问题</p>
+</li>
+<li>
+<p>请使用Firebug的新闻列表来提出问题</p>
+</li>
+</ul>
+<p>作者：John J. Barton, Jan Odvarko</p>
+</blockquote>
+<p>测试发现在Firefox5下面没有问题。</p>
+<p><a href="http://upload-
+log4d.qiniudn.com/2011/07/eventbug.png"><img alt="image" src="https://ohsolnxaa.qnssl.com/2011/07/eventbug.png"/></a></p>
+<p>这么一款插件在调试js或者对别人的页面做一些js hack特别有用，强烈推荐之。</p>
+<ul>
+<li><a href="http://getfirebug.com/wiki/index.php/Firebug_Extensions#Eventbug">Eventbug官方地址</a></li>
+<li><a href="http://www.softwareishard.com/blog/firebug/eventbug-alpha-released/">Eventbug介绍博文（En）</a></li>
+<li><a href="http://getfirebug.com/releases/eventbug/">Eventbug下载链接</a></li>
+</ul>
+                </div>
+                <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2011/07/eventbug/"><i class="icon-circle-arrow-right"></i>more ...</a>
+            </article>
+            <hr/>
+            <article class="article-list">
                 <h2 class="title"><a href="https://blog.alswl.com/2011/06/urllib2-urlopen-unicode/">urllib2.urlopen的中文URL问题</a></h2>
                 <div class="summary"><p>在url中使用中文其实是一个坏习惯，会带来一系列的转码问题， 我更喜欢英文译名或者id来标识某个uri。但是现实往往是残酷的，
 特别是在我们调用别人服务时候，有时候被逼无奈使用中文URL。</p>
 <p>Python中unicode转码一向是让人头疼的问题。数次碰壁之后，我也摸出了一些门道，
 研读完<a href="http://ipie.blogbus.com/logs/19379694.html">Python字符串的encode与decode</a>
 之后，就自认为找到了万金油，谁知道这次又碰上这个老冤家。</p>
-<div class="highlight"><pre><span></span>Traceback (most recent call last):
-  File "&lt;stdin&gt;", line 1, in &lt;module&gt;
-  File "/usr/lib/python2.6/urllib2.py", line 126, in urlopen
-    return _opener.open(url, data, timeout)
-  File "/usr/lib/python2.6/urllib2.py", line …</pre></div>
+<div class="highlight"><pre><span class="nx">Traceback</span> <span class="p">(</span><span class="nx">most</span> <span class="nx">recent</span> <span class="nb">call</span> <span class="nb">last</span><span class="p">):</span>
+  <span class="nb">File</span> <span class="s2">"&lt;stdin&gt;"</span><span class="p">,</span> <span class="nb">line</span> <span class="mi">1</span><span class="p">,</span> <span class="k">in</span> <span class="o">&lt;</span><span class="nx">module</span><span class="o">&gt;</span>
+  <span class="nb">File</span> <span class="s2">"/usr/lib/python2.6/urllib2.py"</span><span class="p">,</span> <span class="nb">line</span> <span class="mi">126</span><span class="p">,</span> <span class="k">in</span> <span class="nx">urlopen</span>
+    <span class="k">return</span> <span class="nx">_opener.open</span><span class="p">(</span><span class="nb">url</span><span class="p">,</span> <span class="kd">data</span><span class="p">,</span> <span class="nx">timeout</span><span class="p">)</span>
+  <span class="nb">File</span> <span class="s2">"/usr/lib/python2.6/urllib2.py"</span><span class="p">,</span> <span class="nb">line ...</span></pre></div>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2011/06/urllib2-urlopen-unicode/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -96,7 +133,7 @@ Log4D            </a>
 无论您在任何地点、任何时间、任何线路，均可通过固定的花生壳域名访问您的远程主机服务。</p>
 <p>现在花生壳为千万的域名提供动态域名解析服务，并广泛应用于网站建设、视频监控、 遥感测绘、FTP、VPN、企业OA、ERP等应用领域。</p>
 </blockquote>
-<p>ps：除了花生壳，还有很多DDNS服务可以供选择。由于TP-Link和D-Link都默认内置花生壳， 我这里用花生壳做范例。而我使用的<a href="http://www.dd-wrt.com/">DD- …</a></p>
+<p>ps：除了花生壳，还有很多DDNS服务可以供选择。由于TP-Link和D-Link都默认内置花生壳， 我这里用花生壳做范例。而我使用的<a href="http://www.dd-wrt.com/">DD- ...</a></p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2011/06/ddns-ssh/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -111,8 +148,7 @@ g/">Armin Ronacher</a>只更新到08年9月份。之后Mako更新了一些少许
 <p>使用方法，放入vimfiles/syntax</p>
 <p>相关链接：</p>
 <p>原始mako.vim：<a href="http://www.v
-im.org/scripts/script.php?script_id=1858">http://www.vim.org/scripts/script.php?script_id=1858</a></p>
-<p>另外一个mako.vim是缩进用的，放入vimfiles/syntax：<a href="http://www.vim.org/scripts/script.php?script_id=2663">http://www.vim.org/scripts/script.php …</a></p>
+im.org/scripts/script.php?script_id=1858">http ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2011/06/mako-vim/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -129,11 +165,7 @@ ORM映射。使用BSD作为授权协议。</p>
 web框架的纷杂。我这里选择Pylons（其实是被选择），并不是说Pylons一定最好，而是比较适合当前项目。更多的Python
 web框架对比建议看这篇<a href="http://feilong.me/2011/01/talk-about-python-web-
 framework">浅谈Python web框架</a>，另外，这个<a href="http://www.bestwebframeworks.com/python/">Best Web-
-Framework</a>有直观的对比。</p>
-<h2 id="pylonshuan-jing-pei-zhi">Pylons环境配置</h2>
-<p>因为开发机是刚到手的ThinkPad，没有冒险安装Linux，所以这里的安装环境是Win7 + Python 2.6 + MySQL5.1。</p>
-<h3 id="1-an-zhuang-pylons">1、安装Pylons</h3>
-<p>Pylons似乎没有方便的easy_install，原因是由于Pylons在安装过程中，会生成一个目标环境 …</p>
+Framework ...</a></p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2011/05/pylons/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -153,8 +185,7 @@ development.ini来运行应用实例。而整天在任务栏跑着一个黑乎�
 <p>不出意外的话，就可以通过Run跑起整个应用了。</p>
 <p>很可惜的是，这样做还是不能对应用进行Debug，pylons的debug依然依赖于pylons的"交互调试页面"。</p>
 <p>参考<a href="http://stackoverflow.com/questions/147650/debug-pylons-application-
-through-eclipse">http://stackoverflow.com/questions/147650/debug-pylons-application-through-
-eclipse</a></p>
+through-eclipse">http://stackoverflow.com ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2011/05/run-pylons-in-eclipse/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -163,11 +194,11 @@ eclipse</a></p>
                 <h2 class="title"><a href="https://blog.alswl.com/2011/04/ubuntu-setup/">Ubuntu安装之后设定操作</a></h2>
                 <div class="summary"><p>前几天使用chmod时候，多打了一个/，导致根目录下面所有文件权限设定出了问题，额~重装系统吧，正好把装系统之后的配置过程记录下来。</p>
 <p>这些都是我操作过的命令，确切可靠，适用于Ubuntu 10.10 Desktop Edtion。</p>
-<div class="highlight"><pre><span></span>= init Linux programs and setting =
-:author: alswl
-:email: alswlx#gmail.com
-:toc:
-:numbered:
+<div class="highlight"><pre><span class="o">=</span> <span class="n">init</span> <span class="n">Linux</span> <span class="n">programs</span> <span class="n">and</span> <span class="n">setting</span> <span class="o">=</span>
+<span class="o">:</span><span class="n">author</span><span class="o">:</span> <span class="n">alswl</span>
+<span class="o">:</span><span class="n">email</span><span class="o">:</span> <span class="n">alswlx</span><span class="err">#</span><span class="n">gmail</span><span class="p">.</span><span class="n">com</span>
+<span class="o">:</span><span class="n">toc</span><span class="o">:</span>
+<span class="o">:</span><span class="n">numbered</span><span class="o">:</span>
 </pre></div>
 <p>== first of all ==</p>
 <p>.update (打补丁、升级)</p>
@@ -177,7 +208,7 @@ eclipse</a></p>
 <hr/>
 <p>.reset permission(谨慎使用，设定文件为644,设定文件夹为755)</p>
 <hr/>
-<p>find /home …</p>
+<p>find /home ...</p></hr/></hr/></hr/>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2011/04/ubuntu-setup/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -199,7 +230,7 @@ Directory Layout</a></p>
 <p>Assembly descriptors</p>
 <p>src/main/config</p>
 <p>Configuration files</p>
-<p>src/main …</p>
+<p>src/main ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2011/04/run-jetty-in-maven/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -217,7 +248,7 @@ Directory Layout</a></p>
 <blockquote>
 <p>A background slideshow creator for the GNOME desktop wallpaper.</p>
 </blockquote>
-<p>The GNOME desktop is able to use a sequence of images for its background …</p>
+<p>The GNOME desktop is able to use a sequence of images for its background ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2011/04/ubuntu-crebs/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -236,29 +267,6 @@ replicator-mp3">Java写的Mp3歌词复制器</a>。</p>
 <p><img alt="image" src="https://ohsolnxaa.qnssl.com/2011/03/plrcmatch4d.jpg"/></p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2011/03/plrcmatch4d/"><i class="icon-circle-arrow-right"></i>more ...</a>
-            </article>
-            <hr/>
-            <article class="article-list">
-                <h2 class="title"><a href="https://blog.alswl.com/2011/03/maven-eclipse/">在Eclipse中使用Maven</a></h2>
-                <div class="summary"><p>一提到Eclipse中使用Maven，都会想到<a href="http://m2eclipse.codehaus.org/">m2eclipse</a>这个插件。其实在Ecli
-pse下使用Maven不用插件也能完成，我们只需要使用bin/mvn下面的mvn即可。</p>
-<h2 id="3fen-zhong-maven">3分钟Maven</h2>
-<p>Maven官方提供了<a href="http://maven.apache.org/guides
-/getting-started/maven-in-five-minutes.html">Getting Started in 5 Minutes</a>和<a href="http://maven.apache.org/guides/getting-
-started/index.html">Getting Started in 30
-Minutes</a>两种教程，我这里再简化一下，记录一下常用命令。</p>
-<div class="highlight"><pre><span></span>#建立一个空项目，包含一个HelloWorld，可以通过
-#-DarchetypeGroupId=&lt;archetype-groupId&gt; -DarchetypeArtifactId=&lt;archetype-artifactId&gt;
-#命令创建更多类型项目
-mvn archetype:create -DgroupId=com.dddspace.java -DartifactId=helloworld
-</pre></div>
-<h1>编译打包到jar或者war，根据pom中定义</h1>
-<p>maven package</p>
-<h1>jUnit跑跑</h1>
-<p>mvn test</p>
-<h1>神奇的命令，帮助创建Eclipse项目 …</h1>
-                </div>
-                <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2011/03/maven-eclipse/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
             <hr/>
 
@@ -368,11 +376,6 @@ mvn archetype:create -DgroupId=com.dddspace.java -DartifactId=helloworld
                         <li class="list-group-item">
                             <a href="https://blog.alswl.com/category/managment/">
                                 <i class="fa fa-folder-open fa-lg"></i> Managment
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="https://blog.alswl.com/category/misc/">
-                                <i class="fa fa-folder-open fa-lg"></i> misc
                             </a>
                         </li>
                         <li class="list-group-item">

@@ -16,7 +16,7 @@
 
         <meta name="author" content="alswl" />
         <meta name="keywords" content="PHP,CakePHP,PoEdit" />
-        <meta name="description" content="原文出处：在Cakephp中使用i18n本地化程序，并使用poedit编辑语言文件 | 程序如此灵动！ alswl: 官方的帮助手册都没有这篇文章来的详细，太赞了。这篇文章不仅介绍了CakePHP的使用，更多的介绍了PoEdit的使用，图文并茂，着实详细，感谢原作者苏南。 ----- 以下为原文 ----- Cakephp的很强大的i18n功能就是用来实现本地化和国际化的。他通过使用语言配置文件使得程序能够很好的适应变化进行本地化。通过新建locale/chi/ LC_MESSAGES/default.po文件，并指定语言选项为&#34;chi&#34;实现。本文中说的就是如何实现这个本地化过程，当然本文中的poedit并不是必须的 ，但是他可以使得工作效率更高。 一、关于i18n和L10n 这2个东东其实头一次我看到的时候也是一头雾水，但是经过百度的一通搜索，得出的结论就是，不管是几个n，最终的目的就是实现程序本地化就好了，说白了，就是由很多的 语言配置文件，反正我是这么理解的。大家也可以去看看，http://baike.baidu.com/view/372835.htm 这里有很详细的说明。 二、在Cakephp里面，实现本地化的方法 目前为止 …" />
+        <meta name="description" content="原文出处：在Cakephp中使用i18n本地化程序，并使用poedit编辑语言文件 | 程序如此灵动！ alswl: 官方的帮助手册都没有这篇文章来的详细，太赞了。这篇文章不仅介绍了CakePHP的使用，更多的介绍了PoEdit的使用，图文并茂，着实详细，感谢原作者苏南。 ----- 以下为原文 ----- Cakephp的很强大的i18n功能就是用来实现本地化和国际化的。他通过使用语言配置文件使得程序能够很好的适应变化进行本地化。通过新建locale/chi/ LC_MESSAGES/default.po文件，并指定语言选项为&#34;chi&#34;实现。本文中说的就是如何实现这个本地化过程，当然本文中的poedit并不是必须的 ，但是他可以使得工作效率更高。 一、关于i18n和L10n 这2个东东其实头一次我看到的时候也是一头雾水，但是经过百度的一通搜索，得出的结论就是，不管是几个n，最终的目的就是实现程序本地化就好了，说白了，就是由很多的 语言配置文件，反正我是这么理解的。大家也可以去看看，http://baike ..." />
 
 
 
@@ -80,7 +80,7 @@ Log4D            </a>
 <footer class="post-info">
     <span class="label label-default">Date</span>
     <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2010-06-03T00:00:00+08:00"> 2010-06-03</time>
+        <i class="fa fa-calendar"></i><time datetime="2010-06-03T00:00:00"> 2010-06-03</time>
     </span>
 
 
@@ -120,7 +120,7 @@ e.baidu.com/view/372835.htm">http://baike.baidu.com/view/372835.htm</a> 这里�
 <p>官方说明：<a href="http://book.cakephp.org/view/162/Localizing-Your-Application">http://book.cakephp.org/view/162/Localizing-Your-
 Application</a></p>
 <p>貌似很复杂的说哦。</p>
-<div class="highlight"><pre><span></span><span class="nx">App</span><span class="o">::</span><span class="kr">import</span><span class="p">(</span><span class="s1">'Core'</span><span class="p">,</span> <span class="s1">'l10n'</span><span class="p">);</span>
+<div class="highlight"><pre><span class="nx">App</span><span class="o">::</span><span class="kr">import</span><span class="p">(</span><span class="s1">'Core'</span><span class="p">,</span> <span class="s1">'l10n'</span><span class="p">);</span>
 <span class="kr">class</span> <span class="nx">TestsController</span> <span class="kr">extends</span> <span class="nx">AppController</span><span class="p">{</span>
   <span class="nx">$name</span><span class="o">=</span><span class="s2">"Tests"</span><span class="p">;</span>
   <span class="kd">function</span> <span class="nx">test_function</span><span class="p">(){</span>
@@ -286,11 +286,6 @@ ctp</a></p>
                         <li class="list-group-item">
                             <a href="https://blog.alswl.com/category/managment/">
                                 <i class="fa fa-folder-open fa-lg"></i> Managment
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="https://blog.alswl.com/category/misc/">
-                                <i class="fa fa-folder-open fa-lg"></i> misc
                             </a>
                         </li>
                         <li class="list-group-item">

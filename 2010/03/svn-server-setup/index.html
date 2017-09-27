@@ -16,7 +16,7 @@
 
         <meta name="author" content="alswl" />
         <meta name="keywords" content="工欲善其事必先利其器,SVN" />
-        <meta name="description" content="实在忍受不了VSS了，下决心自己在虚拟机配置一个SVN服务器，然后再在服务器上安装一个SVN服务器端。以前都是使用现成的SVN服务器，或者使用Google Code提供的Project Host，今天就自己动手，丰衣足食吧。 话说VSS的确过时了，好多特性很麻烦，也难怪Louis嘲笑我Eclipse用VSS了～ 什么是SVN服务器 &amp;nbsp_place_holder;Subversion，简称SVN，是一个开放源代码的版本控制系统（SCM），相对于的RCS、CVS，采 用了分支管理系统，它的设计目标就是取代CVS。互联网上越来越多的控制服务从CVS转移到Subversion。（via wiki） 关于SVN / VSS / CVS等源代码管理系统已经有很多比较的文章了，我这里推荐几篇 Better SCM Initiative : Comparison 这篇是老外写的一篇各种SCM比较，内容相当翔实，可以作为论文参考资料了都 SVN对比VSS,不知这样够了没 - 哥不是传说，是寂寞 - 博客园 国人的一篇比较 SVN服务端安装 Subversion官网已经迁移到Apache项目组下了，点击Apache Subversion访问Subversion官网 …" />
+        <meta name="description" content="实在忍受不了VSS了，下决心自己在虚拟机配置一个SVN服务器，然后再在服务器上安装一个SVN服务器端。以前都是使用现成的SVN服务器，或者使用Google Code提供的Project Host，今天就自己动手，丰衣足食吧。 话说VSS的确过时了，好多特性很麻烦，也难怪Louis嘲笑我Eclipse用VSS了～ 什么是SVN服务器 &amp;nbsp_place_holder;Subversion，简称SVN，是一个开放源代码的版本控制系统（SCM），相对于的RCS、CVS，采 用了分支管理系统，它的设计目标就是取代CVS。互联网上越来越多的控制服务从CVS转移到Subversion。（via wiki） 关于SVN / VSS / CVS等源代码管理系统已经有很多比较的文章了，我这里推荐几篇 Better SCM Initiative : Comparison 这篇是老外写的一篇各种SCM比较，内容相当翔实，可以作为论文参考资料了都 SVN对比VSS,不知这样够了没 ..." />
 
 
 
@@ -80,7 +80,7 @@ Log4D            </a>
 <footer class="post-info">
     <span class="label label-default">Date</span>
     <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2010-03-02T00:00:00+08:00"> 2010-03-02</time>
+        <i class="fa fa-calendar"></i><time datetime="2010-03-02T00:00:00"> 2010-03-02</time>
     </span>
 
 
@@ -161,7 +161,7 @@ start= auto</code> 就可以将svnserve程序作为服务载入。关于sc命令
 1367668.htm">这里</a>查看更多。</p>
 <h2 id="svnfu-wu-qi-yong-hu-guan-li">SVN服务器用户管理</h2>
 <p>设定SVN服务器用户的权限，需要修改 confsvnserve.conf 文件，如下所示</p>
-<div class="highlight"><pre><span></span><span class="k">[general]</span>
+<div class="highlight"><pre><span class="k">[general]</span>
 <span class="c1"># password-db = passwd</span>
 <span class="c1"># anon-access = none</span>
 <span class="c1"># auth-access = write</span>
@@ -171,7 +171,7 @@ start= auto</code> 就可以将svnserve程序作为服务载入。关于sc命令
 <p>去之每行开头的#，其中第二行是指定身份验证的文件名，即passwd文件.a access = none
 是匿名用户不能访问，必须要有用户名和密码。（注意：问这，一定要注意格式去掉注释后要顶格不能有空）</p>
 <p>用户管理相当简单，只需要在confpasswd中打开相应的权限，之后在confpasswd 加入用户就可以了。</p>
-<div class="highlight"><pre><span></span><span class="k">[users]</span>
+<div class="highlight"><pre><span class="k">[users]</span>
 <span class="c1"># harry = harryssecret</span>
 <span class="c1"># sally = sallyssecret</span>
 <span class="na">alswl</span> <span class="o">=</span> <span class="s">alswl</span>
@@ -299,11 +299,6 @@ Media</a>出版。</p>
                         <li class="list-group-item">
                             <a href="https://blog.alswl.com/category/managment/">
                                 <i class="fa fa-folder-open fa-lg"></i> Managment
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="https://blog.alswl.com/category/misc/">
-                                <i class="fa fa-folder-open fa-lg"></i> misc
                             </a>
                         </li>
                         <li class="list-group-item">

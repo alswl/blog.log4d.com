@@ -16,7 +16,7 @@
 
         <meta name="author" content="alswl" />
         <meta name="keywords" content="WebFront,AzaAjaxChat,IE,JavaScript" />
-        <meta name="description" content="明天开始上交毕业设计初稿，其中有一节是遇到的问题和解决办法。我把平时在BooguNote 中的琐碎片段整理出来，便有了此文。 PS:之前已经有过3篇相关毕设的文章： [CakePHP的全局变量 ](http://log4d.com/2010/05/cakephp-global-variables) [FMS的80端口占用 ](http://log4d.com/2010/05/fms-80-port-used) [SWFObject 一款JavaScript的Flash检测与插入模块 ](http://log4d.com/2010/05/swfobject) ---- 正文开始 ---- 问题背景 系统要实现一个操作，即每次向同一个url 请求一个GET方法获取一个xml文件，这个xml文件记录着聊天数据并且是即时生成的。当用FireFox或者Chro me请求时候都能获得正确的数据，而IE则常常出现无法获取实时的XML数据。 而如果在地址栏中填入 http://localhost/AzaAjaxChat/src/Chat/getXml?messageId=41 这个原始的XML文件地址，就可以获取正确的XML文件。并且在下次IE …" />
+        <meta name="description" content="明天开始上交毕业设计初稿，其中有一节是遇到的问题和解决办法。我把平时在BooguNote 中的琐碎片段整理出来，便有了此文。 PS:之前已经有过3篇相关毕设的文章： [CakePHP的全局变量 ](http://log4d.com/2010/05/cakephp-global-variables) [FMS的80端口占用 ](http://log4d.com/2010/05/fms-80-port-used) [SWFObject 一款JavaScript的Flash检测与插入模块 ](http://log4d.com/2010/05/swfobject) ---- 正文开始 ---- 问题背景 系统要实现一个操作，即每次向同一个url 请求一个GET方法获取一个xml文件，这个xml文件记录着聊天数据并且是即时生成的。当用FireFox或者Chro me请求时候都能获得正确的数据，而IE则常常出现无法获取实时的XML数据。 而如果在地址栏中填入 http://localhost/AzaAjaxChat/src/Chat/getXml?messageId=41 这个原始的XML文件地址，就可以获取正确的XML文件。并且在下次IE ..." />
 
 
 
@@ -80,7 +80,7 @@ Log4D            </a>
 <footer class="post-info">
     <span class="label label-default">Date</span>
     <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2010-06-02T00:00:00+08:00"> 2010-06-02</time>
+        <i class="fa fa-calendar"></i><time datetime="2010-06-02T00:00:00"> 2010-06-02</time>
     </span>
 
 
@@ -119,7 +119,7 @@ me请求时候都能获得正确的数据，而IE则常常出现无法获取实�
 <h3 id="1shi-yong-urlcan-shu-sui-ji-shi-jian">1.使用URL参数随机事件</h3>
 <p>在AJAX请求的页面后加个随机函数,我们可以使用随机时间函数，在javascript发送的URL后加上t=Math.random()。</p>
 <p>当然，不是直接把t=Math.random()拷贝到URL后面,应该像这样:</p>
-<div class="highlight"><pre><span></span>url = url + "&amp; amp;" + "t=" + Math.random();
+<div class="highlight"><pre><span class="n">url</span> <span class="o">=</span> <span class="n">url</span> <span class="o">+</span> <span class="s">"&amp; amp;"</span> <span class="o">+</span> <span class="s">"t="</span> <span class="o">+</span> <span class="n">Math</span><span class="p">.</span><span class="n">random</span><span class="p">();</span>
 </pre></div>
 <h3 id="2xiu-gai-headerhuan-cun-shi-jian">2.修改Header缓存时间</h3>
 <p>在XMLHttpRequest发送请求之前加上 XMLHttpRequest.setRequestHeader("If-Modified-
@@ -131,10 +131,10 @@ Since","0")。一般情况下,这里的 XMLHttpRequest 不会直接使用。</p>
 <p>XXXXX.send(YYYYYY);</p>
 <h2 id="a-sample_1">a Sample</h2>
 <p>我选择的是第一种方法，我觉得这种更为直观。我的具体代码如下（使用jQuery）：</p>
-<div class="highlight"><pre><span></span>jQuery.get("http://localhost/AzaAjaxChat/src/Chat/getXml", {
-    messageId: aacGlobal.currentMessageId,
-    version: Math.random()
-}, getRemoteDataCallBack);
+<div class="highlight"><pre><span class="n">jQuery</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">"http://localhost/AzaAjaxChat/src/Chat/getXml"</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nl">messageId:</span> <span class="n">aacGlobal</span><span class="p">.</span><span class="n">currentMessageId</span><span class="p">,</span>
+    <span class="nl">version:</span> <span class="n">Math</span><span class="p">.</span><span class="n">random</span><span class="p">()</span>
+<span class="p">},</span> <span class="n">getRemoteDataCallBack</span><span class="p">);</span>
 </pre></div>
             </div>
             <!-- /.entry-content -->
@@ -236,11 +236,6 @@ Since","0")。一般情况下,这里的 XMLHttpRequest 不会直接使用。</p>
                         <li class="list-group-item">
                             <a href="https://blog.alswl.com/category/managment/">
                                 <i class="fa fa-folder-open fa-lg"></i> Managment
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="https://blog.alswl.com/category/misc/">
-                                <i class="fa fa-folder-open fa-lg"></i> misc
                             </a>
                         </li>
                         <li class="list-group-item">

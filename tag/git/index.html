@@ -2,7 +2,7 @@
 <html lang="en"
 >
 <head>
-    <title>Git - Log4D</title>
+    <title>git - Log4D</title>
     <!-- Using the latest rendering mode for IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
@@ -14,7 +14,7 @@
 
 
     <meta name="author" content="alswl" />
-    <meta name="keywords" content="Git" />
+    <meta name="keywords" content="git" />
 
     <!-- Open Graph tags -->
         <meta property="og:site_name" content="Log4D" />
@@ -73,12 +73,7 @@ Log4D            </a>
 有一个小伙伴使用 git-svn 做 <code>rename</code> 操作时候，将一个目录 <code>svn mv</code> 了，
 导致新目录只存了最近几个月提交历史，丢失了历史信息。对团队开发而言，
 历史提交是非常宝贵的财产，我们想了一些办法，把这些数据提取出来。</p>
-<!-- more -->
-<div class="highlight"><pre><span></span><span class="cp"># 找出丢失之前的版本，列出丢失目录上层的操作记录。</span>
-<span class="n">svn</span> <span class="n">log</span> <span class="o">-</span><span class="n">l</span> <span class="mi">2000</span> <span class="nl">svn</span><span class="p">:</span><span class="c1">//log4d.com/trunk/apps/ios/ | less</span>
 
-<span class="cp"># 将重命名之前的版本拷贝到一个临时目录</span>
-<span class="n">svn</span> <span class="k">copy</span> <span class="nl">svn</span><span class="p">:</span><span class="c1">//log4d.com/trunk/apps/ios/nami@43252 svn://log4d.com/trunk/apps …</span></pre></div>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2014/01/renamed-svn-to-git/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -90,11 +85,16 @@ Log4D            </a>
 会将所有插件管理在 <code>.vim/bundle/</code> 中，详情可看
 <a href="/2012/04/vundle/">使用 Vundle 管理 Vim 插件</a>。</p>
 <p>官方安装 Vundle 方法如下：</p>
-<div class="highlight"><pre><span></span>$ git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
-</pre></div>
+git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+</pre>
 <p>我的 Vundle 的版本是 <code>59bff0c457f68c3d52bcebbf6068ea01ac8f5dac</code>，
 git 版本是 <code>git version 1.7.10.2</code> 。
-使用 <code>BundleInstall</code> 可以安装 <code>.vimrc</code> 中配置的插件 …</p>
+使用 <code>BundleInstall</code> 可以安装 <code>.vimrc</code> 中配置的插件，</p>
+<p>我使用 git 控制 <code>.vim</code> 和 <code>.vimrc</code> 版本。在 <code>BundleInstall</code>
+之后会导致 vundle 目录项目状态混乱，要么形成一个无法追踪的
+submodule 比如 <code>.vim/bundle/The-NERD-Commenter (untracked content)</code>
+，要么变成一个普通的文件夹 <code>.vim/bundle/vim-markdown</code>。</p>
+
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2012/06/vundle-submodule/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -110,9 +110,7 @@ Gource目前支持git/hg/svn，cvs通过一个简单的脚本也可以被Gource�
 be.com/watch?v=E5xPMW5fg48&amp;feature=player_embedded">Gource - Software Version Control Visualization Tool</a>，里面有Moodle/Git/Drupal/Postg
 reSQL/Ruby on Rails/Linux/VLC Player这几个非常漂亮的开源软件视频。Ruby on Rails那一段特别帅有没有。</p>
 <p>使用下列命令可以将视频录制下来(via <a href="http://code.google.com/p/gource/wiki/Videos">wiki</a>)：</p>
-<div class="highlight"><pre><span></span>pacman -S x264 #在archlinux下安装H264支持
-gource -1280x720 -o gource.ppm #在项目目录下运行，生成ppm文件
-#生成mp4文件，官方文档里面有-vpre slow项，会报错，去掉即可 …</pre></div>
+<div class="highlight"><pre><span class="n">pacman</span> <span class="o">-</span><span class="n">S</span> <span class="n">x264</span> <span class="err">#在 ...</span></pre></div>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2011/11/gource/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -174,11 +172,6 @@ gource -1280x720 -o gource.ppm #在项目目录下运行，生成ppm文件
                         <li class="list-group-item">
                             <a href="https://blog.alswl.com/category/managment/">
                                 <i class="fa fa-folder-open fa-lg"></i> Managment
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="https://blog.alswl.com/category/misc/">
-                                <i class="fa fa-folder-open fa-lg"></i> misc
                             </a>
                         </li>
                         <li class="list-group-item">

@@ -83,7 +83,17 @@ Log4D            </a>
 </blockquote>
 <p>在我的上一篇日志中，我写到如何
 <a href="http://jimmyg.org/blog/2009/python-command-line-interface-%28cli%29-with-sub-commands.html">build a command line interface with sub-commands in Python</a>。
-这次我来尝试如何通过 …</p>
+这次我来尝试如何通过 Python 的 <code>subprocess</code> 模块来和命令行指令进行交互。</p>
+<p>我想达到的目标是：</p>
+<ul>
+<li>查看当你键入命令时究竟发生了什么</li>
+<li>如何确认一个命令是否存在并找出到底在哪</li>
+<li>通过 Python 或 shell 执行命令</li>
+<li>向一个运行中的进程读取 STDOUT 或写入 STDIN</li>
+<li>检查进程的退出返回状态</li>
+<li>理解 Bash 在命令中断中扮演的角色，并如何将它们发送给程序</li>
+</ul>
+
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2012/10/working-with-python-subprocess/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -145,11 +155,6 @@ Log4D            </a>
                         <li class="list-group-item">
                             <a href="https://blog.alswl.com/category/managment/">
                                 <i class="fa fa-folder-open fa-lg"></i> Managment
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="https://blog.alswl.com/category/misc/">
-                                <i class="fa fa-folder-open fa-lg"></i> misc
                             </a>
                         </li>
                         <li class="list-group-item">

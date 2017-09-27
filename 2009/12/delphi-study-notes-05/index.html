@@ -16,7 +16,7 @@
 
         <meta name="author" content="alswl" />
         <meta name="keywords" content="Delphi" />
-        <meta name="description" content="今天是第五天了，我对自己的学习速度很不满意，还是处在半懵懂状态。语法还要经过大脑才能想出来，一点不顺手。 VCL控件使用了几个简单的，BDE数据库和ADO数据库这一块还没有涉及，网络编程也没涉及到。 这几天事情很烦，18号的课程设计赶不上了，我之前又是做的&#34;PylexChat&#34;聊 天系统这么有挑战性的题目。唉，真开始后悔了，老师那里也不好说，郁闷。还得等我组员回来讨论一下，这周就得答辩了。当时老师突然说：&#34;那你不是在学Delphi么， 就用Delphi写一个吧&#34;，我狂晕，学一门语言又不是吃菜，总得有个进度吧~ 昨天请同学吃饭，我把我生日提前一个月过，请一帮兔崽子吃饭唱歌，闹到11点多才回来，所以昨天的总结今天早晨才更新。 ps:我之前使用的Delphi7版本是绿色精简完美版，在插入AboutBox和跟踪源码（在某个VCL类名如TForm上Ctrl+单击）时 候出现找不到&#34;.pas&#34;的错误，我之后重新安装了188MB的安装版，错误消失了 …" />
+        <meta name="description" content="今天是第五天了，我对自己的学习速度很不满意，还是处在半懵懂状态。语法还要经过大脑才能想出来，一点不顺手。 VCL控件使用了几个简单的，BDE数据库和ADO数据库这一块还没有涉及，网络编程也没涉及到。 这几天事情很烦，18号的课程设计赶不上了，我之前又是做的&#34;PylexChat&#34;聊 天系统这么有挑战性的题目。唉，真开始后悔了，老师那里也不好说，郁闷。还得等我组员回来讨论一下，这周就得答辩了。当时老师突然说：&#34;那你不是在学Delphi么， 就用Delphi写一个吧&#34;，我狂晕，学一门语言又不是吃菜，总得有个进度吧~ 昨天请同学吃饭，我把我生日提前一个月过，请一帮兔崽子吃饭唱歌，闹到11点多才回来，所以昨天的总结今天早晨才更新。 ps:我之前使用的Delphi7版本是绿色精简完美版，在插入AboutBox和跟踪源码（在某个VCL类名如TForm上Ctrl+单击）时 候出现找不到&#34;.pas&#34;的错误，我之后重新安装了188MB的安装版，错误消失了 ..." />
 
 
 
@@ -80,7 +80,7 @@ Log4D            </a>
 <footer class="post-info">
     <span class="label label-default">Date</span>
     <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2009-12-01T00:00:00+08:00"> 2009-12-01</time>
+        <i class="fa fa-calendar"></i><time datetime="2009-12-01T00:00:00"> 2009-12-01</time>
     </span>
 
 
@@ -107,10 +107,10 @@ Log4D            </a>
 <h2 id="1tong-gou-shu-de-delphishi-xian">1.同构数的Delphi实现</h2>
 <p>这道题目是在一个PPT上看到的,题目如下："<strong>如果一个数刚好出现在其平方的右边，如5的平方为25，6的平方为36，这样的数我们称为同构数，请编程找出1～9
 999的全部同构数</strong>"。题目对我的难点在于类型的转换和<code>Math</code>函数的熟悉。</p>
-<div class="highlight"><pre><span></span>program P1;
-{如果一个数刚好出现在其平方的右边，如5的平方
-为25，6的平方为36，这样的数我们称为同构数，
-请编程找出1～9999的全部同构数}
+<div class="highlight"><pre><span class="n">program</span> <span class="n">P1</span><span class="p">;</span>
+<span class="p">{</span><span class="err">如果一个数刚好出现在其平方的右边，如</span><span class="mi">5</span><span class="err">的平方</span>
+<span class="err">为</span><span class="mi">25</span><span class="err">，</span><span class="mi">6</span><span class="err">的平方为</span><span class="mi">36</span><span class="err">，这样的数我们称为同构数，</span>
+<span class="err">请编程找出</span><span class="mi">1</span><span class="err">～</span><span class="mi">9999</span><span class="err">的全部同构数</span><span class="p">}</span>
 </pre></div>
 <p>{$APPTYPE CONSOLE}</p>
 <p>uses</p>
@@ -143,15 +143,15 @@ Log4D            </a>
 <p>一个小亮点就是如果文章修改了会有(*)标记，呵呵。</p>
 <p>上个小图</p>
 <p><a href="https://ohsolnxaa.qnssl.com/2009/12/delphi_editor.jpg"><img alt="image" src="https://ohsolnxaa.qnssl.com/2009/12/delphi_editor.jpg"/></a></p>
-<div class="highlight"><pre><span></span><span class="nt">procedure</span> <span class="nt">TForm1</span><span class="p">.</span><span class="nc">O1Click</span><span class="o">(</span><span class="nt">Sender</span><span class="o">:</span> <span class="nt">TObject</span><span class="o">);</span>
-<span class="nt">begin</span>
-  <span class="nt">if</span> <span class="nt">odOpenFile</span><span class="p">.</span><span class="nc">Execute</span><span class="o">()</span> <span class="nt">then</span>
-  <span class="nt">begin</span>
-    <span class="nt">FFileName</span> <span class="o">:=</span> <span class="nt">odOpenFile</span><span class="p">.</span><span class="nc">FileName</span><span class="o">;</span>
-    <span class="nt">mmContent</span><span class="p">.</span><span class="nc">Lines</span><span class="p">.</span><span class="nc">LoadFromFile</span><span class="o">(</span><span class="nt">odOpenFile</span><span class="p">.</span><span class="nc">FileName</span><span class="o">);</span>
-    <span class="nt">Self</span><span class="p">.</span><span class="nc">Caption</span> <span class="o">:=</span> <span class="nt">FFileName</span><span class="o">;</span>
-    <span class="nt">Self</span><span class="p">.</span><span class="nc">FIsEdited</span> <span class="o">:=</span> <span class="nt">False</span><span class="o">;</span>
-  <span class="nt">end</span><span class="o">;</span>
+<div class="highlight"><pre><span class="n">procedure</span> <span class="n">TForm1</span><span class="p">.</span><span class="n">O1Click</span><span class="p">(</span><span class="n">Sender</span><span class="o">:</span> <span class="n">TObject</span><span class="p">);</span>
+<span class="n">begin</span>
+  <span class="k">if</span> <span class="n">odOpenFile</span><span class="p">.</span><span class="n">Execute</span><span class="p">()</span> <span class="n">then</span>
+  <span class="n">begin</span>
+    <span class="n">FFileName</span> <span class="o">:=</span> <span class="n">odOpenFile</span><span class="p">.</span><span class="n">FileName</span><span class="p">;</span>
+    <span class="n">mmContent</span><span class="p">.</span><span class="n">Lines</span><span class="p">.</span><span class="n">LoadFromFile</span><span class="p">(</span><span class="n">odOpenFile</span><span class="p">.</span><span class="n">FileName</span><span class="p">);</span>
+    <span class="n">Self</span><span class="p">.</span><span class="n">Caption</span> <span class="o">:=</span> <span class="n">FFileName</span><span class="p">;</span>
+    <span class="n">Self</span><span class="p">.</span><span class="n">FIsEdited</span> <span class="o">:=</span> <span class="n">False</span><span class="p">;</span>
+  <span class="n">end</span><span class="p">;</span>
 </pre></div>
 <p>end;</p>
 <p>procedure TForm1.S1Click(Sender: TObject);</p>
@@ -315,11 +315,6 @@ Log4D            </a>
                         <li class="list-group-item">
                             <a href="https://blog.alswl.com/category/managment/">
                                 <i class="fa fa-folder-open fa-lg"></i> Managment
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="https://blog.alswl.com/category/misc/">
-                                <i class="fa fa-folder-open fa-lg"></i> misc
                             </a>
                         </li>
                         <li class="list-group-item">

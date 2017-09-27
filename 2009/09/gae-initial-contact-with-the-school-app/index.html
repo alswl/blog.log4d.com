@@ -16,7 +16,7 @@
 
         <meta name="author" content="alswl" />
         <meta name="keywords" content="Python,GAE,Google,人人" />
-        <meta name="description" content="下午刚有了在Google App Engine上写校内（人人网）App的想法，下午就迫不及待的开始动手。下面我以一个简单的Hello World来介绍一个开发步骤。 1.创建GAE应用 建立一个Google App Engine空间，需要一个Google帐号，仅此而已。拥有帐号，进入 App Engine ，激活这个服务，就可以创建新的应用。如何创建不是我这里要讲的重点，现在GAE支持简体中文版本，应该没有任何问题。 一个简单的App控制台 2.部署GAE App 刚才建立的GAE App其实还是空的，如果访问xxx.appspot.com时候，你会发现什么都出不来（按理应该是404页面，但是由于连404页面都没有设置 ，所以Nothing,检查http状态会发现返回的是404状态）。 这时候我们就要开始部署这个GAE App了：1.下载一个Google App Engine SDK for Python-Win，这样就可以在本地测试项目 …" />
+        <meta name="description" content="下午刚有了在Google App Engine上写校内（人人网）App的想法，下午就迫不及待的开始动手。下面我以一个简单的Hello World来介绍一个开发步骤。 1.创建GAE应用 建立一个Google App Engine空间，需要一个Google帐号，仅此而已。拥有帐号，进入 App Engine ，激活这个服务，就可以创建新的应用。如何创建不是我这里要讲的重点，现在GAE支持简体中文版本，应该没有任何问题。 一个简单的App控制台 2.部署GAE App 刚才建立的GAE ..." />
 
 
 
@@ -80,7 +80,7 @@ Log4D            </a>
 <footer class="post-info">
     <span class="label label-default">Date</span>
     <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2009-09-28T00:00:00+08:00"> 2009-09-28</time>
+        <i class="fa fa-calendar"></i><time datetime="2009-09-28T00:00:00"> 2009-09-28</time>
     </span>
 
 
@@ -123,9 +123,9 @@ CN/appengine/docs/python/config/appconfig.html">app.yaml的具体设置</a></p>
 我创建了一个名为jasontidemo的App，并且启动服务器，可以进行浏览。</p>
 <p>在一切没有问题之后，我们就可以惦记Deploy部署这个项目了，这时候要输入帐号和密码，然后出现console控制台等待信息。出现下面提示时候，就说明上传成功
 了。</p>
-<div class="highlight"><pre><span></span>Closing update: new version is ready to start serving.
-Uploading index definitions.
-Password for alswlwangzi@gmail.com: 2009-09-27 16:00:36 (Process exited with code 0)
+<div class="highlight"><pre><span class="n">Closing</span> <span class="n">update</span><span class="o">:</span> <span class="n">new</span> <span class="n">version</span> <span class="n">is</span> <span class="n">ready</span> <span class="n">to</span> <span class="n">start</span> <span class="n">serving</span><span class="p">.</span>
+<span class="n">Uploading</span> <span class="n">index</span> <span class="n">definitions</span><span class="p">.</span>
+<span class="n">Password</span> <span class="k">for</span> <span class="n">alswlwangzi</span><span class="err">@</span><span class="n">gmail</span><span class="p">.</span><span class="n">com</span><span class="o">:</span> <span class="mi">2009</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">27</span> <span class="mi">16</span><span class="o">:</span><span class="mo">00</span><span class="o">:</span><span class="mi">36</span> <span class="p">(</span><span class="n">Process</span> <span class="n">exited</span> <span class="n">with</span> <span class="n">code</span> <span class="mi">0</span><span class="p">)</span>
 </pre></div>
 <p>这时候我们就可以打开xxx.appspot.com查看刚才部署的网站。</p>
 <h2 id="3xiao-nei-ying-yong">3.校内应用</h2>
@@ -152,7 +152,7 @@ URL」，后者就是实际的地址，我们将填上刚才的xxx.appspot.com�
 和post上，具体原因是因为校内发起请求GAE服务器用的是Post方法，而我们的main.py中目前只相应get方法，导致了校内请求GAE
 Post方法，服务器没有这个方法调用，就返回了405错误。</p>
 <p>修复这个问题只给main.py的MainHandler这个类加上post方法</p>
-<div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">MainHandler</span><span class="p">(</span><span class="nx">webapp</span><span class="p">.</span><span class="nx">RequestHandler</span><span class="p">)</span><span class="o">:</span>
+<div class="highlight"><pre><span class="n">class</span> <span class="n">MainHandler</span><span class="p">(</span><span class="n">webapp</span><span class="p">.</span><span class="n">RequestHandler</span><span class="p">)</span><span class="o">:</span>
 </pre></div>
 <p>def head(self, *args):</p>
 <p>return self.get(*args)</p>
@@ -162,7 +162,7 @@ Post方法，服务器没有这个方法调用，就返回了405错误。</p>
 <p>最后我加上一个简单的<xn:profile-pic></xn:profile-pic>来展示一下整个App</p>
 <p>下面我发布我的这个简单的Hello World!（其实因为要使用XNML，所以已经不是单纯的打出Hello World了）</p>
 <p>app.yaml：定义了main.py和404页面</p>
-<div class="highlight"><pre><span></span><span class="n">application</span><span class="o">:</span> <span class="n">jasontidemo</span>
+<div class="highlight"><pre><span class="n">application</span><span class="o">:</span> <span class="n">jasontidemo</span>
 <span class="n">version</span><span class="o">:</span> <span class="mi">1</span>
 <span class="n">runtime</span><span class="o">:</span> <span class="n">python</span>
 <span class="n">api_version</span><span class="o">:</span> <span class="mi">1</span>
@@ -196,12 +196,12 @@ from google.appengine.ext import webapp</p>
 <xn:profile-pic linked="true" size="tiny" uid="loggedinuser"></xn:profile-pic>
 <xn:profile-pic linked="true" size="normal" uid="loggedinuser"></xn:profile-pic>
 <xn:profile-pic linked="true" size="main" uid="loggedinuser"></xn:profile-pic>
-<br>
+<br/>
 
 姓名：
 
 <xn:name linked="true" shownetwork="true" uid="loggedinuser"></xn:name>
-</br></div>
+</div>
 <p>''')</p>
 <p>def get(self):</p>
 <p>self.response.out.write('''<b>使用者的名称及其大中小三种头像：</b></p>
@@ -212,20 +212,20 @@ from google.appengine.ext import webapp</p>
 <xn:profile-pic linked="true" size="tiny" uid="loggedinuser"></xn:profile-pic>
 <xn:profile-pic linked="true" size="normal" uid="loggedinuser"></xn:profile-pic>
 <xn:profile-pic linked="true" size="main" uid="loggedinuser"></xn:profile-pic>
-<br>
+<br/>
 
 姓名：
 
 <xn:name linked="true" shownetwork="true" uid="loggedinuser"></xn:name>
-</br></div>
+</div>
 <p>''')</p>
 <p>def main():</p>
 <p>application = webapp.WSGIApplication([('/.*', MainHandler)], debug=True)</p>
 <p>wsgiref.handlers.CGIHandler().run(application)</p>
 <p>if <strong>name</strong> == '<strong>main</strong>':</p>
 <p>main() not_found.py：自定义的404页面，其实就是简单的在MainHandler里面的get加入简单的文本。</p>
-<div class="highlight"><pre><span></span>  def get(self):
-    self.response.out.write('404 Not Found')
+<div class="highlight"><pre>  <span class="n">def</span> <span class="n">get</span><span class="p">(</span><span class="n">self</span><span class="p">)</span><span class="o">:</span>
+    <span class="n">self</span><span class="p">.</span><span class="n">response</span><span class="p">.</span><span class="n">out</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="err">'</span><span class="mi">404</span> <span class="n">Not</span> <span class="n">Found</span><span class="err">'</span><span class="p">)</span>
 </pre></div>
 <p>把这个GAE App部署，然后就可以在校内的apps.renren.com/xxx/使用这个应用了。</p>
 <p><a href="https://ohsolnxaa.qnssl.com/2009/09/xnapp_show1.jpg"><img alt="xnapp_show" src="https://ohsolnxaa.qnssl.com/2009/09/xnapp_show.jpg"/></a></p>
@@ -332,11 +332,6 @@ from google.appengine.ext import webapp</p>
                         <li class="list-group-item">
                             <a href="https://blog.alswl.com/category/managment/">
                                 <i class="fa fa-folder-open fa-lg"></i> Managment
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="https://blog.alswl.com/category/misc/">
-                                <i class="fa fa-folder-open fa-lg"></i> misc
                             </a>
                         </li>
                         <li class="list-group-item">

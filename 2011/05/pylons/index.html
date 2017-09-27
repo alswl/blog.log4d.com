@@ -16,7 +16,7 @@
 
         <meta name="author" content="alswl" />
         <meta name="keywords" content="Python,Mako,Paster,Pylons,SQLAlchemy" />
-        <meta name="description" content="活着就是折腾，最近事情多的一塌糊涂，烦躁的很，导致log4d也荒废一个月了。今天趁着周五晚上，梳理一下最近学习的pylons知识。 关于Pylons Pylons是一个用pythons写的web框架，优点是配置灵活，默认使用Mako作为Template，SQLAlchemy作为 ORM映射。使用BSD作为授权协议。 托WSGI的福，python的web框架超多，甚至高手5分钟可以自己手写一个web框架，这种情况也导致了Python web框架的纷杂。我这里选择Pylons（其实是被选择），并不是说Pylons一定最好，而是比较适合当前项目。更多的Python web框架对比建议看这篇浅谈Python web框架，另外，这个Best Web- Framework有直观的对比。 Pylons环境配置 因为开发机是刚到手的ThinkPad，没有冒险安装Linux，所以这里的安装环境是Win7 + Python 2.6 + MySQL5.1。 1、安装Pylons Pylons似乎没有方便的easy_install，原因是由于Pylons在安装过程中，会生成一个目标环境 …" />
+        <meta name="description" content="活着就是折腾，最近事情多的一塌糊涂，烦躁的很，导致log4d也荒废一个月了。今天趁着周五晚上，梳理一下最近学习的pylons知识。 关于Pylons Pylons是一个用pythons写的web框架，优点是配置灵活，默认使用Mako作为Template，SQLAlchemy作为 ORM映射。使用BSD作为授权协议。 托WSGI的福，python的web框架超多，甚至高手5分钟可以自己手写一个web框架，这种情况也导致了Python web框架的纷杂。我这里选择Pylons（其实是被选择），并不是说Pylons一定最好，而是比较适合当前项目。更多的Python web框架对比建议看这篇浅谈Python web框架，另外，这个Best Web- Framework ..." />
 
 
 
@@ -80,7 +80,7 @@ Log4D            </a>
 <footer class="post-info">
     <span class="label label-default">Date</span>
     <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2011-05-16T00:00:00+08:00"> 2011-05-16</time>
+        <i class="fa fa-calendar"></i><time datetime="2011-05-16T00:00:00"> 2011-05-16</time>
     </span>
 
 
@@ -138,8 +138,8 @@ setuptools-in-windows/</a>。</p>
 pil</code>，前者是memcache的python驱动，后者是python图形库。</p>
 <h3 id="5-chu-shi-hua-shu-ju-ku">5、初始化数据库</h3>
 <p>托SQLAlchemy的福，我们可以让它自动给我们创建映射表。首先确保在model下面配置好model类。</p>
-<div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">Person</span><span class="p">(</span><span class="nx">Base</span><span class="p">)</span><span class="o">:</span>
-    <span class="nx">__tablename__</span> <span class="o">=</span> <span class="s2">"person"</span>
+<div class="highlight"><pre><span class="n">class</span> <span class="n">Person</span><span class="p">(</span><span class="n">Base</span><span class="p">)</span><span class="o">:</span>
+    <span class="n">__tablename__</span> <span class="o">=</span> <span class="s">"person"</span>
 </pre></div>
 <p>id = Column(Integer, primary_key=True)</p>
 <p>name = Column(String(100))</p>
@@ -148,9 +148,9 @@ pil</code>，前者是memcache的python驱动，后者是python图形库。</p>
 <p>self.name = name</p>
 <p>self.email = email</p>
 <p>然后在目标项目下面的development.ini中配置数据库连接字符串。</p>
-<div class="highlight"><pre><span></span># SQLAlchemy database URL
-#sqlalchemy.url = sqlite:///%(here)s/myb.db
-sqlalchemy.url = mysql://test:test@localhost/myb?charset=utf8&amp;use_unicode=0
+<div class="highlight"><pre><span class="cp"># SQLAlchemy database URL</span>
+<span class="cp">#sqlalchemy.url = sqlite:</span><span class="c1">///%(here)s/myb.db</span>
+<span class="n">sqlalchemy</span><span class="p">.</span><span class="n">url</span> <span class="o">=</span> <span class="n">mysql</span><span class="o">:</span><span class="c1">//test:test@localhost/myb?charset=utf8&amp;use_unicode=0</span>
 </pre></div>
 <p>最后在shell中执行<code>paster setup-app development.ini</code>，即可初始化好数据库结构。</p>
 <p>如果需要在初始化时候加入测试数据，可以在项目目录下的websetup.py中setup_app方法填充数据。</p>
@@ -278,11 +278,6 @@ ontroller文件了，可以修改代码，完成我们的目的。</p>
                         <li class="list-group-item">
                             <a href="https://blog.alswl.com/category/managment/">
                                 <i class="fa fa-folder-open fa-lg"></i> Managment
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="https://blog.alswl.com/category/misc/">
-                                <i class="fa fa-folder-open fa-lg"></i> misc
                             </a>
                         </li>
                         <li class="list-group-item">

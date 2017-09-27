@@ -80,8 +80,7 @@ server 等模块的程序。</p>
 <p>详细介绍可以看它的官方网站 http://starship.python.net/crew/theller/py2exe/</p>
 <h3 id="1-xia-zai-an-zhuang-py2exe">1. 下载安装py2exe</h3>
 <p>py2exe目前的版本是0.5.4，根据你安装的python的版本选择下载的文件</p>
-<p><a href="http://prdownloads.sourceforge.net/py2exe/py2ex
-e-0.5.4.win32-py2.3.exe?download">py2exe-0.5.4.win32-py2.3.exe …</a></p>
+<p><a href="http://prdownloads.sourceforge.net ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/09/python-program-will-be-compiled-into-an-executable-program-exe/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -98,7 +97,7 @@ Python的标准模块struct就用来解决这个问题。</p>
 <p>struct模块的内容不多，也不是太难，下面对其中最常用的方法进行介绍：</p>
 <h2 id="structpack">struct.pack</h2>
 <p>struct.pack用于将Python的值根据格式符，转换为字符串（因为Python中没有字节(Byte)类型，可以把这里的字符串理解为字节流，或字节数组
-）。其函数原型为：struct.pack …</p>
+）。其函数原型为：struct.pack ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/09/python-data-format-conversion-using-struct/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -113,16 +112,16 @@ Python的标准模块struct就用来解决这个问题。</p>
 object，然后调用read()，write()等方法对文件进行读写操作。</p>
 <h2 id="1open">1.open</h2>
 <p>使用open打开文件后一定要记得调用文件对象的close()方法。比如可以用try/finally语句来确保最后能关闭文件。</p>
-<div class="highlight"><pre><span></span>file_object = open('thefile.txt')
-try:
-    all_the_text = file_object.read( )
-finally:
-    file_object.close( )
+<div class="highlight"><pre><span class="n">file_object</span> <span class="o">=</span> <span class="n">open</span><span class="p">(</span><span class="err">'</span><span class="n">thefile</span><span class="p">.</span><span class="n">txt</span><span class="err">'</span><span class="p">)</span>
+<span class="nl">try:</span>
+    <span class="n">all_the_text</span> <span class="o">=</span> <span class="n">file_object</span><span class="p">.</span><span class="n">read</span><span class="p">(</span> <span class="p">)</span>
+<span class="nl">finally:</span>
+    <span class="n">file_object</span><span class="p">.</span><span class="n">close</span><span class="p">(</span> <span class="p">)</span>
 </pre></div>
 <p>注：不能把open语句放在try块里，因为当打开文件出现异常时，文件对象file_object无法执行close()方法。</p>
 <h2 id="2du-wen-jian">2.读文件</h2>
 <h3 id="du-wen-ben-wen-jian">读文本文件</h3>
-<div class="highlight"><pre><span></span>input = open …</pre></div>
+<div class="highlight"><pre><span class="n">input</span> <span class="o">=</span> <span class="n">open ...</span></pre></div>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/09/python-to-read-and-write-files/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -136,14 +135,12 @@ Enginee支持Python,所以选择了Python。</p>
 <p>OK，这几天写的两段小代码，来自《<a href="http://www.china-
 pub.com/39969&amp;ref=xiangguan">Python核心编程（第二版）</a>》（原书中写这段有错误，我这儿也算勘误了）</p>
 <p>makeTextFile.py</p>
-<div class="highlight"><pre><span></span>'makeTextFile.py -- create text file'
+<div class="highlight"><pre><span class="err">'</span><span class="n">makeTextFile</span><span class="p">.</span><span class="n">py</span> <span class="o">--</span> <span class="n">create</span> <span class="n">text</span> <span class="n">file</span><span class="err">'</span>
 </pre></div>
 <p>import os ls = os.linesep</p>
 <h1>get filename</h1>
 <p>while True:</p>
-<p>fname = raw_input('&gt; a txt file path')</p>
-<p>if os.path.exists(fname):</p>
-<p>print "Error …</p>
+<p>fname = raw_input('&gt; a ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/09/python-code-to-read-and-write-txt/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -218,11 +215,6 @@ pub.com/39969&amp;ref=xiangguan">Python核心编程（第二版）</a>》（原�
                         <li class="list-group-item">
                             <a href="https://blog.alswl.com/category/managment/">
                                 <i class="fa fa-folder-open fa-lg"></i> Managment
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="https://blog.alswl.com/category/misc/">
-                                <i class="fa fa-folder-open fa-lg"></i> misc
                             </a>
                         </li>
                         <li class="list-group-item">

@@ -68,6 +68,24 @@ Log4D            </a>
         <div class="col-lg-8 col-lg-offset-2">
 
             <article class="article-list">
+                <h2 class="title"><a href="https://blog.alswl.com/2011/09/unison/">使用unison同步文件</a></h2>
+                <div class="summary"><h2 id="1-tong-bu-kong">1. 同步控</h2>
+<p>我是一个同步控，会妄想自己的文件遭遇不可修复性的毁灭， 因此经常丧心病狂的做备份。 比如每每备份到移动硬盘中，
+比如每年一次的刻盘备份，又比如我现在要介绍的同步软件unison。</p>
+<p>据我自己考察，这种对备份文件丢失的恐惧来自于小时候一次意外格式化F盘， 从而导致我搜集的所有《龙珠》漫画丢失而产生的。</p>
+<p>另一个同步文件的需求来自于我的两台电脑：常驻家中的DELL 6400，是我的大房； 最近得宠的小蜜Thinkpad X201。其中6400是Win7系统，
+而X200是Arch Linux主打的双系统，我希望两者的文件保持同步， 便于我两边使用时候都能检索资料。如何实现跨平台同步方案让我头疼了好久，
+幸好有unison拯救了我。</p>
+<h2 id="2-tong-bu-li-shi">2. 同步历史</h2>
+<p>很久很久以前，那时候我还喝三鹿，我开始用TotalCmd来做同步文件， 依稀记得那个功能是在 <code>命令</code> 里面的 <code>比较文件夹</code> 。
+这个功能满足我当时简单粗糙的需求。只要把需要同步的文件夹分列TotalCmd两侧， 然后就可以通过命令自动查找相异的文件。</p>
+<p>当时在我看来，尤其神奇的是文件过滤功能和按照 <code>日期</code> 、 <code>文件内容</code> 比较功能。 着实帮了我很大忙。</p>
+<p>再过了几年，TotalCmd不能满足我了，我不想每次都选择需要同步的文件， 再用肉眼比对，同步功能也偏少。我搜寻到一款老牌的同步工具 ...</p>
+                </div>
+                <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2011/09/unison/"><i class="icon-circle-arrow-right"></i>more ...</a>
+            </article>
+            <hr/>
+            <article class="article-list">
                 <h2 class="title"><a href="https://blog.alswl.com/2011/09/interlace-progressive-image/">网页渐进式载入图片</a></h2>
                 <div class="summary"><h2 id="question">Question</h2>
 <p>为什么有的网页打开图片是从上到下逐行打开，有的则是先显示低分辨率图片再逐渐加入细节？</p>
@@ -91,7 +109,7 @@ Log4D            </a>
 </ul>
 <p>&amp;nbsp_place_holder;下面是答案&amp;nbsp_place_holder;</p>
 <hr/>
-<p>浏览器下载图片的时候渐进式载入，这样下载完一张图可以看到它的样子，只不过只是不清楚的图，这样可以减少你等待看它的时间。&amp;nbsp_place_holder …</p>
+<p>浏览器下载图片的时候渐进式载入，这样下载完一张图可以看到它的样子，只不过只是不清楚的图，这样可以减少你等待看它的时间。&amp;nbsp_place_holder ...</p></hr/>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2011/09/interlace-progressive-image/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -117,12 +135,12 @@ Log4D            </a>
 <p>Pylons的测试主要使用的其中的 Paste / nose / WebOb / WebTest。 遇到问题的时候，可以去翻一翻上面的文档。</p>
 <h2 id="2-pylonszhong-ce-shi-mu-lu-jie-gou">2. Pylons中测试目录结构</h2>
 <p>目录结构如下</p>
-<div class="highlight"><pre><span></span>├─config
-├─controllers
-├─lib
-├─model
-├─public
-├─templates …</pre></div>
+<div class="highlight"><pre><span class="err">├─</span><span class="nx">config</span>
+<span class="err">├─</span><span class="nx">controllers</span>
+<span class="err">├─</span><span class="nx">lib</span>
+<span class="err">├─</span><span class="nx">model</span>
+<span class="err">├─</span><span class="kr">public</span>
+<span class="err">├─</span><span class="nx">templates ...</span></pre></div>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2011/09/nose/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -147,10 +165,7 @@ diawiki到html，原文会有更多的wiki模板样式便于查看，有问题�
 <li>VPN密码</li>
 </ul>
 <h2 id="bian-ji-pei-zhi-wen-jian_1">编辑配置文件</h2>
-<p>用你称手的编辑器打开/etc/ppp/options.pptp。这个文件为你的VPN连接启用了一系列默认安全设置。如果你连接时候出现问题，你可以自定义配置。
-你的options.pptp文件最少需要包含以下内容：</p>
-<div class="highlight"><pre><span></span>lock
-noauth …</pre></div>
+<p>用你称手的编辑器打开/etc ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2011/09/pptpclient/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -164,7 +179,7 @@ noauth …</pre></div>
 view and fully interact with one computer desktop (the "VNC server") using a
 simple program (the "VNC viewer") on another computer desktop anywhere on the
 Internet.</p>
-<p>VNC 是一个允许你从一台电脑（VNC 查看器）查看并且操作另外一台电脑（VNC 服务器）小程序 …</p></blockquote>
+<p>VNC 是一个允许你从一台电脑（VNC 查看器）查看并且操作另外一台电脑（VNC 服务器）小程序 ...</p></blockquote>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2011/08/nxserver/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -181,7 +196,7 @@ Internet.</p>
 line 239 in staticpage</p>
 <p>&amp;nbsp_place_holder;return render('/pages/%s.html' % name)</p>
 <p>File '/Users/amaslov/Projects/dou-pylons/py/lib/python2.5/site-
-packages/Pylons-0.9 …</p></blockquote>
+packages/Pylons-0.9 ...</p></blockquote>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2011/08/mako-typeerror/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -204,7 +219,7 @@ packages/Pylons-0.9 …</p></blockquote>
 </ol>
 <p>为了实现效果，我需要将提示信息暂存到某个地方。有3个地方可供选择： js 全局变量、输入框自定义属性、上下文 DOM 节点。</p>
 <p>js 全局变量比较难控制元素标识，并不是每个元素都可以精准的用 id 标记；输入框自定义属性会破坏语义；在上下文加入节点会破坏 DOM 树。</p>
-<p>权衡之后，我选择了使用 输入框自定义属性实现 …</p>
+<p>权衡之后，我选择了使用 输入框自定义属性实现 ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2011/08/auto-clean-input/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -226,12 +241,12 @@ in-ie</a></p>
                 <h2 class="title"><a href="https://blog.alswl.com/2011/08/go-pylons-py-in-python2-7/">go-pylons.py在Python2.7下错误解决</a></h2>
                 <div class="summary"><p>当使用 Python2.7 +<a href="http://pylonshq.com/download/1.0/go-pylons.py"> go-pylons.py</a>
 创建 Pylons 运行环境的话，会报一下错误。</p>
-<div class="highlight"><pre><span></span><span class="p">[</span><span class="n">alswl</span><span class="nd">@arch</span><span class="o">-</span><span class="n">vm</span> <span class="n">xingtong</span><span class="p">]</span><span class="err">$</span> <span class="n">python</span> <span class="n">go</span><span class="o">-</span><span class="n">pylons</span><span class="o">.</span><span class="n">py</span> <span class="n">myb_env</span>
-<span class="n">New</span> <span class="n">python</span> <span class="n">executable</span> <span class="ow">in</span> <span class="n">myb_env</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">python</span>
-<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
-  <span class="n">File</span> <span class="s2">"/home/alswl/work/xingtong/myb_env/lib/python2.7/site.py"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">67</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-    <span class="kn">import</span> <span class="nn">os</span>
-  <span class="n">File</span> <span class="s2">"/home/alswl …</span></pre></div>
+<div class="highlight"><pre><span class="cp">[</span><span class="nx">alswl</span><span class="p">@</span><span class="nx">arch</span><span class="na">-vm</span> <span class="nx">xingtong</span><span class="cp">]</span>$ python go-pylons.py myb_env
+New python executable in myb_env/bin/python
+Traceback (most recent call last):
+  File "/home/alswl/work/xingtong/myb_env/lib/python2.7/site.py", line 67, in <span class="nt">&lt;module&gt;</span>
+    import os
+  File "/home/alswl/work ...</pre></div>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2011/08/go-pylons-py-in-python2-7/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -245,50 +260,12 @@ in-ie</a></p>
 </blockquote>
 <p>大部分linux发行版的安装工具都可以直接安装 lrzsz，比如apt-get /
 pacman，当然我们也可以下载安装包手动安装。这次由于我所在的服务器没有管理员权限，我就使用源码包安装。</p>
-<div class="highlight"><pre><span></span>$ mkdir /home/alswl/app
-$ wget http://ohse.de/uwe/releases/lrzsz-0.12.20.tar.gz
-$ tar xzvf lrzsz-0.12.20.tar.gz
-$ <span class="nb">cd</span> lrzsz-0.12.20
-$ ./configure …</pre></div>
+<div class="highlight"><pre><span class="err">$</span> <span class="n">mkdir</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">alswl</span><span class="o">/</span><span class="n">app</span>
+<span class="err">$</span> <span class="n">wget</span> <span class="n">http</span><span class="o">:</span><span class="c1">//ohse.de/uwe/releases/lrzsz-0.12.20.tar.gz</span>
+<span class="err">$</span> <span class="n">tar</span> <span class="n">xzvf</span> <span class="n">lrzsz</span><span class="o">-</span><span class="mf">0.12.20</span><span class="p">.</span><span class="n">tar</span><span class="p">.</span><span class="n">gz</span>
+<span class="err">$</span> <span class="n">cd</span> <span class="n">lrzsz</span><span class="o">-</span><span class="mf">0.12 ...</span></pre></div>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2011/07/lrzsz/"><i class="icon-circle-arrow-right"></i>more ...</a>
-            </article>
-            <hr/>
-            <article class="article-list">
-                <h2 class="title"><a href="https://blog.alswl.com/2011/07/eventbug/">Html元素事件查看器Eventbug</a></h2>
-                <div class="summary"><p>Chrome的开发者工具里面有一个小功能：查看当前元素的Event，比如onclick/onblur等事件。</p>
-<p><img alt="image" src="https://ohsolnxaa.qnssl.com/2011/07/chrome_event.png"/></p>
-<p>一直想在Firefox里面也找到类似的插件，今天正好看到这么一个好东西，叫做EventBug。</p>
-<p>官方的介绍如下</p>
-<blockquote>
-<p>Eventbug是一款能够列出所有绑定事件的Firebug扩展，它将这些事件按事件类型排列。</p>
-<ul>
-<li>
-<p>需要Firebug1.5</p>
-</li>
-<li>
-<p>源码沿用Firebug的BSD风格协议</p>
-</li>
-<li>
-<p>请使用Firebug的Bug报告列表来提交问题</p>
-</li>
-<li>
-<p>请使用Firebug的新闻列表来提出问题</p>
-</li>
-</ul>
-<p>作者：John J. Barton, Jan Odvarko</p>
-</blockquote>
-<p>测试发现在Firefox5下面没有问题。</p>
-<p><a href="http://upload-
-log4d.qiniudn.com/2011/07/eventbug.png"><img alt="image" src="https://ohsolnxaa.qnssl.com/2011/07/eventbug.png"/></a></p>
-<p>这么一款插件在调试js或者对别人的页面做一些js hack特别有用，强烈推荐之。</p>
-<ul>
-<li><a href="http://getfirebug.com/wiki/index.php/Firebug_Extensions#Eventbug">Eventbug官方地址</a></li>
-<li><a href="http://www.softwareishard.com/blog/firebug/eventbug-alpha-released/">Eventbug介绍博文（En）</a></li>
-<li><a href="http://getfirebug.com/releases/eventbug/">Eventbug下载链接</a></li>
-</ul>
-                </div>
-                <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2011/07/eventbug/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
             <hr/>
 
@@ -398,11 +375,6 @@ log4d.qiniudn.com/2011/07/eventbug.png"><img alt="image" src="https://ohsolnxaa.
                         <li class="list-group-item">
                             <a href="https://blog.alswl.com/category/managment/">
                                 <i class="fa fa-folder-open fa-lg"></i> Managment
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="https://blog.alswl.com/category/misc/">
-                                <i class="fa fa-folder-open fa-lg"></i> misc
                             </a>
                         </li>
                         <li class="list-group-item">

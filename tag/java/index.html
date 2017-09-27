@@ -77,7 +77,9 @@ Log4D            </a>
 <p>参考：
 <a href="http://www.oracle.com/technetwork/java/javase/tech/vmoptions-jsp-140102.html">Java HotSpot VM Options</a>
 <a href="http://stas-blogspot.blogspot.com/2011/07/most-complete-list-of-xx-options-for.html">The most complete list of -XX options for Java JVM </a>
-<a href="http://docs.oracle.com/cd/E13209_01/wlcp/wlss30/configwlss/jvmgc.html"> Tuning JVM Garbage Collection …</a></p>
+<a href="http://docs.oracle.com/cd/E13209_01/wlcp/wlss30/configwlss/jvmgc.html"> Tuning JVM Garbage Collection for Production Deployments </a>
+<a href="http://www.jvmer.com/jvm-xx-参数介绍/">JVM -XX: 参数介绍</a></p>
+
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2014/03/java-options/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -99,7 +101,7 @@ Directory Layout</a></p>
 <p>Assembly descriptors</p>
 <p>src/main/config</p>
 <p>Configuration files</p>
-<p>src/main …</p>
+<p>src/main ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2011/04/run-jetty-in-maven/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -113,16 +115,8 @@ pse下使用Maven不用插件也能完成，我们只需要使用bin/mvn下面�
 /getting-started/maven-in-five-minutes.html">Getting Started in 5 Minutes</a>和<a href="http://maven.apache.org/guides/getting-
 started/index.html">Getting Started in 30
 Minutes</a>两种教程，我这里再简化一下，记录一下常用命令。</p>
-<div class="highlight"><pre><span></span>#建立一个空项目，包含一个HelloWorld，可以通过
-#-DarchetypeGroupId=&lt;archetype-groupId&gt; -DarchetypeArtifactId=&lt;archetype-artifactId&gt;
-#命令创建更多类型项目
-mvn archetype:create -DgroupId=com.dddspace.java -DartifactId=helloworld
-</pre></div>
-<h1>编译打包到jar或者war，根据pom中定义</h1>
-<p>maven package</p>
-<h1>jUnit跑跑</h1>
-<p>mvn test</p>
-<h1>神奇的命令，帮助创建Eclipse项目 …</h1>
+<div class="highlight"><pre><span class="cp">#建立一个空项目，包含一个HelloWorld，可以通过</span>
+<span class="cp">#-DarchetypeGroupId=&lt;archetype-groupId ...</span></pre></div>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2011/03/maven-eclipse/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -143,7 +137,7 @@ d。Hibernate和iBatis有各自的适合使用的领域，不能单纯的说谁�
 <p>我对权限控制的理解，从最早的单表用户字段管理，到贴吧的基于角色权限控制，直到后来公司使用的基于权限+菜单控制，最好到现在的Jaas提供的资源-角色-权限-
 菜单 控制体系。细化到原子级的权限控制带来了莫大的好处，这个很大程度归功于Jaas。</p>
 <blockquote>
-<p>Java Authentication …</p></blockquote>
+<p>Java Authentication ...</p></blockquote>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2010/04/recent-study-technologys/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -176,7 +170,7 @@ domainname_adminservername</code>的服务启动类型为"自动"，手动将它
 <li>DWR Version 2.0.5 starting.  </li>
 <li>
 <ul>
-<li>Servlet Engine: WebLogic XMLX Module 8.1 SP1 Fri Jun 20 23:06:40 PDT …</li></ul></li></ul>
+<li>Servlet Engine: WebLogic XMLX Module 8.1 SP1 Fri Jun 20 23:06:40 PDT ...</li></ul></li></ul>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2010/03/dwr2-0-jdk1-4-configuration/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -188,19 +182,9 @@ domainname_adminservername</code>的服务启动类型为"自动"，手动将它
 %E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6%29">Wiki</a>）：在计算机科学中，反射是<strong>指一种特定类型的计算机程序能够在运行时以一种依
 赖于它的代码的抽象特性和它的运行时行为的方式被更改</strong>的特性。用比喻来说，那种程式能够"<strong>观察</strong>"并且修改自己的行为。</p>
 <p>Java中的反射示例如下：</p>
-<div class="highlight"><pre><span></span>package dddspace.job.exercise1116;
+<div class="highlight"><pre><span class="n">package</span> <span class="n">dddspace</span><span class="p">.</span><span class="n">job</span><span class="p">.</span><span class="n">exercise1116</span><span class="p">;</span>
 </pre></div>
-<p>public class Foo {</p>
-<p>public void fun(String str) {</p>
-<p>System.out.println(str);</p>
-<p>}</p>
-<p>}</p>
-<div class="highlight"><pre><span></span>package dddspace.job.exercise1116;
-</pre></div>
-<p>import java.lang.reflect.InvocationTargetException;</p>
-<p>import java.lang.reflect.Method;</p>
-<p>public class ReflectionDemo {</p>
-<p>public static void …</p>
+<p>public class ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/11/note-the-use-of-java-reflection-to-improve-the-basedao/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -216,11 +200,7 @@ lpic/s2518833.jpg"><img alt="Java JDK6学习笔记" src="https://ohsolnxaa.qnssl
 length-parameter-generic-type-
 wildcard">"Java笔记split/不定长度参数/泛型类型通配符"</a>中示例代码就是改编自本书)。我现在正在阅读线程、反射和Annotation这三块内容，看得我酣畅淋漓啊。</p>
 <p>我算是概念模糊的开发者，现在准备笔试/面试所以恶补一下平时接触比较少的概念。我虽然也有《<strong>Think in
-Java</strong>》这本至尊级的书，但是显然这本书研究过深，不适合快速复习。《Java JDK6学习笔记》就成了我首选了。（感谢CUMT图书馆！）</p>
-<p>豆瓣简介：</p>
-<blockquote>
-<p>本书是作者良葛格本人近几年来学习Java的心得笔记，结构按照作者的学习脉络依次展开，从什么是Java、如何配置Java开发环境、基本的Java语法到程序
-流程控制、管理类文件、异常处理、枚举类型、泛型、J2SE中标准的API等均进行了详细介绍 …</p></blockquote>
+Java ...</strong></p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/11/getting-started-with-java-books-java-jdk6-study-notes/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -231,13 +211,13 @@ Java</strong>》这本至尊级的书，但是显然这本书研究过深，不�
 多，正所谓温故而知新，我就把今天的"新"总结一下，加深记忆。良葛格也提倡"在网上写文章是我记录所学的一种方式"。</p>
 <h2 id="splitde-zheng-ze-shi-he-qi-zhong-de-zheng-ze-shi">split的正则式和其中的正则式</h2>
 <p>C语言其中有函数strtok，就是按某些char对字符串进行切割。下面给出一个C下面的范例</p>
-<div class="highlight"><pre><span></span>char str[] = "now # is the time for all # good men to come to the # aid of their country";
-char delims[] = "#";
-char *result = NULL;
+<div class="highlight"><pre><span class="kt">char</span> <span class="n">str</span><span class="p">[]</span> <span class="o">=</span> <span class="s">"now # is the time for all # good men to come to the # aid of their country"</span><span class="p">;</span>
+<span class="kt">char</span> <span class="n">delims</span><span class="p">[]</span> <span class="o">=</span> <span class="s">"#"</span><span class="p">;</span>
+<span class="kt">char</span> <span class="o">*</span><span class="n">result</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
 </pre></div>
 <p>result = strtok( str, delims );</p>
 <p>while( result != NULL ) {</p>
-<p>printf( "result is …</p>
+<p>printf( "result is ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/11/java-notes-_split-variable-length-parameter-generic-type-wildcard/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -252,11 +232,7 @@ char *result = NULL;
 <p>讲相同的方法抽象出来，这也是最常见的解决方案，最简单的例子就是函数的产生，其实也是对程序的一种抽象和提炼，避免冗余，达到复用效果。</p>
 <p>在Java1.5出来之前，用Object来操作对象，实现方法复用，就可以达到上面的目的，但是，存在类型安全的问题。Java1.5提出了泛型的概念，类似与C+
 +中的Template，Java运行环境帮助会检查类型的安全。</p>
-<p>这里有一篇IBM资料库的文章，详细阐述了泛型在DAO设计的使用「不要重复DAO」&lt;<a href="http://www.ibm.com/developer
-works/cn/java/j-genericdao.html">猛击这里打开</a>&gt;，作者<a href="http://www.ibm.com/developerworks/cn/java/j-genericdao.html#author">Per
-Mellqvist</a>
-(<a href="mailto:per@mellqvist.name?subject=%E4%B8%8D%E8%A6%81%E9%
-87%8D%E5%A4%8D%20DAO%EF%BC%81">per …</a></p>
+<p>这里有一篇IBM资料库的文章，详细阐述了泛型在DAO设计的使用「不要重复DAO」&lt;<a href="http://www.ibm ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/07/dao-design-the-use-of-generics-to-avoid-duplication-of-dao/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -331,11 +307,6 @@ Mellqvist</a>
                         <li class="list-group-item">
                             <a href="https://blog.alswl.com/category/managment/">
                                 <i class="fa fa-folder-open fa-lg"></i> Managment
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="https://blog.alswl.com/category/misc/">
-                                <i class="fa fa-folder-open fa-lg"></i> misc
                             </a>
                         </li>
                         <li class="list-group-item">

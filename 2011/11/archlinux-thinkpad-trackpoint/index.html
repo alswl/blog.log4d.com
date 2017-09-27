@@ -16,7 +16,7 @@
 
         <meta name="author" content="alswl" />
         <meta name="keywords" content="Linuxer,arch,ThinkPad" />
-        <meta name="description" content="重要通知：Log4D的域名由 http://dddspace.com 迁移到 http://log4d.com 。 订阅地址现在改为 http://log4d.com/feed 和 http://feeds.feedburner.com/dddspace 。（FeedBurner的地址未发生变化） 请订阅我博客的朋友更新一下订阅地址。 关于Arch Arch是一款优秀的Linux发行版，使用它可以快速的学习Linux操作技巧。 Arch崇尚的原则是&#34;保持简单，且一目了然&#34;，这也是我崇尚的风格。 保持简单的同时也会给我带来一些小小的困扰，比如配置一下Thinkpad上面的小红帽 中键都需要设定Xorg。Arch直接向我们展示了Linux美妙的侗体，没有任何遮掩。 好在Arch有最完善的官方Wiki， Thinkpad爱好者也组建了一个专门的 ThinkWiki来为大家答疑解惑。 特别是官方Wiki，中文化做的非常好，是我见过最完善的中文linux wiki之一。 小红帽的中键 罗嗦完了，进入正题，我的环境是 arch(Linux version …" />
+        <meta name="description" content="重要通知：Log4D的域名由 http://dddspace.com 迁移到 http://log4d.com 。 订阅地址现在改为 http://log4d.com/feed 和 http://feeds.feedburner.com/dddspace 。（FeedBurner的地址未发生变化） 请订阅我博客的朋友更新一下订阅地址。 关于Arch Arch是一款优秀的Linux发行版，使用它可以快速的学习Linux操作技巧。 Arch崇尚的原则是&#34;保持简单，且一目了然&#34;，这也是我崇尚的风格。 保持简单的同时也会给我带来一些小小的困扰，比如配置一下Thinkpad上面的小红帽 中键都需要设定Xorg。Arch直接向我们展示了Linux美妙的侗体，没有任何遮掩。 好在Arch有最完善的官方Wiki， Thinkpad爱好者也组建了一个专门的 ThinkWiki来为大家答疑解惑。 特别是官方Wiki，中文化做的非常好，是我见过最完善的中文linux wiki之一。 小红帽的中键 罗嗦完了，进入正题，我的环境是 arch(Linux version ..." />
 
 
 
@@ -80,7 +80,7 @@ Log4D            </a>
 <footer class="post-info">
     <span class="label label-default">Date</span>
     <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2011-11-15T00:00:00+08:00"> 2011-11-15</time>
+        <i class="fa fa-calendar"></i><time datetime="2011-11-15T00:00:00"> 2011-11-15</time>
     </span>
 
 
@@ -123,12 +123,12 @@ Thinkpad爱好者也组建了一个专门的
 TrackPoint</a>
 描述，配置小红帽的中键有6种办法， 我使用的是xinput配置（这是推荐方法）。</p>
 <p>运行下列代码，即可启用小红帽中键上下滑动。</p>
-<div class="highlight"><pre><span></span>xinput set-int-prop 12 "Evdev Wheel Emulation" 8 1
-xinput set-int-prop 12 "Evdev Wheel Emulation Button" 8 2
-xinput set-int-prop 12 "Evdev Wheel Emulation Timeout" 8 200
+<div class="highlight"><pre><span class="n">xinput</span> <span class="n">set</span><span class="o">-</span><span class="kt">int</span><span class="o">-</span><span class="n">prop</span> <span class="mi">12</span> <span class="s">"Evdev Wheel Emulation"</span> <span class="mi">8</span> <span class="mi">1</span>
+<span class="n">xinput</span> <span class="n">set</span><span class="o">-</span><span class="kt">int</span><span class="o">-</span><span class="n">prop</span> <span class="mi">12</span> <span class="s">"Evdev Wheel Emulation Button"</span> <span class="mi">8</span> <span class="mi">2</span>
+<span class="n">xinput</span> <span class="n">set</span><span class="o">-</span><span class="kt">int</span><span class="o">-</span><span class="n">prop</span> <span class="mi">12</span> <span class="s">"Evdev Wheel Emulation Timeout"</span> <span class="mi">8</span> <span class="mi">200</span>
 </pre></div>
 <p>现在运行下面代码，启用左右滑动。</p>
-<div class="highlight"><pre><span></span>xinput set-int-prop 12 "Evdev Wheel Emulation Axes" 8 6 7 4 5
+<div class="highlight"><pre><span class="n">xinput</span> <span class="n">set</span><span class="o">-</span><span class="kt">int</span><span class="o">-</span><span class="n">prop</span> <span class="mi">12</span> <span class="s">"Evdev Wheel Emulation Axes"</span> <span class="mi">8</span> <span class="mi">6</span> <span class="mi">7</span> <span class="mi">4</span> <span class="mi">5</span>
 </pre></div>
 <p>创建自动脚本，在系统启动时候自动执行</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
@@ -143,17 +143,17 @@ xinput set-int-prop 12 "Evdev Wheel Emulation Timeout" 8 200
 10
 11
 12
-13</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#!/bin/sh</span>
-xinput list <span class="p">|</span> sed -ne <span class="s1">'s/^[^ ][^V].*id=\([0-9]*\).*/\1/p'</span> <span class="p">|</span> <span class="k">while</span> <span class="nb">read</span> id
+13</pre></div></td><td class="code"><div class="highlight"><pre><span class="c">#!/bin/sh</span>
+xinput list | sed -ne <span class="s1">'s/^[^ ][^V].*id=\([0-9]*\).*/\1/p'</span> | <span class="k">while </span><span class="nb">read </span>id
 <span class="k">do</span>
-        <span class="k">case</span> <span class="sb">`</span>xinput list-props <span class="nv">$id</span><span class="sb">`</span> in
+<span class="k">        case</span> <span class="sb">`</span>xinput list-props <span class="nv">$id</span><span class="sb">`</span> in
         *<span class="s2">"Middle Button Emulation"</span>*<span class="o">)</span>
-                xinput set-int-prop <span class="nv">$id</span> <span class="s2">"Evdev Wheel Emulation"</span> <span class="m">8</span> <span class="m">1</span>
-                xinput set-int-prop <span class="nv">$id</span> <span class="s2">"Evdev Wheel Emulation Button"</span> <span class="m">8</span> <span class="m">2</span>
-                xinput set-int-prop <span class="nv">$id</span> <span class="s2">"Evdev Wheel Emulation Timeout"</span> <span class="m">8</span> <span class="m">200</span>
-                xinput set-int-prop <span class="nv">$id</span> <span class="s2">"Evdev Wheel Emulation Axes"</span> <span class="m">8</span> <span class="m">6</span> <span class="m">7</span> <span class="m">4</span> <span class="m">5</span>
-                xinput set-int-prop <span class="nv">$id</span> <span class="s2">"Evdev Middle Button Emulation"</span> <span class="m">8</span> <span class="m">0</span>
-                <span class="p">;;</span>
+                xinput <span class="nb">set</span>-int-prop <span class="nv">$id</span> <span class="s2">"Evdev Wheel Emulation"</span> 8 1
+                xinput <span class="nb">set</span>-int-prop <span class="nv">$id</span> <span class="s2">"Evdev Wheel Emulation Button"</span> 8 2
+                xinput <span class="nb">set</span>-int-prop <span class="nv">$id</span> <span class="s2">"Evdev Wheel Emulation Timeout"</span> 8 200
+                xinput <span class="nb">set</span>-int-prop <span class="nv">$id</span> <span class="s2">"Evdev Wheel Emulation Axes"</span> 8 6 7 4 5
+                xinput <span class="nb">set</span>-int-prop <span class="nv">$id</span> <span class="s2">"Evdev Middle Button Emulation"</span> 8 0
+                ;;
         <span class="k">esac</span>
 <span class="k">done</span>
 </pre></div>
@@ -263,11 +263,6 @@ TrackPoint</a> 。</p>
                         <li class="list-group-item">
                             <a href="https://blog.alswl.com/category/managment/">
                                 <i class="fa fa-folder-open fa-lg"></i> Managment
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="https://blog.alswl.com/category/misc/">
-                                <i class="fa fa-folder-open fa-lg"></i> misc
                             </a>
                         </li>
                         <li class="list-group-item">

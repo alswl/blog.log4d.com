@@ -68,6 +68,22 @@ Log4D            </a>
         <div class="col-lg-8 col-lg-offset-2">
 
             <article class="article-list">
+                <h2 class="title"><a href="https://blog.alswl.com/2009/06/firefox-frequently-collapse-under-the-wordpress-upload-solution/">FireFox下WordPress上传频繁崩溃解决方法</a></h2>
+                <div class="summary"><p>今天修改了数据库option中上传的路径，终于可以使用上传了，很开心，可是又遇到在FireFox下WordPress上传导致FireFox崩溃的问题。</p>
+<p>情况是这样，在后台点上传图片，出现上传面板的Loding界面，结果FireFox就崩溃了，查看崩溃信息，并没有什么特殊的显示。在IE下则完全没有这个问题。</p>
+<p>Google后几篇文章说是FireFox中Firebug的问题，<a href="http://www.tvwz.com.cn/html
+/computer-repaire/firebug-leads-to-firefox-to-
+collapse.html">猛击这里打开该文章</a>，我也算是个网页开发者，FireBug是必装的，禁止FireBug后重新尝试，依然失败。证明该文章问题和我并不一样。</p>
+<p>我一次尝试关闭Web Developer, FlashGot, Adblock Plus，都没有效果，直到最后关闭Google
+Gears，才发现崩溃终于停止了。</p>
+<p>那么问题就应该是在Google Gears上，这个Google Gears是FireFox的一个插件，用来对本地文件进行暂存的，我的系统也装了Google
+Gears，这两个Google Gears不是同一个，系统下的Google
+Gears可以对IE进行缓存加速 ...</p>
+                </div>
+                <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/06/firefox-frequently-collapse-under-the-wordpress-upload-solution/"><i class="icon-circle-arrow-right"></i>more ...</a>
+            </article>
+            <hr/>
+            <article class="article-list">
                 <h2 class="title"><a href="https://blog.alswl.com/2009/05/the-education-network-ubuntu8-04-source/">Ubuntu8.04的教育网源</a></h2>
                 <div class="summary"><p>Google的话有很多源，北大的宣称5M，结果我都连不上，交大的宣称2M，我发现只有20kb/s，连更新语言包都超级慢。</p>
 <p>最后经过我的测试，是成都电子科技大学的最快，2M左右，推荐使用。</p>
@@ -75,7 +91,7 @@ Log4D            </a>
 <p>速度的话，还是得自己测试，我只是推荐，下面的内容都是我复制过来自带的，不是我增加的。（PS:晚上时候我用官方的Mirror也3M/s）</p>
 <p>` #北京市清华大学更新服务器（教育网，推荐校园网和网通用户使用）：</p>
 <p>deb http://mirror9.net9.org/ubuntu/ hardy main multiverse restricted universe</p>
-<p>deb http://mirror9.net9.org/ubuntu/ hardy-backports main multiverse restricted …</p>
+<p>deb http://mirror9.net9.org/ubuntu/ hardy-backports main multiverse restricted ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/05/the-education-network-ubuntu8-04-source/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -89,7 +105,7 @@ api的软件包这里就再也进行不下去了。</p>
 <p>Google了好一会，才有一个人的答案正确，说是8.10下用8.04的源就会有这种问题，我换成原始的备份了的源</p>
 <p>下面就是原始的源，使用这个找到MySQL之后就一次成功了 ` # deb cdrom:[Ubuntu 8.10 <em>Intrepid Ibex</em> -
 Release i386 (20081029.5)]/ intrepid main restricted</p>
-<h1>See http://help.ubuntu.com/community/UpgradeNotes for how to upgrade …</h1>
+<h1>See http://help.ubuntu.com/community/UpgradeNotes for how to upgrade ...</h1>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/05/ubuntu8-10-under-the-mysql-installation/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -112,7 +128,7 @@ Release i386 (20081029.5)]/ intrepid main restricted</p>
 我们完全可以不必大费周折去找lrc，只要把这个歌词文件夹和Mp3播放器同步就可以了。
 以前就想写一个东西完成这个麻烦的工程，现在贴吧1.0完成了，可以休息几天，晚上花了一点时间用Java写了一个这样的小东西。
 如果大家碰到和我一样的麻烦，可以试试。呃，时间仓促，没有图形界面，而且必须是Java程序员才能用，因为我这儿只提供了源码....</p>
-<div class="highlight"><pre><span></span>package ddd;
+<div class="highlight"><pre><span class="n">package</span> <span class="n">ddd</span><span class="p">;</span>
 </pre></div>
 <p>import java.io.BufferedReader;</p>
 <p>import java.io.File;</p>
@@ -121,7 +137,7 @@ Release i386 (20081029.5)]/ intrepid main restricted</p>
 <p>public class App {</p>
 <p>/**</p>
 <ul>
-<li>@author alswl …</li></ul>
+<li>@author alswl ...</li></ul>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/05/lyrics-written-in-java-replicator-mp3/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -138,10 +154,7 @@ ver/tid-2694115.html">猛击这里打开</a></p>
 <p>禁止JS上在功能的使用上致少不该受到影响，但是国内的许多网站不去考虑这个。　只是盲目的跟风，　什么AJAX、什么体验，很多都是建立在JS上的，一旦使用的浏览
 器不支持JS，就什么都没了。google做得不错，可是国内一些所谓的门户网站，像sinasohu163yahoo或多或少都存在一定的问题，这些站的首页或许没
 什么问题，但看看其它的页面就知道。　既然浏览器提供了禁用JS、禁用COOKIE的功能，那我们就不得不考虑禁用后对我们的影响。</p>
-<p>CJJ 老是走极端。</p>
-<p>什么网站能满足１００％的用户需要？</p>
-<p>GOOGLE搜索，只能说第一页的排序满足８０％的人的需要。</p>
-<p>所以，做一个检查，低于１０％的人没有打开JS，就不用专为他们搞一个版本了 …</p>
+<p>CJJ 老是走极端 ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/05/discussion-on-javascript-disabled/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -157,7 +170,7 @@ find action or result</p>
 <p>我整整找了一个多小时，曾以为是action name的问题或者是package name, package namespace
 的问题，为此我特意重新学习了一下他们的使用方法，但是仍然没有效果。</p>
 <p>最后，终于在Google找到了一些资料：</p>
-<p><a href="http://huqilong.blog.51cto.com/53638/136802">struts2 json jquery …</a></p>
+<p><a href="http://huqilong.blog.51cto.com/53638/136802">struts2 json jquery ...</a></p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/05/struts2-in-the-use-of-ajax/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -184,22 +197,22 @@ find action or result</p>
                 <h2 class="title"><a href="https://blog.alswl.com/2009/05/landscaping-postviews/">美化postviews</a></h2>
                 <div class="summary"><p>很多朋友用postviews这个插件，的确很适合国人的风格，但是如果单纯的添加到页面中，会显得很突兀，难看，我做了几个美化工作。</p>
 <p>首先，在用到postviews函数时候都定义span id，比如在single.php中修改，在下面代码</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;span&gt;</span><span class="cp">&lt;?php</span> <span class="nx">the_author_posts_link</span><span class="p">();</span> <span class="cp">?&gt;</span><span class="nt">&lt;/span&gt;</span><span class="cp">&lt;?php</span> <span class="k">endif</span><span class="p">;</span> <span class="cp">?&gt;</span>
+<div class="highlight"><pre><span class="nt">&lt;span&gt;</span><span class="cp">&lt;?php the_author_posts_link(); ?&gt;</span><span class="nt">&lt;/span&gt;</span><span class="cp">&lt;?php endif; ?&gt;</span>
 </pre></div>
 <p>后面跟上一段显示浏览次数的代码</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;span&gt;</span><span class="cp">&lt;?php</span> <span class="nx">the_author_posts_link</span><span class="p">();</span> <span class="cp">?&gt;</span><span class="nt">&lt;/span&gt;</span><span class="cp">&lt;?php</span> <span class="k">endif</span><span class="p">;</span> <span class="cp">?&gt;</span>
+<div class="highlight"><pre><span class="nt">&lt;span&gt;</span><span class="cp">&lt;?php the_author_posts_link(); ?&gt;</span><span class="nt">&lt;/span&gt;</span><span class="cp">&lt;?php endif; ?&gt;</span>
 </pre></div>
 <p>这样就可以显示浏览次数。</p>
 <p>然后修改style.css文件，我的是inove主题，在382行附近修改</p>
-<div class="highlight"><pre><span></span><span class="na">.post</span> <span class="no">.date</span><span class="p">,</span>
-<span class="na">.post</span> <span class="no">.author</span><span class="p">,</span>
-<span class="na">.post</span> <span class="no">.postviews</span><span class="p">,</span>
-<span class="na">.post</span> <span class="no">.editpost</span><span class="p">,</span>
-<span class="na">.post</span> <span class="no">.comments</span><span class="p">,</span>
-<span class="na">.post</span> <span class="no">.addcomment</span><span class="p">,</span>
-<span class="na">.post</span> <span class="no">.addlink</span><span class="p">,</span>
-<span class="na">.post</span> <span class="no">.editlinks</span> <span class="err">{</span>
-<span class="nl">background:</span><span class="nf">url</span><span class="p">(</span><span class="no">img</span><span class="err">/</span><span class="no">icons …</span></pre></div>
+<div class="highlight"><pre><span class="p">.</span><span class="n">post</span> <span class="p">.</span><span class="n">date</span><span class="p">,</span>
+<span class="p">.</span><span class="n">post</span> <span class="p">.</span><span class="n">author</span><span class="p">,</span>
+<span class="p">.</span><span class="n">post</span> <span class="p">.</span><span class="n">postviews</span><span class="p">,</span>
+<span class="p">.</span><span class="n">post</span> <span class="p">.</span><span class="n">editpost</span><span class="p">,</span>
+<span class="p">.</span><span class="n">post</span> <span class="p">.</span><span class="n">comments</span><span class="p">,</span>
+<span class="p">.</span><span class="n">post</span> <span class="p">.</span><span class="n">addcomment</span><span class="p">,</span>
+<span class="p">.</span><span class="n">post</span> <span class="p">.</span><span class="n">addlink</span><span class="p">,</span>
+<span class="p">.</span><span class="n">post</span> <span class="p">.</span><span class="n">editlinks</span> <span class="p">{</span>
+<span class="nl">background:</span><span class="n">url</span><span class="p">(</span><span class="n">img</span><span class="o">/</span><span class="n">icons ...</span></pre></div>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/05/landscaping-postviews/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -208,40 +221,20 @@ find action or result</p>
                 <h2 class="title"><a href="https://blog.alswl.com/2009/05/struts2-tags-the-curve-of-the-bug-and-the-use-of/">Struts2的s:if标签的Bug和曲线使用</a></h2>
                 <div class="summary"><p>贴吧的用户状态显示，登录和未登录应该是不同的div显示，我决定用做标签。</p>
 <p>本来应该很简单的事情，却没有我预想中的情形出现，检查后发现失效了，代码如下：</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;li&gt;</span><span class="cp">${</span><span class="n">session</span><span class="o">.</span><span class="n">userName</span><span class="cp">}</span>欢迎你<span class="nt">&lt;/li&gt;</span>
+<div class="highlight"><pre><span class="nt">&lt;li&gt;</span><span class="cp">${</span><span class="n">session</span><span class="o">.</span><span class="n">userName</span><span class="cp">}</span>欢迎你<span class="nt">&lt;/li&gt;</span>
 <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"Logout.action"</span><span class="nt">&gt;</span>注销<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
 </pre></div>
 <p>Struts2的官方文档中标签库介绍写的很清楚，官方示例文档如下</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;s:if</span> <span class="na">test=</span><span class="s">"%{false}"</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><span class="nt">&lt;s:if</span> <span class="na">test=</span><span class="s">"%{false}"</span><span class="nt">&gt;</span>
 <span class="nt">&lt;div&gt;</span>Will Not Be Executed<span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/s:if&gt;</span>
 <span class="nt">&lt;s:elseif</span> <span class="na">test=</span><span class="s">"%{true}"</span><span class="nt">&gt;</span>
 <span class="nt">&lt;div&gt;</span>Will Be Executed<span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/s:elseif&gt;</span>
 <span class="nt">&lt;s:else&gt;</span>
-<span class="nt">&lt;div&gt;</span>Will Not …</pre></div>
+<span class="nt">&lt;div&gt;</span>Will Not ...</pre></div>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/05/struts2-tags-the-curve-of-the-bug-and-the-use-of/"><i class="icon-circle-arrow-right"></i>more ...</a>
-            </article>
-            <hr/>
-            <article class="article-list">
-                <h2 class="title"><a href="https://blog.alswl.com/2009/05/eclipse-in-the-development-of-jave-ee-projects-in-the-deployment-of-tomcat/">Eclipse中开发的Jave EE项目在Tomcat的部署</a></h2>
-                <div class="summary"><p>贴吧最基本的功能写完了，正好可以应付数据库设计课的实验。于是我准备把贴吧的项目从Eclipse的开发环境中移植出来，在Tomcat中进行部署。</p>
-<p>也许是习惯了Eclipse提供的便利，这个小小的移植，居然难倒了我，直接把Eclipse里的PostBar考出，根本不能运行，直接报404错误。Google
-上也没有提供详细的步骤，也许大家都觉得这个问题很简单吧，呵呵。</p>
-<p>我琢磨了一会，终于整理出了头绪。</p>
-<p>1.修改Apache-conf-server.xml这个文件，修改其中一段<host>...</host>如下所示</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;host</span> <span class="na">appbase=</span><span class="s">"webapps"</span> <span class="na">name=</span><span class="s">"localhost"</span>
-    <span class="na">unpackWARs=</span><span class="s">"true"</span> <span class="na">autoDeploy=</span><span class="s">"true"</span>
-    <span class="na">xmlValidation=</span><span class="s">"false"</span> <span class="na">xmlNamespaceAware=</span><span class="s">"false"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;context</span> <span class="na">debug=</span><span class="s">"0"</span> <span class="na">docbase=</span><span class="s">"F:T3"</span> <span class="na">path=</span><span class="s">"/postbar"</span><span class="nt">&gt;</span>
-          reloadable="true" crossContext="true"&gt;
-    <span class="nt">&lt;/context&gt;</span>
-<span class="nt">&lt;/host&gt;</span>
-</pre></div>
-<p>这一段的作用是在原先webapps的目录下添加虚拟目录/postbar …</p>
-                </div>
-                <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/05/eclipse-in-the-development-of-jave-ee-projects-in-the-deployment-of-tomcat/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
             <hr/>
 
@@ -351,11 +344,6 @@ find action or result</p>
                         <li class="list-group-item">
                             <a href="https://blog.alswl.com/category/managment/">
                                 <i class="fa fa-folder-open fa-lg"></i> Managment
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="https://blog.alswl.com/category/misc/">
-                                <i class="fa fa-folder-open fa-lg"></i> misc
                             </a>
                         </li>
                         <li class="list-group-item">

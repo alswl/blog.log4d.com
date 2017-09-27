@@ -16,7 +16,7 @@
 
         <meta name="author" content="alswl" />
         <meta name="keywords" content="工欲善其事必先利其器,D3.js,Raphael,Flotr2,译文" />
-        <meta name="description" content="原文地址：Flotr2 - my favorite javascript graph library 译者：alswl 我研究了很久，得到的终极数据可视化方案是 javascript + html ，这是唯一像样又好用的。 Gnuplot 虽然看上去不错，但是不太漂亮。 一些基于 Python 的图形化工具也有同样的问题。 Mathematica 在我看来则太正式了，所以我不怎么用它。 基于 javascript 的图形化工具其中一个巨大优势是易于共享。 通过设置 Github Page、分享链接等方法，我们都可以很方便的获取最新图表数据， 甚至可以进行交互。 那些基于 javascript 的图形化工具 有很多 javascript 图形化库，从极简到复杂绚丽的风格，都极为丰富。 最流行的可能就是 d3.js 和 Raphael 了。 他们用起来相当麻烦，但却能实现绚丽到超越你想象的可视化效果 …" />
+        <meta name="description" content="原文地址：Flotr2 - my favorite javascript graph library 译者：alswl 我研究了很久，得到的终极数据可视化方案是 javascript + html ，这是唯一像样又好用的。 Gnuplot 虽然看上去不错，但是不太漂亮。 一些基于 Python 的图形化工具也有同样的问题。 Mathematica 在我看来则太正式了，所以我不怎么用它。 基于 javascript 的图形化工具其中一个巨大优势是易于共享。 通过设置 Github Page、分享链接等方法，我们都可以很方便的获取最新图表数据， 甚至可以进行交互。 那些基于 javascript 的图形化工具 有很多 javascript 图形化库，从极简到复杂绚丽的风格，都极为丰富。 最流行的可能就是 d3.js 和 Raphael 了。 他们用起来相当麻烦，但却能实现绚丽到超越你想象的可视化效果。" />
 
 
 
@@ -80,7 +80,7 @@ Log4D            </a>
 <footer class="post-info">
     <span class="label label-default">Date</span>
     <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2012-06-19T07:03:00+08:00"> 2012-06-19</time>
+        <i class="fa fa-calendar"></i><time datetime="2012-06-19T07:03:00"> 2012-06-19</time>
     </span>
 
 
@@ -117,7 +117,7 @@ Log4D            </a>
 <p>有很多 javascript 图形化库，从极简到复杂绚丽的风格，都极为丰富。</p>
 <p>最流行的可能就是 <a href="http://d3js.org/">d3.js</a> 和 <a href="http://raphaeljs.com/">Raphael</a> 了。
 他们用起来<em>相当</em>麻烦，但却能实现绚丽到超越你想象的可视化效果。</p>
-<!-- more -->
+
 <p>Raphael 还一个 web 矢量库，外观同样很漂亮。</p>
 <p><a href="https://ohsolnxaa.qnssl.com/2012/06/Screen-Shot-2012-06-01-at-2.41.59-PM.png"><img alt="An analytics graph in Raphael" src="https://ohsolnxaa.qnssl.com/2012/06/Screen-Shot-2012-06-01-at-2.41.59-PM.png"/></a></p>
 <p>Raphael 中的分析图表</p>
@@ -143,7 +143,7 @@ Log4D            </a>
 <p>Flotr2 最大的优点是他没有过度设计，当你只想要一个简单图表时候，
 它不会让你去操作过多东西。</p>
 <p>往往只需要你设定必要的数据和一两个标签，比如：</p>
-<div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">draw_time</span><span class="p">(</span><span class="nx">container</span><span class="p">,</span> <span class="nx">data</span><span class="p">,</span> <span class="nx">title</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><span class="kd">function</span> <span class="nx">draw_time</span><span class="p">(</span><span class="nx">container</span><span class="p">,</span> <span class="nx">data</span><span class="p">,</span> <span class="nx">title</span><span class="p">)</span> <span class="p">{</span>
     <span class="kd">var</span>
     <span class="nx">start</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="nx">DATA</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">date</span><span class="p">).</span><span class="nx">getTime</span><span class="p">(),</span>
     <span class="nx">options</span><span class="p">,</span>
@@ -297,11 +297,6 @@ Log4D            </a>
                         <li class="list-group-item">
                             <a href="https://blog.alswl.com/category/managment/">
                                 <i class="fa fa-folder-open fa-lg"></i> Managment
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="https://blog.alswl.com/category/misc/">
-                                <i class="fa fa-folder-open fa-lg"></i> misc
                             </a>
                         </li>
                         <li class="list-group-item">

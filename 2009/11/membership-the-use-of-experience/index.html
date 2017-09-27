@@ -16,7 +16,7 @@
 
         <meta name="author" content="alswl" />
         <meta name="keywords" content="dotNet,ASP.net,MemberShip" />
-        <meta name="description" content="花了很大一段时间在学习MemberShip，总是要留下一些纪念文章的。 我之前的日志提到过一个简单的用户权限设计：User+Role+UserInRole(http://log4d.com/2009/06/design-of- user-rights)，但是这样还是不够灵活，最好需要能够对每一个功能模块进行权限控制，而且需要符合开闭原则。 MemberShip呢，是微软推出的一套很强大的用 户权限管理系统。就我使用的两大部分，主要包括MemberShip和roleManager这两个模块，分别是对用户和角色进行管理。 MemberShip对系统进行管理大致分为两个办法 1.可以通过&#34;登录&#34;系列用户控件的任务窗口中的&#34;管理网站&#34;打开&#34;ASP.Net Web 应用程序管理&#34;。 可以控制用户、角色、权限三个主要属性，另外还能选择 &#34;提供程序&#34;（这个provider分为MemberShip和RoleManager两种，如果同名的话，可以选择同一提供程序） 2.使用Web.config进行配置 其实上面的可视化界面在配置提供程序和访问规则（权限设定）时候，本质上修改的是根目录web.config和各个文件夹下对应的web.config …" />
+        <meta name="description" content="花了很大一段时间在学习MemberShip，总是要留下一些纪念文章的。 我之前的日志提到过一个简单的用户权限设计：User+Role+UserInRole(http://log4d.com/2009/06/design-of- user-rights)，但是这样还是不够灵活，最好需要能够对每一个功能模块进行权限控制，而且需要符合开闭原则。 MemberShip呢，是微软推出的一套很强大的用 户权限管理系统。就我使用的两大部分，主要包括MemberShip和roleManager这两个模块，分别是对用户和角色进行管理。 MemberShip对系统进行管理大致分为两个办法 1.可以通过&#34;登录&#34;系列用户控件的任务窗口中的&#34;管理网站&#34;打开&#34;ASP.Net Web 应用程序管理&#34;。 可以控制用户、角色、权限三个主要属性，另外还能选择 &#34;提供程序&#34;（这个provider分为MemberShip和RoleManager两种，如果同名的话，可以选择同一提供程序 ..." />
 
 
 
@@ -80,7 +80,7 @@ Log4D            </a>
 <footer class="post-info">
     <span class="label label-default">Date</span>
     <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2009-11-05T00:00:00+08:00"> 2009-11-05</time>
+        <i class="fa fa-calendar"></i><time datetime="2009-11-05T00:00:00"> 2009-11-05</time>
     </span>
 
 
@@ -112,7 +112,7 @@ user-rights</a>)，但是这样还是不够灵活，最好需要能够对每一�
 2.使用Web.config进行配置
 其实上面的可视化界面在配置提供程序和访问规则（权限设定）时候，本质上修改的是根目录web.config和各个文件夹下对应的web.config</p>
 <p>我的根Web.config</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;authentication</span> <span class="na">mode=</span><span class="s">"Forms"</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><span class="nt">&lt;authentication</span> <span class="na">mode=</span><span class="s">"Forms"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;forms</span> <span class="na">name=</span><span class="s">"ThisHouse"</span> <span class="na">defaultUrl=</span><span class="s">"Default.aspx"</span> <span class="na">loginUrl=</span><span class="s">"Signin.aspx"</span> <span class="na">protection=</span><span class="s">"All"</span> <span class="na">timeout=</span><span class="s">"30"</span><span class="nt">/&gt;</span>
 <span class="nt">&lt;/authentication&gt;</span>
 <span class="nt">&lt;membership</span> <span class="na">defaultProvider=</span><span class="s">"SqlProvider"</span><span class="nt">&gt;</span>
@@ -127,7 +127,7 @@ user-rights</a>)，但是这样还是不够灵活，最好需要能够对每一�
 <span class="nt">&lt;/roleManager&gt;</span>
 </pre></div>
 <p>我禁止User角色进入Admin文件夹，配置完"访问规则"后，会在Admin文件夹下生成相应web.config</p>
-<div class="highlight"><pre><span></span><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<div class="highlight"><pre><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
 <span class="nt">&lt;configuration&gt;</span>
     <span class="nt">&lt;system.web&gt;</span>
         <span class="nt">&lt;authorization&gt;</span>
@@ -142,19 +142,19 @@ user-rights</a>)，但是这样还是不够灵活，最好需要能够对每一�
 点同样明显，如果想在同一个动作aspx文件中进行权限判断，就难以有效的实现，需要修改aspx代码了。</p>
 <h2 id="membershipzai-net-35zhong-fang-fa-de-ji-cheng">MemberShip在.NET 3.5中方法的集成</h2>
 <p>这个标题有点大，实际上在我的课程设计中，用到了判断是否登录、判断用户角色这两个简单的方法。</p>
-<div class="highlight"><pre><span></span>if (Page.User.Identity.IsAuthenticated)
-{
-    this.Login1.Visible = false;
-    this.LoginStatus1.Visible = true;
-    this.pEditProfile.Visible = true;
-}
-foreach (string role in Roles.GetRolesForUser())
-{
-    if (role == "Admin")
-    {
-        this.pAdmin.Visible = true;
-    }
-}
+<div class="highlight"><pre><span class="k">if</span> <span class="p">(</span><span class="n">Page</span><span class="p">.</span><span class="n">User</span><span class="p">.</span><span class="n">Identity</span><span class="p">.</span><span class="n">IsAuthenticated</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">this</span><span class="p">.</span><span class="n">Login1</span><span class="p">.</span><span class="n">Visible</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="n">this</span><span class="p">.</span><span class="n">LoginStatus1</span><span class="p">.</span><span class="n">Visible</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="n">this</span><span class="p">.</span><span class="n">pEditProfile</span><span class="p">.</span><span class="n">Visible</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="n">foreach</span> <span class="p">(</span><span class="n">string</span> <span class="n">role</span> <span class="n">in</span> <span class="n">Roles</span><span class="p">.</span><span class="n">GetRolesForUser</span><span class="p">())</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">role</span> <span class="o">==</span> <span class="s">"Admin"</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">this</span><span class="p">.</span><span class="n">pAdmin</span><span class="p">.</span><span class="n">Visible</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 <p>这段代码第一个if进行了是否登录的判断，然后foreach循环判断用户角色。 大部分方法在"System.Web.Security.Roles"、"Syst
 em.Web.Security.Membership"中，可以在MSDN查到相关内容。</p>
@@ -262,11 +262,6 @@ em.Web.Security.Membership"中，可以在MSDN查到相关内容。</p>
                         <li class="list-group-item">
                             <a href="https://blog.alswl.com/category/managment/">
                                 <i class="fa fa-folder-open fa-lg"></i> Managment
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="https://blog.alswl.com/category/misc/">
-                                <i class="fa fa-folder-open fa-lg"></i> misc
                             </a>
                         </li>
                         <li class="list-group-item">

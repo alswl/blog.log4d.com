@@ -78,7 +78,7 @@ Parameters!Language.Value, "ReportConnection0107")。</p>
 <p>使用正则表达式里面的分组进行抓获，再用1将中间固定的参数取出，组成新的字符串。</p>
 <h3 id="vimshi-xian">Vim实现</h3>
 <p>%s/GetComment(((s<em>w+!w+.w+s</em>,){2}s<em>"w+"s</em>,s<em>w+!w+.w+s</em>))/GetCommentForReport(1
-, "ReportConnection0107")/gc&amp;nbsp_place_holder …</p>
+, "ReportConnection0107")/gc&amp;nbsp_place_holder ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2011/01/regex-group-catch/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -102,10 +102,7 @@ img/#comment-5968">问题</a></p>
 <blockquote>
 <p>小邪是这个样子解答的，首先两边的斜杠是 Perl 正则式的要求。</p>
 </blockquote>
-<p>然后两边的 ^ 和 $ 用来表示对应的是字符串的开始和结束。</p>
-<p>接着<code>.{13}</code>，. 表示除了换行以外的所有字符，<code>13</code> 规定了匹配长度。</p>
-<blockquote>
-<p>我们这里前面用了两次零宽断言，第一次，<code>(?!exp)</code>这里的 exp 是 …</p></blockquote></blockquote>
+<p>然后两边的 ^ 和 ...</p></blockquote>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2010/01/regular-expressions-in-the-zero-width-assertion/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -167,11 +164,6 @@ img/#comment-5968">问题</a></p>
                         <li class="list-group-item">
                             <a href="https://blog.alswl.com/category/managment/">
                                 <i class="fa fa-folder-open fa-lg"></i> Managment
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="https://blog.alswl.com/category/misc/">
-                                <i class="fa fa-folder-open fa-lg"></i> misc
                             </a>
                         </li>
                         <li class="list-group-item">

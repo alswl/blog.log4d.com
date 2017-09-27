@@ -16,7 +16,7 @@
 
         <meta name="author" content="alswl" />
         <meta name="keywords" content="工欲善其事必先利其器,Vim,Vundle" />
-        <meta name="description" content="早在这个月初，我就在 Vim 的邮件列表看到了一封关于 Vim 插件管理的 邮件。 才惊呼原来有这么强大的插件可以用来管理我那一坨插件， 今天细细阅读并查了一些资料，变开始配置自己的 Vim。 几种管理插件 Vim 的插件管理工具有蛮多，比如： Vundle vim-addon-manager vpathogen.vim vvundle vvimana 一位同学自己写的 Vim-addon-manager 和 vimana 的对比，参见 Vim的插件管理工具 我最会选择了 Vundle，通过子目录管理插件，支持 Git 更新。 我其实不太喜欢子目录，觉得目录太多看着烦，但是考虑到在没有一个良好的 PKG 包描述文件的前提下，分子目录是一种简单有效的方法。 Vundle 通过 git 来对插件进行更新，有三种源可以添加： github 中 vim-scripts 的项目（这个账号是为 …" />
+        <meta name="description" content="早在这个月初，我就在 Vim 的邮件列表看到了一封关于 Vim 插件管理的 邮件。 才惊呼原来有这么强大的插件可以用来管理我那一坨插件， 今天细细阅读并查了一些资料，变开始配置自己的 Vim。 几种管理插件 Vim 的插件管理工具有蛮多，比如： Vundle vim-addon-manager vpathogen.vim vvundle vvimana 一位同学自己写的 Vim-addon-manager 和 vimana 的对比，参见 Vim的插件管理工具 我最会选择了 Vundle，通过子目录管理插件，支持 Git 更新。 我其实不太喜欢子目录，觉得目录太多看着烦，但是考虑到在没有一个良好的 PKG 包描述文件的前提下，分子目录是一种简单有效的方法。" />
 
 
 
@@ -80,7 +80,7 @@ Log4D            </a>
 <footer class="post-info">
     <span class="label label-default">Date</span>
     <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2012-04-14T00:00:00+08:00"> 2012-04-14</time>
+        <i class="fa fa-calendar"></i><time datetime="2012-04-14T00:00:00"> 2012-04-14</time>
     </span>
 
 
@@ -118,7 +118,7 @@ Log4D            </a>
 <p>我最会选择了 Vundle，通过子目录管理插件，支持 Git 更新。
 我其实不太喜欢子目录，觉得目录太多看着烦，但是考虑到在没有一个良好的 PKG
 包描述文件的前提下，分子目录是一种简单有效的方法。</p>
-<!-- more -->
+
 <p>Vundle 通过 git 来对插件进行更新，有三种源可以添加：</p>
 <ul>
 <li>github 中 vim-scripts 的项目（这个账号是为 Pathogen 建的，用来建立对 Vim.org 上脚本的镜像）</li>
@@ -129,11 +129,11 @@ Log4D            </a>
 <h2 id="vundle-an-zhuang">Vundle 安装</h2>
 <p>无二话，官方文档的 <a href="https://github.com/gmarik/vundle">Quick Start</a>
 写的很详细 ，一句话：</p>
-<div class="highlight"><pre><span></span>$ git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+<div class="highlight"><pre><span class="nv">$ </span>git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 </pre></div>
 <p>然后开始配置 .vimrc，我的 <a href="https://github.com/alswl/dotfiles/blob/master/.vimrc">.vimrc</a></p>
 <p>重点是配置各种 <code>Bundle</code> 我的配置如下</p>
-<div class="highlight"><pre><span></span><span class="c">" My Bundles here:</span>
+<div class="highlight"><pre><span class="c">" My Bundles here:</span>
 
 <span class="c">" vim-scripts repos</span>
 
@@ -301,11 +301,6 @@ Mardown 自 2010 年之后使用人群猛涨，证据在此，上图是 Markdown
                         <li class="list-group-item">
                             <a href="https://blog.alswl.com/category/managment/">
                                 <i class="fa fa-folder-open fa-lg"></i> Managment
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="https://blog.alswl.com/category/misc/">
-                                <i class="fa fa-folder-open fa-lg"></i> misc
                             </a>
                         </li>
                         <li class="list-group-item">

@@ -107,7 +107,7 @@ Live)上面。那里的文章有着我珍贵的记忆，很多甚至都是在课
 <p>6月1日</p>
 <h4 id="bu-xiang-du-shu">不想读书</h4>
 <p>真的不想读书，讨厌读书，我是感性动物，读理科，在向理性动物进化，找不到读书的理由，没经历过痛苦，我真的很可悲，不想读书，又在读，而内心底部有想考大学，享受幸
-福生活，好矛盾啊 …</p>
+福生活，好矛盾啊 ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/07/those-times-those-who-do-log-archiving-2005/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -122,11 +122,7 @@ Live)上面。那里的文章有着我珍贵的记忆，很多甚至都是在课
 <p>讲相同的方法抽象出来，这也是最常见的解决方案，最简单的例子就是函数的产生，其实也是对程序的一种抽象和提炼，避免冗余，达到复用效果。</p>
 <p>在Java1.5出来之前，用Object来操作对象，实现方法复用，就可以达到上面的目的，但是，存在类型安全的问题。Java1.5提出了泛型的概念，类似与C+
 +中的Template，Java运行环境帮助会检查类型的安全。</p>
-<p>这里有一篇IBM资料库的文章，详细阐述了泛型在DAO设计的使用「不要重复DAO」&lt;<a href="http://www.ibm.com/developer
-works/cn/java/j-genericdao.html">猛击这里打开</a>&gt;，作者<a href="http://www.ibm.com/developerworks/cn/java/j-genericdao.html#author">Per
-Mellqvist</a>
-(<a href="mailto:per@mellqvist.name?subject=%E4%B8%8D%E8%A6%81%E9%
-87%8D%E5%A4%8D%20DAO%EF%BC%81">per …</a></p>
+<p>这里有一篇IBM资料库的文章，详细阐述了泛型在DAO设计的使用「不要重复DAO」&lt;<a href="http://www.ibm ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/07/dao-design-the-use-of-generics-to-avoid-duplication-of-dao/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -137,17 +133,17 @@ Mellqvist</a>
 <p>Wordpress虽好，可毛病也不少，今天发现WordPress会将半角标点符号自动转换成全角的，但并没有替换数据库里的信息，真搞不明白开发团队是怎么想的，
 现将解决方法记录如下。</p>
 <p>1、 编辑 wp-includes/formatting.php 文件，找到以下代码：</p>
-<div class="highlight"><pre><span></span>// static strings
-$curl = str_replace($static_characters, $static_replacements, $curl);
-// regular expressions
-$curl = preg_replace($dynamic_characters, $dynamic_replacements, $curl);
+<div class="highlight"><pre><span class="c1">// static strings</span>
+<span class="err">$</span><span class="n">curl</span> <span class="o">=</span> <span class="n">str_replace</span><span class="p">(</span><span class="err">$</span><span class="n">static_characters</span><span class="p">,</span> <span class="err">$</span><span class="n">static_replacements</span><span class="p">,</span> <span class="err">$</span><span class="n">curl</span><span class="p">);</span>
+<span class="c1">// regular expressions</span>
+<span class="err">$</span><span class="n">curl</span> <span class="o">=</span> <span class="n">preg_replace</span><span class="p">(</span><span class="err">$</span><span class="n">dynamic_characters</span><span class="p">,</span> <span class="err">$</span><span class="n">dynamic_replacements</span><span class="p">,</span> <span class="err">$</span><span class="n">curl</span><span class="p">);</span>
 </pre></div>
 <p>正是 str_replace() 和 preg_replace() 两个函数在作怪。</p>
 <p>2、 将相应语句注释，禁用自动替换功能：</p>
-<div class="highlight"><pre><span></span>// static strings
-//$curl = str_replace($static_characters, $static_replacements, $curl);
-// regular expressions
-//$curl = preg_replace …</pre></div>
+<div class="highlight"><pre><span class="c1">// static strings</span>
+<span class="c1">//$curl = str_replace($static_characters, $static_replacements, $curl);</span>
+<span class="c1">// regular expressions</span>
+<span class="c1">//$curl = preg_replace ...</span></pre></div>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/07/prohibition-of-wordpress-automatically-to-replace-the-half-angle-punctuation/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -163,7 +159,7 @@ $curl = preg_replace($dynamic_characters, $dynamic_replacements, $curl);
 <p>我又删除了饭否的图片，这几天饭否也访问不了，留了也显示不出来。</p>
 <p>我留下12个插件，分别是：Akismet, CodeColorer, Dagon Design Sitemap Generator, Google XML
 Sitemaps, Mail To Commenter, Shutter Reloaded, Super Switch, WordPress Related
-Posts, WP-PageNavi …</p>
+Posts, WP-PageNavi ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/07/wp-small-speed-optimization/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -175,11 +171,7 @@ Posts, WP-PageNavi …</p>
 <p>想想我也挺惨的，我记性一向不好，本身又是计算机专业，让我背那么一大本书。。。</p>
 <p>我认为树形结构的体系记忆起来比较容易，就想去找考试复习大纲，果然Google到一个</p>
 <p><strike>保险代理从业人员基本资格考试大纲.doc&lt;<a href="https://ohsolnxaa.qnssl.com/2009/07/
-%E4%BF%9D%E9%99%A9%E4%BB%A3%E7%90%86%E4%BB%8E%E4%B8%9A%E4%BA%BA%E5%91%98%E5%9F
-%BA%E6%9C%AC%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95%E5%A4%A7%E7%BA%B2.doc">猛击这里下载</a>&gt;</strike></p>。链接已失效，点击<a href="http://log4d.com/2009/07/insurance-agent-
-summary-information-on-the-qualifying-examination">保险代理人资格考试资料汇总 - Log4D</a>查看（Update:2010-04-10）
-<p>我会在近期将文档的详细解释补充完整，而且我这个Word完美主义者对非样式排版的doc非常反感。</p>
-<p>唔&hellip;&hellip;考虑有空写一下Word排版心得，现在全系使用的模板必是我出了`</p>
+%E4%BF%9D%E9%99%A9%E4%BB%A3%E7%90%86%E4%BB%8E%E4%B8%9A%E4%BA%BA%E5%91%98 ...</strike></p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/07/employees-in-the-insurance-intermediary-qualifying-examinations-review-outline/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -207,7 +199,7 @@ summary-information-on-the-qualifying-examination">保险代理人资格考试�
 <p>3:执行脚本：指定编码格式set names utf8(注意，不是UTF-8)</p>
 <p>4:如果你采用的是外部接入的方式，在连接中确定请求的编码格式如：</p>
 <p>jdbc:mysql://localhost:3306 /ms_db?</p>
-<p>useUnicode …</p>
+<p>useUnicode ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/07/mysql-command-line-client-garbled-problems-and-solutions/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -392,11 +384,6 @@ summary-information-on-the-qualifying-examination">保险代理人资格考试�
                         <li class="list-group-item">
                             <a href="https://blog.alswl.com/category/managment/">
                                 <i class="fa fa-folder-open fa-lg"></i> Managment
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="https://blog.alswl.com/category/misc/">
-                                <i class="fa fa-folder-open fa-lg"></i> misc
                             </a>
                         </li>
                         <li class="list-group-item">

@@ -71,11 +71,11 @@ Log4D            </a>
                 <h2 class="title"><a href="https://blog.alswl.com/2012/04/vim-emacs-key-binding/">Vim 下模拟 Emacs 键绑定</a></h2>
                 <div class="summary"><p>Vimer 需要 Emacs 键绑定？看上去很蛋疼的需求吧。其实不然，大部分的 Shell / Readline 默认绑定的是 Emacs 键位绑定（处于输入状态下，Emacs 的键位很好用）。Vim 的模式切换很牛逼，但是 Insert 模式下面，只有寥寥几个快捷键，我修改了配置文件，绑定需要的 Emcas 按键到 Vim 中来。</p>
 <p>Github 中搜索关键字 Vim Emcas key bind，出来一些结果，不是很完美，我又慢慢调教了几个星期，放出我的 .vimrc。</p>
-<div class="highlight"><pre><span></span><span class="s2">" 模拟 Emacs 键绑定</span>
+<div class="highlight"><pre><span class="s2">" 模拟 Emacs 键绑定</span>
 <span class="s2">"</span> Move
 inoremap &lt;C-a&gt; &lt;Home&gt;
 inoremap &lt;C-e&gt; &lt;End&gt;
-<span class="s2">"inoremap &lt;C-p …</span></pre></div>
+<span class="s2">"inoremap &lt;C-p ...</span></pre></div>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2012/04/vim-emacs-key-binding/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -101,10 +101,7 @@ inoremap &lt;C-e&gt; &lt;End&gt;
 <p>我最会选择了 Vundle，通过子目录管理插件，支持 Git 更新。
 我其实不太喜欢子目录，觉得目录太多看着烦，但是考虑到在没有一个良好的 PKG
 包描述文件的前提下，分子目录是一种简单有效的方法。</p>
-<!-- more -->
-<p>Vundle 通过 git 来对插件进行更新，有三种源可以添加：</p>
-<ul>
-<li>github 中 vim-scripts 的项目（这个账号是为 …</li></ul>
+
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2012/04/vundle/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -117,7 +114,7 @@ Vimperator 拦截了，导致键盘操作在这些应用上面不起作用。</p
 <p>还好，Vimperator 提供了一种名为 Pass through 的模式，按 <code>CTRL+Z</code> 进入这种模式，在这种模式下面，Vimperator
 将不响应键盘操作，全部放行到 Web 页面。</p>
 <p>在某一次版本更新之后， Pass through 的快捷键 <code>CTRL+Z</code> 似乎不起作用了，我翻遍了用户手册也没有找到解决办法。</p>
-<p>就在昨天，我无意中不知道按了什么键 …</p>
+<p>就在昨天，我无意中不知道按了什么键 ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2011/07/vimperator-pass-through/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -132,8 +129,7 @@ g/">Armin Ronacher</a>只更新到08年9月份。之后Mako更新了一些少许
 <p>使用方法，放入vimfiles/syntax</p>
 <p>相关链接：</p>
 <p>原始mako.vim：<a href="http://www.v
-im.org/scripts/script.php?script_id=1858">http://www.vim.org/scripts/script.php?script_id=1858</a></p>
-<p>另外一个mako.vim是缩进用的，放入vimfiles/syntax：<a href="http://www.vim.org/scripts/script.php?script_id=2663">http://www.vim.org/scripts/script.php …</a></p>
+im.org/scripts/script.php?script_id=1858">http ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2011/06/mako-vim/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -149,7 +145,7 @@ Parameters!Language.Value, "ReportConnection0107")。</p>
 <p>使用正则表达式里面的分组进行抓获，再用1将中间固定的参数取出，组成新的字符串。</p>
 <h3 id="vimshi-xian">Vim实现</h3>
 <p>%s/GetComment(((s<em>w+!w+.w+s</em>,){2}s<em>"w+"s</em>,s<em>w+!w+.w+s</em>))/GetCommentForReport(1
-, "ReportConnection0107")/gc&amp;nbsp_place_holder …</p>
+, "ReportConnection0107")/gc&amp;nbsp_place_holder ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2011/01/regex-group-catch/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -164,7 +160,7 @@ Parameters!Language.Value, "ReportConnection0107")。</p>
 了一些相关资源，其中几位资深人士（使用Vi/Vim大约20年）提到了一款叫做ViEmu的软件，就好奇的跑去看看。</p>
 <h3 id="viemu">ViEmu</h3>
 <p>让我们来见识一下ViEmu的厉害吧。ViEmu支持模式切换、移动、宏、高亮搜索，键盘映射、增强命令、正则表达、可视模式等等。反正常用的Vim功能都具备。它自
-己也敢宣称支持Vim大部分功能（Vim太强大，不敢说完全模拟~）。下面是一张ViEmu的官方示意图 …</p>
+己也敢宣称支持Vim大部分功能（Vim太强大，不敢说完全模拟~）。下面是一张ViEmu的官方示意图 ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2010/09/vs-vim/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -182,7 +178,7 @@ Spot）</p>
 <code>expandtab</code>模式，也就是把tabs转换成空格，这样的话就不会一起混淆，不过毕竟制表符为8是最常用最普遍的设置，所以一般还是不要改。</p>
 <h2 id="3-softtabstop">3 softtabstop</h2>
 <p>如果我们希望改变程序中的缩进怎么办？<code>shiftwidth</code>和<code>tabstop</code>不一样的话，你会发现程序比较难看的。这时候，<code>softtabstop</code>就起作
-用了。可以从vim的说明中看到，一旦设置了<code>softtabstop …</code></p>
+用了。可以从vim的说明中看到，一旦设置了<code>softtabstop ...</code></p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2010/03/vim-indentation-and-space-config/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -244,11 +240,6 @@ Spot）</p>
                         <li class="list-group-item">
                             <a href="https://blog.alswl.com/category/managment/">
                                 <i class="fa fa-folder-open fa-lg"></i> Managment
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="https://blog.alswl.com/category/misc/">
-                                <i class="fa fa-folder-open fa-lg"></i> misc
                             </a>
                         </li>
                         <li class="list-group-item">

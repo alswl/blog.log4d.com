@@ -16,7 +16,7 @@
 
         <meta name="author" content="alswl" />
         <meta name="keywords" content="Python,Bing" />
-        <meta name="description" content="在使用公司一个Redirect开发工具页面时候，想个性化一下，就想添加一个背景，最好每天能自动变化，我第一个想到的就是Bing。 放狗搜索，发现一篇文章 抓取每天必应bing背景图片 - huangct的专栏 - CSDN博客，文中提供了抓取程式的Python代码，我摘录如下。 import urllib import time def main(): url = &#39;http://www.bing.com&#39; f = urllib.urlopen(url) html = f.read() f.close() a = html[html.index(&#39;/fd/hpk2&#39;):] data = a[:a.index(&#39;&#39;,id:&#39;)] url = data.replace(&#39;\&#39;, &#39;&#39;) url = &#39;http://www.bing …" />
+        <meta name="description" content="在使用公司一个Redirect开发工具页面时候，想个性化一下，就想添加一个背景，最好每天能自动变化，我第一个想到的就是Bing。 放狗搜索，发现一篇文章 抓取每天必应bing背景图片 - huangct的专栏 - CSDN博客，文中提供了抓取程式的Python代码，我摘录如下。 import urllib import time def main(): url = &#39;http://www.bing.com&#39; f = urllib.urlopen(url) html = f.read() f.close() a = html[html.index ..." />
 
 
 
@@ -80,7 +80,7 @@ Log4D            </a>
 <footer class="post-info">
     <span class="label label-default">Date</span>
     <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2010-07-19T00:00:00+08:00"> 2010-07-19</time>
+        <i class="fa fa-calendar"></i><time datetime="2010-07-19T00:00:00"> 2010-07-19</time>
     </span>
 
 
@@ -95,31 +95,31 @@ Log4D            </a>
                 <p>在使用公司一个Redirect开发工具页面时候，想个性化一下，就想添加一个背景，最好每天能自动变化，我第一个想到的就是Bing。</p>
 <p>放狗搜索，发现一篇文章 <a href="http://blog.csdn.net/huangc
 t/archive/2009/10/27/4734844.aspx">抓取每天必应bing背景图片 - huangct的专栏 - CSDN博客</a>，文中提供了抓取程式的Python代码，我摘录如下。</p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">urllib</span>
-<span class="kn">import</span> <span class="nn">time</span>
-<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="s1">'http://www.bing.com'</span>
-    <span class="n">f</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-    <span class="n">html</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-    <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-    <span class="n">a</span> <span class="o">=</span> <span class="n">html</span><span class="p">[</span><span class="n">html</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">'/fd/hpk2'</span><span class="p">):]</span>
-    <span class="n">data</span> <span class="o">=</span> <span class="n">a</span><span class="p">[:</span><span class="n">a</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">''</span><span class="p">,</span><span class="nb">id</span><span class="p">:</span><span class="s1">')]</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">'</span><span class="se">\'</span><span class="s1">, '')</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="s1">'http://www.bing.com'</span><span class="o">+</span><span class="n">url</span>
-    <span class="n">name</span><span class="o">=</span><span class="n">time</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">"%Y%m</span><span class="si">%d</span><span class="s2">"</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">localtime</span><span class="p">())</span>
-    <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="o">+</span><span class="s2">".jpg"</span>
-    <span class="n">urllib</span><span class="o">.</span><span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span><span class="n">name</span><span class="p">)</span>
+<div class="highlight"><pre><span class="n">import</span> <span class="n">urllib</span>
+<span class="n">import</span> <span class="n">time</span>
+<span class="n">def</span> <span class="n">main</span><span class="p">()</span><span class="o">:</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="err">'</span><span class="n">http</span><span class="o">:</span><span class="c1">//www.bing.com'</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="n">urllib</span><span class="p">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="n">html</span> <span class="o">=</span> <span class="n">f</span><span class="p">.</span><span class="n">read</span><span class="p">()</span>
+    <span class="n">f</span><span class="p">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">html</span><span class="p">[</span><span class="n">html</span><span class="p">.</span><span class="n">index</span><span class="p">(</span><span class="err">'</span><span class="o">/</span><span class="n">fd</span><span class="o">/</span><span class="n">hpk2</span><span class="err">'</span><span class="p">)</span><span class="o">:</span><span class="p">]</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="o">:</span><span class="n">a</span><span class="p">.</span><span class="n">index</span><span class="p">(</span><span class="err">''</span><span class="p">,</span><span class="n">id</span><span class="o">:</span><span class="err">'</span><span class="p">)]</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="n">data</span><span class="p">.</span><span class="n">replace</span><span class="p">(</span><span class="err">'\'</span><span class="p">,</span> <span class="err">''</span><span class="p">)</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="err">'</span><span class="n">http</span><span class="o">:</span><span class="c1">//www.bing.com'+url</span>
+    <span class="n">name</span><span class="o">=</span><span class="n">time</span><span class="p">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">"%Y%m%d"</span><span class="p">,</span> <span class="n">time</span><span class="p">.</span><span class="n">localtime</span><span class="p">())</span>
+    <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="o">+</span><span class="s">".jpg"</span>
+    <span class="n">urllib</span><span class="p">.</span><span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span><span class="n">name</span><span class="p">)</span>
 </pre></div>
 <p>if <strong>name</strong> == "<strong>main</strong>":</p>
 <p>main()</p>
 <p>关键的步骤是MS修改了jpg的url方式，用g_img={url:'/fd/hpk2/BambooBoat_ZH-
 CN1057817945.jpg'这样的字符串躲避机器人的抓取。简单的替换即可完成。</p>
 <p>我用C#重写了代码实现，如下所示。</p>
-<div class="highlight"><pre><span></span>using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Net;
-using System.IO;
+<div class="highlight"><pre><span class="n">using</span> <span class="n">System</span><span class="p">;</span>
+<span class="n">using</span> <span class="n">System</span><span class="p">.</span><span class="n">Collections</span><span class="p">.</span><span class="n">Generic</span><span class="p">;</span>
+<span class="n">using</span> <span class="n">System</span><span class="p">.</span><span class="n">Text</span><span class="p">;</span>
+<span class="n">using</span> <span class="n">System</span><span class="p">.</span><span class="n">Net</span><span class="p">;</span>
+<span class="n">using</span> <span class="n">System</span><span class="p">.</span><span class="n">IO</span><span class="p">;</span>
 </pre></div>
 <p>namespace com.dddspace.GetBingImg</p>
 <p>{ #region 获取Bing图片</p>
@@ -301,11 +301,6 @@ BingImg.GetBingImg();</code>设置一下背景图片就万事OK了。现在，�
                         <li class="list-group-item">
                             <a href="https://blog.alswl.com/category/managment/">
                                 <i class="fa fa-folder-open fa-lg"></i> Managment
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="https://blog.alswl.com/category/misc/">
-                                <i class="fa fa-folder-open fa-lg"></i> misc
                             </a>
                         </li>
                         <li class="list-group-item">

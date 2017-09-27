@@ -77,7 +77,7 @@ Excel之后再在客户端上利用vba生成Excel成品。</p>
 自动化注意事项）</a>也明文标出"Microsoft
 目前建议不要从任何无人参与的、非交互式客户端应用程序或组件（包括 ASP、DCOM 和 NT Service）中进行 Microsoft Office
 应用程序的"自动化"，也不为此提供支持，因为 Office 在这种环境中运行时可能会出现不稳定的现象并且/或者会死锁。"</p>
-<p>这种方法的优点是给用户更简洁的展现，毕竟原生的Excel成品比半成品来更容易接受，而且可以避免宏安全问题 …</p>
+<p>这种方法的优点是给用户更简洁的展现，毕竟原生的Excel成品比半成品来更容易接受，而且可以避免宏安全问题 ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2010/12/csharp-vba-excel/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -103,7 +103,7 @@ Excel之后再在客户端上利用vba生成Excel成品。</p>
 <p>YAML使用起来相当方便，能够自动解析成对应语言中的变量，比如列表解析为列表，数字文字分别解析成对应的格式变量。</p>
 <p>之所以选择YAML，是看中它对语言的亲和性和可读性，GAE的配置文件就是YAML格式。YAML的语法相当简单，用:来分隔key: value，用 -
 来分隔列表，注意点是缩进需要用空格，关键符号和内容之间要加上一个空格。我的配置文件如下：</p>
-<div class="highlight"><pre><span></span><span class="n">taskId</span><span class="o">:</span> <span class="n">PQMI06</span>
+<div class="highlight"><pre><span class="n">taskId</span><span class="o">:</span> <span class="n">PQMI06</span>
 <span class="n">taskName</span><span class="o">:</span> <span class="err">测试建制作业</span>
 <span class="n">author</span><span class="o">:</span> <span class="n">alswl</span>
 <span class="n">confirmId</span><span class="o">:</span> <span class="mi">20101025</span><span class="n">xxx</span>
@@ -119,7 +119,7 @@ bodyFiles:</p>
 <li>
 <p>body1.txt  </p>
 </li>
-<li>body2 …</li></ul>
+<li>body2 ...</li></ul>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2010/11/a-week-python/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -128,7 +128,7 @@ bodyFiles:</p>
                 <h2 class="title"><a href="https://blog.alswl.com/2010/10/python-clipboard/">Python读写剪贴板</a></h2>
                 <div class="summary"><p>最近在写一个CodeGenX代码生成器，说是生成器，其实是目前只完成一堆零散的脚本。这些脚本的调用方式一般是从某个txt中读取数据，再写到另外一个txt中。</p>
 <p>由于某些数据变动频繁，导致我操作txt次数大增，我怒了，就找了一个脚本自动读写剪贴板。</p>
-<div class="highlight"><pre><span></span><span class="c1">#coding=utf-8</span>
+<div class="highlight"><pre><span class="c">#coding=utf-8</span>
 <span class="sd">'''</span>
 <span class="sd">读写剪贴板</span>
 <span class="sd">'''</span>
@@ -148,7 +148,7 @@ bodyFiles:</p>
   <span class="n">w</span><span class="o">.</span><span class="n">CloseClipboard</span><span class="p">()</span>
 </pre></div>
 <p>别说有了这个脚本用起来还是蛮方便的，建议丢到Python的lib下面，然后可以方便调用。</p>
-<p>如果双击 <code>.py …</code></p>
+<p>如果双击 <code>.py ...</code></p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2010/10/python-clipboard/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -193,15 +193,15 @@ BooguNote</a> &amp;
 <p>BooguNote可以将里面的文字直接复制出来，会在父亲节点上加入+，子节点加入-，这种简单的txt不能满足我的要求。于是我花了点时间写了一个mm文件到ht
 ml的转换脚本。</p>
 <p>BooguNote的文件格式是boo，可以转换成FreeMind的思维导图格式.mm，我认为用mm作为源数据格式适用范围更大。</p>
-<div class="highlight"><pre><span></span><span class="c1">#coding=utf-8</span>
-<span class="kn">from</span> <span class="nn">xml.dom</span> <span class="kn">import</span> <span class="n">minidom</span>
-<span class="kn">import</span> <span class="nn">sys</span>
-<span class="kn">import</span> <span class="nn">os</span>
+<div class="highlight"><pre><span class="cp">#coding=utf-8</span>
+<span class="n">from</span> <span class="n">xml</span><span class="p">.</span><span class="n">dom</span> <span class="n">import</span> <span class="n">minidom</span>
+<span class="n">import</span> <span class="n">sys</span>
+<span class="n">import</span> <span class="n">os</span>
 </pre></div>
 <p>class MM2Html:</p>
 <p>'转换MM-&gt;Html类'</p>
 <p>def <strong>init</strong>(self):</p>
-<p>self.html = '''&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1 …</p>
+<p>self.html = '''&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1 ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2010/09/script-mm2html/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -219,7 +219,7 @@ ml的转换脚本。</p>
 <h3 id="1-shu-ju-bao-cun-ge-shi">1、数据保存格式</h3>
 <p>数据的保存格式关系到知识的完整性和呈现方式，这是我最看重的一条。我理想中的保存格式是能够内嵌媒体信息，可以自定义内容的样式，最好是用大家比较习惯的文档体系，
 比如h1/h2/h3/p/br/ol/li。在内嵌媒体内容的同时也要能够在知识点外挂其他类型文件，比如Excel、知识导图，甚至exe可执行文件。</p>
-<p>数据保存格式也要考虑数据的移植性 …</p>
+<p>数据保存格式也要考虑数据的移植性 ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2010/09/my-kms/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -239,7 +239,7 @@ Group的邮件组，应该只是一封纯粹的垃圾邮件。</p>
 </blockquote>
 <p>&amp;nbsp_place_holder;&amp;nbsp_place_holder;&amp;nbsp_place_holder; * Allow group
 moderators to directly add me to their groups</p>
-<p>&amp;nbsp_place_holder;&amp;nbsp_place_holder;&amp;nbsp_place_holder; * Allow …</p>
+<p>&amp;nbsp_place_holder;&amp;nbsp_place_holder;&amp;nbsp_place_holder; * Allow ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2010/09/yahoo-group/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -254,7 +254,7 @@ moderators to directly add me to their groups</p>
 了一些相关资源，其中几位资深人士（使用Vi/Vim大约20年）提到了一款叫做ViEmu的软件，就好奇的跑去看看。</p>
 <h3 id="viemu">ViEmu</h3>
 <p>让我们来见识一下ViEmu的厉害吧。ViEmu支持模式切换、移动、宏、高亮搜索，键盘映射、增强命令、正则表达、可视模式等等。反正常用的Vim功能都具备。它自
-己也敢宣称支持Vim大部分功能（Vim太强大，不敢说完全模拟~）。下面是一张ViEmu的官方示意图 …</p>
+己也敢宣称支持Vim大部分功能（Vim太强大，不敢说完全模拟~）。下面是一张ViEmu的官方示意图 ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2010/09/vs-vim/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -408,11 +408,6 @@ moderators to directly add me to their groups</p>
                         <li class="list-group-item">
                             <a href="https://blog.alswl.com/category/managment/">
                                 <i class="fa fa-folder-open fa-lg"></i> Managment
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="https://blog.alswl.com/category/misc/">
-                                <i class="fa fa-folder-open fa-lg"></i> misc
                             </a>
                         </li>
                         <li class="list-group-item">

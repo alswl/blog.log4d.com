@@ -16,7 +16,7 @@
 
         <meta name="author" content="alswl" />
         <meta name="keywords" content="C,WinPcap,网络编程" />
-        <meta name="description" content="网络编程学习日记(2)_利用WinPcap实现ARP的发送和接受 网络编程学完以太网帧的结构，就开始正式进入IP层的学习了，在学习编程之前，对网络协议的有一定的了解，而且还要知道每个数据包，或者是报文，或者是帧他们每个字节 的含义 玩ARP么，肯定得知道他的原理，我就不做什么说明了，书上一大堆的 首先是ARP的接收，来看一下程序的流程 获取网络设备列表 pcap_findalldevs_ex(PCAP_SRC_IF_STRING, NULL, &amp;alldevs, errbuf) 然后人机交互一下，获得需要工作的网卡 打开需要的网卡 (adhandle= pcap_open(d-&gt;name, // 设备名 &amp;nbsp_place_holder;&amp;nbsp_place_holder; 65536, // 要捕捉的数据包的部分 &amp;nbsp_place_holder;&amp;nbsp_place_holder; // 65535保证能捕获到不同数据链路层上的每个数据包的全部内容 &amp;nbsp_place_holder;&amp;nbsp_place_holder; PCAP_OPENFLAG_PROMISCUOUS,&amp;nbsp_place_holder;&amp;nbsp_place_holder; // 混杂模式 &amp;nbsp_place_holder;&amp;nbsp_place_holder; 1000,&amp;nbsp_place_holder;&amp;nbsp_place_holder; // 读取超时时间 …" />
+        <meta name="description" content="网络编程学习日记(2)_利用WinPcap实现ARP的发送和接受 网络编程学完以太网帧的结构，就开始正式进入IP层的学习了，在学习编程之前，对网络协议的有一定的了解，而且还要知道每个数据包，或者是报文，或者是帧他们每个字节 的含义 玩ARP么，肯定得知道他的原理，我就不做什么说明了，书上一大堆的 首先是ARP的接收，来看一下程序的流程 获取网络设备列表 pcap_findalldevs_ex(PCAP_SRC_IF_STRING, NULL, &amp;alldevs, errbuf) 然后人机交互一下，获得需要工作的网卡 打开需要的网卡 (adhandle= pcap_open(d-&gt;name, // 设备名 &amp;nbsp_place_holder;&amp;nbsp_place_holder; 65536, // 要捕捉的数据包的部分 &amp;nbsp_place_holder;&amp;nbsp_place_holder; // 65535保证能捕获到不同数据链路层上的每个数据包的全部内容 &amp;nbsp_place_holder;&amp;nbsp_place_holder; PCAP_OPENFLAG_PROMISCUOUS,&amp;nbsp_place_holder;&amp;nbsp_place_holder; // 混杂模式 &amp;nbsp_place_holder;&amp;nbsp_place_holder; 1000,&amp;nbsp_place_holder;&amp;nbsp_place_holder; // 读取超时时间 ..." />
 
 
 
@@ -80,7 +80,7 @@ Log4D            </a>
 <footer class="post-info">
     <span class="label label-default">Date</span>
     <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2008-09-25T00:00:00+08:00"> 2008-09-25</time>
+        <i class="fa fa-calendar"></i><time datetime="2008-09-25T00:00:00"> 2008-09-25</time>
     </span>
 
 
@@ -267,11 +267,6 @@ source/647852">http://download.csdn.net/source/647852</a>）其实很简单，�
                         <li class="list-group-item">
                             <a href="https://blog.alswl.com/category/managment/">
                                 <i class="fa fa-folder-open fa-lg"></i> Managment
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="https://blog.alswl.com/category/misc/">
-                                <i class="fa fa-folder-open fa-lg"></i> misc
                             </a>
                         </li>
                         <li class="list-group-item">

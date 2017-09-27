@@ -16,7 +16,7 @@
 
         <meta name="author" content="alswl" />
         <meta name="keywords" content="Python" />
-        <meta name="description" content="上个月时候，zwwooooo同鞋联系我让帮写一个铁血联盟中需要用到的Edt&lt;-&gt;Txt转换器，我前前后后大约三个星期完成 到v0.9，能完成基本的功能（但似乎存在一些未知Bug，-_-#）。由于我之后很长一段时间得找工作，所以不能继续维护这个小工具，现在把他的代码开放，如果有高 人能看到这个小工具，有兴趣的话可以继续维护下去，(zwwooooo，真的很不好意思……)。 一些关于程序说明，zwwooooo原文，更详细可以联系zwwooooo本人： edt（后缀） 是游戏对话文件，游戏里有很多种，但都是有规律的，我把一些规律和流程说一下 一、从 edt 提取出对话部分文本，然后转换并输出为 ansi 码文本，用附件的 000.edt 为例说明 把 000.edt 文件用16进制方式打开，对话从&#34;0&#34;处开始，结束标志是2个16进制字节：00 00 000.edt …" />
+        <meta name="description" content="上个月时候，zwwooooo同鞋联系我让帮写一个铁血联盟中需要用到的Edt&lt;-&gt;Txt转换器，我前前后后大约三个星期完成 到v0.9，能完成基本的功能（但似乎存在一些未知Bug，-_-#）。由于我之后很长一段时间得找工作，所以不能继续维护这个小工具，现在把他的代码开放，如果有高 人能看到这个小工具，有兴趣的话可以继续维护下去，(zwwooooo，真的很不好意思……)。 一些关于程序说明，zwwooooo原文，更详细可以联系zwwooooo本人： edt（后缀） 是游戏对话文件，游戏里有很多种，但都是有规律的，我把一些规律和流程说一下 一、从 edt 提取出对话部分文本，然后转换并输出为 ansi 码文本，用附件的 000.edt 为例说明 把 000.edt 文件用16进制方式打开，对话从&#34;0&#34;处开始，结束标志是2个16进制字节：00 00 000.edt ..." />
 
 
 
@@ -80,7 +80,7 @@ Log4D            </a>
 <footer class="post-info">
     <span class="label label-default">Date</span>
     <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2009-11-01T00:00:00+08:00"> 2009-11-01</time>
+        <i class="fa fa-calendar"></i><time datetime="2009-11-01T00:00:00"> 2009-11-01</time>
     </span>
 
 
@@ -130,10 +130,10 @@ Log4D            </a>
 <p>程序是<a href="http://log4d.com/2009/10/python-django-mtv-framework-and-php-
 mvc-framework">用Python写的</a>，不要觉得很难，我也是在用Python完成Hello
 World之后第三天开始写这个程序，只要有C/Java/C#这些语言一些基础，就可以理解这些程序了。</p>
-<div class="highlight"><pre><span></span><span class="c1"># coding=utf-8</span>
-<span class="kn">import</span> <span class="nn">struct</span>
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">ConfigParser</span>
+<div class="highlight"><pre><span class="cp"># coding=utf-8</span>
+<span class="n">import</span> <span class="k">struct</span>
+<span class="n">import</span> <span class="n">os</span>
+<span class="n">import</span> <span class="n">ConfigParser</span>
 </pre></div>
 <p>configParser=ConfigParser.ConfigParser()</p>
 <p>CONFIGNAME = 'config.cfg'</p>
@@ -189,9 +189,9 @@ World之后第三天开始写这个程序，只要有C/Java/C#这些语言一些
 'fb': 'xfb', 'fc': 'xfc', 'fd': 'xfd', 'fe': 'xfe', 'ff': 'xff', }</p>
 <p>def welcome():</p>
 <p>print u'<strong><em>*</em></strong><strong><em>*</em></strong><strong><em>*</em></strong><strong><em>*</em></strong><strong><em>*</em></strong><strong><em>*</em></strong><strong><em>*</em></strong><strong><em>*</em></strong><strong><em>*</em></strong>****'</p>
-<p>print u'<strong><em>*</em></strong><strong><em>*</em></strong><strong><em>*</em></strong><strong><em>*</em>* </strong><strong><em>*</em></strong><strong><em>*</em></strong><strong><em>*</em></strong>****'</p>
-<p>print u'<strong><em>*</em></strong><strong><em>*</em></strong><strong><em>*</em></strong><strong><em>*</em>*EdtTxtConvert</strong><strong><em>*</em></strong><strong><em>*</em></strong><strong><em>*</em></strong>****'</p>
-<p>print u'<strong><em>*</em></strong><strong><em>*</em></strong><strong><em>*</em></strong><strong><em>*</em>* </strong><strong><em>*</em></strong><strong><em>*</em></strong><strong><em>*</em></strong>****'</p>
+<p>print u'<strong><em>*</em></strong><strong><em>*</em></strong><strong><em>*</em></strong><strong><em>*** </em></strong><strong><em>*</em></strong><strong><em>*</em></strong><strong><em>*</em></strong>***'</p>
+<p>print u'<strong><em>*</em></strong><strong><em>*</em></strong><strong><em>*</em></strong><strong><em>***EdtTxtConvert</em></strong><strong><em>*</em></strong><strong><em>*</em></strong><strong><em>*</em></strong>***'</p>
+<p>print u'<strong><em>*</em></strong><strong><em>*</em></strong><strong><em>*</em></strong><strong><em>*** </em></strong><strong><em>*</em></strong><strong><em>*</em></strong><strong><em>*</em></strong>***'</p>
 <p>print u'<strong><em>*</em></strong><strong><em>*</em></strong><strong><em>*</em></strong><strong><em>*</em></strong><strong><em>*</em></strong><strong><em>*</em></strong><strong><em>*</em></strong><strong><em>*</em></strong><strong><em>*</em></strong>****'</p>
 <p>print u'Any problem can connect me with my web site.'</p>
 <p>print u' <em>powered by alswl</em> '</p>
@@ -504,11 +504,6 @@ executable-program-exe">使
                         <li class="list-group-item">
                             <a href="https://blog.alswl.com/category/managment/">
                                 <i class="fa fa-folder-open fa-lg"></i> Managment
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="https://blog.alswl.com/category/misc/">
-                                <i class="fa fa-folder-open fa-lg"></i> misc
                             </a>
                         </li>
                         <li class="list-group-item">

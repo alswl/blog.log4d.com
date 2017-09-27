@@ -74,11 +74,16 @@ Log4D            </a>
 会将所有插件管理在 <code>.vim/bundle/</code> 中，详情可看
 <a href="/2012/04/vundle/">使用 Vundle 管理 Vim 插件</a>。</p>
 <p>官方安装 Vundle 方法如下：</p>
-<div class="highlight"><pre><span></span>$ git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
-</pre></div>
+git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+</pre>
 <p>我的 Vundle 的版本是 <code>59bff0c457f68c3d52bcebbf6068ea01ac8f5dac</code>，
 git 版本是 <code>git version 1.7.10.2</code> 。
-使用 <code>BundleInstall</code> 可以安装 <code>.vimrc</code> 中配置的插件 …</p>
+使用 <code>BundleInstall</code> 可以安装 <code>.vimrc</code> 中配置的插件，</p>
+<p>我使用 git 控制 <code>.vim</code> 和 <code>.vimrc</code> 版本。在 <code>BundleInstall</code>
+之后会导致 vundle 目录项目状态混乱，要么形成一个无法追踪的
+submodule 比如 <code>.vim/bundle/The-NERD-Commenter (untracked content)</code>
+，要么变成一个普通的文件夹 <code>.vim/bundle/vim-markdown</code>。</p>
+
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2012/06/vundle-submodule/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -104,10 +109,7 @@ git 版本是 <code>git version 1.7.10.2</code> 。
 <p>我最会选择了 Vundle，通过子目录管理插件，支持 Git 更新。
 我其实不太喜欢子目录，觉得目录太多看着烦，但是考虑到在没有一个良好的 PKG
 包描述文件的前提下，分子目录是一种简单有效的方法。</p>
-<!-- more -->
-<p>Vundle 通过 git 来对插件进行更新，有三种源可以添加：</p>
-<ul>
-<li>github 中 vim-scripts 的项目（这个账号是为 …</li></ul>
+
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2012/04/vundle/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -169,11 +171,6 @@ git 版本是 <code>git version 1.7.10.2</code> 。
                         <li class="list-group-item">
                             <a href="https://blog.alswl.com/category/managment/">
                                 <i class="fa fa-folder-open fa-lg"></i> Managment
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="https://blog.alswl.com/category/misc/">
-                                <i class="fa fa-folder-open fa-lg"></i> misc
                             </a>
                         </li>
                         <li class="list-group-item">

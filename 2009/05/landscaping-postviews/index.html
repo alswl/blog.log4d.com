@@ -16,7 +16,7 @@
 
         <meta name="author" content="alswl" />
         <meta name="keywords" content="建站心得,WordPress" />
-        <meta name="description" content="很多朋友用postviews这个插件，的确很适合国人的风格，但是如果单纯的添加到页面中，会显得很突兀，难看，我做了几个美化工作。 首先，在用到postviews函数时候都定义span id，比如在single.php中修改，在下面代码 &lt;span&gt;&lt;?php the_author_posts_link(); ?&gt;&lt;/span&gt;&lt;?php endif; ?&gt; 后面跟上一段显示浏览次数的代码 &lt;span&gt;&lt;?php the_author_posts_link(); ?&gt;&lt;/span&gt;&lt;?php endif; ?&gt; 这样就可以显示浏览次数。 然后修改style.css文件，我的是inove主题，在382行附近修改 .post .date, .post .author, .post .postviews, .post .editpost, .post .comments, .post .addcomment, .post .addlink, .post .editlinks { background:url(img/icons …" />
+        <meta name="description" content="很多朋友用postviews这个插件，的确很适合国人的风格，但是如果单纯的添加到页面中，会显得很突兀，难看，我做了几个美化工作。 首先，在用到postviews函数时候都定义span id，比如在single.php中修改，在下面代码 &lt;span&gt;&lt;?php the_author_posts_link(); ?&gt;&lt;/span&gt;&lt;?php endif; ?&gt; 后面跟上一段显示浏览次数的代码 &lt;span&gt;&lt;?php the_author_posts_link(); ?&gt;&lt;/span&gt;&lt;?php endif; ?&gt; 这样就可以显示浏览次数。 然后修改style.css文件，我的是inove主题，在382行附近修改 .post .date, .post .author, .post .postviews, .post .editpost, .post .comments, .post .addcomment, .post .addlink, .post .editlinks { background:url(img/icons ..." />
 
 
 
@@ -80,7 +80,7 @@ Log4D            </a>
 <footer class="post-info">
     <span class="label label-default">Date</span>
     <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2009-05-21T00:00:00+08:00"> 2009-05-21</time>
+        <i class="fa fa-calendar"></i><time datetime="2009-05-21T00:00:00"> 2009-05-21</time>
     </span>
 
 
@@ -94,56 +94,56 @@ Log4D            </a>
                 </div>
                 <p>很多朋友用postviews这个插件，的确很适合国人的风格，但是如果单纯的添加到页面中，会显得很突兀，难看，我做了几个美化工作。</p>
 <p>首先，在用到postviews函数时候都定义span id，比如在single.php中修改，在下面代码</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;span&gt;</span><span class="cp">&lt;?php</span> <span class="nx">the_author_posts_link</span><span class="p">();</span> <span class="cp">?&gt;</span><span class="nt">&lt;/span&gt;</span><span class="cp">&lt;?php</span> <span class="k">endif</span><span class="p">;</span> <span class="cp">?&gt;</span>
+<div class="highlight"><pre><span class="nt">&lt;span&gt;</span><span class="cp">&lt;?php the_author_posts_link(); ?&gt;</span><span class="nt">&lt;/span&gt;</span><span class="cp">&lt;?php endif; ?&gt;</span>
 </pre></div>
 <p>后面跟上一段显示浏览次数的代码</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;span&gt;</span><span class="cp">&lt;?php</span> <span class="nx">the_author_posts_link</span><span class="p">();</span> <span class="cp">?&gt;</span><span class="nt">&lt;/span&gt;</span><span class="cp">&lt;?php</span> <span class="k">endif</span><span class="p">;</span> <span class="cp">?&gt;</span>
+<div class="highlight"><pre><span class="nt">&lt;span&gt;</span><span class="cp">&lt;?php the_author_posts_link(); ?&gt;</span><span class="nt">&lt;/span&gt;</span><span class="cp">&lt;?php endif; ?&gt;</span>
 </pre></div>
 <p>这样就可以显示浏览次数。</p>
 <p>然后修改style.css文件，我的是inove主题，在382行附近修改</p>
-<div class="highlight"><pre><span></span><span class="na">.post</span> <span class="no">.date</span><span class="p">,</span>
-<span class="na">.post</span> <span class="no">.author</span><span class="p">,</span>
-<span class="na">.post</span> <span class="no">.postviews</span><span class="p">,</span>
-<span class="na">.post</span> <span class="no">.editpost</span><span class="p">,</span>
-<span class="na">.post</span> <span class="no">.comments</span><span class="p">,</span>
-<span class="na">.post</span> <span class="no">.addcomment</span><span class="p">,</span>
-<span class="na">.post</span> <span class="no">.addlink</span><span class="p">,</span>
-<span class="na">.post</span> <span class="no">.editlinks</span> <span class="err">{</span>
-<span class="nl">background:</span><span class="nf">url</span><span class="p">(</span><span class="no">img</span><span class="err">/</span><span class="no">icons.gif</span><span class="p">)</span> <span class="no">no-repeat</span><span class="c">;</span>
-<span class="no">padding-left</span><span class="p">:</span><span class="mi">22</span><span class="no">px</span><span class="c">;</span>
-<span class="no">height</span><span class="p">:</span><span class="mi">16</span><span class="no">px</span><span class="c">;</span>
-<span class="no">line-height</span><span class="p">:</span><span class="mi">16</span><span class="no">px</span><span class="c">;</span>
-<span class="no">display</span><span class="p">:</span><span class="no">block</span><span class="c">;</span>
-<span class="no">font-size</span><span class="p">:</span><span class="mi">12</span><span class="no">px</span><span class="c">;</span>
-<span class="err">}</span>
+<div class="highlight"><pre><span class="p">.</span><span class="n">post</span> <span class="p">.</span><span class="n">date</span><span class="p">,</span>
+<span class="p">.</span><span class="n">post</span> <span class="p">.</span><span class="n">author</span><span class="p">,</span>
+<span class="p">.</span><span class="n">post</span> <span class="p">.</span><span class="n">postviews</span><span class="p">,</span>
+<span class="p">.</span><span class="n">post</span> <span class="p">.</span><span class="n">editpost</span><span class="p">,</span>
+<span class="p">.</span><span class="n">post</span> <span class="p">.</span><span class="n">comments</span><span class="p">,</span>
+<span class="p">.</span><span class="n">post</span> <span class="p">.</span><span class="n">addcomment</span><span class="p">,</span>
+<span class="p">.</span><span class="n">post</span> <span class="p">.</span><span class="n">addlink</span><span class="p">,</span>
+<span class="p">.</span><span class="n">post</span> <span class="p">.</span><span class="n">editlinks</span> <span class="p">{</span>
+<span class="nl">background:</span><span class="n">url</span><span class="p">(</span><span class="n">img</span><span class="o">/</span><span class="n">icons</span><span class="p">.</span><span class="n">gif</span><span class="p">)</span> <span class="n">no</span><span class="o">-</span><span class="n">repeat</span><span class="p">;</span>
+<span class="n">padding</span><span class="o">-</span><span class="n">left</span><span class="o">:</span><span class="mi">22</span><span class="n">px</span><span class="p">;</span>
+<span class="nl">height:</span><span class="mi">16</span><span class="n">px</span><span class="p">;</span>
+<span class="n">line</span><span class="o">-</span><span class="n">height</span><span class="o">:</span><span class="mi">16</span><span class="n">px</span><span class="p">;</span>
+<span class="nl">display:</span><span class="n">block</span><span class="p">;</span>
+<span class="n">font</span><span class="o">-</span><span class="n">size</span><span class="o">:</span><span class="mi">12</span><span class="n">px</span><span class="p">;</span>
+<span class="p">}</span>
 </pre></div>
 <p>增加一个".post .postviews,"，然后再在后面的.post .author，如下</p>
-<div class="highlight"><pre><span></span><span class="na">.post</span> <span class="no">.author</span> <span class="err">{</span>
-<span class="nl">background-position:</span><span class="err">0</span> <span class="err">0</span><span class="c">;</span>
-<span class="nl">margin-right:</span><span class="err">15</span><span class="nf">px</span><span class="c">;</span>
-<span class="no">float</span><span class="p">:</span><span class="no">left</span><span class="c">;</span>
-<span class="err">}</span>
+<div class="highlight"><pre><span class="p">.</span><span class="n">post</span> <span class="p">.</span><span class="n">author</span> <span class="p">{</span>
+<span class="n">background</span><span class="o">-</span><span class="n">position</span><span class="o">:</span><span class="mi">0</span> <span class="mi">0</span><span class="p">;</span>
+<span class="n">margin</span><span class="o">-</span><span class="n">right</span><span class="o">:</span><span class="mi">15</span><span class="n">px</span><span class="p">;</span>
+<span class="nl">float:</span><span class="n">left</span><span class="p">;</span>
+<span class="p">}</span>
 </pre></div>
 <p>后面添加</p>
-<div class="highlight"><pre><span></span><span class="na">.post</span> <span class="no">.postviews</span> <span class="err">{</span>
-<span class="nl">float:</span><span class="nf">left</span><span class="c">;</span>
-<span class="err">}</span>
+<div class="highlight"><pre><span class="p">.</span><span class="n">post</span> <span class="p">.</span><span class="n">postviews</span> <span class="p">{</span>
+<span class="nl">float:</span><span class="n">left</span><span class="p">;</span>
+<span class="p">}</span>
 </pre></div>
 <p>这样就能显示合适的大小。</p>
 <p>此时间距还有问题，修改".post .author"</p>
-<div class="highlight"><pre><span></span><span class="na">.post</span> <span class="no">.author</span> <span class="err">{</span>
-<span class="nl">background-position:</span><span class="err">0</span> <span class="err">0</span><span class="c">;</span>
-<span class="nl">margin-right:</span><span class="err">15</span><span class="nf">px</span><span class="c">;</span>
-<span class="no">float</span><span class="p">:</span><span class="no">left</span><span class="c">;</span>
-<span class="err">}</span>
+<div class="highlight"><pre><span class="p">.</span><span class="n">post</span> <span class="p">.</span><span class="n">author</span> <span class="p">{</span>
+<span class="n">background</span><span class="o">-</span><span class="n">position</span><span class="o">:</span><span class="mi">0</span> <span class="mi">0</span><span class="p">;</span>
+<span class="n">margin</span><span class="o">-</span><span class="n">right</span><span class="o">:</span><span class="mi">15</span><span class="n">px</span><span class="p">;</span>
+<span class="nl">float:</span><span class="n">left</span><span class="p">;</span>
+<span class="p">}</span>
 </pre></div>
 <p>此时位置就修改好了。</p>
 <p>如果想添加我这样的心形符号，就得修改wordpresswp-
 contentthemesinoveimg下面的icons.gif，在合适的地方添加一个自己喜欢的图像，然后修改style.css</p>
-<div class="highlight"><pre><span></span><span class="na">.post</span> <span class="no">.postviews</span> <span class="err">{</span>
-<span class="nl">background-position:</span><span class="err">0</span> <span class="err">-18</span><span class="nf">px</span><span class="c">;</span>
-<span class="no">float</span><span class="p">:</span><span class="no">left</span><span class="c">;</span>
-<span class="err">}</span>
+<div class="highlight"><pre><span class="p">.</span><span class="n">post</span> <span class="p">.</span><span class="n">postviews</span> <span class="p">{</span>
+<span class="n">background</span><span class="o">-</span><span class="n">position</span><span class="o">:</span><span class="mi">0</span> <span class="o">-</span><span class="mi">18</span><span class="n">px</span><span class="p">;</span>
+<span class="nl">float:</span><span class="n">left</span><span class="p">;</span>
+<span class="p">}</span>
 </pre></div>
 <p>如果喜欢我的心形，可以直接下载我的修改好的图像，<a href="http://log4d.com/wp-
 content/themes/inove/img/icons.gif">icons.gif</a>，覆盖原来的就可以了。</p>
@@ -248,11 +248,6 @@ content/themes/inove/img/icons.gif">icons.gif</a>，覆盖原来的就可以了�
                         <li class="list-group-item">
                             <a href="https://blog.alswl.com/category/managment/">
                                 <i class="fa fa-folder-open fa-lg"></i> Managment
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="https://blog.alswl.com/category/misc/">
-                                <i class="fa fa-folder-open fa-lg"></i> misc
                             </a>
                         </li>
                         <li class="list-group-item">

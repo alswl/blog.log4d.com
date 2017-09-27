@@ -82,7 +82,8 @@ Log4D            </a>
 <h2 id="na-xie-ji-yu-javascript-de-tu-xing-hua-gong-ju">那些基于 javascript 的图形化工具</h2>
 <p>有很多 javascript 图形化库，从极简到复杂绚丽的风格，都极为丰富。</p>
 <p>最流行的可能就是 <a href="http://d3js.org/">d3.js</a> 和 <a href="http://raphaeljs.com/">Raphael</a> 了。
-他们用起来<em>相当</em>麻烦，但却能实现绚丽到超越你想象的可视化效果 …</p>
+他们用起来<em>相当</em>麻烦，但却能实现绚丽到超越你想象的可视化效果。</p>
+
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2012/06/flotr2/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -94,11 +95,16 @@ Log4D            </a>
 会将所有插件管理在 <code>.vim/bundle/</code> 中，详情可看
 <a href="/2012/04/vundle/">使用 Vundle 管理 Vim 插件</a>。</p>
 <p>官方安装 Vundle 方法如下：</p>
-<div class="highlight"><pre><span></span>$ git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
-</pre></div>
+git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+</pre>
 <p>我的 Vundle 的版本是 <code>59bff0c457f68c3d52bcebbf6068ea01ac8f5dac</code>，
 git 版本是 <code>git version 1.7.10.2</code> 。
-使用 <code>BundleInstall</code> 可以安装 <code>.vimrc</code> 中配置的插件 …</p>
+使用 <code>BundleInstall</code> 可以安装 <code>.vimrc</code> 中配置的插件，</p>
+<p>我使用 git 控制 <code>.vim</code> 和 <code>.vimrc</code> 版本。在 <code>BundleInstall</code>
+之后会导致 vundle 目录项目状态混乱，要么形成一个无法追踪的
+submodule 比如 <code>.vim/bundle/The-NERD-Commenter (untracked content)</code>
+，要么变成一个普通的文件夹 <code>.vim/bundle/vim-markdown</code>。</p>
+
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2012/06/vundle-submodule/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -107,11 +113,11 @@ git 版本是 <code>git version 1.7.10.2</code> 。
                 <h2 class="title"><a href="https://blog.alswl.com/2012/04/vim-emacs-key-binding/">Vim 下模拟 Emacs 键绑定</a></h2>
                 <div class="summary"><p>Vimer 需要 Emacs 键绑定？看上去很蛋疼的需求吧。其实不然，大部分的 Shell / Readline 默认绑定的是 Emacs 键位绑定（处于输入状态下，Emacs 的键位很好用）。Vim 的模式切换很牛逼，但是 Insert 模式下面，只有寥寥几个快捷键，我修改了配置文件，绑定需要的 Emcas 按键到 Vim 中来。</p>
 <p>Github 中搜索关键字 Vim Emcas key bind，出来一些结果，不是很完美，我又慢慢调教了几个星期，放出我的 .vimrc。</p>
-<div class="highlight"><pre><span></span><span class="s2">" 模拟 Emacs 键绑定</span>
+<div class="highlight"><pre><span class="s2">" 模拟 Emacs 键绑定</span>
 <span class="s2">"</span> Move
 inoremap &lt;C-a&gt; &lt;Home&gt;
 inoremap &lt;C-e&gt; &lt;End&gt;
-<span class="s2">"inoremap &lt;C-p …</span></pre></div>
+<span class="s2">"inoremap &lt;C-p ...</span></pre></div>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2012/04/vim-emacs-key-binding/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -137,10 +143,7 @@ inoremap &lt;C-e&gt; &lt;End&gt;
 <p>我最会选择了 Vundle，通过子目录管理插件，支持 Git 更新。
 我其实不太喜欢子目录，觉得目录太多看着烦，但是考虑到在没有一个良好的 PKG
 包描述文件的前提下，分子目录是一种简单有效的方法。</p>
-<!-- more -->
-<p>Vundle 通过 git 来对插件进行更新，有三种源可以添加：</p>
-<ul>
-<li>github 中 vim-scripts 的项目（这个账号是为 …</li></ul>
+
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2012/04/vundle/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -169,7 +172,7 @@ inoremap &lt;C-e&gt; &lt;End&gt;
 <li>安装简单;</li>
 <li>支持中文全文检索；</li>
 <li>汉化较好；</li>
-<li>不依赖外界的数据库, 使用纯文本保存, 备份非常容易 …</li></ul>
+<li>不依赖外界的数据库, 使用纯文本保存, 备份非常容易 ...</li></ul>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2011/12/moinmoin-kms/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -185,9 +188,7 @@ Gource目前支持git/hg/svn，cvs通过一个简单的脚本也可以被Gource�
 be.com/watch?v=E5xPMW5fg48&amp;feature=player_embedded">Gource - Software Version Control Visualization Tool</a>，里面有Moodle/Git/Drupal/Postg
 reSQL/Ruby on Rails/Linux/VLC Player这几个非常漂亮的开源软件视频。Ruby on Rails那一段特别帅有没有。</p>
 <p>使用下列命令可以将视频录制下来(via <a href="http://code.google.com/p/gource/wiki/Videos">wiki</a>)：</p>
-<div class="highlight"><pre><span></span>pacman -S x264 #在archlinux下安装H264支持
-gource -1280x720 -o gource.ppm #在项目目录下运行，生成ppm文件
-#生成mp4文件，官方文档里面有-vpre slow项，会报错，去掉即可 …</pre></div>
+<div class="highlight"><pre><span class="n">pacman</span> <span class="o">-</span><span class="n">S</span> <span class="n">x264</span> <span class="err">#在 ...</span></pre></div>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2011/11/gource/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -199,8 +200,8 @@ gource -1280x720 -o gource.ppm #在项目目录下运行，生成ppm文件
 <p><img alt="CodeSmith" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201612/404.png"/></p>
 <h2 id="yi-ge-jian-dan-de-sample">一个简单的Sample</h2>
 <p>CodeSmith使用的模板使用方式类似于aspx/jsp页面，也就是基础代码+脚本的方式，大致代码如下（官方的sample2）。</p>
-<div class="highlight"><pre><span></span><span class="cp">&lt;%</span><span class="err">@</span> <span class="no">CodeTemplate</span> <span class="no">Language</span><span class="o">=</span><span class="s2">"C#"</span> <span class="no">TargetLanguage</span><span class="o">=</span><span class="s2">"Text"</span> <span class="no">Description</span><span class="o">=</span><span class="s2">"This template demonstrates using properties in your template."</span> <span class="cp">%&gt;</span><span class="x"></span>
-<span class="cp">&lt;%</span><span class="err">@</span> <span class="no">Property</span> <span class="no">Name</span><span class="o">=</span><span class="s2">"Person"</span> <span class="no">Type</span><span class="o">=</span><span class="s2">"System.String"</span> <span class="no">Description</span><span class="o">=</span><span class="s2">"This will show up at the bottom of the …</span></pre></div>
+<div class="highlight"><pre><span class="cp">&lt;%</span><span class="err">@</span> <span class="no">CodeTemplate</span> <span class="no">Language</span><span class="o">=</span><span class="s2">"C#"</span> <span class="no">TargetLanguage</span><span class="o">=</span><span class="s2">"Text"</span> <span class="no">Description</span><span class="o">=</span><span class="s2">"This template demonstrates using properties in your template."</span> <span class="cp">%&gt;</span><span class="x"></span>
+<span class="cp">&lt;%</span><span class="err">@</span> <span class="no">Property</span> <span class="no">Name</span><span class="o">=</span><span class="s2">"Person"</span> <span class="no">Type</span><span class="o">=</span><span class="s2">"System.String"</span> <span class="no">Description</span><span class="o">=</span><span class="s2">"This will show up at the bottom of the ...</span></pre></div>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2011/02/codesmith/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -215,7 +216,7 @@ gource -1280x720 -o gource.ppm #在项目目录下运行，生成ppm文件
 了一些相关资源，其中几位资深人士（使用Vi/Vim大约20年）提到了一款叫做ViEmu的软件，就好奇的跑去看看。</p>
 <h3 id="viemu">ViEmu</h3>
 <p>让我们来见识一下ViEmu的厉害吧。ViEmu支持模式切换、移动、宏、高亮搜索，键盘映射、增强命令、正则表达、可视模式等等。反正常用的Vim功能都具备。它自
-己也敢宣称支持Vim大部分功能（Vim太强大，不敢说完全模拟~）。下面是一张ViEmu的官方示意图 …</p>
+己也敢宣称支持Vim大部分功能（Vim太强大，不敢说完全模拟~）。下面是一张ViEmu的官方示意图 ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2010/09/vs-vim/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -238,7 +239,7 @@ Printer。</p>
 <p>SQL Pretty Printer目前提供4种使用方式，桌面版本，SSMS(SQL Server Management
 Studio)插件，VS插件，和提供API接口。</p>
 <p><a href="https://ohsolnxaa.qnssl.com/2010/07/spp_ssms.jpg"><img alt="image" src="https://ohsolnxaa.qnssl.com/2010/07/spp_ssms.jpg"/></a></p>
-<p>SSMS …</p>
+<p>SSMS ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2010/07/sql-format-tool-sql-pretty-printer/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -259,7 +260,7 @@ Docs支持Gears离线查看，但是并不支持离线创建文件（Docs的编�
 <p><a href="http://www.gtdstudy.com/?p=1761&amp;replytocom=124821">提升生活效能的小软件：BooguNote的三种应用</a></p>
 <p><strong><em>下面是来自Lightory的介绍</em></strong></p>
 <blockquote>
-<p>最近在用一款叫做 BooguNote 的笔记软件（官方介绍是 …</p></blockquote>
+<p>最近在用一款叫做 BooguNote 的笔记软件（官方介绍是 ...</p></blockquote>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2010/04/desktop-recording-tool-boogunote/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -332,11 +333,6 @@ Docs支持Gears离线查看，但是并不支持离线创建文件（Docs的编�
                         <li class="list-group-item">
                             <a href="https://blog.alswl.com/category/managment/">
                                 <i class="fa fa-folder-open fa-lg"></i> Managment
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="https://blog.alswl.com/category/misc/">
-                                <i class="fa fa-folder-open fa-lg"></i> misc
                             </a>
                         </li>
                         <li class="list-group-item">

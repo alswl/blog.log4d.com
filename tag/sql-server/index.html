@@ -75,16 +75,7 @@ Log4D            </a>
 在这个过程中我发现了一个很有趣的现象：历史遗留的 .net 项目中，
 几乎所有的 SQL 中都会使用一个关键字：<code>nolock</code>。
 这让我很困惑，<code>nolock</code> 的字面意思是对当前技术不使用锁技术，为什么要这样用呢？</p>
-<!-- more -->
-<p>我找了一个范例如下：</p>
-<div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="p">[</span><span class="n">id</span><span class="p">]</span> 
-<span class="k">FROM</span>   <span class="p">[</span><span class="n">dbo</span><span class="p">].[</span><span class="n">foos</span><span class="p">]</span> <span class="k">WITH</span><span class="p">(</span><span class="n">nolock</span><span class="p">)</span> 
-<span class="k">WHERE</span>  <span class="n">aField</span> <span class="o">=</span> <span class="mi">42</span> 
-       <span class="k">AND</span> <span class="n">bField</span> <span class="o">=</span> <span class="mi">1</span> 
-</pre></div>
-<p>作为横向支持工程师，开发工程师会问我：「数据库即将从 SQL Server
-迁移到 MySQL，我们编码中还需要使用 <code>nolock</code> 么？
-MySQL 里面对应的写法是什么 …</p>
+
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2017/09/sql-server-nolock/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -146,11 +137,6 @@ MySQL 里面对应的写法是什么 …</p>
                         <li class="list-group-item">
                             <a href="https://blog.alswl.com/category/managment/">
                                 <i class="fa fa-folder-open fa-lg"></i> Managment
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="https://blog.alswl.com/category/misc/">
-                                <i class="fa fa-folder-open fa-lg"></i> misc
                             </a>
                         </li>
                         <li class="list-group-item">

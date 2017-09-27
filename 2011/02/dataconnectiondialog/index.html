@@ -16,7 +16,7 @@
 
         <meta name="author" content="alswl" />
         <meta name="keywords" content="dotNet,C#,VisualStudio" />
-        <meta name="description" content="在系统开发中，数据库连接字符串经常被保存到.config/.ini等配置文件中，以提高系统的灵活性。上大学时候，为了实现灵活配置数据库的效果，用拼字符串的方 法来动态生成连接字符串，这种方法充满了Bad Smell。 昨天用CodeSmith时候，看到它的数据连接配置界面，如此的眼熟，如下图。 Google了一下，原来这家伙的名字叫做DataConnectionDialog，所属命名空间为Microsoft.VisualStudio.Data。 使用的方法也很简单，引用Microsoft.Data.ConnectionUI.dll和Microsoft.Data.ConnectionUI.Dialog .dll，这两个文件位于Microsoft Visual Studio 9.0Common7IDE下面。 这两个dll并没有其他依赖关系，可以放心的放到自己的程序中使用。 使用代码如下 DataConnectionDialog dataConnectionDialog = new DataConnectionDialog(); DataSource.AddStandardDataSources(dataConnectionDialog); if (DataConnectionDialog.Show(dataConnectionDialog) == DialogResult.OK …" />
+        <meta name="description" content="在系统开发中，数据库连接字符串经常被保存到.config/.ini等配置文件中，以提高系统的灵活性。上大学时候，为了实现灵活配置数据库的效果，用拼字符串的方 法来动态生成连接字符串，这种方法充满了Bad Smell。 昨天用CodeSmith时候，看到它的数据连接配置界面，如此的眼熟，如下图。 Google了一下，原来这家伙的名字叫做DataConnectionDialog，所属命名空间为Microsoft.VisualStudio.Data。 使用的方法也很简单，引用Microsoft.Data.ConnectionUI.dll和Microsoft.Data.ConnectionUI.Dialog .dll，这两个文件位于Microsoft Visual Studio 9.0Common7IDE下面。 这两个dll并没有其他依赖关系，可以放心的放到自己的程序中使用。 使用代码如下 DataConnectionDialog dataConnectionDialog = new DataConnectionDialog(); DataSource.AddStandardDataSources(dataConnectionDialog); if (DataConnectionDialog.Show(dataConnectionDialog) == DialogResult.OK ..." />
 
 
 
@@ -80,7 +80,7 @@ Log4D            </a>
 <footer class="post-info">
     <span class="label label-default">Date</span>
     <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2011-02-15T00:00:00+08:00"> 2011-02-15</time>
+        <i class="fa fa-calendar"></i><time datetime="2011-02-15T00:00:00"> 2011-02-15</time>
     </span>
 
 
@@ -103,12 +103,12 @@ Log4D            </a>
 .dll，这两个文件位于Microsoft Visual Studio 9.0Common7IDE下面。</p>
 <p>这两个dll并没有其他依赖关系，可以放心的放到自己的程序中使用。</p>
 <p>使用代码如下</p>
-<div class="highlight"><pre><span></span>DataConnectionDialog dataConnectionDialog = new DataConnectionDialog();
-DataSource.AddStandardDataSources(dataConnectionDialog);
-if (DataConnectionDialog.Show(dataConnectionDialog) == DialogResult.OK)
-{
-    targetDBConnectionString = dataConnectionDialog.ConnectionString;
-}
+<div class="highlight"><pre><span class="n">DataConnectionDialog</span> <span class="n">dataConnectionDialog</span> <span class="o">=</span> <span class="n">new</span> <span class="n">DataConnectionDialog</span><span class="p">();</span>
+<span class="n">DataSource</span><span class="p">.</span><span class="n">AddStandardDataSources</span><span class="p">(</span><span class="n">dataConnectionDialog</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">DataConnectionDialog</span><span class="p">.</span><span class="n">Show</span><span class="p">(</span><span class="n">dataConnectionDialog</span><span class="p">)</span> <span class="o">==</span> <span class="n">DialogResult</span><span class="p">.</span><span class="n">OK</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">targetDBConnectionString</span> <span class="o">=</span> <span class="n">dataConnectionDialog</span><span class="p">.</span><span class="n">ConnectionString</span><span class="p">;</span>
+<span class="p">}</span>
 </pre></div>
 <p>dataConnectionDialog.ConnectionString是完整的连接字符串，这样就可以比较优美的动态获取连接字符串了。</p>
 <p>参考文章</p>
@@ -218,11 +218,6 @@ if (DataConnectionDialog.Show(dataConnectionDialog) == DialogResult.OK)
                         <li class="list-group-item">
                             <a href="https://blog.alswl.com/category/managment/">
                                 <i class="fa fa-folder-open fa-lg"></i> Managment
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="https://blog.alswl.com/category/misc/">
-                                <i class="fa fa-folder-open fa-lg"></i> misc
                             </a>
                         </li>
                         <li class="list-group-item">

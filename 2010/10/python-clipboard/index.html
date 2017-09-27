@@ -16,7 +16,7 @@
 
         <meta name="author" content="alswl" />
         <meta name="keywords" content="Python,PyWin" />
-        <meta name="description" content="最近在写一个CodeGenX代码生成器，说是生成器，其实是目前只完成一堆零散的脚本。这些脚本的调用方式一般是从某个txt中读取数据，再写到另外一个txt中。 由于某些数据变动频繁，导致我操作txt次数大增，我怒了，就找了一个脚本自动读写剪贴板。 #coding=utf-8 &#39;&#39;&#39; 读写剪贴板 &#39;&#39;&#39; import win32clipboard as w import win32con def getText(): w.OpenClipboard() d = w.GetClipboardData(win32con.CF_TEXT) w.CloseClipboard() return d def setText(aString): w.OpenClipboard() w.EmptyClipboard() w.SetClipboardData(win32con.CF_TEXT, aString) w.CloseClipboard() 别说有了这个脚本用起来还是蛮方便的，建议丢到Python的lib下面，然后可以方便调用。 如果双击 .py …" />
+        <meta name="description" content="最近在写一个CodeGenX代码生成器，说是生成器，其实是目前只完成一堆零散的脚本。这些脚本的调用方式一般是从某个txt中读取数据，再写到另外一个txt中。 由于某些数据变动频繁，导致我操作txt次数大增，我怒了，就找了一个脚本自动读写剪贴板。 #coding=utf-8 &#39;&#39;&#39; 读写剪贴板 &#39;&#39;&#39; import win32clipboard as w import win32con def getText(): w.OpenClipboard() d = w.GetClipboardData(win32con.CF_TEXT) w.CloseClipboard() return d def setText(aString): w.OpenClipboard() w.EmptyClipboard() w.SetClipboardData(win32con.CF_TEXT, aString) w.CloseClipboard() 别说有了这个脚本用起来还是蛮方便的，建议丢到Python的lib下面，然后可以方便调用。 如果双击 .py ..." />
 
 
 
@@ -80,7 +80,7 @@ Log4D            </a>
 <footer class="post-info">
     <span class="label label-default">Date</span>
     <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2010-10-23T00:00:00+08:00"> 2010-10-23</time>
+        <i class="fa fa-calendar"></i><time datetime="2010-10-23T00:00:00"> 2010-10-23</time>
     </span>
 
 
@@ -94,7 +94,7 @@ Log4D            </a>
                 </div>
                 <p>最近在写一个CodeGenX代码生成器，说是生成器，其实是目前只完成一堆零散的脚本。这些脚本的调用方式一般是从某个txt中读取数据，再写到另外一个txt中。</p>
 <p>由于某些数据变动频繁，导致我操作txt次数大增，我怒了，就找了一个脚本自动读写剪贴板。</p>
-<div class="highlight"><pre><span></span><span class="c1">#coding=utf-8</span>
+<div class="highlight"><pre><span class="c">#coding=utf-8</span>
 <span class="sd">'''</span>
 <span class="sd">读写剪贴板</span>
 <span class="sd">'''</span>
@@ -115,8 +115,8 @@ Log4D            </a>
 </pre></div>
 <p>别说有了这个脚本用起来还是蛮方便的，建议丢到Python的lib下面，然后可以方便调用。</p>
 <p>如果双击 <code>.py</code> 文件调用可能产生无效的情况，测试发现在IDE环境下有效，如果想完成一键转换，就需要一个bat执行一下。</p>
-<div class="highlight"><pre><span></span>@echo off
-python sql2.py
+<div class="highlight"><pre><span class="err">@</span><span class="n">echo</span> <span class="n">off</span>
+<span class="n">python</span> <span class="n">sql2</span><span class="p">.</span><span class="n">py</span>
 </pre></div>
 <p>通过执行双击这个脚本，就可以完成读写剪贴板了（记得在系统Path路径加入python所在目录，否则又要报错）。</p>
 <p>友情提示，这个脚本需要 <code>win32clipboard</code> 这个模块，这个模块装完 <code>pywin</code> 就可以加载了。</p>
@@ -224,11 +224,6 @@ hands on win32ui"。</strong> 托上篇文章的福，我安装PyWin时候选择
                         <li class="list-group-item">
                             <a href="https://blog.alswl.com/category/managment/">
                                 <i class="fa fa-folder-open fa-lg"></i> Managment
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="https://blog.alswl.com/category/misc/">
-                                <i class="fa fa-folder-open fa-lg"></i> misc
                             </a>
                         </li>
                         <li class="list-group-item">

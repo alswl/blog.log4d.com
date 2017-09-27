@@ -16,7 +16,7 @@
 
         <meta name="author" content="alswl" />
         <meta name="keywords" content="C,OpenSSL,SSL" />
-        <meta name="description" content="这几天在弄OpenSSL需要使用的证书，翻了很多文档，找来一《本OpenSSL与网络信息安全- 基础、结构和指令》，书上的密码学和OpenSSL的基础介绍的很详细，但是缺少一些实例。 这证书死活做不出来，最后在《计算机网络高级软件编程技术》上第19章&#34;利用OpenSSL实现安全的Web Server&#34;中找到自己需要的内容，现在分享一下。 1.生成CA中心的私钥 openssl req -newkey rsa:1024 -sha1 -keyout rootkey.pem -out rootreq.pem 2.生成CA中心的自签证书 openssl x509 -req -in rootreq.pem -sha1 -extensions v3_ca -days 365 -signkey rootkey.pem -out rootcert.pem 3 …" />
+        <meta name="description" content="这几天在弄OpenSSL需要使用的证书，翻了很多文档，找来一《本OpenSSL与网络信息安全- 基础、结构和指令》，书上的密码学和OpenSSL的基础介绍的很详细，但是缺少一些实例。 这证书死活做不出来，最后在《计算机网络高级软件编程技术》上第19章&#34;利用OpenSSL实现安全的Web Server&#34;中找到自己需要的内容，现在分享一下。 1.生成CA中心的私钥 openssl req -newkey rsa:1024 -sha1 -keyout rootkey.pem -out rootreq.pem 2.生成CA中心的自签证书 openssl x509 -req -in rootreq.pem -sha1 -extensions v3_ca -days 365 -signkey rootkey.pem -out rootcert.pem 3 ..." />
 
 
 
@@ -80,7 +80,7 @@ Log4D            </a>
 <footer class="post-info">
     <span class="label label-default">Date</span>
     <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2009-03-17T00:00:00+08:00"> 2009-03-17</time>
+        <i class="fa fa-calendar"></i><time datetime="2009-03-17T00:00:00"> 2009-03-17</time>
     </span>
 
 
@@ -226,11 +226,6 @@ Areq.pem -config D:StudyOpenSSLopenssl-0.9.8jappsopenssl.cnf</p>
                         <li class="list-group-item">
                             <a href="https://blog.alswl.com/category/managment/">
                                 <i class="fa fa-folder-open fa-lg"></i> Managment
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="https://blog.alswl.com/category/misc/">
-                                <i class="fa fa-folder-open fa-lg"></i> misc
                             </a>
                         </li>
                         <li class="list-group-item">

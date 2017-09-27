@@ -16,7 +16,7 @@
 
         <meta name="author" content="alswl" />
         <meta name="keywords" content="Delphi" />
-        <meta name="description" content="我的博客所在的江西服务器需要服务器搬迁，所以这两天博客无法访问，看到404错误的童鞋们对不起拉… 几个概念：Owner/Parent/Sender/Self Owner/Parent的字面意义都有点拥有者的意思，一个Button的Owner和Parent很有可能都是Form，但实际上这两个概念是没有关系的。 Owner和Parent的区别：Parent对应组件的视觉容器而不是拥有者，比如一个RadioGroup是RadioButton的Parent；Ow ner对应组件的拥有者。尽管Parent和Owner很多时候都是同一个对象，但是还是需要严格区分的。 Sender代表的是触发事件的组件，有了Sender参数，能够使用多个组件配合使用。在代码中可以使用(Sender as TButton).Caption这种语句来转换TObject类型。 Self呢，相当于C++/Java中的this，指向当前对象，代表自身的意思。没有太多可讲的，我觉得如果要获取某个属性，前面加上Self.是个好习惯。 这几个关键字能够加深对面向对象的理解，在VCL编程中，也是必须掌握的。 VCL编程感观 VCL全程Visual Component …" />
+        <meta name="description" content="我的博客所在的江西服务器需要服务器搬迁，所以这两天博客无法访问，看到404错误的童鞋们对不起拉… 几个概念：Owner/Parent/Sender/Self Owner/Parent的字面意义都有点拥有者的意思，一个Button的Owner和Parent很有可能都是Form，但实际上这两个概念是没有关系的。 Owner和Parent的区别：Parent对应组件的视觉容器而不是拥有者，比如一个RadioGroup是RadioButton的Parent；Ow ner对应组件的拥有者。尽管Parent和Owner很多时候都是同一个对象，但是还是需要严格区分的。 Sender代表的是触发事件的组件，有了Sender参数，能够使用多个组件配合使用。在代码中可以使用(Sender as TButton).Caption这种语句来转换TObject类型。 Self呢，相当于C++/Java中的this，指向当前对象，代表自身的意思。没有太多可讲的，我觉得如果要获取某个属性，前面加上Self.是个好习惯。 这几个关键字能够加深对面向对象的理解，在VCL编程中，也是必须掌握的。 VCL编程感观 VCL全程Visual Component ..." />
 
 
 
@@ -80,7 +80,7 @@ Log4D            </a>
 <footer class="post-info">
     <span class="label label-default">Date</span>
     <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2009-12-05T00:00:00+08:00"> 2009-12-05</time>
+        <i class="fa fa-calendar"></i><time datetime="2009-12-05T00:00:00"> 2009-12-05</time>
     </span>
 
 
@@ -123,8 +123,8 @@ elphi最强大的在于VCL，可惜现在Borland都被收购，Delphi成为一�
 <p>下载CnPack，<a href="http://www.cnpack.org/">传送门</a></p>
 <h2 id="delphide-yi-chang-chu-li">Delphi的异常处理</h2>
 <p>这篇文章是这几天本地保存的内容合成的，所以有点乱。下面是我学Delphi基础的最后一块内容，异常处理，代码如下。</p>
-<div class="highlight"><pre><span></span>program P1;
-{try...catch, try...finally的使用}
+<div class="highlight"><pre><span class="n">program</span> <span class="n">P1</span><span class="p">;</span>
+<span class="p">{</span><span class="n">try</span><span class="p">...</span><span class="n">catch</span><span class="p">,</span> <span class="n">try</span><span class="p">...</span><span class="n">finally</span><span class="err">的使用</span><span class="p">}</span>
 </pre></div>
 <p>{$APPTYPE CONSOLE}</p>
 <p>uses</p>
@@ -269,11 +269,6 @@ mp3lrc">Mp3Lrc</a>这个小工具写成Delphi的GUI版本，由于昨天课程�
                         <li class="list-group-item">
                             <a href="https://blog.alswl.com/category/managment/">
                                 <i class="fa fa-folder-open fa-lg"></i> Managment
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="https://blog.alswl.com/category/misc/">
-                                <i class="fa fa-folder-open fa-lg"></i> misc
                             </a>
                         </li>
                         <li class="list-group-item">

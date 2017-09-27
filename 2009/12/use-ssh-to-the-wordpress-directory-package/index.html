@@ -16,7 +16,7 @@
 
         <meta name="author" content="alswl" />
         <meta name="keywords" content="Linuxer,WordPress,建站心得" />
-        <meta name="description" content="最近用上了小张的10号主机，cPanel界面，支持SSH连接，DDD的一亩三分地也换了log4d.com域名。我想趁着这个机会对整个系统进行改版，迎 接2010年的到来。 我用Apache+PHP+MySQL在本地假设了服务器，然后取10号主机服务器上的wp- content界面。当准备把整个目录打包时候，居然发现没有打包命令，无奈之下，只能登录SSH，使用Linux命令打包了。 我连接SSH使用的是Putty，点击这里下载(via 绿软)，这个是绿色中文Final版本，比较好使唤。 用到几个简单的Linux命令如下（好在我学过几周Linux啊。。。- -#） ls/dir命令显示目录 cd进入目录。 一步一步进入wp-content目录后，运行tar zcvf theme.tar …" />
+        <meta name="description" content="最近用上了小张的10号主机，cPanel界面，支持SSH连接，DDD的一亩三分地也换了log4d.com域名。我想趁着这个机会对整个系统进行改版，迎 接2010年的到来。 我用Apache+PHP+MySQL在本地假设了服务器，然后取10号主机服务器上的wp- content界面。当准备把整个目录打包时候，居然发现没有打包命令，无奈之下，只能登录SSH，使用Linux命令打包了。 我连接SSH使用的是Putty，点击这里下载(via 绿软)，这个是绿色中文Final版本，比较好使唤。 用到几个简单的Linux命令如下（好在我学过几周Linux啊 ..." />
 
 
 
@@ -80,7 +80,7 @@ Log4D            </a>
 <footer class="post-info">
     <span class="label label-default">Date</span>
     <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2009-12-30T00:00:00+08:00"> 2009-12-30</time>
+        <i class="fa fa-calendar"></i><time datetime="2009-12-30T00:00:00"> 2009-12-30</time>
     </span>
 
 
@@ -107,22 +107,22 @@ l">这里</a>下载(via 绿软)，这个是<strong>绿色中文Final</strong>版
 <p><code>cd</code>进入目录。</p>
 <p>一步一步进入<code>wp-content</code>目录后，运行<code>tar zcvf theme.tar.gz themes</code>命令</p>
 <p>具体操作如下：</p>
-<div class="highlight"><pre><span></span>login as: username
-username@log4d.com's password:
-Last login: ****************************************
-username@log4d.com [~]# ls
-./             .contactemail     .ftpquota        .mozilla/     tmp/
-../            .contactsavetime  .gemrc           public_ftp/   .trash/
-access-logs@   .cpanel/          .guestbook       public_html/  www@
-.bash_history  .dns              .htmltemplates/  .rnd          .zshrc
-.bash_logout   etc/              .htpasswds/      .rvskin/
-.bash_profile  .fantasticodata/  .lastlogin       .ssh/
-.bashrc        .fontconfig/      mail/            ssl/
-username@log4d.com [~]# cd public_html
-username@log4d.com [~/public_html]# cd wp-content
-username@log4d.com [~/public_html/wp-content]# tar zcvf theme.tar.gz themes
+<div class="highlight"><pre><span class="n">login</span> <span class="n">as</span><span class="o">:</span> <span class="n">username</span>
+<span class="n">username</span><span class="err">@</span><span class="n">log4d</span><span class="p">.</span><span class="n">com</span><span class="err">'</span><span class="n">s</span> <span class="n">password</span><span class="o">:</span>
+<span class="n">Last</span> <span class="n">login</span><span class="o">:</span> <span class="o">****************************************</span>
+<span class="n">username</span><span class="err">@</span><span class="n">log4d</span><span class="p">.</span><span class="n">com</span> <span class="p">[</span><span class="o">~</span><span class="p">]</span><span class="err">#</span> <span class="n">ls</span>
+<span class="p">.</span><span class="o">/</span>             <span class="p">.</span><span class="n">contactemail</span>     <span class="p">.</span><span class="n">ftpquota</span>        <span class="p">.</span><span class="n">mozilla</span><span class="o">/</span>     <span class="n">tmp</span><span class="o">/</span>
+<span class="p">..</span><span class="o">/</span>            <span class="p">.</span><span class="n">contactsavetime</span>  <span class="p">.</span><span class="n">gemrc</span>           <span class="n">public_ftp</span><span class="o">/</span>   <span class="p">.</span><span class="n">trash</span><span class="o">/</span>
+<span class="n">access</span><span class="o">-</span><span class="n">logs</span><span class="err">@</span>   <span class="p">.</span><span class="n">cpanel</span><span class="o">/</span>          <span class="p">.</span><span class="n">guestbook</span>       <span class="n">public_html</span><span class="o">/</span>  <span class="n">www</span><span class="err">@</span>
+<span class="p">.</span><span class="n">bash_history</span>  <span class="p">.</span><span class="n">dns</span>              <span class="p">.</span><span class="n">htmltemplates</span><span class="o">/</span>  <span class="p">.</span><span class="n">rnd</span>          <span class="p">.</span><span class="n">zshrc</span>
+<span class="p">.</span><span class="n">bash_logout</span>   <span class="n">etc</span><span class="o">/</span>              <span class="p">.</span><span class="n">htpasswds</span><span class="o">/</span>      <span class="p">.</span><span class="n">rvskin</span><span class="o">/</span>
+<span class="p">.</span><span class="n">bash_profile</span>  <span class="p">.</span><span class="n">fantasticodata</span><span class="o">/</span>  <span class="p">.</span><span class="n">lastlogin</span>       <span class="p">.</span><span class="n">ssh</span><span class="o">/</span>
+<span class="p">.</span><span class="n">bashrc</span>        <span class="p">.</span><span class="n">fontconfig</span><span class="o">/</span>      <span class="n">mail</span><span class="o">/</span>            <span class="n">ssl</span><span class="o">/</span>
+<span class="n">username</span><span class="err">@</span><span class="n">log4d</span><span class="p">.</span><span class="n">com</span> <span class="p">[</span><span class="o">~</span><span class="p">]</span><span class="err">#</span> <span class="n">cd</span> <span class="n">public_html</span>
+<span class="n">username</span><span class="err">@</span><span class="n">log4d</span><span class="p">.</span><span class="n">com</span> <span class="p">[</span><span class="o">~/</span><span class="n">public_html</span><span class="p">]</span><span class="err">#</span> <span class="n">cd</span> <span class="n">wp</span><span class="o">-</span><span class="n">content</span>
+<span class="n">username</span><span class="err">@</span><span class="n">log4d</span><span class="p">.</span><span class="n">com</span> <span class="p">[</span><span class="o">~/</span><span class="n">public_html</span><span class="o">/</span><span class="n">wp</span><span class="o">-</span><span class="n">content</span><span class="p">]</span><span class="err">#</span> <span class="n">tar</span> <span class="n">zcvf</span> <span class="n">theme</span><span class="p">.</span><span class="n">tar</span><span class="p">.</span><span class="n">gz</span> <span class="n">themes</span>
 </pre></div>
-<p><strong><em>*</em></strong><strong><em>*</em>*华丽的分割线下面是供参考的</strong>tar<strong>命令详解<strong><em>*</em></strong></strong>****</p>
+<p><strong><em>*</em></strong><strong><em><strong>*华丽的分割线下面是供参考的</strong>tar**命令详解</em></strong><strong><em>*</em></strong>***</p>
 <p>原文链接：<a href="http://www.ixpub.net/619016.html">Linux压缩打包命令使用方法 - Linux与开源世界 -
 IXPUB技术社区</a></p>
 <p>tar命令</p>
@@ -284,11 +284,6 @@ IXPUB技术社区</a></p>
                         <li class="list-group-item">
                             <a href="https://blog.alswl.com/category/managment/">
                                 <i class="fa fa-folder-open fa-lg"></i> Managment
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="https://blog.alswl.com/category/misc/">
-                                <i class="fa fa-folder-open fa-lg"></i> misc
                             </a>
                         </li>
                         <li class="list-group-item">

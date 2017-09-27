@@ -16,7 +16,7 @@
 
         <meta name="author" content="alswl" />
         <meta name="keywords" content="Python,Lib" />
-        <meta name="description" content="Python很强大，这个py2exe程序能够把.py文件编译为.exe可执行文件，真是如虎添翼啊。 我注意到这个细节：这篇文章发表于 2005-6-5 23:34作者wolfg太犀利了。 原文出处：py2exe初接触（一） - Python - ChinaUnix.net py2exe是什么？ py2exe是一种python发布工具，可以把python脚本转换成windows下的可执行程序，不需要安装python便可运行。 py2exe现在可以用来创建使用了wxPython, Tkinter, Pmw, PyGTK, pygame, win32com client and server 等模块的程序。 详细介绍可以看它的官方网站 http://starship.python.net/crew/theller/py2exe/ 1. 下载安装py2exe py2exe目前的版本是0.5.4，根据你安装的python的版本选择下载的文件 py2exe-0.5.4.win32-py2.3.exe …" />
+        <meta name="description" content="Python很强大，这个py2exe程序能够把.py文件编译为.exe可执行文件，真是如虎添翼啊。 我注意到这个细节：这篇文章发表于 2005-6-5 23:34作者wolfg太犀利了。 原文出处：py2exe初接触（一） - Python - ChinaUnix.net py2exe是什么？ py2exe是一种python发布工具，可以把python脚本转换成windows下的可执行程序，不需要安装python便可运行。 py2exe现在可以用来创建使用了wxPython, Tkinter, Pmw, PyGTK, pygame, win32com client and server 等模块的程序。 详细介绍可以看它的官方网站 http://starship.python.net/crew/theller/py2exe/ 1. 下载安装py2exe py2exe目前的版本是0.5.4，根据你安装的python的版本选择下载的文件" />
 
 
 
@@ -80,7 +80,7 @@ Log4D            </a>
 <footer class="post-info">
     <span class="label label-default">Date</span>
     <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2009-09-15T00:00:00+08:00"> 2009-09-15</time>
+        <i class="fa fa-calendar"></i><time datetime="2009-09-15T00:00:00"> 2009-09-15</time>
     </span>
 
 
@@ -116,60 +116,60 @@ e-0.5.4.win32-py2.4.exe?download">py2exe-0.5.4.win32-py2.4.exe</a></p>
 <p>安装后的文件应该在你的python安装目录下的Libsite-packagespy2exe</p>
 <h3 id="2-shi-yong-py2exe">2.&nbsp; 使用py2exe</h3>
 <p>我们先准备一个简单的python程序hello.py</p>
-<div class="highlight"><pre><span></span># hello.py
-def main():
-    print "Hello, World!"
-if __name__ == '__main__':
-     main()
+<div class="highlight"><pre><span class="cp"># hello.py</span>
+<span class="n">def</span> <span class="n">main</span><span class="p">()</span><span class="o">:</span>
+    <span class="n">print</span> <span class="s">"Hello, World!"</span>
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="err">'</span><span class="n">__main__</span><span class="err">'</span><span class="o">:</span>
+     <span class="n">main</span><span class="p">()</span>
 </pre></div>
 <p>然后为使用py2exe写一个脚本setup.py</p>
-<div class="highlight"><pre><span></span><span class="c1"># setup.py</span>
-<span class="kn">from</span> <span class="nn">distutils.core</span> <span class="kn">import</span> <span class="n">setup</span>
-<span class="kn">import</span> <span class="nn">py2exe</span>
-<span class="n">setup</span><span class="p">(</span><span class="n">console</span><span class="o">=</span><span class="p">[</span><span class="s2">"hello.py"</span><span class="p">])</span>
+<div class="highlight"><pre><span class="cp"># setup.py</span>
+<span class="n">from</span> <span class="n">distutils</span><span class="p">.</span><span class="n">core</span> <span class="n">import</span> <span class="n">setup</span>
+<span class="n">import</span> <span class="n">py2exe</span>
+<span class="n">setup</span><span class="p">(</span><span class="n">console</span><span class="o">=</span><span class="p">[</span><span class="s">"hello.py"</span><span class="p">])</span>
 </pre></div>
 <p>运行setup.py，记得要传一个参数给它</p>
-<div class="highlight"><pre><span></span>python setup.py py2exe
+<div class="highlight"><pre><span class="n">python</span> <span class="n">setup</span><span class="p">.</span><span class="n">py</span> <span class="n">py2exe</span>
 </pre></div>
 <p>应该看到一些输出信息</p>
-<div class="highlight"><pre><span></span><span class="nt">running</span> <span class="nt">py2exe</span>
-<span class="nt">creating</span> <span class="nt">E</span><span class="p">:</span><span class="nd">ProjectsWorkSpacePythonbuild</span>
-<span class="nt">creating</span> <span class="nt">E</span><span class="p">:</span><span class="nd">ProjectsWorkSpacePythonbuildbdist</span><span class="p">.</span><span class="nc">win32</span>
-<span class="nt">creating</span> <span class="nt">E</span><span class="p">:</span><span class="nd">ProjectsWorkSpacePythonbuildbdist</span><span class="p">.</span><span class="nc">win32winexe</span>
-<span class="nt">creating</span> <span class="nt">E</span><span class="p">:</span><span class="nd">ProjectsWorkSpacePythonbuildbdist</span><span class="p">.</span><span class="nc">win32winexecollect</span>
-<span class="nt">creating</span> <span class="nt">E</span><span class="p">:</span><span class="nd">ProjectsWorkSpacePythonbuildbdist</span><span class="p">.</span><span class="nc">win32winexetemp</span>
-<span class="nt">creating</span> <span class="nt">E</span><span class="p">:</span><span class="nd">ProjectsWorkSpacePythondist</span>
-<span class="o">***</span> <span class="nt">searching</span> <span class="nt">for</span> <span class="nt">required</span> <span class="nt">modules</span> <span class="o">***</span>
-<span class="o">***</span> <span class="nt">parsing</span> <span class="nt">results</span> <span class="o">***</span>
-<span class="nt">creating</span> <span class="nt">python</span> <span class="nt">loader</span> <span class="nt">for</span> <span class="nt">extension</span> <span class="s1">'_sre'</span>
-<span class="o">***</span> <span class="nt">finding</span> <span class="nt">dlls</span> <span class="nt">needed</span> <span class="o">***</span>
-<span class="o">***</span> <span class="nt">create</span> <span class="nt">binaries</span> <span class="o">***</span>
-<span class="o">***</span> <span class="nt">byte</span> <span class="nt">compile</span> <span class="nt">python</span> <span class="nt">files</span> <span class="o">***</span>
-<span class="nt">byte-compiling</span> <span class="nt">C</span><span class="p">:</span><span class="nd">Python23libcopy_reg</span><span class="p">.</span><span class="nc">py</span> <span class="nt">to</span> <span class="nt">copy_reg</span><span class="p">.</span><span class="nc">pyc</span>
-<span class="nt">byte-compiling</span> <span class="nt">C</span><span class="p">:</span><span class="nd">Python23libsre_compile</span><span class="p">.</span><span class="nc">py</span> <span class="nt">to</span> <span class="nt">sre_compile</span><span class="p">.</span><span class="nc">pyc</span>
-<span class="nt">byte-compiling</span> <span class="nt">E</span><span class="p">:</span><span class="nd">ProjectsWorkSpacePythonbuildbdist</span><span class="p">.</span><span class="nc">win32winexetemp_sre</span><span class="p">.</span><span class="nc">py</span> <span class="nt">to</span> <span class="nt">_sre</span><span class="p">.</span><span class="nc">pyc</span>
-<span class="nt">byte-compiling</span> <span class="nt">C</span><span class="p">:</span><span class="nd">Python23libmacpath</span><span class="p">.</span><span class="nc">py</span> <span class="nt">to</span> <span class="nt">macpath</span><span class="p">.</span><span class="nc">pyc</span>
-<span class="nt">byte-compiling</span> <span class="nt">C</span><span class="p">:</span><span class="nd">Python23libpopen2</span><span class="p">.</span><span class="nc">py</span> <span class="nt">to</span> <span class="nt">popen2</span><span class="p">.</span><span class="nc">pyc</span>
-<span class="nt">byte-compiling</span> <span class="nt">C</span><span class="p">:</span><span class="nd">Python23libatexit</span><span class="p">.</span><span class="nc">py</span> <span class="nt">to</span> <span class="nt">atexit</span><span class="p">.</span><span class="nc">pyc</span>
-<span class="nt">byte-compiling</span> <span class="nt">C</span><span class="p">:</span><span class="nd">Python23libos2emxpath</span><span class="p">.</span><span class="nc">py</span> <span class="nt">to</span> <span class="nt">os2emxpath</span><span class="p">.</span><span class="nc">pyc</span>
-<span class="nt">byte-compiling</span> <span class="nt">C</span><span class="p">:</span><span class="nd">Python23libsre_constants</span><span class="p">.</span><span class="nc">py</span> <span class="nt">to</span> <span class="nt">sre_constants</span><span class="p">.</span><span class="nc">pyc</span>
-<span class="nt">byte-compiling</span> <span class="nt">C</span><span class="p">:</span><span class="nd">Python23libre</span><span class="p">.</span><span class="nc">py</span> <span class="nt">to</span> <span class="nt">re</span><span class="p">.</span><span class="nc">pyc</span>
-<span class="nt">byte-compiling</span> <span class="nt">C</span><span class="p">:</span><span class="nd">Python23libntpath</span><span class="p">.</span><span class="nc">py</span> <span class="nt">to</span> <span class="nt">ntpath</span><span class="p">.</span><span class="nc">pyc</span>
-<span class="nt">byte-compiling</span> <span class="nt">C</span><span class="p">:</span><span class="nd">Python23libstat</span><span class="p">.</span><span class="nc">py</span> <span class="nt">to</span> <span class="nt">stat</span><span class="p">.</span><span class="nc">pyc</span>
-<span class="nt">byte-compiling</span> <span class="nt">C</span><span class="p">:</span><span class="nd">Python23libstring</span><span class="p">.</span><span class="nc">py</span> <span class="nt">to</span> <span class="nt">string</span><span class="p">.</span><span class="nc">pyc</span>
-<span class="nt">byte-compiling</span> <span class="nt">C</span><span class="p">:</span><span class="nd">Python23libwarnings</span><span class="p">.</span><span class="nc">py</span> <span class="nt">to</span> <span class="nt">warnings</span><span class="p">.</span><span class="nc">pyc</span>
-<span class="nt">byte-compiling</span> <span class="nt">C</span><span class="p">:</span><span class="nd">Python23libUserDict</span><span class="p">.</span><span class="nc">py</span> <span class="nt">to</span> <span class="nt">UserDict</span><span class="p">.</span><span class="nc">pyc</span>
-<span class="nt">byte-compiling</span> <span class="nt">C</span><span class="p">:</span><span class="nd">Python23librepr</span><span class="p">.</span><span class="nc">py</span> <span class="nt">to</span> <span class="nt">repr</span><span class="p">.</span><span class="nc">pyc</span>
-<span class="nt">byte-compiling</span> <span class="nt">C</span><span class="p">:</span><span class="nd">Python23libcopy</span><span class="p">.</span><span class="nc">py</span> <span class="nt">to</span> <span class="nt">copy</span><span class="p">.</span><span class="nc">pyc</span>
-<span class="nt">byte-compiling</span> <span class="nt">C</span><span class="p">:</span><span class="nd">Python23libtypes</span><span class="p">.</span><span class="nc">py</span> <span class="nt">to</span> <span class="nt">types</span><span class="p">.</span><span class="nc">pyc</span>
-<span class="nt">byte-compiling</span> <span class="nt">C</span><span class="p">:</span><span class="nd">Python23libposixpath</span><span class="p">.</span><span class="nc">py</span> <span class="nt">to</span> <span class="nt">posixpath</span><span class="p">.</span><span class="nc">pyc</span>
-<span class="nt">byte-compiling</span> <span class="nt">C</span><span class="p">:</span><span class="nd">Python23libsre</span><span class="p">.</span><span class="nc">py</span> <span class="nt">to</span> <span class="nt">sre</span><span class="p">.</span><span class="nc">pyc</span>
-<span class="nt">byte-compiling</span> <span class="nt">C</span><span class="p">:</span><span class="nd">Python23liblinecache</span><span class="p">.</span><span class="nc">py</span> <span class="nt">to</span> <span class="nt">linecache</span><span class="p">.</span><span class="nc">pyc</span>
-<span class="nt">byte-compiling</span> <span class="nt">C</span><span class="p">:</span><span class="nd">Python23libsre_parse</span><span class="p">.</span><span class="nc">py</span> <span class="nt">to</span> <span class="nt">sre_parse</span><span class="p">.</span><span class="nc">pyc</span>
-<span class="nt">byte-compiling</span> <span class="nt">C</span><span class="p">:</span><span class="nd">Python23libos</span><span class="p">.</span><span class="nc">py</span> <span class="nt">to</span> <span class="nt">os</span><span class="p">.</span><span class="nc">pyc</span>
-<span class="o">***</span> <span class="nt">copy</span> <span class="nt">extensions</span> <span class="o">***</span>
-<span class="nt">copying</span> <span class="nt">C</span><span class="p">:</span><span class="nd">Python23DLLs_sre</span><span class="p">.</span><span class="nc">pyd</span> <span class="nt">-</span><span class="o">&gt;;</span> <span class="nt">E</span><span class="p">:</span><span class="nd">ProjectsWorkSpacePythondist</span>
-<span class="o">***</span> <span class="nt">copy</span> <span class="nt">dlls</span> <span class="o">***</span>
+<div class="highlight"><pre><span class="n">running</span> <span class="n">py2exe</span>
+<span class="n">creating</span> <span class="n">E</span><span class="o">:</span><span class="n">ProjectsWorkSpacePythonbuild</span>
+<span class="n">creating</span> <span class="n">E</span><span class="o">:</span><span class="n">ProjectsWorkSpacePythonbuildbdist</span><span class="p">.</span><span class="n">win32</span>
+<span class="n">creating</span> <span class="n">E</span><span class="o">:</span><span class="n">ProjectsWorkSpacePythonbuildbdist</span><span class="p">.</span><span class="n">win32winexe</span>
+<span class="n">creating</span> <span class="n">E</span><span class="o">:</span><span class="n">ProjectsWorkSpacePythonbuildbdist</span><span class="p">.</span><span class="n">win32winexecollect</span>
+<span class="n">creating</span> <span class="n">E</span><span class="o">:</span><span class="n">ProjectsWorkSpacePythonbuildbdist</span><span class="p">.</span><span class="n">win32winexetemp</span>
+<span class="n">creating</span> <span class="n">E</span><span class="o">:</span><span class="n">ProjectsWorkSpacePythondist</span>
+<span class="o">***</span> <span class="n">searching</span> <span class="k">for</span> <span class="n">required</span> <span class="n">modules</span> <span class="o">***</span>
+<span class="o">***</span> <span class="n">parsing</span> <span class="n">results</span> <span class="o">***</span>
+<span class="n">creating</span> <span class="n">python</span> <span class="n">loader</span> <span class="k">for</span> <span class="n">extension</span> <span class="err">'</span><span class="n">_sre</span><span class="err">'</span>
+<span class="o">***</span> <span class="n">finding</span> <span class="n">dlls</span> <span class="n">needed</span> <span class="o">***</span>
+<span class="o">***</span> <span class="n">create</span> <span class="n">binaries</span> <span class="o">***</span>
+<span class="o">***</span> <span class="n">byte</span> <span class="n">compile</span> <span class="n">python</span> <span class="n">files</span> <span class="o">***</span>
+<span class="n">byte</span><span class="o">-</span><span class="n">compiling</span> <span class="n">C</span><span class="o">:</span><span class="n">Python23libcopy_reg</span><span class="p">.</span><span class="n">py</span> <span class="n">to</span> <span class="n">copy_reg</span><span class="p">.</span><span class="n">pyc</span>
+<span class="n">byte</span><span class="o">-</span><span class="n">compiling</span> <span class="n">C</span><span class="o">:</span><span class="n">Python23libsre_compile</span><span class="p">.</span><span class="n">py</span> <span class="n">to</span> <span class="n">sre_compile</span><span class="p">.</span><span class="n">pyc</span>
+<span class="n">byte</span><span class="o">-</span><span class="n">compiling</span> <span class="n">E</span><span class="o">:</span><span class="n">ProjectsWorkSpacePythonbuildbdist</span><span class="p">.</span><span class="n">win32winexetemp_sre</span><span class="p">.</span><span class="n">py</span> <span class="n">to</span> <span class="n">_sre</span><span class="p">.</span><span class="n">pyc</span>
+<span class="n">byte</span><span class="o">-</span><span class="n">compiling</span> <span class="n">C</span><span class="o">:</span><span class="n">Python23libmacpath</span><span class="p">.</span><span class="n">py</span> <span class="n">to</span> <span class="n">macpath</span><span class="p">.</span><span class="n">pyc</span>
+<span class="n">byte</span><span class="o">-</span><span class="n">compiling</span> <span class="n">C</span><span class="o">:</span><span class="n">Python23libpopen2</span><span class="p">.</span><span class="n">py</span> <span class="n">to</span> <span class="n">popen2</span><span class="p">.</span><span class="n">pyc</span>
+<span class="n">byte</span><span class="o">-</span><span class="n">compiling</span> <span class="n">C</span><span class="o">:</span><span class="n">Python23libatexit</span><span class="p">.</span><span class="n">py</span> <span class="n">to</span> <span class="n">atexit</span><span class="p">.</span><span class="n">pyc</span>
+<span class="n">byte</span><span class="o">-</span><span class="n">compiling</span> <span class="n">C</span><span class="o">:</span><span class="n">Python23libos2emxpath</span><span class="p">.</span><span class="n">py</span> <span class="n">to</span> <span class="n">os2emxpath</span><span class="p">.</span><span class="n">pyc</span>
+<span class="n">byte</span><span class="o">-</span><span class="n">compiling</span> <span class="n">C</span><span class="o">:</span><span class="n">Python23libsre_constants</span><span class="p">.</span><span class="n">py</span> <span class="n">to</span> <span class="n">sre_constants</span><span class="p">.</span><span class="n">pyc</span>
+<span class="n">byte</span><span class="o">-</span><span class="n">compiling</span> <span class="n">C</span><span class="o">:</span><span class="n">Python23libre</span><span class="p">.</span><span class="n">py</span> <span class="n">to</span> <span class="n">re</span><span class="p">.</span><span class="n">pyc</span>
+<span class="n">byte</span><span class="o">-</span><span class="n">compiling</span> <span class="n">C</span><span class="o">:</span><span class="n">Python23libntpath</span><span class="p">.</span><span class="n">py</span> <span class="n">to</span> <span class="n">ntpath</span><span class="p">.</span><span class="n">pyc</span>
+<span class="n">byte</span><span class="o">-</span><span class="n">compiling</span> <span class="n">C</span><span class="o">:</span><span class="n">Python23libstat</span><span class="p">.</span><span class="n">py</span> <span class="n">to</span> <span class="n">stat</span><span class="p">.</span><span class="n">pyc</span>
+<span class="n">byte</span><span class="o">-</span><span class="n">compiling</span> <span class="n">C</span><span class="o">:</span><span class="n">Python23libstring</span><span class="p">.</span><span class="n">py</span> <span class="n">to</span> <span class="n">string</span><span class="p">.</span><span class="n">pyc</span>
+<span class="n">byte</span><span class="o">-</span><span class="n">compiling</span> <span class="n">C</span><span class="o">:</span><span class="n">Python23libwarnings</span><span class="p">.</span><span class="n">py</span> <span class="n">to</span> <span class="n">warnings</span><span class="p">.</span><span class="n">pyc</span>
+<span class="n">byte</span><span class="o">-</span><span class="n">compiling</span> <span class="n">C</span><span class="o">:</span><span class="n">Python23libUserDict</span><span class="p">.</span><span class="n">py</span> <span class="n">to</span> <span class="n">UserDict</span><span class="p">.</span><span class="n">pyc</span>
+<span class="n">byte</span><span class="o">-</span><span class="n">compiling</span> <span class="n">C</span><span class="o">:</span><span class="n">Python23librepr</span><span class="p">.</span><span class="n">py</span> <span class="n">to</span> <span class="n">repr</span><span class="p">.</span><span class="n">pyc</span>
+<span class="n">byte</span><span class="o">-</span><span class="n">compiling</span> <span class="n">C</span><span class="o">:</span><span class="n">Python23libcopy</span><span class="p">.</span><span class="n">py</span> <span class="n">to</span> <span class="n">copy</span><span class="p">.</span><span class="n">pyc</span>
+<span class="n">byte</span><span class="o">-</span><span class="n">compiling</span> <span class="n">C</span><span class="o">:</span><span class="n">Python23libtypes</span><span class="p">.</span><span class="n">py</span> <span class="n">to</span> <span class="n">types</span><span class="p">.</span><span class="n">pyc</span>
+<span class="n">byte</span><span class="o">-</span><span class="n">compiling</span> <span class="n">C</span><span class="o">:</span><span class="n">Python23libposixpath</span><span class="p">.</span><span class="n">py</span> <span class="n">to</span> <span class="n">posixpath</span><span class="p">.</span><span class="n">pyc</span>
+<span class="n">byte</span><span class="o">-</span><span class="n">compiling</span> <span class="n">C</span><span class="o">:</span><span class="n">Python23libsre</span><span class="p">.</span><span class="n">py</span> <span class="n">to</span> <span class="n">sre</span><span class="p">.</span><span class="n">pyc</span>
+<span class="n">byte</span><span class="o">-</span><span class="n">compiling</span> <span class="n">C</span><span class="o">:</span><span class="n">Python23liblinecache</span><span class="p">.</span><span class="n">py</span> <span class="n">to</span> <span class="n">linecache</span><span class="p">.</span><span class="n">pyc</span>
+<span class="n">byte</span><span class="o">-</span><span class="n">compiling</span> <span class="n">C</span><span class="o">:</span><span class="n">Python23libsre_parse</span><span class="p">.</span><span class="n">py</span> <span class="n">to</span> <span class="n">sre_parse</span><span class="p">.</span><span class="n">pyc</span>
+<span class="n">byte</span><span class="o">-</span><span class="n">compiling</span> <span class="n">C</span><span class="o">:</span><span class="n">Python23libos</span><span class="p">.</span><span class="n">py</span> <span class="n">to</span> <span class="n">os</span><span class="p">.</span><span class="n">pyc</span>
+<span class="o">***</span> <span class="n">copy</span> <span class="n">extensions</span> <span class="o">***</span>
+<span class="n">copying</span> <span class="n">C</span><span class="o">:</span><span class="n">Python23DLLs_sre</span><span class="p">.</span><span class="n">pyd</span> <span class="o">-&gt;</span><span class="p">;</span> <span class="n">E</span><span class="o">:</span><span class="n">ProjectsWorkSpacePythondist</span>
+<span class="o">***</span> <span class="n">copy</span> <span class="n">dlls</span> <span class="o">***</span>
 </pre></div>
 <p>py2exe会在当前目录下生成两个目录 build和dist</p>
 <p>build里是一些py2exe运行时产生的中间文件，dist里有最终的可执行文件</p>
@@ -178,14 +178,14 @@ if __name__ == '__main__':
 <p>python23.dll</p>
 <p>hello.exe</p>
 <p>现在可以运行hello.exe了</p>
-<div class="highlight"><pre><span></span><span class="n">E</span><span class="o">:</span><span class="n">ProjectsWorkSpacePythondist</span><span class="o">&gt;;</span><span class="n">hello</span>
+<div class="highlight"><pre><span class="n">E</span><span class="o">:</span><span class="n">ProjectsWorkSpacePythondist</span><span class="o">&gt;;</span><span class="n">hello</span>
 <span class="n">Hello</span><span class="o">,</span> <span class="n">World</span><span class="o">!</span>
 </pre></div>
 <p>不过记得如果要发布到别的机器上时，library.zip、
 w9xpopen.exe、python23.dll这几个文件是必须要和hello.exe在一起的。</p>
 <p>好了，这次先到这里，下次我们做一个wxPython的例子</p>
 <p>最后，大家试试运行</p>
-<div class="highlight"><pre><span></span>python setup.py py2exe --help
+<div class="highlight"><pre><span class="n">python</span> <span class="n">setup</span><span class="p">.</span><span class="n">py</span> <span class="n">py2exe</span> <span class="o">--</span><span class="n">help</span>
 </pre></div>
 <p>看看py2exe都有哪些参数</p>
             </div>
@@ -288,11 +288,6 @@ w9xpopen.exe、python23.dll这几个文件是必须要和hello.exe在一起的�
                         <li class="list-group-item">
                             <a href="https://blog.alswl.com/category/managment/">
                                 <i class="fa fa-folder-open fa-lg"></i> Managment
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="https://blog.alswl.com/category/misc/">
-                                <i class="fa fa-folder-open fa-lg"></i> misc
                             </a>
                         </li>
                         <li class="list-group-item">

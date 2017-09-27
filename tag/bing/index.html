@@ -72,17 +72,14 @@ Log4D            </a>
                 <div class="summary"><p>在使用公司一个Redirect开发工具页面时候，想个性化一下，就想添加一个背景，最好每天能自动变化，我第一个想到的就是Bing。</p>
 <p>放狗搜索，发现一篇文章 <a href="http://blog.csdn.net/huangc
 t/archive/2009/10/27/4734844.aspx">抓取每天必应bing背景图片 - huangct的专栏 - CSDN博客</a>，文中提供了抓取程式的Python代码，我摘录如下。</p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">urllib</span>
-<span class="kn">import</span> <span class="nn">time</span>
-<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="s1">'http://www.bing.com'</span>
-    <span class="n">f</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-    <span class="n">html</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-    <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-    <span class="n">a</span> <span class="o">=</span> <span class="n">html</span><span class="p">[</span><span class="n">html</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">'/fd/hpk2'</span><span class="p">):]</span>
-    <span class="n">data</span> <span class="o">=</span> <span class="n">a</span><span class="p">[:</span><span class="n">a</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">''</span><span class="p">,</span><span class="nb">id</span><span class="p">:</span><span class="s1">')]</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">'</span><span class="se">\'</span><span class="s1">, '')</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="s1">'http://www.bing …</span></pre></div>
+<div class="highlight"><pre><span class="n">import</span> <span class="n">urllib</span>
+<span class="n">import</span> <span class="n">time</span>
+<span class="n">def</span> <span class="n">main</span><span class="p">()</span><span class="o">:</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="err">'</span><span class="n">http</span><span class="o">:</span><span class="c1">//www.bing.com'</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="n">urllib</span><span class="p">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="n">html</span> <span class="o">=</span> <span class="n">f</span><span class="p">.</span><span class="n">read</span><span class="p">()</span>
+    <span class="n">f</span><span class="p">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">html</span><span class="p">[</span><span class="n">html</span><span class="p">.</span><span class="n">index ...</span></pre></div>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2010/07/get-daily-bing-picture/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -144,11 +141,6 @@ t/archive/2009/10/27/4734844.aspx">抓取每天必应bing背景图片 - huangct�
                         <li class="list-group-item">
                             <a href="https://blog.alswl.com/category/managment/">
                                 <i class="fa fa-folder-open fa-lg"></i> Managment
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="https://blog.alswl.com/category/misc/">
-                                <i class="fa fa-folder-open fa-lg"></i> misc
                             </a>
                         </li>
                         <li class="list-group-item">

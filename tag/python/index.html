@@ -79,7 +79,10 @@ Jython 推翻重做了主要业务，效果立竿见影，但同时也把真实�
 就是想对性能遇到瓶颈的 Python Process 进行线上侦测。
 这篇文章就是开始的第一步。</p>
 <p>PS:这篇文章理论上是可行的，但是在我机器（Ubuntu 12.04 / 系统自带 Python）
-无法正常执行，会爆出 <code>unable to …</code></p>
+无法正常执行，会爆出 <code>unable to read python frame information</code>
+的问题。解决方法我会在下篇文章中写出。这里只是单纯翻译一下原文。</p>
+<p>原文可以移步 <a href="https://wiki.python.org/moin/DebuggingWithGdb">https://wiki.python.org/moin/DebuggingWithGdb</a>。</p>
+
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2013/11/python-gdb/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -92,13 +95,7 @@ Jython 推翻重做了主要业务，效果立竿见影，但同时也把真实�
 <h2 id="jie-shao">介绍</h2>
 <p>Python 从 2.6 开始支持 <a href="http://linux.die.net/man/4/epoll">epoll</a>。现在我们用 Python3 来写基于这些 API
 的 epoll 范例。</p>
-<!-- more -->
-<h2 id="zu-sai-de-socket-tong-xin-fan-li">阻塞的 Socket 通信范例</h2>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">socket</span>
 
-<span class="n">EOL1</span> <span class="o">=</span> <span class="sa">b</span><span class="s1">'</span><span class="se">\n\n</span><span class="s1">'</span>
-<span class="n">EOL2</span> <span class="o">=</span> <span class="sa">b</span><span class="s1">'</span><span class="se">\n\r\n</span><span class="s1">'</span>
-<span class="n">response</span>  <span class="o">=</span> <span class="sa">b</span><span class="s1">'HTTP/1.0 200 OK</span><span class="se">\r\n</span><span class="s1">Date: Mon, 1 Jan 1996 …</span></pre></div>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2013/01/python-epoll/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -111,13 +108,7 @@ Jython 推翻重做了主要业务，效果立竿见影，但同时也把真实�
 最近这几周我们一直（在基础设施方面）做负载计划，为所有可能发生的事故做准备。
 尽管如此，在发布那天，最大的挑战仍然是如何快速定位问题，找到瓶颈并尽快修复他们。
 在这里我们将分享一些帮助我们解决问题的工具和技术。</p>
-<!-- more -->
-<h2 id="statsd">statsd</h2>
-<p><a href="http://github.com/etsy/statsd/">statsd</a> 在 Instagram 很受欢迎。这是 <a href="http://github.com/etsy/">Etsy</a> 写的一个网络监控器，
-能够统计并图形化数据。它有两种核心的统计方式：计数器和计时器。
-我们用计数器来跟踪许多信息，从每秒钟注册数到喜欢数量统计。
-同时我们使用计时器来跟踪 feeds 变化，用户停留在 feeds 多久，和其他的主要操作。</p>
-<p>我们喜欢 statsd 的最大原因是它能迅速将状态显示并图形化出来 …</p>
+
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2012/11/keeping-instagram-up-with-over-a-million-new-users-in-twelve-hours/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -137,7 +128,7 @@ Jython 推翻重做了主要业务，效果立竿见影，但同时也把真实�
 </ul>
 <p>KuKu 的发音是我家乡话的「看看」。</p>
 <p>KuKu 中比较有趣的地方是，用了 <a href="http://foundation.zurb.com/">Foundation</a> 这个流式 Web 前端框架，
-用了 …</p>
+用了 ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2012/11/kuku/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -150,19 +141,7 @@ PyCon 大会。这次 PyCon 2012 分成两个场地同时进行，北京和上�
 <p><img alt="PyCon Logo" src="https://ohsolnxaa.qnssl.com/2012/10/PyConChina2012.png"/></p>
 <p>去年时候我很遗憾的不能跑到上海来参加，现在我人就在上海，
 怎能错过 Pythoner 的饕餮大餐呢？早就眼巴巴的买票准备参加了。</p>
-<!-- more -->
-<p>上海这边的主题如下：</p>
-<ul>
-<li>《Python 产品构建与发布指南》- 沈崴</li>
-<li>《实战游戏客户端》 - 林伟</li>
-<li>《让程序运行更快》- 李小红</li>
-<li>《演进或革命 - 选型和架构的实践经验谈》 - 潘俊勇</li>
-<li>《网游开发中的 Python 组件》- 赖勇浩</li>
-<li>《自动化即时战斗游戏解决方案》 - 王健</li>
-<li>《人人可以化半小时开发一个全功能OpenERP模块》 - Tony Gu</li>
-<li>《元编程在redis orm中的应用》 - 许智翔</li>
-<li>《OpenERP即将推出的第7版的功能和新的编程框架介绍》- Eric Caudal</li>
-<li>《Python如何帮助 …</li></ul>
+
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2012/10/pycon-2012/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -183,7 +162,17 @@ PyCon 大会。这次 PyCon 2012 分成两个场地同时进行，北京和上�
 </blockquote>
 <p>在我的上一篇日志中，我写到如何
 <a href="http://jimmyg.org/blog/2009/python-command-line-interface-%28cli%29-with-sub-commands.html">build a command line interface with sub-commands in Python</a>。
-这次我来尝试如何通过 …</p>
+这次我来尝试如何通过 Python 的 <code>subprocess</code> 模块来和命令行指令进行交互。</p>
+<p>我想达到的目标是：</p>
+<ul>
+<li>查看当你键入命令时究竟发生了什么</li>
+<li>如何确认一个命令是否存在并找出到底在哪</li>
+<li>通过 Python 或 shell 执行命令</li>
+<li>向一个运行中的进程读取 STDOUT 或写入 STDIN</li>
+<li>检查进程的退出返回状态</li>
+<li>理解 Bash 在命令中断中扮演的角色，并如何将它们发送给程序</li>
+</ul>
+
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2012/10/working-with-python-subprocess/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -198,14 +187,7 @@ PyCon 大会。这次 PyCon 2012 分成两个场地同时进行，北京和上�
 比如「28个Unix.Linux的命令行神器」这篇 wiki 目录在
 <code>data/28(e4b8aa)Unix(2e)Linux(e79a84e591bde4bba4e8a18ce7a59ee599a8)</code> 中，
 结构如下：</p>
-<!-- more -->
-<div class="highlight"><pre><span></span>|---revisions
-|        |---00000002
-|        |---00000001
-|---edit-log
-|---current
-|---attachments
-|          |---http___coolshell.cn_wp-content_uploads_2012_07_xargs_screenshot …</pre></div>
+
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2012/07/moin2txt/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -225,7 +207,7 @@ PyCon 大会。这次 PyCon 2012 分成两个场地同时进行，北京和上�
 <li>数据存储 Datastore（实体 / 查询 / 索引 / 事务）</li>
 <li>服务（Memcache / GAccount / 任务队列 / 计划任务）</li>
 <li>工具（SDK / appcfg / dev_appserver / 控制台）</li>
-<li>入门（安装 / GAccount / webapp / app …</li></ul></li></ul>
+<li>入门（安装 / GAccount / webapp / app ...</li></ul></li></ul>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2012/03/gae/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -239,7 +221,7 @@ PyCon 大会。这次 PyCon 2012 分成两个场地同时进行，北京和上�
 <h2 id="zai-python-zhong-diao-shi">在 Python 中调试</h2>
 <h3 id="pdb">pdb</h3>
 <p>在代码中加入下列语句即可启用交互式调试。</p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pdb</span><span class="p">;</span><span class="n">pdb</span><span class="o">.</span><span class="n">set_trace</span><span class="p">()</span>
+<div class="highlight"><pre><span class="n">import</span> <span class="n">pdb</span><span class="p">;</span><span class="n">pdb</span><span class="p">.</span><span class="n">set_trace</span><span class="p">()</span>
 </pre></div>
 <p>在 pdb 中，可以使用 <code>h / l / b / n / s / c / j / a / p / ! / q</code> 这些命令所代表的含义可以通过
 <code>h(elp)</code> 打印出来。</p>
@@ -248,7 +230,7 @@ PyCon 大会。这次 PyCon 2012 分成两个场地同时进行，北京和上�
 <li><a href="http://magustest.com/blog/python/use-pdb-debug-python/comment-page-1">用PDB库调试Python程序</a></li>
 </ul>
 <h3 id="ipdb">ipdb</h3>
-<p>比 pdb 更好用的是 …</p>
+<p>比 pdb 更好用的是 ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2012/03/python-debug/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -283,7 +265,7 @@ PyCon 大会。这次 PyCon 2012 分成两个场地同时进行，北京和上�
 <h3 id="31-request">3.1. request</h3>
 <p>这个request和普通jsp/asp中request很类似（实际上这个request就是继承
 <a href="http://werkzeug.pocoo.org/">werkzeug</a>的Request）。</p>
-<p>除了正常的web request功能，Moin的request还带了Wiki自身的信息 …</p>
+<p>除了正常的web request功能，Moin的request还带了Wiki自身的信息 ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2012/02/the-write-the-plugins-for-moinmoin/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -358,11 +340,6 @@ PyCon 大会。这次 PyCon 2012 分成两个场地同时进行，北京和上�
                         <li class="list-group-item">
                             <a href="https://blog.alswl.com/category/managment/">
                                 <i class="fa fa-folder-open fa-lg"></i> Managment
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="https://blog.alswl.com/category/misc/">
-                                <i class="fa fa-folder-open fa-lg"></i> misc
                             </a>
                         </li>
                         <li class="list-group-item">

@@ -80,7 +80,7 @@ caption="iNove的Heading"]<a href="https://ohsolnxaa.qnssl.com/2009/09/iNoveHead
 <p>iNove的文章内容Heading CSS和主题的Heading混合在一起，非常不雅观。我稍作修改，在iNove的style.css最后加上一些样式。</p>
 <p>`/<em> dddspace.cn heading fix STAET </em>/</p>
 <p>.post .content h1 {</p>
-<p>font-family:Georgia,"Times New Roman","Bitstream Charter …</p>
+<p>font-family:Georgia,"Times New Roman","Bitstream Charter ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/09/inove-changes-under-the-heading-style/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -96,8 +96,7 @@ plugin-v01.zip'>猛击这里下载</a></p>
 <p><strong>wordpress关键字自动匹配链接插件</strong> 这个工具非常好使，我找了很久了，以后发文章就省事多了，不用一个一个去加链接了，呵呵，So Cool！</p>
 <p>下面引用原文：</p>
 <p>Wordpress Keyword Link Plugin</p>
-<p>This is a little Wordpress 2.3+ plugin that helps you to automatically link
-defined keywords to certain articles on your own blog, or elsewhere on …</p>
+<p>This is a little Wordpress 2 ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/08/wordpress-plug-match-keywords-automatically-link-to/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -128,13 +127,9 @@ Powered by Discuz!</a>》</p>
 <p>为了优化WordPress的SEO效率，我们可以使用<a href="http://log4d.com/robots.txt">robots.txt</a>文件来对搜索引擎搜索范
 围进行限制。</p>
 <p>下面是我的robots.txt内容：</p>
-<div class="highlight"><pre><span></span>User-agent: *
-Disallow: /wp-
-Disallow: /feed/
-Disallow: /page/
-Disallow: /comments/feed
-Disallow: /index-wap.php/
-# BEGIN XML-SITEMAP-PLUGIN …</pre></div>
+<div class="highlight"><pre><span class="n">User</span><span class="o">-</span><span class="n">agent</span><span class="o">:</span> <span class="o">*</span>
+<span class="nl">Disallow:</span> <span class="o">/</span><span class="n">wp</span><span class="o">-</span>
+<span class="nl">Disallow ...</span></pre></div>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/08/wordpress-to-add-robots-txt/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -172,11 +167,7 @@ themes.com/wp-content/themes/dfblog/screenshot.png"><img alt="image" src="https:
 <p>3.<a href="http://wordpress.org/extend/themes/inove">iNove</a>(小张的主机应该起手都是用的iNove吧&hellip;&hellip;呵呵&hellip;&hellip;)</p>
 <p><a href="http://wp-
 themes.com/wp-content/themes/inove/screenshot.png"><img alt="image" src="https://ohsolnxaa.qnssl.com/upload_dropbox/200907/screenshot.png"/></a></p>
-<p>其他的主题有些虽然内置了mo/po文件，但没有中文对应的mo/po，需要自己修改，可以使用<a href="http://www.xdowns.com/so
-ft/38/103/2007/Soft_36710.html">poEdit</a>编辑，我正在尝试汉化<a href="http://wordpress.org/extend/
-themes/fusion">Fusion</a>，很喜欢这个主题，可惜没有中文汉化。</p>
-<p>另外，<a href="http://wordpress.org.cn/">WordPress中文论坛</a>也有好多国人自己制作的优秀主题，那里的大部分都是中文的。</p>
-<p>换主题之前记得一定要备份文件哦。</p>
+<p>其他的主题有些虽然内置了mo/po文件，但没有中文对应的mo/po，需要自己修改 ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/07/chinese-theme-wordpress/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -187,17 +178,17 @@ themes/fusion">Fusion</a>，很喜欢这个主题，可惜没有中文汉化。<
 <p>Wordpress虽好，可毛病也不少，今天发现WordPress会将半角标点符号自动转换成全角的，但并没有替换数据库里的信息，真搞不明白开发团队是怎么想的，
 现将解决方法记录如下。</p>
 <p>1、 编辑 wp-includes/formatting.php 文件，找到以下代码：</p>
-<div class="highlight"><pre><span></span>// static strings
-$curl = str_replace($static_characters, $static_replacements, $curl);
-// regular expressions
-$curl = preg_replace($dynamic_characters, $dynamic_replacements, $curl);
+<div class="highlight"><pre><span class="c1">// static strings</span>
+<span class="err">$</span><span class="n">curl</span> <span class="o">=</span> <span class="n">str_replace</span><span class="p">(</span><span class="err">$</span><span class="n">static_characters</span><span class="p">,</span> <span class="err">$</span><span class="n">static_replacements</span><span class="p">,</span> <span class="err">$</span><span class="n">curl</span><span class="p">);</span>
+<span class="c1">// regular expressions</span>
+<span class="err">$</span><span class="n">curl</span> <span class="o">=</span> <span class="n">preg_replace</span><span class="p">(</span><span class="err">$</span><span class="n">dynamic_characters</span><span class="p">,</span> <span class="err">$</span><span class="n">dynamic_replacements</span><span class="p">,</span> <span class="err">$</span><span class="n">curl</span><span class="p">);</span>
 </pre></div>
 <p>正是 str_replace() 和 preg_replace() 两个函数在作怪。</p>
 <p>2、 将相应语句注释，禁用自动替换功能：</p>
-<div class="highlight"><pre><span></span>// static strings
-//$curl = str_replace($static_characters, $static_replacements, $curl);
-// regular expressions
-//$curl = preg_replace …</pre></div>
+<div class="highlight"><pre><span class="c1">// static strings</span>
+<span class="c1">//$curl = str_replace($static_characters, $static_replacements, $curl);</span>
+<span class="c1">// regular expressions</span>
+<span class="c1">//$curl = preg_replace ...</span></pre></div>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/07/prohibition-of-wordpress-automatically-to-replace-the-half-angle-punctuation/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -213,7 +204,7 @@ $curl = preg_replace($dynamic_characters, $dynamic_replacements, $curl);
 <p>我又删除了饭否的图片，这几天饭否也访问不了，留了也显示不出来。</p>
 <p>我留下12个插件，分别是：Akismet, CodeColorer, Dagon Design Sitemap Generator, Google XML
 Sitemaps, Mail To Commenter, Shutter Reloaded, Super Switch, WordPress Related
-Posts, WP-PageNavi …</p>
+Posts, WP-PageNavi ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/07/wp-small-speed-optimization/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -312,11 +303,6 @@ translate，是偶爱偶家出品的&lt;<a href="http://blog.2i2j.com/">猛击�
                         <li class="list-group-item">
                             <a href="https://blog.alswl.com/category/managment/">
                                 <i class="fa fa-folder-open fa-lg"></i> Managment
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="https://blog.alswl.com/category/misc/">
-                                <i class="fa fa-folder-open fa-lg"></i> misc
                             </a>
                         </li>
                         <li class="list-group-item">

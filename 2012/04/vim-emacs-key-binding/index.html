@@ -16,7 +16,7 @@
 
         <meta name="author" content="alswl" />
         <meta name="keywords" content="工欲善其事必先利其器,Emacs,Readline,Shell,Vim" />
-        <meta name="description" content="Vimer 需要 Emacs 键绑定？看上去很蛋疼的需求吧。其实不然，大部分的 Shell / Readline 默认绑定的是 Emacs 键位绑定（处于输入状态下，Emacs 的键位很好用）。Vim 的模式切换很牛逼，但是 Insert 模式下面，只有寥寥几个快捷键，我修改了配置文件，绑定需要的 Emcas 按键到 Vim 中来。 Github 中搜索关键字 Vim Emcas key bind，出来一些结果，不是很完美，我又慢慢调教了几个星期，放出我的 .vimrc。 &#34; 模拟 Emacs 键绑定 &#34; Move inoremap &lt;C-a&gt; &lt;Home&gt; inoremap &lt;C-e&gt; &lt;End&gt; &#34;inoremap &lt;C-p …" />
+        <meta name="description" content="Vimer 需要 Emacs 键绑定？看上去很蛋疼的需求吧。其实不然，大部分的 Shell / Readline 默认绑定的是 Emacs 键位绑定（处于输入状态下，Emacs 的键位很好用）。Vim 的模式切换很牛逼，但是 Insert 模式下面，只有寥寥几个快捷键，我修改了配置文件，绑定需要的 Emcas 按键到 Vim 中来。 Github 中搜索关键字 Vim Emcas key bind，出来一些结果，不是很完美，我又慢慢调教了几个星期，放出我的 .vimrc。 &#34; 模拟 Emacs 键绑定 &#34; Move inoremap &lt;C-a&gt; &lt;Home&gt; inoremap &lt;C-e&gt; &lt;End&gt; &#34;inoremap &lt;C-p ..." />
 
 
 
@@ -80,7 +80,7 @@ Log4D            </a>
 <footer class="post-info">
     <span class="label label-default">Date</span>
     <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2012-04-20T00:00:00+08:00"> 2012-04-20</time>
+        <i class="fa fa-calendar"></i><time datetime="2012-04-20T00:00:00"> 2012-04-20</time>
     </span>
 
 
@@ -100,7 +100,7 @@ Log4D            </a>
                 </div>
                 <p>Vimer 需要 Emacs 键绑定？看上去很蛋疼的需求吧。其实不然，大部分的 Shell / Readline 默认绑定的是 Emacs 键位绑定（处于输入状态下，Emacs 的键位很好用）。Vim 的模式切换很牛逼，但是 Insert 模式下面，只有寥寥几个快捷键，我修改了配置文件，绑定需要的 Emcas 按键到 Vim 中来。</p>
 <p>Github 中搜索关键字 Vim Emcas key bind，出来一些结果，不是很完美，我又慢慢调教了几个星期，放出我的 .vimrc。</p>
-<div class="highlight"><pre><span></span><span class="s2">" 模拟 Emacs 键绑定</span>
+<div class="highlight"><pre><span class="s2">" 模拟 Emacs 键绑定</span>
 <span class="s2">"</span> Move
 inoremap &lt;C-a&gt; &lt;Home&gt;
 inoremap &lt;C-e&gt; &lt;End&gt;
@@ -113,11 +113,11 @@ inoremap &lt;M-f&gt; &lt;C-o&gt;w
 <span class="s2">" Rubout word / line and enter insert mode</span>
 <span class="s2">"</span> use &lt;Esc&gt;&lt;Right&gt; instead of &lt;C-o&gt;
 inoremap &lt;C-w&gt; &lt;Esc&gt;dbcl
-<span class="s2">" delete</span>
-<span class="s2">inoremap &lt;C-u&gt; &lt;Esc&gt;d0cl</span>
-<span class="s2">inoremap &lt;C-k&gt; &lt;Esc&gt;&lt;Right&gt;C</span>
-<span class="s2">inoremap &lt;C-d&gt; &lt;Esc&gt;&lt;Right&gt;s</span>
-<span class="s2">inoremap &lt;M-d&gt; &lt;C-o&gt;de</span>
+<span class="err">"</span> delete
+inoremap &lt;C-u&gt; &lt;Esc&gt;d0cl
+inoremap &lt;C-k&gt; &lt;Esc&gt;&lt;Right&gt;C
+inoremap &lt;C-d&gt; &lt;Esc&gt;&lt;Right&gt;s
+inoremap &lt;M-d&gt; &lt;C-o&gt;de
 </pre></div>
 <p>需要的朋友请取用，我的 Vim 配置文件和插件在 <a href="https://github.com/alswl/dotfiles">https://github.com/alswl/dotfiles</a> 。</p>
             </div>
@@ -220,11 +220,6 @@ inoremap &lt;C-w&gt; &lt;Esc&gt;dbcl
                         <li class="list-group-item">
                             <a href="https://blog.alswl.com/category/managment/">
                                 <i class="fa fa-folder-open fa-lg"></i> Managment
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="https://blog.alswl.com/category/misc/">
-                                <i class="fa fa-folder-open fa-lg"></i> misc
                             </a>
                         </li>
                         <li class="list-group-item">

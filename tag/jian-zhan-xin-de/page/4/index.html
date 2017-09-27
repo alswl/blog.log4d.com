@@ -71,22 +71,22 @@ Log4D            </a>
                 <h2 class="title"><a href="https://blog.alswl.com/2009/05/landscaping-postviews/">美化postviews</a></h2>
                 <div class="summary"><p>很多朋友用postviews这个插件，的确很适合国人的风格，但是如果单纯的添加到页面中，会显得很突兀，难看，我做了几个美化工作。</p>
 <p>首先，在用到postviews函数时候都定义span id，比如在single.php中修改，在下面代码</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;span&gt;</span><span class="cp">&lt;?php</span> <span class="nx">the_author_posts_link</span><span class="p">();</span> <span class="cp">?&gt;</span><span class="nt">&lt;/span&gt;</span><span class="cp">&lt;?php</span> <span class="k">endif</span><span class="p">;</span> <span class="cp">?&gt;</span>
+<div class="highlight"><pre><span class="nt">&lt;span&gt;</span><span class="cp">&lt;?php the_author_posts_link(); ?&gt;</span><span class="nt">&lt;/span&gt;</span><span class="cp">&lt;?php endif; ?&gt;</span>
 </pre></div>
 <p>后面跟上一段显示浏览次数的代码</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;span&gt;</span><span class="cp">&lt;?php</span> <span class="nx">the_author_posts_link</span><span class="p">();</span> <span class="cp">?&gt;</span><span class="nt">&lt;/span&gt;</span><span class="cp">&lt;?php</span> <span class="k">endif</span><span class="p">;</span> <span class="cp">?&gt;</span>
+<div class="highlight"><pre><span class="nt">&lt;span&gt;</span><span class="cp">&lt;?php the_author_posts_link(); ?&gt;</span><span class="nt">&lt;/span&gt;</span><span class="cp">&lt;?php endif; ?&gt;</span>
 </pre></div>
 <p>这样就可以显示浏览次数。</p>
 <p>然后修改style.css文件，我的是inove主题，在382行附近修改</p>
-<div class="highlight"><pre><span></span><span class="na">.post</span> <span class="no">.date</span><span class="p">,</span>
-<span class="na">.post</span> <span class="no">.author</span><span class="p">,</span>
-<span class="na">.post</span> <span class="no">.postviews</span><span class="p">,</span>
-<span class="na">.post</span> <span class="no">.editpost</span><span class="p">,</span>
-<span class="na">.post</span> <span class="no">.comments</span><span class="p">,</span>
-<span class="na">.post</span> <span class="no">.addcomment</span><span class="p">,</span>
-<span class="na">.post</span> <span class="no">.addlink</span><span class="p">,</span>
-<span class="na">.post</span> <span class="no">.editlinks</span> <span class="err">{</span>
-<span class="nl">background:</span><span class="nf">url</span><span class="p">(</span><span class="no">img</span><span class="err">/</span><span class="no">icons …</span></pre></div>
+<div class="highlight"><pre><span class="p">.</span><span class="n">post</span> <span class="p">.</span><span class="n">date</span><span class="p">,</span>
+<span class="p">.</span><span class="n">post</span> <span class="p">.</span><span class="n">author</span><span class="p">,</span>
+<span class="p">.</span><span class="n">post</span> <span class="p">.</span><span class="n">postviews</span><span class="p">,</span>
+<span class="p">.</span><span class="n">post</span> <span class="p">.</span><span class="n">editpost</span><span class="p">,</span>
+<span class="p">.</span><span class="n">post</span> <span class="p">.</span><span class="n">comments</span><span class="p">,</span>
+<span class="p">.</span><span class="n">post</span> <span class="p">.</span><span class="n">addcomment</span><span class="p">,</span>
+<span class="p">.</span><span class="n">post</span> <span class="p">.</span><span class="n">addlink</span><span class="p">,</span>
+<span class="p">.</span><span class="n">post</span> <span class="p">.</span><span class="n">editlinks</span> <span class="p">{</span>
+<span class="nl">background:</span><span class="n">url</span><span class="p">(</span><span class="n">img</span><span class="o">/</span><span class="n">icons ...</span></pre></div>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/05/landscaping-postviews/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -104,7 +104,7 @@ Log4D            </a>
 <p>只保留 USE 'alswl_wp'，并且修改为USE
 'dddspace_wp'，之所以不在这里创建，是因为一般空间管理器取消了phpMyAdmin创建数据库权限，只能在面板创建。</p>
 <p>如果当初备份数据库是全部备份的话可能还会有其他的系统数据库，这些必须删除，保证sql文件只对dddspace_wp这个数据库进行增加表的操作</p>
-<p>3.为了保证数据库数据正确，把WP自动创建的表删除，然后就可以导入sql文件执行了 …</p>
+<p>3.为了保证数据库数据正确，把WP自动创建的表删除，然后就可以导入sql文件执行了 ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/05/station-restoration-of-mind/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -123,7 +123,7 @@ Log4D            </a>
 <p>import postbar.bean.Category;</p>
 <p>import postbar.bean.Topic;</p>
 <p>import postbar.dao.CategoryDAO;</p>
-<p>public …</p>
+<p>public ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/05/finally-created-a-blog-of-their-own/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -136,7 +136,7 @@ Log4D            </a>
 <p>61.51.177.16 2009-4-4 9:02:40 -1 北京市 网通(崇文区)</p>
 <p>58.251.77.207 2009-4-4 9:27:39 -1 广东省深圳市 网通</p>
 <p>219.149.162.151 2009-4-4 9:39:08 -1 山西省大同市 电信</p>
-<p>219.149.162.151 2009-4-4 9:50:41 …</p>
+<p>219.149.162.151 2009-4-4 9:50:41 ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/04/web-site-has-been-linked-to-a-trojan-horse/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -211,11 +211,6 @@ Log4D            </a>
                         <li class="list-group-item">
                             <a href="https://blog.alswl.com/category/managment/">
                                 <i class="fa fa-folder-open fa-lg"></i> Managment
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="https://blog.alswl.com/category/misc/">
-                                <i class="fa fa-folder-open fa-lg"></i> misc
                             </a>
                         </li>
                         <li class="list-group-item">

@@ -2,7 +2,7 @@
 <html lang="en"
 >
 <head>
-    <title>misc - Log4D</title>
+    <title>Articles by 罗晟, alswl - Log4D</title>
     <!-- Using the latest rendering mode for IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
@@ -13,8 +13,7 @@
 
 
 
-    <meta name="author" content="alswl" />
-    <meta name="keywords" content="misc" />
+        <meta name="author" content="alswl" />
 
     <!-- Open Graph tags -->
         <meta property="og:site_name" content="Log4D" />
@@ -68,35 +67,21 @@ Log4D            </a>
         <div class="col-lg-8 col-lg-offset-2">
 
             <article class="article-list">
-                <h2 class="title"><a href="https://blog.alswl.com/2017/09//"></a></h2>
-                <div class="summary">
-<div id="TOC">
+                <h2 class="title"><a href="https://blog.alswl.com/2017/09/https-on-stack-overflow/">Stack Overflow 的 HTTPS 化：漫漫长路的终点</a></h2>
+                <div class="summary"><p><a href="https://ohsolnxaa.qnssl.com/upload_dropbox/201709/stack-overflow.png">Stack Overflow</a></p>
 <ul>
-<li><a href="#第一个问题nolock-是什么">第一个问题：nolock 是什么？</a><ul>
-<li><a href="#隔离级别">隔离级别</a><ul>
-<li><a href="#read-uncommitted">Read Uncommitted</a></li>
-</ul></li>
-<li><a href="#read-committed">Read Committed</a></li>
-<li><a href="#repeatable-read">Repeatable Read</a></li>
-<li><a href="#serializable">Serializable</a></li>
-<li><a href="#db-的默认隔离级别">DB 的默认隔离级别</a></li>
-</ul></li>
-<li><a href="#第二个问题为什么要使用-nolock">第二个问题：为什么要使用 nolock？</a><ul>
-<li><a href="#nolock-测试">nolock 测试</a></li>
-<li><a href="#mvcc">MVCC</a></li>
-<li><a href="#sql-server-2005-之后还需要使用-nolock-么">SQL Server 2005 之后还需要使用 nolock 么？</a></li>
-</ul></li>
-<li><a href="#第三个问题mysql-的对应写法是什么">第三个问题：MySQL 的对应写法是什么？</a></li>
-<li><a href="#回顾一下">回顾一下</a></li>
-<li><a href="#相关资料">相关资料</a></li>
+<li>原文作者：Nick Craver</li>
+<li>翻译作者：罗晟 &amp; 狄敬超（沪江工程师）</li>
+<li>原文地址：<a href="https://nickcraver.com/blog/2017/05/22/https-on-stack-overflow/">Nick Craver - HTTPS on Stack Overflow: The End of a Long Road</a></li>
+<li>本文为原创翻译文章，已经获得原作者授权，转载请注明作者及出处。</li>
 </ul>
-</div>
-<p>Title: 一个关于 nolock 的故事 Author: alswl Slug: sql-server-nolock Date: 2017-09-19 16:43:45 Tags: SQL Server, MySQL Category: Coding</p>
-<div class="figure">
-<img alt="sql-server.png" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201709/sql-server.png"/>
-<p class="caption">sql-server …</p></div>
+<hr/>
+<p>今天，我们默认在&nbsp;<a href="https://stackoverflow.com/">Stack Overflow</a>&nbsp;上部署了 HTTPS。目前所有的流量都将跳转到&nbsp;<code>https://</code>&nbsp;上。与此同时，Google 链接也会在接下去的几周内更改。启用的过程本身只是举手之劳，但在此之前我们却花了好几年的时间。到目前为止，HTTPS 在我们所有的 Q&amp;A 网站上都默认启用了。</p>
+<p><a href="https://meta.stackoverflow.com/q/345012/13249">在过去的两个月里</a>，我们在 Stack Exchange 全网维持发布 HTTPS。Stack Overflow 是最后，也是迄今最大的的一个站点。这对我们来说是一个巨大里程碑，但决不意味着是终点。<a href="#next-steps">后文会提到</a>，我们仍有很多需要做的事情。但现在我们总算能看得见终点了，耶！</p>
+<p>友情提示：这篇文章讲述的是一个漫长的旅程。非常漫长。你可能已经注意到你的滚动条现在非常小。我们遇到的问题并不是只在 Stack Exchange/Overflow 才有，但这些问题的组合还挺罕见。我在文章中会讲到我们的一些尝试、折腾、错误、成功，也会包括一些开源项目&mdash;&mdash;希望这些细节对你们有所帮助。由于它们的关系错综复杂，我难以用时间顺序来组织这篇文章，所以我会将文章拆解成架构、应用层、错误等几个主题。</p>
+
                 </div>
-                <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2017/09//"><i class="icon-circle-arrow-right"></i>more ...</a>
+                <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2017/09/https-on-stack-overflow/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
             <hr/>
 
@@ -156,11 +141,6 @@ Log4D            </a>
                         <li class="list-group-item">
                             <a href="https://blog.alswl.com/category/managment/">
                                 <i class="fa fa-folder-open fa-lg"></i> Managment
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="https://blog.alswl.com/category/misc/">
-                                <i class="fa fa-folder-open fa-lg"></i> misc
                             </a>
                         </li>
                         <li class="list-group-item">

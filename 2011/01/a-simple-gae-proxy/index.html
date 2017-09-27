@@ -16,7 +16,7 @@
 
         <meta name="author" content="alswl" />
         <meta name="keywords" content="Python,GAE" />
-        <meta name="description" content="年前换了一次服务器，之后发现Lifestream的Errors飙升到1000+错误，检查一下，发现是获 取不了豆瓣的rss链接。正好这台主机支持SSH，连入之后CURL了一下豆瓣服务器，发现Time out。 紧接着发现中国内的所有域名都无法使用CURL获取，联系小张之后，得知该主机曾经被入侵过，于是屏蔽了中国大陆的ip段（囧~入侵和中国ip有毛关系） 遂想用GAE做个代理服务器，反正获取RSS也只要Get一下，代码没几句。把这项任务放入Toodledo之后，就一直没去弄，今天发现GAE Laucher升级了，就部署到自己GAE上了。 地址格式如&amp;nbsp_place_holder;http://jasontiproxy.appspot.com/proxy?url=www.douban. com/feed/people/alswl/interests，url参数名后面跟着具体的url。 代码其实就是用urllib2获取一下html，核心如下。 1#!/usr/bin/env python from …" />
+        <meta name="description" content="年前换了一次服务器，之后发现Lifestream的Errors飙升到1000+错误，检查一下，发现是获 取不了豆瓣的rss链接。正好这台主机支持SSH，连入之后CURL了一下豆瓣服务器，发现Time out。 紧接着发现中国内的所有域名都无法使用CURL获取，联系小张之后，得知该主机曾经被入侵过，于是屏蔽了中国大陆的ip段（囧~入侵和中国ip有毛关系） 遂想用GAE做个代理服务器，反正获取RSS也只要Get一下，代码没几句。把这项任务放入Toodledo之后，就一直没去弄，今天发现GAE Laucher升级了，就部署到自己GAE上了。 地址格式如&amp;nbsp_place_holder;http://jasontiproxy.appspot.com/proxy?url=www ..." />
 
 
 
@@ -80,7 +80,7 @@ Log4D            </a>
 <footer class="post-info">
     <span class="label label-default">Date</span>
     <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2011-01-11T00:00:00+08:00"> 2011-01-11</time>
+        <i class="fa fa-calendar"></i><time datetime="2011-01-11T00:00:00"> 2011-01-11</time>
     </span>
 
 
@@ -101,7 +101,7 @@ Laucher升级了，就部署到自己GAE上了。</p>
 .douban.com/feed/people/alswl/interests">http://jasontiproxy.appspot.com/proxy?url=www.douban.
 com/feed/people/alswl/interests</a>，url参数名后面跟着具体的url。</p>
 <p>代码其实就是用urllib2获取一下html，核心如下。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span class="c">#!/usr/bin/env python</span>
 </pre></div>
 </td></tr></table>
 <p>from google.appengine.ext import webapp</p>
@@ -224,11 +224,6 @@ com/feed/people/alswl/interests</a>，url参数名后面跟着具体的url。</p
                         <li class="list-group-item">
                             <a href="https://blog.alswl.com/category/managment/">
                                 <i class="fa fa-folder-open fa-lg"></i> Managment
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="https://blog.alswl.com/category/misc/">
-                                <i class="fa fa-folder-open fa-lg"></i> misc
                             </a>
                         </li>
                         <li class="list-group-item">

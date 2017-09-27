@@ -67,23 +67,6 @@ Log4D            </a>
         <div class="col-lg-8 col-lg-offset-2">
 
             <article class="article-list">
-                <h2 class="title"><a href="https://blog.alswl.com/2014/03/hiredis/">hiredis 源码学习</a></h2>
-                <div class="summary"><p>前段时间学习 Redis 时候，听到 hiredis 的大名，正好也在做异步的学习，就找来代码学习一下。
-我几乎不太会 C，仅限于最简单的语法，完全没有在生产环境中写过，
-所以先看个 Client 简单代码，下次看 Memcached 代码应该会更顺畅一些。</p>
-<p>Hiredis 是用 C 写的 Redis 客户端，对 Redis 协议进行了简单的封装，
-同时提供了同步和异步的两种 API。Hiredis 的代码位于
-<a href="https://github.com/redis/hiredis">https://github.com/redis/hiredis</a>。</p>
-<!-- more -->
-<h2 id="yi-fen-zhong-shi-yong-ru-men">一分钟使用入门</h2>
-<p>同步 API 的调用方法：</p>
-<div class="highlight"><pre><span></span><span class="nt">redisContext</span> <span class="o">*</span><span class="nt">context</span> <span class="o">=</span> <span class="nt">redisConnect</span><span class="o">(</span><span class="s2">"127.0.0.1"</span><span class="o">,</span> <span class="nt">6379</span><span class="o">);</span>
-<span class="nt">reply</span> <span class="o">=</span> <span class="nt">redisCommand …</span></pre></div>
-                </div>
-                <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2014/03/hiredis/"><i class="icon-circle-arrow-right"></i>more ...</a>
-            </article>
-            <hr/>
-            <article class="article-list">
                 <h2 class="title"><a href="https://blog.alswl.com/2014/03/java-options/">Java 运行参数调整</a></h2>
                 <div class="summary"><p>JVM 在线上运行的时候，可以调整一些运行参数，查看参数帮助如下：</p>
 <p>运行 <code>java -h</code> 可以看到 Java 运行可调整的参数。
@@ -93,7 +76,9 @@ Log4D            </a>
 <p>参考：
 <a href="http://www.oracle.com/technetwork/java/javase/tech/vmoptions-jsp-140102.html">Java HotSpot VM Options</a>
 <a href="http://stas-blogspot.blogspot.com/2011/07/most-complete-list-of-xx-options-for.html">The most complete list of -XX options for Java JVM </a>
-<a href="http://docs.oracle.com/cd/E13209_01/wlcp/wlss30/configwlss/jvmgc.html"> Tuning JVM Garbage Collection …</a></p>
+<a href="http://docs.oracle.com/cd/E13209_01/wlcp/wlss30/configwlss/jvmgc.html"> Tuning JVM Garbage Collection for Production Deployments </a>
+<a href="http://www.jvmer.com/jvm-xx-参数介绍/">JVM -XX: 参数介绍</a></p>
+
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2014/03/java-options/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -105,13 +90,7 @@ Log4D            </a>
 <hr/>
 <p>Redis 自带了一个叫 <code>redis-benchmark</code> 的工具来模拟 N 个客户端同时发出 M 个请求。
 （类似于 Apache <code>ab</code> 程序）。你可以使用 <code>redis-benchmark -h</code> 来查看基准参数。</p>
-<!-- more -->
-<div class="highlight"><pre><span></span>以下参数被支持：
 
-    Usage: redis-benchmark [-h &lt;host&gt;] [-p &lt;port&gt;] [-c &lt;clients&gt;] [-n &lt;requests]&gt; [-k &lt;boolean&gt;]
-
-     -h &lt;hostname&gt;      Server hostname (default 127.0.0.1)
-     -p &lt;port&gt;          Server port (default …</pre></div>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2014/02/redis-benchmarks/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -122,12 +101,7 @@ Log4D            </a>
 有一个小伙伴使用 git-svn 做 <code>rename</code> 操作时候，将一个目录 <code>svn mv</code> 了，
 导致新目录只存了最近几个月提交历史，丢失了历史信息。对团队开发而言，
 历史提交是非常宝贵的财产，我们想了一些办法，把这些数据提取出来。</p>
-<!-- more -->
-<div class="highlight"><pre><span></span><span class="cp"># 找出丢失之前的版本，列出丢失目录上层的操作记录。</span>
-<span class="n">svn</span> <span class="n">log</span> <span class="o">-</span><span class="n">l</span> <span class="mi">2000</span> <span class="nl">svn</span><span class="p">:</span><span class="c1">//log4d.com/trunk/apps/ios/ | less</span>
 
-<span class="cp"># 将重命名之前的版本拷贝到一个临时目录</span>
-<span class="n">svn</span> <span class="k">copy</span> <span class="nl">svn</span><span class="p">:</span><span class="c1">//log4d.com/trunk/apps/ios/nami@43252 svn://log4d.com/trunk/apps …</span></pre></div>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2014/01/renamed-svn-to-git/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -148,17 +122,7 @@ Log4D            </a>
 <h2 id="guan-yu-gan-qing">关于感情</h2>
 <p>先来谈谈感情，我和她在一起一年半了，虽然偶尔有小摩擦，但总体上面还是非常幸福的。
 找到一个能产生共鸣，生活兴趣相近，相互欣赏的人太难了。一定会珍惜的。</p>
-<!-- more -->
-<h2 id="guan-yu-gong-zuo">关于工作</h2>
-<p>再谈谈协作，相当艰辛的跨过了去年年末的痛苦挣扎，然后看待事物和进行平衡选择时候
-就没那么痛苦了。我的一大问题就是，从小认为人或事都可以非黑即白，这种决定性的判断，
-会让我在处理事情时候，失去对重心的控制，有可能花费大量时间在细枝末节的地方。
-2013 年初时候，我甚至想一度放弃，而熬过来之后，工作就又变得非常开心，
-现在可以包容别人的不同意见，尝试寻找相同共性（虽然处理的能力还不够）。</p>
-<p>也许是因为从小不够出色，所以工作之后在自己擅长的领域，反而变得异常强势和绝对，
-这一点近来控制的不错，但是还可以做的更好。</p>
-<h2 id="guan-yu-ji-zhu">关于技术</h2>
-<p>技术方面 …</p>
+
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2013/12/2013/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -171,13 +135,10 @@ Log4D            </a>
 <p><a href="http://brew.sh/">Brew</a> 是 Mac 下面的包管理工具，通过 Github 托管适合 Mac
 的编译配置以及 Patch，可以方便的安装开发工具。</p>
 <p>安装 Brew：</p>
-<div class="highlight"><pre><span></span>ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go/install)"
-</pre></div>
+
+</pre>
 <p>我安装的 Brew 包：</p>
-<!-- more -->
-<div class="highlight"><pre><span></span>brew install ack
-brew install ansible
-brew install …</pre></div>
+
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2013/12/mac/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -193,13 +154,7 @@ brew install …</pre></div>
 <p>安装 Postfix 的方法可以参见 <a href="http://www.postfix.org/INSTALL.html">安装方法</a>。</p>
 <p>特殊场景用途的配置方式，如邮件中枢，防火墙，拨号环境客户端的说明可以在
 <a href="http://www.postfix.org/STANDARD_CONFIGURATION_README.html">标准配置说明</a> 里面查看。</p>
-<!-- more -->
-<h2 id="postfix-pei-zhi-yu-fa">Postfix 配置语法</h2>
-<p>Postfix 的配置文件默认在 <code>/etc/postfix</code>。主力配置文件是 <a href="http://www.postfix.org/postconf.5.html">main.cf</a> 和
-<a href="http://www.postfix.org/master.5.html">master.cf</a>。用户权限必须是 root 的。</p>
-<p><code>/etc/postfix/main.cf</code> 配置语法有两个要点：不用引号，可以使用 <code>$</code> 来引用参数。</p>
-<div class="highlight"><pre><span></span># 定义一个参数
-/etc …</pre></div>
+
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2013/11/postfix-basic-configuration/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -216,7 +171,10 @@ Jython 推翻重做了主要业务，效果立竿见影，但同时也把真实�
 就是想对性能遇到瓶颈的 Python Process 进行线上侦测。
 这篇文章就是开始的第一步。</p>
 <p>PS:这篇文章理论上是可行的，但是在我机器（Ubuntu 12.04 / 系统自带 Python）
-无法正常执行，会爆出 <code>unable to …</code></p>
+无法正常执行，会爆出 <code>unable to read python frame information</code>
+的问题。解决方法我会在下篇文章中写出。这里只是单纯翻译一下原文。</p>
+<p>原文可以移步 <a href="https://wiki.python.org/moin/DebuggingWithGdb">https://wiki.python.org/moin/DebuggingWithGdb</a>。</p>
+
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2013/11/python-gdb/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -230,7 +188,11 @@ R 语言教程翻译出来。话说 Learn X in Y minuts 里面的中文贡献还
 <p>Learn X in Y minuts 的源码托管在 <a href="https://github.com/adambard/learnxinyminutes-docs">Github</a>。
 小柒被我逼着把这篇 <a href="http://learnxinyminutes.com/docs/r/">R 语言教程</a>
 翻译到 <a href="http://learnxinyminutes.com/docs/zh-cn/r-cn/">R 语言教程中文版</a>。</p>
-<p>下面是译文，有不妥的地方可以留言或者直接去 Github 上面 Pull request …</p>
+<p>下面是译文，有不妥的地方可以留言或者直接去 Github 上面 Pull request。</p>
+<hr/>
+<p>R 是一门统计语言。它有很多数据分析和挖掘程序包。可以用来统计、分析和制图。
+你也可以在 LaTeX 文档中运行 <code>R</code> 命令。</p>
+
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2013/10/r-tutorial/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -254,9 +216,24 @@ R 语言教程翻译出来。话说 Learn X in Y minuts 里面的中文贡献还
 <ol>
 <li>使用局部分布式，热数据独立出来。</li>
 <li>Partition 分布式，按模块分割数据。</li>
-<li>按 …</li></ol>
+<li>按 ID 分割，比如 a-g, h-z</li>
+<li>按访问类型，一般请求 / feed / 图像（#毒药计划的原理）</li>
+</ol>
+
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2013/06/web-technology/"><i class="icon-circle-arrow-right"></i>more ...</a>
+            </article>
+            <hr/>
+            <article class="article-list">
+                <h2 class="title"><a href="https://blog.alswl.com/2013/04/buy-arch/">Arch，再见</a></h2>
+                <div class="summary"><p><img alt="Arch" src="https://ohsolnxaa.qnssl.com/2013/04/archlinux-logo-dark-1200dpi_.png"/></p>
+<p>Arch 是我真正使用的第一款 Linux 发行版，大约使用了三年，
+现在的这个 VPS 跑的系统也是 Arch。
+然而随着时间变化，我从最早的天天更新狂，到一周、一个月、三个月和不主动更新。
+彻底从从不折腾会死星人变成了一个尽量避免变更的老用户。</p>
+
+                </div>
+                <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2013/04/buy-arch/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
             <hr/>
 
@@ -408,11 +385,6 @@ R 语言教程翻译出来。话说 Learn X in Y minuts 里面的中文贡献还
                         <li class="list-group-item">
                             <a href="https://blog.alswl.com/category/managment/">
                                 <i class="fa fa-folder-open fa-lg"></i> Managment
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="https://blog.alswl.com/category/misc/">
-                                <i class="fa fa-folder-open fa-lg"></i> misc
                             </a>
                         </li>
                         <li class="list-group-item">

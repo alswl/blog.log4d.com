@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>Log4D - alswl</title><link>https://blog.alswl.com/</link><description></description><lastBuildDate>Tue, 19 Sep 2017 16:43:45 +0800</lastBuildDate><item><title>一个关于 nolock 的故事</title><link>https://blog.alswl.com/2017/09/sql-server-nolock/</link><description>&lt;p&gt;&lt;img alt="sql-server.png" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201709/sql-server.png"/&gt;&lt;/p&gt;
+<rss version="2.0"><channel><title>Log4D</title><link>https://blog.alswl.com/</link><description></description><lastBuildDate>Tue, 19 Sep 2017 16:43:45 +0800</lastBuildDate><item><title>一个关于 nolock 的故事</title><link>https://blog.alswl.com/2017/09/sql-server-nolock/</link><description>&lt;p&gt;&lt;img alt="sql-server.png" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201709/sql-server.png"/&gt;&lt;/p&gt;
 &lt;p&gt;加入沪江不久，我就被扔到一个将集团 SQL Sever 的数据库迁移到 MySQL 的项目里，
 同时伴随进行的还有 .net 系统迁移到 Java 系统。
 在这个过程中我发现了一个很有趣的现象：历史遗留的 .net 项目中，
 几乎所有的 SQL 中都会使用一个关键字：&lt;code&gt;nolock&lt;/code&gt;。
 这让我很困惑，&lt;code&gt;nolock&lt;/code&gt; 的字面意思是对当前技术不使用锁技术，为什么要这样用呢？&lt;/p&gt;
-&lt;!-- more --&gt;
+
 &lt;p&gt;我找了一个范例如下：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;id&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; 
 &lt;span class="k"&gt;FROM&lt;/span&gt;   &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;dbo&lt;/span&gt;&lt;span class="p"&gt;].[&lt;/span&gt;&lt;span class="n"&gt;foos&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="k"&gt;WITH&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;nolock&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; 
@@ -295,253 +295,11 @@ Insert 同时 Query 不会被 Block，
    &lt;small&gt;3a1ff193cee606bd1e2ea554a16353ee&lt;/small&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">alswl</dc:creator><pubDate>Tue, 19 Sep 2017 16:43:45 +0800</pubDate><guid isPermaLink="false">tag:blog.alswl.com,2017-09-19:2017/09/sql-server-nolock/</guid><category>SQL Server</category><category>MySQL</category></item><item><title></title><link>https://blog.alswl.com/2017/09//</link><description>
-&lt;div id="TOC"&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href="#第一个问题nolock-是什么"&gt;第一个问题：nolock 是什么？&lt;/a&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href="#隔离级别"&gt;隔离级别&lt;/a&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href="#read-uncommitted"&gt;Read Uncommitted&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#read-committed"&gt;Read Committed&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#repeatable-read"&gt;Repeatable Read&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#serializable"&gt;Serializable&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#db-的默认隔离级别"&gt;DB 的默认隔离级别&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#第二个问题为什么要使用-nolock"&gt;第二个问题：为什么要使用 nolock？&lt;/a&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href="#nolock-测试"&gt;nolock 测试&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#mvcc"&gt;MVCC&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#sql-server-2005-之后还需要使用-nolock-么"&gt;SQL Server 2005 之后还需要使用 nolock 么？&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#第三个问题mysql-的对应写法是什么"&gt;第三个问题：MySQL 的对应写法是什么？&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#回顾一下"&gt;回顾一下&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#相关资料"&gt;相关资料&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;p&gt;Title: 一个关于 nolock 的故事 Author: alswl Slug: sql-server-nolock Date: 2017-09-19 16:43:45 Tags: SQL Server, MySQL Category: Coding&lt;/p&gt;
-&lt;div class="figure"&gt;
-&lt;img alt="sql-server.png" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201709/sql-server.png"/&gt;
-&lt;p class="caption"&gt;sql-server.png&lt;/p&gt;
-&lt;/div&gt;
-&lt;p&gt;加入沪江不久，我就被扔到一个将集团 SQL Sever 的数据库迁移到 MySQL 的项目里， 同时伴随进行的还有 .net 系统迁移到 Java 系统。 在这个过程中我发现了一个很有趣的现象：历史遗留的 .net 项目中， 几乎所有的 SQL 中都会使用一个关键字：&lt;code&gt;nolock&lt;/code&gt;。 这让我很困惑，&lt;code&gt;nolock&lt;/code&gt; 的字面意思是对当前技术不使用锁技术，为什么要这样用呢？&lt;/p&gt;
-&lt;!-- more --&gt;
-&lt;p&gt;我找了一个范例如下：&lt;/p&gt;
-&lt;div class="sourceCode"&gt;&lt;pre class="sourceCode sql"&gt;&lt;code class="sourceCode sql"&gt;&lt;span class="kw"&gt;SELECT&lt;/span&gt; [&lt;span class="kw"&gt;id&lt;/span&gt;] 
-&lt;span class="kw"&gt;FROM&lt;/span&gt;   [dbo].[foos] &lt;span class="kw"&gt;WITH&lt;/span&gt;(nolock) 
-&lt;span class="kw"&gt;WHERE&lt;/span&gt;  aField = &lt;span class="dv"&gt;42&lt;/span&gt; 
-       &lt;span class="kw"&gt;AND&lt;/span&gt; bField = &lt;span class="dv"&gt;1&lt;/span&gt; &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;作为横向支持工程师，开发工程师会问我：「数据库即将从 SQL Server 迁移到 MySQL，我们编码中还需要使用 &lt;code&gt;nolock&lt;/code&gt; 么？ MySQL 里面对应的写法是什么？」。 我并没有 SQL Server 的生产环境使用经验，一时间无法回答。 于是课后做相关知识学习，这里就是这次学习的一点成果。&lt;/p&gt;
-&lt;p&gt;这个问题将被拆解成三个小问题进行回答：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;nolock&lt;/code&gt; 是什么？&lt;/li&gt;
-&lt;li&gt;为什么会需要在每个 Query 语句使用 &lt;code&gt;nolock&lt;/code&gt;？&lt;/li&gt;
-&lt;li&gt;MySQL 的对应写法是什么？&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;让我们一个一个来看。&lt;/p&gt;
-&lt;h2 id="第一个问题nolock-是什么"&gt;第一个问题：nolock 是什么？&lt;/h2&gt;
-&lt;p&gt;&lt;code&gt;nolock&lt;/code&gt; 是 SQL Server 的一个关键字，这类关键字官方将其称之为 Hints。 Hints 的设计目的是为了能够让 SQL 语句在运行时，动态修改查询优化器的行为。 在语法上，Hints 以 &lt;code&gt;WITH&lt;/code&gt; 开头。除了 &lt;code&gt;WITH(nolock)&lt;/code&gt;， 还有 &lt;code&gt;TABLOCK&lt;/code&gt; / &lt;code&gt;INDEX&lt;/code&gt; / &lt;code&gt;ROWLOCK&lt;/code&gt; 等常见的 Hints。&lt;/p&gt;
-&lt;p&gt;让我们仔细看看 MSDN 文档上的解释：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;code&gt;nolock&lt;/code&gt; 的作用等同于 &lt;code&gt;READUNCOMMITTED&lt;/code&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;code&gt;READUNCOMMITTED&lt;/code&gt; 这是一种 RDBMS 隔离级别。 使用 &lt;code&gt;nolock&lt;/code&gt; 这个关键词，可以将当前查询语句隔离级别调整为 &lt;code&gt;READ UNCOMMITTED&lt;/code&gt;。&lt;/p&gt;
-&lt;p&gt;计算机基础好的同学，应该对 &lt;code&gt;READUNCOMMITTED&lt;/code&gt; 这个关键词还有印象。 而基础不扎实的同学，也许只是觉得这个关键词眼熟，但是讲不清楚这是什么。 如果阅读这句话完全没有理解困难，那恭喜你，你可以直接跳到下一节了。 其他朋友就跟随我继续探索一下 RDMBS 的世界，复习一下隔离级别相关的知识。&lt;/p&gt;
-&lt;h3 id="隔离级别"&gt;隔离级别&lt;/h3&gt;
-&lt;p&gt;SQL 92 定义了四个隔离级别 （&lt;a href="https://en.wikipedia.org/wiki/Isolation_(database_systems)#Isolation_levels"&gt;Isolation (database systems) - Wikipedia&lt;/a&gt;）， 其隔离程度由高到低是：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;可序列化（Serializable）&lt;/li&gt;
-&lt;li&gt;可重复读（Repeatable reads）&lt;/li&gt;
-&lt;li&gt;提交读（Read committed）&lt;/li&gt;
-&lt;li&gt;未提交读（Read uncommitted）&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;单单将这几个技术名词简单地罗列出来并没有什么意义，还有这几个问题需要搞清楚：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;隔离级别解决什么问题？&lt;/li&gt;
-&lt;li&gt;为什么存在多种隔离级别？&lt;/li&gt;
-&lt;li&gt;我们所谓的隔离级别从高到低，是什么含义，如何逐层降低的？&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;首先是「隔离级别解决什么问题？」， 用通俗的语言描述就是：加一个针对数据资源的锁，从而保证数据操作过程中的一致性。&lt;/p&gt;
-&lt;p&gt;这是最简单的实现方式，过于粗暴的隔离性将大幅降低性能， 多种隔离级别就是是为了取得两者的平衡。&lt;/p&gt;
-&lt;p&gt;接下来我们来回答第二个问题「为什么存在多种粒度的隔离级别？」 这其实是一个需求和性能逐步平衡的过程，&lt;/p&gt;
-&lt;p&gt;我们逐层递进，将隔离级别由低到高逐层面临进行分析。&lt;/p&gt;
-&lt;h4 id="read-uncommitted"&gt;Read Uncommitted&lt;/h4&gt;
-&lt;p&gt;Read Uncommitted 这个隔离级别是最低粒度的隔离级别， 如同它的名字一般，它允许在操作过程中不会锁，从而让当前事务读取到其他事务的数据。&lt;/p&gt;
-&lt;div class="figure"&gt;
-&lt;img alt="read-uncommitted.png" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201709/read-uncommitted.png"/&gt;
-&lt;p class="caption"&gt;read-uncommitted.png&lt;/p&gt;
-&lt;/div&gt;
-&lt;p&gt;如上图所示，在 Transaction 2 查询时候，Transaction 1 未提交的数据就已经对外暴露。 如果 Transaction 1 最后 Rollback 了，那么 Transaction 读取的数据就是错误的。&lt;/p&gt;
-&lt;p&gt;「读到了其他事务修改了但是未提交的数据」即是&lt;strong&gt;脏读&lt;/strong&gt;。&lt;/p&gt;
-&lt;h3 id="read-committed_1"&gt;Read Committed&lt;/h3&gt;
-&lt;p&gt;想要避免脏读，最简单的方式就是在事务更新操作上加一把写锁， 其他事务需要读取数据时候，需要等待这把写锁释放。&lt;/p&gt;
-&lt;div class="figure"&gt;
-&lt;img alt="read-committed-1.png" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201709/read-committed-1.png"/&gt;
-&lt;p class="caption"&gt;read-committed-1.png&lt;/p&gt;
-&lt;/div&gt;
-&lt;p&gt;如上图所示，Transaction 1 在写操作时候，对数据 A 加了写锁， 那么 Transaction 2 想要读取 A，就必须等待这把锁释放。 这样就避免当前事务读取其他事务的未提交数据。&lt;/p&gt;
-&lt;p&gt;但是除了脏读，一致性的要求还需要「可重复读」，即 「在一个事务内，多次读取的特定数据都必须是一致的 （即便在这过程中该数据被其他事务修改）」。&lt;/p&gt;
-&lt;div class="figure"&gt;
-&lt;img alt="read-committed-2.png" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201709/read-committed-2.png"/&gt;
-&lt;p class="caption"&gt;read-committed-2.png&lt;/p&gt;
-&lt;/div&gt;
-&lt;p&gt;上图就是没能保证「可重复度」，Transaction 2 第一次读取到了数据 A， 然后 Transaction 1 对数据 A 更新到 A&amp;rsquo;，那么当 Tranction 2 再次读取 A 时候， 它本来期望读到 A，但是却读到了 A&amp;rsquo;，这和它的预期不相符了。 解决这个问题，就需要提升隔离级别到「Repeatable Read」。&lt;/p&gt;
-&lt;h3 id="repeatable-read"&gt;Repeatable Read&lt;/h3&gt;
-&lt;p&gt;这个名字非常容易理解，即保障在一个事务内重复读取时， 始终能够读取到相同的内容。来看图：&lt;/p&gt;
-&lt;div class="figure"&gt;
-&lt;img alt="repeatable-read.png" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201709/repeatable-read.png"/&gt;
-&lt;p class="caption"&gt;repeatable-read.png&lt;/p&gt;
-&lt;/div&gt;
-&lt;p&gt;如上所示，当 Transation 2 读取 A 时候，会同时加上一把 Read Lock， 这把锁会阻止 Transaction 1 将 A 更新为 A&amp;rsquo;，Transaction 1 要么选择等待， 要么就选择结束。&lt;/p&gt;
-&lt;p&gt;当我们将隔离级别升到这里是，似乎已经完美无缺了。 不管是写入还是读取，我们都可以保证数据的一致性不被破坏。 但是其实还有漏洞：新增数据的一致性！&lt;/p&gt;
-&lt;p&gt;上述的三个隔离级别，都是对特定的一行数据进行加锁， 那假如将要更新的数据还没有写入数据库，如何进行加锁呢？ 比如自增表的新键，或者现有数据内的空缺 Key？&lt;/p&gt;
-&lt;div class="figure"&gt;
-&lt;img alt="repeatable-read-2.png" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201709/repeatable-read-2.png"/&gt;
-&lt;p class="caption"&gt;repeatable-read-2.png&lt;/p&gt;
-&lt;/div&gt;
-&lt;p&gt;如图所示，在上述操作中，Transaction 2 查询了一个范围 Range 之后，Transaction 1 在这个范围内插入了一条新的数据。此时 Transaction 2 再次进行范围查询时候， 会发现查询到的 Range 和上次已经不一样了，多了一个 newA。&lt;/p&gt;
-&lt;p&gt;这就是最高隔离级别才能解决的「幻影读」： 当两个完全相同的查询语句执行得到不同的结果集， 这常常在范围查询中出现。&lt;/p&gt;
-&lt;h3 id="serializable"&gt;Serializable&lt;/h3&gt;
-&lt;p&gt;从字面意思看，该隔离级别需要将被操作的数据加锁加一把锁。 任何读写操作都需要先获得这把锁才能进行。如果操作中带 WHERE 条件， 还需要将 WHERE 条件相关的范围全部加锁。&lt;/p&gt;
-&lt;div class="figure"&gt;
-&lt;img alt="serializable.png" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201709/serializable.png"/&gt;
-&lt;p class="caption"&gt;serializable.png&lt;/p&gt;
-&lt;/div&gt;
-&lt;p&gt;如图所示，在 Transaction 2 操作过程中，会对 Range 进行加锁， 此时其他事务无法操作其中的数据，只能等待或者放弃。&lt;/p&gt;
-&lt;h3 id="db-的默认隔离级别"&gt;DB 的默认隔离级别&lt;/h3&gt;
-&lt;p&gt;现在我们已经理解了隔离级别，那么「SQL Server 默认使用的隔离级别是什么呢？」 根据 &lt;a href="https://msdn.microsoft.com/en-us/library/ms175909.aspx"&gt;Customizing Transaction Isolation Level&lt;/a&gt; 这个文档描述，SQL Server 默认隔离级别是 READ COMMITTED。&lt;/p&gt;
-&lt;p&gt;MySQL InnoDB 的默认隔离级别可以在 &lt;a href="https://dev.mysql.com/doc/refman/5.7/en/innodb-transaction-isolation-levels.html"&gt;MySQL :: MySQL 5.7 Reference Manual :: 14.5.2.1 Transaction Isolation Levels&lt;/a&gt; 查询到，是 Read-Repeatable。&lt;/p&gt;
-&lt;p&gt;隔离级别并没有最好之说，越高隔离级别会导致性能降低。 隔离级别的设定需要考虑业务场景。&lt;/p&gt;
-&lt;h2 id="第二个问题为什么要使用-nolock_1"&gt;第二个问题：为什么要使用 nolock？&lt;/h2&gt;
-&lt;p&gt;我们已经知道 &lt;code&gt;nolock&lt;/code&gt; 的作用是动态调整隔离级别。 那为什么在 SQL Server 的 Query 操作中，需要启用 &lt;code&gt;nolock&lt;/code&gt; 呢？ 我问了几个工程师，他们都语焉不详，或者是很泛泛地说：禁用读写锁，可以提升查询性能。&lt;/p&gt;
-&lt;p&gt;此时我产生了困惑：「那么此时的数据一致性就不需要考虑了么？ 我们的数据库，已经到了需要禁用锁的程度来进行优化了么？」 我于是自己去探索，想知道为何广泛使用 &lt;code&gt;nolock&lt;/code&gt; 会成为一个「最佳实践」？&lt;/p&gt;
-&lt;p&gt;由于时代久远，我只能追述到一些相关信息，比如 &lt;a href="https://blogs.msdn.microsoft.com/sqlcat/2013/09/16/top-10-sql-server-integration-services-best-practices/"&gt;Top 10 SQL Server Integration Services Best Practices | SQL Server Customer Advisory Team&lt;/a&gt; 中提到 「Use the NOLOCK or TABLOCK hints to remove locking overhead.」 但这个是针对于 SSIS 查询器，并不是针对业务内部使用。 反而能找到一大堆的文档，在反对使用 &lt;code&gt;nolock&lt;/code&gt; 这个关键字。&lt;/p&gt;
-&lt;p&gt;继续追查下去，还从蛛丝马迹中寻找到一个使用 &lt;code&gt;nolock&lt;/code&gt; 的理由， SQL Server 默认是 Read Committed， 更新操作会产生排它锁，会 block 这个资源的查询操作， 已插入但未提交的数据主键也会产生一个共享锁， 而此时则会 block 这张表的全表查询和 Insert 操作。 为了避免 Insert 被 Block，就会推荐使用 &lt;code&gt;nolock&lt;/code&gt;。&lt;/p&gt;
-&lt;p&gt;为了验证这是原因，我做一些 &lt;code&gt;nolock&lt;/code&gt; 测试。&lt;/p&gt;
-&lt;h3 id="nolock-测试"&gt;nolock 测试&lt;/h3&gt;
-&lt;p&gt;检查当前 SQL Server 隔离级别，确认隔离级别是默认的 Read Committed：&lt;/p&gt;
-&lt;div class="sourceCode"&gt;&lt;pre class="sourceCode sql"&gt;&lt;code class="sourceCode sql"&gt;&lt;span class="kw"&gt;SELECT&lt;/span&gt; &lt;span class="kw"&gt;CASE&lt;/span&gt; transaction_isolation_level
-       &lt;span class="kw"&gt;WHEN&lt;/span&gt; &lt;span class="dv"&gt;0&lt;/span&gt;
-         &lt;span class="kw"&gt;THEN&lt;/span&gt; &lt;span class="st"&gt;'Unspecified'&lt;/span&gt;
-       &lt;span class="kw"&gt;WHEN&lt;/span&gt; &lt;span class="dv"&gt;1&lt;/span&gt;
-         &lt;span class="kw"&gt;THEN&lt;/span&gt; &lt;span class="st"&gt;'ReadUncommitted'&lt;/span&gt;
-       &lt;span class="kw"&gt;WHEN&lt;/span&gt; &lt;span class="dv"&gt;2&lt;/span&gt;
-         &lt;span class="kw"&gt;THEN&lt;/span&gt; &lt;span class="st"&gt;'ReadCommitted'&lt;/span&gt;
-       &lt;span class="kw"&gt;WHEN&lt;/span&gt; &lt;span class="dv"&gt;3&lt;/span&gt;
-         &lt;span class="kw"&gt;THEN&lt;/span&gt; &lt;span class="st"&gt;'Repeatable'&lt;/span&gt;
-       &lt;span class="kw"&gt;WHEN&lt;/span&gt; &lt;span class="dv"&gt;4&lt;/span&gt;
-         &lt;span class="kw"&gt;THEN&lt;/span&gt; &lt;span class="st"&gt;'Serializable'&lt;/span&gt;
-       &lt;span class="kw"&gt;WHEN&lt;/span&gt; &lt;span class="dv"&gt;5&lt;/span&gt;
-         &lt;span class="kw"&gt;THEN&lt;/span&gt; &lt;span class="st"&gt;'Snapshot'&lt;/span&gt; &lt;span class="kw"&gt;END&lt;/span&gt; &lt;span class="kw"&gt;AS&lt;/span&gt; TRANSACTION_ISOLATION_LEVEL
-&lt;span class="kw"&gt;FROM&lt;/span&gt; sys.dm_exec_sessions
-&lt;span class="kw"&gt;WHERE&lt;/span&gt; session_id = @@SPID
-
-&lt;span class="co"&gt;-- ReadCommitted&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;创建表，初始化数据：&lt;/p&gt;
-&lt;div class="sourceCode"&gt;&lt;pre class="sourceCode sql"&gt;&lt;code class="sourceCode sql"&gt;&lt;span class="kw"&gt;CREATE&lt;/span&gt; &lt;span class="kw"&gt;TABLE&lt;/span&gt; foos (
-  &lt;span class="kw"&gt;id&lt;/span&gt;    BIGINT    &lt;span class="kw"&gt;NOT&lt;/span&gt; &lt;span class="kw"&gt;NULL&lt;/span&gt;,
-  &lt;span class="fu"&gt;value&lt;/span&gt; &lt;span class="dt"&gt;NCHAR&lt;/span&gt;(&lt;span class="dv"&gt;10&lt;/span&gt;) &lt;span class="kw"&gt;NULL&lt;/span&gt;,
-  &lt;span class="kw"&gt;CONSTRAINT&lt;/span&gt; pk &lt;span class="kw"&gt;PRIMARY&lt;/span&gt; &lt;span class="kw"&gt;KEY&lt;/span&gt; clustered (&lt;span class="kw"&gt;id&lt;/span&gt;)
-);
-&lt;span class="kw"&gt;INSERT&lt;/span&gt; &lt;span class="kw"&gt;INTO&lt;/span&gt; foos (&lt;span class="kw"&gt;id&lt;/span&gt;, &lt;span class="fu"&gt;value&lt;/span&gt;) &lt;span class="kw"&gt;VALUES&lt;/span&gt; (&lt;span class="dv"&gt;1&lt;/span&gt;, &lt;span class="st"&gt;'1'&lt;/span&gt;), (&lt;span class="dv"&gt;2&lt;/span&gt;, &lt;span class="st"&gt;'2'&lt;/span&gt;);&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;在 Transaction 1 中发起 Update 操作（INSERT / DELETE 同理），但是并不做 Commit 提交：&lt;/p&gt;
-&lt;div class="sourceCode"&gt;&lt;pre class="sourceCode sql"&gt;&lt;code class="sourceCode sql"&gt;&lt;span class="kw"&gt;BEGIN&lt;/span&gt; &lt;span class="kw"&gt;TRANSACTION&lt;/span&gt;;
-&lt;span class="kw"&gt;INSERT&lt;/span&gt; &lt;span class="kw"&gt;INTO&lt;/span&gt; foos (&lt;span class="kw"&gt;id&lt;/span&gt;, &lt;span class="fu"&gt;value&lt;/span&gt;) &lt;span class="kw"&gt;VALUES&lt;/span&gt; (&lt;span class="dv"&gt;3&lt;/span&gt;, &lt;span class="st"&gt;'3'&lt;/span&gt;);&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;开启一个新的 Session，发起全表查询和新增 PK 查询操作：&lt;/p&gt;
-&lt;div class="sourceCode"&gt;&lt;pre class="sourceCode sql"&gt;&lt;code class="sourceCode sql"&gt;&lt;span class="kw"&gt;SELECT&lt;/span&gt; * &lt;span class="kw"&gt;FROM&lt;/span&gt; foos;
-&lt;span class="kw"&gt;SELECT&lt;/span&gt; * &lt;span class="kw"&gt;FROM&lt;/span&gt; foos &lt;span class="kw"&gt;WHERE&lt;/span&gt; &lt;span class="kw"&gt;id&lt;/span&gt; = &lt;span class="dv"&gt;4&lt;/span&gt;;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;不出所料，此时查询果然会被 Block 住。&lt;/p&gt;
-&lt;h3 id="mvcc"&gt;MVCC&lt;/h3&gt;
-&lt;p&gt;并发控制的手段有这些：封锁、时间戳、乐观并发控制、悲观并发控制。 SQL Server 在 2015 后，引入了 MVCC（多版本控制）。 如果最终数据是一致，会允许数据写入，否则其他事务会被阻止写入。 那么 MVCC 引入是否可以解决 Insert 数据的锁问题？ 同样，我做了以下测试：&lt;/p&gt;
-&lt;p&gt;查询 SQL Server 使用启用 MVCC ALLOW_SNAPSHOT_ISOLATION：&lt;/p&gt;
-&lt;div class="sourceCode"&gt;&lt;pre class="sourceCode sql"&gt;&lt;code class="sourceCode sql"&gt;&lt;span class="kw"&gt;SELECT&lt;/span&gt; name, snapshot_isolation_state &lt;span class="kw"&gt;FROM&lt;/span&gt; sys.databases;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;使用 T-SQL 启用测试表的 SNAPSHOT_ISOLATION：&lt;/p&gt;
-&lt;div class="sourceCode"&gt;&lt;pre class="sourceCode sql"&gt;&lt;code class="sourceCode sql"&gt;&lt;span class="kw"&gt;ALTER&lt;/span&gt; &lt;span class="kw"&gt;DATABASE&lt;/span&gt; HJ_Test3D &lt;span class="kw"&gt;SET&lt;/span&gt; ALLOW_SNAPSHOT_ISOLATION &lt;span class="kw"&gt;ON&lt;/span&gt;;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;接着重复上面里面的 Insert 试验，依然被 Block 住。 看来 MVCC 并不能解决 Insert 锁的问题。&lt;/p&gt;
-&lt;h3 id="sql-server-2005-之后还需要使用-nolock-么"&gt;SQL Server 2005 之后还需要使用 nolock 么？&lt;/h3&gt;
-&lt;p&gt;从官方文档和上文测试可以看到，在 Insert 时候，由于排它锁的存在， 会导致 &lt;code&gt;SELECT ALL&lt;/code&gt; 以及 &lt;code&gt;SELECT&lt;/code&gt; 新插入数据的相关信息被锁住。 在这两种情景下面是需要使用 &lt;code&gt;nolock&lt;/code&gt; 的。&lt;/p&gt;
-&lt;p&gt;除此之外，有这么几类场景可以使用 &lt;code&gt;nolock&lt;/code&gt;：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;在 SSIS 查询器中进行数据分析，不需要精准数据&lt;/li&gt;
-&lt;li&gt;历史数据进行查询，没有数据更新操作，也不会产生脏数据&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;我们需要思考一下，性能和数据一致性上的权衡上， 我们是否愿意放弃数据一致性而为了提高一丝丝性能？ 以及我们有多少场景，会频繁使用 &lt;code&gt;SELECT ALL&lt;/code&gt; 操作而没有查询条件？&lt;/p&gt;
-&lt;p&gt;微软官方在 2015 的特性列表里面，明确地指出 &lt;code&gt;nolock&lt;/code&gt; 特性未来会在某个版本被废除：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Specifying NOLOCK or READUNCOMMITTED in the FROM clause of an UPDATE or DELETE statement.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;而改为推荐：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Remove the NOLOCK or READUNCOMMITTED table hints from the FROM clause.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;事实上，我听过不少团队会禁止在生产环境使用不带 WHERE 条件的 SQL。 那在这种模式下，产生相关的问题的几率也就更小了。 如果有很高的并发需求，那需要考虑一下是否需要其他优化策略：比如使用主从分离、 Snapshot 导出、流式分析等技术。&lt;/p&gt;
-&lt;h2 id="第三个问题mysql-的对应写法是什么_1"&gt;第三个问题：MySQL 的对应写法是什么？&lt;/h2&gt;
-&lt;p&gt;终于轮到 MySQL 的讨论了。MySQL，InnoDB 天生支持 MVCC， 并且支持 &lt;code&gt;innodb_autoinc_lock_mode&lt;/code&gt; &lt;a href="https://dev.mysql.com/doc/refman/5.7/en/innodb-auto-increment-handling.html"&gt;AUTO_INCREMENT Handling in InnoDB&lt;/a&gt;。 这样可以避免 Insert 操作锁住全局 Select 操作。 只有在同时 Insert 时候，才会被 Block 住。&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;innodb_autoinc_lock_mode&lt;/code&gt; 支持几种模式：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;innodb_autoinc_lock_mode = 0 (&amp;ldquo;traditional&amp;rdquo; lock mode)
-&lt;ul&gt;
-&lt;li&gt;涉及auto-increment列的插入语句加的表级AUTO-INC锁，只有插入执行结束后才会释放锁&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;innodb_autoinc_lock_mode = 1 (&amp;ldquo;consecutive&amp;rdquo; lock mode)
-&lt;ul&gt;
-&lt;li&gt;可以事先确定插入行数的语句，分配连续的确定的 auto-increment 值&lt;/li&gt;
-&lt;li&gt;对于插入行数不确定的插入语句，仍加表锁&lt;/li&gt;
-&lt;li&gt;这种模式下，事务回滚，auto-increment 值不会回滚，换句话说，自增列内容会不连续&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;innodb_autoinc_lock_mode = 2 (&amp;ldquo;interleaved&amp;rdquo; lock mode)
-&lt;ul&gt;
-&lt;li&gt;同一时刻多条 SQL 语句产生交错的 auto-increment 值&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;这里也做了相应的测试。首先检查数据库隔离级别和 &lt;code&gt;innodb_autoinc_lock_mode&lt;/code&gt; 模式：&lt;/p&gt;
-&lt;div class="sourceCode"&gt;&lt;pre class="sourceCode sql"&gt;&lt;code class="sourceCode sql"&gt;&lt;span class="kw"&gt;SELECT&lt;/span&gt; @@global.tx_isolation, @@session.tx_isolation, @@tx_isolation;
-SHOW variables &lt;span class="kw"&gt;LIKE&lt;/span&gt; &lt;span class="st"&gt;'innodb_autoinc_lock_mode'&lt;/span&gt;;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;检查后发现都是 Repeatable Read，&lt;code&gt;innodb_autoinc_lock_mode&lt;/code&gt; 模式是 1。 然后创建测试表：&lt;/p&gt;
-&lt;div class="sourceCode"&gt;&lt;pre class="sourceCode sql"&gt;&lt;code class="sourceCode sql"&gt;&lt;span class="kw"&gt;CREATE&lt;/span&gt; &lt;span class="kw"&gt;TABLE&lt;/span&gt; `foos` (
-  `id` &lt;span class="dt"&gt;int&lt;/span&gt;(&lt;span class="dv"&gt;11&lt;/span&gt;) unsigned &lt;span class="kw"&gt;NOT&lt;/span&gt; &lt;span class="kw"&gt;NULL&lt;/span&gt; AUTO_INCREMENT,
-  `name` &lt;span class="dt"&gt;varchar&lt;/span&gt;(&lt;span class="dv"&gt;20&lt;/span&gt;) &lt;span class="kw"&gt;DEFAULT&lt;/span&gt; &lt;span class="kw"&gt;NULL&lt;/span&gt;,
-  &lt;span class="kw"&gt;PRIMARY&lt;/span&gt; &lt;span class="kw"&gt;KEY&lt;/span&gt; (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=&lt;span class="dv"&gt;18&lt;/span&gt; &lt;span class="kw"&gt;DEFAULT&lt;/span&gt; CHARSET=utf8;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;在 Transaction 1 中 Insert 数据：&lt;/p&gt;
-&lt;div class="sourceCode"&gt;&lt;pre class="sourceCode sql"&gt;&lt;code class="sourceCode sql"&gt;&lt;span class="kw"&gt;START&lt;/span&gt; &lt;span class="kw"&gt;TRANSACTION&lt;/span&gt;;
-&lt;span class="kw"&gt;INSERT&lt;/span&gt; &lt;span class="kw"&gt;INTO&lt;/span&gt; foos (name) &lt;span class="kw"&gt;VALUES&lt;/span&gt; (&lt;span class="ot"&gt;"a"&lt;/span&gt;);&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;在 Transaction 2 中 Select 数据，可以正常查询：&lt;/p&gt;
-&lt;div class="sourceCode"&gt;&lt;pre class="sourceCode sql"&gt;&lt;code class="sourceCode sql"&gt;&lt;span class="kw"&gt;SELECT&lt;/span&gt; * &lt;span class="kw"&gt;FROM&lt;/span&gt;   foos;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;在 Transaction 2 中 Insert 数据，会被 Block 住：&lt;/p&gt;
-&lt;div class="sourceCode"&gt;&lt;pre class="sourceCode sql"&gt;&lt;code class="sourceCode sql"&gt;&lt;span class="kw"&gt;START&lt;/span&gt; &lt;span class="kw"&gt;TRANSACTION&lt;/span&gt;;
-&lt;span class="kw"&gt;INSERT&lt;/span&gt; &lt;span class="kw"&gt;INTO&lt;/span&gt; foos (name) &lt;span class="kw"&gt;VALUES&lt;/span&gt; (&lt;span class="ot"&gt;"a"&lt;/span&gt;);&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;这个测试可以证明 MySQL 可以在 &lt;code&gt;innodb_autoinc_lock_mode&lt;/code&gt;=1 下， Insert 同时 Query 不会被 Block， 但是在另外一个事务中 Insert 会被 Block。 结论是，由于 &lt;code&gt;innodb_autoinc_lock_mode&lt;/code&gt; 的存在，MySQL 中可以不需要使用 &lt;code&gt;nolock&lt;/code&gt; 关键词进行查询。&lt;/p&gt;
-&lt;h2 id="回顾一下"&gt;回顾一下&lt;/h2&gt;
-&lt;p&gt;本文着重去回答这么几个问题：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;为什么要用 &lt;code&gt;noloc&lt;/code&gt;？&lt;/li&gt;
-&lt;li&gt;为什么要改变隔离级别？&lt;/li&gt;
-&lt;li&gt;为什么 MySQL 不需要做类似的事情？&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;虽然只凑足了三个 「为什么」 的排比， 但是聪明的读者仍然会发现，我是使用了著名的 &lt;a href="https://zh.wikipedia.org/wiki/%E4%BA%94%E4%B8%AA%E4%B8%BA%E4%BB%80%E4%B9%88"&gt;五个为什么&lt;/a&gt; 方法思考问题。 通过使用这个方法，我们最后不但打破了老旧的最佳实践，还了解了本质原理， 并找到了新的最佳实践。&lt;/p&gt;
-&lt;p&gt;希望读者朋友在遇到困难时候，多问几个为什么，多抱着打破砂锅问到底的精神， 这样才能让每个困难成为我们成长的垫脚石。&lt;/p&gt;
-&lt;h2 id="相关资料"&gt;相关资料&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href="https://zh.wikipedia.org/zh-cn/%E4%BA%8B%E5%8B%99%E9%9A%94%E9%9B%A2"&gt;事务隔离 - 维基百科，自由的百科全书&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://docs.microsoft.com/en-us/sql/t-sql/queries/hints-transact-sql-table"&gt;Table Hints (Transact-SQL) | Microsoft Docs&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://docs.microsoft.com/en-us/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server"&gt;Snapshot Isolation in SQL Server | Microsoft Docs&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://docs.microsoft.com/en-us/sql/relational-databases/system-catalog-views/sys-databases-transact-sql"&gt;sys.databases (Transact-SQL) | Microsoft Docs&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://dev.mysql.com/doc/refman/5.7/en/innodb-multi-versioning.html"&gt;MySQL :: MySQL 5.7 Reference Manual :: 15.3 InnoDB Multi-Versioning&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr&gt;
-&lt;div class="panel"&gt;
-&lt;div class="panel-body"&gt;
-   &lt;small&gt;原文链接: &lt;a href="https://blog.alswl.com/2017/09//"&gt;https://blog.alswl.com/2017/09//&lt;/a&gt;&lt;/small&gt;&lt;br&gt;
-   &lt;small&gt;欢迎关注我的微信公众号：&lt;a href="http://mp.weixin.qq.com/mp/getmasssendmsg?__biz=MzIyNTIwMTU3MQ==#wechat_webview_type=1&amp;wechat_redirect"&gt;窥豹&lt;/a&gt;&lt;/small&gt;&lt;br&gt;
-   &lt;small&gt;&lt;img src="https://ohsolnxaa.qnssl.com/upload_dropbox/201605/qrcode_for_gh_17e2f9c2caa4_258.jpg"/&gt;&lt;/small&gt;&lt;br&gt;
-   &lt;small&gt;3a1ff193cee606bd1e2ea554a16353ee&lt;/small&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">alswl</dc:creator><pubDate>Fri, 08 Sep 2017 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:blog.alswl.com,2017-09-08:2017/09//</guid></item><item><title>当我们在聊监控，我们在聊什么？</title><link>https://blog.alswl.com/2017/06/monitoring-introducing/</link><description>&lt;p&gt;最近在团队中给大家做了一个分享，泛泛地聊了一些有关「监控」的话题。
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">alswl</dc:creator><pubDate>Tue, 19 Sep 2017 16:43:45 +0800</pubDate><guid isPermaLink="false">tag:blog.alswl.com,2017-09-19:2017/09/sql-server-nolock/</guid><category>SQL Server</category><category>MySQL</category></item><item><title>当我们在聊监控，我们在聊什么？</title><link>https://blog.alswl.com/2017/06/monitoring-introducing/</link><description>&lt;p&gt;最近在团队中给大家做了一个分享，泛泛地聊了一些有关「监控」的话题。
 其实做分享对分享者的作用往往大于参与者。
 这是一次将自己知识的梳理的过程，于是我将这次分享整理成这篇文章。&lt;/p&gt;
 &lt;p&gt;&lt;img alt="201706/stock-exchange.png" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201706/stock-exchange.png"/&gt;&lt;/p&gt;
-&lt;!-- more --&gt;
+
 &lt;h2 id="mu-de"&gt;目的 🎯&lt;/h2&gt;
 &lt;p&gt;我们先来聊聊，什么是「监控」，以及我们期望通过「监控」完成哪些目的？&lt;/p&gt;
 &lt;p&gt;传统意义上的监控，是指：&lt;/p&gt;
@@ -729,16 +487,16 @@ Brend Gregg 是 Netflix 的首席 SRE，著有 &lt;a href="http://www.brendangre
 让这些构建的数据破坏 DOM 结构，从而让自己预先构造数据中的 JS 脚本被执行。&lt;/p&gt;
 &lt;p&gt;检查存储型 XSS 漏洞的方法，可以在对应的 input field 里放入一些构造的数据，如果保存后可以被执行，就说明存在 XSS 漏洞。&lt;/p&gt;
 &lt;p&gt;常见的检测方法（来自&amp;nbsp;&lt;a href="https://zh.wikipedia.org/zh-cn/%E8%B7%A8%E7%B6%B2%E7%AB%99%E6%8C%87%E4%BB%A4%E7%A2%BC#.E6.A3.80.E6.B5.8B.E6.96.B9.E6.B3.95"&gt;跨网站脚本 - 维基百科，自由的百科全书&lt;/a&gt;：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;gt;&lt;span class="nt"&gt;&amp;lt;script&amp;gt;&lt;/span&gt;alert(document.cookie)&lt;span class="nt"&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-='&amp;gt;&lt;span class="nt"&gt;&amp;lt;script&amp;gt;&lt;/span&gt;alert(document.cookie)&lt;span class="nt"&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-"&amp;gt;&lt;span class="nt"&gt;&amp;lt;script&amp;gt;&lt;/span&gt;alert(document.cookie)&lt;span class="nt"&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-&lt;span class="nt"&gt;&amp;lt;script&amp;gt;&lt;/span&gt;alert(document.cookie)&lt;span class="nt"&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-&lt;span class="nt"&gt;&amp;lt;script&amp;gt;&lt;/span&gt;alert (vulnerable)&lt;span class="nt"&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-%3Cscript%3Ealert('XSS')%3C/script%3E
-&lt;span class="nt"&gt;&amp;lt;script&amp;gt;&lt;/span&gt;alert('XSS')&lt;span class="nt"&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-&lt;span class="nt"&gt;&amp;lt;img&lt;/span&gt; &lt;span class="na"&gt;src=&lt;/span&gt;&lt;span class="s"&gt;"javascript:alert('XSS')"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
-&lt;span class="nt"&gt;&amp;lt;img&lt;/span&gt; &lt;span class="na"&gt;src=&lt;/span&gt;&lt;span class="s"&gt;"http://xxx.com/yyy.png"&lt;/span&gt; &lt;span class="na"&gt;onerror=&lt;/span&gt;&lt;span class="s"&gt;"alert('XSS')"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
-（这个仅限IE有效）
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;script&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="nx"&gt;alert&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;document.cookie&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nb"&gt;script&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'&amp;gt;&amp;lt;script&amp;gt;alert(document.cookie)&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;span class="s1"&gt;"&amp;gt;&amp;lt;script&amp;gt;alert(document.cookie)&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;span class="s1"&gt;&amp;lt;script&amp;gt;alert(document.cookie)&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;span class="s1"&gt;&amp;lt;script&amp;gt;alert (vulnerable)&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;span class="s1"&gt;%3Cscript%3Ealert('&lt;/span&gt;&lt;span class="nx"&gt;XSS&lt;/span&gt;&lt;span class="s1"&gt;')%3C/script%3E&lt;/span&gt;
+&lt;span class="s1"&gt;&amp;lt;script&amp;gt;alert('&lt;/span&gt;&lt;span class="nx"&gt;XSS&lt;/span&gt;&lt;span class="s1"&gt;')&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;span class="s1"&gt;&amp;lt;img src="javascript:alert('&lt;/span&gt;&lt;span class="nx"&gt;XSS&lt;/span&gt;&lt;span class="s1"&gt;')"&amp;gt;&lt;/span&gt;
+&lt;span class="s1"&gt;&amp;lt;img src="http://xxx.com/yyy.png" onerror="alert('&lt;/span&gt;&lt;span class="nx"&gt;XSS&lt;/span&gt;&lt;span class="s1"&gt;')"&amp;gt;&lt;/span&gt;
+&lt;span class="s1"&gt;（这个仅限IE有效）&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;攻击者通过 XSS 可以窃取用户的相关信息，如果用户是管理员，那么影响更大。
 通过这些身份信息，攻击者可以进一步篡改信息或者进行诈骗，后果不堪设想。
@@ -887,7 +645,7 @@ TCP 的七层模型，架构设计的 N 层 模型，都是对分层思想的使
 &lt;p&gt;通过分层，不仅仅完成了自上而下地遍历整个技术栈，也同时将不同模块的内容交给不同的责任方，
 确保任务的分割。&lt;/p&gt;
 &lt;p&gt;分完模块，还要告知大家如何具体查找问题。
-这里我介绍一个通用的方法：USE&lt;sup id="fnref-1"&gt;&lt;a class="footnote-ref" href="#fn-1"&gt;1&lt;/a&gt;&lt;/sup&gt;：&lt;/p&gt;
+这里我介绍一个通用的方法：USE&lt;sup id="fnref:1"&gt;&lt;a class="footnote-ref" href="#fn:1" rel="footnote"&gt;1&lt;/a&gt;&lt;/sup&gt;：&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;For every resource, check Utilization, Saturation, and Errors.&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -895,7 +653,7 @@ TCP 的七层模型，架构设计的 N 层 模型，都是对分层思想的使
 在技术设施的领域里，Resource 即是指各种类型的资源，比如 CPU、磁盘、网络、内存，
 Utilization 指的是使用率，可以简单分为百分制和非百分制。
 Saturation 是指饱和率，支持 queue 的资源，就会有这个指标。
-Error 即错误，可以从错误统计和日志得知。&lt;sup id="fnref-2"&gt;&lt;a class="footnote-ref" href="#fn-2"&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+Error 即错误，可以从错误统计和日志得知。&lt;sup id="fnref:2"&gt;&lt;a class="footnote-ref" href="#fn:2" rel="footnote"&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
 &lt;p&gt;业务领域里面，USE 也有相对应的含义。以审核系统举例，
 对应的 USE 可以理解为「审核应用实例跑的 CPU 占用如何，任务队列是否塞满，业务日志是否有异常」。&lt;/p&gt;
 &lt;p&gt;除了 USE 里面提到的指标，还有几个指标特别重要：
@@ -933,11 +691,11 @@ TPS 、Latency 和 Capacity。
 &lt;div class="footnote"&gt;
 &lt;hr/&gt;
 &lt;ol&gt;
-&lt;li id="fn-1"&gt;
-&lt;p&gt;[The USE Method] &lt;a href="http://www.brendangregg.com/usemethod.html"&gt;http://www.brendangregg.com/usemethod.html&lt;/a&gt;&amp;nbsp;&lt;a class="footnote-backref" href="#fnref-1" title="Jump back to footnote 1 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;li id="fn:1"&gt;
+&lt;p&gt;[The USE Method] &lt;a href="http://www.brendangregg.com/usemethod.html"&gt;http://www.brendangregg.com/usemethod.html&lt;/a&gt;&amp;nbsp;&lt;a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
-&lt;li id="fn-2"&gt;
-&lt;p&gt;[USE Method: Linux Performance Checklist] &lt;a href="http://www.brendangregg.com/USEmethod/use-linux.html"&gt;http://www.brendangregg.com/USEmethod/use-linux.html&lt;/a&gt;&amp;nbsp;&lt;a class="footnote-backref" href="#fnref-2" title="Jump back to footnote 2 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;li id="fn:2"&gt;
+&lt;p&gt;[USE Method: Linux Performance Checklist] &lt;a href="http://www.brendangregg.com/USEmethod/use-linux.html"&gt;http://www.brendangregg.com/USEmethod/use-linux.html&lt;/a&gt;&amp;nbsp;&lt;a class="footnote-backref" href="#fnref:2" rev="footnote" title="Jump back to footnote 2 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;/div&gt;
@@ -955,7 +713,7 @@ TPS 、Latency 和 Capacity。
 &lt;p&gt;在上篇文章 &lt;a href="https://blog.alswl.com/2016/11/https-1/"&gt;🔒 也谈 HTTPS - HTTPDNS + HTTPS&lt;/a&gt; 中，
 我们谈了如何基于 HTTPDNS 来部署无坚不摧的 HTTPS 通信环境，
 这次我们讨论另外一个比较头疼的问题：部署。&lt;/p&gt;
-&lt;!-- more --&gt;
+
 &lt;p&gt;小站点部署 HTTPS 相对成本低，改改前端代码，就可以上线了。
 但作为业务有一定复杂度的大网站，就没办法这么暴力上线了。&lt;/p&gt;
 &lt;p&gt;前端在基础库中调整 Scheme 之后，仍然可能存在很多边边角角没有覆盖到。
@@ -1063,7 +821,7 @@ Indicator 的含义是建立一系列评价指标，比如价格、户型、位�
 （当然实际情况下这些置业顾问都是吹得天花乱坠，尽睁眼说瞎话。）
 看房的过程可能长达数月，而人的记忆会随着时间逐步失真，只对最近看到的事物有深刻印象。
 使用客观的数字评价房源，则可以进行精准的评价，避免产生主观臆断。&lt;/p&gt;
-&lt;!-- more --&gt;
+
 &lt;p&gt;我使用的 Indicator 和评价细项罗列如下，供参考：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;价格&lt;/li&gt;
@@ -1149,7 +907,7 @@ Indicator 的含义是建立一系列评价指标，比如价格、户型、位�
   而这些服务器并没有部署 SSL 服务（就算部署了，也会触发 SSL 证书 Common name 不一致报警），
   导致 443 端口直接被拒绝。&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;!-- more --&gt;
+
 &lt;p&gt;这个问题不解决，强行上 HTTPS 的话，会导致一部分用户出现无法访问网站
 一旦用户不爽了，轻则对产品不信任，重则直接导致用户流失。&lt;/p&gt;
 &lt;p&gt;运营商为了赚广告钱、省网间结算是不择手段的。
@@ -1189,15 +947,15 @@ APP 无法在发起连接时候，也没有权限直接操作 socket。
 &lt;p&gt;为了解决同一个 IP 下面多个域名的问题，我们引入了一个URL参数： &lt;code&gt;__domain&lt;/code&gt;。
 当请求 IP 域名时候，必须带着这个参数，服务器会将请求域名解析出来，再分发到对应的域名。&lt;/p&gt;
 &lt;p&gt;实现这个逻辑的 Nginx 核心代码：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;set&lt;/span&gt; &lt;span class="o"&gt;$&lt;/span&gt;&lt;span class="nt"&gt;query_domain&lt;/span&gt; &lt;span class="o"&gt;$&lt;/span&gt;&lt;span class="nt"&gt;arg___domain&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
-&lt;span class="nt"&gt;if&lt;/span&gt; &lt;span class="o"&gt;($&lt;/span&gt;&lt;span class="nt"&gt;query_domain&lt;/span&gt; &lt;span class="o"&gt;!~&lt;/span&gt; &lt;span class="s1"&gt;'(www|a|b)\.example\.com'&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="err"&gt;rewrite&lt;/span&gt; &lt;span class="err"&gt;^&lt;/span&gt; &lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;www&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;example&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;404&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="n"&gt;redirect&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;set&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;query_domain&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;arg___domain&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;query_domain&lt;/span&gt; &lt;span class="o"&gt;!~&lt;/span&gt; &lt;span class="err"&gt;'&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;www&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;example&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="err"&gt;'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="n"&gt;rewrite&lt;/span&gt; &lt;span class="o"&gt;^&lt;/span&gt; &lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//www.example.com/404/ redirect;&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
-&lt;span class="nt"&gt;set&lt;/span&gt; &lt;span class="o"&gt;$&lt;/span&gt;&lt;span class="nt"&gt;my_host&lt;/span&gt; &lt;span class="o"&gt;$&lt;/span&gt;&lt;span class="nt"&gt;query_domain&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
-&lt;span class="nt"&gt;location&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="err"&gt;proxy_set_header&lt;/span&gt; &lt;span class="err"&gt;Host&lt;/span&gt; &lt;span class="err"&gt;$my_host&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-    &lt;span class="err"&gt;proxy_set_header&lt;/span&gt; &lt;span class="err"&gt;X-REAL-IP&lt;/span&gt; &lt;span class="err"&gt;$remote_addr&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-    &lt;span class="err"&gt;proxy_pass&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;scheme&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="mf"&gt;127.0.0.1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="n"&gt;set&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;my_host&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;query_domain&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="n"&gt;location&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="n"&gt;proxy_set_header&lt;/span&gt; &lt;span class="n"&gt;Host&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;my_host&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;proxy_set_header&lt;/span&gt; &lt;span class="n"&gt;X&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;REAL&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;IP&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;remote_addr&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;proxy_pass&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;scheme&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//127.0.0.1;&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;最后一个注意事项是，记得调整 Nginx 配置的 remote_addr，否则都变成了 127.0.0.1，
@@ -1407,7 +1165,7 @@ APP 无法在发起连接时候，也没有权限直接操作 socket。
 &lt;p&gt;在和 CI 的配合方面，我们在 Jinkins 搭建了 abao / abao-master 项目，
 前者响应每次 Push 请求，都会自动构建一遍，后者每天凌晨会将 master 运行一遍。&lt;/p&gt;
 &lt;p&gt;感谢项目贡献者：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;project&lt;/span&gt;  &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;abao&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;project&lt;/span&gt;  &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;abao&lt;/span&gt;
  &lt;span class="n"&gt;repo&lt;/span&gt; &lt;span class="n"&gt;age&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt; &lt;span class="n"&gt;months&lt;/span&gt;
  &lt;span class="n"&gt;active&lt;/span&gt;   &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;32&lt;/span&gt; &lt;span class="n"&gt;days&lt;/span&gt;
  &lt;span class="n"&gt;commits&lt;/span&gt;  &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;109&lt;/span&gt;
@@ -1453,7 +1211,7 @@ APP 无法在发起连接时候，也没有权限直接操作 socket。
 这里我着重讨论后者「容量规划」。&lt;/p&gt;
 &lt;p&gt;&lt;img alt="看我的一堆报警消息" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201606/message.png"/&gt;&lt;/p&gt;
 &lt;p&gt;^ 看我的一堆报警消息&lt;/p&gt;
-&lt;!-- more --&gt;
+
 &lt;h2 id="mian-lin-de-wen-ti"&gt;面临的问题&lt;/h2&gt;
 &lt;p&gt;面对暴涨流量，一边是业务方的满心欢喜，一边就是工程师的烦恼和压力了。
 也许是一个受欢迎的功能上线了，或者是某个社会活动导致流量爆发，系统开始出现高延迟，磁盘 IO 不够用了。
@@ -1542,7 +1300,7 @@ APP 无法在发起连接时候，也没有权限直接操作 socket。
    &lt;small&gt;3a1ff193cee606bd1e2ea554a16353ee&lt;/small&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">alswl</dc:creator><pubDate>Sun, 19 Jun 2016 23:57:39 +0800</pubDate><guid isPermaLink="false">tag:blog.alswl.com,2016-06-19:2016/06/capacity-planning/</guid></item><item><title>一次「分答」记录</title><link>https://blog.alswl.com/2016/06/q-and-a/</link><description>&lt;p&gt;尝试在团队内部发起一次类似「分答」的沟通方式，一对一面聊。
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">alswl</dc:creator><pubDate>Sun, 19 Jun 2016 23:57:39 +0800</pubDate><guid isPermaLink="false">tag:blog.alswl.com,2016-06-19:2016/06/capacity-planning/</guid><category></category></item><item><title>一次「分答」记录</title><link>https://blog.alswl.com/2016/06/q-and-a/</link><description>&lt;p&gt;尝试在团队内部发起一次类似「分答」的沟通方式，一对一面聊。
 回答其他工程师的问题，这种沟通的方式暨在提供一个特定的场合，帮助加强双方了解，
 解决团队中其他工程师的一些实际的问题。&lt;/p&gt;
 &lt;p&gt;在征得对方同意之后，我将他的问题和我的回答 PO 出来。&lt;/p&gt;
@@ -1561,7 +1319,7 @@ APP 无法在发起连接时候，也没有权限直接操作 socket。
 &lt;li&gt;看场合，小东西，小场景用 Python，生产环境用 Java，生产环境又有时间，考虑 Scala&lt;/li&gt;
 &lt;li&gt;只允许选一门语言，就用 Python&lt;/li&gt;
 &lt;li&gt;最吸引的特点，熟悉程度高，生产效率高，第三方库丰富，粘合性强&lt;/li&gt;
-&lt;li&gt;为 Python 做一些功能扩展？不同时期答案会不一样，目前来说，希望有一个开发效率更高的 framework；有时间的话，会考虑如何绕过底层 GIL 问题 &lt;!-- more --&gt;&lt;/li&gt;
+&lt;li&gt;为 Python 做一些功能扩展？不同时期答案会不一样，目前来说，希望有一个开发效率更高的 framework；有时间的话，会考虑如何绕过底层 GIL 问题 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;有什么事情投入精力，铩羽而归&lt;ul&gt;
@@ -1623,12 +1381,12 @@ APP 无法在发起连接时候，也没有权限直接操作 socket。
    &lt;small&gt;3a1ff193cee606bd1e2ea554a16353ee&lt;/small&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">alswl</dc:creator><pubDate>Wed, 15 Jun 2016 09:59:16 +0800</pubDate><guid isPermaLink="false">tag:blog.alswl.com,2016-06-15:2016/06/q-and-a/</guid></item><item><title>海贼王和创业团队</title><link>https://blog.alswl.com/2016/04/onepiece-startup/</link><description>&lt;p&gt;一个同事在知乎提了一个问题 &lt;a href="https://www.zhihu.com/question/35037806"&gt;如果把草帽海贼团比作一个创业团队,这个Team的组织架构是怎样的?有哪些优势,又有哪些不足?&lt;/a&gt;&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">alswl</dc:creator><pubDate>Wed, 15 Jun 2016 09:59:16 +0800</pubDate><guid isPermaLink="false">tag:blog.alswl.com,2016-06-15:2016/06/q-and-a/</guid><category></category></item><item><title>海贼王和创业团队</title><link>https://blog.alswl.com/2016/04/onepiece-startup/</link><description>&lt;p&gt;一个同事在知乎提了一个问题 &lt;a href="https://www.zhihu.com/question/35037806"&gt;如果把草帽海贼团比作一个创业团队,这个Team的组织架构是怎样的?有哪些优势,又有哪些不足?&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img alt="201604/onepiece.jpg" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201604/onepiece.jpg"/&gt;&lt;/p&gt;
 &lt;p&gt;这个话题很有趣，作为追了多年的 fans ，又是身处互联网创业团队的我要来强答一记。&lt;/p&gt;
 &lt;p&gt;海贼王的世界很大，富有个性的角色和团队也很多，恰好可以和显示世界中的互联网创业团队进行对比。
 柳传志讲的好，做大事，要「建班子，定战略，带队伍」，我们就着金句来看看草帽这个团队怎么样。&lt;/p&gt;
-&lt;!-- more --&gt;
+
 &lt;h2 id="chan-pin-he-zhan-lue"&gt;产品和战略&lt;/h2&gt;
 &lt;p&gt;我先讲产品和战略。&lt;/p&gt;
 &lt;p&gt;由于海贼王世界的设定，以及作为一个全年段漫画动画的原因。
@@ -1739,7 +1497,7 @@ APP 无法在发起连接时候，也没有权限直接操作 socket。
    &lt;small&gt;3a1ff193cee606bd1e2ea554a16353ee&lt;/small&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">alswl</dc:creator><pubDate>Wed, 27 Apr 2016 00:36:10 +0800</pubDate><guid isPermaLink="false">tag:blog.alswl.com,2016-04-27:2016/04/onepiece-startup/</guid></item><item><title>Windows management for hacker</title><link>https://blog.alswl.com/2016/04/windows-management-for-hacker/</link><description>&lt;p&gt;团队里的同学有时看见我键指如飞，可以用快捷键将 Mac 的窗口玩转于手心。他们表示酷炫非常，
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">alswl</dc:creator><pubDate>Wed, 27 Apr 2016 00:36:10 +0800</pubDate><guid isPermaLink="false">tag:blog.alswl.com,2016-04-27:2016/04/onepiece-startup/</guid><category></category></item><item><title>Windows management for hacker</title><link>https://blog.alswl.com/2016/04/windows-management-for-hacker/</link><description>&lt;p&gt;团队里的同学有时看见我键指如飞，可以用快捷键将 Mac 的窗口玩转于手心。他们表示酷炫非常，
 心生羡慕的同时，希望掌握这门技艺，我就把使用的 Phoenix 介绍给大家。结果过了一段时间，
 发现普及率并不高，本着好为人师的精神，今天我就来八一八这款优秀的桌面管理工具。&lt;/p&gt;
 &lt;p&gt;在介绍我使用的工具之前，我要先介绍一下我选择的原因和历史。&lt;/p&gt;
@@ -1747,7 +1505,7 @@ APP 无法在发起连接时候，也没有权限直接操作 socket。
 &lt;p&gt;ps：配图是我长草多年的 Ergodox Infinity。（@夫人，看到这里的时候，请留步思考 5s）。&lt;/p&gt;
 &lt;h2 id="alttab-ku-nan-de-li-shi"&gt;Alt+Tab = 苦难的历史&lt;/h2&gt;
 &lt;p&gt;当我还年轻的时候，曾经对 Alt+Tab 这个快捷键愤慨无比，觉得这种设计虽然简单但是很蠢。&lt;/p&gt;
-&lt;!-- more --&gt;
+
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;命中率低&lt;/strong&gt;。要在茫茫图标中查找自己需要的窗口，如果开了 20 个应用，切换到一个非常用窗口至多可能需要 20-1 次按键。
     不要跟我说有 Alt+Shift+Tab 的反向循环操作，估计大部分用户都不知道。而且 正向/反向 切换伤脑子。&lt;/li&gt;
@@ -1907,7 +1665,7 @@ APP 无法在发起连接时候，也没有权限直接操作 socket。
 告诉大家想要在团队中获得成功的另一面。不要被书名误解，我觉得「开发者和团队」是更好的名字，
 虽然没那么酷。&lt;/p&gt;
 &lt;p&gt;&lt;img alt="s26354473.jpg" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201602/s26354473.jpg"/&gt;&lt;/p&gt;
-&lt;!-- more --&gt;
+
 &lt;blockquote&gt;
 &lt;p&gt;要在团队中获得成功，你必须以&lt;strong&gt;谦虚&lt;/strong&gt;、&lt;strong&gt;尊重&lt;/strong&gt;和&lt;strong&gt;信任&lt;/strong&gt;为核心原则。&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -2014,26 +1772,26 @@ Google 的一种做法，可以很好解决这个问题。分离 TL（techlead�
 &lt;/div&gt;
 </description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">alswl</dc:creator><pubDate>Sun, 28 Feb 2016 18:16:01 +0800</pubDate><guid isPermaLink="false">tag:blog.alswl.com,2016-02-28:2016/02/team-geek/</guid><category>读书笔记</category></item><item><title>一例 Timeout 故障</title><link>https://blog.alswl.com/2016/02/a-timeout-fault/</link><description>&lt;p&gt;&lt;img alt="i_love_timeouts_digital_design_mugs.jpg" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201602/i_love_timeouts_digital_design_mugs.jpg"/&gt;&lt;/p&gt;
 &lt;p&gt;早晨刚到公司， HAProxy 报警，Trtornis（第三方云存储网关，用来统一管理阿里云和七牛云的对象存储） 全飘红。&lt;/p&gt;
-&lt;!-- more --&gt;
+
 &lt;p&gt;检查日志，并没有 ERROR 信息，但是大量 WARN 报错。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;WARN&lt;/span&gt;  &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2015&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;09&lt;/span&gt; &lt;span class="mi"&gt;11&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mo"&gt;01&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mo"&gt;02&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;730&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;eclipse&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jetty&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;util&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="kr"&gt;thread&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nl"&gt;QueuedThreadPool&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;dw&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="n"&gt;STARTED&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;=&lt;/span&gt;&lt;span class="mi"&gt;50&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;=&lt;/span&gt;&lt;span class="mi"&gt;50&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;q&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1024&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="n"&gt;rejected&lt;/span&gt; &lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;eclipse&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jetty&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;io&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;AbstractConne&lt;/span&gt;
-&lt;span class="n"&gt;ction&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="mi"&gt;2@62&lt;/span&gt;&lt;span class="n"&gt;c021c6&lt;/span&gt;
-&lt;span class="n"&gt;WARN&lt;/span&gt;  &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2015&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;09&lt;/span&gt; &lt;span class="mi"&gt;11&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mo"&gt;01&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mo"&gt;02&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;731&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;eclipse&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jetty&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;io&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nl"&gt;SelectorManager&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Could&lt;/span&gt; &lt;span class="n"&gt;not&lt;/span&gt; &lt;span class="n"&gt;process&lt;/span&gt; &lt;span class="n"&gt;key&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;channel&lt;/span&gt; &lt;span class="n"&gt;java&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;nio&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;channels&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;SocketChannel&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;connected&lt;/span&gt; &lt;span class="n"&gt;local&lt;/span&gt;&lt;span class="o"&gt;=/&lt;/span&gt;&lt;span class="mf"&gt;10.&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;WARN&lt;/span&gt;  &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2015&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;09&lt;/span&gt; &lt;span class="mi"&gt;11&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mo"&gt;01&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mo"&gt;02&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;730&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;eclipse&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jetty&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;util&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="kr"&gt;thread&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;QueuedThreadPool&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;dw&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="n"&gt;STARTED&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;=&lt;/span&gt;&lt;span class="mi"&gt;50&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;=&lt;/span&gt;&lt;span class="mi"&gt;50&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;q&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1024&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="n"&gt;rejected&lt;/span&gt; &lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;eclipse&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jetty&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;io&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;AbstractConne&lt;/span&gt;
+&lt;span class="n"&gt;ction&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="err"&gt;@&lt;/span&gt;&lt;span class="mi"&gt;62&lt;/span&gt;&lt;span class="n"&gt;c021c6&lt;/span&gt;
+&lt;span class="n"&gt;WARN&lt;/span&gt;  &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2015&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;09&lt;/span&gt; &lt;span class="mi"&gt;11&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mo"&gt;01&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mo"&gt;02&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;731&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;eclipse&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jetty&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;io&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;SelectorManager&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Could&lt;/span&gt; &lt;span class="n"&gt;not&lt;/span&gt; &lt;span class="n"&gt;process&lt;/span&gt; &lt;span class="n"&gt;key&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;channel&lt;/span&gt; &lt;span class="n"&gt;java&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;nio&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;channels&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;SocketChannel&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;connected&lt;/span&gt; &lt;span class="n"&gt;local&lt;/span&gt;&lt;span class="o"&gt;=/&lt;/span&gt;&lt;span class="mf"&gt;10.&lt;/span&gt;
 &lt;span class="mf"&gt;1.1.78&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;8350&lt;/span&gt; &lt;span class="n"&gt;remote&lt;/span&gt;&lt;span class="o"&gt;=/&lt;/span&gt;&lt;span class="mf"&gt;10.1.1.74&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;63290&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-&lt;span class="o"&gt;!&lt;/span&gt; &lt;span class="n"&gt;java&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;util&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;concurrent&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nl"&gt;RejectedExecutionException&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;eclipse&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jetty&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;io&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;AbstractConnection&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="mi"&gt;2@62&lt;/span&gt;&lt;span class="n"&gt;c021c6&lt;/span&gt;
-&lt;span class="o"&gt;!&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;eclipse&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jetty&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;util&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="kr"&gt;thread&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;QueuedThreadPool&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;execute&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;QueuedThreadPool&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nl"&gt;java&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;362&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;tritonis&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;shaded&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nl"&gt;jar&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mf"&gt;0.0.1&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;SNAPSHOT&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-&lt;span class="o"&gt;!&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;eclipse&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jetty&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;io&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;AbstractConnection&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;FillingState&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;onEnter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;AbstractConnection&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nl"&gt;java&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;379&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;~&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;tritonis&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;shaded&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nl"&gt;jar&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mf"&gt;0.0.1&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;SNAPSHOT&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-&lt;span class="o"&gt;!&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;eclipse&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jetty&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;io&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;AbstractConnection&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;next&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;AbstractConnection&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nl"&gt;java&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;273&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;~&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;tritonis&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;shaded&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nl"&gt;jar&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mf"&gt;0.0.1&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;SNAPSHOT&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-&lt;span class="o"&gt;!&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;eclipse&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jetty&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;io&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;AbstractConnection&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;ReadCallback&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;succeeded&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;AbstractConnection&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nl"&gt;java&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;563&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;~&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;tritonis&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;shaded&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nl"&gt;jar&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mf"&gt;0.0.1&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;SNAPSHOT&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-&lt;span class="o"&gt;!&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;eclipse&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jetty&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;io&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;FillInterest&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fillable&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;FillInterest&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nl"&gt;java&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;82&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;~&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;tritonis&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;shaded&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nl"&gt;jar&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mf"&gt;0.0.1&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;SNAPSHOT&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-&lt;span class="o"&gt;!&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;eclipse&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jetty&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;io&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;SelectChannelEndPoint&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;onSelected&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;SelectChannelEndPoint&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nl"&gt;java&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;109&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;~&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;tritonis&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;shaded&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nl"&gt;jar&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mf"&gt;0.0.1&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;SNAPSHOT&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-&lt;span class="o"&gt;!&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;eclipse&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jetty&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;io&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;SelectorManager&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;ManagedSelector&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;processKey&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;SelectorManager&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nl"&gt;java&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;636&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;tritonis&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;shaded&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nl"&gt;jar&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mf"&gt;0.0.1&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;SNAPSHOT&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-&lt;span class="o"&gt;!&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;eclipse&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jetty&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;io&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;SelectorManager&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;ManagedSelector&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;select&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;SelectorManager&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nl"&gt;java&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;607&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;tritonis&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;shaded&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nl"&gt;jar&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mf"&gt;0.0.1&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;SNAPSHOT&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-&lt;span class="o"&gt;!&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;eclipse&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jetty&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;io&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;SelectorManager&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;ManagedSelector&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;SelectorManager&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nl"&gt;java&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;545&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;tritonis&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;shaded&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nl"&gt;jar&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mf"&gt;0.0.1&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;SNAPSHOT&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-&lt;span class="o"&gt;!&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;eclipse&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jetty&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;util&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="kr"&gt;thread&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;NonBlockingThread&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;NonBlockingThread&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nl"&gt;java&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;52&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;tritonis&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;shaded&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nl"&gt;jar&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mf"&gt;0.0.1&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;SNAPSHOT&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-&lt;span class="o"&gt;!&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;eclipse&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jetty&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;util&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="kr"&gt;thread&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;QueuedThreadPool&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;runJob&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;QueuedThreadPool&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nl"&gt;java&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;635&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;tritonis&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;shaded&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nl"&gt;jar&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mf"&gt;0.0.1&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;SNAPSHOT&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-&lt;span class="o"&gt;!&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;eclipse&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jetty&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;util&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="kr"&gt;thread&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;QueuedThreadPool&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="mf"&gt;3.&lt;/span&gt;&lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;QueuedThreadPool&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nl"&gt;java&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;555&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;tritonis&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;shaded&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nl"&gt;jar&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mf"&gt;0.0.1&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;SNAPSHOT&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-&lt;span class="o"&gt;!&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="n"&gt;java&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;lang&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Thread&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Thread&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nl"&gt;java&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;745&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nl"&gt;na&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mf"&gt;1.8.0&lt;/span&gt;&lt;span class="n"&gt;_51&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="o"&gt;!&lt;/span&gt; &lt;span class="n"&gt;java&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;util&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;concurrent&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;RejectedExecutionException&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;eclipse&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jetty&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;io&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;AbstractConnection&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="err"&gt;@&lt;/span&gt;&lt;span class="mi"&gt;62&lt;/span&gt;&lt;span class="n"&gt;c021c6&lt;/span&gt;
+&lt;span class="o"&gt;!&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;eclipse&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jetty&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;util&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="kr"&gt;thread&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;QueuedThreadPool&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;execute&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;QueuedThreadPool&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;java&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;362&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;tritonis&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;shaded&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jar&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mf"&gt;0.0.1&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;SNAPSHOT&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="o"&gt;!&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;eclipse&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jetty&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;io&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;AbstractConnection&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;FillingState&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;onEnter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;AbstractConnection&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;java&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;379&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;~&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;tritonis&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;shaded&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jar&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mf"&gt;0.0.1&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;SNAPSHOT&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="o"&gt;!&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;eclipse&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jetty&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;io&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;AbstractConnection&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;next&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;AbstractConnection&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;java&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;273&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;~&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;tritonis&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;shaded&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jar&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mf"&gt;0.0.1&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;SNAPSHOT&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="o"&gt;!&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;eclipse&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jetty&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;io&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;AbstractConnection&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;ReadCallback&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;succeeded&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;AbstractConnection&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;java&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;563&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;~&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;tritonis&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;shaded&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jar&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mf"&gt;0.0.1&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;SNAPSHOT&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="o"&gt;!&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;eclipse&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jetty&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;io&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;FillInterest&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fillable&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;FillInterest&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;java&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;82&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;~&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;tritonis&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;shaded&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jar&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mf"&gt;0.0.1&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;SNAPSHOT&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="o"&gt;!&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;eclipse&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jetty&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;io&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;SelectChannelEndPoint&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;onSelected&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;SelectChannelEndPoint&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;java&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;109&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;~&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;tritonis&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;shaded&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jar&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mf"&gt;0.0.1&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;SNAPSHOT&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="o"&gt;!&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;eclipse&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jetty&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;io&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;SelectorManager&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;ManagedSelector&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;processKey&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;SelectorManager&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;java&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;636&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;tritonis&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;shaded&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jar&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mf"&gt;0.0.1&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;SNAPSHOT&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="o"&gt;!&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;eclipse&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jetty&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;io&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;SelectorManager&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;ManagedSelector&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;select&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;SelectorManager&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;java&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;607&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;tritonis&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;shaded&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jar&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mf"&gt;0.0.1&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;SNAPSHOT&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="o"&gt;!&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;eclipse&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jetty&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;io&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;SelectorManager&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;ManagedSelector&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;SelectorManager&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;java&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;545&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;tritonis&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;shaded&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jar&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mf"&gt;0.0.1&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;SNAPSHOT&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="o"&gt;!&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;eclipse&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jetty&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;util&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="kr"&gt;thread&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;NonBlockingThread&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;NonBlockingThread&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;java&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;52&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;tritonis&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;shaded&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jar&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mf"&gt;0.0.1&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;SNAPSHOT&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="o"&gt;!&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;eclipse&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jetty&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;util&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="kr"&gt;thread&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;QueuedThreadPool&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;runJob&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;QueuedThreadPool&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;java&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;635&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;tritonis&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;shaded&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jar&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mf"&gt;0.0.1&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;SNAPSHOT&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="o"&gt;!&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;eclipse&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jetty&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;util&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="kr"&gt;thread&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;QueuedThreadPool&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="mf"&gt;3.&lt;/span&gt;&lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;QueuedThreadPool&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;java&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;555&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;tritonis&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;shaded&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jar&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mf"&gt;0.0.1&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;SNAPSHOT&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="o"&gt;!&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="n"&gt;java&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;lang&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Thread&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Thread&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;java&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;745&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;na&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mf"&gt;1.8.0&lt;/span&gt;&lt;span class="n"&gt;_51&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;这是七牛 API 调用出现问题，通过应用 Metrics API 检查 Threads：&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;http http://A-DOMAIN:8351/threads | sort | uniq -c | sort -gr G qiniu&lt;/code&gt;&lt;/p&gt;
@@ -2043,7 +1801,7 @@ Google 的一种做法，可以很好解决这个问题。分离 TL（techlead�
 &lt;p&gt;&lt;img alt="image2015-12-9_2.png" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201602/image2015-12-9_2.png"/&gt;&lt;/p&gt;
 &lt;p&gt;确认是七牛服务慢导致现成爆掉，但是 46 这个值来自于哪里？&lt;/p&gt;
 &lt;p&gt;检查了 App 的配置文件，的确配置了 &lt;code&gt;maxThreads&lt;/code&gt; 为 50:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;server&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;server&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
   &lt;span class="n"&gt;gzip&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
     &lt;span class="n"&gt;enabled&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;false&lt;/span&gt;
   &lt;span class="n"&gt;requestLog&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
@@ -2059,13 +1817,13 @@ Google 的一种做法，可以很好解决这个问题。分离 TL（techlead�
       &lt;span class="n"&gt;port&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;8351&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;一般对应服务不稳定，有个简单策略，超时，那么七牛服务超时是多少？找了一下相关代码，下巴都没合上：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# com.qiniu.http.Client
-    this.httpClient.setConnectTimeout((long)Config.CONNECT_TIMEOUT, TimeUnit.SECONDS);
-    this.httpClient.setReadTimeout((long)Config.RESPONSE_TIMEOUT, TimeUnit.SECONDS);
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;# com.qiniu.http.Client&lt;/span&gt;
+    &lt;span class="n"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;httpClient&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;setConnectTimeout&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="kt"&gt;long&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="n"&gt;Config&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;CONNECT_TIMEOUT&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;TimeUnit&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;SECONDS&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="n"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;httpClient&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;setReadTimeout&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="kt"&gt;long&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="n"&gt;Config&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;RESPONSE_TIMEOUT&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;TimeUnit&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;SECONDS&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
 
-# com.qiniu.common.Config
-public static int CONNECT_TIMEOUT = 10000;
-public static int RESPONSE_TIMEOUT = 30000;
+&lt;span class="cp"&gt;# com.qiniu.common.Config&lt;/span&gt;
+&lt;span class="n"&gt;public&lt;/span&gt; &lt;span class="k"&gt;static&lt;/span&gt; &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;CONNECT_TIMEOUT&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;10000&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="n"&gt;public&lt;/span&gt; &lt;span class="k"&gt;static&lt;/span&gt; &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;RESPONSE_TIMEOUT&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;30000&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;超时时间 8h，吓得我赶紧关掉了显示器。
 赶紧将这个 Connection 改成了 2 分钟，Connect 改成了 5s。 &lt;/p&gt;
@@ -2090,7 +1848,7 @@ public static int RESPONSE_TIMEOUT = 30000;
 新版本加入的一些现代化 Web 系统的新特性很吸引人（拖拽上传，可见即所得编辑），
 在群众的强烈呼声下，我着手开始升级。&lt;/p&gt;
 &lt;p&gt;&lt;img alt="201601/confluence_river.jpg" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201601/confluence_river.jpg"/&gt;&lt;/p&gt;
-&lt;!-- more --&gt;
+
 &lt;p&gt;官方的升级路线很扯，3.0.1 的升级路线是：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;3.0.1 -&amp;gt; 3.5.17&lt;/li&gt;
@@ -2115,14 +1873,14 @@ public static int RESPONSE_TIMEOUT = 30000;
 &lt;/blockquote&gt;
 &lt;p&gt;官方文档 &lt;a href="https://confluence.atlassian.com/doc/troubleshooting-xml-backups-that-fail-on-restore-199034.html"&gt;https://confluence.atlassian.com/doc/troubleshooting-xml-backups-that-fail-on-restore-199034.html&lt;/a&gt;
 让修改重复键数据，好吧，我改，搜索一把重复主键，将备份里面的 &lt;code&gt;entities.xml&lt;/code&gt; 弄出来。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# 格式化
-awk '{s=s $0}END{gsub(/&amp;gt;&lt;span class="err"&gt;&amp;lt;&lt;/span&gt;/,"&amp;gt;\n&lt;span class="err"&gt;&amp;lt;&lt;/span&gt;",s);s=gensub(/&amp;gt;([^ \n&amp;gt;]*)&lt;span class="err"&gt;&amp;lt;&lt;/span&gt;/,"&amp;gt;\n\\1\n&lt;span class="err"&gt;&amp;lt;&lt;/span&gt;","g",s);print s}' entities.xml &amp;gt; entities.xml.format
-# 找重复主键 cat entities.xml.format G 'content" class="Page' -A 2 G -E '[0-9]+' | sort | uniq -c | sort -gr L cat entities.xml.format | grep 'name="id"' -A 1 -B 1 | grep -E '[0-9]+' -B 2 L
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="err"&gt;格式化&lt;/span&gt;
+&lt;span class="nx"&gt;awk&lt;/span&gt; &lt;span class="s1"&gt;'{s=s $0}END{gsub(/&amp;gt;&amp;lt;/,"&amp;gt;&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s1"&gt;&amp;lt;",s);s=gensub(/&amp;gt;([^ &lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s1"&gt;&amp;gt;]*)&amp;lt;/,"&amp;gt;&lt;/span&gt;&lt;span class="se"&gt;\n\\&lt;/span&gt;&lt;span class="s1"&gt;1&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s1"&gt;&amp;lt;","g",s);print s}'&lt;/span&gt; &lt;span class="nx"&gt;entities.xml&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="nx"&gt;entities.xml.format&lt;/span&gt;
+&lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="err"&gt;找重复主键&lt;/span&gt; &lt;span class="nx"&gt;cat&lt;/span&gt; &lt;span class="nx"&gt;entities.xml.format&lt;/span&gt; &lt;span class="nx"&gt;G&lt;/span&gt; &lt;span class="s1"&gt;'content" class="Page'&lt;/span&gt; &lt;span class="na"&gt;-A&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="nx"&gt;G&lt;/span&gt; &lt;span class="na"&gt;-E&lt;/span&gt; &lt;span class="s1"&gt;'[0-9]+'&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="nb"&gt;sort&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="nx"&gt;uniq&lt;/span&gt; &lt;span class="na"&gt;-c&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="nb"&gt;sort&lt;/span&gt; &lt;span class="na"&gt;-gr&lt;/span&gt; &lt;span class="nx"&gt;L&lt;/span&gt; &lt;span class="nx"&gt;cat&lt;/span&gt; &lt;span class="nx"&gt;entities.xml.format&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="nx"&gt;grep&lt;/span&gt; &lt;span class="s1"&gt;'name="id"'&lt;/span&gt; &lt;span class="na"&gt;-A&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="na"&gt;-B&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="nx"&gt;grep&lt;/span&gt; &lt;span class="na"&gt;-E&lt;/span&gt; &lt;span class="s1"&gt;'[0-9]+'&lt;/span&gt; &lt;span class="na"&gt;-B&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="nx"&gt;L&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;操作过程中，发现有数据就一条数据（grep entities.xml），还是插入重复（13238835）。
 官方文档解释是，内置数据库的锁有时候会不灵，插入重复键。
 于是决定再试试去掉主键约束方案，大不了那个数据我就不要了。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;ALTER TABLE BODYCONTENT DROP PRIMARY KEY;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;ALTER&lt;/span&gt; &lt;span class="n"&gt;TABLE&lt;/span&gt; &lt;span class="n"&gt;BODYCONTENT&lt;/span&gt; &lt;span class="n"&gt;DROP&lt;/span&gt; &lt;span class="n"&gt;PRIMARY&lt;/span&gt; &lt;span class="n"&gt;KEY&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;结果还有其他 PK 约束，我于是一条一条解开，然后&amp;hellip;&amp;hellip;还是不行，真是作了一手的好死。&lt;/p&gt;
 &lt;p&gt;结论是，这数据错误了太多，已经无法手工修复。&lt;/p&gt;
@@ -2187,66 +1945,66 @@ awk '{s=s $0}END{gsub(/&amp;gt;&lt;span class="err"&gt;&amp;lt;&lt;/span&gt;/,"&
 需要手动切换一下服务器。
 于是用 HA 做了一个本地代理，调整了一些参数，让 SS 总是有快速的服务器供选择。&lt;/p&gt;
 &lt;p&gt;结构：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;+-----------------+                                                  +----------------+
-|                 |                                                  |                |
-|    Server 1     |&amp;gt;&amp;gt;&amp;gt;&amp;gt;v                                           &amp;gt;&amp;gt;|   Mail.app     |
-|                 |    v                                           ^ |                |
-+-----------------+    v                                           ^ +----------------+
-                       v                                           ^
-+-----------------+    v    |----------------+      +------------+ ^ +----------------+
-|                 |    v    |                |      |            | ^ |                |
-|    Server 2     |&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;|    HAProxy     |&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;| SS-Client  |&amp;gt;&amp;gt;&amp;gt;|   Browser      |
-|                 |    ^    |                |      |            | v |                |
-+-----------------+    ^    +----------------+      +------------+ v +----------------+
-                       ^                                           v   
-+-----------------+    ^                                           v +----------------+
-|                 |    ^                                           v |                |
-|    Server 3     |&amp;gt;&amp;gt;&amp;gt;&amp;gt;^                                           v&amp;gt;|   Evernote...  |
-|                 |                                                  |                |
-+-----------------+                                                  +----------------+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;+-----------------+&lt;/span&gt;                                                  &lt;span class="o"&gt;+----------------+&lt;/span&gt;
+&lt;span class="o"&gt;|&lt;/span&gt;                 &lt;span class="o"&gt;|&lt;/span&gt;                                                  &lt;span class="o"&gt;|&lt;/span&gt;                &lt;span class="o"&gt;|&lt;/span&gt;
+&lt;span class="o"&gt;|&lt;/span&gt;    &lt;span class="n"&gt;Server&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;     &lt;span class="o"&gt;|&amp;gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;v&lt;/span&gt;                                           &lt;span class="o"&gt;&amp;gt;&amp;gt;|&lt;/span&gt;   &lt;span class="n"&gt;Mail&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;app&lt;/span&gt;     &lt;span class="o"&gt;|&lt;/span&gt;
+&lt;span class="o"&gt;|&lt;/span&gt;                 &lt;span class="o"&gt;|&lt;/span&gt;    &lt;span class="n"&gt;v&lt;/span&gt;                                           &lt;span class="o"&gt;^&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;                &lt;span class="o"&gt;|&lt;/span&gt;
+&lt;span class="o"&gt;+-----------------+&lt;/span&gt;    &lt;span class="n"&gt;v&lt;/span&gt;                                           &lt;span class="o"&gt;^&lt;/span&gt; &lt;span class="o"&gt;+----------------+&lt;/span&gt;
+                       &lt;span class="n"&gt;v&lt;/span&gt;                                           &lt;span class="o"&gt;^&lt;/span&gt;
+&lt;span class="o"&gt;+-----------------+&lt;/span&gt;    &lt;span class="n"&gt;v&lt;/span&gt;    &lt;span class="o"&gt;|----------------+&lt;/span&gt;      &lt;span class="o"&gt;+------------+&lt;/span&gt; &lt;span class="o"&gt;^&lt;/span&gt; &lt;span class="o"&gt;+----------------+&lt;/span&gt;
+&lt;span class="o"&gt;|&lt;/span&gt;                 &lt;span class="o"&gt;|&lt;/span&gt;    &lt;span class="n"&gt;v&lt;/span&gt;    &lt;span class="o"&gt;|&lt;/span&gt;                &lt;span class="o"&gt;|&lt;/span&gt;      &lt;span class="o"&gt;|&lt;/span&gt;            &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="o"&gt;^&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;                &lt;span class="o"&gt;|&lt;/span&gt;
+&lt;span class="o"&gt;|&lt;/span&gt;    &lt;span class="n"&gt;Server&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;     &lt;span class="o"&gt;|&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;|&lt;/span&gt;    &lt;span class="n"&gt;HAProxy&lt;/span&gt;     &lt;span class="o"&gt;|&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;|&lt;/span&gt; &lt;span class="n"&gt;SS&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;Client&lt;/span&gt;  &lt;span class="o"&gt;|&amp;gt;&amp;gt;&amp;gt;|&lt;/span&gt;   &lt;span class="n"&gt;Browser&lt;/span&gt;      &lt;span class="o"&gt;|&lt;/span&gt;
+&lt;span class="o"&gt;|&lt;/span&gt;                 &lt;span class="o"&gt;|&lt;/span&gt;    &lt;span class="o"&gt;^&lt;/span&gt;    &lt;span class="o"&gt;|&lt;/span&gt;                &lt;span class="o"&gt;|&lt;/span&gt;      &lt;span class="o"&gt;|&lt;/span&gt;            &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;v&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;                &lt;span class="o"&gt;|&lt;/span&gt;
+&lt;span class="o"&gt;+-----------------+&lt;/span&gt;    &lt;span class="o"&gt;^&lt;/span&gt;    &lt;span class="o"&gt;+----------------+&lt;/span&gt;      &lt;span class="o"&gt;+------------+&lt;/span&gt; &lt;span class="n"&gt;v&lt;/span&gt; &lt;span class="o"&gt;+----------------+&lt;/span&gt;
+                       &lt;span class="o"&gt;^&lt;/span&gt;                                           &lt;span class="n"&gt;v&lt;/span&gt;   
+&lt;span class="o"&gt;+-----------------+&lt;/span&gt;    &lt;span class="o"&gt;^&lt;/span&gt;                                           &lt;span class="n"&gt;v&lt;/span&gt; &lt;span class="o"&gt;+----------------+&lt;/span&gt;
+&lt;span class="o"&gt;|&lt;/span&gt;                 &lt;span class="o"&gt;|&lt;/span&gt;    &lt;span class="o"&gt;^&lt;/span&gt;                                           &lt;span class="n"&gt;v&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;                &lt;span class="o"&gt;|&lt;/span&gt;
+&lt;span class="o"&gt;|&lt;/span&gt;    &lt;span class="n"&gt;Server&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;     &lt;span class="o"&gt;|&amp;gt;&amp;gt;&amp;gt;&amp;gt;^&lt;/span&gt;                                           &lt;span class="n"&gt;v&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;|&lt;/span&gt;   &lt;span class="n"&gt;Evernote&lt;/span&gt;&lt;span class="p"&gt;...&lt;/span&gt;  &lt;span class="o"&gt;|&lt;/span&gt;
+&lt;span class="o"&gt;|&lt;/span&gt;                 &lt;span class="o"&gt;|&lt;/span&gt;                                                  &lt;span class="o"&gt;|&lt;/span&gt;                &lt;span class="o"&gt;|&lt;/span&gt;
+&lt;span class="o"&gt;+-----------------+&lt;/span&gt;                                                  &lt;span class="o"&gt;+----------------+&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;配置：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;global
-    ulimit-n  4096
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;global&lt;/span&gt;
+    &lt;span class="n"&gt;ulimit&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;  &lt;span class="mi"&gt;4096&lt;/span&gt;
 
 
-defaults
-    log global
-    mode    tcp
-    timeout connect 1s
-    timeout client 1s
-    timeout server 1s
+&lt;span class="n"&gt;defaults&lt;/span&gt;
+    &lt;span class="n"&gt;log&lt;/span&gt; &lt;span class="n"&gt;global&lt;/span&gt;
+    &lt;span class="n"&gt;mode&lt;/span&gt;    &lt;span class="n"&gt;tcp&lt;/span&gt;
+    &lt;span class="n"&gt;timeout&lt;/span&gt; &lt;span class="n"&gt;connect&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;
+    &lt;span class="n"&gt;timeout&lt;/span&gt; &lt;span class="n"&gt;client&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;
+    &lt;span class="n"&gt;timeout&lt;/span&gt; &lt;span class="n"&gt;server&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;
 
 
-listen stats
-    bind 127.0.0.1:12222
-    mode http
-    stats enable
-    stats uri /
-    stats refresh 8s
+&lt;span class="n"&gt;listen&lt;/span&gt; &lt;span class="n"&gt;stats&lt;/span&gt;
+    &lt;span class="n"&gt;bind&lt;/span&gt; &lt;span class="mf"&gt;127.0.0.1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;12222&lt;/span&gt;
+    &lt;span class="n"&gt;mode&lt;/span&gt; &lt;span class="n"&gt;http&lt;/span&gt;
+    &lt;span class="n"&gt;stats&lt;/span&gt; &lt;span class="n"&gt;enable&lt;/span&gt;
+    &lt;span class="n"&gt;stats&lt;/span&gt; &lt;span class="n"&gt;uri&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;
+    &lt;span class="n"&gt;stats&lt;/span&gt; &lt;span class="n"&gt;refresh&lt;/span&gt; &lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;
 
 
-listen ss
-    bind 127.0.0.1:1081
-    mode tcp
-    option tcpka
-    #balance source
-    balance roundrobin
-    log global
-    maxconn 1024
+&lt;span class="n"&gt;listen&lt;/span&gt; &lt;span class="n"&gt;ss&lt;/span&gt;
+    &lt;span class="n"&gt;bind&lt;/span&gt; &lt;span class="mf"&gt;127.0.0.1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;1081&lt;/span&gt;
+    &lt;span class="n"&gt;mode&lt;/span&gt; &lt;span class="n"&gt;tcp&lt;/span&gt;
+    &lt;span class="n"&gt;option&lt;/span&gt; &lt;span class="n"&gt;tcpka&lt;/span&gt;
+    &lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="n"&gt;balance&lt;/span&gt; &lt;span class="n"&gt;source&lt;/span&gt;
+    &lt;span class="n"&gt;balance&lt;/span&gt; &lt;span class="n"&gt;roundrobin&lt;/span&gt;
+    &lt;span class="n"&gt;log&lt;/span&gt; &lt;span class="n"&gt;global&lt;/span&gt;
+    &lt;span class="n"&gt;maxconn&lt;/span&gt; &lt;span class="mi"&gt;1024&lt;/span&gt;
 
-    timeout connect 200ms
-    timeout client 600s
-    timeout server 600s
-    timeout check 80ms  # for office / home
-    # timeout check 400ms  # for starbucks
-    retries 1
-    option redispatch
-    option tcp-check
+    &lt;span class="n"&gt;timeout&lt;/span&gt; &lt;span class="n"&gt;connect&lt;/span&gt; &lt;span class="mi"&gt;200&lt;/span&gt;&lt;span class="n"&gt;ms&lt;/span&gt;
+    &lt;span class="n"&gt;timeout&lt;/span&gt; &lt;span class="n"&gt;client&lt;/span&gt; &lt;span class="mi"&gt;600&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;
+    &lt;span class="n"&gt;timeout&lt;/span&gt; &lt;span class="n"&gt;server&lt;/span&gt; &lt;span class="mi"&gt;600&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;
+    &lt;span class="n"&gt;timeout&lt;/span&gt; &lt;span class="n"&gt;check&lt;/span&gt; &lt;span class="mi"&gt;80&lt;/span&gt;&lt;span class="n"&gt;ms&lt;/span&gt;  &lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;office&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="n"&gt;home&lt;/span&gt;
+    &lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="n"&gt;timeout&lt;/span&gt; &lt;span class="n"&gt;check&lt;/span&gt; &lt;span class="mi"&gt;400&lt;/span&gt;&lt;span class="n"&gt;ms&lt;/span&gt;  &lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;starbucks&lt;/span&gt;
+    &lt;span class="n"&gt;retries&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+    &lt;span class="n"&gt;option&lt;/span&gt; &lt;span class="n"&gt;redispatch&lt;/span&gt;
+    &lt;span class="n"&gt;option&lt;/span&gt; &lt;span class="n"&gt;tcp&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;check&lt;/span&gt;
 
-    server s1 host1:port maxconn 20 check inter 2s rise 30 fall 6 backup
-    server s2 host2:port maxconn 20 check inter 2s rise 30 fall 6
-    server s3 host2:port maxconn 20 check inter 1s rise 60 fall 6
+    &lt;span class="n"&gt;server&lt;/span&gt; &lt;span class="n"&gt;s1&lt;/span&gt; &lt;span class="n"&gt;host1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;port&lt;/span&gt; &lt;span class="n"&gt;maxconn&lt;/span&gt; &lt;span class="mi"&gt;20&lt;/span&gt; &lt;span class="n"&gt;check&lt;/span&gt; &lt;span class="n"&gt;inter&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt; &lt;span class="n"&gt;rise&lt;/span&gt; &lt;span class="mi"&gt;30&lt;/span&gt; &lt;span class="n"&gt;fall&lt;/span&gt; &lt;span class="mi"&gt;6&lt;/span&gt; &lt;span class="n"&gt;backup&lt;/span&gt;
+    &lt;span class="n"&gt;server&lt;/span&gt; &lt;span class="n"&gt;s2&lt;/span&gt; &lt;span class="n"&gt;host2&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;port&lt;/span&gt; &lt;span class="n"&gt;maxconn&lt;/span&gt; &lt;span class="mi"&gt;20&lt;/span&gt; &lt;span class="n"&gt;check&lt;/span&gt; &lt;span class="n"&gt;inter&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt; &lt;span class="n"&gt;rise&lt;/span&gt; &lt;span class="mi"&gt;30&lt;/span&gt; &lt;span class="n"&gt;fall&lt;/span&gt; &lt;span class="mi"&gt;6&lt;/span&gt;
+    &lt;span class="n"&gt;server&lt;/span&gt; &lt;span class="n"&gt;s3&lt;/span&gt; &lt;span class="n"&gt;host2&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;port&lt;/span&gt; &lt;span class="n"&gt;maxconn&lt;/span&gt; &lt;span class="mi"&gt;20&lt;/span&gt; &lt;span class="n"&gt;check&lt;/span&gt; &lt;span class="n"&gt;inter&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt; &lt;span class="n"&gt;rise&lt;/span&gt; &lt;span class="mi"&gt;60&lt;/span&gt; &lt;span class="n"&gt;fall&lt;/span&gt; &lt;span class="mi"&gt;6&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;挺稳定，很快速。&lt;/p&gt;
 &lt;p&gt;update: 2015-12-15，添加 &lt;code&gt;backup&lt;/code&gt; 项，选一台最稳定的做 backup，避免所有连接都超时。
@@ -2327,14 +2085,14 @@ update: 2015-12-13，添加 &lt;code&gt;redispatch&lt;/code&gt;  / &lt;code&gt;r
 &lt;p&gt;Be easy for sleepy ops folks to figure out why things are pear-shaped at 3:30AM using standard UNIXy tools like tail and grep.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;eg.:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;TRACE [2010-04-06 06:42:35,271] com.example.dw.Thing: Contemplating doing a thing.
-DEBUG [2010-04-06 06:42:35,274] com.example.dw.Thing: About to do a thing.
-INFO  [2010-04-06 06:42:35,274] com.example.dw.Thing: Doing a thing
-WARN  [2010-04-06 06:42:35,275] com.example.dw.Thing: Doing a thing
-ERROR [2010-04-06 06:42:35,275] com.example.dw.Thing: This may get ugly.
-! java.lang.RuntimeException: oh noes!
-! at com.example.dw.Thing.run(Thing.java:16)
-!
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;TRACE&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2010&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mo"&gt;04&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mo"&gt;06&lt;/span&gt; &lt;span class="mo"&gt;06&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;42&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;35&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;271&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;example&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;dw&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Thing&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Contemplating&lt;/span&gt; &lt;span class="n"&gt;doing&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;thing&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;span class="n"&gt;DEBUG&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2010&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mo"&gt;04&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mo"&gt;06&lt;/span&gt; &lt;span class="mo"&gt;06&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;42&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;35&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;274&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;example&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;dw&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Thing&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;About&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;thing&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;span class="n"&gt;INFO&lt;/span&gt;  &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2010&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mo"&gt;04&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mo"&gt;06&lt;/span&gt; &lt;span class="mo"&gt;06&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;42&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;35&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;274&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;example&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;dw&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Thing&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Doing&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;thing&lt;/span&gt;
+&lt;span class="n"&gt;WARN&lt;/span&gt;  &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2010&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mo"&gt;04&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mo"&gt;06&lt;/span&gt; &lt;span class="mo"&gt;06&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;42&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;35&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;275&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;example&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;dw&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Thing&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Doing&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;thing&lt;/span&gt;
+&lt;span class="n"&gt;ERROR&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2010&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mo"&gt;04&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mo"&gt;06&lt;/span&gt; &lt;span class="mo"&gt;06&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;42&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;35&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;275&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;example&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;dw&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Thing&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;This&lt;/span&gt; &lt;span class="n"&gt;may&lt;/span&gt; &lt;span class="n"&gt;get&lt;/span&gt; &lt;span class="n"&gt;ugly&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;span class="o"&gt;!&lt;/span&gt; &lt;span class="n"&gt;java&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;lang&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;RuntimeException&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;oh&lt;/span&gt; &lt;span class="n"&gt;noes&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;
+&lt;span class="o"&gt;!&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;example&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;dw&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Thing&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Thing&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;java&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;16&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;!&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;splunk 的最佳实践：&lt;/p&gt;
 &lt;ul&gt;
@@ -2382,4 +2140,93 @@ ERROR [2010-04-06 06:42:35,275] com.example.dw.Thing: This may get ugly.
    &lt;small&gt;3a1ff193cee606bd1e2ea554a16353ee&lt;/small&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">alswl</dc:creator><pubDate>Sun, 18 Oct 2015 14:25:28 +0800</pubDate><guid isPermaLink="false">tag:blog.alswl.com,2015-10-18:2015/10/how-to-log/</guid><category>Logger</category></item></channel></rss>
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">alswl</dc:creator><pubDate>Sun, 18 Oct 2015 14:25:28 +0800</pubDate><guid isPermaLink="false">tag:blog.alswl.com,2015-10-18:2015/10/how-to-log/</guid><category>Logger</category></item><item><title>Redis 集群扩容</title><link>https://blog.alswl.com/2015/07/redis-migration/</link><description>&lt;p&gt;几乎每一个网站都需要用户登录状态系统，其中核心是存储 Session 的用户登录状态存储系统。
+主流的实现之一是使用 Redis 存储用户登录信息，Redis 特点是功能简单、无依赖、
+存储结构丰富、有持久化功能。
+我大堆糖的 Session 存储系统也正是基于 Redis。&lt;/p&gt;
+&lt;p&gt;可是 Redis 也存在一些问题，比如 Redis 自身没有 Sharding 功能，Replication
+也是在逐步完善完善过程中
+（2.4 支持 &lt;code&gt;Replication&lt;/code&gt;，2.8 加入 &lt;code&gt;Replication partial resynchronization&lt;/code&gt; 功能）。
+纵观当下流行的 DB 系统，哪个不是自带这两个特性，这两个分布式特性应该成为新出产的 DB 系统的标配。
+而且作者还经常发布延期，放烟雾弹，不知道 Redis 自带 Sharding 特性要等到何年马月。&lt;/p&gt;
+&lt;p&gt;随着业务规模的扩大，单台 Redis 实例不能满足需求。
+考虑到 Redis 也是久经考验的战士，替换掉他成本比较高，那就对 Redis 进行扩容。&lt;/p&gt;
+&lt;p&gt;扩容的基本要求是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;扩大系统容量，成为分布式系统，未来有横向扩展&lt;/li&gt;
+&lt;li&gt;业务不中断&lt;/li&gt;
+&lt;li&gt;保证原始数据的可用性&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Google 了一下，有两个项目可以参考：
+&lt;a href="https://github.com/idning/redis-mgr"&gt;https://github.com/idning/redis-mgr&lt;/a&gt;
+和豌豆荚的 &lt;a href="https://github.com/wandoulabs/codis"&gt;Codis&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;研究了这两项目的代码之后，发现前者存在几个问题：
+需要停机进行操作。
+后者提供了完整一套解决方案，Server/Proxy/Config Manage，对我这次迁移来说，太重了，
+而且项目比较新，风险高，只能用来参考实现方法。&lt;/p&gt;
+&lt;p&gt;最后我决定参考 redis-mgr 的方案，然后使用两种方式同步数据：
+系统运行中打上 patch 完成数据的动态迁移；后台跑迁移数据脚本。&lt;/p&gt;
+&lt;h2 id="fang-an-de-guan-jian-ci"&gt;方案的关键词&lt;/h2&gt;
+&lt;h3 id="dump-restore-pttl"&gt;&lt;code&gt;dump&lt;/code&gt; / &lt;code&gt;restore&lt;/code&gt; / &lt;code&gt;pttl&lt;/code&gt;&lt;/h3&gt;
+&lt;p&gt;核心的操作流程是：
+使用 &lt;code&gt;dump&lt;/code&gt; 命令导出数据，&lt;code&gt;restore&lt;/code&gt; 命令恢复数据，&lt;code&gt;pttl&lt;/code&gt; 命令获取设置 TTL。&lt;/p&gt;
+&lt;h3 id="presharding"&gt;Presharding&lt;/h3&gt;
+&lt;p&gt;Redis 官方没有 sharding 方案，但提供一种策略 presharding。
+Redis 作者写了一篇&lt;a href="http://oldblog.antirez.com/post/redis-presharding.html"&gt;Redis Presharding&lt;/a&gt;。核心是：
+提前做 2^n 个实例，避免扩容时候数据迁移，一般使用 2^n 个实例，
+目的是为了能够自然地乘以 2 进行拆分。
+这些实例可以分开放，也可以放在同一台机器上面。&lt;/p&gt;
+&lt;p&gt;我这次操作，将 &lt;code&gt;OLD_CLUSTER&lt;/code&gt; 的一个实例拆分为了 &lt;code&gt;NEW_CLUSTER&lt;/code&gt; 的 32 个实例，
+跑在 4 台服务器上面。&lt;/p&gt;
+&lt;h3 id="twemproxy"&gt;Twemproxy&lt;/h3&gt;
+&lt;p&gt;Redis 的 经典款 Proxy，用来实现对多个 Redis 实例 sharding，
+Twitter 出品，&lt;a href="https://github.com/twitter/twemproxy"&gt;链接&lt;/a&gt;。&lt;/p&gt;
+&lt;h3 id="yi-zhi-xing-hash"&gt;一致性 Hash&lt;/h3&gt;
+&lt;p&gt;传统的 Hash 方法是 &lt;code&gt;hash(key) = value % nodes.length&lt;/code&gt;，
+当加入、减少 Hash 节点时候，会导致 &lt;code&gt;hash(key)&lt;/code&gt; 的全部失效。
+典型的一致性 Hash 算法，&lt;a href="https://github.com/RJ/ketama"&gt;Ketama&lt;/a&gt; 通过环状 node 分布，解决了这个问题。&lt;/p&gt;
+&lt;p&gt;Twemproxy 还提供 &lt;code&gt;modula&lt;/code&gt; 和 random 两种分布式方案。&lt;/p&gt;
+&lt;h3 id="db-da-xiao-yu-gu"&gt;db 大小预估&lt;/h3&gt;
+&lt;p&gt;Redis 只能查看整个实例内存尺寸。不能查看单个 db。
+使用 &lt;code&gt;ramdomkey&lt;/code&gt; 做抽样检查，取 1% key 抽样，估计单个 key 大小，
+然后做 benchmark 估算操作性能，估算操作时间。&lt;/p&gt;
+&lt;h3 id="dong-tai-qian-yi-shu-ju"&gt;动态迁移数据&lt;/h3&gt;
+&lt;p&gt;为了在迁移过程中保证服务可用，需要将数据兼容 Redis 集群 &lt;code&gt;OLD_CLUSTER&lt;/code&gt; / &lt;code&gt;NEW_CLUSTER&lt;/code&gt;，
+业务代码必须同时支持访问两个集群，做法也很简单&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;访问 &lt;code&gt;NEW_CLUSTER&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;有数据则继续操作，无数据则访问 &lt;code&gt;OLD_CLUSTER&lt;/code&gt;，获取数据 &lt;code&gt;DATA&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;将数据和 TTL 保存到 &lt;code&gt;NEW_CLUSTER&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;将这个逻辑封装成一个 client，替换掉原来 Redis Client 即可。&lt;/p&gt;
+&lt;p&gt;注意，这个点可能产生幻读，读取 key 和写入 key 有个时间差，
+但是我处理的 session 是 immutable 数据，不会出现问题。
+而如果将 Redis 用作 Persistence，就要评估对业务的影响了。&lt;/p&gt;
+&lt;h3 id="hou-tai-qian-yi-shu-ju"&gt;后台迁移数据&lt;/h3&gt;
+&lt;p&gt;依赖用户访问来进行迁移，效率太低了，这个迁移时间和最长 TTL 时间相当，
+需要主动将这个数据从 &lt;code&gt;OLD_CLUSTER&lt;/code&gt; 迁移到 &lt;code&gt;NEW_CLUSTER&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;方案也很简单，使用 &lt;code&gt;randomkey&lt;/code&gt; 获取一批数据，然后按动态迁移数据方法进行迁移。&lt;/p&gt;
+&lt;h3 id="pipeline"&gt;pipeline&lt;/h3&gt;
+&lt;p&gt;如果在业务逻辑中使用了 PIPELINE，就会遇到问题，需要改写掉业务方案，
+待迁移完成之后，再进行恢复。&lt;/p&gt;
+&lt;h3 id="multikey"&gt;multikey&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;mget&lt;/code&gt; / &lt;code&gt;mset&lt;/code&gt; 等多键操作方法需要注意拆解 key，然后一一 &lt;code&gt;dump&lt;/code&gt; / &lt;code&gt;restore&lt;/code&gt; /
+&lt;code&gt;ttl&lt;/code&gt;。&lt;/p&gt;
+&lt;h2 id="zheng-shi-cao-zuo_1"&gt;正式操作&lt;/h2&gt;
+&lt;p&gt;线上操作的数据：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;# 0.483 g db0&lt;/span&gt;
+&lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mo"&gt;05&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;19&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;444&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;__main__&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;INFO&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;v&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;dumps&lt;/span&gt; &lt;span class="n"&gt;keys&lt;/span&gt; &lt;span class="mi"&gt;1014&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;1375371&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="p"&gt;...,&lt;/span&gt; &lt;span class="n"&gt;time&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;974.183676004&lt;/span&gt;
+&lt;span class="cp"&gt;# 4.552 g db1&lt;/span&gt;
+&lt;span class="mi"&gt;17&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;38&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;36&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;422&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;__main__&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;INFO&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;v&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;dumps&lt;/span&gt; &lt;span class="n"&gt;keys&lt;/span&gt; &lt;span class="mi"&gt;1392&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;7711834&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="p"&gt;...,&lt;/span&gt; &lt;span class="n"&gt;time&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;3076.41647506&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;附上 Migration Script：&lt;a href="https://gist.github.com/alswl/e96a5308ebac4f69f809f9ba56dfe168"&gt;https://blog.alswl.com/2015/07/redis-migration/ Redis Cluster Migration&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;div class="panel"&gt;
+&lt;div class="panel-body"&gt;
+   &lt;small&gt;原文链接: &lt;a href="https://blog.alswl.com/2015/07/redis-migration/"&gt;https://blog.alswl.com/2015/07/redis-migration/&lt;/a&gt;&lt;/small&gt;&lt;br&gt;
+   &lt;small&gt;欢迎关注我的微信公众号：&lt;a href="http://mp.weixin.qq.com/mp/getmasssendmsg?__biz=MzIyNTIwMTU3MQ==#wechat_webview_type=1&amp;wechat_redirect"&gt;窥豹&lt;/a&gt;&lt;/small&gt;&lt;br&gt;
+   &lt;small&gt;&lt;img src="https://ohsolnxaa.qnssl.com/upload_dropbox/201605/qrcode_for_gh_17e2f9c2caa4_258.jpg"/&gt;&lt;/small&gt;&lt;br&gt;
+   &lt;small&gt;3a1ff193cee606bd1e2ea554a16353ee&lt;/small&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">alswl</dc:creator><pubDate>Sun, 26 Jul 2015 15:33:49 +0800</pubDate><guid isPermaLink="false">tag:blog.alswl.com,2015-07-26:2015/07/redis-migration/</guid><category>Redis</category></item></channel></rss>

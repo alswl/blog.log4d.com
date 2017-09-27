@@ -16,7 +16,7 @@
 
         <meta name="author" content="alswl" />
         <meta name="keywords" content="软件开发和项目管理,SVN,Git" />
-        <meta name="description" content="前段时间在将公司的 SVN 项目迁移到 Git 上面去，遇到一个很少见的问题： 有一个小伙伴使用 git-svn 做 rename 操作时候，将一个目录 svn mv 了， 导致新目录只存了最近几个月提交历史，丢失了历史信息。对团队开发而言， 历史提交是非常宝贵的财产，我们想了一些办法，把这些数据提取出来。 # 找出丢失之前的版本，列出丢失目录上层的操作记录。 svn log -l 2000 svn://log4d.com/trunk/apps/ios/ | less # 将重命名之前的版本拷贝到一个临时目录 svn copy svn://log4d.com/trunk/apps/ios/nami@43252 svn://log4d.com/trunk/apps …" />
+        <meta name="description" content="前段时间在将公司的 SVN 项目迁移到 Git 上面去，遇到一个很少见的问题： 有一个小伙伴使用 git-svn 做 rename 操作时候，将一个目录 svn mv 了， 导致新目录只存了最近几个月提交历史，丢失了历史信息。对团队开发而言， 历史提交是非常宝贵的财产，我们想了一些办法，把这些数据提取出来。" />
 
 
 
@@ -80,7 +80,7 @@ Log4D            </a>
 <footer class="post-info">
     <span class="label label-default">Date</span>
     <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2014-01-21T00:20:06+08:00"> 2014-01-21</time>
+        <i class="fa fa-calendar"></i><time datetime="2014-01-21T00:20:06"> 2014-01-21</time>
     </span>
 
 
@@ -98,20 +98,20 @@ Log4D            </a>
 有一个小伙伴使用 git-svn 做 <code>rename</code> 操作时候，将一个目录 <code>svn mv</code> 了，
 导致新目录只存了最近几个月提交历史，丢失了历史信息。对团队开发而言，
 历史提交是非常宝贵的财产，我们想了一些办法，把这些数据提取出来。</p>
-<!-- more -->
-<div class="highlight"><pre><span></span><span class="cp"># 找出丢失之前的版本，列出丢失目录上层的操作记录。</span>
-<span class="n">svn</span> <span class="n">log</span> <span class="o">-</span><span class="n">l</span> <span class="mi">2000</span> <span class="nl">svn</span><span class="p">:</span><span class="c1">//log4d.com/trunk/apps/ios/ | less</span>
+
+<div class="highlight"><pre><span class="cp"># 找出丢失之前的版本，列出丢失目录上层的操作记录。</span>
+<span class="n">svn</span> <span class="n">log</span> <span class="o">-</span><span class="n">l</span> <span class="mi">2000</span> <span class="n">svn</span><span class="o">:</span><span class="c1">//log4d.com/trunk/apps/ios/ | less</span>
 
 <span class="cp"># 将重命名之前的版本拷贝到一个临时目录</span>
-<span class="n">svn</span> <span class="k">copy</span> <span class="nl">svn</span><span class="p">:</span><span class="c1">//log4d.com/trunk/apps/ios/nami@43252 svn://log4d.com/trunk/apps/ios/nami_lost</span>
+<span class="n">svn</span> <span class="n">copy</span> <span class="n">svn</span><span class="o">:</span><span class="c1">//log4d.com/trunk/apps/ios/nami@43252 svn://log4d.com/trunk/apps/ios/nami_lost</span>
 
 <span class="cp"># 准备现有代码到 Git</span>
-<span class="n">git</span> <span class="n">svn</span> <span class="n">clone</span> <span class="nl">svn</span><span class="p">:</span><span class="c1">//log4d.com/ -T trunk/apps/ios/nami -t tags -b branches -r 13532 nami</span>
+<span class="n">git</span> <span class="n">svn</span> <span class="n">clone</span> <span class="n">svn</span><span class="o">:</span><span class="c1">//log4d.com/ -T trunk/apps/ios/nami -t tags -b branches -r 13532 nami</span>
 
 <span class="cp"># 修改 .git/config 来加入丢失的历史数据 Remote</span>
 <span class="p">[</span><span class="n">svn</span><span class="o">-</span><span class="n">remote</span> <span class="s">"svn-lost"</span><span class="p">]</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="nl">svn</span><span class="p">:</span><span class="c1">//log4d.com</span>
-    <span class="n">fetch</span> <span class="o">=</span> <span class="n">trunk</span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">ios</span><span class="o">/</span><span class="nl">nami_lost</span><span class="p">:</span><span class="n">refs</span><span class="o">/</span><span class="n">remotes</span><span class="o">/</span><span class="n">trunk</span><span class="o">-</span><span class="n">lost</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="n">svn</span><span class="o">:</span><span class="c1">//log4d.com</span>
+    <span class="n">fetch</span> <span class="o">=</span> <span class="n">trunk</span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">ios</span><span class="o">/</span><span class="n">nami_lost</span><span class="o">:</span><span class="n">refs</span><span class="o">/</span><span class="n">remotes</span><span class="o">/</span><span class="n">trunk</span><span class="o">-</span><span class="n">lost</span>
 
 <span class="cp"># 并抓取 Remote 内容</span>
 <span class="n">git</span> <span class="n">svn</span> <span class="n">fetch</span>
@@ -224,11 +224,6 @@ Log4D            </a>
                         <li class="list-group-item">
                             <a href="https://blog.alswl.com/category/managment/">
                                 <i class="fa fa-folder-open fa-lg"></i> Managment
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="https://blog.alswl.com/category/misc/">
-                                <i class="fa fa-folder-open fa-lg"></i> misc
                             </a>
                         </li>
                         <li class="list-group-item">

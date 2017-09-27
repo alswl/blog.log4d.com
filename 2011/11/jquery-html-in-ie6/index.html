@@ -16,7 +16,7 @@
 
         <meta name="author" content="alswl" />
         <meta name="keywords" content="WebFront,IE,IE6,jQuery" />
-        <meta name="description" content="今天遇到一个jQuery的.html()设定错误问题，FF和Chrome下面都能够正常工作，而IE下面却失败。 检查之后，我把问题定性到jQuery.html(html)设定在IE下有问题。当设定html文本中含有空行、空格、Tab时候，会出现异常中断，导致html ()设定失败，但是又不会引发js错误。 狗日的IE！ 下文是Google来的参考文章：使用 jQuery .html() 得到的string时, 在IE中出现错误的解决方法 使用 jQuery 的 .html() 函数( 使用 .text() 也类似 )得到元素内的值使用时，在IE6中出错，FireFox 中正常。 基本代码如下: &lt;ul class=&#34;demo&#34;&gt; &lt;li&gt;easeInQuad&lt;/li&gt; &lt;li&gt;easeOutQuad&lt;/li&gt; &lt;li&gt;easeInOutQuad&lt;/li …" />
+        <meta name="description" content="今天遇到一个jQuery的.html()设定错误问题，FF和Chrome下面都能够正常工作，而IE下面却失败。 检查之后，我把问题定性到jQuery.html(html)设定在IE下有问题。当设定html文本中含有空行、空格、Tab时候，会出现异常中断，导致html ()设定失败，但是又不会引发js错误。 狗日的IE！ 下文是Google来的参考文章：使用 jQuery .html() 得到的string时, 在IE中出现错误的解决方法 使用 jQuery 的 .html() 函数( 使用 .text() 也类似 )得到元素内的值使用时，在IE6中出错，FireFox 中正常。 基本代码如下: &lt;ul class=&#34;demo&#34;&gt; &lt;li&gt;easeInQuad&lt;/li&gt; &lt;li&gt;easeOutQuad&lt;/li&gt; &lt;li&gt;easeInOutQuad&lt;/li ..." />
 
 
 
@@ -80,7 +80,7 @@ Log4D            </a>
 <footer class="post-info">
     <span class="label label-default">Date</span>
     <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2011-11-07T00:00:00+08:00"> 2011-11-07</time>
+        <i class="fa fa-calendar"></i><time datetime="2011-11-07T00:00:00"> 2011-11-07</time>
     </span>
 
 
@@ -105,7 +105,7 @@ Log4D            </a>
 <hr/>
 <p>使用 jQuery 的 .html() 函数( 使用 .text() 也类似 )得到元素内的值使用时，在IE6中出错，FireFox 中正常。</p>
 <p>基本代码如下:</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"demo"</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"demo"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;li&gt;</span>easeInQuad<span class="nt">&lt;/li&gt;</span>
     <span class="nt">&lt;li&gt;</span>easeOutQuad<span class="nt">&lt;/li&gt;</span>
     <span class="nt">&lt;li&gt;</span>easeInOutQuad<span class="nt">&lt;/li&gt;</span>
@@ -118,15 +118,15 @@ $('.demo li').each(function(){
 });
 </pre></div>
 <p>debug时将 action 直接用字符串初始化:</p>
-<div class="highlight"><pre><span></span>//...........
-    var action = 'easeInQuad';
-//...........
+<div class="highlight"><pre><span class="c1">//...........</span>
+    <span class="k">var</span> <span class="n">action</span> <span class="o">=</span> <span class="p">'</span><span class="n">easeInQuad</span><span class="p">';</span>
+<span class="c1">//...........</span>
 </pre></div>
 <p>在IE6中正常执行。用 typeof 测 .html() 的值确实是 string。所以猜测是 .htlm() 在 IE6
 中使用时会有一些不干净的东西。。。所以使用 $.trim() 函数来把它清洁一下，就可以解决这个问题:</p>
-<div class="highlight"><pre><span></span>//...........
-var action = $.trim( $(this).html() );
-//...........
+<div class="highlight"><pre><span class="c1">//...........</span>
+<span class="k">var</span> <span class="n">action</span> <span class="o">=</span> <span class="err">$</span><span class="p">.</span><span class="n">trim</span><span class="p">(</span> <span class="err">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="n">html</span><span class="p">()</span> <span class="p">);</span>
+<span class="c1">//...........</span>
 </pre></div>
 <p>可是究竟是什么不干净的东西呢？还是因为别的原因？</p>
 <p>jQuery 文档中关于 .trim() 函数：</p>
@@ -235,11 +235,6 @@ whitespace characters occur in the middle of the string, they are preserved.</p>
                         <li class="list-group-item">
                             <a href="https://blog.alswl.com/category/managment/">
                                 <i class="fa fa-folder-open fa-lg"></i> Managment
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="https://blog.alswl.com/category/misc/">
-                                <i class="fa fa-folder-open fa-lg"></i> misc
                             </a>
                         </li>
                         <li class="list-group-item">

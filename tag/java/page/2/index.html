@@ -80,7 +80,7 @@ ry、SVN、UP开发模式、UML。</p>
 <p>相关链接：</p>
 <p><a href="http://code.google.com/p/postbar/">项目在Google Code托管 </a>（你可以check
 out，不知道游客有没有权限，需要可以Mail我）</p>
-<p><a href="http://log4d.com/tag/postbar">相关开发博客链接 …</a></p>
+<p><a href="http://log4d.com/tag/postbar">相关开发博客链接 </a></p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/07/summary-report-of-post-bar/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -112,8 +112,7 @@ Code之后，基本接近我之前自己完成的程度，但我觉得这次的�
 <p>以上是贴吧中期报告。</p>
 <h4 id="xiang-guan-lian-jie">相关链接：</h4>
 <p>PostBar in Google Project Host&lt;<a href="http://code.google.com/p/postbar/">猛击这里打开</a>&gt;</p>
-<p>PostBar svn-readonly&lt;<a href="http://postbar.googlecode.com/svn/trunk/
-postbar-read-only">猛击这里打开</a>&gt;</p>
+<p>PostBar svn-readonly&lt;<a href ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/06/affixed-to-it-the-progress-report-on-the-medium-term/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -145,7 +144,7 @@ ispatch刷人气了，那完全不是我这个单机小工具能够媲美的了�
 <p>这种速度狠狠的打击了我，再继续开发就不得不加入图形界面来输入验证码，本来想写着玩的一个小工具，会成为一个复杂的开发。我只能暂时停止继续写这个工具，投身到课程
 设计的洪流中去了。</p>
 <p>当然，这小东西花了我三天时间，也不是一点收获没有，我学会了用XOM持久化对象来保存信息，学会了用正则来获取Html中的信息，学会了用java.net.*操作
-Get/Post …</p>
+Get/Post ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/06/xiaonei-gadgets-come-to-an-end/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -159,11 +158,11 @@ SAX等。我看了之后，感觉都比较麻烦，我个人比较喜欢使用jd
 <a href="http://www.xom.nu">猛击这里打开www.xom.nu</a> 友情提示一下，网站可以打开，但是下载的连接貌似被墙了，至少我教育网连不上去。推荐
 一个在线代理服务器古狗在线代理（<a href="http://www.ggproxy.com/">猛击这里打开</a>），通过它就可以下载类库了。
 使用类库非常简单，我这里提供个小例子。XiaoneiUser类</p>
-<div class="highlight"><pre><span></span>package cn.dddspace.xiaonei.bean;
+<div class="highlight"><pre><span class="n">package</span> <span class="n">cn</span><span class="p">.</span><span class="n">dddspace</span><span class="p">.</span><span class="n">xiaonei</span><span class="p">.</span><span class="n">bean</span><span class="p">;</span>
 </pre></div>
 <p>import java.io.OutputStream;</p>
 <p>import nu.xom.*;</p>
-<p>public …</p>
+<p>public ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/06/xom-class-library-to-use-java-objects-serialization/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -174,19 +173,19 @@ SAX等。我看了之后，感觉都比较麻烦，我个人比较喜欢使用jd
 全能拖拉机。 首先要解决的就是校内登录的问题，那就是Get/Post方法了，还有用户状态保存，就是session的操作。Java不同于C#，那位可以集成系统
 的浏览器或者之间创建一个Browser。</p>
 <p>开始写了自己的第一个版本。</p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">java.io.BufferedReader</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nn">java.io.InputStreamReader</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nn">java.net.MalformedURLException</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nn">java.net.ProtocolException</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nn">java.net.URL</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nn">java.net.HttpURLConnection</span><span class="p">;</span>
+<div class="highlight"><pre><span class="n">import</span> <span class="n">java</span><span class="p">.</span><span class="n">io</span><span class="p">.</span><span class="n">BufferedReader</span><span class="p">;</span>
+<span class="n">import</span> <span class="n">java</span><span class="p">.</span><span class="n">io</span><span class="p">.</span><span class="n">IOException</span><span class="p">;</span>
+<span class="n">import</span> <span class="n">java</span><span class="p">.</span><span class="n">io</span><span class="p">.</span><span class="n">InputStreamReader</span><span class="p">;</span>
+<span class="n">import</span> <span class="n">java</span><span class="p">.</span><span class="n">net</span><span class="p">.</span><span class="n">MalformedURLException</span><span class="p">;</span>
+<span class="n">import</span> <span class="n">java</span><span class="p">.</span><span class="n">net</span><span class="p">.</span><span class="n">ProtocolException</span><span class="p">;</span>
+<span class="n">import</span> <span class="n">java</span><span class="p">.</span><span class="n">net</span><span class="p">.</span><span class="n">URL</span><span class="p">;</span>
+<span class="n">import</span> <span class="n">java</span><span class="p">.</span><span class="n">net</span><span class="p">.</span><span class="n">HttpURLConnection</span><span class="p">;</span>
 </pre></div>
 <p>public class FarmerHelper {</p>
 <p>/**</p>
 <ul>
 <li>@param args  </li>
-<li>@throws …</li></ul>
+<li>@throws ...</li></ul>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/06/java-net-operation-session-get-post-method/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -209,7 +208,7 @@ SAX等。我看了之后，感觉都比较麻烦，我个人比较喜欢使用jd
 我们完全可以不必大费周折去找lrc，只要把这个歌词文件夹和Mp3播放器同步就可以了。
 以前就想写一个东西完成这个麻烦的工程，现在贴吧1.0完成了，可以休息几天，晚上花了一点时间用Java写了一个这样的小东西。
 如果大家碰到和我一样的麻烦，可以试试。呃，时间仓促，没有图形界面，而且必须是Java程序员才能用，因为我这儿只提供了源码....</p>
-<div class="highlight"><pre><span></span>package ddd;
+<div class="highlight"><pre><span class="n">package</span> <span class="n">ddd</span><span class="p">;</span>
 </pre></div>
 <p>import java.io.BufferedReader;</p>
 <p>import java.io.File;</p>
@@ -218,7 +217,7 @@ SAX等。我看了之后，感觉都比较麻烦，我个人比较喜欢使用jd
 <p>public class App {</p>
 <p>/**</p>
 <ul>
-<li>@author alswl …</li></ul>
+<li>@author alswl ...</li></ul>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/05/lyrics-written-in-java-replicator-mp3/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -234,7 +233,7 @@ find action or result</p>
 <p>我整整找了一个多小时，曾以为是action name的问题或者是package name, package namespace
 的问题，为此我特意重新学习了一下他们的使用方法，但是仍然没有效果。</p>
 <p>最后，终于在Google找到了一些资料：</p>
-<p><a href="http://huqilong.blog.51cto.com/53638/136802">struts2 json jquery …</a></p>
+<p><a href="http://huqilong.blog.51cto.com/53638/136802">struts2 json jquery ...</a></p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/05/struts2-in-the-use-of-ajax/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -310,11 +309,6 @@ find action or result</p>
                         <li class="list-group-item">
                             <a href="https://blog.alswl.com/category/managment/">
                                 <i class="fa fa-folder-open fa-lg"></i> Managment
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="https://blog.alswl.com/category/misc/">
-                                <i class="fa fa-folder-open fa-lg"></i> misc
                             </a>
                         </li>
                         <li class="list-group-item">

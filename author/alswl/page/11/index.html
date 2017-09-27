@@ -67,23 +67,6 @@ Log4D            </a>
         <div class="col-lg-8 col-lg-offset-2">
 
             <article class="article-list">
-                <h2 class="title"><a href="https://blog.alswl.com/2011/08/mako-typeerror/">TypeError: sequence item 22: expected string or Unicode, long found</a></h2>
-                <div class="summary"><p>Mako 下面开发时候，遇到这个问题</p>
-<blockquote>
-<p>TypeError: sequence item : expected string or Unicode, long found</p>
-</blockquote>
-<p>Trace 的情况大概这样（我的错误信息无法再现，这是某位外国友人的错误信息）</p>
-<blockquote>
-<p>File '/Users/amaslov/Projects/dou-pylons/doupy/doupy/controllers/ root.py',
-line 239 in staticpage</p>
-<p>&amp;nbsp_place_holder;return render('/pages/%s.html' % name)</p>
-<p>File '/Users/amaslov/Projects/dou-pylons/py/lib/python2.5/site-
-packages/Pylons-0.9 …</p></blockquote>
-                </div>
-                <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2011/08/mako-typeerror/"><i class="icon-circle-arrow-right"></i>more ...</a>
-            </article>
-            <hr/>
-            <article class="article-list">
                 <h2 class="title"><a href="https://blog.alswl.com/2011/08/auto-clean-input/">简单输入提示框实现</a></h2>
                 <div class="summary"><p>早期的输入框提示是这样的（via <a href="http://tieba.baidu.com/index.html">baidu</a>）</p>
 <p><img alt="tieba" src="https://ohsolnxaa.qnssl.com/2011/08/login1.png"/></p>
@@ -101,7 +84,7 @@ packages/Pylons-0.9 …</p></blockquote>
 </ol>
 <p>为了实现效果，我需要将提示信息暂存到某个地方。有3个地方可供选择： js 全局变量、输入框自定义属性、上下文 DOM 节点。</p>
 <p>js 全局变量比较难控制元素标识，并不是每个元素都可以精准的用 id 标记；输入框自定义属性会破坏语义；在上下文加入节点会破坏 DOM 树。</p>
-<p>权衡之后，我选择了使用 输入框自定义属性实现 …</p>
+<p>权衡之后，我选择了使用 输入框自定义属性实现 ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2011/08/auto-clean-input/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -123,12 +106,12 @@ in-ie</a></p>
                 <h2 class="title"><a href="https://blog.alswl.com/2011/08/go-pylons-py-in-python2-7/">go-pylons.py在Python2.7下错误解决</a></h2>
                 <div class="summary"><p>当使用 Python2.7 +<a href="http://pylonshq.com/download/1.0/go-pylons.py"> go-pylons.py</a>
 创建 Pylons 运行环境的话，会报一下错误。</p>
-<div class="highlight"><pre><span></span><span class="p">[</span><span class="n">alswl</span><span class="nd">@arch</span><span class="o">-</span><span class="n">vm</span> <span class="n">xingtong</span><span class="p">]</span><span class="err">$</span> <span class="n">python</span> <span class="n">go</span><span class="o">-</span><span class="n">pylons</span><span class="o">.</span><span class="n">py</span> <span class="n">myb_env</span>
-<span class="n">New</span> <span class="n">python</span> <span class="n">executable</span> <span class="ow">in</span> <span class="n">myb_env</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">python</span>
-<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
-  <span class="n">File</span> <span class="s2">"/home/alswl/work/xingtong/myb_env/lib/python2.7/site.py"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">67</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-    <span class="kn">import</span> <span class="nn">os</span>
-  <span class="n">File</span> <span class="s2">"/home/alswl …</span></pre></div>
+<div class="highlight"><pre><span class="cp">[</span><span class="nx">alswl</span><span class="p">@</span><span class="nx">arch</span><span class="na">-vm</span> <span class="nx">xingtong</span><span class="cp">]</span>$ python go-pylons.py myb_env
+New python executable in myb_env/bin/python
+Traceback (most recent call last):
+  File "/home/alswl/work/xingtong/myb_env/lib/python2.7/site.py", line 67, in <span class="nt">&lt;module&gt;</span>
+    import os
+  File "/home/alswl/work ...</pre></div>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2011/08/go-pylons-py-in-python2-7/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -144,8 +127,8 @@ Wave兼容新浪微博。望谅解。</p>
 </blockquote>
 <p>看样子又需要自己申请一个新浪微博的App了，我去 <a href="http://open.weibo.com">新浪微博开放平台</a> 注册了一个APP，叫做
 <em>滴滴滴的小喇叭</em> 。</p>
-<div class="highlight"><pre><span></span>App Key：1991355110
-App Secret：de253ff255f1190c8fd61977f5e5781b
+<div class="highlight"><pre><span class="n">App</span> <span class="n">Key</span><span class="err">：</span><span class="mi">1991355110</span>
+<span class="n">App</span> <span class="n">Secret</span><span class="err">：</span><span class="n">de253ff255f1190c8fd61977f5e5781b</span>
 </pre></div>
 <p>需要的同学可以自取。</p>
 <p>update：感谢@Halu的提醒，这种 Key 在没通过审核之前会被数量限定，所以建议大家自己申请。</p>
@@ -161,7 +144,7 @@ Vimperator 拦截了，导致键盘操作在这些应用上面不起作用。</p
 <p>还好，Vimperator 提供了一种名为 Pass through 的模式，按 <code>CTRL+Z</code> 进入这种模式，在这种模式下面，Vimperator
 将不响应键盘操作，全部放行到 Web 页面。</p>
 <p>在某一次版本更新之后， Pass through 的快捷键 <code>CTRL+Z</code> 似乎不起作用了，我翻遍了用户手册也没有找到解决办法。</p>
-<p>就在昨天，我无意中不知道按了什么键 …</p>
+<p>就在昨天，我无意中不知道按了什么键 ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2011/07/vimperator-pass-through/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -175,11 +158,10 @@ Vimperator 拦截了，导致键盘操作在这些应用上面不起作用。</p
 </blockquote>
 <p>大部分linux发行版的安装工具都可以直接安装 lrzsz，比如apt-get /
 pacman，当然我们也可以下载安装包手动安装。这次由于我所在的服务器没有管理员权限，我就使用源码包安装。</p>
-<div class="highlight"><pre><span></span>$ mkdir /home/alswl/app
-$ wget http://ohse.de/uwe/releases/lrzsz-0.12.20.tar.gz
-$ tar xzvf lrzsz-0.12.20.tar.gz
-$ <span class="nb">cd</span> lrzsz-0.12.20
-$ ./configure …</pre></div>
+<div class="highlight"><pre><span class="err">$</span> <span class="n">mkdir</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">alswl</span><span class="o">/</span><span class="n">app</span>
+<span class="err">$</span> <span class="n">wget</span> <span class="n">http</span><span class="o">:</span><span class="c1">//ohse.de/uwe/releases/lrzsz-0.12.20.tar.gz</span>
+<span class="err">$</span> <span class="n">tar</span> <span class="n">xzvf</span> <span class="n">lrzsz</span><span class="o">-</span><span class="mf">0.12.20</span><span class="p">.</span><span class="n">tar</span><span class="p">.</span><span class="n">gz</span>
+<span class="err">$</span> <span class="n">cd</span> <span class="n">lrzsz</span><span class="o">-</span><span class="mf">0.12 ...</span></pre></div>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2011/07/lrzsz/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -238,13 +220,31 @@ log4d.qiniudn.com/2011/07/eventbug.png"><img alt="image" src="https://ohsolnxaa.
 <p>Python中unicode转码一向是让人头疼的问题。数次碰壁之后，我也摸出了一些门道，
 研读完<a href="http://ipie.blogbus.com/logs/19379694.html">Python字符串的encode与decode</a>
 之后，就自认为找到了万金油，谁知道这次又碰上这个老冤家。</p>
-<div class="highlight"><pre><span></span>Traceback (most recent call last):
-  File "&lt;stdin&gt;", line 1, in &lt;module&gt;
-  File "/usr/lib/python2.6/urllib2.py", line 126, in urlopen
-    return _opener.open(url, data, timeout)
-  File "/usr/lib/python2.6/urllib2.py", line …</pre></div>
+<div class="highlight"><pre><span class="nx">Traceback</span> <span class="p">(</span><span class="nx">most</span> <span class="nx">recent</span> <span class="nb">call</span> <span class="nb">last</span><span class="p">):</span>
+  <span class="nb">File</span> <span class="s2">"&lt;stdin&gt;"</span><span class="p">,</span> <span class="nb">line</span> <span class="mi">1</span><span class="p">,</span> <span class="k">in</span> <span class="o">&lt;</span><span class="nx">module</span><span class="o">&gt;</span>
+  <span class="nb">File</span> <span class="s2">"/usr/lib/python2.6/urllib2.py"</span><span class="p">,</span> <span class="nb">line</span> <span class="mi">126</span><span class="p">,</span> <span class="k">in</span> <span class="nx">urlopen</span>
+    <span class="k">return</span> <span class="nx">_opener.open</span><span class="p">(</span><span class="nb">url</span><span class="p">,</span> <span class="kd">data</span><span class="p">,</span> <span class="nx">timeout</span><span class="p">)</span>
+  <span class="nb">File</span> <span class="s2">"/usr/lib/python2.6/urllib2.py"</span><span class="p">,</span> <span class="nb">line ...</span></pre></div>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2011/06/urllib2-urlopen-unicode/"><i class="icon-circle-arrow-right"></i>more ...</a>
+            </article>
+            <hr/>
+            <article class="article-list">
+                <h2 class="title"><a href="https://blog.alswl.com/2011/06/ddns-ssh/">使用DDNS+SSH连通家庭/工作电脑</a></h2>
+                <div class="summary"><h2 id="1-bei-jing">1. 背景</h2>
+<p>我目前有两台电脑，一台是家里使用的Linux笔记本（Dell 6400，4年）， 一台是公司使用的Windows笔记本（IBM X201，1个月）。
+我有时候需要在办公室连入家庭电脑，进行一些操作，比如同步，比如使用linux特定服务。</p>
+<p>完成这项工作需要两个条件，ip互通+对应通讯协议。被连接的服务器需要一个公网地址，
+而非局域网的192.x.x.x。可供选择的协议比较多，http/ftp/ssh等常规协议都可以使用。</p>
+<blockquote>
+<p><strong>什么是<a href="http://www.oray.com/peanuthull/">花生壳</a></strong></p>
+<p>花生壳动态域名是全球用户量最大的完全免费的动态域名解析软件。当您使用花生壳服务，
+无论您在任何地点、任何时间、任何线路，均可通过固定的花生壳域名访问您的远程主机服务。</p>
+<p>现在花生壳为千万的域名提供动态域名解析服务，并广泛应用于网站建设、视频监控、 遥感测绘、FTP、VPN、企业OA、ERP等应用领域。</p>
+</blockquote>
+<p>ps：除了花生壳，还有很多DDNS服务可以供选择。由于TP-Link和D-Link都默认内置花生壳， 我这里用花生壳做范例。而我使用的<a href="http://www.dd-wrt.com/">DD- ...</a></p>
+                </div>
+                <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2011/06/ddns-ssh/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
             <hr/>
 
@@ -396,11 +396,6 @@ log4d.qiniudn.com/2011/07/eventbug.png"><img alt="image" src="https://ohsolnxaa.
                         <li class="list-group-item">
                             <a href="https://blog.alswl.com/category/managment/">
                                 <i class="fa fa-folder-open fa-lg"></i> Managment
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="https://blog.alswl.com/category/misc/">
-                                <i class="fa fa-folder-open fa-lg"></i> misc
                             </a>
                         </li>
                         <li class="list-group-item">

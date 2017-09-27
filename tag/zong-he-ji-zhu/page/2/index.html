@@ -72,14 +72,14 @@ Log4D            </a>
                 <div class="summary"><p>本文来源：<a href="http://blog.csdn.net/xielingxu/archive/2007/08/26/1759471.aspx">中国省份与城市数据插入 - xlx -
 CSDN博客</a></p>
 <p>在Google找到这个，实在是爱不释手，就转过来了，很多项目都需要用到这些数据。</p>
-<div class="highlight"><pre><span></span>if exists (select * from sysobjects where id = OBJECT_ID('[province]') and OBJECTPROPERTY(id, 'IsUserTable') = 1)
-DROP TABLE [province]
+<div class="highlight"><pre><span class="k">if</span> <span class="n">exists</span> <span class="p">(</span><span class="n">select</span> <span class="o">*</span> <span class="n">from</span> <span class="n">sysobjects</span> <span class="n">where</span> <span class="n">id</span> <span class="o">=</span> <span class="n">OBJECT_ID</span><span class="p">(</span><span class="err">'</span><span class="p">[</span><span class="n">province</span><span class="p">]</span><span class="err">'</span><span class="p">)</span> <span class="n">and</span> <span class="n">OBJECTPROPERTY</span><span class="p">(</span><span class="n">id</span><span class="p">,</span> <span class="err">'</span><span class="n">IsUserTable</span><span class="err">'</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">DROP</span> <span class="n">TABLE</span> <span class="p">[</span><span class="n">province</span><span class="p">]</span>
 </pre></div>
 <p>CREATE TABLE [province] (</p>
 <p>[id] [int] NOT NULL,</p>
 <p>[provinceID] [nvarchar] (12) NOT NULL,</p>
 <p>[province] [nvarchar] (80) NOT NULL)</p>
-<p>ALTER TABLE [province] WITH NOCHECK ADD CONSTRAINT [PK_province …</p>
+<p>ALTER TABLE [province] WITH NOCHECK ADD CONSTRAINT [PK_province ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/08/zhong-guo-sheng-fen-yu-cheng-shi-shu-ju-sql/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -96,7 +96,7 @@ DROP TABLE [province]
 <p>3:执行脚本：指定编码格式set names utf8(注意，不是UTF-8)</p>
 <p>4:如果你采用的是外部接入的方式，在连接中确定请求的编码格式如：</p>
 <p>jdbc:mysql://localhost:3306 /ms_db?</p>
-<p>useUnicode …</p>
+<p>useUnicode ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/07/mysql-command-line-client-garbled-problems-and-solutions/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -111,7 +111,7 @@ DROP TABLE [province]
 一位（包括小数点）占一个字节的存储空间，因此这种类型耗费空间比较大。但是它的一个突出的优点是小数的位数固定，在运算中不会「失真」，所以比较适合用于「价格」、
 「金额」这样对精度要求不高但准确度要求非常高的字段。</p>
 <p>小数类，即浮点数类型，根据精度的不同，有 FLOAT（单精度）和DOUBLE（双精度）两种。它们的优势是精确度，FLOAT可以表示绝对值非常小、小到约
-1.17E- 38 （0.000...0117， 小数点后面有37个零）的小数，而DOUBLE更是可以表示绝对值小到约 …</p>
+1.17E- 38 （0.000...0117， 小数点后面有37个零）的小数，而DOUBLE更是可以表示绝对值小到约 ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/06/mysql-data-type-of-the-length-of-conventional-library-strategy/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -196,11 +196,6 @@ DROP TABLE [province]
                         <li class="list-group-item">
                             <a href="https://blog.alswl.com/category/managment/">
                                 <i class="fa fa-folder-open fa-lg"></i> Managment
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="https://blog.alswl.com/category/misc/">
-                                <i class="fa fa-folder-open fa-lg"></i> misc
                             </a>
                         </li>
                         <li class="list-group-item">

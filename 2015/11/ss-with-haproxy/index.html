@@ -16,7 +16,7 @@
 
         <meta name="author" content="alswl" />
         <meta name="keywords" content="SS,HAProxy" />
-        <meta name="description" content="以前用自己的 SS，Linode 美国，后来 Linode 日本，但是始终拼不过上海电信的国际带宽。 经常不稳定，丢一半的包。 于是买了 SS 服务， 9 台服务器，自己挑觉得速度快的服务器。 但一直固定某台服务器也会偶尔出问题，导致邮件出不来，网页打不开。 需要手动切换一下服务器。 于是用 HA 做了一个本地代理，调整了一些参数，让 SS 总是有快速的服务器供选择。 结构： +-----------------+ +----------------+ | | | | | Server 1 |&gt;&gt;&gt;&gt;v &gt;&gt;| Mail.app | | | v ^ | | +-----------------+ v ^ +----------------+ v ^ +-----------------+ v |----------------+ +------------+ ^ +----------------+ | | v | | | | ^ | | | Server 2 |&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;| HAProxy |&gt;&gt;&gt;&gt;&gt;&gt;| SS-Client |&gt;&gt;&gt;| Browser | | | ^ | | | | v | | +-----------------+ ^ +----------------+ +------------+ v +----------------+ ^ v +-----------------+ ^ v +----------------+ | | ^ v | | | Server 3 …" />
+        <meta name="description" content="以前用自己的 SS，Linode 美国，后来 Linode 日本，但是始终拼不过上海电信的国际带宽。 经常不稳定，丢一半的包。 于是买了 SS 服务， 9 台服务器，自己挑觉得速度快的服务器。 但一直固定某台服务器也会偶尔出问题，导致邮件出不来，网页打不开。 需要手动切换一下服务器。 于是用 HA 做了一个本地代理，调整了一些参数，让 SS 总是有快速的服务器供选择。 结构： +-----------------+ +----------------+ | | | | | Server 1 |&gt;&gt;&gt;&gt;v &gt;&gt;| Mail.app | | | v ^ | | +-----------------+ v ^ +----------------+ v ^ +-----------------+ v |----------------+ +------------+ ^ +----------------+ | | v | | | | ^ | | | Server 2 |&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;| HAProxy |&gt;&gt;&gt;&gt;&gt;&gt;| SS-Client |&gt;&gt;&gt;| Browser | | | ^ | | | | v | | +-----------------+ ^ +----------------+ +------------+ v +----------------+ ^ v +-----------------+ ^ v +----------------+ | | ^ v | | | Server ..." />
 
 
 
@@ -80,7 +80,7 @@ Log4D            </a>
 <footer class="post-info">
     <span class="label label-default">Date</span>
     <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2015-11-27T20:23:24+08:00"> 2015-11-27</time>
+        <i class="fa fa-calendar"></i><time datetime="2015-11-27T20:23:24"> 2015-11-27</time>
     </span>
 
 
@@ -101,66 +101,66 @@ Log4D            </a>
 需要手动切换一下服务器。
 于是用 HA 做了一个本地代理，调整了一些参数，让 SS 总是有快速的服务器供选择。</p>
 <p>结构：</p>
-<div class="highlight"><pre><span></span>+-----------------+                                                  +----------------+
-|                 |                                                  |                |
-|    Server 1     |&gt;&gt;&gt;&gt;v                                           &gt;&gt;|   Mail.app     |
-|                 |    v                                           ^ |                |
-+-----------------+    v                                           ^ +----------------+
-                       v                                           ^
-+-----------------+    v    |----------------+      +------------+ ^ +----------------+
-|                 |    v    |                |      |            | ^ |                |
-|    Server 2     |&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;|    HAProxy     |&gt;&gt;&gt;&gt;&gt;&gt;| SS-Client  |&gt;&gt;&gt;|   Browser      |
-|                 |    ^    |                |      |            | v |                |
-+-----------------+    ^    +----------------+      +------------+ v +----------------+
-                       ^                                           v   
-+-----------------+    ^                                           v +----------------+
-|                 |    ^                                           v |                |
-|    Server 3     |&gt;&gt;&gt;&gt;^                                           v&gt;|   Evernote...  |
-|                 |                                                  |                |
-+-----------------+                                                  +----------------+
+<div class="highlight"><pre><span class="o">+-----------------+</span>                                                  <span class="o">+----------------+</span>
+<span class="o">|</span>                 <span class="o">|</span>                                                  <span class="o">|</span>                <span class="o">|</span>
+<span class="o">|</span>    <span class="n">Server</span> <span class="mi">1</span>     <span class="o">|&gt;&gt;&gt;&gt;</span><span class="n">v</span>                                           <span class="o">&gt;&gt;|</span>   <span class="n">Mail</span><span class="p">.</span><span class="n">app</span>     <span class="o">|</span>
+<span class="o">|</span>                 <span class="o">|</span>    <span class="n">v</span>                                           <span class="o">^</span> <span class="o">|</span>                <span class="o">|</span>
+<span class="o">+-----------------+</span>    <span class="n">v</span>                                           <span class="o">^</span> <span class="o">+----------------+</span>
+                       <span class="n">v</span>                                           <span class="o">^</span>
+<span class="o">+-----------------+</span>    <span class="n">v</span>    <span class="o">|----------------+</span>      <span class="o">+------------+</span> <span class="o">^</span> <span class="o">+----------------+</span>
+<span class="o">|</span>                 <span class="o">|</span>    <span class="n">v</span>    <span class="o">|</span>                <span class="o">|</span>      <span class="o">|</span>            <span class="o">|</span> <span class="o">^</span> <span class="o">|</span>                <span class="o">|</span>
+<span class="o">|</span>    <span class="n">Server</span> <span class="mi">2</span>     <span class="o">|&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;|</span>    <span class="n">HAProxy</span>     <span class="o">|&gt;&gt;&gt;&gt;&gt;&gt;|</span> <span class="n">SS</span><span class="o">-</span><span class="n">Client</span>  <span class="o">|&gt;&gt;&gt;|</span>   <span class="n">Browser</span>      <span class="o">|</span>
+<span class="o">|</span>                 <span class="o">|</span>    <span class="o">^</span>    <span class="o">|</span>                <span class="o">|</span>      <span class="o">|</span>            <span class="o">|</span> <span class="n">v</span> <span class="o">|</span>                <span class="o">|</span>
+<span class="o">+-----------------+</span>    <span class="o">^</span>    <span class="o">+----------------+</span>      <span class="o">+------------+</span> <span class="n">v</span> <span class="o">+----------------+</span>
+                       <span class="o">^</span>                                           <span class="n">v</span>   
+<span class="o">+-----------------+</span>    <span class="o">^</span>                                           <span class="n">v</span> <span class="o">+----------------+</span>
+<span class="o">|</span>                 <span class="o">|</span>    <span class="o">^</span>                                           <span class="n">v</span> <span class="o">|</span>                <span class="o">|</span>
+<span class="o">|</span>    <span class="n">Server</span> <span class="mi">3</span>     <span class="o">|&gt;&gt;&gt;&gt;^</span>                                           <span class="n">v</span><span class="o">&gt;|</span>   <span class="n">Evernote</span><span class="p">...</span>  <span class="o">|</span>
+<span class="o">|</span>                 <span class="o">|</span>                                                  <span class="o">|</span>                <span class="o">|</span>
+<span class="o">+-----------------+</span>                                                  <span class="o">+----------------+</span>
 </pre></div>
 <p>配置：</p>
-<div class="highlight"><pre><span></span>global
-    ulimit-n  4096
+<div class="highlight"><pre><span class="n">global</span>
+    <span class="n">ulimit</span><span class="o">-</span><span class="n">n</span>  <span class="mi">4096</span>
 
 
-defaults
-    log global
-    mode    tcp
-    timeout connect 1s
-    timeout client 1s
-    timeout server 1s
+<span class="n">defaults</span>
+    <span class="n">log</span> <span class="n">global</span>
+    <span class="n">mode</span>    <span class="n">tcp</span>
+    <span class="n">timeout</span> <span class="n">connect</span> <span class="mi">1</span><span class="n">s</span>
+    <span class="n">timeout</span> <span class="n">client</span> <span class="mi">1</span><span class="n">s</span>
+    <span class="n">timeout</span> <span class="n">server</span> <span class="mi">1</span><span class="n">s</span>
 
 
-listen stats
-    bind 127.0.0.1:12222
-    mode http
-    stats enable
-    stats uri /
-    stats refresh 8s
+<span class="n">listen</span> <span class="n">stats</span>
+    <span class="n">bind</span> <span class="mf">127.0.0.1</span><span class="o">:</span><span class="mi">12222</span>
+    <span class="n">mode</span> <span class="n">http</span>
+    <span class="n">stats</span> <span class="n">enable</span>
+    <span class="n">stats</span> <span class="n">uri</span> <span class="o">/</span>
+    <span class="n">stats</span> <span class="n">refresh</span> <span class="mi">8</span><span class="n">s</span>
 
 
-listen ss
-    bind 127.0.0.1:1081
-    mode tcp
-    option tcpka
-    #balance source
-    balance roundrobin
-    log global
-    maxconn 1024
+<span class="n">listen</span> <span class="n">ss</span>
+    <span class="n">bind</span> <span class="mf">127.0.0.1</span><span class="o">:</span><span class="mi">1081</span>
+    <span class="n">mode</span> <span class="n">tcp</span>
+    <span class="n">option</span> <span class="n">tcpka</span>
+    <span class="err">#</span><span class="n">balance</span> <span class="n">source</span>
+    <span class="n">balance</span> <span class="n">roundrobin</span>
+    <span class="n">log</span> <span class="n">global</span>
+    <span class="n">maxconn</span> <span class="mi">1024</span>
 
-    timeout connect 200ms
-    timeout client 600s
-    timeout server 600s
-    timeout check 80ms  # for office / home
-    # timeout check 400ms  # for starbucks
-    retries 1
-    option redispatch
-    option tcp-check
+    <span class="n">timeout</span> <span class="n">connect</span> <span class="mi">200</span><span class="n">ms</span>
+    <span class="n">timeout</span> <span class="n">client</span> <span class="mi">600</span><span class="n">s</span>
+    <span class="n">timeout</span> <span class="n">server</span> <span class="mi">600</span><span class="n">s</span>
+    <span class="n">timeout</span> <span class="n">check</span> <span class="mi">80</span><span class="n">ms</span>  <span class="err">#</span> <span class="k">for</span> <span class="n">office</span> <span class="o">/</span> <span class="n">home</span>
+    <span class="err">#</span> <span class="n">timeout</span> <span class="n">check</span> <span class="mi">400</span><span class="n">ms</span>  <span class="err">#</span> <span class="k">for</span> <span class="n">starbucks</span>
+    <span class="n">retries</span> <span class="mi">1</span>
+    <span class="n">option</span> <span class="n">redispatch</span>
+    <span class="n">option</span> <span class="n">tcp</span><span class="o">-</span><span class="n">check</span>
 
-    server s1 host1:port maxconn 20 check inter 2s rise 30 fall 6 backup
-    server s2 host2:port maxconn 20 check inter 2s rise 30 fall 6
-    server s3 host2:port maxconn 20 check inter 1s rise 60 fall 6
+    <span class="n">server</span> <span class="n">s1</span> <span class="n">host1</span><span class="o">:</span><span class="n">port</span> <span class="n">maxconn</span> <span class="mi">20</span> <span class="n">check</span> <span class="n">inter</span> <span class="mi">2</span><span class="n">s</span> <span class="n">rise</span> <span class="mi">30</span> <span class="n">fall</span> <span class="mi">6</span> <span class="n">backup</span>
+    <span class="n">server</span> <span class="n">s2</span> <span class="n">host2</span><span class="o">:</span><span class="n">port</span> <span class="n">maxconn</span> <span class="mi">20</span> <span class="n">check</span> <span class="n">inter</span> <span class="mi">2</span><span class="n">s</span> <span class="n">rise</span> <span class="mi">30</span> <span class="n">fall</span> <span class="mi">6</span>
+    <span class="n">server</span> <span class="n">s3</span> <span class="n">host2</span><span class="o">:</span><span class="n">port</span> <span class="n">maxconn</span> <span class="mi">20</span> <span class="n">check</span> <span class="n">inter</span> <span class="mi">1</span><span class="n">s</span> <span class="n">rise</span> <span class="mi">60</span> <span class="n">fall</span> <span class="mi">6</span>
 </pre></div>
 <p>挺稳定，很快速。</p>
 <p>update: 2015-12-15，添加 <code>backup</code> 项，选一台最稳定的做 backup，避免所有连接都超时。
@@ -270,11 +270,6 @@ update: 2015-12-13，添加 <code>redispatch</code>  / <code>retries</code> 项�
                         <li class="list-group-item">
                             <a href="https://blog.alswl.com/category/managment/">
                                 <i class="fa fa-folder-open fa-lg"></i> Managment
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="https://blog.alswl.com/category/misc/">
-                                <i class="fa fa-folder-open fa-lg"></i> misc
                             </a>
                         </li>
                         <li class="list-group-item">

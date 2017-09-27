@@ -16,7 +16,7 @@
 
         <meta name="author" content="alswl" />
         <meta name="keywords" content="技术达人,Chrome,Privoxy,SwitchySharp" />
-        <meta name="description" content="Chrome 在2011年4月份时候，加入了两个新的实验性扩展分支，分别是 Web Navigation Extension API 以及 Proxy Extension API， 通过他们，可以让 Chrome 使用自己独立的代理。 借助这个新功能，我们可以通过 SwitchySharp 使用某个 list 完成部分网址代理。 我的环境： Arch Linux / Chromiun(17.0.963.78) / Proxy SwitchySharp 1.9.38。 安装 Proxy SwitchySharp 由于 SwitchyPlus 停止维护， 因此这里我使用 Proxy SwitchySharp。 Proxy SwitchySharp 介绍如下： 轻松快捷地管理和切换多个代理设置。基于 &#34;Proxy …" />
+        <meta name="description" content="Chrome 在2011年4月份时候，加入了两个新的实验性扩展分支，分别是 Web Navigation Extension API 以及 Proxy Extension API， 通过他们，可以让 Chrome 使用自己独立的代理。 借助这个新功能，我们可以通过 SwitchySharp 使用某个 list 完成部分网址代理。 我的环境： Arch Linux / Chromiun(17.0.963.78) / Proxy SwitchySharp 1.9.38。 安装 Proxy SwitchySharp 由于 SwitchyPlus 停止维护， 因此这里我使用 Proxy SwitchySharp。 Proxy SwitchySharp 介绍如下： 轻松快捷地管理和切换多个代理设置。基于 &#34;Proxy ..." />
 
 
 
@@ -80,7 +80,7 @@ Log4D            </a>
 <footer class="post-info">
     <span class="label label-default">Date</span>
     <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2012-03-15T00:00:00+08:00"> 2012-03-15</time>
+        <i class="fa fa-calendar"></i><time datetime="2012-03-15T00:00:00"> 2012-03-15</time>
     </span>
 
 
@@ -146,10 +146,10 @@ oefdjegm?hl=zh_CN">安装地址</a></p>
 地址</a>），所以类似 <code>ssh -D</code>
 建立的 socks 连接都会无法使用，我们需要通过 Privoxy 来将 socks 转换到 http。</p>
 <p>Arch Linux 下安装 Privoxy，其他发行版也是类似。</p>
-<div class="highlight"><pre><span></span>pacman -S privoxy
+<div class="highlight"><pre><span class="n">pacman</span> <span class="o">-</span><span class="n">S</span> <span class="n">privoxy</span>
 </pre></div>
 <p>配置 Privoxy，修改 <code>/etc/privoxy/config</code> 添加一行：</p>
-<div class="highlight"><pre><span></span>forward-socks5 / 127.0.0.1:7070 .
+<div class="highlight"><pre><span class="n">forward</span><span class="o">-</span><span class="n">socks5</span> <span class="o">/</span> <span class="mf">127.0.0.1</span><span class="o">:</span><span class="mi">7070</span> <span class="p">.</span>
 </pre></div>
 <p>注意上面的空格和末尾的点。</p>
 <p>配置好 Privoxy 后，重启服务，Privoxy 默认在 8118 端口提供服务，可以使用 <code>127.0.0.1:8118</code> 来访问代理服务器。</p>
@@ -263,11 +263,6 @@ socks5-%E8%BD%AC-http-3/">ssh socks5 转 http &laquo; 细节的力量</a> * <a h
                         <li class="list-group-item">
                             <a href="https://blog.alswl.com/category/managment/">
                                 <i class="fa fa-folder-open fa-lg"></i> Managment
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="https://blog.alswl.com/category/misc/">
-                                <i class="fa fa-folder-open fa-lg"></i> misc
                             </a>
                         </li>
                         <li class="list-group-item">

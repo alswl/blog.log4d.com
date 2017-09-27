@@ -74,19 +74,9 @@ Log4D            </a>
 %E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6%29">Wiki</a>）：在计算机科学中，反射是<strong>指一种特定类型的计算机程序能够在运行时以一种依
 赖于它的代码的抽象特性和它的运行时行为的方式被更改</strong>的特性。用比喻来说，那种程式能够"<strong>观察</strong>"并且修改自己的行为。</p>
 <p>Java中的反射示例如下：</p>
-<div class="highlight"><pre><span></span>package dddspace.job.exercise1116;
+<div class="highlight"><pre><span class="n">package</span> <span class="n">dddspace</span><span class="p">.</span><span class="n">job</span><span class="p">.</span><span class="n">exercise1116</span><span class="p">;</span>
 </pre></div>
-<p>public class Foo {</p>
-<p>public void fun(String str) {</p>
-<p>System.out.println(str);</p>
-<p>}</p>
-<p>}</p>
-<div class="highlight"><pre><span></span>package dddspace.job.exercise1116;
-</pre></div>
-<p>import java.lang.reflect.InvocationTargetException;</p>
-<p>import java.lang.reflect.Method;</p>
-<p>public class ReflectionDemo {</p>
-<p>public static void …</p>
+<p>public class ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/11/note-the-use-of-java-reflection-to-improve-the-basedao/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -104,7 +94,7 @@ ry、SVN、UP开发模式、UML。</p>
 <p>相关链接：</p>
 <p><a href="http://code.google.com/p/postbar/">项目在Google Code托管 </a>（你可以check
 out，不知道游客有没有权限，需要可以Mail我）</p>
-<p><a href="http://log4d.com/tag/postbar">相关开发博客链接 …</a></p>
+<p><a href="http://log4d.com/tag/postbar">相关开发博客链接 </a></p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/07/summary-report-of-post-bar/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -124,8 +114,7 @@ Code之后，基本接近我之前自己完成的程度，但我觉得这次的�
 <p>以上是贴吧中期报告。</p>
 <h4 id="xiang-guan-lian-jie">相关链接：</h4>
 <p>PostBar in Google Project Host&lt;<a href="http://code.google.com/p/postbar/">猛击这里打开</a>&gt;</p>
-<p>PostBar svn-readonly&lt;<a href="http://postbar.googlecode.com/svn/trunk/
-postbar-read-only">猛击这里打开</a>&gt;</p>
+<p>PostBar svn-readonly&lt;<a href ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/06/affixed-to-it-the-progress-report-on-the-medium-term/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -141,7 +130,7 @@ find action or result</p>
 <p>我整整找了一个多小时，曾以为是action name的问题或者是package name, package namespace
 的问题，为此我特意重新学习了一下他们的使用方法，但是仍然没有效果。</p>
 <p>最后，终于在Google找到了一些资料：</p>
-<p><a href="http://huqilong.blog.51cto.com/53638/136802">struts2 json jquery …</a></p>
+<p><a href="http://huqilong.blog.51cto.com/53638/136802">struts2 json jquery ...</a></p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/05/struts2-in-the-use-of-ajax/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -168,18 +157,18 @@ find action or result</p>
                 <h2 class="title"><a href="https://blog.alswl.com/2009/05/struts2-tags-the-curve-of-the-bug-and-the-use-of/">Struts2的s:if标签的Bug和曲线使用</a></h2>
                 <div class="summary"><p>贴吧的用户状态显示，登录和未登录应该是不同的div显示，我决定用做标签。</p>
 <p>本来应该很简单的事情，却没有我预想中的情形出现，检查后发现失效了，代码如下：</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;li&gt;</span><span class="cp">${</span><span class="n">session</span><span class="o">.</span><span class="n">userName</span><span class="cp">}</span>欢迎你<span class="nt">&lt;/li&gt;</span>
+<div class="highlight"><pre><span class="nt">&lt;li&gt;</span><span class="cp">${</span><span class="n">session</span><span class="o">.</span><span class="n">userName</span><span class="cp">}</span>欢迎你<span class="nt">&lt;/li&gt;</span>
 <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"Logout.action"</span><span class="nt">&gt;</span>注销<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
 </pre></div>
 <p>Struts2的官方文档中标签库介绍写的很清楚，官方示例文档如下</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;s:if</span> <span class="na">test=</span><span class="s">"%{false}"</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><span class="nt">&lt;s:if</span> <span class="na">test=</span><span class="s">"%{false}"</span><span class="nt">&gt;</span>
 <span class="nt">&lt;div&gt;</span>Will Not Be Executed<span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/s:if&gt;</span>
 <span class="nt">&lt;s:elseif</span> <span class="na">test=</span><span class="s">"%{true}"</span><span class="nt">&gt;</span>
 <span class="nt">&lt;div&gt;</span>Will Be Executed<span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/s:elseif&gt;</span>
 <span class="nt">&lt;s:else&gt;</span>
-<span class="nt">&lt;div&gt;</span>Will Not …</pre></div>
+<span class="nt">&lt;div&gt;</span>Will Not ...</pre></div>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/05/struts2-tags-the-curve-of-the-bug-and-the-use-of/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -193,7 +182,7 @@ find action or result</p>
 <p>其中遇到的一个问题是「&amp;」这个符号不能直接使用，需要进行转义，用「&amp;」来替代。</p>
 <p>最后是categoryName的问题了，本来以为很简单，却遇到了编码问题，之前从Home.action转到Category.action能正确编码，像 ht
 tp://localhost:8080/PostBar/Category.action?categoryId=4&amp;categoryName=%E9%9F%B
-3%E4%B9%90 …</p>
+3%E4%B9%90 ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/05/garbled-see-also-garbled/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -203,9 +192,9 @@ tp://localhost:8080/PostBar/Category.action?categoryId=4&amp;categoryName=%E9%9F
                 <div class="summary"><p>贴吧在提交帖子时候必须提供贴吧分类id categoryId，但是怎么把这个id提交到PostAction就比较麻烦了，在jsp页面中我试了好多办法，尝试使
 用param和hidden（baidu用的hidden）标签，但是都不能读出cagegory.jsp页面的categoryId值。</p>
 <p>最后我索性用试所有的表达式</p>
-<div class="highlight"><pre><span></span>&lt;s:hidden name="topicCategoryId" value="%{#categoryId}" /&gt;
-&lt;s:hidden name="topicCategoryId" value="#categoryId" /&gt;
-&lt;s:hidden name="topicCategoryId" value="%{categoryId}" /&gt;
+<div class="highlight"><pre><span class="o">&lt;</span><span class="n">s</span><span class="o">:</span><span class="n">hidden</span> <span class="n">name</span><span class="o">=</span><span class="s">"topicCategoryId"</span> <span class="n">value</span><span class="o">=</span><span class="s">"%{#categoryId}"</span> <span class="o">/&gt;</span>
+<span class="o">&lt;</span><span class="n">s</span><span class="o">:</span><span class="n">hidden</span> <span class="n">name</span><span class="o">=</span><span class="s">"topicCategoryId"</span> <span class="n">value</span><span class="o">=</span><span class="s">"#categoryId"</span> <span class="o">/&gt;</span>
+<span class="o">&lt;</span><span class="n">s</span><span class="o">:</span><span class="n">hidden</span> <span class="n">name</span><span class="o">=</span><span class="s">"topicCategoryId"</span> <span class="n">value</span><span class="o">=</span><span class="s">"%{categoryId}"</span> <span class="o">/&gt;</span>
 </pre></div>
 <p>最后一个果然有效。。。</p>
 <p>貌似记得这是OPGL表达式？****</p>
@@ -224,7 +213,7 @@ assigned to a property</p>
 <p>有人说只需要设定setXXX和getXXX的Integer的类型和.hbm.xml文件中个Type="java.lang.Integer"就可以了</p>
 <p>但是经过我测试发现，categoryFather 这个成员也要定义成Interger，否则会报错
 org.hibernate.PropertyAccessException: Exception occurred inside setter of ...</p>
-<p>晚上写完分类，感慨到：框架先行，功能其后 …</p>
+<p>晚上写完分类，感慨到：框架先行，功能其后 ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/05/solve-the-null-value-was-assigned-to-a-property/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -299,11 +288,6 @@ org.hibernate.PropertyAccessException: Exception occurred inside setter of ...</
                         <li class="list-group-item">
                             <a href="https://blog.alswl.com/category/managment/">
                                 <i class="fa fa-folder-open fa-lg"></i> Managment
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="https://blog.alswl.com/category/misc/">
-                                <i class="fa fa-folder-open fa-lg"></i> misc
                             </a>
                         </li>
                         <li class="list-group-item">

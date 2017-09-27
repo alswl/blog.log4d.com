@@ -16,7 +16,7 @@
 
         <meta name="author" content="alswl" />
         <meta name="keywords" content="PHP,AzaAjaxChat,CakePHP" />
-        <meta name="description" content="毕业设计AzaAjaxChat 中有一个功能，记录当前在线用户，直观的看，用Application对象就可以解决。 忙了一会发现，原来PHP没有Application对象这个概念，于是我想到了全局变量，噩梦便开始了。（Application 和全局变量其实完全不是同一个概念） 我使用的框架是CakePHP，查找资料后，找到了几种CakePHP中使用全局变量的方法。 一、使用bootstrap.php文件 在app/config 下面，有一个bootstrap文件，从名字就可以看出，这个是在控制器之前加载的文件，根据官方的描述，有下面几个用法。 定义方便的函数 注册全局常量 定义新增的控制器，视图，控制器路径 通过这个文件可以实现全局变量的声明。 if (!isset ($globalAAC)) { global $globalAAC; $globalAAC = array ( &#39;currentMessageId&#39; =&gt; -1, &#39;onlineUsers&#39; =&gt; array() ); } 在其他文件中就可以调用这个全局变量了。 二、通过Configure 类 Configure类是CakePHP用来进行配置文件的地方，通过write() 和read()方法 …" />
+        <meta name="description" content="毕业设计AzaAjaxChat 中有一个功能，记录当前在线用户，直观的看，用Application对象就可以解决。 忙了一会发现，原来PHP没有Application对象这个概念，于是我想到了全局变量，噩梦便开始了。（Application 和全局变量其实完全不是同一个概念） 我使用的框架是CakePHP，查找资料后，找到了几种CakePHP中使用全局变量的方法。 一、使用bootstrap.php文件 在app/config 下面，有一个bootstrap文件，从名字就可以看出，这个是在控制器之前加载的文件，根据官方的描述，有下面几个用法。 定义方便的函数 注册全局常量 定义新增的控制器，视图，控制器路径 通过这个文件可以实现全局变量的声明。 if (!isset ($globalAAC)) { global $globalAAC; $globalAAC = array ( &#39;currentMessageId&#39; =&gt; -1, &#39;onlineUsers&#39; =&gt; array() ); } 在其他文件中就可以调用这个全局变量了。 二、通过Configure 类 Configure类是CakePHP用来进行配置文件的地方，通过write() 和read()方法 ..." />
 
 
 
@@ -80,7 +80,7 @@ Log4D            </a>
 <footer class="post-info">
     <span class="label label-default">Date</span>
     <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2010-05-17T00:00:00+08:00"> 2010-05-17</time>
+        <i class="fa fa-calendar"></i><time datetime="2010-05-17T00:00:00"> 2010-05-17</time>
     </span>
 
 
@@ -119,25 +119,25 @@ Log4D            </a>
 </ul>
 </blockquote>
 <p>通过这个文件可以实现全局变量的声明。</p>
-<div class="highlight"><pre><span></span>if (!isset ($globalAAC)) {
-    global $globalAAC;
-    $globalAAC = array (
-        'currentMessageId' =&gt; -1,
-        'onlineUsers' =&gt; array()
-    );
-}
+<div class="highlight"><pre><span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">isset</span> <span class="p">(</span><span class="err">$</span><span class="n">globalAAC</span><span class="p">))</span> <span class="p">{</span>
+    <span class="n">global</span> <span class="err">$</span><span class="n">globalAAC</span><span class="p">;</span>
+    <span class="err">$</span><span class="n">globalAAC</span> <span class="o">=</span> <span class="n">array</span> <span class="p">(</span>
+        <span class="err">'</span><span class="n">currentMessageId</span><span class="err">'</span> <span class="o">=&gt;</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+        <span class="err">'</span><span class="n">onlineUsers</span><span class="err">'</span> <span class="o">=&gt;</span> <span class="n">array</span><span class="p">()</span>
+    <span class="p">);</span>
+<span class="p">}</span>
 </pre></div>
 <p>在其他文件中就可以调用这个全局变量了。</p>
 <h3 id="er-tong-guo-configure-lei">二、通过Configure 类</h3>
 <p>Configure类是CakePHP用来进行配置文件的地方，通过write() 和read()方法，也能实现全局变量的读写操作。</p>
-<div class="highlight"><pre><span></span><span class="nt">Configure</span><span class="p">::</span><span class="nd">write</span><span class="o">(</span><span class="s1">'Aac.currentMessageId'</span><span class="o">,</span> <span class="nt">-1</span><span class="o">);</span>
-<span class="nt">Configure</span><span class="p">::</span><span class="nd">read</span><span class="o">(</span><span class="s1">'Aac.currentMessageId'</span><span class="o">);</span>
+<div class="highlight"><pre><span class="n">Configure</span><span class="o">::</span><span class="n">write</span><span class="p">(</span><span class="err">'</span><span class="n">Aac</span><span class="p">.</span><span class="n">currentMessageId</span><span class="err">'</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+<span class="n">Configure</span><span class="o">::</span><span class="n">read</span><span class="p">(</span><span class="err">'</span><span class="n">Aac</span><span class="p">.</span><span class="n">currentMessageId</span><span class="err">'</span><span class="p">);</span>
 </pre></div>
 <p>其中，还有一个使用Configure的偏门方法，我从 <a href="http://debuggable.com/posts/need-to-share-global-
 variables-throughout-your-app:480f4dd5-6f64-4c88-812d-46d5cbdd56cb">Need to share global variables throughout your
 app? &raquo; Debuggable Ltd</a> 看到的。</p>
-<div class="highlight"><pre><span></span><span class="o">$</span><span class="nt">config</span> <span class="o">=&amp;</span> <span class="nt">Configure</span><span class="p">::</span><span class="nd">getInstance</span><span class="o">();</span>
-<span class="o">$</span><span class="nt">config-</span><span class="o">&gt;</span><span class="nt">myVariable</span> <span class="o">=</span> <span class="s1">'Hello World'</span><span class="o">;</span>
+<div class="highlight"><pre><span class="err">$</span><span class="n">config</span> <span class="o">=&amp;</span> <span class="n">Configure</span><span class="o">::</span><span class="n">getInstance</span><span class="p">();</span>
+<span class="err">$</span><span class="n">config</span><span class="o">-&gt;</span><span class="n">myVariable</span> <span class="o">=</span> <span class="err">'</span><span class="n">Hello</span> <span class="n">World</span><span class="err">'</span><span class="p">;</span>
 </pre></div>
 <p>$config =&amp; Configure::getInstance();</p>
 <p>debug($config-&gt;myVariable);</p>
@@ -252,11 +252,6 @@ ChinaUnix.net</a>
                         <li class="list-group-item">
                             <a href="https://blog.alswl.com/category/managment/">
                                 <i class="fa fa-folder-open fa-lg"></i> Managment
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="https://blog.alswl.com/category/misc/">
-                                <i class="fa fa-folder-open fa-lg"></i> misc
                             </a>
                         </li>
                         <li class="list-group-item">

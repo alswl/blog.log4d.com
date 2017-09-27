@@ -16,7 +16,7 @@
 
         <meta name="author" content="alswl" />
         <meta name="keywords" content="综合技术,编码" />
-        <meta name="description" content="ASCII字符集 7位的编码方案，总共表示128个字符，其中包括了大小写英文字母、数字、标点符号等常用字符。英语世界已经足够应付。 ISO-8859-1字符集 也称ISO-Latin字符集，它扩展了ASCII字符集，用到了8bit字节里的最高一位，这样它就有256个字符，前128个字符和ASCII字符集相同 。有了ISO-Latin字符集，西方世界的一些其它语言，如西班牙语、法语、德语、意大利语都够用了。 GB系列字符集（GB2312，GBK，GB18030） 由于一个字节是无论如何也表达不了哪怕是最长用的汉字字符集的，所以为了用计算机存储汉字，必须使用多个字节。 多字节字符集就是使用可变长的编码长度来编码字符，有的字符用一个字节编码，比如ASCII字符，有的字符用两个字节编码，比如汉字。在VC里，多字节字符集等同于双 字节字符集，VC不支持多于2个字节编码长度的字符。GB系列的字符集和ISO-Latin字符集一样，前128个字符和ASCII字符集相同。GB系列字符集是兼容 的，相同的中文字符在这3个字符集里有相同的编码。GB2312和GBK一个字符最多2个字节表示，GB18030可多达4个字节。在这种编码里表示汉字时，需要一个 leading byte，它总是大于127，这个字节的含义是说明它和后面的字节（们）一起表示一个字符 …" />
+        <meta name="description" content="ASCII字符集 7位的编码方案，总共表示128个字符，其中包括了大小写英文字母、数字、标点符号等常用字符。英语世界已经足够应付。 ISO-8859-1字符集 也称ISO-Latin字符集，它扩展了ASCII字符集，用到了8bit字节里的最高一位，这样它就有256个字符，前128个字符和ASCII字符集相同 。有了ISO-Latin字符集，西方世界的一些其它语言，如西班牙语、法语、德语、意大利语都够用了。 GB系列字符集（GB2312，GBK，GB18030） 由于一个字节是无论如何也表达不了哪怕是最长用的汉字字符集的，所以为了用计算机存储汉字，必须使用多个字节。 多字节字符集就是使用可变长的编码长度来编码字符，有的字符用一个字节编码，比如ASCII字符，有的字符用两个字节编码，比如汉字。在VC里，多字节字符集等同于双 字节字符集，VC不支持多于2个字节编码长度的字符。GB系列的字符集和ISO-Latin字符集一样，前128个字符和ASCII字符集相同。GB系列字符集是兼容 的，相同的中文字符在这3个字符集里有相同的编码。GB2312和GBK一个字符最多2个字节表示，GB18030可多达4个字节。在这种编码里表示汉字时，需要一个 leading byte，它总是大于127，这个字节的含义是说明它和后面的字节（们）一起表示一个字符 ..." />
 
 
 
@@ -80,7 +80,7 @@ Log4D            </a>
 <footer class="post-info">
     <span class="label label-default">Date</span>
     <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2009-09-12T00:00:00+08:00"> 2009-09-12</time>
+        <i class="fa fa-calendar"></i><time datetime="2009-09-12T00:00:00"> 2009-09-12</time>
     </span>
 
 
@@ -254,11 +254,6 @@ Latin字符集里的字符的话），而且还会有大端小端的问题，解
                         <li class="list-group-item">
                             <a href="https://blog.alswl.com/category/managment/">
                                 <i class="fa fa-folder-open fa-lg"></i> Managment
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="https://blog.alswl.com/category/misc/">
-                                <i class="fa fa-folder-open fa-lg"></i> misc
                             </a>
                         </li>
                         <li class="list-group-item">

@@ -15,8 +15,8 @@
 <link rel="canonical" href="https://blog.alswl.com/2010/01/delphi-unit-testing-tool-dunit/">
 
         <meta name="author" content="alswl" />
-        <meta name="keywords" content="Delphi,Lib,Testing" />
-        <meta name="description" content="以前写Java时候经常使用一款单元测试工具JUnit，工作之后在用Delphi，自然也要换到Delphi下面的单元测试工具DUnit。 DUnit是XUnit家族中的一员，是Extreme Programming测试实现Xtreme Testing的一种工具。 DUnit的用法和JUnit很类似，如果有相关经验很容易上手。这里是DUnit的官方地址：http://dunit.sourceforge.net/ ，下载地址：http://sourceforge.net/projects/dunit/ 将DUnit解压至任意目录（我习惯在D:/Study/DelphiLib/），打开Delphi 7，将DUnit路径添加到 Tools- &gt; Environment Options 里面的 Library -&gt; Library Path，这样DUnit就安装完成了。 如果有装过CnPack 的Delphi工具包，就可以很轻松的在 File -&gt; New -&gt; Other -&gt; CnPack -&gt; DUnit测试实例生成向导 中建立新的测试用例。 下面是我的一个简单的测试用例，测试AppFun中的GetString()和 Add …" />
+        <meta name="keywords" content="Delphi,Delphi,Lib,Testing" />
+        <meta name="description" content="以前写Java时候经常使用一款单元测试工具JUnit，工作之后在用Delphi，自然也要换到Delphi下面的单元测试工具DUnit。 DUnit是XUnit家族中的一员，是Extreme Programming测试实现Xtreme Testing的一种工具。 DUnit的用法和JUnit很类似，如果有相关经验很容易上手。这里是DUnit的官方地址：http://dunit.sourceforge.net/ ，下载地址：http://sourceforge.net/projects/dunit/ 将DUnit解压至任意目录（我习惯在D:/Study/DelphiLib/），打开Delphi 7，将DUnit路径添加到 Tools- &gt; Environment Options 里面的 Library -&gt; Library Path ..." />
 
 
 
@@ -80,12 +80,14 @@ Log4D            </a>
 <footer class="post-info">
     <span class="label label-default">Date</span>
     <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2010-01-06T00:00:00+08:00"> 2010-01-06</time>
+        <i class="fa fa-calendar"></i><time datetime="2010-01-06T00:00:00"> 2010-01-06</time>
     </span>
 
 
 
 <span class="label label-default">Tags</span>
+	<a href="https://blog.alswl.com/tag/delphi/">Delphi</a>
+        /
 	<a href="https://blog.alswl.com/tag/delphi/">Delphi</a>
         /
 	<a href="https://blog.alswl.com/tag/lib/">Lib</a>
@@ -105,11 +107,11 @@ Environment Options 里面的 Library -&gt; Library Path，这样DUnit就安装�
 DUnit测试实例生成向导 中建立新的测试用例。</p>
 <p>下面是我的一个简单的测试用例，测试AppFun中的<code>GetString()</code>和 <code>Add()</code>方法。</p>
 <p>TAppFun.pas</p>
-<div class="highlight"><pre><span></span><span class="c">(*</span>
+<div class="highlight"><pre><span class="c">(*</span>
 <span class="c">  UTest by Jason</span>
 <span class="c">  2010-01-06 21:30</span>
 <span class="c">*)</span>
-<span class="kt">unit</span> <span class="n">AppFun</span><span class="o">;</span>
+<span class="kt">unit</span> <span class="nc">AppFun</span><span class="o">;</span>
 </pre></div>
 <p>interface</p>
 <p>uses SysUtils;</p>
@@ -130,7 +132,7 @@ DUnit测试实例生成向导 中建立新的测试用例。</p>
 <p>end;</p>
 <p>end.</p>
 <p>UTest.pas</p>
-<div class="highlight"><pre><span></span><span class="c">(*</span>
+<div class="highlight"><pre><span class="c">(*</span>
 <span class="c">  UTest by Jason</span>
 <span class="c">  2010-01-06 21:30</span>
 <span class="c">*)</span>
@@ -285,11 +287,6 @@ DUnit测试实例生成向导 中建立新的测试用例。</p>
                         <li class="list-group-item">
                             <a href="https://blog.alswl.com/category/managment/">
                                 <i class="fa fa-folder-open fa-lg"></i> Managment
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="https://blog.alswl.com/category/misc/">
-                                <i class="fa fa-folder-open fa-lg"></i> misc
                             </a>
                         </li>
                         <li class="list-group-item">

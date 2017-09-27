@@ -76,11 +76,7 @@ user-rights</a>)，但是这样还是不够灵活，最好需要能够对每一�
 户权限管理系统。就我使用的两大部分，主要包括MemberShip和roleManager这两个模块，分别是对用户和角色进行管理。</p>
 <h2 id="membershipdui-xi-tong-jin-xing-guan-li-da-zhi-fen-wei-liang-ge-ban-fa">MemberShip对系统进行管理大致分为两个办法</h2>
 <p>1.可以通过"登录"系列用户控件的任务窗口中的"管理网站"打开"ASP.Net Web 应用程序管理"。 可以控制用户、角色、权限三个主要属性，另外还能选择
-"提供程序"（这个provider分为MemberShip和RoleManager两种，如果同名的话，可以选择同一提供程序）
-<img alt="userControl" src="https://ohsolnxaa.qnssl.com/2009/11/userControl.jpg"/>
-<img alt="userManager" src="https://ohsolnxaa.qnssl.com/2009/11/userManager.jpg"/>
-2.使用Web.config进行配置
-其实上面的可视化界面在配置提供程序和访问规则（权限设定）时候，本质上修改的是根目录web.config和各个文件夹下对应的web.config …</p>
+"提供程序"（这个provider分为MemberShip和RoleManager两种，如果同名的话，可以选择同一提供程序 ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/11/membership-the-use-of-experience/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -96,7 +92,7 @@ user-rights</a>)，但是这样还是不够灵活，最好需要能够对每一�
 uml简单设计图，数据库文档，需求分析和论文。</p>
 <p>系统关键词是： <strong>Asp.NET</strong>;&amp;nbsp_place_holder; <strong>MemberShip</strong>;&amp;nbsp_place_holder;
 <strong>iBatisNet</strong>;&amp;nbsp_place_holder; <strong>AjaxControlToolkit</strong>; <strong>房屋销售系统 </strong>
-数据库使用的是一个完整的MemberShip 权限管理系统，而不是我自己写的简单User in Role …</p>
+数据库使用的是一个完整的MemberShip 权限管理系统，而不是我自己写的简单User in Role ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/11/thishouse-housing-sales-system/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -106,16 +102,16 @@ uml简单设计图，数据库文档，需求分析和论文。</p>
                 <div class="summary"><p><a href="http://www.chinaqiugou.com/images/detail_no_pic.gif"><img alt="image" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201612/404.png"/></a></p>
 <p>某个系统，检查用户照片，如果发现用户并没有设定照片就返回一张No Photo的图片。</p>
 <p>返回数据库的图片代码比较格式化。</p>
-<div class="highlight"><pre><span></span>int Id = Int32.Parse(Request.Params.Get("Id"));
-string type = Request.Params.Get("type");
-BLL.Student bll = new JznuManager.BLL.Student();
-student = new JznuManager.Model.Student();
-student = bll.GetModel(Id);
-Response.ContentType = "image/jpeg";
-Response.Cache.SetCacheability(HttpCacheability.Public);
-Response.BufferOutput = false;
-//输出图片文件二进制数据
-Response.OutputStream …</pre></div>
+<div class="highlight"><pre><span class="kt">int</span> <span class="n">Id</span> <span class="o">=</span> <span class="n">Int32</span><span class="p">.</span><span class="n">Parse</span><span class="p">(</span><span class="n">Request</span><span class="p">.</span><span class="n">Params</span><span class="p">.</span><span class="n">Get</span><span class="p">(</span><span class="s">"Id"</span><span class="p">));</span>
+<span class="n">string</span> <span class="n">type</span> <span class="o">=</span> <span class="n">Request</span><span class="p">.</span><span class="n">Params</span><span class="p">.</span><span class="n">Get</span><span class="p">(</span><span class="s">"type"</span><span class="p">);</span>
+<span class="n">BLL</span><span class="p">.</span><span class="n">Student</span> <span class="n">bll</span> <span class="o">=</span> <span class="n">new</span> <span class="n">JznuManager</span><span class="p">.</span><span class="n">BLL</span><span class="p">.</span><span class="n">Student</span><span class="p">();</span>
+<span class="n">student</span> <span class="o">=</span> <span class="n">new</span> <span class="n">JznuManager</span><span class="p">.</span><span class="n">Model</span><span class="p">.</span><span class="n">Student</span><span class="p">();</span>
+<span class="n">student</span> <span class="o">=</span> <span class="n">bll</span><span class="p">.</span><span class="n">GetModel</span><span class="p">(</span><span class="n">Id</span><span class="p">);</span>
+<span class="n">Response</span><span class="p">.</span><span class="n">ContentType</span> <span class="o">=</span> <span class="s">"image/jpeg"</span><span class="p">;</span>
+<span class="n">Response</span><span class="p">.</span><span class="n">Cache</span><span class="p">.</span><span class="n">SetCacheability</span><span class="p">(</span><span class="n">HttpCacheability</span><span class="p">.</span><span class="n">Public</span><span class="p">);</span>
+<span class="n">Response</span><span class="p">.</span><span class="n">BufferOutput</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+<span class="c1">//输出图片文件二进制数据</span>
+<span class="n">Response</span><span class="p">.</span><span class="n">OutputStream ...</span></pre></div>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/08/no-photo-caused-by-the/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -177,11 +173,6 @@ Response.OutputStream …</pre></div>
                         <li class="list-group-item">
                             <a href="https://blog.alswl.com/category/managment/">
                                 <i class="fa fa-folder-open fa-lg"></i> Managment
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="https://blog.alswl.com/category/misc/">
-                                <i class="fa fa-folder-open fa-lg"></i> misc
                             </a>
                         </li>
                         <li class="list-group-item">

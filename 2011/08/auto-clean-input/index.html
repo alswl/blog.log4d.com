@@ -16,7 +16,7 @@
 
         <meta name="author" content="alswl" />
         <meta name="keywords" content="WebFront" />
-        <meta name="description" content="早期的输入框提示是这样的（via baidu） 左边一个 label ，右边一个输入框。 比较现代的方式是（via Discuz!） 更漂亮的方式是（via 点点） 登录提示信息是放在输入框里面，可以减少文字干扰，我也想在自己手头的小项目中实现这种效果。 我需要达到几个要求： 提示信息是可以暂存的，即用户的输入在清空之后，还能够显示原来的提示信息 只需为 text / textarea 添加一个 class 即可实现效果 不修改 DOM 节点，避免影响上下文选择器 为了实现效果，我需要将提示信息暂存到某个地方。有3个地方可供选择： js 全局变量、输入框自定义属性、上下文 DOM 节点。 js 全局变量比较难控制元素标识，并不是每个元素都可以精准的用 id 标记；输入框自定义属性会破坏语义；在上下文加入节点会破坏 DOM 树。 权衡之后，我选择了使用 输入框自定义属性实现 …" />
+        <meta name="description" content="早期的输入框提示是这样的（via baidu） 左边一个 label ，右边一个输入框。 比较现代的方式是（via Discuz!） 更漂亮的方式是（via 点点） 登录提示信息是放在输入框里面，可以减少文字干扰，我也想在自己手头的小项目中实现这种效果。 我需要达到几个要求： 提示信息是可以暂存的，即用户的输入在清空之后，还能够显示原来的提示信息 只需为 text / textarea 添加一个 class 即可实现效果 不修改 DOM 节点，避免影响上下文选择器 为了实现效果，我需要将提示信息暂存到某个地方。有3个地方可供选择： js 全局变量、输入框自定义属性、上下文 DOM 节点。 js 全局变量比较难控制元素标识，并不是每个元素都可以精准的用 id 标记；输入框自定义属性会破坏语义；在上下文加入节点会破坏 DOM 树。 权衡之后，我选择了使用 输入框自定义属性实现 ..." />
 
 
 
@@ -80,7 +80,7 @@ Log4D            </a>
 <footer class="post-info">
     <span class="label label-default">Date</span>
     <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2011-08-18T00:00:00+08:00"> 2011-08-18</time>
+        <i class="fa fa-calendar"></i><time datetime="2011-08-18T00:00:00"> 2011-08-18</time>
     </span>
 
 
@@ -109,22 +109,22 @@ Log4D            </a>
 <p>权衡之后，我选择了使用 输入框自定义属性实现。</p>
 <p>demo 在<a href="http://lab.log4d.com/javascript/autoclean.html">这里</a>。</p>
 <p>封装的方法代码如下</p>
-<div class="highlight"><pre><span></span>$('.auto_clean').blur(function() {
-    if ($.trim($(this).val()) === '') {
-        $(this).val($(this).attr('message'));
-    }
-}).focus(function() {
-    if ($(this).attr('message') === undefined) {
-        $(this).attr('message', $(this).val());
-    }
-    if ($(this).val() === $(this).attr('message')) {
-        $(this).val('');
-    }
-});
-});
+<div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'.auto_clean'</span><span class="p">).</span><span class="nx">blur</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">$</span><span class="p">.</span><span class="nx">trim</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">val</span><span class="p">())</span> <span class="o">===</span> <span class="s1">''</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">val</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s1">'message'</span><span class="p">));</span>
+    <span class="p">}</span>
+<span class="p">}).</span><span class="nx">focus</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s1">'message'</span><span class="p">)</span> <span class="o">===</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s1">'message'</span><span class="p">,</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">val</span><span class="p">());</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">val</span><span class="p">()</span> <span class="o">===</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s1">'message'</span><span class="p">))</span> <span class="p">{</span>
+        <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">val</span><span class="p">(</span><span class="s1">''</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+<span class="p">});</span>
 </pre></div>
 <p>使用方法如下</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">class=</span><span class="s">"auto_clean"</span> <span class="na">value=</span><span class="s">"搜索用户"</span> <span class="nt">/&gt;</span> 
+<div class="highlight"><pre><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">class=</span><span class="s">"auto_clean"</span> <span class="na">value=</span><span class="s">"搜索用户"</span> <span class="nt">/&gt;</span> 
 <span class="nt">&lt;br/&gt;</span> 
 <span class="nt">&lt;textarea</span> <span class="na">class=</span><span class="s">"auto_clean"</span><span class="nt">&gt;</span>请在这里输入<span class="nt">&lt;/textarea&gt;</span>
 </pre></div>
@@ -231,11 +231,6 @@ HTML5</a></p>
                         <li class="list-group-item">
                             <a href="https://blog.alswl.com/category/managment/">
                                 <i class="fa fa-folder-open fa-lg"></i> Managment
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="https://blog.alswl.com/category/misc/">
-                                <i class="fa fa-folder-open fa-lg"></i> misc
                             </a>
                         </li>
                         <li class="list-group-item">

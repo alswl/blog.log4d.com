@@ -74,50 +74,9 @@ Log4D            </a>
 在这个过程中我发现了一个很有趣的现象：历史遗留的 .net 项目中，
 几乎所有的 SQL 中都会使用一个关键字：<code>nolock</code>。
 这让我很困惑，<code>nolock</code> 的字面意思是对当前技术不使用锁技术，为什么要这样用呢？</p>
-<!-- more -->
-<p>我找了一个范例如下：</p>
-<div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="p">[</span><span class="n">id</span><span class="p">]</span> 
-<span class="k">FROM</span>   <span class="p">[</span><span class="n">dbo</span><span class="p">].[</span><span class="n">foos</span><span class="p">]</span> <span class="k">WITH</span><span class="p">(</span><span class="n">nolock</span><span class="p">)</span> 
-<span class="k">WHERE</span>  <span class="n">aField</span> <span class="o">=</span> <span class="mi">42</span> 
-       <span class="k">AND</span> <span class="n">bField</span> <span class="o">=</span> <span class="mi">1</span> 
-</pre></div>
-<p>作为横向支持工程师，开发工程师会问我：「数据库即将从 SQL Server
-迁移到 MySQL，我们编码中还需要使用 <code>nolock</code> 么？
-MySQL 里面对应的写法是什么 …</p>
+
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2017/09/sql-server-nolock/"><i class="icon-circle-arrow-right"></i>more ...</a>
-            </article>
-            <hr/>
-            <article class="article-list">
-                <h2 class="title"><a href="https://blog.alswl.com/2017/09//"></a></h2>
-                <div class="summary">
-<div id="TOC">
-<ul>
-<li><a href="#第一个问题nolock-是什么">第一个问题：nolock 是什么？</a><ul>
-<li><a href="#隔离级别">隔离级别</a><ul>
-<li><a href="#read-uncommitted">Read Uncommitted</a></li>
-</ul></li>
-<li><a href="#read-committed">Read Committed</a></li>
-<li><a href="#repeatable-read">Repeatable Read</a></li>
-<li><a href="#serializable">Serializable</a></li>
-<li><a href="#db-的默认隔离级别">DB 的默认隔离级别</a></li>
-</ul></li>
-<li><a href="#第二个问题为什么要使用-nolock">第二个问题：为什么要使用 nolock？</a><ul>
-<li><a href="#nolock-测试">nolock 测试</a></li>
-<li><a href="#mvcc">MVCC</a></li>
-<li><a href="#sql-server-2005-之后还需要使用-nolock-么">SQL Server 2005 之后还需要使用 nolock 么？</a></li>
-</ul></li>
-<li><a href="#第三个问题mysql-的对应写法是什么">第三个问题：MySQL 的对应写法是什么？</a></li>
-<li><a href="#回顾一下">回顾一下</a></li>
-<li><a href="#相关资料">相关资料</a></li>
-</ul>
-</div>
-<p>Title: 一个关于 nolock 的故事 Author: alswl Slug: sql-server-nolock Date: 2017-09-19 16:43:45 Tags: SQL Server, MySQL Category: Coding</p>
-<div class="figure">
-<img alt="sql-server.png" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201709/sql-server.png"/>
-<p class="caption">sql-server …</p></div>
-                </div>
-                <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2017/09//"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
             <hr/>
             <article class="article-list">
@@ -126,25 +85,7 @@ MySQL 里面对应的写法是什么 …</p>
 其实做分享对分享者的作用往往大于参与者。
 这是一次将自己知识的梳理的过程，于是我将这次分享整理成这篇文章。</p>
 <p><img alt="201706/stock-exchange.png" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201706/stock-exchange.png"/></p>
-<!-- more -->
-<h2 id="mu-de">目的 🎯</h2>
-<p>我们先来聊聊，什么是「监控」，以及我们期望通过「监控」完成哪些目的？</p>
-<p>传统意义上的监控，是指：</p>
-<blockquote>
-<p>通过一些手段和工具，关注运行中的<strong>硬件、软件、用户体验</strong>的关键数据，将其暴露出来。
-  当关键数据出现异常时候发出警告，进行人工或者自动的响应。</p>
-</blockquote>
-<p>我们平时看到的最常见的监控系统，比如 Zabbix，提供了丰富的模板，
-可以监控服务器的 Load / CPU Usage / Alive 这些常规指标。
-并在出现问题时候，对其进行报警通知。
-随后运维工程师们会上线进行应急操作，case by case 的处理故障。</p>
-<p>我将上面的使用目的归纳为：</p>
-<ul>
-<li>故障发生时提供数据报警</li>
-<li>提供历史数据以供分析</li>
-</ul>
-<p>故事到这里似乎可以结束了，可监控真的是这么简单的么？
-当然没，随着时代的进步，用户对服务提出了更为严苛的要求 …</p>
+
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2017/06/monitoring-introducing/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -167,7 +108,7 @@ MySQL 里面对应的写法是什么 …</p>
 <p>跨网站脚本（Cross-site  scripting，通常简称为XSS或跨站脚本或跨站脚本攻击）是一种网站应用程序的安全漏洞攻击，是代码注入的一种。
   它允许恶意用户将代码注入到网页上，其他用户在观看网页时就会受到影响。这类攻击通常包含了HTML以及用户端脚本语言。</p>
 </blockquote>
-<p>XSS 攻击可以分成两种，反射性 XSS / 存储型 XSS。前者是需要用户触发的 XSS …</p>
+<p>XSS 攻击可以分成两种，反射性 XSS / 存储型 XSS。前者是需要用户触发的 XSS ...</p></hr/>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2017/05/xss/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -191,7 +132,7 @@ MySQL 里面对应的写法是什么 …</p>
 <h2 id="da-po">打破</h2>
 <p>除了拉普拉斯的决定论，这个世纪末还发生了另外一件事情。
 开尔文男爵在 19 世纪的最后一天，发表了「物理大厦已经落成，所剩只是一些装饰性工作」的言论。
-然而，在随后的岁月里，经典物理大厦却开始被量子力学逐步击破 …</p>
+然而，在随后的岁月里，经典物理大厦却开始被量子力学逐步击破 ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2017/01/prophecy/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -212,7 +153,7 @@ MySQL 里面对应的写法是什么 …</p>
 借助大扫除这个运动，恰好进行盘点。
 计算机的世界里，有一个方法论非常好使，在极多场景可以见到其身影：分层。
 TCP 的七层模型，架构设计的 N 层 模型，都是对分层思想的使用。
-查漏补缺也不例外，我们可以按照业务访问流程，将需要排查的问题拆分为：业务 …</p>
+查漏补缺也不例外，我们可以按照业务访问流程，将需要排查的问题拆分为：业务 ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2017/01/spring-cleaning/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -224,14 +165,7 @@ TCP 的七层模型，架构设计的 N 层 模型，都是对分层思想的使
 <p>在上篇文章 <a href="https://blog.alswl.com/2016/11/https-1/">🔒 也谈 HTTPS - HTTPDNS + HTTPS</a> 中，
 我们谈了如何基于 HTTPDNS 来部署无坚不摧的 HTTPS 通信环境，
 这次我们讨论另外一个比较头疼的问题：部署。</p>
-<!-- more -->
-<p>小站点部署 HTTPS 相对成本低，改改前端代码，就可以上线了。
-但作为业务有一定复杂度的大网站，就没办法这么暴力上线了。</p>
-<p>前端在基础库中调整 Scheme 之后，仍然可能存在很多边边角角没有覆盖到。
-比如 JS 里面写死了 HTTP，那在 HTTPS 下请求 HTTP XHR 的话，
-浏览器会将请求拦截掉。
-一旦出现这种故障，用户就无法正常使用业务，小白用户往往也不懂得自己将 <code>https://</code> 换成 <code>http://</code> 使用。</p>
-<p>解决的思路是足够的内测，找一群人帮我在 …</p>
+
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2016/12/https-2/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -254,7 +188,8 @@ Indicator 的含义是建立一系列评价指标，比如价格、户型、位�
 如果我是一个购房者，我挺希望我的置业顾问告诉我这套房有哪些优点、缺点，综合评价得几份。
 （当然实际情况下这些置业顾问都是吹得天花乱坠，尽睁眼说瞎话。）
 看房的过程可能长达数月，而人的记忆会随着时间逐步失真，只对最近看到的事物有深刻印象。
-使用客观的数字评价房源 …</p>
+使用客观的数字评价房源，则可以进行精准的评价，避免产生主观臆断。</p>
+
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2016/12/house/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -271,7 +206,10 @@ Indicator 的含义是建立一系列评价指标，比如价格、户型、位�
 我们在部署 HTTPS 的时候，遇到了一些新问题，首当其冲的就是 HTTPS 部分网络不可访问的问题：</p>
 <blockquote>
 <p>尽管使用了 HTTPS 技术，部分邪恶的运营商，仍然使用 DNS 污染技术，让域名指向的他们自己服务器
-  而这些服务器并没有部署 SSL 服务（就算部署了，也会触发 SSL 证书 …</p></blockquote>
+  而这些服务器并没有部署 SSL 服务（就算部署了，也会触发 SSL 证书 Common name 不一致报警），
+  导致 443 端口直接被拒绝。</p>
+</blockquote>
+
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2016/11/https-1/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -299,9 +237,26 @@ Indicator 的含义是建立一系列评价指标，比如价格、户型、位�
 </li>
 <li>目标<ul>
 <li>覆盖大部分的 URL，当期设计为 top 10 URL，仅包含 GET 接口</li>
-<li>选型时 …</li></ul></li></ul>
+<li>选型时 ...</li></ul></li></ul>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2016/08/api-integration-test/"><i class="icon-circle-arrow-right"></i>more ...</a>
+            </article>
+            <hr/>
+            <article class="article-list">
+                <h2 class="title"><a href="https://blog.alswl.com/2016/06/capacity-planning/">搞定暴涨的流量</a></h2>
+                <div class="summary"><p>2013 年左右，我司业务发展迅速，每天晚上都会面临服务器濒临崩溃情况。
+我相信每个高速发展的互联网企业在某个阶段都会面临这样的情形，比如去年爆红的「足迹」。
+过程往往是：线上出现故障，手机会收到报警，然后登录到服务器上去解决问题。
+处理这种问题工种现在有一个时髦的名称，叫做「SRE（Site Reliability Engineer）」系统可用性工程师。</p>
+<p>虽然我常常救火，但是我还是想尽可能避免线上发生故障。「最好的消息，就是没有消息。」
+减少故障出现概率，增强系统可用性，降低故障处理时间是 SRE 的最大课题。
+在这里有最常用的两个手段，一个是优化性能，一个是做好容量规划和扩展。
+这里我着重讨论后者「容量规划」。</p>
+<p><img alt="看我的一堆报警消息" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201606/message.png"/></p>
+<p>^ 看我的一堆报警消息</p>
+
+                </div>
+                <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2016/06/capacity-planning/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
             <hr/>
 
@@ -452,11 +407,6 @@ Indicator 的含义是建立一系列评价指标，比如价格、户型、位�
                         <li class="list-group-item">
                             <a href="https://blog.alswl.com/category/managment/">
                                 <i class="fa fa-folder-open fa-lg"></i> Managment
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="https://blog.alswl.com/category/misc/">
-                                <i class="fa fa-folder-open fa-lg"></i> misc
                             </a>
                         </li>
                         <li class="list-group-item">

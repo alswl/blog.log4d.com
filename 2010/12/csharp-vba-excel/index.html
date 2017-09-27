@@ -16,7 +16,7 @@
 
         <meta name="author" content="alswl" />
         <meta name="keywords" content="dotNet,Excel,Office,VBA" />
-        <meta name="description" content="Excel在日常办公中应用非常广泛，这次我接到一个案子，需要往Excel中写入数据并能够打印出固定格式，前前后后大概花了将近2星期才搞定，现在做一些分享。 一、关于操作Excel的几种方式 我们导出Excel，大抵是有两种方法，一种是在服务器端用一些类库或者COM组件直接生成Excel成品，其二是在后台只写入数据，而不写入具体格式，等用户下载完 Excel之后再在客户端上利用vba生成Excel成品。 1.1使用&#34;自动化&#34;功能-后台生成成品 微软把后台使用COM组件称之为&#34;自动化&#34;，其实它本身是不建议这种用法，在257757 号文章（服务器端 Office 自动化注意事项）也明文标出&#34;Microsoft 目前建议不要从任何无人参与的、非交互式客户端应用程序或组件（包括 ASP、DCOM 和 NT Service）中进行 Microsoft Office 应用程序的&#34;自动化&#34;，也不为此提供支持，因为 Office 在这种环境中运行时可能会出现不稳定的现象并且/或者会死锁。&#34; 这种方法的优点是给用户更简洁的展现，毕竟原生的Excel成品比半成品来更容易接受，而且可以避免宏安全问题 …" />
+        <meta name="description" content="Excel在日常办公中应用非常广泛，这次我接到一个案子，需要往Excel中写入数据并能够打印出固定格式，前前后后大概花了将近2星期才搞定，现在做一些分享。 一、关于操作Excel的几种方式 我们导出Excel，大抵是有两种方法，一种是在服务器端用一些类库或者COM组件直接生成Excel成品，其二是在后台只写入数据，而不写入具体格式，等用户下载完 Excel之后再在客户端上利用vba生成Excel成品。 1.1使用&#34;自动化&#34;功能-后台生成成品 微软把后台使用COM组件称之为&#34;自动化&#34;，其实它本身是不建议这种用法，在257757 号文章（服务器端 Office 自动化注意事项）也明文标出&#34;Microsoft 目前建议不要从任何无人参与的、非交互式客户端应用程序或组件（包括 ASP、DCOM 和 NT Service）中进行 Microsoft Office 应用程序的&#34;自动化&#34;，也不为此提供支持，因为 Office 在这种环境中运行时可能会出现不稳定的现象并且/或者会死锁。&#34; 这种方法的优点是给用户更简洁的展现，毕竟原生的Excel成品比半成品来更容易接受，而且可以避免宏安全问题 ..." />
 
 
 
@@ -80,7 +80,7 @@ Log4D            </a>
 <footer class="post-info">
     <span class="label label-default">Date</span>
     <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2010-12-14T00:00:00+08:00"> 2010-12-14</time>
+        <i class="fa fa-calendar"></i><time datetime="2010-12-14T00:00:00"> 2010-12-14</time>
     </span>
 
 
@@ -165,16 +165,16 @@ Interop.Excel.dll路径"</p>
 <p>我把我之前封装的C#操作Excel类库分享一下</p>
 <p>注：这个类的Dispose仍然没有解决Excel文件生成之后Excel进程无法正常关闭的问题，目前看来只有杀死进程方法才能起实质性作用。</p>
 <p>其实我觉得这个类库除了让我熟悉一下Excel模型之外，并没派上实质的用场~</p>
-<div class="highlight"><pre><span></span>/// <span class="nt">&lt;summary&gt;</span>
-/// Excel帮助类
-/// Add by alswl 20101130
-/// <span class="nt">&lt;/summary&gt;</span>
-public class ExcelHelper : IDisposable
-{
-    private Excel._Application excelApplication = null;
-    public Excel._Workbook workbook = null;
-    public Excel._Worksheet worksheet = null;
-    private object missing = System.Reflection.Missing.Value;
+<div class="highlight"><pre><span class="c1">/// &lt;summary&gt;</span>
+<span class="c1">/// Excel帮助类</span>
+<span class="c1">/// Add by alswl 20101130</span>
+<span class="c1">/// &lt;/summary&gt;</span>
+<span class="k">public</span> <span class="nf">class</span> <span class="nx">ExcelHelper</span> <span class="p">:</span> <span class="nx">IDisposable</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="nf">Excel._Application</span> <span class="n">excelApplication</span> <span class="o">=</span> <span class="kt">null</span><span class="p">;</span>
+    <span class="k">public</span> <span class="nf">Excel._Workbook</span> <span class="n">workbook</span> <span class="o">=</span> <span class="kt">null</span><span class="p">;</span>
+    <span class="k">public</span> <span class="nf">Excel._Worksheet</span> <span class="n">worksheet</span> <span class="o">=</span> <span class="kt">null</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nf">object</span> <span class="n">missing</span> <span class="o">=</span> <span class="nx">System.Reflection.Missing.Value</span><span class="p">;</span>
 </pre></div>
 <p>public ExcelHelper()</p>
 <p>{</p>
@@ -596,9 +596,9 @@ ToRange)</p>
 565/">Word排版艺术</a>》才开始认识Office，再之后深入PPT和Excel，更是感觉文档模型了不起。。。咳咳咳，扯远了~</p>
 <h3 id="41-shi-yong-adonetxie-ru-shu-ju-dao-excelwen-jian">4.1 使用ADO.net写入数据到Excel文件</h3>
 <p>废话不说了，上核心代码</p>
-<div class="highlight"><pre><span></span>System.Data.OleDb.OleDbConnection objConn = new System.Data.OleDb.OleDbConnection("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" +
-                    destFileName + ";Extended Properties=Excel 8.0;");
-objConn.Open();
+<div class="highlight"><pre><span class="n">System</span><span class="p">.</span><span class="n">Data</span><span class="p">.</span><span class="n">OleDb</span><span class="p">.</span><span class="n">OleDbConnection</span> <span class="n">objConn</span> <span class="o">=</span> <span class="n">new</span> <span class="n">System</span><span class="p">.</span><span class="n">Data</span><span class="p">.</span><span class="n">OleDb</span><span class="p">.</span><span class="n">OleDbConnection</span><span class="p">(</span><span class="s">"Provider=Microsoft.Jet.OLEDB.4.0;Data Source="</span> <span class="o">+</span>
+                    <span class="n">destFileName</span> <span class="o">+</span> <span class="s">";Extended Properties=Excel 8.0;"</span><span class="p">);</span>
+<span class="n">objConn</span><span class="p">.</span><span class="n">Open</span><span class="p">();</span>
 </pre></div>
 <p>System.Data.OleDb.OleDbCommand objCmd = new System.Data.OleDb.OleDbCommand();</p>
 <p>objCmd.Connection = objConn;</p>
@@ -637,24 +637,24 @@ Basic"中打开，千万不要以为写VBA就是录制宏呀~另外附赠一个�
 、Utils，看名字就知道意思了，其中Utils包含一个中文大写数字转换的函数，供前面使用。</p>
 <p>我们需要在Excel自动打开时候进行操作，需要使用函数Workbook_Open，另有Auto_Open，两个有不同之处，可以Google之。</p>
 <p>启用代码如下：</p>
-<div class="highlight"><pre><span></span>'开启工作簿时候动作
-Private Sub Workbook_Open()
+<div class="highlight"><pre><span class="err">'开启工作簿时候动作</span>
+<span class="n">Private</span> <span class="n">Sub</span> <span class="n">Workbook_Open</span><span class="p">()</span>
 
-    MAIN_SHEET = "报价模板"
-    For Each Sheet In Sheets
-        If Sheet.Name = MAIN_SHEET Then
-            Exit Sub
-        End If
-    Next
-    If Sheets("OPTION").Range("B2").Value = "" Then '如果不存在DH行数，则退出
-        Exit Sub
-    End If
+    <span class="n">MAIN_SHEET</span> <span class="o">=</span> <span class="s">"报价模板"</span>
+    <span class="n">For</span> <span class="n">Each</span> <span class="n">Sheet</span> <span class="n">In</span> <span class="n">Sheets</span>
+        <span class="n">If</span> <span class="n">Sheet</span><span class="p">.</span><span class="n">Name</span> <span class="o">=</span> <span class="n">MAIN_SHEET</span> <span class="n">Then</span>
+            <span class="n">Exit</span> <span class="n">Sub</span>
+        <span class="n">End</span> <span class="n">If</span>
+    <span class="n">Next</span>
+    <span class="n">If</span> <span class="n">Sheets</span><span class="p">(</span><span class="s">"OPTION"</span><span class="p">).</span><span class="n">Range</span><span class="p">(</span><span class="s">"B2"</span><span class="p">).</span><span class="n">Value</span> <span class="o">=</span> <span class="s">""</span> <span class="n">Then</span> <span class="err">'如果不存在</span><span class="n">DH</span><span class="err">行数，则退出</span>
+        <span class="n">Exit</span> <span class="n">Sub</span>
+    <span class="n">End</span> <span class="n">If</span>
 
-    MsgBox ("初始化数据，请稍等片刻！")
-    Call Run
-    Call DeleteSheets
-    'Call ActiveWorkbook.Save
-    MsgBox ("初始化数据完成，请保存Excel文件！")
+    <span class="n">MsgBox</span> <span class="p">(</span><span class="s">"初始化数据，请稍等片刻！"</span><span class="p">)</span>
+    <span class="n">Call</span> <span class="n">Run</span>
+    <span class="n">Call</span> <span class="n">DeleteSheets</span>
+    <span class="err">'</span><span class="n">Call</span> <span class="n">ActiveWorkbook</span><span class="p">.</span><span class="n">Save</span>
+    <span class="n">MsgBox</span> <span class="p">(</span><span class="s">"初始化数据完成，请保存Excel文件！"</span><span class="p">)</span>
 </pre></div>
 <p>End Sub</p>
 <p>核心代码的话。。。其实没什么核心代码，就是频繁的使用赋值和Copy函数。。。。</p>
@@ -767,11 +767,6 @@ _Excel_Report_Chart_All.html">C#操作Excel开发报表系列整理</a></p>
                         <li class="list-group-item">
                             <a href="https://blog.alswl.com/category/managment/">
                                 <i class="fa fa-folder-open fa-lg"></i> Managment
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="https://blog.alswl.com/category/misc/">
-                                <i class="fa fa-folder-open fa-lg"></i> misc
                             </a>
                         </li>
                         <li class="list-group-item">
