@@ -37,7 +37,7 @@ article .entry-content > ul, article .entry-content > ol {
 	margin-bottom: 1em;
 }
 
-article .summary > ul, article .summary > ol, article .toc > ul, article .toc > ol {
+article .summary > ul, article .summary > ol, article #toc > ul, article #toc > ol {
 	margin-bottom: 1em;
 }
 
