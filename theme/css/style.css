@@ -29,7 +29,7 @@ article p, article li, article dd, article dt, article form input {
 	line-height: 200%;
 }
 
-article p, article ul, article ol, article pre {
+article p, article ul:first-child, article ol:first-child, article pre, article blockquote {
 	margin: 0px 0px 1em;
 }
 
