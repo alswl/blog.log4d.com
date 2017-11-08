@@ -30,15 +30,15 @@ article p, article li, article dd, article dt, article form input {
 }
 
 article p,  article pre, article blockquote {
-	margin: 0px 0px 1em;
+	margin-bottom: 1em;
 }
 
 article .entry-content > ul, article .entry-content > ol {
-	margin: 0px 0px 1em;
+	margin-bottom: 1em;
 }
 
-article .summary > ul, article .summary > ol {
-	margin: 0px 0px 1em;
+article .summary > ul, article .summary > ol, article .toc > ul, article .toc > ol {
+	margin-bottom: 1em;
 }
 
 .article-detail .panel-body {
