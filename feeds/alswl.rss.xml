@@ -982,7 +982,7 @@ APP 无法在发起连接时候，也没有权限直接操作 socket。
 &lt;p&gt;如果在 QA 人工介入测试之前，就进行一轮黑盒自动化集成测试，可以大大地提高 QA 团队的工作效率。
 基于这样的判断，我们团队花了一些时间，将基于 API 的自动化测试系统搭建起来。
 现在将这个系统的选型和运行状况拎出来，和大家分享。&lt;/p&gt;
-&lt;h3 id="que-ren-ce-shi-fan-wei-mu-biao-he-yi-yi"&gt;确认测试范围、目标和意义&lt;/h3&gt;
+&lt;h2 id="que-ren-ce-shi-fan-wei-mu-biao-he-yi-yi"&gt;确认测试范围、目标和意义&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;范围&lt;ul&gt;
 &lt;li&gt;后台输出的 API 级别 URL&lt;/li&gt;
@@ -1005,7 +1005,7 @@ APP 无法在发起连接时候，也没有权限直接操作 socket。
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id="te-xing-xu-qiu"&gt;特性需求&lt;/h3&gt;
+&lt;h2 id="te-xing-xu-qiu"&gt;特性需求&lt;/h2&gt;
 &lt;p&gt;选型一个系统，不是看市面上有哪些可以供选择，而是看我需要什么样特性的一款产品。
 如果自己的需求和市面上的现成产品差异过大，也可以考虑自己定制。&lt;/p&gt;
 &lt;ul&gt;
@@ -1023,7 +1023,7 @@ APP 无法在发起连接时候，也没有权限直接操作 socket。
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id="tiao-xuan-chu-lai-de-xuan-xing-he-ping-jie"&gt;挑选出来的选型和评价&lt;/h3&gt;
+&lt;h2 id="tiao-xuan-chu-lai-de-xuan-xing-he-ping-jie"&gt;挑选出来的选型和评价&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://www.runscope.com/"&gt;API Monitoring and Testing &amp;middot; Runscope&lt;/a&gt;&lt;ul&gt;
 &lt;li&gt;收费&lt;/li&gt;
@@ -1131,7 +1131,7 @@ APP 无法在发起连接时候，也没有权限直接操作 socket。
 &lt;li&gt;swagger&lt;/li&gt;
 &lt;li&gt;讨论时候的新发现&amp;nbsp;&lt;a href="https://github.com/svanoort/pyresttest"&gt;https://github.com/svanoort/pyresttest&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id="da-jian-demojin-xing-shi-yong"&gt;搭建 demo，进行试用&lt;/h3&gt;
+&lt;h2 id="da-jian-demojin-xing-shi-yong"&gt;搭建 demo，进行试用&lt;/h2&gt;
 &lt;p&gt;在确定选用那几款产品之后，就可以集中精力在几款候选者里面。搭建相应的环境，对他们进行实际测试。&lt;/p&gt;
 &lt;p&gt;supertest：&lt;/p&gt;
 &lt;ul&gt;
@@ -1154,7 +1154,7 @@ APP 无法在发起连接时候，也没有权限直接操作 socket。
 &lt;li&gt;较为复杂&lt;/li&gt;
 &lt;li&gt;有 YAML 了，不用试了&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id="shi-yong-gan-jue_1"&gt;使用感觉&lt;/h2&gt;
+&lt;h2 id="shi-yong-gan-jue"&gt;使用感觉&lt;/h2&gt;
 &lt;p&gt;经过一个季度的试用，我们基于 pyresttest 的项目 abao 运行较稳定。
 尽量在工程师提交代码之后，运行一次，从而可以在早期发现问题。&lt;/p&gt;
 &lt;p&gt;由于是基于 Python 的源代码，我们还给 pyresttest 开发了几款插件：&lt;/p&gt;
@@ -1166,7 +1166,7 @@ APP 无法在发起连接时候，也没有权限直接操作 socket。
 &lt;p&gt;在和 CI 的配合方面，我们在 Jinkins 搭建了 abao / abao-master 项目，
 前者响应每次 Push 请求，都会自动构建一遍，后者每天凌晨会将 master 运行一遍。&lt;/p&gt;
 &lt;p&gt;感谢项目贡献者：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;project&lt;/span&gt;  &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;abao&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;project&lt;/span&gt;  &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;abao&lt;/span&gt;
  &lt;span class="n"&gt;repo&lt;/span&gt; &lt;span class="n"&gt;age&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt; &lt;span class="n"&gt;months&lt;/span&gt;
  &lt;span class="n"&gt;active&lt;/span&gt;   &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;32&lt;/span&gt; &lt;span class="n"&gt;days&lt;/span&gt;
  &lt;span class="n"&gt;commits&lt;/span&gt;  &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;109&lt;/span&gt;
