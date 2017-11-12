@@ -68,6 +68,19 @@ Log4D            </a>
         <div class="col-lg-8 col-lg-offset-2">
 
             <article class="article-list">
+                <h2 class="title"><a href="https://blog.alswl.com/2009/05/post-bar-progress-09-05-07/">贴吧进度-09-05-07</a></h2>
+                <div class="summary"><p>今天写到创建帖子，在编码上遇到问题，jUnit下调用函数没有任何问题，那就表示问题出在Struts Filter捕获的文本上。</p>
+<p>找了好几个方法都没有奏效。</p>
+<p>游客登录情况下的Session还存在一点问题，原因是session类型转换上的问题，今天还没有好好的研究一下。</p>
+<p>至此为止，登录注册写完了，静态校验写了一个毛胚，今天写完的现实帖子的列表，表现层用OGNL完成的，终于脱离开代码混杂的页面。</p>
+<p>解决了一个tx.commit的错误，原来是《开发者突击》书上的代码有问题，我参考了Hibernate的官方文档，终于发现了错误的原因，tx.rollback
+()应该在catch里面而不是final里面。</p>
+<p>写着写着就感觉自己太多的不足，太多要学习的地方，加油！</p>
+                </div>
+                <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/05/post-bar-progress-09-05-07/"><i class="icon-circle-arrow-right"></i>more ...</a>
+            </article>
+            <hr/>
+            <article class="article-list">
                 <h2 class="title"><a href="https://blog.alswl.com/2009/05/no-configuration-found-for-the-specified-action/">No configuration found for the specified action</a></h2>
                 <div class="summary"><p>Tomcat 控制台打出如下警告：</p>
 <p>WARN - No configuration found for the specified action: &lsquo;xxxxx&rsquo;in namespace:
@@ -213,21 +226,6 @@ rootkey.pem -out rootcert.pem</p>
 <p>3 ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/03/using-openssl-to-create-certificates-using-the-command/"><i class="icon-circle-arrow-right"></i>more ...</a>
-            </article>
-            <hr/>
-            <article class="article-list">
-                <h2 class="title"><a href="https://blog.alswl.com/2009/03/common-certificate-format-and-conversion/">常见证书格式和转换【转载】</a></h2>
-                <div class="summary"><p>这些文字都是转来转去，都找不到原作者是谁，唉````</p>
-<p>仍然感谢作者的贡献....</p>
-<p>PKCS 全称是 Public-Key Cryptography Standards ，是由 RSA
-实验室与其它安全系统开发商为促进公钥密码的发展而制订的一系列标准，PKCS 目前共发布过 15 个标准。 常用的有：</p>
-<p>PKCS#7 Cryptographic Message Syntax Standard</p>
-<p>PKCS#10 Certification Request Standard</p>
-<p>PKCS#12 Personal Information Exchange Syntax Standard</p>
-<p>X.509是常见通用的证书格式。所有的证书都符合为Public Key Infrastructure (PKI) 制定的 ITU-T X509 国际标准。</p>
-<p>PKCS#7 常用的后缀是： .P7B .P7C ...</p>
-                </div>
-                <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/03/common-certificate-format-and-conversion/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
             <hr/>
 

@@ -68,6 +68,26 @@ Log4D            </a>
         <div class="col-lg-8 col-lg-offset-2">
 
             <article class="article-list">
+                <h2 class="title"><a href="https://blog.alswl.com/2009/11/jagged-alliance-edt-txt-converter-v0-9/">铁血联盟EdtTxt转换器v0.9</a></h2>
+                <div class="summary"><p>上个月时候，<a href="http://zww.me/">zwwooooo</a>同鞋联系我让帮写一个铁血联盟中需要用到的Edt&lt;-&gt;Txt转换器，我前前后后大约三个星期完成
+到v0.9，能完成基本的功能（但似乎存在一些未知Bug，-_-#）。由于我之后很长一段时间得找工作，所以不能继续维护这个小工具，现在把他的代码开放，如果有高
+人能看到这个小工具，有兴趣的话可以继续维护下去，(zwwooooo，真的很不好意思&hellip;&hellip;)。
+一些关于程序说明，zwwooooo原文，更详细可以联系zwwooooo本人：</p>
+<blockquote>
+<p>edt（后缀） 是游戏对话文件，游戏里有很多种，但都是有规律的，我把一些规律和流程说一下</p>
+</blockquote>
+<p>一、从 edt 提取出对话部分文本，然后转换并输出为 ansi 码文本，用附件的 000.edt 为例说明</p>
+<ol>
+<li>
+<p>把 000.edt 文件用16进制方式打开，对话从"0"处开始，结束标志是2个16进制字节：00 00</p>
+</li>
+<li>
+<p>000.edt ...</p></li></ol>
+                </div>
+                <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/11/jagged-alliance-edt-txt-converter-v0-9/"><i class="icon-circle-arrow-right"></i>more ...</a>
+            </article>
+            <hr/>
+            <article class="article-list">
                 <h2 class="title"><a href="https://blog.alswl.com/2009/10/membership-moving-soft-issue-of-builder-under-the-userid/">MemberShip在动软生成器下UserId的问题</a></h2>
                 <div class="summary"><h2 id="bei-jing">背景</h2>
 <p>这个月的课程设计我抽签是「房屋销售系统」，一个比较简单的类CMS系统。考虑到时间的因素，我放弃了Python in Django，而是选择了我相对熟悉的.N
@@ -214,30 +234,6 @@ Python的标准模块struct就用来解决这个问题。</p>
 leading byte，它总是大于127，这个字节的含义是说明它和后面的字节（们）一起表示一个字符 ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/09/encoding-ascii-ansi-gb-2312-unicode-utf-8-utf-16/"><i class="icon-circle-arrow-right"></i>more ...</a>
-            </article>
-            <hr/>
-            <article class="article-list">
-                <h2 class="title"><a href="https://blog.alswl.com/2009/09/python-to-read-and-write-files/">Python读写文件</a></h2>
-                <div class="summary"><p>本文来源：<a href="http://www.cnblogs.com/coderzh/archive/2008/05/10/1191410.html">Python天天美味(17) - open读写文件 - CoderZh的技术博客 -
-博客园</a></p>
-<p>「我本来想加上看到这篇文章的博客链接，结果粘贴时候发现了图片来源居然是cnblogs，这才反应过来这不是那个博客的原创。我不反对转载，看到的好文章我自己也会
-收藏下来，转载能帮助更多需要的人，可是，至少加上人家原作者的地址呀&hellip;&hellip;」-alswl</p>
-<p>Python中文件操作可以通过open函数，这的确很像C语言中的fopen。通过open函数获取一个file
-object，然后调用read()，write()等方法对文件进行读写操作。</p>
-<h2 id="1open">1.open</h2>
-<p>使用open打开文件后一定要记得调用文件对象的close()方法。比如可以用try/finally语句来确保最后能关闭文件。</p>
-<div class="highlight"><pre><span class="n">file_object</span> <span class="o">=</span> <span class="n">open</span><span class="p">(</span><span class="err">'</span><span class="n">thefile</span><span class="p">.</span><span class="n">txt</span><span class="err">'</span><span class="p">)</span>
-<span class="nl">try:</span>
-    <span class="n">all_the_text</span> <span class="o">=</span> <span class="n">file_object</span><span class="p">.</span><span class="n">read</span><span class="p">(</span> <span class="p">)</span>
-<span class="nl">finally:</span>
-    <span class="n">file_object</span><span class="p">.</span><span class="n">close</span><span class="p">(</span> <span class="p">)</span>
-</pre></div>
-<p>注：不能把open语句放在try块里，因为当打开文件出现异常时，文件对象file_object无法执行close()方法。</p>
-<h2 id="2du-wen-jian">2.读文件</h2>
-<h3 id="du-wen-ben-wen-jian">读文本文件</h3>
-<div class="highlight"><pre><span class="n">input</span> <span class="o">=</span> <span class="n">open ...</span></pre></div>
-                </div>
-                <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/09/python-to-read-and-write-files/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
             <hr/>
 
