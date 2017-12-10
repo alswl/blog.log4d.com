@@ -2,6 +2,7 @@
 <rss version="2.0"><channel><title>Log4D</title><link>https://blog.alswl.com/</link><description></description><lastBuildDate>Sun, 12 Nov 2017 15:30:12 +0800</lastBuildDate><item><title>服务性能监控：USE方法（The USE Method）</title><link>https://blog.alswl.com/2017/11/use-method/</link><description>&lt;p&gt;本文首发在沪江技术学院公众号，小莞翻译，我做了校对。
 由于微信公众号的封闭性，我担心未来文章不容易被发现。
 为了避免沧海遗珠，特意转到这里。&lt;/p&gt;
+&lt;p&gt;英文原文：&lt;a href="http://www.brendangregg.com/usemethod.html"&gt;The USE Method&lt;/a&gt;。&lt;/p&gt;
 &lt;hr/&gt;
 &lt;p&gt;&lt;img alt="201711/performance.jpg" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201711/performance_900.jpg"/&gt;&lt;/p&gt;
 &lt;p&gt;USE 方法是一种能分析任何系统性能的方法论。
