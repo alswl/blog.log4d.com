@@ -1,5 +1,123 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Log4D</title><link href="https://blog.alswl.com/" rel="alternate"></link><link href="https://blog.alswl.com/feeds/alswl.atom.xml" rel="self"></link><id>https://blog.alswl.com/</id><updated>2017-09-19T16:43:45+08:00</updated><entry><title>一个关于 nolock 的故事</title><link href="https://blog.alswl.com/2017/09/sql-server-nolock/" rel="alternate"></link><published>2017-09-19T16:43:45+08:00</published><updated>2017-09-19T16:43:45+08:00</updated><author><name>alswl</name></author><id>tag:blog.alswl.com,2017-09-19:2017/09/sql-server-nolock/</id><summary type="html">&lt;p&gt;&lt;img alt="sql-server.png" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201709/sql-server.png"/&gt;&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Log4D</title><link href="https://blog.alswl.com/" rel="alternate"></link><link href="https://blog.alswl.com/feeds/alswl.atom.xml" rel="self"></link><id>https://blog.alswl.com/</id><updated>2017-12-21T23:46:59+08:00</updated><entry><title>工作和热情</title><link href="https://blog.alswl.com/2017/12/enthusiasm/" rel="alternate"></link><published>2017-12-21T23:46:59+08:00</published><updated>2017-12-21T23:46:59+08:00</updated><author><name>alswl</name></author><id>tag:blog.alswl.com,2017-12-21:2017/12/enthusiasm/</id><summary type="html">&lt;p&gt;最近和一位老朋友吃饭，他说他最近比较苦恼：
+「开始有职业危机了，担心自己失去对工作的热情，似乎离油腻的中年人又进了一步」。
+作为一名互联网工程师，我深知这个行业技术日新月异，
+如果对工作都失去了兴趣，会将自己置于跟不上时代发展、自身得不到提升的危险境地；
+从个人生活质量来看，工作占据了一天 1/3 ~ 2/3 的时间，
+失去热情的工作会成为人生的桎梏，不是驾驭工作，而是被工作所奴役，
+这会进而影响一个人的身心健康，得个抑郁症稀疏平常。&lt;/p&gt;
+&lt;p&gt;如何保持对工作的热情，当自己陷入困境时候如何重新调动工作热情？
+这是职场人需要深思的问题。&lt;/p&gt;
+&lt;h2 id="gong-zuo-dai-lai-shi-yao"&gt;工作带来什么？&lt;/h2&gt;
+&lt;p&gt;从因到果，让我们先聊聊工作给我们带来什么？&lt;/p&gt;
+&lt;p&gt;对于不是含着金钥匙出生的群众来说，物质上的回报是重要并且第一位的。
+如果温饱的需求都没有被满足，就没必要讨论精神世界的热情了。
+大部分刚出校园的职场新人可能处于这个状态，一人吃饱全家不愁。
+从马斯洛需求层次理论说起：
+当「生理需求」、「安全需求」被满足之后，就需要「社交需求」、「尊重需求」
+和「自我实现的需求」。
+将这些需求映射到工作中，那就是成了「有志同道合的人一起工作」，
+「工作能干出成绩，获得认可」，
+「有挑战，干出成就感」。&lt;/p&gt;
+&lt;p&gt;我有过一段经历：一个优秀工程师突然申请离职，和他沟通离职原因时，
+他的反馈是「乏了，觉得工作没劲，甚至怀疑开发工程师是否是自己想要的工作，
+想要回家休息一段时间」。
+这个小伙子其实很优秀很优秀，FullStack，好奇心强烈，休息了一段时间，去了豆瓣厂。
+我们后来分析，可能有这么几个原因导致他对这份工作失去了兴趣：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;他被分配到的工作内容不够有挑战，业务开发在一定程度上面有重复性&lt;/li&gt;
+&lt;li&gt;他所做的几个项目，没有被充分发挥价值，没有获得足够的认同感&lt;/li&gt;
+&lt;li&gt;公司的业务没有出现迅猛爆发，缺乏业务上的成就感&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;由于这个案例的存在，后期我们也做了一些调整，避免再次发生这样的优秀人才流失悲剧。
+当然，这些调整都是从组织的视角出发。但并非所有组织都有这样自省能力。
+那么作为个体，有哪些方法可以挽回逝去的热情呢？&lt;/p&gt;
+&lt;h2 id="fang-da-yi-you-cheng-ji-de-ying-xiang-li"&gt;放大已有成绩的影响力&lt;/h2&gt;
+&lt;p&gt;将已有的工作成绩影响力放大，这是最不耗力气的一种办法。&lt;/p&gt;
+&lt;p&gt;我们工作中，应当是取得了一些成绩的，这些成绩是否已经最大化发挥作用了？
+还有没有价值可以深挖？&lt;/p&gt;
+&lt;p&gt;扩大作用的一种做法就是写作。
+将工作内容中有创新、创意的地方，落实为文章进行发表。
+不少公司会有和技术相关的宣传平台，比如沪江就有一个「沪江技术学院」公众号。
+就比较适合发布公司内的一些技术创新、工程实践。
+如果公司没有提供这样的平台，也可以使用自己的公众号或者博客，
+唯一要注意的就是敏感信息不要泄露。&lt;/p&gt;
+&lt;p&gt;除了使用写文章的方式，还有其他一些思路可以参考：做内部/外部分享；
+将成果开源出来。做分享可以给自己带来不少成就感，
+内部的分享可以更快速的对自己的成果进行宣传，也能通过这种形式培养信任感。
+做开源是一个更大的话题，不少团队有这样的成功经验。比如饿了么的 Element，
+我司也开源了 Guice 这样的系统。
+这都是在日常工作中的工程实施总结形成的开源项目。&lt;/p&gt;
+&lt;p&gt;有同学会问：自己觉得自己的工作亮点太少，缺乏对外部分享的价值。
+其实这种担忧大可不必，只要是有价值的输出，总是能找到适合的输出对象，
+如果对行业老司机没有帮助，那么对新人是否有帮助呢？
+对上下游的 parterner 是否有帮助么？
+前两天还看到一个阿里的开源项目 &lt;a href="https://github.com/alibaba/java-dns-cache-manipulator"&gt;alibaba/java-dns-cache-manipulator&lt;/a&gt;，
+你能说这个很复杂么？但仍然可以给特定场景的人带来帮助。&lt;/p&gt;
+&lt;h2 id="jia-da-shen-du-yan-du-zhui-qiu-ji-zhi"&gt;加大深度广度，追求极致&lt;/h2&gt;
+&lt;p&gt;假如工作内容是千篇一律，相信不管是谁都无法长期容忍。
+这时候就要考虑一下突破自己固有的职责边界。&lt;/p&gt;
+&lt;p&gt;第一种路径是突破工作内容所需要的深度，
+将工作关注的问题能够刨根问底。在平凡的工作机会上面做出彩。
+牛顿在发现力学三大定律，发明微积分后，还去英国皇家铸币厂工作。
+我相信作为物理学家、数学家，他对主持铸币这个工作和他过往的工作无关，
+但他仍然投入了极大精力和热情去处理事务，并且变革了从银本位到金本位。&lt;/p&gt;
+&lt;p&gt;第二种方式是扩大自己的涉猎面，尝试探索新鲜事务。
+在日常工作中，思考一下自己的上游、下游是否有遇到一些瓶颈，可否给予他们帮助？
+支撑自己日常工作的基础设施是否足够高效、健壮，能否在上面出一些力量？
+更有甚者，一些技术同学可以向前台走，去从技术的视角推动业务的变化。
+也有一些同学可以往后走，往 BI 或者 AI 发展。
+改变自己的职能变动太大，但是适当扩展自己涉猎面可以增强自己综合素质，
+为未来提供更多可能性。&lt;/p&gt;
+&lt;p&gt;最后一个路径是以更极致的标准来要求自己。
+有些朋友可能会说道：在工程实践中，我们不是不推崇过度设计么？
+的确，我们要避免矫枉过正，但如果现在要求达到 60 分，我们做 120 分可能是过度设计，
+我并不觉得追求 80 分有什么过分。
+以超出需求者期望的姿态做事，技术上面追求极致，业务上追求卓越，
+过程可能比较艰辛，但是获得的成就感也会更大。&lt;/p&gt;
+&lt;p&gt;积极主动去摸索自己的瓶颈，不要被自己的现状所禁锢。
+掌握自己固有知识，挖掘上下游知识，这是保持热情的重要方式。&lt;/p&gt;
+&lt;h2 id="xun-zhao-zhi-tong-dao-he-de-peng-you"&gt;寻找志同道合的朋友&lt;/h2&gt;
+&lt;p&gt;一个人是孤独的，鲁滨逊尚且需要星期五相伴，
+何况我们这些生活在高度复杂社会里的人。
+当一个人对方向产生迷茫，对处境有困惑，对问题感到棘手时候，
+陪伴在周围的朋友是极其重要的。&lt;/p&gt;
+&lt;p&gt;我在前东家曾经有过迷茫的时间段，但是遇到了相当多可以学习的朋友。
+我们交流对现状的看法，探索解决问题的思路，畅谈未来发展的可能性。
+这个过程中，发挥出了 1+1&amp;gt;2 的效应，互相激励，互相促进。&lt;/p&gt;
+&lt;p&gt;如果在团队内找不到合适的伙伴，
+那么参加外部活动，加入本地社区就是另外一种寻找朋友的方式。
+在豆瓣同城、Meetup 等网络社区中，都可以找到大量同行业的朋友。
+我自己曾经深度参与的组织有 CPyUG（Python 社区） / GDG（Google 开发者社区）
+/ LUG（Linux 用户组）。&lt;/p&gt;
+&lt;p&gt;写作也是一种高效的社交，建立自己的知识输出平台，有利于结实更多同行业人才。
+输出自己的经验的同时，还能进行二次思考，并且形成自己的个人品牌。&lt;/p&gt;
+&lt;h2 id="yong-jiao-tou-piao"&gt;用脚投票&lt;/h2&gt;
+&lt;p&gt;如果经过各种尝试，发现的确无法恢复自己对工作的热情，那么也可能是环境的问题。
+给自己一些时间思考，思考清楚原因。
+离开对个体和团队来说未必是一件好事。
+长期消沉没有战斗力的人，对于团队其实是团队毒药，会将气氛带差。
+在一个没有热情的环境中工作，也是浪费个人的时间。「逝者如斯，不舍昼夜」，
+一个人的生命何其短暂，不要浪费在没热情的事情上。&lt;/p&gt;
+&lt;p&gt;如果离开当前的团队，那么在下次选择时候，一定要慎重考虑之前遇到的问题，
+避免悲剧重复发生。&lt;/p&gt;
+&lt;h2 id="zui-hou"&gt;最后&lt;/h2&gt;
+&lt;p&gt;一个人很难持续保持极高热情，原因是你的工作内容始终会变得熟悉和重复。
+这时候即进入一个舒适区，是努力挣脱这种状态还是走出来，
+取决于个人的追求。
+努力调整自己，通过学习、体验、Review 的方式，来帮助自己成长。
+当到达瓶颈期的时候，想办法从自身、外部寻找帮助，重新进入痛苦区，让自己能够成长。&lt;/p&gt;
+&lt;p&gt;祝你持续有热情地工作。&lt;/p&gt;
+&lt;hr&gt;
+&lt;div class="panel"&gt;
+&lt;div class="panel-body"&gt;
+   &lt;small&gt;原文链接: &lt;a href="https://blog.alswl.com/2017/12/enthusiasm/"&gt;https://blog.alswl.com/2017/12/enthusiasm/&lt;/a&gt;&lt;/small&gt;&lt;br&gt;
+   &lt;small&gt;欢迎关注我的微信公众号：&lt;a href="http://mp.weixin.qq.com/mp/getmasssendmsg?__biz=MzIyNTIwMTU3MQ==#wechat_webview_type=1&amp;wechat_redirect"&gt;窥豹&lt;/a&gt;&lt;/small&gt;&lt;br&gt;
+   &lt;small&gt;&lt;img src="https://ohsolnxaa.qnssl.com/upload_dropbox/201605/qrcode_for_gh_17e2f9c2caa4_258.jpg"/&gt;&lt;/small&gt;&lt;br&gt;
+   &lt;small&gt;3a1ff193cee606bd1e2ea554a16353ee&lt;/small&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</summary><category term=""></category></entry><entry><title>一个关于 nolock 的故事</title><link href="https://blog.alswl.com/2017/09/sql-server-nolock/" rel="alternate"></link><published>2017-09-19T16:43:45+08:00</published><updated>2017-09-19T16:43:45+08:00</updated><author><name>alswl</name></author><id>tag:blog.alswl.com,2017-09-19:2017/09/sql-server-nolock/</id><summary type="html">&lt;p&gt;&lt;img alt="sql-server.png" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201709/sql-server.png"/&gt;&lt;/p&gt;
 &lt;p&gt;加入沪江不久，我就被扔到一个将集团 SQL Sever 的数据库迁移到 MySQL 的项目里，
 同时伴随进行的还有 .net 系统迁移到 Java 系统。
 在这个过程中我发现了一个很有趣的现象：历史遗留的 .net 项目中，
@@ -2141,93 +2259,4 @@ update: 2015-12-13，添加 &lt;code&gt;redispatch&lt;/code&gt;  / &lt;code&gt;r
    &lt;small&gt;3a1ff193cee606bd1e2ea554a16353ee&lt;/small&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</summary><category term="Logger"></category></entry><entry><title>Redis 集群扩容</title><link href="https://blog.alswl.com/2015/07/redis-migration/" rel="alternate"></link><published>2015-07-26T15:33:49+08:00</published><updated>2015-07-26T15:33:49+08:00</updated><author><name>alswl</name></author><id>tag:blog.alswl.com,2015-07-26:2015/07/redis-migration/</id><summary type="html">&lt;p&gt;几乎每一个网站都需要用户登录状态系统，其中核心是存储 Session 的用户登录状态存储系统。
-主流的实现之一是使用 Redis 存储用户登录信息，Redis 特点是功能简单、无依赖、
-存储结构丰富、有持久化功能。
-我大堆糖的 Session 存储系统也正是基于 Redis。&lt;/p&gt;
-&lt;p&gt;可是 Redis 也存在一些问题，比如 Redis 自身没有 Sharding 功能，Replication
-也是在逐步完善完善过程中
-（2.4 支持 &lt;code&gt;Replication&lt;/code&gt;，2.8 加入 &lt;code&gt;Replication partial resynchronization&lt;/code&gt; 功能）。
-纵观当下流行的 DB 系统，哪个不是自带这两个特性，这两个分布式特性应该成为新出产的 DB 系统的标配。
-而且作者还经常发布延期，放烟雾弹，不知道 Redis 自带 Sharding 特性要等到何年马月。&lt;/p&gt;
-&lt;p&gt;随着业务规模的扩大，单台 Redis 实例不能满足需求。
-考虑到 Redis 也是久经考验的战士，替换掉他成本比较高，那就对 Redis 进行扩容。&lt;/p&gt;
-&lt;p&gt;扩容的基本要求是：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;扩大系统容量，成为分布式系统，未来有横向扩展&lt;/li&gt;
-&lt;li&gt;业务不中断&lt;/li&gt;
-&lt;li&gt;保证原始数据的可用性&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Google 了一下，有两个项目可以参考：
-&lt;a href="https://github.com/idning/redis-mgr"&gt;https://github.com/idning/redis-mgr&lt;/a&gt;
-和豌豆荚的 &lt;a href="https://github.com/wandoulabs/codis"&gt;Codis&lt;/a&gt;。&lt;/p&gt;
-&lt;p&gt;研究了这两项目的代码之后，发现前者存在几个问题：
-需要停机进行操作。
-后者提供了完整一套解决方案，Server/Proxy/Config Manage，对我这次迁移来说，太重了，
-而且项目比较新，风险高，只能用来参考实现方法。&lt;/p&gt;
-&lt;p&gt;最后我决定参考 redis-mgr 的方案，然后使用两种方式同步数据：
-系统运行中打上 patch 完成数据的动态迁移；后台跑迁移数据脚本。&lt;/p&gt;
-&lt;h2 id="fang-an-de-guan-jian-ci"&gt;方案的关键词&lt;/h2&gt;
-&lt;h3 id="dump-restore-pttl"&gt;&lt;code&gt;dump&lt;/code&gt; / &lt;code&gt;restore&lt;/code&gt; / &lt;code&gt;pttl&lt;/code&gt;&lt;/h3&gt;
-&lt;p&gt;核心的操作流程是：
-使用 &lt;code&gt;dump&lt;/code&gt; 命令导出数据，&lt;code&gt;restore&lt;/code&gt; 命令恢复数据，&lt;code&gt;pttl&lt;/code&gt; 命令获取设置 TTL。&lt;/p&gt;
-&lt;h3 id="presharding"&gt;Presharding&lt;/h3&gt;
-&lt;p&gt;Redis 官方没有 sharding 方案，但提供一种策略 presharding。
-Redis 作者写了一篇&lt;a href="http://oldblog.antirez.com/post/redis-presharding.html"&gt;Redis Presharding&lt;/a&gt;。核心是：
-提前做 2^n 个实例，避免扩容时候数据迁移，一般使用 2^n 个实例，
-目的是为了能够自然地乘以 2 进行拆分。
-这些实例可以分开放，也可以放在同一台机器上面。&lt;/p&gt;
-&lt;p&gt;我这次操作，将 &lt;code&gt;OLD_CLUSTER&lt;/code&gt; 的一个实例拆分为了 &lt;code&gt;NEW_CLUSTER&lt;/code&gt; 的 32 个实例，
-跑在 4 台服务器上面。&lt;/p&gt;
-&lt;h3 id="twemproxy"&gt;Twemproxy&lt;/h3&gt;
-&lt;p&gt;Redis 的 经典款 Proxy，用来实现对多个 Redis 实例 sharding，
-Twitter 出品，&lt;a href="https://github.com/twitter/twemproxy"&gt;链接&lt;/a&gt;。&lt;/p&gt;
-&lt;h3 id="yi-zhi-xing-hash"&gt;一致性 Hash&lt;/h3&gt;
-&lt;p&gt;传统的 Hash 方法是 &lt;code&gt;hash(key) = value % nodes.length&lt;/code&gt;，
-当加入、减少 Hash 节点时候，会导致 &lt;code&gt;hash(key)&lt;/code&gt; 的全部失效。
-典型的一致性 Hash 算法，&lt;a href="https://github.com/RJ/ketama"&gt;Ketama&lt;/a&gt; 通过环状 node 分布，解决了这个问题。&lt;/p&gt;
-&lt;p&gt;Twemproxy 还提供 &lt;code&gt;modula&lt;/code&gt; 和 random 两种分布式方案。&lt;/p&gt;
-&lt;h3 id="db-da-xiao-yu-gu"&gt;db 大小预估&lt;/h3&gt;
-&lt;p&gt;Redis 只能查看整个实例内存尺寸。不能查看单个 db。
-使用 &lt;code&gt;ramdomkey&lt;/code&gt; 做抽样检查，取 1% key 抽样，估计单个 key 大小，
-然后做 benchmark 估算操作性能，估算操作时间。&lt;/p&gt;
-&lt;h3 id="dong-tai-qian-yi-shu-ju"&gt;动态迁移数据&lt;/h3&gt;
-&lt;p&gt;为了在迁移过程中保证服务可用，需要将数据兼容 Redis 集群 &lt;code&gt;OLD_CLUSTER&lt;/code&gt; / &lt;code&gt;NEW_CLUSTER&lt;/code&gt;，
-业务代码必须同时支持访问两个集群，做法也很简单&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;访问 &lt;code&gt;NEW_CLUSTER&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;有数据则继续操作，无数据则访问 &lt;code&gt;OLD_CLUSTER&lt;/code&gt;，获取数据 &lt;code&gt;DATA&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;将数据和 TTL 保存到 &lt;code&gt;NEW_CLUSTER&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;将这个逻辑封装成一个 client，替换掉原来 Redis Client 即可。&lt;/p&gt;
-&lt;p&gt;注意，这个点可能产生幻读，读取 key 和写入 key 有个时间差，
-但是我处理的 session 是 immutable 数据，不会出现问题。
-而如果将 Redis 用作 Persistence，就要评估对业务的影响了。&lt;/p&gt;
-&lt;h3 id="hou-tai-qian-yi-shu-ju"&gt;后台迁移数据&lt;/h3&gt;
-&lt;p&gt;依赖用户访问来进行迁移，效率太低了，这个迁移时间和最长 TTL 时间相当，
-需要主动将这个数据从 &lt;code&gt;OLD_CLUSTER&lt;/code&gt; 迁移到 &lt;code&gt;NEW_CLUSTER&lt;/code&gt;。&lt;/p&gt;
-&lt;p&gt;方案也很简单，使用 &lt;code&gt;randomkey&lt;/code&gt; 获取一批数据，然后按动态迁移数据方法进行迁移。&lt;/p&gt;
-&lt;h3 id="pipeline"&gt;pipeline&lt;/h3&gt;
-&lt;p&gt;如果在业务逻辑中使用了 PIPELINE，就会遇到问题，需要改写掉业务方案，
-待迁移完成之后，再进行恢复。&lt;/p&gt;
-&lt;h3 id="multikey"&gt;multikey&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;mget&lt;/code&gt; / &lt;code&gt;mset&lt;/code&gt; 等多键操作方法需要注意拆解 key，然后一一 &lt;code&gt;dump&lt;/code&gt; / &lt;code&gt;restore&lt;/code&gt; /
-&lt;code&gt;ttl&lt;/code&gt;。&lt;/p&gt;
-&lt;h2 id="zheng-shi-cao-zuo_1"&gt;正式操作&lt;/h2&gt;
-&lt;p&gt;线上操作的数据：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;# 0.483 g db0&lt;/span&gt;
-&lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mo"&gt;05&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;19&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;444&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;__main__&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;INFO&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;v&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;dumps&lt;/span&gt; &lt;span class="n"&gt;keys&lt;/span&gt; &lt;span class="mi"&gt;1014&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;1375371&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="p"&gt;...,&lt;/span&gt; &lt;span class="n"&gt;time&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;974.183676004&lt;/span&gt;
-&lt;span class="cp"&gt;# 4.552 g db1&lt;/span&gt;
-&lt;span class="mi"&gt;17&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;38&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;36&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;422&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;__main__&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;INFO&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;v&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;dumps&lt;/span&gt; &lt;span class="n"&gt;keys&lt;/span&gt; &lt;span class="mi"&gt;1392&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;7711834&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="p"&gt;...,&lt;/span&gt; &lt;span class="n"&gt;time&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;3076.41647506&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;附上 Migration Script：&lt;a href="https://gist.github.com/alswl/e96a5308ebac4f69f809f9ba56dfe168"&gt;https://blog.alswl.com/2015/07/redis-migration/ Redis Cluster Migration&lt;/a&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;div class="panel"&gt;
-&lt;div class="panel-body"&gt;
-   &lt;small&gt;原文链接: &lt;a href="https://blog.alswl.com/2015/07/redis-migration/"&gt;https://blog.alswl.com/2015/07/redis-migration/&lt;/a&gt;&lt;/small&gt;&lt;br&gt;
-   &lt;small&gt;欢迎关注我的微信公众号：&lt;a href="http://mp.weixin.qq.com/mp/getmasssendmsg?__biz=MzIyNTIwMTU3MQ==#wechat_webview_type=1&amp;wechat_redirect"&gt;窥豹&lt;/a&gt;&lt;/small&gt;&lt;br&gt;
-   &lt;small&gt;&lt;img src="https://ohsolnxaa.qnssl.com/upload_dropbox/201605/qrcode_for_gh_17e2f9c2caa4_258.jpg"/&gt;&lt;/small&gt;&lt;br&gt;
-   &lt;small&gt;3a1ff193cee606bd1e2ea554a16353ee&lt;/small&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-</summary><category term="Redis"></category></entry></feed>
+</summary><category term="Logger"></category></entry></feed>
