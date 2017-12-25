@@ -141,10 +141,8 @@ caption="iNove的Heading"]<a href="https://ohsolnxaa.qnssl.com/2009/09/iNoveHead
 <p>在使用WordPress自己的code元素后，也就是关闭了CodeColorer插件，代码转义靠在可视化编辑器下就进行了转义。</p>
 <p>像我这个博客，前半段代码存放的是直接html代码，而后来的存放了几篇经过转义的html代码，造成了代码显示混乱。</p>
 <h2 id="zheng-zhuang">症状</h2>
-<p>[caption id="attachment_12631" align="alignnone" width="345"
-caption="开启CodeColorer+可视化界面编辑结果"]<a href="https://ohsolnxaa.qnssl.com/2009/09/Snap2.jpg"><img alt="Snap2" src="https://ohsolnxaa.qnssl.com/2009/09/Snap2.jpg"/></a>[/caption]</p>
-<p>[caption id="attachment_12632" align="alignnone" width="304"
-caption="关闭CodeColorer+HTML编辑结果在首页显示"]<a href="https://ohsolnxaa.qnssl.com/2009/09/Snap3.jpg"><img alt="关闭CodeColorer+HTML编辑结果" src="https://ohsolnxaa.qnssl.com/2009/09/Snap3.jpg"/></a>[/caption]</p>
+<p>[caption id="attachment_12631" align="alignnone" width="345" caption="开启CodeColorer+可视化界面编辑结果"]<a href="https://ohsolnxaa.qnssl.com/2009/09/Snap2.jpg"><img alt="Snap2" src="https://ohsolnxaa.qnssl.com/2009/09/Snap2.jpg"/></a>[/caption]</p>
+<p>[caption id="attachment_12632" align="alignnone" width="304" caption="关闭CodeColorer+HTML编辑结果在首页显示"]<a href="https://ohsolnxaa.qnssl.com/2009/09/Snap3.jpg"><img alt="关闭CodeColorer+HTML编辑结果" src="https://ohsolnxaa.qnssl.com/2009/09/Snap3.jpg"/></a>[/caption]</p>
 <p>[caption id="attachment_12633" align ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/09/the-html-escape-codecolorer/"><i class="icon-circle-arrow-right"></i>more ...</a>
@@ -156,15 +154,16 @@ caption="关闭CodeColorer+HTML编辑结果在首页显示"]<a href="https://ohs
 <p>一直有学Python或者Perl的想法，不过没有规划到日程来，最近打算辞职专心考驾照，正好每天都有点时间来学Python。</p>
 <p>关于Python和Perl，我并没有什么谁优谁劣的看法，只是感觉Python可能资料会多一点，而且Google App
 Enginee支持Python,所以选择了Python。</p>
-<p>OK，这几天写的两段小代码，来自《<a href="http://www.china-
-pub.com/39969&amp;ref=xiangguan">Python核心编程（第二版）</a>》（原书中写这段有错误，我这儿也算勘误了）</p>
+<p>OK，这几天写的两段小代码，来自《<a href="http://www.china-pub.com/39969&amp;ref=xiangguan">Python核心编程（第二版）</a>》（原书中写这段有错误，我这儿也算勘误了）</p>
 <p>makeTextFile.py</p>
-<div class="highlight"><pre><span class="err">'</span><span class="n">makeTextFile</span><span class="p">.</span><span class="n">py</span> <span class="o">--</span> <span class="n">create</span> <span class="n">text</span> <span class="n">file</span><span class="err">'</span>
+<div class="highlight"><pre><span></span>'makeTextFile.py -- create text file'
 </pre></div>
 <p>import os ls = os.linesep</p>
 <h1>get filename</h1>
 <p>while True:</p>
-<p>fname = raw_input('&gt; a ...</p>
+<p>fname = raw_input('&gt; a txt file path')</p>
+<p>if os.path.exists(fname):</p>
+<p>print "Error ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/09/python-code-to-read-and-write-txt/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -246,11 +245,10 @@ Control Toolkit</a>，其功能非常完整，几乎涵盖了表现层方面各�
             <hr/>
             <article class="article-list">
                 <h2 class="title"><a href="https://blog.alswl.com/2009/08/zhong-guo-sheng-fen-yu-cheng-shi-shu-ju-sql/">中国省份与城市数据SQL</a></h2>
-                <div class="summary"><p>本文来源：<a href="http://blog.csdn.net/xielingxu/archive/2007/08/26/1759471.aspx">中国省份与城市数据插入 - xlx -
-CSDN博客</a></p>
+                <div class="summary"><p>本文来源：<a href="http://blog.csdn.net/xielingxu/archive/2007/08/26/1759471.aspx">中国省份与城市数据插入 - xlx - CSDN博客</a></p>
 <p>在Google找到这个，实在是爱不释手，就转过来了，很多项目都需要用到这些数据。</p>
-<div class="highlight"><pre><span class="k">if</span> <span class="n">exists</span> <span class="p">(</span><span class="n">select</span> <span class="o">*</span> <span class="n">from</span> <span class="n">sysobjects</span> <span class="n">where</span> <span class="n">id</span> <span class="o">=</span> <span class="n">OBJECT_ID</span><span class="p">(</span><span class="err">'</span><span class="p">[</span><span class="n">province</span><span class="p">]</span><span class="err">'</span><span class="p">)</span> <span class="n">and</span> <span class="n">OBJECTPROPERTY</span><span class="p">(</span><span class="n">id</span><span class="p">,</span> <span class="err">'</span><span class="n">IsUserTable</span><span class="err">'</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">DROP</span> <span class="n">TABLE</span> <span class="p">[</span><span class="n">province</span><span class="p">]</span>
+<div class="highlight"><pre><span></span>if exists (select * from sysobjects where id = OBJECT_ID('[province]') and OBJECTPROPERTY(id, 'IsUserTable') = 1)
+DROP TABLE [province]
 </pre></div>
 <p>CREATE TABLE [province] (</p>
 <p>[id] [int] NOT NULL,</p>

@@ -16,7 +16,7 @@
 
         <meta name="author" content="alswl" />
         <meta name="keywords" content="Python,Pylons" />
-        <meta name="description" content="当使用 Python2.7 + go-pylons.py 创建 Pylons 运行环境的话，会报一下错误。 [alswl@arch-vm xingtong]$ python go-pylons.py myb_env New python executable in myb_env/bin/python Traceback (most recent call last): File &#34;/home/alswl/work/xingtong/myb_env/lib/python2.7/site.py&#34;, line 67, in &lt;module&gt; import os File &#34;/home/alswl/work ..." />
+        <meta name="description" content="当使用 Python2.7 + go-pylons.py 创建 Pylons 运行环境的话，会报一下错误。 [alswl@arch-vm xingtong]$ python go-pylons.py myb_env New python executable in myb_env/bin/python Traceback (most recent call last): File &#34;/home/alswl/work/xingtong/myb_env/lib/python2.7/site.py&#34;, line 67, in &lt;module&gt; import os File &#34;/home/alswl ..." />
 
 
 
@@ -94,30 +94,29 @@ Log4D            </a>
                 </div>
                 <p>当使用 Python2.7 +<a href="http://pylonshq.com/download/1.0/go-pylons.py"> go-pylons.py</a>
 创建 Pylons 运行环境的话，会报一下错误。</p>
-<div class="highlight"><pre><span class="cp">[</span><span class="nx">alswl</span><span class="p">@</span><span class="nx">arch</span><span class="na">-vm</span> <span class="nx">xingtong</span><span class="cp">]</span>$ python go-pylons.py myb_env
-New python executable in myb_env/bin/python
-Traceback (most recent call last):
-  File "/home/alswl/work/xingtong/myb_env/lib/python2.7/site.py", line 67, in <span class="nt">&lt;module&gt;</span>
-    import os
-  File "/home/alswl/work/xingtong/myb_env/lib/python2.7/os.py", line 398, in <span class="nt">&lt;module&gt;</span>
-    import UserDict
-  File "/home/alswl/work/xingtong/myb_env/lib/python2.7/UserDict.py", line 83, in <span class="nt">&lt;module&gt;</span>
-    import _abcoll
-  File "/home/alswl/work/xingtong/myb_env/lib/python2.7/_abcoll.py", line 11, in <span class="nt">&lt;module&gt;</span>
-    from abc import ABCMeta, abstractmethod
-  File "/home/alswl/work/xingtong/myb_env/lib/python2.7/abc.py", line 8, in <span class="nt">&lt;module&gt;</span>
-    from _weakrefset import WeakSet
-ImportError: No module named _weakrefset
-ERROR: The executable myb_env/bin/python is not functioning
-ERROR: It thinks sys.prefix is '/home/alswl/work/xingtong' (should be '/home/alswl/work/xingtong/myb_env')
-ERROR: virtualenv is not compatible with this system or executable
+<div class="highlight"><pre><span></span><span class="p">[</span><span class="n">alswl</span><span class="nd">@arch</span><span class="o">-</span><span class="n">vm</span> <span class="n">xingtong</span><span class="p">]</span><span class="err">$</span> <span class="n">python</span> <span class="n">go</span><span class="o">-</span><span class="n">pylons</span><span class="o">.</span><span class="n">py</span> <span class="n">myb_env</span>
+<span class="n">New</span> <span class="n">python</span> <span class="n">executable</span> <span class="ow">in</span> <span class="n">myb_env</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">python</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s2">"/home/alswl/work/xingtong/myb_env/lib/python2.7/site.py"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">67</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+    <span class="kn">import</span> <span class="nn">os</span>
+  <span class="n">File</span> <span class="s2">"/home/alswl/work/xingtong/myb_env/lib/python2.7/os.py"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">398</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+    <span class="kn">import</span> <span class="nn">UserDict</span>
+  <span class="n">File</span> <span class="s2">"/home/alswl/work/xingtong/myb_env/lib/python2.7/UserDict.py"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">83</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+    <span class="kn">import</span> <span class="nn">_abcoll</span>
+  <span class="n">File</span> <span class="s2">"/home/alswl/work/xingtong/myb_env/lib/python2.7/_abcoll.py"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">11</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+    <span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">ABCMeta</span><span class="p">,</span> <span class="n">abstractmethod</span>
+  <span class="n">File</span> <span class="s2">"/home/alswl/work/xingtong/myb_env/lib/python2.7/abc.py"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">8</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+    <span class="kn">from</span> <span class="nn">_weakrefset</span> <span class="kn">import</span> <span class="n">WeakSet</span>
+<span class="ne">ImportError</span><span class="p">:</span> <span class="n">No</span> <span class="n">module</span> <span class="n">named</span> <span class="n">_weakrefset</span>
+<span class="n">ERROR</span><span class="p">:</span> <span class="n">The</span> <span class="n">executable</span> <span class="n">myb_env</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">python</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">functioning</span>
+<span class="n">ERROR</span><span class="p">:</span> <span class="n">It</span> <span class="n">thinks</span> <span class="n">sys</span><span class="o">.</span><span class="n">prefix</span> <span class="ow">is</span> <span class="s1">'/home/alswl/work/xingtong'</span> <span class="p">(</span><span class="n">should</span> <span class="n">be</span> <span class="s1">'/home/alswl/work/xingtong/myb_env'</span><span class="p">)</span>
+<span class="n">ERROR</span><span class="p">:</span> <span class="n">virtualenv</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">compatible</span> <span class="k">with</span> <span class="n">this</span> <span class="n">system</span> <span class="ow">or</span> <span class="n">executable</span>
 </pre></div>
-<p>STFW 之后，找到了引发错误的根源&amp;nbsp_place_holder;<a href="https://github.com/pypa/virtualenv">virtualenv
-</a>，这个 bug
+<p>STFW 之后，找到了引发错误的根源&amp;nbsp_place_holder;<a href="https://github.com/pypa/virtualenv">virtualenv</a>，这个 bug
 在<a href="https://github.com/pypa/virtualenv/issues/76">这里</a>已经修复了。</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
-3</pre></div></td><td class="code"><div class="highlight"><pre><span class="gd">--- a/virtualenv.py        2010-09-14 21:48:58.078562930 +0200</span>
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="gd">--- a/virtualenv.py        2010-09-14 21:48:58.078562930 +0200</span>
 <span class="gi">+++ b/virtualenv.py        2010-09-14 21:46:20.650769346 +0200</span>
 <span class="gu">@@ -51,6 +51,8 @@ REQUIRED_FILES = ['lib-dynload', 'config</span>
 </pre></div>
@@ -135,8 +134,7 @@ ERROR: virtualenv is not compatible with this system or executable
 <p>if sys.version_info[:2] &lt;= (2, 3):</p>
 <p>REQUIRED_MODULES.extend(['sets', '<strong>future</strong>'])</p>
 <p>if is_pypy:</p>
-<p>懒人可以点击&amp;nbsp_place_holder;<a href="http://upload-
-log4d.qiniudn.com/2011/08/go-pylons.py">go-pylons.py</a>&amp;nbsp_place_holder;下载。</p>
+<p>懒人可以点击&amp;nbsp_place_holder;<a href="http://upload-log4d.qiniudn.com/2011/08/go-pylons.py">go-pylons.py</a>&amp;nbsp_place_holder;下载。</p>
             </div>
             <!-- /.entry-content -->
               

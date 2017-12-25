@@ -16,7 +16,7 @@
 
         <meta name="author" content="alswl" />
         <meta name="keywords" content="Python" />
-        <meta name="description" content="09_09_09在Windows Live Writer下修正 一直有学Python或者Perl的想法，不过没有规划到日程来，最近打算辞职专心考驾照，正好每天都有点时间来学Python。 关于Python和Perl，我并没有什么谁优谁劣的看法，只是感觉Python可能资料会多一点，而且Google App Enginee支持Python,所以选择了Python。 OK，这几天写的两段小代码，来自《Python核心编程（第二版）》（原书中写这段有错误，我这儿也算勘误了） makeTextFile.py &#39;makeTextFile.py -- create text file&#39; import os ls = os.linesep get filename while True: fname = raw_input(&#39;&gt; a ..." />
+        <meta name="description" content="09_09_09在Windows Live Writer下修正 一直有学Python或者Perl的想法，不过没有规划到日程来，最近打算辞职专心考驾照，正好每天都有点时间来学Python。 关于Python和Perl，我并没有什么谁优谁劣的看法，只是感觉Python可能资料会多一点，而且Google App Enginee支持Python,所以选择了Python。 OK，这几天写的两段小代码，来自《Python核心编程（第二版）》（原书中写这段有错误，我这儿也算勘误了） makeTextFile.py &#39;makeTextFile.py -- create text file&#39; import os ls = os.linesep get filename while True: fname = raw_input(&#39;&gt; a txt file path&#39;) if os.path.exists(fname): print &#34;Error ..." />
 
 
 
@@ -94,10 +94,9 @@ Log4D            </a>
 <p>一直有学Python或者Perl的想法，不过没有规划到日程来，最近打算辞职专心考驾照，正好每天都有点时间来学Python。</p>
 <p>关于Python和Perl，我并没有什么谁优谁劣的看法，只是感觉Python可能资料会多一点，而且Google App
 Enginee支持Python,所以选择了Python。</p>
-<p>OK，这几天写的两段小代码，来自《<a href="http://www.china-
-pub.com/39969&amp;ref=xiangguan">Python核心编程（第二版）</a>》（原书中写这段有错误，我这儿也算勘误了）</p>
+<p>OK，这几天写的两段小代码，来自《<a href="http://www.china-pub.com/39969&amp;ref=xiangguan">Python核心编程（第二版）</a>》（原书中写这段有错误，我这儿也算勘误了）</p>
 <p>makeTextFile.py</p>
-<div class="highlight"><pre><span class="err">'</span><span class="n">makeTextFile</span><span class="p">.</span><span class="n">py</span> <span class="o">--</span> <span class="n">create</span> <span class="n">text</span> <span class="n">file</span><span class="err">'</span>
+<div class="highlight"><pre><span></span>'makeTextFile.py -- create text file'
 </pre></div>
 <p>import os ls = os.linesep</p>
 <h1>get filename</h1>
@@ -118,9 +117,9 @@ pub.com/39969&amp;ref=xiangguan">Python核心编程（第二版）</a>》（原�
 <p>fobj = open(fname, 'w')</p>
 <p>fobj.writelines(['%s%s' %(x, ls) for x in all])</p>
 <p>fobj.close() print 'Done' raw_input('Press Enter to close') readTextFile.py</p>
-<div class="highlight"><pre><span class="err">'</span><span class="n">readTextFile</span><span class="p">.</span><span class="n">py</span> <span class="o">--</span> <span class="n">read</span> <span class="n">and</span> <span class="n">display</span> <span class="n">text</span> <span class="n">file</span><span class="err">'</span>
-<span class="n">fname</span> <span class="o">=</span> <span class="n">raw_input</span><span class="p">(</span><span class="err">'</span><span class="n">Enter</span> <span class="n">filename</span><span class="o">:</span><span class="err">'</span><span class="p">)</span>
-<span class="n">print</span>
+<div class="highlight"><pre><span></span>'readTextFile.py -- read and display text file'
+fname = raw_input('Enter filename:')
+print
 </pre></div>
 <h1>attend to open file for reading</h1>
 <p>try:</p>

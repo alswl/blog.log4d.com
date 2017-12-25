@@ -178,13 +178,22 @@ domainname_adminservername</code>的服务启动类型为"自动"，手动将它
             <article class="article-list">
                 <h2 class="title"><a href="https://blog.alswl.com/2009/11/note-the-use-of-java-reflection-to-improve-the-basedao/">Java笔记 使用反射来改进BaseDao</a></h2>
                 <div class="summary"><h2 id="guan-yu-fan-she">关于反射</h2>
-<p>反射的定义（via <a href="http://zh.wikipedia.org/zh-cn/%E5%8F%8D%E5%B0%84_%28%E8%AE%A1
-%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6%29">Wiki</a>）：在计算机科学中，反射是<strong>指一种特定类型的计算机程序能够在运行时以一种依
+<p>反射的定义（via <a href="http://zh.wikipedia.org/zh-cn/%E5%8F%8D%E5%B0%84_%28%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6%29">Wiki</a>）：在计算机科学中，反射是<strong>指一种特定类型的计算机程序能够在运行时以一种依
 赖于它的代码的抽象特性和它的运行时行为的方式被更改</strong>的特性。用比喻来说，那种程式能够"<strong>观察</strong>"并且修改自己的行为。</p>
 <p>Java中的反射示例如下：</p>
-<div class="highlight"><pre><span class="n">package</span> <span class="n">dddspace</span><span class="p">.</span><span class="n">job</span><span class="p">.</span><span class="n">exercise1116</span><span class="p">;</span>
+<div class="highlight"><pre><span></span>package dddspace.job.exercise1116;
 </pre></div>
-<p>public class ...</p>
+<p>public class Foo {</p>
+<p>public void fun(String str) {</p>
+<p>System.out.println(str);</p>
+<p>}</p>
+<p>}</p>
+<div class="highlight"><pre><span></span>package dddspace.job.exercise1116;
+</pre></div>
+<p>import java.lang.reflect.InvocationTargetException;</p>
+<p>import java.lang.reflect.Method;</p>
+<p>public class ReflectionDemo {</p>
+<p>public static void ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/11/note-the-use-of-java-reflection-to-improve-the-basedao/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -232,7 +241,8 @@ Java ...</strong></p>
 <p>讲相同的方法抽象出来，这也是最常见的解决方案，最简单的例子就是函数的产生，其实也是对程序的一种抽象和提炼，避免冗余，达到复用效果。</p>
 <p>在Java1.5出来之前，用Object来操作对象，实现方法复用，就可以达到上面的目的，但是，存在类型安全的问题。Java1.5提出了泛型的概念，类似与C+
 +中的Template，Java运行环境帮助会检查类型的安全。</p>
-<p>这里有一篇IBM资料库的文章，详细阐述了泛型在DAO设计的使用「不要重复DAO」&lt;<a href="http://www.ibm ...</p>
+<p>这里有一篇IBM资料库的文章，详细阐述了泛型在DAO设计的使用「不要重复DAO」&lt;<a href="http://www.ibm.com/developerworks/cn/java/j-genericdao.html">猛击这里打开</a>&gt;，作者<a href="http://www.ibm.com/developerworks/cn/java/j-genericdao.html#author">PerMellqvist</a>
+(<a href="mailto:per@mellqvist.name?subject=%E4%B8%8D%E8%A6%81%E9%87%8D%E5%A4%8D%20DAO%EF%BC%81">per@mellqvist ...</a></p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/07/dao-design-the-use-of-generics-to-avoid-duplication-of-dao/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>

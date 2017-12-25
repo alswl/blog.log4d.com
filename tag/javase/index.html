@@ -91,13 +91,22 @@ d。Hibernate和iBatis有各自的适合使用的领域，不能单纯的说谁�
             <article class="article-list">
                 <h2 class="title"><a href="https://blog.alswl.com/2009/11/note-the-use-of-java-reflection-to-improve-the-basedao/">Java笔记 使用反射来改进BaseDao</a></h2>
                 <div class="summary"><h2 id="guan-yu-fan-she">关于反射</h2>
-<p>反射的定义（via <a href="http://zh.wikipedia.org/zh-cn/%E5%8F%8D%E5%B0%84_%28%E8%AE%A1
-%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6%29">Wiki</a>）：在计算机科学中，反射是<strong>指一种特定类型的计算机程序能够在运行时以一种依
+<p>反射的定义（via <a href="http://zh.wikipedia.org/zh-cn/%E5%8F%8D%E5%B0%84_%28%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6%29">Wiki</a>）：在计算机科学中，反射是<strong>指一种特定类型的计算机程序能够在运行时以一种依
 赖于它的代码的抽象特性和它的运行时行为的方式被更改</strong>的特性。用比喻来说，那种程式能够"<strong>观察</strong>"并且修改自己的行为。</p>
 <p>Java中的反射示例如下：</p>
-<div class="highlight"><pre><span class="n">package</span> <span class="n">dddspace</span><span class="p">.</span><span class="n">job</span><span class="p">.</span><span class="n">exercise1116</span><span class="p">;</span>
+<div class="highlight"><pre><span></span>package dddspace.job.exercise1116;
 </pre></div>
-<p>public class ...</p>
+<p>public class Foo {</p>
+<p>public void fun(String str) {</p>
+<p>System.out.println(str);</p>
+<p>}</p>
+<p>}</p>
+<div class="highlight"><pre><span></span>package dddspace.job.exercise1116;
+</pre></div>
+<p>import java.lang.reflect.InvocationTargetException;</p>
+<p>import java.lang.reflect.Method;</p>
+<p>public class ReflectionDemo {</p>
+<p>public static void ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/11/note-the-use-of-java-reflection-to-improve-the-basedao/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>

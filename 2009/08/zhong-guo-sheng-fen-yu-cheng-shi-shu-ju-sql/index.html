@@ -94,11 +94,10 @@ Log4D            </a>
     
 </footer><!-- /.post-info -->                    </div>
                 </div>
-                <p>本文来源：<a href="http://blog.csdn.net/xielingxu/archive/2007/08/26/1759471.aspx">中国省份与城市数据插入 - xlx -
-CSDN博客</a></p>
+                <p>本文来源：<a href="http://blog.csdn.net/xielingxu/archive/2007/08/26/1759471.aspx">中国省份与城市数据插入 - xlx - CSDN博客</a></p>
 <p>在Google找到这个，实在是爱不释手，就转过来了，很多项目都需要用到这些数据。</p>
-<div class="highlight"><pre><span class="k">if</span> <span class="n">exists</span> <span class="p">(</span><span class="n">select</span> <span class="o">*</span> <span class="n">from</span> <span class="n">sysobjects</span> <span class="n">where</span> <span class="n">id</span> <span class="o">=</span> <span class="n">OBJECT_ID</span><span class="p">(</span><span class="err">'</span><span class="p">[</span><span class="n">province</span><span class="p">]</span><span class="err">'</span><span class="p">)</span> <span class="n">and</span> <span class="n">OBJECTPROPERTY</span><span class="p">(</span><span class="n">id</span><span class="p">,</span> <span class="err">'</span><span class="n">IsUserTable</span><span class="err">'</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">DROP</span> <span class="n">TABLE</span> <span class="p">[</span><span class="n">province</span><span class="p">]</span>
+<div class="highlight"><pre><span></span>if exists (select * from sysobjects where id = OBJECT_ID('[province]') and OBJECTPROPERTY(id, 'IsUserTable') = 1)
+DROP TABLE [province]
 </pre></div>
 <p>CREATE TABLE [province] (</p>
 <p>[id] [int] NOT NULL,</p>

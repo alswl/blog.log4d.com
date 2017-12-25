@@ -126,13 +126,13 @@ e.baidu.com/view/372835.htm">http://baike ...</p>
 </ul>
 </blockquote>
 <p>通过这个文件可以实现全局变量的声明。</p>
-<div class="highlight"><pre><span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">isset</span> <span class="p">(</span><span class="err">$</span><span class="n">globalAAC</span><span class="p">))</span> <span class="p">{</span>
-    <span class="n">global</span> <span class="err">$</span><span class="n">globalAAC</span><span class="p">;</span>
-    <span class="err">$</span><span class="n">globalAAC</span> <span class="o">=</span> <span class="n">array</span> <span class="p">(</span>
-        <span class="err">'</span><span class="n">currentMessageId</span><span class="err">'</span> <span class="o">=&gt;</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
-        <span class="err">'</span><span class="n">onlineUsers</span><span class="err">'</span> <span class="o">=&gt;</span> <span class="n">array</span><span class="p">()</span>
-    <span class="p">);</span>
-<span class="p">}</span>
+<div class="highlight"><pre><span></span>if (!isset ($globalAAC)) {
+    global $globalAAC;
+    $globalAAC = array (
+        'currentMessageId' =&gt; -1,
+        'onlineUsers' =&gt; array()
+    );
+}
 </pre></div>
 <p>在其他文件中就可以调用这个全局变量了。</p>
 <h3 id="er-tong-guo-configure-lei">二、通过Configure 类</h3>

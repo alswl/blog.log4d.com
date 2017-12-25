@@ -123,13 +123,22 @@ mailtocomments ...</p>
             <article class="article-list">
                 <h2 class="title"><a href="https://blog.alswl.com/2009/11/note-the-use-of-java-reflection-to-improve-the-basedao/">Java笔记 使用反射来改进BaseDao</a></h2>
                 <div class="summary"><h2 id="guan-yu-fan-she">关于反射</h2>
-<p>反射的定义（via <a href="http://zh.wikipedia.org/zh-cn/%E5%8F%8D%E5%B0%84_%28%E8%AE%A1
-%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6%29">Wiki</a>）：在计算机科学中，反射是<strong>指一种特定类型的计算机程序能够在运行时以一种依
+<p>反射的定义（via <a href="http://zh.wikipedia.org/zh-cn/%E5%8F%8D%E5%B0%84_%28%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6%29">Wiki</a>）：在计算机科学中，反射是<strong>指一种特定类型的计算机程序能够在运行时以一种依
 赖于它的代码的抽象特性和它的运行时行为的方式被更改</strong>的特性。用比喻来说，那种程式能够"<strong>观察</strong>"并且修改自己的行为。</p>
 <p>Java中的反射示例如下：</p>
-<div class="highlight"><pre><span class="n">package</span> <span class="n">dddspace</span><span class="p">.</span><span class="n">job</span><span class="p">.</span><span class="n">exercise1116</span><span class="p">;</span>
+<div class="highlight"><pre><span></span>package dddspace.job.exercise1116;
 </pre></div>
-<p>public class ...</p>
+<p>public class Foo {</p>
+<p>public void fun(String str) {</p>
+<p>System.out.println(str);</p>
+<p>}</p>
+<p>}</p>
+<div class="highlight"><pre><span></span>package dddspace.job.exercise1116;
+</pre></div>
+<p>import java.lang.reflect.InvocationTargetException;</p>
+<p>import java.lang.reflect.Method;</p>
+<p>public class ReflectionDemo {</p>
+<p>public static void ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/11/note-the-use-of-java-reflection-to-improve-the-basedao/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -204,12 +213,14 @@ pe，这个js比较大，网上有<a href="http://www.thunderguy.com/semicolon/2
                 <h2 class="title"><a href="https://blog.alswl.com/2009/11/membership-the-use-of-experience/">MemberShip使用心得</a></h2>
                 <div class="summary"><p>花了很大一段时间在学习MemberShip，总是要留下一些纪念文章的。
 我之前的日志提到过一个简单的用户权限设计：User+Role+UserInRole(<a href="http://log4d.com/2009/06/design-of-user-
-rights">http://log4d.com/2009/06/design-of-
-user-rights</a>)，但是这样还是不够灵活，最好需要能够对每一个功能模块进行权限控制，而且需要符合开闭原则。 MemberShip呢，是微软推出的一套很强大的用
+rights">http://log4d.com/2009/06/design-of-user-rights</a>)，但是这样还是不够灵活，最好需要能够对每一个功能模块进行权限控制，而且需要符合开闭原则。 MemberShip呢，是微软推出的一套很强大的用
 户权限管理系统。就我使用的两大部分，主要包括MemberShip和roleManager这两个模块，分别是对用户和角色进行管理。</p>
 <h2 id="membershipdui-xi-tong-jin-xing-guan-li-da-zhi-fen-wei-liang-ge-ban-fa">MemberShip对系统进行管理大致分为两个办法</h2>
 <p>1.可以通过"登录"系列用户控件的任务窗口中的"管理网站"打开"ASP.Net Web 应用程序管理"。 可以控制用户、角色、权限三个主要属性，另外还能选择
-"提供程序"（这个provider分为MemberShip和RoleManager两种，如果同名的话，可以选择同一提供程序 ...</p>
+"提供程序"（这个provider分为MemberShip和RoleManager两种，如果同名的话，可以选择同一提供程序）
+<img alt="userControl" src="https://ohsolnxaa.qnssl.com/2009/11/userControl.jpg"/>
+<img alt="userManager" src="https://ohsolnxaa.qnssl.com/2009/11/userManager.jpg"/>
+2 ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/11/membership-the-use-of-experience/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>

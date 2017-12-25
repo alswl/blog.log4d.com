@@ -161,11 +161,12 @@ TButton).Caption</code>这种语句来转换<code>TObject</code>类型。</p>
                 <div class="summary"><p>呃，由于某些原因，服务器所在的江西机房停止了IDC服务，我今天晚上刚更换了服务器。我向在这段时间访问我博客却发现404错误的童鞋们报以10万分抱歉~</p>
 <p>网上搜索相关新闻，原来很多机房有非法信息和未备案网站，被叫停了，我所在的江西景德镇服务器属于重灾区。幸好那天早晨备份了数据库和文件，基本没有造成什么损失。花
 了1个多小时搬家，除了一个Share-This插件工作不正常，貌似没有发现其他问题。</p>
-<p>Share-This的这个插件在<a href="http://log4d.com/wp-content/plugins/share-this
-/share-this.php?akst_action=css">http://log4d.com/wp-content/plugins/share-this/share-
-this.php?akst_action=css</a>路径上会返回500内部服务器错误，搜索结果为文件权限问题，我之后设定为755/777都没有效
+<p>Share-This的这个插件在<a href="http://log4d.com/wp-content/plugins/share-this/share-this.php?akst_action=css">http://log4d.com/wp-content/plugins/share-this/share-this.php?akst_action=css</a>路径上会返回500内部服务器错误，搜索结果为文件权限问题，我之后设定为755/777都没有效
 果。没办法，暂时停用这个插件了。</p>
-<p>Update:09_12_04-23:29：这个问题我已经解决 ...</p>
+<p>Update:09_12_04-23:29：这个问题我已经解决，问题出在wp-content/wp-include文件夹的权限当初被我错误的设定为777，正
+确的应该为755，导致读取错误，就有了内部服务器500错误。用Ftp工具对这两个文件夹及其子文件夹进行轮询修改为755，问题即可解决。</p>
+<p>ps:感慨到，搬家果然难啊~</p>
+<p>附：近期被封机房名单 ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/12/can-not-be-accessed-on-the-blog-description-of-the-recent/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -240,12 +241,15 @@ cantu的《Delphi从入门到精通》及《Delphi高级开发指南》作为学
             <hr/>
             <article class="article-list">
                 <h2 class="title"><a href="https://blog.alswl.com/2009/11/delphi-study-notes-03/">Delphi学习笔记03</a></h2>
-                <div class="summary"><p>学习Delphi第三天，早晨起来之后跑去图书馆找了一本书《<a href="http://www.china-
-pub.com/36610">Delphi开发经验技巧宝典</a>》，翻开这本书发现更适合作为手册查阅，而不是学习教材。最后借了一本《<a href="http://www
+                <div class="summary"><p>学习Delphi第三天，早晨起来之后跑去图书馆找了一本书《<a href="http://www.china-pub.com/36610">Delphi开发经验技巧宝典</a>》，翻开这本书发现更适合作为手册查阅，而不是学习教材。最后借了一本《<a href="http://www
 .china-pub.com/734474">Delphi面向对象程序设计</a>》的教材，属于"21世纪高等学校应用型教材"系列。</p>
 <p>今天主要完成了Pascal到Delphi的过度，学习使用<strong>集合set</strong>、<strong>记录record</strong>、<strong>指针Pointer</strong>和<strong>简单的可视化编程</strong>。</p>
-<p>在百度<a href="http://tieba.baidu.com/f?kw=delphi">Delphi吧</a>逛时候发现<a href="http://passport.ba
-idu.com/?business&amp;un=%CB%F7%D2%FD%D4 ...</p>
+<p>在百度<a href="http://tieba.baidu.com/f?kw=delphi">Delphi吧</a>逛时候发现<a href="http://passport.baidu.com/?business&amp;un=%CB%F7%D2%FD%D4%BD%BD%E7#0">索引越界</a>居然是Delphi吧主，里面有一篇文章关于<a href="http://tieba.baidu.com/f?kz=84767888">Delphi的编码风格</a>，我一会转过来。</p>
+<p>Ps:啊，你不知道索引越界？！那百度贴吧伴侣总应该听过吧，偷偷告诉你，这个软件就是索引越界用Delphi开发的。</p>
+<p>好了，下面是正文，我今天使用的代码，咱们让代码来反应思想吧（其实我是懒得总结每个用法~）。</p>
+<div class="highlight"><pre><span></span><span class="x">program P2;</span>
+<span class="cp">{</span><span class="err">集合、记录、指针学习</span><span class="cp">}</span><span class="x"></span>
+<span class="cp">{</span><span class="nv">$APPTYPE ...</span></pre></div>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/11/delphi-study-notes-03/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>

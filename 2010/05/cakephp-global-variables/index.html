@@ -119,25 +119,24 @@ Log4D            </a>
 </ul>
 </blockquote>
 <p>通过这个文件可以实现全局变量的声明。</p>
-<div class="highlight"><pre><span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">isset</span> <span class="p">(</span><span class="err">$</span><span class="n">globalAAC</span><span class="p">))</span> <span class="p">{</span>
-    <span class="n">global</span> <span class="err">$</span><span class="n">globalAAC</span><span class="p">;</span>
-    <span class="err">$</span><span class="n">globalAAC</span> <span class="o">=</span> <span class="n">array</span> <span class="p">(</span>
-        <span class="err">'</span><span class="n">currentMessageId</span><span class="err">'</span> <span class="o">=&gt;</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
-        <span class="err">'</span><span class="n">onlineUsers</span><span class="err">'</span> <span class="o">=&gt;</span> <span class="n">array</span><span class="p">()</span>
-    <span class="p">);</span>
-<span class="p">}</span>
+<div class="highlight"><pre><span></span>if (!isset ($globalAAC)) {
+    global $globalAAC;
+    $globalAAC = array (
+        'currentMessageId' =&gt; -1,
+        'onlineUsers' =&gt; array()
+    );
+}
 </pre></div>
 <p>在其他文件中就可以调用这个全局变量了。</p>
 <h3 id="er-tong-guo-configure-lei">二、通过Configure 类</h3>
 <p>Configure类是CakePHP用来进行配置文件的地方，通过write() 和read()方法，也能实现全局变量的读写操作。</p>
-<div class="highlight"><pre><span class="n">Configure</span><span class="o">::</span><span class="n">write</span><span class="p">(</span><span class="err">'</span><span class="n">Aac</span><span class="p">.</span><span class="n">currentMessageId</span><span class="err">'</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">);</span>
-<span class="n">Configure</span><span class="o">::</span><span class="n">read</span><span class="p">(</span><span class="err">'</span><span class="n">Aac</span><span class="p">.</span><span class="n">currentMessageId</span><span class="err">'</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><span class="nt">Configure</span><span class="p">::</span><span class="nd">write</span><span class="o">(</span><span class="s1">'Aac.currentMessageId'</span><span class="o">,</span> <span class="nt">-1</span><span class="o">);</span>
+<span class="nt">Configure</span><span class="p">::</span><span class="nd">read</span><span class="o">(</span><span class="s1">'Aac.currentMessageId'</span><span class="o">);</span>
 </pre></div>
 <p>其中，还有一个使用Configure的偏门方法，我从 <a href="http://debuggable.com/posts/need-to-share-global-
-variables-throughout-your-app:480f4dd5-6f64-4c88-812d-46d5cbdd56cb">Need to share global variables throughout your
-app? &raquo; Debuggable Ltd</a> 看到的。</p>
-<div class="highlight"><pre><span class="err">$</span><span class="n">config</span> <span class="o">=&amp;</span> <span class="n">Configure</span><span class="o">::</span><span class="n">getInstance</span><span class="p">();</span>
-<span class="err">$</span><span class="n">config</span><span class="o">-&gt;</span><span class="n">myVariable</span> <span class="o">=</span> <span class="err">'</span><span class="n">Hello</span> <span class="n">World</span><span class="err">'</span><span class="p">;</span>
+variables-throughout-your-app:480f4dd5-6f64-4c88-812d-46d5cbdd56cb">Need to share global variables throughout your app? &raquo; Debuggable Ltd</a> 看到的。</p>
+<div class="highlight"><pre><span></span><span class="o">$</span><span class="nt">config</span> <span class="o">=&amp;</span> <span class="nt">Configure</span><span class="p">::</span><span class="nd">getInstance</span><span class="o">();</span>
+<span class="o">$</span><span class="nt">config-</span><span class="o">&gt;</span><span class="nt">myVariable</span> <span class="o">=</span> <span class="s1">'Hello World'</span><span class="o">;</span>
 </pre></div>
 <p>$config =&amp; Configure::getInstance();</p>
 <p>debug($config-&gt;myVariable);</p>
@@ -147,8 +146,7 @@ app? &raquo; Debuggable Ltd</a> 看到的。</p>
 <p>我甚至一度把错误归结到CakePHP，后来才发现，原来我冤枉它了。问题的根本是在于，这个全局变量根本不是我所想的那个Application 对象。</p>
 <p>什么是Application 对象？Application 对象用于存储和访问来自任何页面的变量，类似于 session
 对象。不同之处在于，所有的用户分享一个 Application 对象，而 session 对象和用户的关系是一一对应的。</p>
-<p>在翻阅PHP资料之后，我终于在ChinaUNIX找到一些蛛丝马迹 <a href="http://bbs.chinaunix.net/viewthread.php?tid=79537">全局变量，在多个页面的可以使用吗？ - Php -
-ChinaUnix.net</a>
+<p>在翻阅PHP资料之后，我终于在ChinaUNIX找到一些蛛丝马迹 <a href="http://bbs.chinaunix.net/viewthread.php?tid=79537">全局变量，在多个页面的可以使用吗？ - Php - ChinaUnix.net</a>
 。文中一位读者给了很肯定的回答"php中没有基于整个网站的全局变量，一般用数据库什么的替代方案。"。</p>
 <p>我再检查一个基于PHP的聊天系统，果然是通过数据库的 online_users来实现在线用户的保存。</p>
 <p>吃亏吃在用传统的Java思想做PHP，并且PHP接触时间太短，以后学习的时候必须多用用心了~</p>

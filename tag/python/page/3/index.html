@@ -74,8 +74,12 @@ Log4D            </a>
 <p>紧接着发现中国内的所有域名都无法使用CURL获取，联系小张之后，得知该主机曾经被入侵过，于是屏蔽了中国大陆的ip段（囧~入侵和中国ip有毛关系）</p>
 <p>遂想用GAE做个代理服务器，反正获取RSS也只要Get一下，代码没几句。把这项任务放入Toodledo之后，就一直没去弄，今天发现GAE
 Laucher升级了，就部署到自己GAE上了。</p>
-<p>地址格式如&amp;nbsp_place_holder;<a href="http://jasontiproxy.appspot.com/proxy?url=www
-.douban.com/feed/people/alswl/interests">http://jasontiproxy.appspot.com/proxy?url=www ...</p>
+<p>地址格式如&amp;nbsp_place_holder;<a href="http://jasontiproxy.appspot.com/proxy?url=www.douban.com/feed/people/alswl/interests">http://jasontiproxy.appspot.com/proxy?url=www.douban. com/feed/people/alswl/interests</a>，url参数名后面跟着具体的url。</p>
+<p>代码其实就是用urllib2获取一下html，核心如下。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+</pre></div>
+</td></tr></table>
+<p>from ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2011/01/a-simple-gae-proxy/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -141,18 +145,16 @@ bodyFiles:</p>
             <hr/>
             <article class="article-list">
                 <h2 class="title"><a href="https://blog.alswl.com/2010/09/script-mm2html/">小脚本mm->html</a></h2>
-                <div class="summary"><p>我同时在使用两套信息记录工具，知识收集记录工具BooguNote + KMS Wiz，关于这两套系统具体介绍请见<a href="http://log4d.com/2010/04/desktop-recording-tool-boogunote">桌面记录神器-
-BooguNote</a> &amp;
-<a href="http://log4d.com/2010/09/my-kms">我所使用的知识管理系统</a>。</p>
+                <div class="summary"><p>我同时在使用两套信息记录工具，知识收集记录工具BooguNote + KMS Wiz，关于这两套系统具体介绍请见<a href="http://log4d.com/2010/04/desktop-recording-tool-boogunote">桌面记录神器- BooguNote</a> &amp; <a href="http://log4d.com/2010/09/my-kms">我所使用的知识管理系统</a>。</p>
 <p>我的使用习惯是在BooguNote中收集日常的琐碎知识点，包括我所想的和工作记录。每个小知识节点的长度大概在200-300字左右。这些被我称为的知识碎片显然
 不能直接放入KMS。</p>
 <p>BooguNote可以将里面的文字直接复制出来，会在父亲节点上加入+，子节点加入-，这种简单的txt不能满足我的要求。于是我花了点时间写了一个mm文件到ht
 ml的转换脚本。</p>
 <p>BooguNote的文件格式是boo，可以转换成FreeMind的思维导图格式.mm，我认为用mm作为源数据格式适用范围更大。</p>
-<div class="highlight"><pre><span class="cp">#coding=utf-8</span>
-<span class="n">from</span> <span class="n">xml</span><span class="p">.</span><span class="n">dom</span> <span class="n">import</span> <span class="n">minidom</span>
-<span class="n">import</span> <span class="n">sys</span>
-<span class="n">import</span> <span class="n">os</span>
+<div class="highlight"><pre><span></span><span class="c1">#coding=utf-8</span>
+<span class="kn">from</span> <span class="nn">xml.dom</span> <span class="kn">import</span> <span class="n">minidom</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">os</span>
 </pre></div>
 <p>class MM2Html:</p>
 <p>'转换MM-&gt;Html类'</p>
@@ -165,16 +167,19 @@ ml的转换脚本。</p>
             <article class="article-list">
                 <h2 class="title"><a href="https://blog.alswl.com/2010/07/get-daily-bing-picture/">获取每日Bing图片</a></h2>
                 <div class="summary"><p>在使用公司一个Redirect开发工具页面时候，想个性化一下，就想添加一个背景，最好每天能自动变化，我第一个想到的就是Bing。</p>
-<p>放狗搜索，发现一篇文章 <a href="http://blog.csdn.net/huangc
-t/archive/2009/10/27/4734844.aspx">抓取每天必应bing背景图片 - huangct的专栏 - CSDN博客</a>，文中提供了抓取程式的Python代码，我摘录如下。</p>
-<div class="highlight"><pre><span class="n">import</span> <span class="n">urllib</span>
-<span class="n">import</span> <span class="n">time</span>
-<span class="n">def</span> <span class="n">main</span><span class="p">()</span><span class="o">:</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="err">'</span><span class="n">http</span><span class="o">:</span><span class="c1">//www.bing.com'</span>
-    <span class="n">f</span> <span class="o">=</span> <span class="n">urllib</span><span class="p">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-    <span class="n">html</span> <span class="o">=</span> <span class="n">f</span><span class="p">.</span><span class="n">read</span><span class="p">()</span>
-    <span class="n">f</span><span class="p">.</span><span class="n">close</span><span class="p">()</span>
-    <span class="n">a</span> <span class="o">=</span> <span class="n">html</span><span class="p">[</span><span class="n">html</span><span class="p">.</span><span class="n">index ...</span></pre></div>
+<p>放狗搜索，发现一篇文章 <a href="http://blog.csdn.net/huangct/archive/2009/10/27/4734844.aspx">抓取每天必应bing背景图片 - huangct的专栏 - CSDN博客</a>，文中提供了抓取程式的Python代码，我摘录如下。</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">urllib</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s1">'http://www.bing.com'</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="n">html</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">html</span><span class="p">[</span><span class="n">html</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">'/fd/hpk2'</span><span class="p">):]</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">a</span><span class="p">[:</span><span class="n">a</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">''</span><span class="p">,</span><span class="nb">id</span><span class="p">:</span><span class="s1">')]</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">'</span><span class="se">\'</span><span class="s1">, '')</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s1">'http://www.bing ...</span></pre></div>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2010/07/get-daily-bing-picture/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>

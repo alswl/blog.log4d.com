@@ -100,11 +100,10 @@ LOOP</code>)、数据类型(<code>VARCHAR2</code>, <code>NUMBER</code>)、内部
             <hr/>
             <article class="article-list">
                 <h2 class="title"><a href="https://blog.alswl.com/2009/08/zhong-guo-sheng-fen-yu-cheng-shi-shu-ju-sql/">中国省份与城市数据SQL</a></h2>
-                <div class="summary"><p>本文来源：<a href="http://blog.csdn.net/xielingxu/archive/2007/08/26/1759471.aspx">中国省份与城市数据插入 - xlx -
-CSDN博客</a></p>
+                <div class="summary"><p>本文来源：<a href="http://blog.csdn.net/xielingxu/archive/2007/08/26/1759471.aspx">中国省份与城市数据插入 - xlx - CSDN博客</a></p>
 <p>在Google找到这个，实在是爱不释手，就转过来了，很多项目都需要用到这些数据。</p>
-<div class="highlight"><pre><span class="k">if</span> <span class="n">exists</span> <span class="p">(</span><span class="n">select</span> <span class="o">*</span> <span class="n">from</span> <span class="n">sysobjects</span> <span class="n">where</span> <span class="n">id</span> <span class="o">=</span> <span class="n">OBJECT_ID</span><span class="p">(</span><span class="err">'</span><span class="p">[</span><span class="n">province</span><span class="p">]</span><span class="err">'</span><span class="p">)</span> <span class="n">and</span> <span class="n">OBJECTPROPERTY</span><span class="p">(</span><span class="n">id</span><span class="p">,</span> <span class="err">'</span><span class="n">IsUserTable</span><span class="err">'</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">DROP</span> <span class="n">TABLE</span> <span class="p">[</span><span class="n">province</span><span class="p">]</span>
+<div class="highlight"><pre><span></span>if exists (select * from sysobjects where id = OBJECT_ID('[province]') and OBJECTPROPERTY(id, 'IsUserTable') = 1)
+DROP TABLE [province]
 </pre></div>
 <p>CREATE TABLE [province] (</p>
 <p>[id] [int] NOT NULL,</p>
@@ -125,7 +124,8 @@ CSDN博客</a></p>
 <p>讲相同的方法抽象出来，这也是最常见的解决方案，最简单的例子就是函数的产生，其实也是对程序的一种抽象和提炼，避免冗余，达到复用效果。</p>
 <p>在Java1.5出来之前，用Object来操作对象，实现方法复用，就可以达到上面的目的，但是，存在类型安全的问题。Java1.5提出了泛型的概念，类似与C+
 +中的Template，Java运行环境帮助会检查类型的安全。</p>
-<p>这里有一篇IBM资料库的文章，详细阐述了泛型在DAO设计的使用「不要重复DAO」&lt;<a href="http://www.ibm ...</p>
+<p>这里有一篇IBM资料库的文章，详细阐述了泛型在DAO设计的使用「不要重复DAO」&lt;<a href="http://www.ibm.com/developerworks/cn/java/j-genericdao.html">猛击这里打开</a>&gt;，作者<a href="http://www.ibm.com/developerworks/cn/java/j-genericdao.html#author">PerMellqvist</a>
+(<a href="mailto:per@mellqvist.name?subject=%E4%B8%8D%E8%A6%81%E9%87%8D%E5%A4%8D%20DAO%EF%BC%81">per@mellqvist ...</a></p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/07/dao-design-the-use-of-generics-to-avoid-duplication-of-dao/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>

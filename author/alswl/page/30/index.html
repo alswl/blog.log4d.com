@@ -88,11 +88,10 @@ Log4D            </a>
             <hr/>
             <article class="article-list">
                 <h2 class="title"><a href="https://blog.alswl.com/2009/08/zhong-guo-sheng-fen-yu-cheng-shi-shu-ju-sql/">中国省份与城市数据SQL</a></h2>
-                <div class="summary"><p>本文来源：<a href="http://blog.csdn.net/xielingxu/archive/2007/08/26/1759471.aspx">中国省份与城市数据插入 - xlx -
-CSDN博客</a></p>
+                <div class="summary"><p>本文来源：<a href="http://blog.csdn.net/xielingxu/archive/2007/08/26/1759471.aspx">中国省份与城市数据插入 - xlx - CSDN博客</a></p>
 <p>在Google找到这个，实在是爱不释手，就转过来了，很多项目都需要用到这些数据。</p>
-<div class="highlight"><pre><span class="k">if</span> <span class="n">exists</span> <span class="p">(</span><span class="n">select</span> <span class="o">*</span> <span class="n">from</span> <span class="n">sysobjects</span> <span class="n">where</span> <span class="n">id</span> <span class="o">=</span> <span class="n">OBJECT_ID</span><span class="p">(</span><span class="err">'</span><span class="p">[</span><span class="n">province</span><span class="p">]</span><span class="err">'</span><span class="p">)</span> <span class="n">and</span> <span class="n">OBJECTPROPERTY</span><span class="p">(</span><span class="n">id</span><span class="p">,</span> <span class="err">'</span><span class="n">IsUserTable</span><span class="err">'</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">DROP</span> <span class="n">TABLE</span> <span class="p">[</span><span class="n">province</span><span class="p">]</span>
+<div class="highlight"><pre><span></span>if exists (select * from sysobjects where id = OBJECT_ID('[province]') and OBJECTPROPERTY(id, 'IsUserTable') = 1)
+DROP TABLE [province]
 </pre></div>
 <p>CREATE TABLE [province] (</p>
 <p>[id] [int] NOT NULL,</p>
@@ -167,16 +166,15 @@ DaoHang的作用类似于hao123这种网站，提供一些网站的分类，其�
             <hr/>
             <article class="article-list">
                 <h2 class="title"><a href="https://blog.alswl.com/2009/08/wordpress-plug-match-keywords-automatically-link-to/">wordpress关键字自动链接匹配插件[转]</a></h2>
-                <div class="summary"><p>原文链接：《<a href="http://www.changshaseo.com/seo-
-tools/882.html">wordpress关键字自动链接匹配插件 | 长沙SEO特色高端咨询顾问服务</a>》<a href="http://www.changshaseo.com/seo-tools/882.html"></a></p>
-<p>相关链接：《<a href="http://muboard.com/591">wordpress插件 中文关键词自动连接 |
-Muboard</a>》（这位博主曾为该插件0.3x版本做过中文优化）</p>
+                <div class="summary"><p>原文链接：《<a href="http://www.changshaseo.com/seo-tools/882.html">wordpress关键字自动链接匹配插件 | 长沙SEO特色高端咨询顾问服务</a>》<a href="http://www.changshaseo.com/seo-tools/882.html"></a></p>
+<p>相关链接：《<a href="http://muboard.com/591">wordpress插件 中文关键词自动连接 | Muboard</a>》（这位博主曾为该插件0.3x版本做过中文优化）</p>
 <p>中文版下载地址：<a href='href="http://www.changshaseo.com/blog-mechanics-keyword-link-
 plugin-v01.zip'>猛击这里下载</a></p>
 <p><strong>wordpress关键字自动匹配链接插件</strong> 这个工具非常好使，我找了很久了，以后发文章就省事多了，不用一个一个去加链接了，呵呵，So Cool！</p>
 <p>下面引用原文：</p>
 <p>Wordpress Keyword Link Plugin</p>
-<p>This is a little Wordpress 2 ...</p>
+<p>This is a little Wordpress 2.3+ plugin that helps you to automatically link
+defined keywords ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/08/wordpress-plug-match-keywords-automatically-link-to/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>

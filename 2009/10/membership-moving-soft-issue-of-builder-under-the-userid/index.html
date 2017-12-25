@@ -115,20 +115,20 @@ tifier」（是否缺少 using 指令或程序集引用？）」</p>
 <p>资料非常少，否则我就不会写日志了，直接转载了。</p>
 <p>参考一些零星的帖子+自己尝试，我把解决方法总结如下。</p>
 <p>1.修改Model中uniqueidentifier类型，因为C#中根本不存在这种类型，将相应的变量类型定义为Guid。</p>
-<div class="highlight"><pre><span class="n">private</span> <span class="n">Guid</span> <span class="n">_userid</span><span class="p">;</span>
+<div class="highlight"><pre><span></span>private Guid _userid;
 </pre></div>
 <p>public Guid userId</p>
 <p>{ set{ _userid=value;}</p>
 <p>get{return _userid;}</p>
 <p>} 2.修改相应的Guid&lt;-&gt;string之间的转换，这个根据错误列表一一修改即可。</p>
-<div class="highlight"><pre><span class="n">this</span><span class="p">.</span><span class="n">lbluserId</span><span class="p">.</span><span class="n">Text</span><span class="o">=</span><span class="n">model</span><span class="p">.</span><span class="n">userId</span><span class="p">.</span><span class="n">ToString</span><span class="p">();</span><span class="c1">//Guid拥有.ToString()方法</span>
-<span class="n">model</span><span class="p">.</span><span class="n">userId</span> <span class="o">=</span> <span class="n">new</span> <span class="n">Guid</span><span class="p">(</span><span class="n">userId</span><span class="p">)</span><span class="c1">//new Guid(string)</span>
+<div class="highlight"><pre><span></span>this.lbluserId.Text=model.userId.ToString();//Guid拥有.ToString()方法
+model.userId = new Guid(userId)//new Guid(string)
 </pre></div>
 <p>3.修改DAL中数据读取/写入部分，其实这一部分还是Guid&lt;-&gt;string转换</p>
-<div class="highlight"><pre><span class="c1">//model.userId=ds.Tables[0].Rows[0]["userId"].ToString();</span>
-<span class="c1">//原始的加上了注释</span>
-<span class="n">model</span><span class="p">.</span><span class="n">userId</span><span class="o">=</span><span class="k">new</span> <span class="n">Guid</span><span class="p">(</span><span class="n">ds</span><span class="p">.</span><span class="n">Tables</span><span class="p">[</span><span class="mh">0</span><span class="p">].</span><span class="n">Rows</span><span class="p">[</span><span class="mh">0</span><span class="p">][</span><span class="s">"userId"</span><span class="p">].</span><span class="n">ToString</span><span class="p">());</span>
-<span class="c1">//使用new Guid(string)进行转换</span>
+<div class="highlight"><pre><span></span>//model.userId=ds.Tables[0].Rows[0]["userId"].ToString();
+//原始的加上了注释
+model.userId=new Guid(ds.Tables[0].Rows[0]["userId"].ToString());
+//使用new Guid(string)进行转换
 </pre></div>
 <p>经过上面3个部分，代码应该基本没有问题了，其实关键的还是Guid&lt;-&gt;string转换，跟着错误列表走一边就基本没有问题了。</p>
 <h2 id="xin-de-wen-ti">新的问题</h2>
@@ -138,13 +138,9 @@ xt)的类型不兼容。」。</p>
 <p>我将<input/>中id修改后，能够运行Add.aspx，但是还是无法post提交，我正在尝试解决这个问题。这个问题与MemberShip无关，放在这里只
 是希望如果有过客了解Asp.NET，那么就提出一些建议。</p>
 <h2 id="xiang-guan-lian-jie">相关链接</h2>
-<p>GUID_百度百科：<a href="http://baike.baidu.com/view
-/185358.htm">http://baike.baidu.com/view/185358.htm</a></p>
-<p>SQL中的uniqueidentifier类型在c#中用什么类型表示：<a href="http://topic.csdn.net/t/20060918/17/5030341.html">http://topic.csdn.net/t/20060918/17/503034
-1.html</a></p>
-<p>关于ASP.NET中C#处理uniqueidentifier数据类型的问题：<a href="http://topic.csdn.net/u/20070517/17/97
-44a192-a062-4c51-bdf7-273b1480c1d6.html">http://topic.csdn.net/u/20070517/17/974
-4a192-a062-4c51-bdf7-273b1480c1d6.html</a></p>
+<p>GUID_百度百科：<a href="http://baike.baidu.com/view/185358.htm">http://baike.baidu.com/view/185358.htm</a></p>
+<p>SQL中的uniqueidentifier类型在c#中用什么类型表示：<a href="http://topic.csdn.net/t/20060918/17/5030341.html">http://topic.csdn.net/t/20060918/17/5030341.html</a></p>
+<p>关于ASP.NET中C#处理uniqueidentifier数据类型的问题：<a href="http://topic.csdn.net/u/20070517/17/9744a192-a062-4c51-bdf7-273b1480c1d6.html">http://topic.csdn.net/u/20070517/17/9744a192-a062-4c51-bdf7-273b1480c1d6.html</a></p>
             </div>
             <!-- /.entry-content -->
               

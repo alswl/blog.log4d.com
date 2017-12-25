@@ -16,7 +16,7 @@
 
         <meta name="author" content="alswl" />
         <meta name="keywords" content="Java,DAO,JavaSE,贴吧,重构" />
-        <meta name="description" content="关于反射 反射的定义（via Wiki）：在计算机科学中，反射是指一种特定类型的计算机程序能够在运行时以一种依 赖于它的代码的抽象特性和它的运行时行为的方式被更改的特性。用比喻来说，那种程式能够&#34;观察&#34;并且修改自己的行为。 Java中的反射示例如下： package dddspace.job.exercise1116; public class ..." />
+        <meta name="description" content="关于反射 反射的定义（via Wiki）：在计算机科学中，反射是指一种特定类型的计算机程序能够在运行时以一种依 赖于它的代码的抽象特性和它的运行时行为的方式被更改的特性。用比喻来说，那种程式能够&#34;观察&#34;并且修改自己的行为。 Java中的反射示例如下： package dddspace.job.exercise1116; public class Foo { public void fun(String str) { System.out.println(str); } } package dddspace.job.exercise1116; import java.lang.reflect.InvocationTargetException; import java.lang.reflect.Method; public class ReflectionDemo { public static void ..." />
 
 
 
@@ -104,18 +104,17 @@ Log4D            </a>
                 </nav>
                 <hr/>
                 <h2 id="guan-yu-fan-she">关于反射</h2>
-<p>反射的定义（via <a href="http://zh.wikipedia.org/zh-cn/%E5%8F%8D%E5%B0%84_%28%E8%AE%A1
-%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6%29">Wiki</a>）：在计算机科学中，反射是<strong>指一种特定类型的计算机程序能够在运行时以一种依
+<p>反射的定义（via <a href="http://zh.wikipedia.org/zh-cn/%E5%8F%8D%E5%B0%84_%28%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6%29">Wiki</a>）：在计算机科学中，反射是<strong>指一种特定类型的计算机程序能够在运行时以一种依
 赖于它的代码的抽象特性和它的运行时行为的方式被更改</strong>的特性。用比喻来说，那种程式能够"<strong>观察</strong>"并且修改自己的行为。</p>
 <p>Java中的反射示例如下：</p>
-<div class="highlight"><pre><span class="n">package</span> <span class="n">dddspace</span><span class="p">.</span><span class="n">job</span><span class="p">.</span><span class="n">exercise1116</span><span class="p">;</span>
+<div class="highlight"><pre><span></span>package dddspace.job.exercise1116;
 </pre></div>
 <p>public class Foo {</p>
 <p>public void fun(String str) {</p>
 <p>System.out.println(str);</p>
 <p>}</p>
 <p>}</p>
-<div class="highlight"><pre><span class="n">package</span> <span class="n">dddspace</span><span class="p">.</span><span class="n">job</span><span class="p">.</span><span class="n">exercise1116</span><span class="p">;</span>
+<div class="highlight"><pre><span></span>package dddspace.job.exercise1116;
 </pre></div>
 <p>import java.lang.reflect.InvocationTargetException;</p>
 <p>import java.lang.reflect.Method;</p>
@@ -144,31 +143,31 @@ Log4D            </a>
 <p>我先阐述一下BaseDao的设计想法：BaseDao是一个<strong>抽象类</strong>，提供一系列Dao方法"<strong>get()/getAll()/add()/update(
 )/delete()/getCount()</strong>"，通过<strong>泛型匹配</strong>的获取类，我取出一个方法来做示例。</p>
 <p>&amp;nbsp_place_holder;</p>
-<div class="highlight"><pre><span class="n">public</span> <span class="kt">int</span> <span class="nf">getCount</span><span class="p">()</span>
-<span class="p">{</span>
-    <span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="n">Session</span> <span class="n">session</span> <span class="o">=</span> <span class="n">null</span><span class="p">;</span>
-    <span class="n">Transaction</span> <span class="n">tx</span> <span class="o">=</span> <span class="n">null</span><span class="p">;</span>
-    <span class="n">String</span> <span class="n">Tstr</span> <span class="o">=</span> <span class="n">getClass</span><span class="p">().</span><span class="n">getSimpleName</span><span class="p">().</span><span class="n">substring</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span>
-            <span class="n">getClass</span><span class="p">().</span><span class="n">getSimpleName</span><span class="p">().</span><span class="n">length</span><span class="p">()</span> <span class="o">-</span> <span class="mi">3</span><span class="p">);</span>
-    <span class="n">String</span> <span class="n">hql</span> <span class="o">=</span> <span class="s">"select count(*) from "</span> <span class="o">+</span> <span class="n">Tstr</span><span class="p">;</span>
-    <span class="n">try</span> <span class="p">{</span>
-        <span class="n">session</span> <span class="o">=</span> <span class="n">HibernateSessionFactory</span><span class="p">.</span><span class="n">currentSession</span><span class="p">();</span>
-        <span class="n">tx</span> <span class="o">=</span> <span class="n">session</span><span class="p">.</span><span class="n">beginTransaction</span><span class="p">();</span>
-        <span class="n">Query</span> <span class="n">query</span> <span class="o">=</span> <span class="n">session</span><span class="p">.</span><span class="n">createQuery</span><span class="p">(</span><span class="n">hql</span><span class="p">);</span>
-        <span class="n">count</span> <span class="o">=</span> <span class="n">Integer</span><span class="p">.</span><span class="n">parseInt</span><span class="p">(</span><span class="n">query</span><span class="p">.</span><span class="n">uniqueResult</span><span class="p">().</span><span class="n">toString</span><span class="p">());</span>
-        <span class="n">query</span> <span class="o">=</span> <span class="n">null</span><span class="p">;</span>
-        <span class="n">tx</span><span class="p">.</span><span class="n">commit</span><span class="p">();</span>
-    <span class="p">}</span> <span class="n">catch</span> <span class="p">(</span><span class="n">HibernateException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">tx</span> <span class="o">!=</span> <span class="n">null</span><span class="p">)</span> <span class="p">{</span>
-            <span class="n">tx</span><span class="p">.</span><span class="n">rollback</span><span class="p">();</span>
-        <span class="p">}</span>
-        <span class="n">throw</span> <span class="n">e</span><span class="p">;</span>
-    <span class="p">}</span> <span class="n">finally</span> <span class="p">{</span>
-        <span class="n">HibernateSessionFactory</span><span class="p">.</span><span class="n">closeSession</span><span class="p">();</span>
-    <span class="p">}</span>               
-    <span class="k">return</span> <span class="n">count</span><span class="p">;</span>
-<span class="p">}</span>
+<div class="highlight"><pre><span></span>public int getCount()
+{
+    int count = 0;
+    Session session = null;
+    Transaction tx = null;
+    String Tstr = getClass().getSimpleName().substring (0,
+            getClass().getSimpleName().length() - 3);
+    String hql = "select count(*) from " + Tstr;
+    try {
+        session = HibernateSessionFactory.currentSession();
+        tx = session.beginTransaction();
+        Query query = session.createQuery(hql);
+        count = Integer.parseInt(query.uniqueResult().toString());
+        query = null;
+        tx.commit();
+    } catch (HibernateException e) {
+        if (tx != null) {
+            tx.rollback();
+        }
+        throw e;
+    } finally {
+        HibernateSessionFactory.closeSession();
+    }               
+    return count;
+}
 </pre></div>
 <p>&amp;nbsp_place_holder;其中有一段<strong>dirty work</strong>，就是TStr的获取，这段TStr是想从实现Dao类获取实体类的类型名称，也就是
 从"TopicDao"获取"Topic"这个类型名称。整个BaseDao的泛型设计不错，但是在这一段上面存在一段dirty work，始终让我不爽。</p>
@@ -176,68 +175,67 @@ Log4D            </a>
 <p>我今天复习完抽象类/接口/反射这些内容，又在纸上画了一个模型，觉得用这种新方法解决会更好一点。</p>
 <p>给抽象类BasoDao加入新的变量Class c，然后在TopicDao初始化时候对Class
 c进行设置为Topic.class，这样就比原来的拼字符串好的多。耦合也显得漂亮了</p>
-<div class="highlight"><pre><span class="k">public</span> <span class="nf">abstract</span> <span class="nb">class</span> <span class="nx">BaseDAO</span><span class="o">&lt;</span><span class="nb">T</span><span class="o">&gt;</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span>public abstract class BaseDAO&lt;T&gt; {
 
-    <span class="k">protected</span> <span class="nf">Class</span> <span class="nx">c</span><span class="p">;</span>
+    protected Class c;
 
-    <span class="k">private</span> <span class="nf">Logger</span> <span class="n">logger</span> <span class="o">=</span> <span class="nx">Logger.getLogger</span><span class="p">(</span><span class="nx">this.getClass</span><span class="p">());</span>
+    private Logger logger = Logger.getLogger(this.getClass());
 
-    <span class="cm">/**</span>
-<span class="cm">     * 根据某个Bean的beanId取出Bean</span>
-<span class="cm">     * @param tId</span>
-<span class="cm">     * @return Bean</span>
-<span class="cm">     */</span>
-    <span class="k">public</span> <span class="nf">T</span> <span class="nb">get</span><span class="p">(</span><span class="nx">int</span> <span class="nx">tId</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="nb">T</span> <span class="n">t</span><span class="o">=</span><span class="kt">null</span><span class="p">;</span>
-        <span class="nx">Session</span> <span class="n">session</span> <span class="o">=</span> <span class="kt">null</span><span class="p">;</span>
-        <span class="nx">Transaction</span> <span class="n">tx</span> <span class="o">=</span> <span class="kt">null</span><span class="p">;</span>
-        <span class="c1">// 原始设计</span>
-<span class="c1">//      String Tstr = getClass().getSimpleName().substring (0,</span>
-<span class="c1">//              getClass().getSimpleName().length() - 3);</span>
-        <span class="c1">// 获取c的名称</span>
-        <span class="kt">String</span> <span class="n">Tstr</span> <span class="o">=</span> <span class="nx">c.getSimpleName</span><span class="p">();</span>
-        <span class="kt">String</span> <span class="n">TstrId</span> <span class="o">=</span> <span class="nx">Tstr</span><span class="o">+</span><span class="s2">"Id"</span><span class="p">;</span>
-        <span class="kt">String</span> <span class="n">hql</span> <span class="o">=</span> <span class="s2">"from "</span> <span class="o">+</span> <span class="nx">Tstr</span> <span class="o">+</span> <span class="s2">" where "</span> <span class="o">+</span>
-            <span class="nx">TstrId.substring</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="bp">.</span><span class="nx">toLowerCase</span><span class="p">()</span> <span class="o">+</span> <span class="nx">TstrId.substring</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="s2">" = ?"</span><span class="p">;</span>
-        <span class="nx">try</span> <span class="p">{</span>
-            <span class="n">session</span> <span class="o">=</span> <span class="nx">HibernateSessionFactory.currentSession</span><span class="p">();</span>
-            <span class="n">tx</span> <span class="o">=</span> <span class="nx">session.beginTransaction</span><span class="p">();</span>
-            <span class="nx">Query</span> <span class="n">query</span> <span class="o">=</span> <span class="nx">session.createQuery</span><span class="p">(</span><span class="nx">hql</span><span class="p">);</span>
-            <span class="nx">query.setInteger</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nx">tId</span><span class="p">);</span>
-            <span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="nb">T</span><span class="p">)</span><span class="nx">query.uniqueResult</span><span class="p">();</span>
-            <span class="n">query</span> <span class="o">=</span> <span class="kt">null</span><span class="p">;</span>
-            <span class="nx">tx.commit</span><span class="p">();</span>
-        <span class="p">}</span> <span class="nx">catch</span> <span class="p">(</span><span class="nx">HibernateException</span> <span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">if</span> <span class="p">(</span><span class="nx">tx</span> <span class="o">!=</span> <span class="kt">null</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">tx.rollback</span><span class="p">();</span>
-            <span class="p">}</span>
-            <span class="nb">throw</span> <span class="nx">e</span><span class="p">;</span>
-        <span class="p">}</span> <span class="nx">finally</span> <span class="p">{</span>
-            <span class="nx">HibernateSessionFactory.closeSession</span><span class="p">();</span>
-        <span class="p">}</span>       
-        <span class="k">return</span> <span class="nb">t</span><span class="p">;</span>
-    <span class="p">}</span>
+    /**
+     * 根据某个Bean的beanId取出Bean
+     * @param tId
+     * @return Bean
+     */
+    public T get(int tId)
+    {
+        T t=null;
+        Session session = null;
+        Transaction tx = null;
+        // 原始设计
+//      String Tstr = getClass().getSimpleName().substring (0,
+//              getClass().getSimpleName().length() - 3);
+        // 获取c的名称
+        String Tstr = c.getSimpleName();
+        String TstrId = Tstr+"Id";
+        String hql = "from " + Tstr + " where " +
+            TstrId.substring(0, 1).toLowerCase() + TstrId.substring(1) + " = ?";
+        try {
+            session = HibernateSessionFactory.currentSession();
+            tx = session.beginTransaction();
+            Query query = session.createQuery(hql);
+            query.setInteger(0,tId);
+            t = (T)query.uniqueResult();
+            query = null;
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            throw e;
+        } finally {
+            HibernateSessionFactory.closeSession();
+        }       
+        return t;
+    }
 
-<span class="k">public</span> <span class="nf">class</span> <span class="nx">TopicDAO</span> <span class="nx">extends</span> <span class="nx">BaseDAO</span><span class="o">&lt;</span><span class="nx">Topic</span><span class="o">&gt;</span><span class="p">{</span>
+public class TopicDAO extends BaseDAO&lt;Topic&gt;{
 
-    <span class="k">private</span> <span class="nf">Logger</span> <span class="n">logger</span> <span class="o">=</span> <span class="nx">Logger.getLogger</span><span class="p">(</span><span class="nx">this.getClass</span><span class="p">());</span>
-    <span class="cm">/**</span>
-<span class="cm">     * 根据froumId取出某一吧内的所有没被屏蔽的帖子</span>
-<span class="cm">     * @param froumId</span>
-<span class="cm">     * @return ArrayList&lt;Topic&gt; </span>
-<span class="cm">     * @throws HibernateException</span>
-<span class="cm">     */</span>
-    <span class="c1">// 在构造函数中进行c的设置</span>
-    <span class="k">public</span> <span class="nf">TopicDAO</span> <span class="p">()</span> <span class="p">{</span>
-        <span class="n">c</span> <span class="o">=</span> <span class="nx">Topic.class</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="c1">//doSomething</span>
-<span class="p">}</span>
+    private Logger logger = Logger.getLogger(this.getClass());
+    /**
+     * 根据froumId取出某一吧内的所有没被屏蔽的帖子
+     * @param froumId
+     * @return ArrayList&lt;Topic&gt; 
+     * @throws HibernateException
+     */
+    // 在构造函数中进行c的设置
+    public TopicDAO () {
+        c = Topic.class;
+    }
+    //doSomething
+}
 </pre></div>
 <p>&amp;nbsp_place_holder;这样完成之后，就完成了一次简单的重构，实现了<strong>变化点分离</strong>，而且不那么dirty。</p>
-<p>本文的代码来源自PostBar项目。这里有<a href="http://code.google.com/p/postbar/">Google
-Code链接</a>，v1.0.1的代码并没有上文的实现，本文中的修改还在trunk中。</p>
+<p>本文的代码来源自PostBar项目。这里有<a href="http://code.google.com/p/postbar/">Google Code链接</a>，v1.0.1的代码并没有上文的实现，本文中的修改还在trunk中。</p>
             </div>
             <!-- /.entry-content -->
               

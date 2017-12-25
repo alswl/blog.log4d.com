@@ -154,10 +154,8 @@ Log4D            </a>
 <h3 id="22-nginxuwsgifang-shi-cheng-xu-yuan-gua-yong">2.2. nginx+uWsgi方式（程序员适用）</h3>
 <p><code>wikiserver.py</code> 虽然可以运行，但是作为开发者，我当然要使用效率更高的方式。 运行Python Web应用需要
 <code>Appach / ngnix + CGI / FastCGI / uWSGI</code> 环境。 我这里使用nginx + uWSGI进行环境配置。</p>
-<p>Google了N多资料之后，这篇 <a href="http://typedef.me/2011/08/30/archlinux-nginx-uwsgi-moinmoin-setup">ArchLinux 下使用 Nginx + uWSGI 部署
-MoinMoin</a>
-最是详细，另外还可以参考 <a href="http://garfileo.is-
-programmer.com/2011/4/24/run-moinmoin-on-uwsgi-and-nginx.26347.html">运行在 nginx 与 uwsgi 之上的 moinmoin</a>。</p>
+<p>Google了N多资料之后，这篇 <a href="http://typedef.me/2011/08/30/archlinux-nginx-uwsgi-moinmoin-setup">ArchLinux 下使用 Nginx + uWSGI 部署 MoinMoin</a>
+最是详细，另外还可以参考 <a href="http://garfileo.is-programmer.com/2011/4/24/run-moinmoin-on-uwsgi-and-nginx.26347.html">运行在 nginx 与 uwsgi 之上的 moinmoin</a>。</p>
 <p>我将主要步骤和我的一些修改列出来。</p>
 <h4 id="221-an-zhuang-xu-yao-ruan-jian">2.2.1. 安装需要软件</h4>
 <p>我当前系统是Arch，运行一下命令安装，其他系统也类似</p>
@@ -242,8 +240,7 @@ Sock，这样相对安全一些。</p>
 <p>经我研究，MoinMoin 中有附件的方法可以保存文件，并且当这种附件存放的是图片文件时， 也可以直接使用 <code>{{attachment:xxx.jpg}}</code>
 这样的 Wiki 语法来查看图片。</p>
 <p>我尝试在 MoinMoin 插件库里面找将远程图片本地化的插件未果，于是就花了一个星期左右 时间写了一个实现这样功能的插件 Image2Attach。</p>
-<p>更多使用可以参考这篇文章 <a href="http://log4d.com/2011/12/moinmoin-plugin-image2attach">MoinMoin plugin: image2attach v0.0.2
-released</a></p>
+<p>更多使用可以参考这篇文章 <a href="http://log4d.com/2011/12/moinmoin-plugin-image2attach">MoinMoin plugin: image2attach v0.0.2 released</a></p>
 <p>所以说，当程序员就是好，功能没有就自己实现呗。</p>
 <h2 id="4-moinmoinde-jian-dan-shang-shou">4. MoinMoin的简单上手</h2>
 <p><a href="http://zhanggang.net/">@张刚</a> 同学发邮件给我和我交流了两个问题，我顺便整理到这里。（2011-12-28更新）</p>

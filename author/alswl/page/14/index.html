@@ -185,18 +185,16 @@ BiGuard公司</a>的主页也没有找到适合Win7的新版本。</p>
             <hr/>
             <article class="article-list">
                 <h2 class="title"><a href="https://blog.alswl.com/2010/09/script-mm2html/">小脚本mm->html</a></h2>
-                <div class="summary"><p>我同时在使用两套信息记录工具，知识收集记录工具BooguNote + KMS Wiz，关于这两套系统具体介绍请见<a href="http://log4d.com/2010/04/desktop-recording-tool-boogunote">桌面记录神器-
-BooguNote</a> &amp;
-<a href="http://log4d.com/2010/09/my-kms">我所使用的知识管理系统</a>。</p>
+                <div class="summary"><p>我同时在使用两套信息记录工具，知识收集记录工具BooguNote + KMS Wiz，关于这两套系统具体介绍请见<a href="http://log4d.com/2010/04/desktop-recording-tool-boogunote">桌面记录神器- BooguNote</a> &amp; <a href="http://log4d.com/2010/09/my-kms">我所使用的知识管理系统</a>。</p>
 <p>我的使用习惯是在BooguNote中收集日常的琐碎知识点，包括我所想的和工作记录。每个小知识节点的长度大概在200-300字左右。这些被我称为的知识碎片显然
 不能直接放入KMS。</p>
 <p>BooguNote可以将里面的文字直接复制出来，会在父亲节点上加入+，子节点加入-，这种简单的txt不能满足我的要求。于是我花了点时间写了一个mm文件到ht
 ml的转换脚本。</p>
 <p>BooguNote的文件格式是boo，可以转换成FreeMind的思维导图格式.mm，我认为用mm作为源数据格式适用范围更大。</p>
-<div class="highlight"><pre><span class="cp">#coding=utf-8</span>
-<span class="n">from</span> <span class="n">xml</span><span class="p">.</span><span class="n">dom</span> <span class="n">import</span> <span class="n">minidom</span>
-<span class="n">import</span> <span class="n">sys</span>
-<span class="n">import</span> <span class="n">os</span>
+<div class="highlight"><pre><span></span><span class="c1">#coding=utf-8</span>
+<span class="kn">from</span> <span class="nn">xml.dom</span> <span class="kn">import</span> <span class="n">minidom</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">os</span>
 </pre></div>
 <p>class MM2Html:</p>
 <p>'转换MM-&gt;Html类'</p>

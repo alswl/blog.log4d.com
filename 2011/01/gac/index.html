@@ -111,7 +111,7 @@ assembly。</p>
 <p>并不是随便一个DLL都可以放到GAC中，如果这样的话，和之前的DLL Hell也没什么区别了。GAC使用一个强名称（签名）的方式来区分不同的DLL。每个签名
 都是独一无二的公钥私钥对。现在我们使用SDK的sn工具为我的DUtil库生成一个snk签名。</p>
 <p>打开SDK中的Visual Studio 2008 命令提示，键入sn -k DUtil.snk，结果如下：</p>
-<div class="highlight"><pre><span class="n">F</span><span class="o">:</span><span class="n">WorkSpace</span><span class="o">.</span><span class="na">netDUtilbinDebug</span><span class="o">&gt;</span><span class="n">sn</span> <span class="o">-</span><span class="n">k</span> <span class="n">DUtil</span><span class="o">.</span><span class="na">snk</span>
+<div class="highlight"><pre><span></span><span class="n">F</span><span class="o">:</span><span class="n">WorkSpace</span><span class="o">.</span><span class="na">netDUtilbinDebug</span><span class="o">&gt;</span><span class="n">sn</span> <span class="o">-</span><span class="n">k</span> <span class="n">DUtil</span><span class="o">.</span><span class="na">snk</span>
 </pre></div>
 <p>Microsoft (R) .NET Framework 强名称实用工具 版本 3.5.21022.8</p>
 <p>Copyright (c) Microsoft Corporation. All rights reserved.</p>
@@ -132,14 +132,14 @@ F:WorkSpace.netDUtilPropertiesAssemblyInfo.cs 38 12 DUtil</p>
 <p>在Win7下，拖动的话会遇到权限问题，如下图所示</p>
 <p><img alt="image" src="https://ohsolnxaa.qnssl.com/2011/01/gac_setup_error.jpg"/></p>
 <p>在gacutil下面也会遇到如下错误</p>
-<div class="highlight"><pre><span class="n">F</span><span class="o">:</span><span class="n">WorkSpace</span><span class="o">.</span><span class="na">netDUtilbinDebug</span><span class="o">&gt;</span><span class="n">gacutil</span> <span class="o">-</span><span class="n">i</span> <span class="n">DUtil</span><span class="o">.</span><span class="na">dll</span>
+<div class="highlight"><pre><span></span><span class="n">F</span><span class="o">:</span><span class="n">WorkSpace</span><span class="o">.</span><span class="na">netDUtilbinDebug</span><span class="o">&gt;</span><span class="n">gacutil</span> <span class="o">-</span><span class="n">i</span> <span class="n">DUtil</span><span class="o">.</span><span class="na">dll</span>
 <span class="n">Microsoft</span> <span class="o">(</span><span class="n">R</span><span class="o">)</span> <span class="o">.</span><span class="na">NET</span> <span class="n">Global</span> <span class="n">Assembly</span> <span class="n">Cache</span> <span class="n">Utility</span><span class="o">.</span>  <span class="n">Version</span> <span class="mf">3.5</span><span class="o">.</span><span class="mf">21022.8</span>
 <span class="n">Copyright</span> <span class="o">(</span><span class="n">c</span><span class="o">)</span> <span class="n">Microsoft</span> <span class="n">Corporation</span><span class="o">.</span>  <span class="n">All</span> <span class="n">rights</span> <span class="n">reserved</span><span class="o">.</span>
 </pre></div>
 <p>将程序集添加到缓存失败: 拒绝访问。您可能没有执行此任务的管理凭据。请与您的系统管</p>
 <p>理员联系以获得帮助。</p>
 <p>解决的办法就是进入命令行时候用管理员身份进入，执行之后显示如下</p>
-<div class="highlight"><pre><span class="n">F</span><span class="o">:</span><span class="n">WorkSpace</span><span class="o">.</span><span class="na">netDUtilbinDebug</span><span class="o">&gt;</span><span class="n">gacutil</span> <span class="o">-</span><span class="n">i</span> <span class="n">DUtil</span><span class="o">.</span><span class="na">dll</span>
+<div class="highlight"><pre><span></span><span class="n">F</span><span class="o">:</span><span class="n">WorkSpace</span><span class="o">.</span><span class="na">netDUtilbinDebug</span><span class="o">&gt;</span><span class="n">gacutil</span> <span class="o">-</span><span class="n">i</span> <span class="n">DUtil</span><span class="o">.</span><span class="na">dll</span>
 <span class="n">Microsoft</span> <span class="o">(</span><span class="n">R</span><span class="o">)</span> <span class="o">.</span><span class="na">NET</span> <span class="n">Global</span> <span class="n">Assembly</span> <span class="n">Cache</span> <span class="n">Utility</span><span class="o">.</span>  <span class="n">Version</span> <span class="mf">3.5</span><span class="o">.</span><span class="mf">21022.8</span>
 <span class="n">Copyright</span> <span class="o">(</span><span class="n">c</span><span class="o">)</span> <span class="n">Microsoft</span> <span class="n">Corporation</span><span class="o">.</span>  <span class="n">All</span> <span class="n">rights</span> <span class="n">reserved</span><span class="o">.</span>
 </pre></div>
@@ -156,7 +156,7 @@ WindowsassemblyGAC_MSILDUtil .1.0.0__35f4c1ba225b3cc6DUtil.dll，这个路径包
 <p>PS:不要尝试去打开windows/assembly目录来引用，你会发现你徒劳的。</p>
 <h2 id="xie-zai-gaczhong-de-dll">卸载GAC中的DLL</h2>
 <p>一句话搞定</p>
-<div class="highlight"><pre><span class="n">C</span><span class="o">:</span><span class="n">Windowssystem32</span><span class="o">&gt;</span><span class="n">gacutil</span> <span class="o">-</span><span class="n">u</span> <span class="n">DUtil</span>
+<div class="highlight"><pre><span></span><span class="n">C</span><span class="o">:</span><span class="n">Windowssystem32</span><span class="o">&gt;</span><span class="n">gacutil</span> <span class="o">-</span><span class="n">u</span> <span class="n">DUtil</span>
 <span class="n">Microsoft</span> <span class="o">(</span><span class="n">R</span><span class="o">)</span> <span class="o">.</span><span class="na">NET</span> <span class="n">Global</span> <span class="n">Assembly</span> <span class="n">Cache</span> <span class="n">Utility</span><span class="o">.</span>  <span class="n">Version</span> <span class="mf">3.5</span><span class="o">.</span><span class="mf">21022.8</span>
 <span class="n">Copyright</span> <span class="o">(</span><span class="n">c</span><span class="o">)</span> <span class="n">Microsoft</span> <span class="n">Corporation</span><span class="o">.</span>  <span class="n">All</span> <span class="n">rights</span> <span class="n">reserved</span><span class="o">.</span>
 </pre></div>
@@ -168,8 +168,7 @@ WindowsassemblyGAC_MSILDUtil .1.0.0__35f4c1ba225b3cc6DUtil.dll，这个路径包
 <p>失败次数 = 0</p>
 <p>这样就把特定目标的DLL卸载了。</p>
 <h2 id="can-kao-wen-zhang">参考文章</h2>
-<p>除了上文提到的两本书，还参考了MSDN中的815808文章，文章名<a href="http://support.microsoft.com/kb/815808/zh-cn">如何在 Visual C# .NET
-中将程序集安装到全局程序集缓存中</a>。</p>
+<p>除了上文提到的两本书，还参考了MSDN中的815808文章，文章名<a href="http://support.microsoft.com/kb/815808/zh-cn">如何在 Visual C# .NET 中将程序集安装到全局程序集缓存中</a>。</p>
             </div>
             <!-- /.entry-content -->
               

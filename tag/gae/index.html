@@ -113,8 +113,12 @@ Log4D            </a>
 <p>紧接着发现中国内的所有域名都无法使用CURL获取，联系小张之后，得知该主机曾经被入侵过，于是屏蔽了中国大陆的ip段（囧~入侵和中国ip有毛关系）</p>
 <p>遂想用GAE做个代理服务器，反正获取RSS也只要Get一下，代码没几句。把这项任务放入Toodledo之后，就一直没去弄，今天发现GAE
 Laucher升级了，就部署到自己GAE上了。</p>
-<p>地址格式如&amp;nbsp_place_holder;<a href="http://jasontiproxy.appspot.com/proxy?url=www
-.douban.com/feed/people/alswl/interests">http://jasontiproxy.appspot.com/proxy?url=www ...</p>
+<p>地址格式如&amp;nbsp_place_holder;<a href="http://jasontiproxy.appspot.com/proxy?url=www.douban.com/feed/people/alswl/interests">http://jasontiproxy.appspot.com/proxy?url=www.douban. com/feed/people/alswl/interests</a>，url参数名后面跟着具体的url。</p>
+<p>代码其实就是用urllib2获取一下html，核心如下。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+</pre></div>
+</td></tr></table>
+<p>from ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2011/01/a-simple-gae-proxy/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>

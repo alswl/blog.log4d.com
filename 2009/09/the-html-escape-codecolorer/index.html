@@ -102,14 +102,10 @@ Log4D            </a>
 <p>在使用WordPress自己的code元素后，也就是关闭了CodeColorer插件，代码转义靠在可视化编辑器下就进行了转义。</p>
 <p>像我这个博客，前半段代码存放的是直接html代码，而后来的存放了几篇经过转义的html代码，造成了代码显示混乱。</p>
 <h2 id="zheng-zhuang">症状</h2>
-<p>[caption id="attachment_12631" align="alignnone" width="345"
-caption="开启CodeColorer+可视化界面编辑结果"]<a href="https://ohsolnxaa.qnssl.com/2009/09/Snap2.jpg"><img alt="Snap2" src="https://ohsolnxaa.qnssl.com/2009/09/Snap2.jpg"/></a>[/caption]</p>
-<p>[caption id="attachment_12632" align="alignnone" width="304"
-caption="关闭CodeColorer+HTML编辑结果在首页显示"]<a href="https://ohsolnxaa.qnssl.com/2009/09/Snap3.jpg"><img alt="关闭CodeColorer+HTML编辑结果" src="https://ohsolnxaa.qnssl.com/2009/09/Snap3.jpg"/></a>[/caption]</p>
-<p>[caption id="attachment_12633" align="alignnone" width="312"
-caption="关闭CodeColorer+HTML编辑结果在内容页"]<a href="https://ohsolnxaa.qnssl.com/2009/09/Snap4.jpg"><img alt="关闭CodeColorer+HTML编辑结果在内容页" src="https://ohsolnxaa.qnssl.com/2009/09/Snap4.jpg"/></a>[/caption]</p>
-<p>[caption id="attachment_12634" align="alignnone" width="365"
-caption="正确显示"]<a href="https://ohsolnxaa.qnssl.com/2009/09/Snap5.jpg"><img alt="正确显示" src="https://ohsolnxaa.qnssl.com/2009/09/Snap5.jpg"/></a>[/caption]</p>
+<p>[caption id="attachment_12631" align="alignnone" width="345" caption="开启CodeColorer+可视化界面编辑结果"]<a href="https://ohsolnxaa.qnssl.com/2009/09/Snap2.jpg"><img alt="Snap2" src="https://ohsolnxaa.qnssl.com/2009/09/Snap2.jpg"/></a>[/caption]</p>
+<p>[caption id="attachment_12632" align="alignnone" width="304" caption="关闭CodeColorer+HTML编辑结果在首页显示"]<a href="https://ohsolnxaa.qnssl.com/2009/09/Snap3.jpg"><img alt="关闭CodeColorer+HTML编辑结果" src="https://ohsolnxaa.qnssl.com/2009/09/Snap3.jpg"/></a>[/caption]</p>
+<p>[caption id="attachment_12633" align="alignnone" width="312" caption="关闭CodeColorer+HTML编辑结果在内容页"]<a href="https://ohsolnxaa.qnssl.com/2009/09/Snap4.jpg"><img alt="关闭CodeColorer+HTML编辑结果在内容页" src="https://ohsolnxaa.qnssl.com/2009/09/Snap4.jpg"/></a>[/caption]</p>
+<p>[caption id="attachment_12634" align="alignnone" width="365" caption="正确显示"]<a href="https://ohsolnxaa.qnssl.com/2009/09/Snap5.jpg"><img alt="正确显示" src="https://ohsolnxaa.qnssl.com/2009/09/Snap5.jpg"/></a>[/caption]</p>
 <h2 id="jie-jue-fang-fa">解决方法</h2>
 <p>CodeColorer开着和关着都成问题，要么影响我之前的代码，要么影响我后来的代码。所以必须有第三种方法解决，我检查了CodeColorer源码
 ，发现了在codecolorer-core.php一段代码。</p>
@@ -118,8 +114,7 @@ caption="正确显示"]<a href="https://ohsolnxaa.qnssl.com/2009/09/Snap5.jpg"><
 <p>}`</p>
 <p>大意是如果选项有escaped的话，就对text进行html转换。</p>
 <p>（其实我觉得把if给注释了，直接用转义，可以更好的使用，省的每段代码加入escaped="true"）</p>
-<p>果然，我在官方的<a href="http://kpumuk.info/projects/wordpress-
-plugins/codecolorer/#faq">Frequently Asked Questions</a>中找到这么一段话：</p>
+<p>果然，我在官方的<a href="http://kpumuk.info/projects/wordpress-plugins/codecolorer/#faq">Frequently Asked Questions</a>中找到这么一段话：</p>
 <p>Q. I see &lt; instead of &lt; (or other HTML entities like &gt;, &amp;, ") in my code.</p>
 <p>A. You should use [cc escaped="true"] or [cce] in the visual editor when
 inserting code into the post.</p>
