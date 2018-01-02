@@ -104,7 +104,7 @@ Log4D            </a>
                 </nav>
                 <hr/>
                 <p>活着就是折腾，最近事情多的一塌糊涂，烦躁的很，导致log4d也荒废一个月了。今天趁着周五晚上，梳理一下最近学习的pylons知识。</p>
-<p><img alt="image" src="https://ohsolnxaa.qnssl.com/2011/05/pylons.png"/></p>
+<p><img alt="image" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201105/pylons.png"/></p>
 <h2 id="guan-yu-pylons">关于Pylons</h2>
 <p><a href="http://pylonsproject.org/">Pylons</a>是一个用pythons写的web框架，优点是配置灵活，默认使用<a href="http:
 //www.makotemplates.org/">Mako</a>作为Template，<a href="http://www.sqlalchemy.org/">SQLAlchemy</a>作为
@@ -138,8 +138,8 @@ setuptools-in-windows/</a>。</p>
 pil</code>，前者是memcache的python驱动，后者是python图形库。</p>
 <h3 id="5-chu-shi-hua-shu-ju-ku">5、初始化数据库</h3>
 <p>托SQLAlchemy的福，我们可以让它自动给我们创建映射表。首先确保在model下面配置好model类。</p>
-<div class="highlight"><pre><span class="n">class</span> <span class="n">Person</span><span class="p">(</span><span class="n">Base</span><span class="p">)</span><span class="o">:</span>
-    <span class="n">__tablename__</span> <span class="o">=</span> <span class="s">"person"</span>
+<div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">Person</span><span class="p">(</span><span class="nx">Base</span><span class="p">)</span><span class="o">:</span>
+    <span class="nx">__tablename__</span> <span class="o">=</span> <span class="s2">"person"</span>
 </pre></div>
 <p>id = Column(Integer, primary_key=True)</p>
 <p>name = Column(String(100))</p>
@@ -148,9 +148,9 @@ pil</code>，前者是memcache的python驱动，后者是python图形库。</p>
 <p>self.name = name</p>
 <p>self.email = email</p>
 <p>然后在目标项目下面的development.ini中配置数据库连接字符串。</p>
-<div class="highlight"><pre><span class="cp"># SQLAlchemy database URL</span>
-<span class="cp">#sqlalchemy.url = sqlite:</span><span class="c1">///%(here)s/myb.db</span>
-<span class="n">sqlalchemy</span><span class="p">.</span><span class="n">url</span> <span class="o">=</span> <span class="n">mysql</span><span class="o">:</span><span class="c1">//test:test@localhost/myb?charset=utf8&amp;use_unicode=0</span>
+<div class="highlight"><pre><span></span># SQLAlchemy database URL
+#sqlalchemy.url = sqlite:///%(here)s/myb.db
+sqlalchemy.url = mysql://test:test@localhost/myb?charset=utf8&amp;use_unicode=0
 </pre></div>
 <p>最后在shell中执行<code>paster setup-app development.ini</code>，即可初始化好数据库结构。</p>
 <p>如果需要在初始化时候加入测试数据，可以在项目目录下的websetup.py中setup_app方法填充数据。</p>

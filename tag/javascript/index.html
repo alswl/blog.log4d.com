@@ -77,7 +77,7 @@ Log4D            </a>
 <hr/>
 <p>白天工作时候需要一个功能，我搜了一下Google，没有找到合适的，就花了半天时间写了一个jQuery插件jEmotion。</p>
 <p>jEmotion的主要功能是用来给输入框加入转义之后的表情代码，然后在页面显示时候可以重新将表情代码转回表情图片。</p>
-<p><img alt="image" src="https://ohsolnxaa.qnssl.com/2011/11/jemotion.png"/></p>
+<p><img alt="image" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201111/jemotion.png"/></p>
 <p>jEmotion的代码托管在GitHub上，地址是
 <a href="https://github.com/alswl/jEmotion">https://github.com/alswl/jEmotion</a> 。</p>
 <p>demo地址是 <a href="http://lab.log4d.
@@ -159,26 +159,23 @@ reFox下需要正常运行。</p>
             <hr/>
             <article class="article-list">
                 <h2 class="title"><a href="https://blog.alswl.com/2009/09/jquery-to-achieve-the-school-network-image-circle-of-people-function-results/">jQuery图片圈人功能在ASP.NET下的改进</a></h2>
-                <div class="summary"><p>项目中需要一个类似于校内圈人效果的js控件，找了一下基本没有直接能用的，只有一些未完成，我只能自己动手了。 基本框架参照这篇文章《<a href="http://www.cnblogs.com/czy1121/archive/2009/03/03/1402105.html">JS实现校内网"图片圈人
-"功能效果</a>》（强烈推荐这篇
+                <div class="summary"><p>项目中需要一个类似于校内圈人效果的js控件，找了一下基本没有直接能用的，只有一些未完成，我只能自己动手了。 基本框架参照这篇文章《<a href="http://www.cnblogs.com/czy1121/archive/2009/03/03/1402105.html">JS实现校内网"图片圈人 "功能效果</a>》（强烈推荐这篇
 文章，这段代码写的很帅气） 我把代码摘录如下，不过还是建议大家去看原文的一些分析。</p>
 <h2 id="yuan-shi-code">原始Code:</h2>
-<p>运行环境： 1.jQuery支持 2.DragResize类（czy1121作者写的一个js类，更多信息可以参照《<a href="http://www.cnblogs.com/czy1121/archive/2009/02/26/1398971.html">Javascript Resize和Dr
-ag类,基于jQuery</a>》
+<p>运行环境： 1.jQuery支持 2.DragResize类（czy1121作者写的一个js类，更多信息可以参照《<a href="http://www.cnblogs.com/czy1121/archive/2009/02/26/1398971.html">Javascript Resize和Drag类,基于jQuery</a>》
 ）</p>
 <h3 id="yang-shi">样式：</h3>
-<div class="highlight"><pre><span class="nf">#enclose-wrapper</span> <span class="p">{</span>
-    <span class="k">position</span><span class="o">:</span> <span class="k">relative</span><span class="p">;</span>
-    <span class="k">z-index</span><span class="o">:</span> <span class="m">0</span><span class="p">;</span>
-    <span class="k">border</span><span class="o">:</span> <span class="m">4px</span> <span class="k">solid</span> <span class="m">#DDD</span><span class="p">;</span>
-    <span class="k">background-color</span><span class="o">:</span> <span class="m">#FFF</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><span class="p">#</span><span class="nn">enclose-wrapper</span> <span class="p">{</span>
+    <span class="k">position</span><span class="p">:</span> <span class="kc">relative</span><span class="p">;</span>
+    <span class="k">z-index</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">border</span><span class="p">:</span> <span class="mi">4</span><span class="kt">px</span> <span class="kc">solid</span> <span class="mh">#DDD</span><span class="p">;</span>
+    <span class="k">background-color</span><span class="p">:</span> <span class="mh">#FFF</span><span class="p">;</span>
 <span class="p">}</span>
-<span class="nf">#form-add-tag</span> <span class="p">{</span>
-    <span class="k">margin-left</span><span class="o">:</span> <span class="m">8px</span><span class="p">;</span>
-    <span class="k">position</span><span class="o">:</span> <span class="k">absolute</span><span class="p">;</span>
-    <span class="k">padding</span><span class="o">:</span> <span class="m">5px</span> <span class="m">3px</span><span class="p">;</span>
-    <span class="k">border</span><span class="o">:</span> <span class="m">1px</span> <span class="k">solid</span> <span class="m">#005EAC</span><span class="p">;</span>
-    <span class="k">float ...</span></pre></div>
+<span class="p">#</span><span class="nn">form-add-tag</span> <span class="p">{</span>
+    <span class="k">margin-left</span><span class="p">:</span> <span class="mi">8</span><span class="kt">px</span><span class="p">;</span>
+    <span class="k">position</span><span class="p">:</span> <span class="kc">absolute</span><span class="p">;</span>
+    <span class="k">padding</span><span class="p">:</span> <span class="mi">5</span><span class="kt">px</span> <span class="mi">3</span><span class="kt">px</span><span class="p">;</span>
+    <span class="k">border</span><span class="p">:</span> <span class="mi">1 ...</span></pre></div>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/09/jquery-to-achieve-the-school-network-image-circle-of-people-function-results/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>

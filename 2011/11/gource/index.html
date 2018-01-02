@@ -16,7 +16,7 @@
 
         <meta name="author" content="alswl" />
         <meta name="keywords" content="工欲善其事必先利其器,cvs,dbevent2gc,git,gource" />
-        <meta name="description" content="昨天我在sunng 那里看到一个非常好玩的东西Gource。 Gource可以将代码版本控制系统里面的日志全部可视化， 所谓可视化就是可以看见每个成员在系统里面提交代码的行为。 Gource目前支持git/hg/svn，cvs通过一个简单的脚本也可以被Gource支持。 官方视频在这里Gource - Software Version Control Visualization Tool，里面有Moodle/Git/Drupal/Postg reSQL/Ruby on Rails/Linux/VLC Player这几个非常漂亮的开源软件视频。Ruby on Rails那一段特别帅有没有。 使用下列命令可以将视频录制下来(via wiki)： pacman -S x264 #在 ..." />
+        <meta name="description" content="昨天我在sunng 那里看到一个非常好玩的东西Gource。 Gource可以将代码版本控制系统里面的日志全部可视化， 所谓可视化就是可以看见每个成员在系统里面提交代码的行为。 Gource目前支持git/hg/svn，cvs通过一个简单的脚本也可以被Gource支持。 官方视频在这里Gource - Software Version Control Visualization Tool，里面有Moodle/Git/Drupal/Postg reSQL/Ruby on Rails/Linux/VLC Player这几个非常漂亮的开源软件视频。Ruby on Rails那一段特别帅有没有。 使用下列命令可以将视频录制下来(via wiki)： pacman -S x264 #在archlinux下安装H264支持 ..." />
 
 
 
@@ -100,23 +100,23 @@ Log4D            </a>
                 </div>
                 <p>昨天我在<a href="http://sunng.info/blog/2011/10/clojalk-scm-visualization/">sunng</a>
 那里看到一个非常好玩的东西<a href="http://code.google.com/p/gource/">Gource</a>。</p>
-<p><img alt="gource" src="https://ohsolnxaa.qnssl.com/2011/11/gource-logo.png"/></p>
+<p><img alt="gource" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201111/gource-logo.png"/></p>
 <p>Gource可以将代码版本控制系统里面的日志全部可视化， 所谓可视化就是可以看见每个成员在系统里面提交代码的行为。
 Gource目前支持git/hg/svn，cvs通过一个简单的脚本也可以被Gource支持。</p>
 <p>官方视频在这里<a href="http://www.youtu
 be.com/watch?v=E5xPMW5fg48&amp;feature=player_embedded">Gource - Software Version Control Visualization Tool</a>，里面有Moodle/Git/Drupal/Postg
 reSQL/Ruby on Rails/Linux/VLC Player这几个非常漂亮的开源软件视频。Ruby on Rails那一段特别帅有没有。</p>
 <p>使用下列命令可以将视频录制下来(via <a href="http://code.google.com/p/gource/wiki/Videos">wiki</a>)：</p>
-<div class="highlight"><pre><span class="n">pacman</span> <span class="o">-</span><span class="n">S</span> <span class="n">x264</span> <span class="err">#在</span><span class="n">archlinux</span><span class="err">下安装</span><span class="n">H264</span><span class="err">支持</span>
-<span class="n">gource</span> <span class="o">-</span><span class="mi">1280</span><span class="n">x720</span> <span class="o">-</span><span class="n">o</span> <span class="n">gource</span><span class="p">.</span><span class="n">ppm</span> <span class="err">#在项目目录下运行，生成</span><span class="n">ppm</span><span class="err">文件</span>
-<span class="cp">#生成mp4文件，官方文档里面有-vpre slow项，会报错，去掉即可</span>
-<span class="n">ffmpeg</span> <span class="o">-</span><span class="n">y</span> <span class="o">-</span><span class="n">b</span> <span class="mi">10000</span><span class="n">K</span> <span class="o">-</span><span class="n">r</span> <span class="mi">60</span> <span class="o">-</span><span class="n">f</span> <span class="n">image2pipe</span> <span class="o">-</span><span class="n">vcodec</span> <span class="n">ppm</span> <span class="o">-</span><span class="n">i</span> <span class="n">gource</span><span class="p">.</span><span class="n">ppm</span> <span class="o">-</span><span class="n">vcodec</span> <span class="n">libx264</span> <span class="o">-</span><span class="n">threads</span> <span class="mi">0</span> <span class="o">-</span><span class="n">bf</span> <span class="mi">0</span> <span class="n">gource</span><span class="p">.</span><span class="n">x264</span><span class="p">.</span><span class="n">mp4</span>
+<div class="highlight"><pre><span></span>pacman -S x264 #在archlinux下安装H264支持
+gource -1280x720 -o gource.ppm #在项目目录下运行，生成ppm文件
+#生成mp4文件，官方文档里面有-vpre slow项，会报错，去掉即可
+ffmpeg -y -b 10000K -r 60 -f image2pipe -vcodec ppm -i gource.ppm -vcodec libx264 -threads 0 -bf 0 gource.x264.mp4
 </pre></div>
 <p>使用<a href="http://www.red-bean.com/cvs2cl/">cvs2cl</a>来支持CVS （via
 <a href="http://code.google.com/p/gource/wiki/CVS">wiki</a>)：</p>
-<div class="highlight"><pre><span class="n">cd</span> <span class="n">my</span><span class="o">-</span><span class="n">cvs</span><span class="o">-</span><span class="n">project</span>
-<span class="n">cvs2cl</span> <span class="o">--</span><span class="n">chrono</span> <span class="o">--</span><span class="n">stdout</span> <span class="o">--</span><span class="n">xml</span> <span class="o">-</span><span class="n">g</span><span class="o">-</span><span class="n">q</span> <span class="o">&gt;</span> <span class="n">my</span><span class="o">-</span><span class="n">cvs</span><span class="o">-</span><span class="n">project</span><span class="p">.</span><span class="n">xml</span>
-<span class="n">gource</span> <span class="n">my</span><span class="o">-</span><span class="n">cvs</span><span class="o">-</span><span class="n">project</span><span class="p">.</span><span class="n">xml</span>
+<div class="highlight"><pre><span></span>cd my-cvs-project
+cvs2cl --chrono --stdout --xml -g-q &gt; my-cvs-project.xml
+gource my-cvs-project.xml
 </pre></div>
 <p>Gource里面有几个快捷键，我常用的有<code>[</code>放大，<code>]</code>缩小，方向键移动，<code>+</code>加速，<code>-</code>减速。</p>
 <p>我本来想把我的dbevent2gc拿来凑了一个热闹，结果h264编码传到要哭土豆似乎一直有问题，只能作罢。ps：3分钟的视频，生成的ppm有1.2个G，转换

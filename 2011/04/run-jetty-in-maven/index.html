@@ -102,8 +102,7 @@ Log4D            </a>
                 <p>部门最近开发的产品使用的开发服务器是Jetty（挂载在GWT中），启动方法是通过Eclipse的External
 Tool执行。我对此表示很好奇，特意在自己电脑下面组建了一个Jetty开发环境，发现Maven和Jetty合作起来非常愉快，现在小记之。</p>
 <h2 id="yi-zhun-bei-mavenpei-zhi-wen-jian">一、准备Maven配置文件</h2>
-<p>我使用Maven推荐的标准webapp结构，结构如下，官方文档可以参考<a href="http://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html">Maven - Introduction to the Standard
-Directory Layout</a></p>
+<p>我使用Maven推荐的标准webapp结构，结构如下，官方文档可以参考<a href="http://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html">Maven - Introduction to the Standard Directory Layout</a></p>
 <p>src/main/java</p>
 <p>Application/Library sources</p>
 <p>src/main/resources</p>
@@ -131,9 +130,8 @@ Directory Layout</a></p>
 <p>README.txt</p>
 <p>Project's readme</p>
 <p>使用的pom.xml主要添加了build-
-plugins的Jetty插件，另外修改了outputDirectory，从而实现自动编译到<code>targert/projectName/WEB-
-INF/classes</code>目录，实现<a href="http://wiki.eclipse.org/FAQ_What_is_hot_code_replace%3F">Eclipse Hot Code</a>。</p>
-<div class="highlight"><pre><span class="nt">&lt;build&gt;</span>
+plugins的Jetty插件，另外修改了outputDirectory，从而实现自动编译到<code>targert/projectName/WEB- INF/classes</code>目录，实现<a href="http://wiki.eclipse.org/FAQ_What_is_hot_code_replace%3F">Eclipse Hot Code</a>。</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;build&gt;</span>
     <span class="nt">&lt;directory&gt;</span><span class="cp">${</span><span class="n">project</span><span class="o">.</span><span class="n">basedir</span><span class="cp">}</span>/target<span class="nt">&lt;/directory&gt;</span>
     <span class="nt">&lt;finalName&gt;</span><span class="cp">${</span><span class="n">project</span><span class="o">.</span><span class="n">artifactId</span><span class="cp">}</span>-<span class="cp">${</span><span class="n">project</span><span class="o">.</span><span class="n">version</span><span class="cp">}</span><span class="nt">&lt;/finalName&gt;</span>
     <span class="nt">&lt;outputDirectory&gt;</span><span class="cp">${</span><span class="n">project</span><span class="o">.</span><span class="n">build</span><span class="o">.</span><span class="n">directory</span><span class="cp">}</span>/<span class="cp">${</span><span class="n">project</span><span class="o">.</span><span class="n">build</span><span class="o">.</span><span class="n">finalName</span><span class="cp">}</span>/WEB-INF/classes<span class="nt">&lt;/outputDirectory&gt;</span>
@@ -176,15 +174,15 @@ install</code>即可在target/war下面生成war包，同时在target/projectNam
 class为<code>org.mortbay.xml.XmlConfiguration</code>，在Arguments - Program arguments中加入<code>${p
 roject_loc}/jetty.xml</code>，其中<code>${project_loc}</code>是动态参数，指向当前项目目录，jetty.xml为我们随后要创建的jett
 y配置文件。</p>
-<p><a href="https://ohsolnxaa.qnssl.com/2011/04/run_configurations .png"><img alt="image" src="https://ohsolnxaa.qnssl.com/2011/04/run_configurations" title=".png"/></a></p>
+<p><a href="https://ohsolnxaa.qnssl.com/upload_dropbox/201104/run_configurations .png">![image](https://ohsolnxaa.qnssl.com/upload_dropbox/201104/run_configurations .png)</a></p>
 <p>如果想将这个应用保存成文件，可以修改Common - Sava
 as到当前目录，就可以保存为jetty.launch文件了。（没错，就是launch文件，Eclipse的运行配置文件）</p>
-<p><a href="https://ohsolnxaa.qnssl.com/2011/04/eclipse_common.png"><img alt="image" src="https://ohsolnxaa.qnssl.com/2011/04/eclipse_common.png"/></a></p>
+<p><a href="https://ohsolnxaa.qnssl.com/upload_dropbox/201104/eclipse_common.png"><img alt="image" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201104/eclipse_common.png"/></a></p>
 <p>2、准备jetty.xml文件</p>
 <p>Jetty是一款轻量形的Web服务器，轻到甚至仅仅靠Maven插件即可运行，不过我们依然需要通过jetty.xml文件进行配置。在项目根目录下建立jetty
 .xml（此路径与Java Application中的Arguments相对应，有些朋友可能更习惯放在WEB-INF下面）。</p>
 <p>官方说从$JETTY_HOME/webapps/test/WEB-INF/jetty-web.xml可以取到jetty-xml的范例，我这里就提供下载好了。</p>
-<p>点击下载<a href="https://ohsolnxaa.qnssl.com/2011/04/jetty.xml">jetty.xml </a>，这里面写了hard
+<p>点击下载<a href="https://ohsolnxaa.qnssl.com/upload_dropbox/201104/jetty.xml">jetty.xml </a>，这里面写了hard
 code&amp;nbsp_place_holder;<code>&lt;Set
 name="resourceBase"&gt;./target/study_web-1.0-SNAPSHOT&lt;/Set&gt;</code>，请记得替换。</p>
 <p>配置好Jetty之后，就可以运行Jetty了，在Run - Run

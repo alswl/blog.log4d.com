@@ -122,7 +122,7 @@ Log4D            </a>
 <p>以下内容需要Python编程基础～</p>
 <h2 id="2-moinmoin-xi-tong-jie-gou">2. MoinMoin 系统结构</h2>
 <p>MoinMoin的UML图：</p>
-<p><img alt="MoinMoin" src="https://ohsolnxaa.qnssl.com/2012/02/MoinMoinArchitecture.png"/></p>
+<p><img alt="MoinMoin" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201202/MoinMoinArchitecture.png"/></p>
 <h2 id="3-moinmoin-chang-yong-dui-xiang">3. MoinMoin 常用对象</h2>
 <h3 id="31-request">3.1. request</h3>
 <p>这个request和普通jsp/asp中request很类似（实际上这个request就是继承
@@ -182,7 +182,7 @@ Log4D            </a>
 <h3 id="38-parser">3.8. parser</h3>
 <p>formatter完成的工作是展现解析后的wiki内容，而负责解析的就是parser了。</p>
 <p>流程是这样的：</p>
-<div class="highlight"><pre><span class="n">wiki</span> <span class="o">-&gt;</span> <span class="n">parser</span> <span class="o">-&gt;</span> <span class="n">formatter</span>
+<div class="highlight"><pre><span></span>wiki -&gt; parser -&gt; formatter
 </pre></div>
 <p>每一个parser都对应一个或者多个formatter。系统内置的 parser/formatter 有：</p>
 <ul>
@@ -211,12 +211,12 @@ Log4D            </a>
 <p>在文件 <code>/usr/lib/python2.7/site-packages/MoinMoin/config/multiconfig.py</code>
 的第815行左右，修改 <code>options_no_group_name</code> 中的 <code>cache</code> 时间。</p>
 <p>当改为0时候，就不使用 <code>pyc</code> 缓存，这样就不用重启服务器来清楚缓存了。</p>
-<div class="highlight"><pre><span class="n">options_no_group_name</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="err">#</span> <span class="p">...</span>
-        <span class="err">#'</span><span class="n">cache</span><span class="err">'</span><span class="o">:</span> <span class="p">(</span><span class="mi">600</span><span class="p">,</span> <span class="mi">30</span><span class="p">),</span> <span class="err">#</span> <span class="n">cache</span> <span class="n">action</span> <span class="n">is</span> <span class="n">very</span> <span class="n">cheap</span><span class="o">/</span><span class="n">efficient</span>
-        <span class="err">'</span><span class="n">cache</span><span class="err">'</span><span class="o">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="err">#</span> <span class="n">cache</span> <span class="n">action</span> <span class="n">is</span> <span class="n">very</span> <span class="n">cheap</span><span class="o">/</span><span class="n">efficient</span> <span class="err">#</span><span class="n">XXX</span> <span class="n">alswl</span>
-        <span class="err">#</span> <span class="p">...</span>
-<span class="p">}</span>
+<div class="highlight"><pre><span></span>options_no_group_name = {
+        # ...
+        #'cache': (600, 30), # cache action is very cheap/efficient
+        'cache': (0, 0), # cache action is very cheap/efficient #XXX alswl
+        # ...
+}
 </pre></div>
 <h2 id="6-image2attach-fan-li_1">6. image2attach 范例</h2>
 <p>image2attach这个插件功能很简单，就是读取wiki文本内容，找出所有图片，

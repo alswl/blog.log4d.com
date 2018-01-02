@@ -74,9 +74,9 @@ replicator-mp3">Java写的Mp3歌词复制器</a>。</p>
 <p>这几天整理硬盘时候发现大四时候还用Delphi写了一个完整的GUI界面的Mp3歌词复制工具叫做PLrcMatch4D。</p>
 <p>源码已经丢失，只剩下可执行文件，T_T。</p>
 <p>如果非要定义以下这个工具的作用，就是从某个固定文件夹（歌词文件夹）复制对应Mp3播放器中歌曲的lrc文件到目标文件夹，从而让Mp3播放器可以正常显示歌词。</p>
-<p>下载点击这里，<a href="https://ohsolnxaa.qnssl.com/2011/03/PLrcMatch4D.zip">PLrcMatch4D.zip</a></p>
+<p>下载点击这里，<a href="https://ohsolnxaa.qnssl.com/upload_dropbox/201103/PLrcMatch4D.zip">PLrcMatch4D.zip</a></p>
 <p>界面比较实在，大致是这样：</p>
-<p><img alt="image" src="https://ohsolnxaa.qnssl.com/2011/03/plrcmatch4d.jpg"/></p>
+<p><img alt="image" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201103/plrcmatch4d.jpg"/></p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2011/03/plrcmatch4d/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -148,15 +148,15 @@ Brooks 的说法有下列几项：[2]</p>
                 <div class="summary"><p>在系统开发中，数据库连接字符串经常被保存到.config/.ini等配置文件中，以提高系统的灵活性。上大学时候，为了实现灵活配置数据库的效果，用拼字符串的方
 法来动态生成连接字符串，这种方法充满了Bad Smell。</p>
 <p>昨天用CodeSmith时候，看到它的数据连接配置界面，如此的眼熟，如下图。</p>
-<p><img alt="image" src="https://ohsolnxaa.qnssl.com/2011/02/DataConnectionDialog.jpg"/></p>
+<p><img alt="image" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201102/DataConnectionDialog.jpg"/></p>
 <p>Google了一下，原来这家伙的名字叫做DataConnectionDialog，所属命名空间为Microsoft.VisualStudio.Data。</p>
 <p>使用的方法也很简单，引用Microsoft.Data.ConnectionUI.dll和Microsoft.Data.ConnectionUI.Dialog
 .dll，这两个文件位于Microsoft Visual Studio 9.0Common7IDE下面。</p>
 <p>这两个dll并没有其他依赖关系，可以放心的放到自己的程序中使用。</p>
 <p>使用代码如下</p>
-<div class="highlight"><pre><span class="n">DataConnectionDialog</span> <span class="n">dataConnectionDialog</span> <span class="o">=</span> <span class="n">new</span> <span class="n">DataConnectionDialog</span><span class="p">();</span>
-<span class="n">DataSource</span><span class="p">.</span><span class="n">AddStandardDataSources</span><span class="p">(</span><span class="n">dataConnectionDialog</span><span class="p">);</span>
-<span class="k">if</span> <span class="p">(</span><span class="n">DataConnectionDialog</span><span class="p">.</span><span class="n">Show</span><span class="p">(</span><span class="n">dataConnectionDialog</span><span class="p">)</span> <span class="o">==</span> <span class="n">DialogResult</span><span class="p">.</span><span class="n">OK ...</span></pre></div>
+<div class="highlight"><pre><span></span>DataConnectionDialog dataConnectionDialog = new DataConnectionDialog();
+DataSource.AddStandardDataSources(dataConnectionDialog);
+if (DataConnectionDialog.Show(dataConnectionDialog) == DialogResult.OK ...</pre></div>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2011/02/dataconnectiondialog/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>

@@ -115,7 +115,7 @@ Log4D            </a>
 通过 GDM 启动 xmonad / awesome，启动 xsession 是 <code>/usr/share/xsessions/awesome.desktop</code>，
 内容如下</p>
 
-<div class="highlight"><pre><span class="k">[Desktop Entry]</span>
+<div class="highlight"><pre><span></span><span class="k">[Desktop Entry]</span>
 <span class="na">Name</span><span class="o">=</span><span class="s">Awesome</span>
 <span class="na">Comment</span><span class="o">=</span><span class="s">This session logs you into Awesome</span>
 <span class="na">Type</span><span class="o">=</span><span class="s">Application</span>
@@ -125,7 +125,7 @@ Log4D            </a>
 <p><code>$HOME/.start-session.sh</code> 中的作用是启动 <strong>nm-applet</strong> 和 <strong>exec awesome</strong>。</p>
 <p>启动之后的情况是 NetworkManager 无线 编辑/删除 按钮变灰无法点击，或者可以点击，
 但是会发生 <strong>insufficient privileges</strong> 错误。</p>
-<p><img alt="insufficient privileges" src="https://ohsolnxaa.qnssl.com/2012/05/insufficient-privileges.png"/></p>
+<p><img alt="insufficient privileges" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201205/insufficient-privileges.png"/></p>
 <h2 id="wen-ti-yuan-yin">问题原因</h2>
 <p>这个问题是由 PolicyKit 和 ConsoleKit 启动不当引起的。</p>
 <p>PolicyKit 是：</p>
@@ -153,20 +153,20 @@ Log4D            </a>
 <p>我的这个问题就是由于 PolicyKit 无法正确授权引起的。</p>
 <h2 id="wen-ti-jie-jue">问题解决</h2>
 <p>我开始吭次吭次的 Google，一会就找到了 Arch Wiki 中 <a href="https://wiki.archlinux.org/index.php/NetworkManager#Set_up_PolicyKit_permissions">NetworkManager</a> 的解决办法：</p>
-<div class="highlight"><pre><span class="nb">exec </span>ck-launch-session dbus-launch wm
+<div class="highlight"><pre><span></span><span class="nb">exec</span> ck-launch-session dbus-launch wm
 </pre></div>
 <p>写的很清楚，使用 <strong>ck-launch-session</strong> 和 <strong>dbus-launch</strong> 来加载 WM。但是我已经使用
 <code>ck-launch-session</code> 来启动 WM 了。</p>
 <p>随后我把怀疑的目光放到 <code>/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1</code>
 这个程序给系统提供 PolicyKit 权限认证，请求时候会让用户输入密码，如下图：</p>
-<p><img alt="PolicyKit Agent" src="https://ohsolnxaa.qnssl.com/2012/05/policykit-agent.png"/></p>
+<p><img alt="PolicyKit Agent" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201205/policykit-agent.png"/></p>
 <p>可惜还是不行。</p>
 <p>我甚至还参考<a href="http://blog.san-ss.com.ar/2011/03/using-gnome-keyring-in-xmonad.html">Using gnome keyring in xmonad</a>
 试图手工建立一个 Gnome Keyring。事实证明，Gnome Keyring 和这个问题无关。</p>
 <p>最后，我用 <code>ck-list-sessions</code> 命令查看运行的用户 Session，发现同时运行着两个，
 一个处于 <code>Active</code>，一个不处于 <code>Active</code>，这下真相大白了：GDM 启动时候会自己启动
 <code>ck-launch-session</code>，不用自己手动启动，否则会造成两个会话而无法正确授权。</p>
-<div class="highlight"><pre><span class="n">Session2</span><span class="o">:</span>
+<div class="highlight"><pre><span></span><span class="n">Session2</span><span class="o">:</span>
     <span class="n">unix</span><span class="o">-</span><span class="n">user</span> <span class="o">=</span> <span class="s1">'1000'</span>
     <span class="n">realname</span> <span class="o">=</span> <span class="s1">'Jason Ti'</span>
     <span class="n">seat</span> <span class="o">=</span> <span class="s1">'Seat1'</span>
@@ -194,7 +194,7 @@ Log4D            </a>
     <span class="n">login</span><span class="o">-</span><span class="n">session</span><span class="o">-</span><span class="n">id</span> <span class="o">=</span> <span class="s1">'2'</span>
 </pre></div>
 <p>修正 <code>/usr/share/xsessions/awesome.desktop</code> 如下：</p>
-<div class="highlight"><pre><span class="k">[Desktop Entry]</span>
+<div class="highlight"><pre><span></span><span class="k">[Desktop Entry]</span>
 <span class="na">Name</span><span class="o">=</span><span class="s">Awesome</span>
 <span class="na">Comment</span><span class="o">=</span><span class="s">This session logs you into Awesome</span>
 <span class="na">Type</span><span class="o">=</span><span class="s">Application</span>
@@ -202,9 +202,9 @@ Log4D            </a>
 <span class="na">TryExec</span><span class="o">=</span><span class="s">/usr/bin/awesome</span>
 </pre></div>
 <p>事实上，在启动完 GDM 还没进入 WM 之前，<code>Ctrl+Alt+F1</code> 切换到命令行下面，查看进程会发现</p>
-<div class="highlight"><pre><span class="n">root</span>       <span class="mi">637</span>     <span class="mi">1</span>  <span class="mi">0</span> <span class="mi">08</span><span class="o">:</span><span class="mi">44</span> <span class="o">?</span>        <span class="mo">00</span><span class="o">:</span><span class="mo">00</span><span class="o">:</span><span class="mo">00</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">polkit</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="n">polkitd</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">debug</span>
-<span class="n">root</span>      <span class="mi">1072</span>     <span class="mi">1</span>  <span class="mi">0</span> <span class="mi">08</span><span class="o">:</span><span class="mi">44</span> <span class="o">?</span>        <span class="mo">00</span><span class="o">:</span><span class="mo">00</span><span class="o">:</span><span class="mo">00</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">sbin</span><span class="o">/</span><span class="n">console</span><span class="o">-</span><span class="n">kit</span><span class="o">-</span><span class="n">daemon</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">daemon</span>
-<span class="n">rtkit</span>     <span class="mi">1260</span>     <span class="mi">1</span>  <span class="mi">0</span> <span class="mi">08</span><span class="o">:</span><span class="mi">45</span> <span class="o">?</span>        <span class="mo">00</span><span class="o">:</span><span class="mo">00</span><span class="o">:</span><span class="mo">00</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">rtkit</span><span class="o">-</span><span class="n">daemon</span>
+<div class="highlight"><pre><span></span>root       637     1  0 08:44 ?        00:00:00 /usr/lib/polkit-1/polkitd --no-debug
+root      1072     1  0 08:44 ?        00:00:00 /usr/sbin/console-kit-daemon --no-daemon
+rtkit     1260     1  0 08:45 ?        00:00:00 /usr/lib/rtkit-daemon
 </pre></div>
 <p>果不其然，PolicyKit 和 ConsoleKit 已经在运行了。</p>
 <p>实测 Awesome / Xmonad 已经可以正常授权 NetworkManager 来编辑无线了。</p>

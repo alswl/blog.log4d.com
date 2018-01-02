@@ -138,7 +138,7 @@ oefdjegm?hl=zh_CN">安装地址</a></p>
 <li>勾选在隐身模式下启用。</li>
 </ul>
 <p>配置主界面如下：</p>
-<p><a href="https://ohsolnxaa.qnssl.com/2012/03/switchysharp_1.png"> <img alt="SwitchySharp config" src="https://ohsolnxaa.qnssl.com/2012/03/switchysharp_1.png"/> </a></p>
+<p><a href="https://ohsolnxaa.qnssl.com/upload_dropbox/201203/switchysharp_1.png"> <img alt="SwitchySharp config" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201203/switchysharp_1.png"/> </a></p>
 <p>其中的 HTTP 代理和端口，根据自己的需要填写。</p>
 <p>相关链接： <a href="http://youcan.hourb.com/archives/19">让Chrome浏览器用上独立的代理 | 非诚勿扰</a></p>
 <h2 id="socks-yong-hu-de-fu-yin">Socks 用户的福音</h2>
@@ -146,10 +146,10 @@ oefdjegm?hl=zh_CN">安装地址</a></p>
 地址</a>），所以类似 <code>ssh -D</code>
 建立的 socks 连接都会无法使用，我们需要通过 Privoxy 来将 socks 转换到 http。</p>
 <p>Arch Linux 下安装 Privoxy，其他发行版也是类似。</p>
-<div class="highlight"><pre><span class="n">pacman</span> <span class="o">-</span><span class="n">S</span> <span class="n">privoxy</span>
+<div class="highlight"><pre><span></span>pacman -S privoxy
 </pre></div>
 <p>配置 Privoxy，修改 <code>/etc/privoxy/config</code> 添加一行：</p>
-<div class="highlight"><pre><span class="n">forward</span><span class="o">-</span><span class="n">socks5</span> <span class="o">/</span> <span class="mf">127.0.0.1</span><span class="o">:</span><span class="mi">7070</span> <span class="p">.</span>
+<div class="highlight"><pre><span></span>forward-socks5 / 127.0.0.1:7070 .
 </pre></div>
 <p>注意上面的空格和末尾的点。</p>
 <p>配置好 Privoxy 后，重启服务，Privoxy 默认在 8118 端口提供服务，可以使用 <code>127.0.0.1:8118</code> 来访问代理服务器。</p>
@@ -160,7 +160,7 @@ socks5-%E8%BD%AC-http-3/">ssh socks5 转 http &laquo; 细节的力量</a> * <a h
 </ul>
 <h2 id="shi-yong-mou-ge-list">使用某个 list</h2>
 <p>这事不能说太细，看图说话。</p>
-<p><a href="https://ohsolnxaa.qnssl.com/2012/03/switchysharp_2.png"> <img alt="SwitchySharp config" src="https://ohsolnxaa.qnssl.com/2012/03/switchysharp_2.png"/> </a></p>
+<p><a href="https://ohsolnxaa.qnssl.com/upload_dropbox/201203/switchysharp_2.png"> <img alt="SwitchySharp config" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201203/switchysharp_2.png"/> </a></p>
 <p>注意将某 list 加入切换规则，否则会无法获取 appspot 中的内容。</p>
 <p>参考链接：https://autoproxy.org/zh-CN/node/61 （自备梯子）</p>
             </div>

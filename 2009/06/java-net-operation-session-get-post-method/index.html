@@ -100,13 +100,13 @@ Log4D            </a>
 全能拖拉机。 首先要解决的就是校内登录的问题，那就是Get/Post方法了，还有用户状态保存，就是session的操作。Java不同于C#，那位可以集成系统
 的浏览器或者之间创建一个Browser。</p>
 <p>开始写了自己的第一个版本。</p>
-<div class="highlight"><pre><span class="n">import</span> <span class="n">java</span><span class="p">.</span><span class="n">io</span><span class="p">.</span><span class="n">BufferedReader</span><span class="p">;</span>
-<span class="n">import</span> <span class="n">java</span><span class="p">.</span><span class="n">io</span><span class="p">.</span><span class="n">IOException</span><span class="p">;</span>
-<span class="n">import</span> <span class="n">java</span><span class="p">.</span><span class="n">io</span><span class="p">.</span><span class="n">InputStreamReader</span><span class="p">;</span>
-<span class="n">import</span> <span class="n">java</span><span class="p">.</span><span class="n">net</span><span class="p">.</span><span class="n">MalformedURLException</span><span class="p">;</span>
-<span class="n">import</span> <span class="n">java</span><span class="p">.</span><span class="n">net</span><span class="p">.</span><span class="n">ProtocolException</span><span class="p">;</span>
-<span class="n">import</span> <span class="n">java</span><span class="p">.</span><span class="n">net</span><span class="p">.</span><span class="n">URL</span><span class="p">;</span>
-<span class="n">import</span> <span class="n">java</span><span class="p">.</span><span class="n">net</span><span class="p">.</span><span class="n">HttpURLConnection</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">java.io.BufferedReader</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.io.InputStreamReader</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.net.MalformedURLException</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.net.ProtocolException</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.net.URL</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.net.HttpURLConnection</span><span class="p">;</span>
 </pre></div>
 <p>public class FarmerHelper {</p>
 <p>/**</p>
@@ -184,11 +184,11 @@ cookie = loginConn.getHeaderField("Set-Cookie");</li>
 <p>}</p>
 <p>想法总是好的，现实总是残酷的，调试很久，用WireShark抓包，都是有Length
 Required错误，这个比较头疼，我感觉是我session传递的问题（其实不是，后来发现是Post的格式问题），于是网上找来一个Session操作类。</p>
-<p><a href="https://ohsolnxaa.qnssl.com/2009/06/cookiemanager.java">猛击这里下载cookiemanager</a> 同时你可以参考这个类作者的文章
+<p><a href="https://ohsolnxaa.qnssl.com/upload_dropbox/200906/cookiemanager.java">猛击这里下载cookiemanager</a> 同时你可以参考这个类作者的文章
 <a href="http://www.hccp.org/java-net-cookie-how-to.html">猛击这里打开HOW-TO: Handling cookies using the java.net.* API</a>，谢谢这位外国朋友的帮助。 可惜尽管有这个外国朋友帮助，我写了第二个版本，仍然遇到了相同问题，Length
 Required... 崩溃了，开始查找网络编程书，同时参考WireShark的抓包，我惊讶的发现，我把数据域写到了Headers里面去了。
 这个致命性的错误导致服务器不能找到正确的数据，并且没有提供数据域的大小Content-Length，所以导致服务器报错。
-最后再借花献佛，送上一个完整操作Http GET/POST的类<a href="https://ohsolnxaa.qnssl.com/2009/06/httprequestproxy.java">猛击这里下载httprequestproxy</a>依然感谢原作者，</p>
+最后再借花献佛，送上一个完整操作Http GET/POST的类<a href="https://ohsolnxaa.qnssl.com/upload_dropbox/200906/httprequestproxy.java">猛击这里下载httprequestproxy</a>依然感谢原作者，</p>
 <p><a href="http://benlsoft.javaeye.com/blog/97059">猛击这里打开原文链接</a>友情提示一下，这个类是07年写的，里面有一些注释说明在1.4和1.5下几个参数不一样，我没有亲测，建议使用1.5
 的设置 嗯，有这两个类，明天工作应该会轻松一些，继续fighting!</p>
             </div>

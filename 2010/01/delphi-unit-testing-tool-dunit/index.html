@@ -107,11 +107,11 @@ Environment Options 里面的 Library -&gt; Library Path，这样DUnit就安装�
 DUnit测试实例生成向导 中建立新的测试用例。</p>
 <p>下面是我的一个简单的测试用例，测试AppFun中的<code>GetString()</code>和 <code>Add()</code>方法。</p>
 <p>TAppFun.pas</p>
-<div class="highlight"><pre><span class="c">(*</span>
+<div class="highlight"><pre><span></span><span class="c">(*</span>
 <span class="c">  UTest by Jason</span>
 <span class="c">  2010-01-06 21:30</span>
 <span class="c">*)</span>
-<span class="kt">unit</span> <span class="nc">AppFun</span><span class="o">;</span>
+<span class="kt">unit</span> <span class="n">AppFun</span><span class="o">;</span>
 </pre></div>
 <p>interface</p>
 <p>uses SysUtils;</p>
@@ -132,7 +132,7 @@ DUnit测试实例生成向导 中建立新的测试用例。</p>
 <p>end;</p>
 <p>end.</p>
 <p>UTest.pas</p>
-<div class="highlight"><pre><span class="c">(*</span>
+<div class="highlight"><pre><span></span><span class="c">(*</span>
 <span class="c">  UTest by Jason</span>
 <span class="c">  2010-01-06 21:30</span>
 <span class="c">*)</span>
@@ -174,7 +174,7 @@ DUnit测试实例生成向导 中建立新的测试用例。</p>
 <p>TestFramework.RegisterTest(TTest.Suite);</p>
 <p>end.</p>
 <p>从上面的代码可以看出，XUnit系列风格都比较类似，很容易操作。</p>
-<p>&amp;nbsp_place_holder;<a href="https://ohsolnxaa.qnssl.com/2010/01/dunit.jpg"><img alt="image" src="https://ohsolnxaa.qnssl.com/2010/01/dunit.jpg"/></a></p>
+<p>&amp;nbsp_place_holder;<a href="https://ohsolnxaa.qnssl.com/upload_dropbox/201001/dunit.jpg"><img alt="image" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201001/dunit.jpg"/></a></p>
 <p>DUnit还有一些更高阶的操作，比如在控制台输出/在独立线程中运行测试/Exception测试等等，详细操作可以参考下列文档。目前我用到的就是简单的单元测试
 。</p>
 <p>一点资料：</p>

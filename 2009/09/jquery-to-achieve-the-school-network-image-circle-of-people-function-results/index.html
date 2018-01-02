@@ -16,7 +16,7 @@
 
         <meta name="author" content="alswl" />
         <meta name="keywords" content="dotNet,JavaScript,jQuery,人人" />
-        <meta name="description" content="项目中需要一个类似于校内圈人效果的js控件，找了一下基本没有直接能用的，只有一些未完成，我只能自己动手了。 基本框架参照这篇文章《JS实现校内网&#34;图片圈人 &#34;功能效果》（强烈推荐这篇 文章，这段代码写的很帅气） 我把代码摘录如下，不过还是建议大家去看原文的一些分析。 原始Code: 运行环境： 1.jQuery支持 2.DragResize类（czy1121作者写的一个js类，更多信息可以参照《Javascript Resize和Dr ag类,基于jQuery》 ） 样式： #enclose-wrapper { position: relative; z-index: 0; border: 4px solid #DDD; background-color: #FFF; } #form-add-tag { margin-left: 8px; position: absolute; padding: 5px 3px; border: 1px solid #005EAC; float ..." />
+        <meta name="description" content="项目中需要一个类似于校内圈人效果的js控件，找了一下基本没有直接能用的，只有一些未完成，我只能自己动手了。 基本框架参照这篇文章《JS实现校内网&#34;图片圈人 &#34;功能效果》（强烈推荐这篇 文章，这段代码写的很帅气） 我把代码摘录如下，不过还是建议大家去看原文的一些分析。 原始Code: 运行环境： 1.jQuery支持 2.DragResize类（czy1121作者写的一个js类，更多信息可以参照《Javascript Resize和Drag类,基于jQuery》 ） 样式： #enclose-wrapper { position: relative; z-index: 0; border: 4px solid #DDD; background-color: #FFF; } #form-add-tag { margin-left: 8px; position: absolute; padding: 5px 3px; border: 1 ..." />
 
 
 
@@ -101,216 +101,214 @@ Log4D            </a>
                   <div id="toc"><ul><li><a class="toc-href" href="#yuan-shi-code" title="原始Code:">原始Code:</a><ul><li><a class="toc-href" href="#yang-shi" title="样式：">样式：</a></li><li><a class="toc-href" href="#jsshi-xian-dai-ma" title="js实现代码：">js实现代码：</a></li><li><a class="toc-href" href="#htmldai-ma" title="Html代码">Html代码</a></li></ul></li><li><a class="toc-href" href="#gai-jin_1" title="改进">改进</a><ul><li><a class="toc-href" href="#xiu-gai-hou-js" title="修改后js:">修改后js:</a></li><li><a class="toc-href" href="#htmldai-ma_1" title="Html代码：">Html代码：</a></li><li><a class="toc-href" href="#hou-tai-aspnetwen-jian-du-qu" title="后台ASP.NET文件读取">后台ASP.NET文件读取</a></li><li><a class="toc-href" href="#xiang-guan-xia-zai" title="相关下载">相关下载</a></li></ul></li></ul></div>
                 </nav>
                 <hr/>
-                <p>项目中需要一个类似于校内圈人效果的js控件，找了一下基本没有直接能用的，只有一些未完成，我只能自己动手了。 基本框架参照这篇文章《<a href="http://www.cnblogs.com/czy1121/archive/2009/03/03/1402105.html">JS实现校内网"图片圈人
-"功能效果</a>》（强烈推荐这篇
+                <p>项目中需要一个类似于校内圈人效果的js控件，找了一下基本没有直接能用的，只有一些未完成，我只能自己动手了。 基本框架参照这篇文章《<a href="http://www.cnblogs.com/czy1121/archive/2009/03/03/1402105.html">JS实现校内网"图片圈人 "功能效果</a>》（强烈推荐这篇
 文章，这段代码写的很帅气） 我把代码摘录如下，不过还是建议大家去看原文的一些分析。</p>
 <h2 id="yuan-shi-code">原始Code:</h2>
-<p>运行环境： 1.jQuery支持 2.DragResize类（czy1121作者写的一个js类，更多信息可以参照《<a href="http://www.cnblogs.com/czy1121/archive/2009/02/26/1398971.html">Javascript Resize和Dr
-ag类,基于jQuery</a>》
+<p>运行环境： 1.jQuery支持 2.DragResize类（czy1121作者写的一个js类，更多信息可以参照《<a href="http://www.cnblogs.com/czy1121/archive/2009/02/26/1398971.html">Javascript Resize和Drag类,基于jQuery</a>》
 ）</p>
 <h3 id="yang-shi">样式：</h3>
-<div class="highlight"><pre><span class="nf">#enclose-wrapper</span> <span class="p">{</span>
-    <span class="k">position</span><span class="o">:</span> <span class="k">relative</span><span class="p">;</span>
-    <span class="k">z-index</span><span class="o">:</span> <span class="m">0</span><span class="p">;</span>
-    <span class="k">border</span><span class="o">:</span> <span class="m">4px</span> <span class="k">solid</span> <span class="m">#DDD</span><span class="p">;</span>
-    <span class="k">background-color</span><span class="o">:</span> <span class="m">#FFF</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><span class="p">#</span><span class="nn">enclose-wrapper</span> <span class="p">{</span>
+    <span class="k">position</span><span class="p">:</span> <span class="kc">relative</span><span class="p">;</span>
+    <span class="k">z-index</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">border</span><span class="p">:</span> <span class="mi">4</span><span class="kt">px</span> <span class="kc">solid</span> <span class="mh">#DDD</span><span class="p">;</span>
+    <span class="k">background-color</span><span class="p">:</span> <span class="mh">#FFF</span><span class="p">;</span>
 <span class="p">}</span>
-<span class="nf">#form-add-tag</span> <span class="p">{</span>
-    <span class="k">margin-left</span><span class="o">:</span> <span class="m">8px</span><span class="p">;</span>
-    <span class="k">position</span><span class="o">:</span> <span class="k">absolute</span><span class="p">;</span>
-    <span class="k">padding</span><span class="o">:</span> <span class="m">5px</span> <span class="m">3px</span><span class="p">;</span>
-    <span class="k">border</span><span class="o">:</span> <span class="m">1px</span> <span class="k">solid</span> <span class="m">#005EAC</span><span class="p">;</span>
-    <span class="k">float</span><span class="o">:</span> <span class="k">left</span><span class="p">;</span>
-    <span class="k">display</span><span class="o">:</span> <span class="k">inline</span><span class="p">;</span>
-    <span class="k">background-color</span><span class="o">:</span> <span class="m">#FFF</span><span class="p">;</span>
+<span class="p">#</span><span class="nn">form-add-tag</span> <span class="p">{</span>
+    <span class="k">margin-left</span><span class="p">:</span> <span class="mi">8</span><span class="kt">px</span><span class="p">;</span>
+    <span class="k">position</span><span class="p">:</span> <span class="kc">absolute</span><span class="p">;</span>
+    <span class="k">padding</span><span class="p">:</span> <span class="mi">5</span><span class="kt">px</span> <span class="mi">3</span><span class="kt">px</span><span class="p">;</span>
+    <span class="k">border</span><span class="p">:</span> <span class="mi">1</span><span class="kt">px</span> <span class="kc">solid</span> <span class="mh">#005EAC</span><span class="p">;</span>
+    <span class="k">float</span><span class="p">:</span> <span class="kc">left</span><span class="p">;</span>
+    <span class="k">display</span><span class="p">:</span> <span class="kc">inline</span><span class="p">;</span>
+    <span class="k">background-color</span><span class="p">:</span> <span class="mh">#FFF</span><span class="p">;</span>
 <span class="p">}</span>
-<span class="nf">#select-area-box</span> <span class="p">{</span>
-    <span class="k">position</span><span class="o">:</span> <span class="k">absolute</span><span class="p">;</span>
-    <span class="k">border</span><span class="o">:</span> <span class="m">5px</span> <span class="k">solid</span> <span class="m">#D8DFEA</span><span class="p">;</span>
-    <span class="k">float</span><span class="o">:</span> <span class="k">left</span><span class="p">;</span>
+<span class="p">#</span><span class="nn">select-area-box</span> <span class="p">{</span>
+    <span class="k">position</span><span class="p">:</span> <span class="kc">absolute</span><span class="p">;</span>
+    <span class="k">border</span><span class="p">:</span> <span class="mi">5</span><span class="kt">px</span> <span class="kc">solid</span> <span class="mh">#D8DFEA</span><span class="p">;</span>
+    <span class="k">float</span><span class="p">:</span> <span class="kc">left</span><span class="p">;</span>
 <span class="p">}</span>
-<span class="nf">#select-area</span> <span class="p">{</span>
-    <span class="k">position</span><span class="o">:</span> <span class="k">relative</span><span class="p">;</span>
-    <span class="k">padding</span><span class="o">:</span> <span class="m">0</span><span class="p">;</span>
-    <span class="k">border</span><span class="o">:</span> <span class="m">2px</span> <span class="k">solid</span> <span class="m">#005EAC</span><span class="p">;</span>
-    <span class="k">z-index</span><span class="o">:</span> <span class="m">15</span><span class="p">;</span>
-    <span class="k">cursor</span><span class="o">:</span> <span class="n">move</span><span class="p">;</span>
-    <span class="k">background</span><span class="o">:</span> <span class="sx">url(spacer.gif)</span> <span class="k">no-repeat</span> <span class="m">-1px</span> <span class="m">-1px</span><span class="p">;</span>
+<span class="p">#</span><span class="nn">select-area</span> <span class="p">{</span>
+    <span class="k">position</span><span class="p">:</span> <span class="kc">relative</span><span class="p">;</span>
+    <span class="k">padding</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">border</span><span class="p">:</span> <span class="mi">2</span><span class="kt">px</span> <span class="kc">solid</span> <span class="mh">#005EAC</span><span class="p">;</span>
+    <span class="k">z-index</span><span class="p">:</span> <span class="mi">15</span><span class="p">;</span>
+    <span class="k">cursor</span><span class="p">:</span> <span class="kc">move</span><span class="p">;</span>
+    <span class="k">background</span><span class="p">:</span> <span class="nb">url</span><span class="p">(</span><span class="sx">spacer.gif</span><span class="p">)</span> <span class="kc">no-repeat</span> <span class="mi">-1</span><span class="kt">px</span> <span class="mi">-1</span><span class="kt">px</span><span class="p">;</span>
 <span class="p">}</span>
-<span class="nf">#select-area-box</span> <span class="nt">span</span> <span class="p">{</span>
-    <span class="k">position</span><span class="o">:</span> <span class="k">absolute</span><span class="p">;</span>
-    <span class="k">border</span><span class="o">:</span> <span class="m">1px</span> <span class="k">solid</span> <span class="m">#005EAC</span><span class="p">;</span>
-    <span class="k">width</span><span class="o">:</span> <span class="m">8px</span><span class="p">;</span>
-    <span class="k">height</span><span class="o">:</span> <span class="m">8px</span><span class="p">;</span>
-    <span class="k">background-color</span><span class="o">:</span> <span class="m">#FFF</span><span class="p">;</span>
-    <span class="k">font-size</span><span class="o">:</span> <span class="m">0</span><span class="p">;</span>
-    <span class="k">z-index</span><span class="o">:</span> <span class="m">18</span><span class="p">;</span>
+<span class="p">#</span><span class="nn">select-area-box</span> <span class="nt">span</span> <span class="p">{</span>
+    <span class="k">position</span><span class="p">:</span> <span class="kc">absolute</span><span class="p">;</span>
+    <span class="k">border</span><span class="p">:</span> <span class="mi">1</span><span class="kt">px</span> <span class="kc">solid</span> <span class="mh">#005EAC</span><span class="p">;</span>
+    <span class="k">width</span><span class="p">:</span> <span class="mi">8</span><span class="kt">px</span><span class="p">;</span>
+    <span class="k">height</span><span class="p">:</span> <span class="mi">8</span><span class="kt">px</span><span class="p">;</span>
+    <span class="k">background-color</span><span class="p">:</span> <span class="mh">#FFF</span><span class="p">;</span>
+    <span class="k">font-size</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">z-index</span><span class="p">:</span> <span class="mi">18</span><span class="p">;</span>
 <span class="p">}</span>
-<span class="nf">#select-area-box</span> <span class="nt">span</span><span class="nc">.north-west-resize</span> <span class="p">{</span>
-    <span class="k">cursor</span><span class="o">:</span> <span class="k">nw-resize</span><span class="p">;</span>
-    <span class="k">left</span><span class="o">:</span> <span class="m">0</span><span class="p">;</span>
-    <span class="k">top</span><span class="o">:</span> <span class="m">0</span><span class="p">;</span>
-    <span class="k">margin-left</span><span class="o">:</span> <span class="m">-1px</span><span class="p">;</span>
-    <span class="k">margin-top</span><span class="o">:</span> <span class="m">-1px</span><span class="p">;</span>
+<span class="p">#</span><span class="nn">select-area-box</span> <span class="nt">span</span><span class="p">.</span><span class="nc">north-west-resize</span> <span class="p">{</span>
+    <span class="k">cursor</span><span class="p">:</span> <span class="kc">nw-resize</span><span class="p">;</span>
+    <span class="k">left</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">top</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">margin-left</span><span class="p">:</span> <span class="mi">-1</span><span class="kt">px</span><span class="p">;</span>
+    <span class="k">margin-top</span><span class="p">:</span> <span class="mi">-1</span><span class="kt">px</span><span class="p">;</span>
 <span class="p">}</span>
-<span class="nf">#select-area-box</span> <span class="nt">span</span><span class="nc">.north-east-resize</span> <span class="p">{</span>
-    <span class="k">cursor</span><span class="o">:</span> <span class="k">ne-resize</span><span class="p">;</span>
-    <span class="k">right</span><span class="o">:</span> <span class="m">0</span><span class="p">;</span>
-    <span class="k">top</span><span class="o">:</span> <span class="m">0</span><span class="p">;</span>
-    <span class="k">margin-right</span><span class="o">:</span> <span class="m">-1px</span><span class="p">;</span>
-    <span class="k">margin-top</span><span class="o">:</span> <span class="m">-1px</span><span class="p">;</span>
+<span class="p">#</span><span class="nn">select-area-box</span> <span class="nt">span</span><span class="p">.</span><span class="nc">north-east-resize</span> <span class="p">{</span>
+    <span class="k">cursor</span><span class="p">:</span> <span class="kc">ne-resize</span><span class="p">;</span>
+    <span class="k">right</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">top</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">margin-right</span><span class="p">:</span> <span class="mi">-1</span><span class="kt">px</span><span class="p">;</span>
+    <span class="k">margin-top</span><span class="p">:</span> <span class="mi">-1</span><span class="kt">px</span><span class="p">;</span>
 <span class="p">}</span>
-<span class="nf">#select-area-box</span> <span class="nt">span</span><span class="nc">.south-west-resize</span> <span class="p">{</span>
-    <span class="k">cursor</span><span class="o">:</span> <span class="k">sw-resize</span><span class="p">;</span>
-    <span class="k">left</span><span class="o">:</span> <span class="m">0</span><span class="p">;</span>
-    <span class="k">bottom</span><span class="o">:</span> <span class="m">0</span><span class="p">;</span>
-    <span class="k">margin-left</span><span class="o">:</span> <span class="m">-1px</span><span class="p">;</span>
-    <span class="k">margin-bottom</span><span class="o">:</span> <span class="m">-1px</span><span class="p">;</span>
+<span class="p">#</span><span class="nn">select-area-box</span> <span class="nt">span</span><span class="p">.</span><span class="nc">south-west-resize</span> <span class="p">{</span>
+    <span class="k">cursor</span><span class="p">:</span> <span class="kc">sw-resize</span><span class="p">;</span>
+    <span class="k">left</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">bottom</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">margin-left</span><span class="p">:</span> <span class="mi">-1</span><span class="kt">px</span><span class="p">;</span>
+    <span class="k">margin-bottom</span><span class="p">:</span> <span class="mi">-1</span><span class="kt">px</span><span class="p">;</span>
 <span class="p">}</span>
-<span class="nf">#select-area-box</span> <span class="nt">span</span><span class="nc">.south-east-resize</span> <span class="p">{</span>
-    <span class="k">cursor</span><span class="o">:</span> <span class="k">se-resize</span><span class="p">;</span>
-    <span class="k">right</span><span class="o">:</span> <span class="m">0</span><span class="p">;</span>
-    <span class="k">bottom</span><span class="o">:</span> <span class="m">0</span><span class="p">;</span>
-    <span class="k">margin-right</span><span class="o">:</span> <span class="m">-1px</span><span class="p">;</span>
-    <span class="k">margin-bottom</span><span class="o">:</span> <span class="m">-1px</span><span class="p">;</span>
+<span class="p">#</span><span class="nn">select-area-box</span> <span class="nt">span</span><span class="p">.</span><span class="nc">south-east-resize</span> <span class="p">{</span>
+    <span class="k">cursor</span><span class="p">:</span> <span class="kc">se-resize</span><span class="p">;</span>
+    <span class="k">right</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">bottom</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">margin-right</span><span class="p">:</span> <span class="mi">-1</span><span class="kt">px</span><span class="p">;</span>
+    <span class="k">margin-bottom</span><span class="p">:</span> <span class="mi">-1</span><span class="kt">px</span><span class="p">;</span>
 <span class="p">}</span>
-<span class="nf">#enclose-wrapper</span> <span class="nt">ul</span><span class="nf">#tag-list</span> <span class="p">{</span>
-    <span class="k">list-style</span><span class="o">:</span> <span class="k">none</span><span class="p">;</span>
-    <span class="k">margin</span><span class="o">:</span> <span class="m">0</span><span class="p">;</span>
-    <span class="k">padding</span><span class="o">:</span> <span class="m">0</span><span class="p">;</span>
-    <span class="k">font-size</span><span class="o">:</span> <span class="m">13px</span><span class="p">;</span>
-    <span class="k">float</span><span class="o">:</span> <span class="k">left</span><span class="p">;</span>
+<span class="p">#</span><span class="nn">enclose-wrapper</span> <span class="nt">ul</span><span class="p">#</span><span class="nn">tag-list</span> <span class="p">{</span>
+    <span class="k">list-style</span><span class="p">:</span> <span class="kc">none</span><span class="p">;</span>
+    <span class="k">margin</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">padding</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">font-size</span><span class="p">:</span> <span class="mi">13</span><span class="kt">px</span><span class="p">;</span>
+    <span class="k">float</span><span class="p">:</span> <span class="kc">left</span><span class="p">;</span>
 <span class="p">}</span>
-<span class="nf">#enclose-wrapper</span> <span class="nt">ul</span><span class="nf">#tag-list</span> <span class="nt">li</span> <span class="p">{</span>
-    <span class="k">list-style</span><span class="o">:</span> <span class="k">none</span><span class="p">;</span>
-    <span class="k">float</span><span class="o">:</span> <span class="k">left</span><span class="p">;</span>
+<span class="p">#</span><span class="nn">enclose-wrapper</span> <span class="nt">ul</span><span class="p">#</span><span class="nn">tag-list</span> <span class="nt">li</span> <span class="p">{</span>
+    <span class="k">list-style</span><span class="p">:</span> <span class="kc">none</span><span class="p">;</span>
+    <span class="k">float</span><span class="p">:</span> <span class="kc">left</span><span class="p">;</span>
 <span class="p">}</span>
-<span class="nf">#enclose-wrapper</span> <span class="nt">ul</span><span class="nf">#tag-list</span> <span class="nt">li</span> <span class="nt">a</span> <span class="p">{</span>
-    <span class="k">color</span><span class="o">:</span> <span class="m">#F60</span><span class="p">;</span>
+<span class="p">#</span><span class="nn">enclose-wrapper</span> <span class="nt">ul</span><span class="p">#</span><span class="nn">tag-list</span> <span class="nt">li</span> <span class="nt">a</span> <span class="p">{</span>
+    <span class="k">color</span><span class="p">:</span> <span class="mh">#F60</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 <h3 id="jsshi-xian-dai-ma">js实现代码：</h3>
-<div class="highlight"><pre><span class="kd">var</span> <span class="nx">photoTag</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="nx">show</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">left</span><span class="p">,</span> <span class="nx">top</span><span class="p">,</span> <span class="nx">width</span><span class="p">,</span> <span class="nx">height</span><span class="p">,</span> <span class="nx">show_resize_square</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">$</span><span class="p">(</span><span class="s1">'#select-area-box'</span><span class="p">).</span><span class="nx">css</span><span class="p">({</span>
-            <span class="s1">'left'</span><span class="o">:</span> <span class="nx">left</span> <span class="o">-</span> <span class="mi">7</span><span class="p">,</span>
-            <span class="s1">'top'</span><span class="o">:</span> <span class="nx">top</span> <span class="o">-</span> <span class="mi">7</span>
-        <span class="p">})</span>
-        <span class="nx">$</span><span class="p">(</span><span class="s1">'#select-area-box'</span><span class="p">).</span><span class="nx">width</span><span class="p">(</span><span class="nx">width</span> <span class="o">+</span> <span class="mi">4</span><span class="p">).</span><span class="nx">height</span><span class="p">(</span><span class="nx">height</span> <span class="o">+</span> <span class="mi">4</span><span class="p">).</span><span class="nx">show</span><span class="p">();</span>
-        <span class="nx">$</span><span class="p">(</span><span class="s1">'#select-area'</span><span class="p">).</span><span class="nx">width</span><span class="p">(</span><span class="nx">width</span><span class="p">).</span><span class="nx">height</span><span class="p">(</span><span class="nx">height</span><span class="p">);</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">show_resize_square</span><span class="p">)</span> <span class="nx">$</span><span class="p">(</span><span class="s1">'#select-area-box span'</span><span class="p">).</span><span class="nx">show</span><span class="p">();</span>
-        <span class="k">else</span> <span class="nx">$</span><span class="p">(</span><span class="s1">'#select-area-box span'</span><span class="p">).</span><span class="nx">hide</span><span class="p">();</span>
-    <span class="p">},</span>
-    <span class="nx">hide</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-        <span class="nx">$</span><span class="p">(</span><span class="s1">'#select-area-box'</span><span class="p">).</span><span class="nx">hide</span><span class="p">();</span>
-    <span class="p">},</span>
-    <span class="nx">add</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">tag_name</span><span class="p">,</span> <span class="nx">tag_value</span><span class="p">,</span> <span class="nx">left</span><span class="p">,</span> <span class="nx">top</span><span class="p">,</span> <span class="nx">width</span><span class="p">,</span> <span class="nx">height</span><span class="p">)</span> <span class="p">{</span>
-        <span class="kd">var</span> <span class="nx">json</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="nx">id</span><span class="o">:</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span> <span class="o">*</span> <span class="mi">10000</span><span class="p">)</span>
-        <span class="p">};</span>
-        <span class="kd">var</span> <span class="nx">args</span> <span class="o">=</span> <span class="nx">left</span> <span class="o">+</span> <span class="s1">','</span> <span class="o">+</span> <span class="nx">top</span> <span class="o">+</span> <span class="s1">','</span> <span class="o">+</span> <span class="nx">width</span> <span class="o">+</span> <span class="s1">','</span> <span class="o">+</span> <span class="nx">height</span><span class="p">;</span>
-        <span class="kd">var</span> <span class="nx">li</span> <span class="o">=</span> <span class="s1">'</span>
+<div class="highlight"><pre><span></span><span class="nt">var</span> <span class="nt">photoTag</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">show</span><span class="p">:</span> <span class="nf">function</span><span class="p">(</span><span class="kc">left</span><span class="p">,</span> <span class="kc">top</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">show_resize_square</span><span class="p">)</span> <span class="err">{</span>
+        <span class="err">$</span><span class="p">(</span><span class="s1">'#select-area-box'</span><span class="p">)</span><span class="o">.</span><span class="nf">css</span><span class="p">(</span><span class="err">{</span>
+            <span class="s1">'left'</span><span class="err">:</span> <span class="kc">left</span> <span class="o">-</span> <span class="mi">7</span><span class="p">,</span>
+            <span class="s1">'top'</span><span class="err">:</span> <span class="kc">top</span> <span class="o">-</span> <span class="mi">7</span>
+        <span class="err">}</span><span class="p">)</span>
+        <span class="err">$</span><span class="p">(</span><span class="s1">'#select-area-box'</span><span class="p">)</span><span class="o">.</span><span class="nf">width</span><span class="p">(</span><span class="n">width</span> <span class="o">+</span> <span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="nf">height</span><span class="p">(</span><span class="n">height</span> <span class="o">+</span> <span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="nf">show</span><span class="p">();</span>
+        <span class="err">$('#select-area').width(width).height(height)</span><span class="p">;</span>
+        <span class="err">if</span> <span class="err">(show_resize_square)</span> <span class="err">$('#select-area-box</span> <span class="err">span').show()</span><span class="p">;</span>
+        <span class="err">else</span> <span class="err">$('#select-area-box</span> <span class="err">span').hide()</span><span class="p">;</span>
+    <span class="p">}</span><span class="o">,</span>
+    <span class="nt">hide</span><span class="o">:</span> <span class="nt">function</span><span class="o">()</span> <span class="p">{</span>
+        <span class="err">$('#select-area-box').hide()</span><span class="p">;</span>
+    <span class="p">}</span><span class="o">,</span>
+    <span class="nt">add</span><span class="o">:</span> <span class="nt">function</span><span class="o">(</span><span class="nt">tag_name</span><span class="o">,</span> <span class="nt">tag_value</span><span class="o">,</span> <span class="nt">left</span><span class="o">,</span> <span class="nt">top</span><span class="o">,</span> <span class="nt">width</span><span class="o">,</span> <span class="nt">height</span><span class="o">)</span> <span class="p">{</span>
+        <span class="err">var</span> <span class="err">json</span> <span class="err">=</span> <span class="err">{</span>
+            <span class="n">id</span><span class="p">:</span> <span class="n">Math</span><span class="o">.</span><span class="nf">floor</span><span class="p">(</span><span class="n">Math</span><span class="err">.</span><span class="nf">random</span><span class="p">()</span> <span class="o">*</span> <span class="mi">10000</span><span class="p">)</span>
+        <span class="p">}</span><span class="o">;</span>
+        <span class="nt">var</span> <span class="nt">args</span> <span class="o">=</span> <span class="nt">left</span> <span class="o">+</span> <span class="s1">','</span> <span class="o">+</span> <span class="nt">top</span> <span class="o">+</span> <span class="s1">','</span> <span class="o">+</span> <span class="nt">width</span> <span class="o">+</span> <span class="s1">','</span> <span class="o">+</span> <span class="nt">height</span><span class="o">;</span>
+        <span class="nt">var</span> <span class="nt">li</span> <span class="o">=</span> <span class="s1">'</span>
 
-<span class="s1">  * '</span><span class="p">;</span>         <span class="nx">li</span> <span class="o">+=</span> <span class="s1">''</span><span class="p">;</span>         <span class="nx">li</span> <span class="o">+=</span> <span class="s1">'(</span><span class="cp">[</span><span class="err">删除</span><span class="cp">]</span><span class="s1">(javascript:;))'</span><span class="p">;</span>         <span class="nx">li</span> <span class="o">+=</span> <span class="s1">''</span><span class="p">;</span>         <span class="nx">li</span> <span class="o">+=</span> <span class="s1">'</span>
-<span class="s1">'</span><span class="p">;</span>
-        <span class="nx">$</span><span class="p">(</span><span class="s1">'#tag-list'</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="nx">li</span><span class="p">);</span>
-    <span class="p">},</span>
-    <span class="nx">remove</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">id</span><span class="p">,</span> <span class="nx">li</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">li</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">removeChild</span><span class="p">(</span><span class="nx">li</span><span class="p">);</span>
+<span class="s1">  * '</span><span class="o">;</span>         <span class="nt">li</span> <span class="o">+=</span> <span class="s1">''</span><span class="o">;</span>         <span class="nt">li</span> <span class="o">+=</span> <span class="s1">'(</span><span class="cp">[</span><span class="err">删除</span><span class="cp">]</span><span class="s1">(javascript:;))'</span><span class="o">;</span>         <span class="nt">li</span> <span class="o">+=</span> <span class="s1">''</span><span class="o">;</span>         <span class="nt">li</span> <span class="o">+=</span> <span class="s1">'</span>
+<span class="s1">'</span><span class="o">;</span>
+        <span class="o">$(</span><span class="s1">'#tag-list'</span><span class="o">)</span><span class="p">.</span><span class="nc">append</span><span class="o">(</span><span class="nt">li</span><span class="o">);</span>
+    <span class="err">}</span><span class="o">,</span>
+    <span class="nt">remove</span><span class="o">:</span> <span class="nt">function</span><span class="o">(</span><span class="nt">id</span><span class="o">,</span> <span class="nt">li</span><span class="o">)</span> <span class="p">{</span>
+        <span class="err">li.parentNode.removeChild(li)</span><span class="p">;</span>
     <span class="p">}</span>
-<span class="p">};</span>
-<span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nx">is_started</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
-    <span class="c1">// 选区左上角,和高宽</span>
-    <span class="kd">var</span> <span class="nx">info</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s1">'left'</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
-        <span class="s1">'top'</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
-        <span class="s1">'width'</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
-        <span class="s1">'height'</span><span class="o">:</span> <span class="mi">0</span>
-    <span class="p">};</span>
-    <span class="kd">var</span> <span class="nx">origin</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="nx">x</span><span class="o">:</span> <span class="nx">$</span><span class="p">(</span><span class="s1">'#enclose-wrapper'</span><span class="p">).</span><span class="nx">offset</span><span class="p">().</span><span class="nx">left</span> <span class="o">+</span> <span class="p">(</span><span class="nb">parseInt</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s1">'#enclose-wrapper'</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="s1">'border-left-width'</span><span class="p">))</span> <span class="o">||</span> <span class="mi">0</span><span class="p">),</span>
-        <span class="nx">y</span><span class="o">:</span> <span class="nx">$</span><span class="p">(</span><span class="s1">'#enclose-wrapper'</span><span class="p">).</span><span class="nx">offset</span><span class="p">().</span><span class="nx">top</span> <span class="o">+</span> <span class="p">(</span><span class="nb">parseInt</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s1">'#enclose-wrapper'</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="s1">'border-top-width'</span><span class="p">))</span> <span class="o">||</span> <span class="mi">0</span><span class="p">)</span>
-    <span class="p">};</span>
-    <span class="kd">var</span> <span class="nx">dnr</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">DragResize</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s1">'#select-area-box'</span><span class="p">)</span><span class="cp">[</span><span class="mi">0</span><span class="cp">]</span><span class="p">,</span> <span class="p">{</span>
-        <span class="nx">minWidth</span><span class="o">:</span> <span class="mi">20</span><span class="p">,</span>
-        <span class="nx">minHeight</span><span class="o">:</span> <span class="mi">20</span><span class="p">,</span>
-        <span class="nx">bound</span><span class="o">:</span> <span class="p">{</span>
-            <span class="nx">left</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
-            <span class="nx">top</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
-            <span class="nx">right</span><span class="o">:</span> <span class="mi">9999</span><span class="p">,</span>
-            <span class="nx">bottom</span><span class="o">:</span> <span class="mi">9999</span>
-        <span class="p">},</span>
-        <span class="nx">callback</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span> <span class="p">{</span>
-            <span class="c1">// 7为左(上)边两个边框的宽度的和, 4为左右(上下)篮色边框宽度的和</span>
-            <span class="nx">info</span> <span class="o">=</span> <span class="p">{</span>
-                <span class="s1">'left'</span><span class="o">:</span> <span class="nx">i</span><span class="p">.</span><span class="nx">left</span> <span class="o">+</span> <span class="mi">7</span><span class="p">,</span>
-                <span class="s1">'top'</span><span class="o">:</span> <span class="nx">i</span><span class="p">.</span><span class="nx">top</span> <span class="o">+</span> <span class="mi">7</span><span class="p">,</span>
-                <span class="s1">'width'</span><span class="o">:</span> <span class="nx">i</span><span class="p">.</span><span class="nx">width</span> <span class="o">-</span> <span class="mi">4</span><span class="p">,</span>
-                <span class="s1">'height'</span><span class="o">:</span> <span class="nx">i</span><span class="p">.</span><span class="nx">height</span> <span class="o">-</span> <span class="mi">4</span>
-            <span class="p">};</span>
-            <span class="nx">$</span><span class="p">(</span><span class="s1">'#select-area'</span><span class="p">).</span><span class="nx">width</span><span class="p">(</span><span class="nx">info</span><span class="p">.</span><span class="nx">width</span><span class="p">).</span><span class="nx">height</span><span class="p">(</span><span class="nx">info</span><span class="p">.</span><span class="nx">height</span><span class="p">);</span>
-            <span class="c1">// 将添加标签的表单定位在选区的右边</span>
-            <span class="nx">$</span><span class="p">(</span><span class="s1">'#form-add-tag'</span><span class="p">).</span><span class="nx">css</span><span class="p">({</span>
-                <span class="s1">'left'</span><span class="o">:</span> <span class="nx">i</span><span class="p">.</span><span class="nx">left</span> <span class="o">+</span> <span class="nx">i</span><span class="p">.</span><span class="nx">width</span> <span class="o">+</span> <span class="mi">10</span><span class="p">,</span>
-                <span class="s1">'top'</span><span class="o">:</span> <span class="nx">i</span><span class="p">.</span><span class="nx">top</span>
-            <span class="p">});</span>
+<span class="err">}</span><span class="o">;</span>
+<span class="o">$(</span><span class="nt">function</span><span class="o">()</span> <span class="p">{</span>
+    <span class="err">var</span> <span class="err">is_started</span> <span class="err">=</span> <span class="err">false</span><span class="p">;</span>
+    <span class="err">//</span> <span class="err">选区左上角,和高宽</span>
+    <span class="err">var</span> <span class="err">info</span> <span class="err">=</span> <span class="err">{</span>
+        <span class="err">'left':</span> <span class="err">0,</span>
+        <span class="err">'top':</span> <span class="err">0,</span>
+        <span class="err">'width':</span> <span class="err">0,</span>
+        <span class="err">'height':</span> <span class="err">0</span>
+    <span class="p">}</span><span class="o">;</span>
+    <span class="nt">var</span> <span class="nt">origin</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="n">x</span><span class="p">:</span> <span class="err">$</span><span class="p">(</span><span class="s1">'#enclose-wrapper'</span><span class="p">)</span><span class="o">.</span><span class="nf">offset</span><span class="p">()</span><span class="o">.</span><span class="kc">left</span> <span class="o">+</span> <span class="p">(</span><span class="nf">parseInt</span><span class="p">(</span><span class="err">$(</span><span class="s1">'#enclose-wrapper'</span><span class="p">)</span><span class="o">.</span><span class="nf">css</span><span class="p">(</span><span class="s1">'border-left-width'</span><span class="p">))</span> <span class="o">||</span> <span class="mi">0</span><span class="p">),</span>
+        <span class="n">y</span><span class="o">:</span> <span class="err">$</span><span class="p">(</span><span class="s1">'#enclose-wrapper'</span><span class="p">)</span><span class="o">.</span><span class="nf">offset</span><span class="p">()</span><span class="o">.</span><span class="kc">top</span> <span class="o">+</span> <span class="p">(</span><span class="nf">parseInt</span><span class="p">(</span><span class="err">$(</span><span class="s1">'#enclose-wrapper'</span><span class="p">)</span><span class="o">.</span><span class="nf">css</span><span class="p">(</span><span class="s1">'border-top-width'</span><span class="p">))</span> <span class="o">||</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="p">}</span><span class="o">;</span>
+    <span class="nt">var</span> <span class="nt">dnr</span> <span class="o">=</span> <span class="nt">new</span> <span class="nt">DragResize</span><span class="o">($(</span><span class="s1">'#select-area-box'</span><span class="o">)</span><span class="cp">[</span><span class="mi">0</span><span class="cp">]</span><span class="o">,</span> <span class="p">{</span>
+        <span class="n">minWidth</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
+        <span class="n">minHeight</span><span class="o">:</span> <span class="mi">20</span><span class="p">,</span>
+        <span class="n">bound</span><span class="o">:</span> <span class="err">{</span>
+            <span class="kc">left</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="kc">top</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="kc">right</span><span class="o">:</span> <span class="mi">9999</span><span class="p">,</span>
+            <span class="kc">bottom</span><span class="o">:</span> <span class="mi">9999</span>
+        <span class="p">}</span><span class="o">,</span>
+        <span class="nt">callback</span><span class="o">:</span> <span class="nt">function</span><span class="o">(</span><span class="nt">i</span><span class="o">)</span> <span class="p">{</span>
+            <span class="err">//</span> <span class="err">7为左(上)边两个边框的宽度的和,</span> <span class="err">4为左右(上下)篮色边框宽度的和</span>
+            <span class="err">info</span> <span class="err">=</span> <span class="err">{</span>
+                <span class="err">'left':</span> <span class="err">i.left</span> <span class="err">+</span> <span class="err">7,</span>
+                <span class="err">'top':</span> <span class="err">i.top</span> <span class="err">+</span> <span class="err">7,</span>
+                <span class="err">'width':</span> <span class="err">i.width</span> <span class="err">-</span> <span class="err">4,</span>
+                <span class="err">'height':</span> <span class="err">i.height</span> <span class="err">-</span> <span class="err">4</span>
+            <span class="p">}</span><span class="o">;</span>
+            <span class="o">$(</span><span class="s1">'#select-area'</span><span class="o">)</span><span class="p">.</span><span class="nc">width</span><span class="o">(</span><span class="nt">info</span><span class="p">.</span><span class="nc">width</span><span class="o">)</span><span class="p">.</span><span class="nc">height</span><span class="o">(</span><span class="nt">info</span><span class="p">.</span><span class="nc">height</span><span class="o">);</span>
+            <span class="o">//</span> <span class="err">将添加标签的表单定位在选区的右边</span>
+            <span class="o">$(</span><span class="s1">'#form-add-tag'</span><span class="o">)</span><span class="p">.</span><span class="nc">css</span><span class="o">(</span><span class="p">{</span>
+                <span class="err">'left':</span> <span class="err">i.left</span> <span class="err">+</span> <span class="err">i.width</span> <span class="err">+</span> <span class="err">10,</span>
+                <span class="err">'top':</span> <span class="err">i.top</span>
+            <span class="p">}</span><span class="o">);</span>
+        <span class="err">}</span>
+    <span class="err">}</span><span class="o">);</span>
+    <span class="o">//</span> <span class="err">拖动选区</span>
+    <span class="o">$(</span><span class="s1">'#select-area'</span><span class="o">)</span><span class="p">.</span><span class="nc">mousedown</span><span class="o">(</span><span class="nt">function</span><span class="o">(</span><span class="nt">e</span><span class="o">)</span> <span class="p">{</span>
+        <span class="err">dnr.drag(e)</span><span class="p">;</span>
+    <span class="p">}</span><span class="o">);</span>
+    <span class="o">//</span> <span class="err">调整选区大小</span>
+    <span class="o">$(</span><span class="s1">'#select-area-box span'</span><span class="o">)</span><span class="p">.</span><span class="nc">mousedown</span><span class="o">(</span><span class="nt">function</span><span class="o">(</span><span class="nt">e</span><span class="o">)</span> <span class="p">{</span>
+        <span class="err">dnr.resize(e,</span> <span class="err">this.className.replace('-resize',</span> <span class="err">''))</span><span class="p">;</span>
+    <span class="p">}</span><span class="o">);</span>
+    <span class="o">//</span> <span class="err">在图片上点击一下</span><span class="o">,</span><span class="err">开始获取选区</span>
+    <span class="o">$(</span><span class="s1">'#photo-wrapper img'</span><span class="o">)</span><span class="p">.</span><span class="nc">mousedown</span><span class="o">(</span><span class="nt">function</span><span class="o">(</span><span class="nt">e</span><span class="o">)</span> <span class="p">{</span>
+        <span class="err">if</span> <span class="err">(is_started)</span> <span class="err">return</span><span class="p">;</span>
+        <span class="err">is_started</span> <span class="err">=</span> <span class="err">true</span><span class="p">;</span>
+        <span class="err">var</span> <span class="err">left</span> <span class="err">=</span> <span class="err">e.pageX</span> <span class="err">-</span> <span class="err">origin.x</span> <span class="err">-</span> <span class="err">50</span> <span class="err">-</span> <span class="err">7</span><span class="p">;</span>
+        <span class="err">var</span> <span class="err">top</span> <span class="err">=</span> <span class="err">e.pageY</span> <span class="err">-</span> <span class="err">origin.y</span> <span class="err">-</span> <span class="err">50</span> <span class="err">-</span> <span class="err">7</span><span class="p">;</span>
+        <span class="err">info</span> <span class="err">=</span> <span class="err">{</span>
+            <span class="err">'left':</span> <span class="err">left</span> <span class="err">+</span> <span class="err">7,</span>
+            <span class="err">'top':</span> <span class="err">top</span> <span class="err">+</span> <span class="err">7,</span>
+            <span class="err">'width':</span> <span class="err">100,</span>
+            <span class="err">'height':</span> <span class="err">100</span>
+        <span class="p">}</span><span class="o">;</span>
+        <span class="nt">photoTag</span><span class="p">.</span><span class="nc">show</span><span class="o">(</span><span class="nt">info</span><span class="p">.</span><span class="nc">left</span><span class="o">,</span> <span class="nt">info</span><span class="p">.</span><span class="nc">top</span><span class="o">,</span> <span class="nt">info</span><span class="p">.</span><span class="nc">width</span><span class="o">,</span> <span class="nt">info</span><span class="p">.</span><span class="nc">height</span><span class="o">,</span> <span class="nt">true</span><span class="o">);</span>
+        <span class="o">$(</span><span class="s1">'#form-add-tag'</span><span class="o">)</span><span class="p">.</span><span class="nc">show</span><span class="o">()</span><span class="p">.</span><span class="nc">css</span><span class="o">(</span><span class="p">{</span>
+            <span class="err">'left':</span> <span class="err">left</span> <span class="err">+</span> <span class="err">100</span> <span class="err">+</span> <span class="err">4</span> <span class="err">+</span> <span class="err">10,</span>
+            <span class="err">'top':</span> <span class="err">top</span>
+        <span class="p">}</span><span class="o">);</span>
+    <span class="err">}</span><span class="o">);</span>
+    <span class="o">//</span> <span class="err">鼠标进入图片内时</span><span class="o">,</span><span class="err">显示选区</span>
+    <span class="o">$(</span><span class="s1">'#photo-wrapper img'</span><span class="o">)</span><span class="p">.</span><span class="nc">bind</span><span class="o">(</span><span class="s1">'mouseenter'</span><span class="o">,</span>
+    <span class="nt">function</span><span class="o">(</span><span class="nt">e</span><span class="o">)</span> <span class="p">{</span>
+        <span class="err">if</span> <span class="err">(!is_started)</span> <span class="err">return</span><span class="p">;</span>
+        <span class="err">photoTag.show(info.left,</span> <span class="err">info.top,</span> <span class="err">info.width,</span> <span class="err">info.height,</span> <span class="err">true)</span><span class="p">;</span>
+    <span class="p">}</span><span class="o">);</span>
+    <span class="o">//</span> <span class="err">确定添加一个标签</span><span class="o">,</span><span class="err">或取消</span>
+    <span class="o">$(</span><span class="s1">'#btn-add-tag, #btn-cancel'</span><span class="o">)</span><span class="p">.</span><span class="nc">click</span><span class="o">(</span><span class="nt">function</span><span class="o">(</span><span class="nt">e</span><span class="o">)</span> <span class="p">{</span>
+        <span class="err">if</span> <span class="err">(this.id</span> <span class="err">==</span> <span class="err">'btn-cancel')</span> <span class="err">{</span>
+            <span class="err">$('#form-add-tag,</span> <span class="err">#select-area-box').hide()</span><span class="p">;</span>
+            <span class="err">is_started</span> <span class="err">=</span> <span class="err">false</span><span class="p">;</span>
+            <span class="err">return</span> <span class="err">false</span><span class="p">;</span>
         <span class="p">}</span>
-    <span class="p">});</span>
-    <span class="c1">// 拖动选区</span>
-    <span class="nx">$</span><span class="p">(</span><span class="s1">'#select-area'</span><span class="p">).</span><span class="nx">mousedown</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">dnr</span><span class="p">.</span><span class="nx">drag</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span>
-    <span class="p">});</span>
-    <span class="c1">// 调整选区大小</span>
-    <span class="nx">$</span><span class="p">(</span><span class="s1">'#select-area-box span'</span><span class="p">).</span><span class="nx">mousedown</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">dnr</span><span class="p">.</span><span class="nx">resize</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">className</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="s1">'-resize'</span><span class="p">,</span> <span class="s1">''</span><span class="p">));</span>
-    <span class="p">});</span>
-    <span class="c1">// 在图片上点击一下,开始获取选区</span>
-    <span class="nx">$</span><span class="p">(</span><span class="s1">'#photo-wrapper img'</span><span class="p">).</span><span class="nx">mousedown</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">is_started</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
-        <span class="nx">is_started</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
-        <span class="kd">var</span> <span class="nx">left</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">pageX</span> <span class="o">-</span> <span class="nx">origin</span><span class="p">.</span><span class="nx">x</span> <span class="o">-</span> <span class="mi">50</span> <span class="o">-</span> <span class="mi">7</span><span class="p">;</span>
-        <span class="kd">var</span> <span class="nx">top</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">pageY</span> <span class="o">-</span> <span class="nx">origin</span><span class="p">.</span><span class="nx">y</span> <span class="o">-</span> <span class="mi">50</span> <span class="o">-</span> <span class="mi">7</span><span class="p">;</span>
-        <span class="nx">info</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s1">'left'</span><span class="o">:</span> <span class="nx">left</span> <span class="o">+</span> <span class="mi">7</span><span class="p">,</span>
-            <span class="s1">'top'</span><span class="o">:</span> <span class="nx">top</span> <span class="o">+</span> <span class="mi">7</span><span class="p">,</span>
-            <span class="s1">'width'</span><span class="o">:</span> <span class="mi">100</span><span class="p">,</span>
-            <span class="s1">'height'</span><span class="o">:</span> <span class="mi">100</span>
-        <span class="p">};</span>
-        <span class="nx">photoTag</span><span class="p">.</span><span class="nx">show</span><span class="p">(</span><span class="nx">info</span><span class="p">.</span><span class="nx">left</span><span class="p">,</span> <span class="nx">info</span><span class="p">.</span><span class="nx">top</span><span class="p">,</span> <span class="nx">info</span><span class="p">.</span><span class="nx">width</span><span class="p">,</span> <span class="nx">info</span><span class="p">.</span><span class="nx">height</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
-        <span class="nx">$</span><span class="p">(</span><span class="s1">'#form-add-tag'</span><span class="p">).</span><span class="nx">show</span><span class="p">().</span><span class="nx">css</span><span class="p">({</span>
-            <span class="s1">'left'</span><span class="o">:</span> <span class="nx">left</span> <span class="o">+</span> <span class="mi">100</span> <span class="o">+</span> <span class="mi">4</span> <span class="o">+</span> <span class="mi">10</span><span class="p">,</span>
-            <span class="s1">'top'</span><span class="o">:</span> <span class="nx">top</span>
-        <span class="p">});</span>
-    <span class="p">});</span>
-    <span class="c1">// 鼠标进入图片内时,显示选区</span>
-    <span class="nx">$</span><span class="p">(</span><span class="s1">'#photo-wrapper img'</span><span class="p">).</span><span class="nx">bind</span><span class="p">(</span><span class="s1">'mouseenter'</span><span class="p">,</span>
-    <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">is_started</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
-        <span class="nx">photoTag</span><span class="p">.</span><span class="nx">show</span><span class="p">(</span><span class="nx">info</span><span class="p">.</span><span class="nx">left</span><span class="p">,</span> <span class="nx">info</span><span class="p">.</span><span class="nx">top</span><span class="p">,</span> <span class="nx">info</span><span class="p">.</span><span class="nx">width</span><span class="p">,</span> <span class="nx">info</span><span class="p">.</span><span class="nx">height</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
-    <span class="p">});</span>
-    <span class="c1">// 确定添加一个标签,或取消</span>
-    <span class="nx">$</span><span class="p">(</span><span class="s1">'#btn-add-tag, #btn-cancel'</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">id</span> <span class="o">==</span> <span class="s1">'btn-cancel'</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">$</span><span class="p">(</span><span class="s1">'#form-add-tag, #select-area-box'</span><span class="p">).</span><span class="nx">hide</span><span class="p">();</span>
-            <span class="nx">is_started</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
-            <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+        <span class="nt">if</span> <span class="o">(!$(</span><span class="s1">'#tag-name'</span><span class="o">)</span><span class="p">.</span><span class="nc">val</span><span class="o">())</span> <span class="p">{</span>
+            <span class="err">alert('标签名不能为空！')</span><span class="p">;</span>
+            <span class="err">return</span> <span class="err">false</span><span class="p">;</span>
         <span class="p">}</span>
-        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">$</span><span class="p">(</span><span class="s1">'#tag-name'</span><span class="p">).</span><span class="nx">val</span><span class="p">())</span> <span class="p">{</span>
-            <span class="nx">alert</span><span class="p">(</span><span class="s1">'标签名不能为空！'</span><span class="p">);</span>
-            <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
-        <span class="p">}</span>
-        <span class="c1">// 添加标签</span>
-        <span class="nx">photoTag</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s1">'#tag-name'</span><span class="p">).</span><span class="nx">val</span><span class="p">(),</span> <span class="nx">$</span><span class="p">(</span><span class="s1">'#tag-value'</span><span class="p">).</span><span class="nx">val</span><span class="p">(),</span> <span class="nx">info</span><span class="p">.</span><span class="nx">left</span><span class="p">,</span> <span class="nx">info</span><span class="p">.</span><span class="nx">top</span><span class="p">,</span> <span class="nx">info</span><span class="p">.</span><span class="nx">width</span><span class="p">,</span> <span class="nx">info</span><span class="p">.</span><span class="nx">height</span><span class="p">);</span>
-        <span class="c1">// 隐藏选区和表单</span>
-        <span class="nx">$</span><span class="p">(</span><span class="s1">'#form-add-tag, #select-area-box'</span><span class="p">).</span><span class="nx">hide</span><span class="p">();</span>
-        <span class="nx">is_started</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
-    <span class="p">});</span>
-    <span class="nx">photoTag</span><span class="p">.</span><span class="nx">hide</span><span class="p">();</span>
-<span class="p">});</span>
+        <span class="o">//</span> <span class="err">添加标签</span>
+        <span class="nt">photoTag</span><span class="p">.</span><span class="nc">add</span><span class="o">($(</span><span class="s1">'#tag-name'</span><span class="o">)</span><span class="p">.</span><span class="nc">val</span><span class="o">(),</span> <span class="o">$(</span><span class="s1">'#tag-value'</span><span class="o">)</span><span class="p">.</span><span class="nc">val</span><span class="o">(),</span> <span class="nt">info</span><span class="p">.</span><span class="nc">left</span><span class="o">,</span> <span class="nt">info</span><span class="p">.</span><span class="nc">top</span><span class="o">,</span> <span class="nt">info</span><span class="p">.</span><span class="nc">width</span><span class="o">,</span> <span class="nt">info</span><span class="p">.</span><span class="nc">height</span><span class="o">);</span>
+        <span class="o">//</span> <span class="err">隐藏选区和表单</span>
+        <span class="o">$(</span><span class="s1">'#form-add-tag, #select-area-box'</span><span class="o">)</span><span class="p">.</span><span class="nc">hide</span><span class="o">();</span>
+        <span class="nt">is_started</span> <span class="o">=</span> <span class="nt">false</span><span class="o">;</span>
+    <span class="err">}</span><span class="o">);</span>
+    <span class="nt">photoTag</span><span class="p">.</span><span class="nc">hide</span><span class="o">();</span>
+<span class="err">}</span><span class="o">);</span>
 </pre></div>
 <h3 id="htmldai-ma">Html代码</h3>
-<div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"enclose-wrapper"</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><span></span><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"enclose-wrapper"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"photo-wrapper"</span> <span class="na">style=</span><span class="s">"margin:15px auto;text-align:center;"</span><span class="nt">&gt;</span> <span class="nt">&lt;img</span> <span class="na">id=</span><span class="s">"photo"</span> <span class="na">src=</span><span class="s">"heroes_s3_peter.jpg"</span> <span class="nt">/&gt;</span> <span class="nt">&lt;/div&gt;</span>
   <span class="nt">&lt;div&gt;</span>
     <span class="nt">&lt;ul</span> <span class="na">id=</span><span class="s">"tag-list"</span><span class="nt">&gt;</span>
@@ -332,138 +330,138 @@ ag类,基于jQuery</a>》
 <p>在Asp.NET下这段代码存在几个问题（毕竟这段代码应该只能算是Demo）：1.无法和服务器进行数据交互。2.无法在ASP.NET环境下获取相关id。3.只
 能提交到服务器一个"标签"，不足以完成需求。</p>
 <h3 id="xiu-gai-hou-js">修改后js:</h3>
-<div class="highlight"><pre><span class="kd">var</span> <span class="nx">photoTag</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="nx">show</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">left</span><span class="p">,</span> <span class="nx">top</span><span class="p">,</span> <span class="nx">width</span><span class="p">,</span> <span class="nx">height</span><span class="p">,</span> <span class="nx">show_resize_square</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">$</span><span class="p">(</span><span class="s1">'#select-area-box'</span><span class="p">).</span><span class="nx">css</span><span class="p">({</span>
-            <span class="s1">'left'</span><span class="o">:</span> <span class="nx">left</span> <span class="o">-</span> <span class="mi">7</span><span class="p">,</span>
-            <span class="s1">'top'</span><span class="o">:</span> <span class="nx">top</span> <span class="o">-</span> <span class="mi">7</span>
-        <span class="p">})</span>
-        <span class="nx">$</span><span class="p">(</span><span class="s1">'#select-area-box'</span><span class="p">).</span><span class="nx">width</span><span class="p">(</span><span class="nx">width</span> <span class="o">+</span> <span class="mi">4</span><span class="p">).</span><span class="nx">height</span><span class="p">(</span><span class="nx">height</span> <span class="o">+</span> <span class="mi">4</span><span class="p">).</span><span class="nx">show</span><span class="p">();</span>
-        <span class="nx">$</span><span class="p">(</span><span class="s1">'#select-area'</span><span class="p">).</span><span class="nx">width</span><span class="p">(</span><span class="nx">width</span><span class="p">).</span><span class="nx">height</span><span class="p">(</span><span class="nx">height</span><span class="p">);</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">show_resize_square</span><span class="p">)</span> <span class="nx">$</span><span class="p">(</span><span class="s1">'#select-area-box span'</span><span class="p">).</span><span class="nx">show</span><span class="p">();</span>
-        <span class="k">else</span> <span class="nx">$</span><span class="p">(</span><span class="s1">'#select-area-box span'</span><span class="p">).</span><span class="nx">hide</span><span class="p">();</span>
-    <span class="p">},</span>
-    <span class="nx">hide</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-        <span class="nx">$</span><span class="p">(</span><span class="s1">'#select-area-box'</span><span class="p">).</span><span class="nx">hide</span><span class="p">();</span>
-    <span class="p">},</span>
-    <span class="nx">add</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">tag_name</span><span class="p">,</span> <span class="nx">tag_value</span><span class="p">,</span> <span class="nx">left</span><span class="p">,</span> <span class="nx">top</span><span class="p">,</span> <span class="nx">width</span><span class="p">,</span> <span class="nx">height</span><span class="p">)</span> <span class="p">{</span>
-        <span class="kd">var</span> <span class="nx">json</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="nx">id</span><span class="o">:</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span> <span class="o">*</span> <span class="mi">10000</span><span class="p">)</span>
-        <span class="p">};</span>
-        <span class="c1">//$.getJSON('add_tag.php', {'name':tag_name,'left':left,'top':top,'width':width,'height':height}, function(json) {</span>
-        <span class="c1">//reflesh tag list</span>
-        <span class="c1">//    if(json.message) alert(json.message);</span>
-        <span class="c1">//    if(json.error == 0) {</span>
-        <span class="kd">var</span> <span class="nx">args</span> <span class="o">=</span> <span class="nx">left</span> <span class="o">+</span> <span class="s1">','</span> <span class="o">+</span> <span class="nx">top</span> <span class="o">+</span> <span class="s1">','</span> <span class="o">+</span> <span class="nx">width</span> <span class="o">+</span> <span class="s1">','</span> <span class="o">+</span> <span class="nx">height</span><span class="p">;</span>
-        <span class="kd">var</span> <span class="nx">li</span> <span class="o">=</span> <span class="s1">'</span>
+<div class="highlight"><pre><span></span><span class="nt">var</span> <span class="nt">photoTag</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">show</span><span class="p">:</span> <span class="nf">function</span><span class="p">(</span><span class="kc">left</span><span class="p">,</span> <span class="kc">top</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">show_resize_square</span><span class="p">)</span> <span class="err">{</span>
+        <span class="err">$</span><span class="p">(</span><span class="s1">'#select-area-box'</span><span class="p">)</span><span class="o">.</span><span class="nf">css</span><span class="p">(</span><span class="err">{</span>
+            <span class="s1">'left'</span><span class="err">:</span> <span class="kc">left</span> <span class="o">-</span> <span class="mi">7</span><span class="p">,</span>
+            <span class="s1">'top'</span><span class="err">:</span> <span class="kc">top</span> <span class="o">-</span> <span class="mi">7</span>
+        <span class="err">}</span><span class="p">)</span>
+        <span class="err">$</span><span class="p">(</span><span class="s1">'#select-area-box'</span><span class="p">)</span><span class="o">.</span><span class="nf">width</span><span class="p">(</span><span class="n">width</span> <span class="o">+</span> <span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="nf">height</span><span class="p">(</span><span class="n">height</span> <span class="o">+</span> <span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="nf">show</span><span class="p">();</span>
+        <span class="err">$('#select-area').width(width).height(height)</span><span class="p">;</span>
+        <span class="err">if</span> <span class="err">(show_resize_square)</span> <span class="err">$('#select-area-box</span> <span class="err">span').show()</span><span class="p">;</span>
+        <span class="err">else</span> <span class="err">$('#select-area-box</span> <span class="err">span').hide()</span><span class="p">;</span>
+    <span class="p">}</span><span class="o">,</span>
+    <span class="nt">hide</span><span class="o">:</span> <span class="nt">function</span><span class="o">()</span> <span class="p">{</span>
+        <span class="err">$('#select-area-box').hide()</span><span class="p">;</span>
+    <span class="p">}</span><span class="o">,</span>
+    <span class="nt">add</span><span class="o">:</span> <span class="nt">function</span><span class="o">(</span><span class="nt">tag_name</span><span class="o">,</span> <span class="nt">tag_value</span><span class="o">,</span> <span class="nt">left</span><span class="o">,</span> <span class="nt">top</span><span class="o">,</span> <span class="nt">width</span><span class="o">,</span> <span class="nt">height</span><span class="o">)</span> <span class="p">{</span>
+        <span class="err">var</span> <span class="err">json</span> <span class="err">=</span> <span class="err">{</span>
+            <span class="n">id</span><span class="p">:</span> <span class="n">Math</span><span class="o">.</span><span class="nf">floor</span><span class="p">(</span><span class="n">Math</span><span class="err">.</span><span class="nf">random</span><span class="p">()</span> <span class="o">*</span> <span class="mi">10000</span><span class="p">)</span>
+        <span class="p">}</span><span class="o">;</span>
+        <span class="o">//$</span><span class="p">.</span><span class="nc">getJSON</span><span class="o">(</span><span class="s1">'add_tag.php'</span><span class="o">,</span> <span class="p">{</span><span class="err">'name':tag_name,'left':left,'top':top,'width':width,'height':height</span><span class="p">}</span><span class="o">,</span> <span class="nt">function</span><span class="o">(</span><span class="nt">json</span><span class="o">)</span> <span class="p">{</span>
+        <span class="err">//reflesh</span> <span class="err">tag</span> <span class="err">list</span>
+        <span class="err">//</span>    <span class="err">if(json.message)</span> <span class="err">alert(json.message)</span><span class="p">;</span>
+        <span class="err">//</span>    <span class="err">if(json.error</span> <span class="err">==</span> <span class="err">0)</span> <span class="err">{</span>
+        <span class="err">var</span> <span class="err">args</span> <span class="err">=</span> <span class="err">left</span> <span class="err">+</span> <span class="err">','</span> <span class="err">+</span> <span class="err">top</span> <span class="err">+</span> <span class="err">','</span> <span class="err">+</span> <span class="err">width</span> <span class="err">+</span> <span class="err">','</span> <span class="err">+</span> <span class="err">height</span><span class="p">;</span>
+        <span class="err">var</span> <span class="err">li</span> <span class="err">=</span> <span class="err">'</span>
 
-<span class="s1">  * '</span><span class="p">;</span>         <span class="nx">li</span> <span class="o">+=</span> <span class="s1">''</span><span class="p">;</span>         <span class="nx">li</span> <span class="o">+=</span> <span class="s1">'(</span><span class="cp">[</span><span class="err">删除</span><span class="cp">]</span><span class="s1">(javascript:;))'</span><span class="p">;</span>         <span class="nx">li</span> <span class="o">+=</span> <span class="s1">''</span><span class="p">;</span>         <span class="nx">li</span> <span class="o">+=</span> <span class="s1">'</span>
-<span class="s1">'</span><span class="p">;</span>
-        <span class="nx">$</span><span class="p">(</span><span class="s1">'#tag-list'</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="nx">li</span><span class="p">);</span>
-        <span class="c1">//    }</span>
-        <span class="c1">//});</span>
-    <span class="p">},</span>
-    <span class="nx">remove</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">id</span><span class="p">,</span> <span class="nx">li</span><span class="p">)</span> <span class="p">{</span>
-        <span class="c1">//$.getJSON('remove_tag.php', {'tag_id':id}, function(json) {</span>
-        <span class="c1">//reflesh tag list</span>
-        <span class="c1">//    if(json.message) alert(json.message);</span>
-        <span class="c1">//    if(json.error == 0)</span>
-        <span class="nx">li</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">removeChild</span><span class="p">(</span><span class="nx">li</span><span class="p">);</span>
-        <span class="c1">//});</span>
-    <span class="p">}</span>
-<span class="p">};</span>
-<span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nx">is_started</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
-    <span class="c1">// 选区左上角,和高宽</span>
-    <span class="kd">var</span> <span class="nx">info</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s1">'left'</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
-        <span class="s1">'top'</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
-        <span class="s1">'width'</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
-        <span class="s1">'height'</span><span class="o">:</span> <span class="mi">0</span>
-    <span class="p">};</span>
-    <span class="kd">var</span> <span class="nx">origin</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="nx">x</span><span class="o">:</span> <span class="nx">$</span><span class="p">(</span><span class="s1">'#enclose-wrapper'</span><span class="p">).</span><span class="nx">offset</span><span class="p">().</span><span class="nx">left</span> <span class="o">+</span> <span class="p">(</span><span class="nb">parseInt</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s1">'#enclose-wrapper'</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="s1">'border-left-width'</span><span class="p">))</span> <span class="o">||</span> <span class="mi">0</span><span class="p">),</span>
-        <span class="nx">y</span><span class="o">:</span> <span class="nx">$</span><span class="p">(</span><span class="s1">'#enclose-wrapper'</span><span class="p">).</span><span class="nx">offset</span><span class="p">().</span><span class="nx">top</span> <span class="o">+</span> <span class="p">(</span><span class="nb">parseInt</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s1">'#enclose-wrapper'</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="s1">'border-top-width'</span><span class="p">))</span> <span class="o">||</span> <span class="mi">0</span><span class="p">)</span>
-    <span class="p">};</span>
-    <span class="kd">var</span> <span class="nx">dnr</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">DragResize</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s1">'#select-area-box'</span><span class="p">)</span><span class="cp">[</span><span class="mi">0</span><span class="cp">]</span><span class="p">,</span> <span class="p">{</span>
-        <span class="nx">minWidth</span><span class="o">:</span> <span class="mi">20</span><span class="p">,</span>
-        <span class="nx">minHeight</span><span class="o">:</span> <span class="mi">20</span><span class="p">,</span>
-        <span class="nx">bound</span><span class="o">:</span> <span class="p">{</span>
-            <span class="nx">left</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
-            <span class="nx">top</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
-            <span class="nx">right</span><span class="o">:</span> <span class="mi">9999</span><span class="p">,</span>
-            <span class="nx">bottom</span><span class="o">:</span> <span class="mi">9999</span>
-        <span class="p">},</span>
-        <span class="nx">callback</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span> <span class="p">{</span>
-            <span class="c1">// 7为左(上)边两个边框的宽度的和, 4为左右(上下)篮色边框宽度的和</span>
-            <span class="nx">info</span> <span class="o">=</span> <span class="p">{</span>
-                <span class="s1">'left'</span><span class="o">:</span> <span class="nx">i</span><span class="p">.</span><span class="nx">left</span> <span class="o">+</span> <span class="mi">7</span><span class="p">,</span>
-                <span class="s1">'top'</span><span class="o">:</span> <span class="nx">i</span><span class="p">.</span><span class="nx">top</span> <span class="o">+</span> <span class="mi">7</span><span class="p">,</span>
-                <span class="s1">'width'</span><span class="o">:</span> <span class="nx">i</span><span class="p">.</span><span class="nx">width</span> <span class="o">-</span> <span class="mi">4</span><span class="p">,</span>
-                <span class="s1">'height'</span><span class="o">:</span> <span class="nx">i</span><span class="p">.</span><span class="nx">height</span> <span class="o">-</span> <span class="mi">4</span>
-            <span class="p">};</span>
-            <span class="nx">$</span><span class="p">(</span><span class="s1">'#select-area'</span><span class="p">).</span><span class="nx">width</span><span class="p">(</span><span class="nx">info</span><span class="p">.</span><span class="nx">width</span><span class="p">).</span><span class="nx">height</span><span class="p">(</span><span class="nx">info</span><span class="p">.</span><span class="nx">height</span><span class="p">);</span>
-            <span class="c1">// 将添加标签的表单定位在选区的右边</span>
-            <span class="nx">$</span><span class="p">(</span><span class="s1">'#form-add-tag'</span><span class="p">).</span><span class="nx">css</span><span class="p">({</span>
-                <span class="s1">'left'</span><span class="o">:</span> <span class="nx">i</span><span class="p">.</span><span class="nx">left</span> <span class="o">+</span> <span class="nx">i</span><span class="p">.</span><span class="nx">width</span> <span class="o">+</span> <span class="mi">10</span><span class="p">,</span>
-                <span class="s1">'top'</span><span class="o">:</span> <span class="nx">i</span><span class="p">.</span><span class="nx">top</span>
-            <span class="p">});</span>
+  <span class="err">*</span> <span class="err">'</span><span class="p">;</span>         <span class="err">li</span> <span class="err">+=</span> <span class="err">''</span><span class="p">;</span>         <span class="err">li</span> <span class="err">+=</span> <span class="err">'(</span><span class="cp">[</span><span class="err">删除</span><span class="cp">]</span><span class="err">(</span><span class="n">javascript</span><span class="p">:;</span><span class="err">))'</span><span class="p">;</span>         <span class="err">li</span> <span class="err">+=</span> <span class="err">''</span><span class="p">;</span>         <span class="err">li</span> <span class="err">+=</span> <span class="err">'</span>
+<span class="err">'</span><span class="p">;</span>
+        <span class="err">$('#tag-list').append(li)</span><span class="p">;</span>
+        <span class="err">//</span>    <span class="p">}</span>
+        <span class="o">//</span><span class="err">}</span><span class="o">);</span>
+    <span class="err">}</span><span class="o">,</span>
+    <span class="nt">remove</span><span class="o">:</span> <span class="nt">function</span><span class="o">(</span><span class="nt">id</span><span class="o">,</span> <span class="nt">li</span><span class="o">)</span> <span class="p">{</span>
+        <span class="err">//$.getJSON('remove_tag.php',</span> <span class="err">{'tag_id':id</span><span class="p">}</span><span class="o">,</span> <span class="nt">function</span><span class="o">(</span><span class="nt">json</span><span class="o">)</span> <span class="p">{</span>
+        <span class="err">//reflesh</span> <span class="err">tag</span> <span class="err">list</span>
+        <span class="err">//</span>    <span class="err">if(json.message)</span> <span class="err">alert(json.message)</span><span class="p">;</span>
+        <span class="err">//</span>    <span class="err">if(json.error</span> <span class="err">==</span> <span class="err">0)</span>
+        <span class="err">li.parentNode.removeChild(li)</span><span class="p">;</span>
+        <span class="err">//</span><span class="p">}</span><span class="o">);</span>
+    <span class="err">}</span>
+<span class="err">}</span><span class="o">;</span>
+<span class="o">$(</span><span class="nt">function</span><span class="o">()</span> <span class="p">{</span>
+    <span class="err">var</span> <span class="err">is_started</span> <span class="err">=</span> <span class="err">false</span><span class="p">;</span>
+    <span class="err">//</span> <span class="err">选区左上角,和高宽</span>
+    <span class="err">var</span> <span class="err">info</span> <span class="err">=</span> <span class="err">{</span>
+        <span class="err">'left':</span> <span class="err">0,</span>
+        <span class="err">'top':</span> <span class="err">0,</span>
+        <span class="err">'width':</span> <span class="err">0,</span>
+        <span class="err">'height':</span> <span class="err">0</span>
+    <span class="p">}</span><span class="o">;</span>
+    <span class="nt">var</span> <span class="nt">origin</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="n">x</span><span class="p">:</span> <span class="err">$</span><span class="p">(</span><span class="s1">'#enclose-wrapper'</span><span class="p">)</span><span class="o">.</span><span class="nf">offset</span><span class="p">()</span><span class="o">.</span><span class="kc">left</span> <span class="o">+</span> <span class="p">(</span><span class="nf">parseInt</span><span class="p">(</span><span class="err">$(</span><span class="s1">'#enclose-wrapper'</span><span class="p">)</span><span class="o">.</span><span class="nf">css</span><span class="p">(</span><span class="s1">'border-left-width'</span><span class="p">))</span> <span class="o">||</span> <span class="mi">0</span><span class="p">),</span>
+        <span class="n">y</span><span class="o">:</span> <span class="err">$</span><span class="p">(</span><span class="s1">'#enclose-wrapper'</span><span class="p">)</span><span class="o">.</span><span class="nf">offset</span><span class="p">()</span><span class="o">.</span><span class="kc">top</span> <span class="o">+</span> <span class="p">(</span><span class="nf">parseInt</span><span class="p">(</span><span class="err">$(</span><span class="s1">'#enclose-wrapper'</span><span class="p">)</span><span class="o">.</span><span class="nf">css</span><span class="p">(</span><span class="s1">'border-top-width'</span><span class="p">))</span> <span class="o">||</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="p">}</span><span class="o">;</span>
+    <span class="nt">var</span> <span class="nt">dnr</span> <span class="o">=</span> <span class="nt">new</span> <span class="nt">DragResize</span><span class="o">($(</span><span class="s1">'#select-area-box'</span><span class="o">)</span><span class="cp">[</span><span class="mi">0</span><span class="cp">]</span><span class="o">,</span> <span class="p">{</span>
+        <span class="n">minWidth</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
+        <span class="n">minHeight</span><span class="o">:</span> <span class="mi">20</span><span class="p">,</span>
+        <span class="n">bound</span><span class="o">:</span> <span class="err">{</span>
+            <span class="kc">left</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="kc">top</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="kc">right</span><span class="o">:</span> <span class="mi">9999</span><span class="p">,</span>
+            <span class="kc">bottom</span><span class="o">:</span> <span class="mi">9999</span>
+        <span class="p">}</span><span class="o">,</span>
+        <span class="nt">callback</span><span class="o">:</span> <span class="nt">function</span><span class="o">(</span><span class="nt">i</span><span class="o">)</span> <span class="p">{</span>
+            <span class="err">//</span> <span class="err">7为左(上)边两个边框的宽度的和,</span> <span class="err">4为左右(上下)篮色边框宽度的和</span>
+            <span class="err">info</span> <span class="err">=</span> <span class="err">{</span>
+                <span class="err">'left':</span> <span class="err">i.left</span> <span class="err">+</span> <span class="err">7,</span>
+                <span class="err">'top':</span> <span class="err">i.top</span> <span class="err">+</span> <span class="err">7,</span>
+                <span class="err">'width':</span> <span class="err">i.width</span> <span class="err">-</span> <span class="err">4,</span>
+                <span class="err">'height':</span> <span class="err">i.height</span> <span class="err">-</span> <span class="err">4</span>
+            <span class="p">}</span><span class="o">;</span>
+            <span class="o">$(</span><span class="s1">'#select-area'</span><span class="o">)</span><span class="p">.</span><span class="nc">width</span><span class="o">(</span><span class="nt">info</span><span class="p">.</span><span class="nc">width</span><span class="o">)</span><span class="p">.</span><span class="nc">height</span><span class="o">(</span><span class="nt">info</span><span class="p">.</span><span class="nc">height</span><span class="o">);</span>
+            <span class="o">//</span> <span class="err">将添加标签的表单定位在选区的右边</span>
+            <span class="o">$(</span><span class="s1">'#form-add-tag'</span><span class="o">)</span><span class="p">.</span><span class="nc">css</span><span class="o">(</span><span class="p">{</span>
+                <span class="err">'left':</span> <span class="err">i.left</span> <span class="err">+</span> <span class="err">i.width</span> <span class="err">+</span> <span class="err">10,</span>
+                <span class="err">'top':</span> <span class="err">i.top</span>
+            <span class="p">}</span><span class="o">);</span>
+        <span class="err">}</span>
+    <span class="err">}</span><span class="o">);</span>
+    <span class="o">//</span> <span class="err">拖动选区</span>
+    <span class="o">$(</span><span class="s1">'#select-area'</span><span class="o">)</span><span class="p">.</span><span class="nc">mousedown</span><span class="o">(</span><span class="nt">function</span><span class="o">(</span><span class="nt">e</span><span class="o">)</span> <span class="p">{</span>
+        <span class="err">dnr.drag(e)</span><span class="p">;</span>
+    <span class="p">}</span><span class="o">);</span>
+    <span class="o">//</span> <span class="err">调整选区大小</span>
+    <span class="o">$(</span><span class="s1">'#select-area-box span'</span><span class="o">)</span><span class="p">.</span><span class="nc">mousedown</span><span class="o">(</span><span class="nt">function</span><span class="o">(</span><span class="nt">e</span><span class="o">)</span> <span class="p">{</span>
+        <span class="err">dnr.resize(e,</span> <span class="err">this.className.replace('-resize',</span> <span class="err">''))</span><span class="p">;</span>
+    <span class="p">}</span><span class="o">);</span>
+    <span class="o">//</span> <span class="err">在图片上点击一下</span><span class="o">,</span><span class="err">开始获取选区</span>
+    <span class="o">$(</span><span class="s1">'#photo-wrapper img'</span><span class="o">)</span><span class="p">.</span><span class="nc">mousedown</span><span class="o">(</span><span class="nt">function</span><span class="o">(</span><span class="nt">e</span><span class="o">)</span> <span class="p">{</span>
+        <span class="err">if</span> <span class="err">(is_started)</span> <span class="err">return</span><span class="p">;</span>
+        <span class="err">is_started</span> <span class="err">=</span> <span class="err">true</span><span class="p">;</span>
+        <span class="err">var</span> <span class="err">left</span> <span class="err">=</span> <span class="err">e.pageX</span> <span class="err">-</span> <span class="err">origin.x</span> <span class="err">-</span> <span class="err">50</span> <span class="err">-</span> <span class="err">7</span><span class="p">;</span>
+        <span class="err">var</span> <span class="err">top</span> <span class="err">=</span> <span class="err">e.pageY</span> <span class="err">-</span> <span class="err">origin.y</span> <span class="err">-</span> <span class="err">50</span> <span class="err">-</span> <span class="err">7</span><span class="p">;</span>
+        <span class="err">info</span> <span class="err">=</span> <span class="err">{</span>
+            <span class="err">'left':</span> <span class="err">left</span> <span class="err">+</span> <span class="err">7,</span>
+            <span class="err">'top':</span> <span class="err">top</span> <span class="err">+</span> <span class="err">7,</span>
+            <span class="err">'width':</span> <span class="err">100,</span>
+            <span class="err">'height':</span> <span class="err">100</span>
+        <span class="p">}</span><span class="o">;</span>
+        <span class="nt">photoTag</span><span class="p">.</span><span class="nc">show</span><span class="o">(</span><span class="nt">info</span><span class="p">.</span><span class="nc">left</span><span class="o">,</span> <span class="nt">info</span><span class="p">.</span><span class="nc">top</span><span class="o">,</span> <span class="nt">info</span><span class="p">.</span><span class="nc">width</span><span class="o">,</span> <span class="nt">info</span><span class="p">.</span><span class="nc">height</span><span class="o">,</span> <span class="nt">true</span><span class="o">);</span>
+        <span class="o">$(</span><span class="s1">'#form-add-tag'</span><span class="o">)</span><span class="p">.</span><span class="nc">show</span><span class="o">()</span><span class="p">.</span><span class="nc">css</span><span class="o">(</span><span class="p">{</span>
+            <span class="err">'left':</span> <span class="err">left</span> <span class="err">+</span> <span class="err">100</span> <span class="err">+</span> <span class="err">4</span> <span class="err">+</span> <span class="err">10,</span>
+            <span class="err">'top':</span> <span class="err">top</span>
+        <span class="p">}</span><span class="o">);</span>
+    <span class="err">}</span><span class="o">);</span>
+    <span class="o">//</span> <span class="err">鼠标进入图片内时</span><span class="o">,</span><span class="err">显示选区</span>
+    <span class="o">$(</span><span class="s1">'#photo-wrapper img'</span><span class="o">)</span><span class="p">.</span><span class="nc">bind</span><span class="o">(</span><span class="s1">'mouseenter'</span><span class="o">,</span>
+    <span class="nt">function</span><span class="o">(</span><span class="nt">e</span><span class="o">)</span> <span class="p">{</span>
+        <span class="err">if</span> <span class="err">(!is_started)</span> <span class="err">return</span><span class="p">;</span>
+        <span class="err">photoTag.show(info.left,</span> <span class="err">info.top,</span> <span class="err">info.width,</span> <span class="err">info.height,</span> <span class="err">true)</span><span class="p">;</span>
+    <span class="p">}</span><span class="o">);</span>
+    <span class="o">//</span> <span class="err">确定添加一个标签</span><span class="o">,</span><span class="err">或取消</span>
+    <span class="o">$(</span><span class="s1">'#btn-add-tag, #btn-cancel'</span><span class="o">)</span><span class="p">.</span><span class="nc">click</span><span class="o">(</span><span class="nt">function</span><span class="o">(</span><span class="nt">e</span><span class="o">)</span> <span class="p">{</span>
+        <span class="err">if</span> <span class="err">(this.id</span> <span class="err">==</span> <span class="err">'btn-cancel')</span> <span class="err">{</span>
+            <span class="err">$('#form-add-tag,</span> <span class="err">#select-area-box').hide()</span><span class="p">;</span>
+            <span class="err">is_started</span> <span class="err">=</span> <span class="err">false</span><span class="p">;</span>
+            <span class="err">return</span> <span class="err">false</span><span class="p">;</span>
         <span class="p">}</span>
-    <span class="p">});</span>
-    <span class="c1">// 拖动选区</span>
-    <span class="nx">$</span><span class="p">(</span><span class="s1">'#select-area'</span><span class="p">).</span><span class="nx">mousedown</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">dnr</span><span class="p">.</span><span class="nx">drag</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span>
-    <span class="p">});</span>
-    <span class="c1">// 调整选区大小</span>
-    <span class="nx">$</span><span class="p">(</span><span class="s1">'#select-area-box span'</span><span class="p">).</span><span class="nx">mousedown</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">dnr</span><span class="p">.</span><span class="nx">resize</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">className</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="s1">'-resize'</span><span class="p">,</span> <span class="s1">''</span><span class="p">));</span>
-    <span class="p">});</span>
-    <span class="c1">// 在图片上点击一下,开始获取选区</span>
-    <span class="nx">$</span><span class="p">(</span><span class="s1">'#photo-wrapper img'</span><span class="p">).</span><span class="nx">mousedown</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">is_started</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
-        <span class="nx">is_started</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
-        <span class="kd">var</span> <span class="nx">left</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">pageX</span> <span class="o">-</span> <span class="nx">origin</span><span class="p">.</span><span class="nx">x</span> <span class="o">-</span> <span class="mi">50</span> <span class="o">-</span> <span class="mi">7</span><span class="p">;</span>
-        <span class="kd">var</span> <span class="nx">top</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">pageY</span> <span class="o">-</span> <span class="nx">origin</span><span class="p">.</span><span class="nx">y</span> <span class="o">-</span> <span class="mi">50</span> <span class="o">-</span> <span class="mi">7</span><span class="p">;</span>
-        <span class="nx">info</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s1">'left'</span><span class="o">:</span> <span class="nx">left</span> <span class="o">+</span> <span class="mi">7</span><span class="p">,</span>
-            <span class="s1">'top'</span><span class="o">:</span> <span class="nx">top</span> <span class="o">+</span> <span class="mi">7</span><span class="p">,</span>
-            <span class="s1">'width'</span><span class="o">:</span> <span class="mi">100</span><span class="p">,</span>
-            <span class="s1">'height'</span><span class="o">:</span> <span class="mi">100</span>
-        <span class="p">};</span>
-        <span class="nx">photoTag</span><span class="p">.</span><span class="nx">show</span><span class="p">(</span><span class="nx">info</span><span class="p">.</span><span class="nx">left</span><span class="p">,</span> <span class="nx">info</span><span class="p">.</span><span class="nx">top</span><span class="p">,</span> <span class="nx">info</span><span class="p">.</span><span class="nx">width</span><span class="p">,</span> <span class="nx">info</span><span class="p">.</span><span class="nx">height</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
-        <span class="nx">$</span><span class="p">(</span><span class="s1">'#form-add-tag'</span><span class="p">).</span><span class="nx">show</span><span class="p">().</span><span class="nx">css</span><span class="p">({</span>
-            <span class="s1">'left'</span><span class="o">:</span> <span class="nx">left</span> <span class="o">+</span> <span class="mi">100</span> <span class="o">+</span> <span class="mi">4</span> <span class="o">+</span> <span class="mi">10</span><span class="p">,</span>
-            <span class="s1">'top'</span><span class="o">:</span> <span class="nx">top</span>
-        <span class="p">});</span>
-    <span class="p">});</span>
-    <span class="c1">// 鼠标进入图片内时,显示选区</span>
-    <span class="nx">$</span><span class="p">(</span><span class="s1">'#photo-wrapper img'</span><span class="p">).</span><span class="nx">bind</span><span class="p">(</span><span class="s1">'mouseenter'</span><span class="p">,</span>
-    <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">is_started</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
-        <span class="nx">photoTag</span><span class="p">.</span><span class="nx">show</span><span class="p">(</span><span class="nx">info</span><span class="p">.</span><span class="nx">left</span><span class="p">,</span> <span class="nx">info</span><span class="p">.</span><span class="nx">top</span><span class="p">,</span> <span class="nx">info</span><span class="p">.</span><span class="nx">width</span><span class="p">,</span> <span class="nx">info</span><span class="p">.</span><span class="nx">height</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
-    <span class="p">});</span>
-    <span class="c1">// 确定添加一个标签,或取消</span>
-    <span class="nx">$</span><span class="p">(</span><span class="s1">'#btn-add-tag, #btn-cancel'</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">id</span> <span class="o">==</span> <span class="s1">'btn-cancel'</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">$</span><span class="p">(</span><span class="s1">'#form-add-tag, #select-area-box'</span><span class="p">).</span><span class="nx">hide</span><span class="p">();</span>
-            <span class="nx">is_started</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
-            <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+        <span class="nt">if</span> <span class="o">(!$(</span><span class="s1">'#tag-name'</span><span class="o">)</span><span class="p">.</span><span class="nc">val</span><span class="o">())</span> <span class="p">{</span>
+            <span class="err">alert('标签名不能为空！')</span><span class="p">;</span>
+            <span class="err">return</span> <span class="err">false</span><span class="p">;</span>
         <span class="p">}</span>
-        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">$</span><span class="p">(</span><span class="s1">'#tag-name'</span><span class="p">).</span><span class="nx">val</span><span class="p">())</span> <span class="p">{</span>
-            <span class="nx">alert</span><span class="p">(</span><span class="s1">'标签名不能为空！'</span><span class="p">);</span>
-            <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
-        <span class="p">}</span>
-        <span class="c1">// 添加标签</span>
-        <span class="nx">photoTag</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s1">'#tag-name'</span><span class="p">).</span><span class="nx">val</span><span class="p">(),</span> <span class="nx">$</span><span class="p">(</span><span class="s1">'#tag-value'</span><span class="p">).</span><span class="nx">val</span><span class="p">(),</span> <span class="nx">info</span><span class="p">.</span><span class="nx">left</span><span class="p">,</span> <span class="nx">info</span><span class="p">.</span><span class="nx">top</span><span class="p">,</span> <span class="nx">info</span><span class="p">.</span><span class="nx">width</span><span class="p">,</span> <span class="nx">info</span><span class="p">.</span><span class="nx">height</span><span class="p">);</span>
-        <span class="c1">// 隐藏选区和表单</span>
-        <span class="nx">$</span><span class="p">(</span><span class="s1">'#form-add-tag, #select-area-box'</span><span class="p">).</span><span class="nx">hide</span><span class="p">();</span>
-        <span class="nx">is_started</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
-    <span class="p">});</span>
-    <span class="nx">photoTag</span><span class="p">.</span><span class="nx">hide</span><span class="p">();</span>
-<span class="p">});</span>
+        <span class="o">//</span> <span class="err">添加标签</span>
+        <span class="nt">photoTag</span><span class="p">.</span><span class="nc">add</span><span class="o">($(</span><span class="s1">'#tag-name'</span><span class="o">)</span><span class="p">.</span><span class="nc">val</span><span class="o">(),</span> <span class="o">$(</span><span class="s1">'#tag-value'</span><span class="o">)</span><span class="p">.</span><span class="nc">val</span><span class="o">(),</span> <span class="nt">info</span><span class="p">.</span><span class="nc">left</span><span class="o">,</span> <span class="nt">info</span><span class="p">.</span><span class="nc">top</span><span class="o">,</span> <span class="nt">info</span><span class="p">.</span><span class="nc">width</span><span class="o">,</span> <span class="nt">info</span><span class="p">.</span><span class="nc">height</span><span class="o">);</span>
+        <span class="o">//</span> <span class="err">隐藏选区和表单</span>
+        <span class="o">$(</span><span class="s1">'#form-add-tag, #select-area-box'</span><span class="o">)</span><span class="p">.</span><span class="nc">hide</span><span class="o">();</span>
+        <span class="nt">is_started</span> <span class="o">=</span> <span class="nt">false</span><span class="o">;</span>
+    <span class="err">}</span><span class="o">);</span>
+    <span class="nt">photoTag</span><span class="p">.</span><span class="nc">hide</span><span class="o">();</span>
+<span class="err">}</span><span class="o">);</span>
 </pre></div>
 <h3 id="htmldai-ma_1">Html代码：</h3>
-<div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"enclose-wrapper"</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><span></span><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"enclose-wrapper"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"photo-wrapper"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;asp:Image</span> <span class="na">ID=</span><span class="s">"ImgPhoto"</span> <span class="na">Visible=</span><span class="s">"false"</span> <span class="na">runat=</span><span class="s">"server"</span> <span class="nt">/&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
@@ -485,15 +483,15 @@ ag类,基于jQuery</a>》
 
 <p>这边的主要修改在于把框子的右边的内容增加为名称和数值，方便数据的识别。</p>
 <h3 id="hou-tai-aspnetwen-jian-du-qu">后台ASP.NET文件读取</h3>
-<div class="highlight"><pre><span class="n">string</span><span class="p">[]</span> <span class="n">fields</span> <span class="o">=</span> <span class="n">Request</span><span class="p">.</span><span class="n">Params</span><span class="p">.</span><span class="n">GetValues</span><span class="p">(</span><span class="s">"photoField"</span><span class="p">);</span>
+<div class="highlight"><pre><span></span>string[] fields = Request.Params.GetValues("photoField");
 </pre></div>
 <p>这里呢，由于上传的元素<code>name</code>相同，都是<code>photoField</code>，所以通过<code>Params.GetValues()</code>就可以取出<code>string</code>数组，这样就
 能获取所有数据了。数据格式是"<code>ddl:小楠,x:98.88333129882812,y:146,width:100,height:100</code>"这种形式，依靠
 ","分割。</p>
 <h3 id="xiang-guan-xia-zai">相关下载</h3>
-<p><a href="https://ohsolnxaa.qnssl.com/2009/09/DragResize.js">DragResize.js</a>
-<a href="https://ohsolnxaa.qnssl.com/2009/09/template.js">template.js</a>
-<a href="https://ohsolnxaa.qnssl.com/2009/09/css.css">css.css</a></p>
+<p><a href="https://ohsolnxaa.qnssl.com/upload_dropbox/200909/DragResize.js">DragResize.js</a>
+<a href="https://ohsolnxaa.qnssl.com/upload_dropbox/200909/template.js">template.js</a>
+<a href="https://ohsolnxaa.qnssl.com/upload_dropbox/200909/css.css">css.css</a></p>
             </div>
             <!-- /.entry-content -->
               

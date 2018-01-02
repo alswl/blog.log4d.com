@@ -107,10 +107,10 @@ Log4D            </a>
 <h2 id="1tong-gou-shu-de-delphishi-xian">1.同构数的Delphi实现</h2>
 <p>这道题目是在一个PPT上看到的,题目如下："<strong>如果一个数刚好出现在其平方的右边，如5的平方为25，6的平方为36，这样的数我们称为同构数，请编程找出1～9
 999的全部同构数</strong>"。题目对我的难点在于类型的转换和<code>Math</code>函数的熟悉。</p>
-<div class="highlight"><pre><span class="n">program</span> <span class="n">P1</span><span class="p">;</span>
-<span class="p">{</span><span class="err">如果一个数刚好出现在其平方的右边，如</span><span class="mi">5</span><span class="err">的平方</span>
-<span class="err">为</span><span class="mi">25</span><span class="err">，</span><span class="mi">6</span><span class="err">的平方为</span><span class="mi">36</span><span class="err">，这样的数我们称为同构数，</span>
-<span class="err">请编程找出</span><span class="mi">1</span><span class="err">～</span><span class="mi">9999</span><span class="err">的全部同构数</span><span class="p">}</span>
+<div class="highlight"><pre><span></span>program P1;
+{如果一个数刚好出现在其平方的右边，如5的平方
+为25，6的平方为36，这样的数我们称为同构数，
+请编程找出1～9999的全部同构数}
 </pre></div>
 <p>{$APPTYPE CONSOLE}</p>
 <p>uses</p>
@@ -142,16 +142,16 @@ Log4D            </a>
 <p>实现了打开、保存、字体功能，没有另存为和换行、查找功能。- -#（这是记事本？）</p>
 <p>一个小亮点就是如果文章修改了会有(*)标记，呵呵。</p>
 <p>上个小图</p>
-<p><a href="https://ohsolnxaa.qnssl.com/2009/12/delphi_editor.jpg"><img alt="image" src="https://ohsolnxaa.qnssl.com/2009/12/delphi_editor.jpg"/></a></p>
-<div class="highlight"><pre><span class="n">procedure</span> <span class="n">TForm1</span><span class="p">.</span><span class="n">O1Click</span><span class="p">(</span><span class="n">Sender</span><span class="o">:</span> <span class="n">TObject</span><span class="p">);</span>
-<span class="n">begin</span>
-  <span class="k">if</span> <span class="n">odOpenFile</span><span class="p">.</span><span class="n">Execute</span><span class="p">()</span> <span class="n">then</span>
-  <span class="n">begin</span>
-    <span class="n">FFileName</span> <span class="o">:=</span> <span class="n">odOpenFile</span><span class="p">.</span><span class="n">FileName</span><span class="p">;</span>
-    <span class="n">mmContent</span><span class="p">.</span><span class="n">Lines</span><span class="p">.</span><span class="n">LoadFromFile</span><span class="p">(</span><span class="n">odOpenFile</span><span class="p">.</span><span class="n">FileName</span><span class="p">);</span>
-    <span class="n">Self</span><span class="p">.</span><span class="n">Caption</span> <span class="o">:=</span> <span class="n">FFileName</span><span class="p">;</span>
-    <span class="n">Self</span><span class="p">.</span><span class="n">FIsEdited</span> <span class="o">:=</span> <span class="n">False</span><span class="p">;</span>
-  <span class="n">end</span><span class="p">;</span>
+<p><a href="https://ohsolnxaa.qnssl.com/upload_dropbox/200912/delphi_editor.jpg"><img alt="image" src="https://ohsolnxaa.qnssl.com/upload_dropbox/200912/delphi_editor.jpg"/></a></p>
+<div class="highlight"><pre><span></span><span class="nt">procedure</span> <span class="nt">TForm1</span><span class="p">.</span><span class="nc">O1Click</span><span class="o">(</span><span class="nt">Sender</span><span class="o">:</span> <span class="nt">TObject</span><span class="o">);</span>
+<span class="nt">begin</span>
+  <span class="nt">if</span> <span class="nt">odOpenFile</span><span class="p">.</span><span class="nc">Execute</span><span class="o">()</span> <span class="nt">then</span>
+  <span class="nt">begin</span>
+    <span class="nt">FFileName</span> <span class="o">:=</span> <span class="nt">odOpenFile</span><span class="p">.</span><span class="nc">FileName</span><span class="o">;</span>
+    <span class="nt">mmContent</span><span class="p">.</span><span class="nc">Lines</span><span class="p">.</span><span class="nc">LoadFromFile</span><span class="o">(</span><span class="nt">odOpenFile</span><span class="p">.</span><span class="nc">FileName</span><span class="o">);</span>
+    <span class="nt">Self</span><span class="p">.</span><span class="nc">Caption</span> <span class="o">:=</span> <span class="nt">FFileName</span><span class="o">;</span>
+    <span class="nt">Self</span><span class="p">.</span><span class="nc">FIsEdited</span> <span class="o">:=</span> <span class="nt">False</span><span class="o">;</span>
+  <span class="nt">end</span><span class="o">;</span>
 </pre></div>
 <p>end;</p>
 <p>procedure TForm1.S1Click(Sender: TObject);</p>
@@ -213,7 +213,7 @@ Log4D            </a>
 <p>end;</p>
 <p>end.</p>
 <p>&amp;nbsp_place_holder;我把这个小程序打包，如果对源码有兴趣，可以看一下。</p>
-<p>点击这里下载<a href="https://ohsolnxaa.qnssl.com/2009/12/delphi_editor.zip">delphi_editor</a></p>
+<p>点击这里下载<a href="https://ohsolnxaa.qnssl.com/upload_dropbox/200912/delphi_editor.zip">delphi_editor</a></p>
 <p>学校暖气坏了，我得跑出去洗澡，今天就先到这里吧。</p>
             </div>
             <!-- /.entry-content -->

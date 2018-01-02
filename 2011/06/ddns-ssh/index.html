@@ -160,7 +160,7 @@ in-the-middle）攻击方式的攻击。 就是存在另一个人或者一台机
 <h2 id="3-fu-wu-qi-pei-zhi">3. 服务器配置</h2>
 <p><strong>安装服务器SSH服务</strong><br/>
 连接到服务器，需要服务器安装并启动SSH服务。Ubuntu下安装很简单。</p>
-<div class="highlight"><pre><span class="err">$</span> <span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">ssh</span>
+<div class="highlight"><pre><span></span>$ sudo apt-get install ssh
 </pre></div>
 <p>这样就完成了SSH服务的安装，用 <code>service ssh status</code> 可以检查一下当前服务状态。</p>
 <p>Windows下面我用cygwin成功安装过一次，使用命令 <code>ssh-host-config</code> 具体细节请Google之。</p>
@@ -180,7 +180,7 @@ Putty或者cygwin解决。这里我强烈推荐cygwin，会省去很多麻烦。
 <li>进入 <code>端口转发</code> 或者类似功能菜单</li>
 <li>给22端口配置转发到服务器内网ip如192.168.1.105</li>
 </ul>
-<p><img alt="虚拟端口配置" src="https://ohsolnxaa.qnssl.com/2011/06/virtual-server.png"/></p>
+<p><img alt="虚拟端口配置" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201106/virtual-server.png"/></p>
 <h2 id="5-hua-sheng-ke-pei-zhi_1">5. 花生壳配置</h2>
 <p>我们不能每次都获取一下路由器或者服务器公网ip再去连接服务器，这时候就轮到DDNS服务上场了。</p>
 <p>直接拨号上网的话，花生壳官网上面有服务器使用 <a href="http://service.oray.com/question/133.html">软件的说明</a></p>
@@ -192,7 +192,7 @@ Putty或者cygwin解决。这里我强烈推荐cygwin，会省去很多麻烦。
 <li>可能需要重新启动路由器</li>
 <li>稍过几分钟，等待DNS更新，ping 自己的域名，如 <code>ping dddspace.gicp.net</code> ，查看返回的ip 是否是自己路由器公网ip，ping成功就说明映射成功了</li>
 </ul>
-<p><img alt="tp-link" src="https://ohsolnxaa.qnssl.com/2011/06/tp-link.png"/></p>
+<p><img alt="tp-link" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201106/tp-link.png"/></p>
 <blockquote>
 <p><strong>DD-WRT的会有如下日程</strong></p>
 <p>Sun Jun 12 07:56:24 2011: INADYN: Started <em>INADYN Advanced version 1.96-ADV</em>
@@ -203,8 +203,8 @@ Putty或者cygwin解决。这里我强烈推荐cygwin，会省去很多麻烦。
 <h2 id="6-an-zhuang-gong-yao-mi-yao">6. 安装公钥密钥</h2>
 <p>默认SSH登录，每次都要输入密码，这样会很麻烦，特别在使用 <code>scp</code> 这些SSH命令的时候。通过在 服务器上安装信任公钥，就可以免去登录这个环节</p>
 <p><strong>在客户机上运行这个命令</strong></p>
-<div class="highlight"><pre><span class="err">$</span> <span class="n">ssh</span><span class="o">-</span><span class="n">keygen</span> <span class="o">-</span><span class="n">t</span> <span class="n">rsa</span>
-<span class="n">scp</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">alswl</span><span class="o">/</span><span class="n">id_rsa</span><span class="p">.</span><span class="n">pub</span> <span class="n">alswl</span><span class="err">@</span><span class="n">dddspace</span><span class="p">.</span><span class="n">gcip</span><span class="p">.</span><span class="n">net</span><span class="o">:/</span><span class="n">home</span><span class="o">/</span><span class="n">alswl</span><span class="o">/</span><span class="p">.</span><span class="n">ssh</span><span class="o">/</span><span class="n">authorized_keys</span>
+<div class="highlight"><pre><span></span>$ ssh-keygen -t rsa
+scp /home/alswl/id_rsa.pub alswl@dddspace.gcip.net:/home/alswl/.ssh/authorized_keys
 </pre></div>
 <p>第一行是生成公钥密钥，第二行是将公钥发放到服务器上面，从而实现登录免密码。</p>
 <p>A生成的公钥/密钥，作用就是让别人知道A是A，让他人无法冒充A。</p>
