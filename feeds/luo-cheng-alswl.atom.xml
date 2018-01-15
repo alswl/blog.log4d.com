@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom"><title>Log4D</title><link href="https://blog.alswl.com/" rel="alternate"></link><link href="https://blog.alswl.com/feeds/luo-cheng-alswl.atom.xml" rel="self"></link><id>https://blog.alswl.com/</id><updated>2017-09-27T12:07:44+08:00</updated><entry><title>Stack Overflow 的 HTTPS 化：漫漫长路的终点</title><link href="https://blog.alswl.com/2017/09/https-on-stack-overflow/" rel="alternate"></link><published>2017-09-27T12:07:44+08:00</published><updated>2017-09-27T12:07:44+08:00</updated><author><name>罗晟, alswl</name></author><id>tag:blog.alswl.com,2017-09-27:2017/09/https-on-stack-overflow/</id><summary type="html">&lt;p&gt;&lt;img alt="Stack Overflow" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201709/stack-overflow.jpg"/&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;原文作者：Nick Craver&lt;/li&gt;
-&lt;li&gt;翻译作者：&lt;a href="https://twitter.com/luosheng"&gt;罗晟 @luosheng&lt;/a&gt; &amp;amp; &lt;a href="https://twitter.com/alswl"&gt;狄敬超 @alswl&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;翻译作者：&lt;a href="https://twitter.com/luosheng"&gt;罗晟 @luosheng&lt;/a&gt; &amp;amp; &lt;a href="https://twitter.com/alswl"&gt;@alswl&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;原文地址：&lt;a href="https://nickcraver.com/blog/2017/05/22/https-on-stack-overflow/"&gt;Nick Craver - HTTPS on Stack Overflow: The End of a Long Road&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;本文为原创翻译文章，已经获得原作者授权，转载请注明作者及出处。&lt;/li&gt;
 &lt;li&gt;本文首发在「沪江技术学院」公众号&lt;/li&gt;
