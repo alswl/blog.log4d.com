@@ -1,5 +1,412 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Log4D</title><link href="https://blog.alswl.com/" rel="alternate"></link><link href="https://blog.alswl.com/atom.xml" rel="self"></link><id>https://blog.alswl.com/</id><updated>2017-12-21T23:46:59+08:00</updated><entry><title>工作和热情</title><link href="https://blog.alswl.com/2017/12/enthusiasm/" rel="alternate"></link><published>2017-12-21T23:46:59+08:00</published><updated>2017-12-21T23:46:59+08:00</updated><author><name>alswl</name></author><id>tag:blog.alswl.com,2017-12-21:2017/12/enthusiasm/</id><summary type="html">&lt;p&gt;&lt;img alt="201712/work.jpg" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201712/work.jpg"/&gt;&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Log4D</title><link href="https://blog.alswl.com/" rel="alternate"></link><link href="https://blog.alswl.com/atom.xml" rel="self"></link><id>https://blog.alswl.com/</id><updated>2018-01-21T22:57:26+08:00</updated><entry><title>从 2017 到 2018</title><link href="https://blog.alswl.com/2018/01/2017-2018/" rel="alternate"></link><published>2018-01-21T22:57:26+08:00</published><updated>2018-01-21T22:57:26+08:00</updated><author><name>alswl</name></author><id>tag:blog.alswl.com,2018-01-21:2018/01/2017-2018/</id><summary type="html">&lt;p&gt;&lt;img alt="2017 年 2 月摄于瑞虹月亮湾" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201801/moon.png"/&gt;&lt;/p&gt;
+&lt;p&gt;我有两年年没公开年终总结了，原因很简单：年终结果无法让自己满意，
+生活持续呈线性发展。那今年为什么又要将总结发出来呢？
+并非是我的 2017 过得如何充实、有成就感，而是出于两个目的。
+第一是我认识到 OKR 需要平和对待，我目前对自己的生活是缺乏完全掌控力的，
+我无法既渴求爆炸性的增长，又期望在这一过程中低风险，我需要接受这种现状。
+第二是曝光自己的目标，让回顾和计划透明化。
+从社会心理学的角度上来看，公开的承诺有助于个体更努力地驱动目标的完成。&lt;/p&gt;
+
+&lt;h2 id="2017"&gt;2017&lt;/h2&gt;
+&lt;p&gt;2017 年我将个人生活纳入了 OKR 管理的范围，在这之前是琐碎的 Checklist 管理方法。
+OKR 管理的优势在于年初可以关注大方向，保持全年的路线连贯性。
+同时 OKR 可以量化的追踪每事项的进展，促进执行。&lt;/p&gt;
+&lt;p&gt;我在 2017 年的 OKR 大致如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;阅读  &lt;ul&gt;
+&lt;li&gt;精读书籍&lt;/li&gt;
+&lt;li&gt;粗读书籍&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;写作  &lt;ul&gt;
+&lt;li&gt;写博客&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;健康  &lt;ul&gt;
+&lt;li&gt;游泳&lt;/li&gt;
+&lt;li&gt;跑步&lt;/li&gt;
+&lt;li&gt;素食&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;习惯  &lt;ul&gt;
+&lt;li&gt;冥想&lt;/li&gt;
+&lt;li&gt;英语&lt;/li&gt;
+&lt;li&gt;计划性&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;技术  &lt;ul&gt;
+&lt;li&gt;操作系统理论&lt;/li&gt;
+&lt;li&gt;新语言学习&lt;/li&gt;
+&lt;li&gt;分布式系统&lt;/li&gt;
+&lt;li&gt;大数据和人工智能&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;创业准备    &lt;ul&gt;
+&lt;li&gt;行业思考&lt;/li&gt;
+&lt;li&gt;思维模型&lt;/li&gt;
+&lt;li&gt;人脉认识&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;工作  &lt;ul&gt;
+&lt;li&gt;普通任务的完成&lt;/li&gt;
+&lt;li&gt;突破型任务的完成&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;家庭生活    &lt;ul&gt;
+&lt;li&gt;家庭旅行（国内/国外）&lt;/li&gt;
+&lt;li&gt;下一代&lt;/li&gt;
+&lt;li&gt;上海话&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;财务  &lt;ul&gt;
+&lt;li&gt;投资入门&lt;/li&gt;
+&lt;li&gt;投资学习学习&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;我就不将 Key Result 一一罗列出来了，加权平均之后，年度最终的得分是 0.40895。
+我不觉得自己的目标设置得过高，过低的分数的原因是执行力不够。&lt;/p&gt;
+&lt;p&gt;人的一身充满许多轻易就能够改变自己人生轨迹的事件，比如高考、恋爱，工作变动。
+在 2017 年，我面临最重大事情就是我离开堆糖，在沪江开始了一段新的职业生涯。
+不像那些足够理性的人，离开堆糖我非常不舍，过程中充满挣扎，最后还是做了决定。
+到沪江之后，整个环境发生了变化，我从一百人不到的精英团队进入一个几千人、
+具有许多历史包袱的大团队，一度压力很大。
+在经历了冲突、沟通、推动这些状态之后，我也逐渐适应了。
+此时又出现了新的焦虑：如何在一个相对迟缓的环境推动有效的变化。
+这是一个大课题，也是我 2018 年想尝试解决的问题。&lt;/p&gt;
+&lt;p&gt;17 年工作内容，主要围绕这么几块内容：将这个集团的 SQL Server 迁移到 MySQL 上。
+核心需要解决的是将大规模异构数据进行离线/在线迁移，目标是缩短停机时间。
+在迁移过程中还要提供一些数据重构功能，以便数据结构进行调整。
+这个问题和当年阿里巴巴的去 IOE 有些相似，他们是 Oracle 到 MySQL，而我是从
+SQL Server 到 MySQL。
+我投入不少时间，好在结果挺不错，项目前后持续了半年时间，没有发生一例问题。
+现在已经可以脱离我独立运作了。
+除此之外我还在集团引入了 Metrics 系统；在集团开展一个每周的技术分享活动：沪江技术之夜。&lt;/p&gt;
+&lt;p&gt;2017 全年看书有 48 本，是我近年来读书较多的一年。读书速度加快的主要原因是：
+我主动追求更快的读书速度，提升索引归纳能力。
+为此反复学习了「如何阅读一本书」/「如何高效学习」等方法。&lt;/p&gt;
+&lt;p&gt;今年推荐阅读的几本书是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;「讲理 : 作文四书之一」 - 王鼎钧&lt;ul&gt;
+&lt;li&gt;教你如何写论说文，让每个作者能挥洒自如表达自己思想和态度。
+    作者有一套「作文四书」，感谢余晟老师赠书。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;「人类简史」 - 尤瓦尔&amp;middot;赫拉利&lt;ul&gt;
+&lt;li&gt;开脑洞的人类历史学研究，作者妙笔生花，将复杂事情以形象和有趣的方法呈现给大家。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;「腾讯传 : 中国互联网公司进化论」- 吴晓波&lt;ul&gt;
+&lt;li&gt;中国互联网企业发家史，虽然大环境在不断变化，但当时决策的逻辑还有相当参考价值。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;「解读中国经济 - 林毅夫」&lt;ul&gt;
+&lt;li&gt;作为高参，林毅夫对中国当代经济环境理解深刻。
+    书中讲述了从 78 年改革开放到现在的制度变迁。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;17 写了 7 篇文章，低于预期。虽然在我的 inbox 里面存了不少草稿，
+但觉得自己的逻辑还不流畅，修辞也不够优雅，还不好意思拿出来给大家看。
+文字驾驭能力差这个问题我也意识到了，恰好边上有位写作高手，推荐了一些相关书籍。
+期望接下来通过学习写作得到改善。&lt;/p&gt;
+&lt;p&gt;2017 年去了一趟香港，不幸的是遭遇身体不适，在中环地铁晕厥，导致澳门行也取消。
+患难见真情，我老婆对我也是真感情。除此之外，还和夫人去了一趟九华山。&lt;/p&gt;
+&lt;p&gt;17 年还有一件幸运的事情，上海牌照拍了 17 个月之后终于中了，具备了买车的资格。
+唯一遗憾的是，同时中了两张牌照，但是没有这么大的需求，无奈放弃一张，
+还被罚款 1000 元。&lt;/p&gt;
+&lt;p&gt;17 年让我产生幸福感的几个物件推荐：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ErgoDox 键盘：可编程的分体键盘，用了一遍，手腕再也不疼了。&lt;ul&gt;
+&lt;li&gt;我的 ErgoDox 驱动配置：
+    &lt;a href="https://github.com/alswl/ergodox-firmware"&gt;alswl/ergodox-firmware: firmware for the ergoDOX keyboard&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;我在知乎回答的感受帖：
+    &lt;a href="https://www.zhihu.com/question/52088337/answer/141073759"&gt;使用Ergodox人体工学键盘是什么样的体验？ - 知乎&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;洁成背心式垃圾袋&lt;ul&gt;
+&lt;li&gt;解决了要丢垃圾的中年男人担心垃圾袋脏的问题&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://item.jd.com/1529913.html"&gt;洁成背心式垃圾袋三卷装&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Toodledo&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://www.toodledo.com/index.php?ref=td4d1aebdd0f59e"&gt;Toodledo&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;我认为最好的 GTD 管理软件，这一年我面临的工作频度非常高，
+    全就靠 Toodledo 帮我管理任务，基于复杂的 Searches，
+    大大提高我上下文切换速度，老工具焕发新春。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Proxifier&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://www.proxifier.com/"&gt;Proxifier - Bypass firewall and proxy, tunnel connections through an HTTPS and SOCKS proxy&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Mac 下能够将任何 App 设置代理的工具。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;「得到」的「硅谷来信」- 吴军&lt;ul&gt;
+&lt;li&gt;吴军作为成功的工程师、科学家、技术领袖、科技作家、历史作家，
+    有太多的思想可以被学习和直接使用&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="2018"&gt;2018&lt;/h2&gt;
+&lt;p&gt;2018 年我将迎来自己的三十而立。&lt;/p&gt;
+&lt;p&gt;人这种动物，总是在周期性的时间点上比平时更容易思考。
+我花了几个周末，加上好几个洗澡的时间思考我接下来的目标是什么。
+1 年的目标？5 年的目标？&lt;/p&gt;
+&lt;p&gt;我一度没有答案，尤其是在被罗胖等内容创业者贩卖焦虑之后。
+我倒是不担心自己像中兴那位 35 岁的同行，在各种压力之下逼得跳楼。
+我的压力和焦虑主要是来自我自己未来想象空间太小。
+剩下的时间越少，可以调整的变量范围就越小，随着时间巨轮碾过，
+不管未来发展是线性还是非线性，都在忙忙碌碌中逐步变成现实。&lt;/p&gt;
+&lt;p&gt;有时候也挺恨自己不具备天马行空的想象力和愿景。
+我思考的结果是，技术发展速度虽然快，但是核心改变是有限的。
+我目前没有足够的想法来做上层的事，那就切入基础领域，花时间补足短板。
+在这个思路指导下，新年的 OKR 对基础领域的投入提高了比例：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Direction&lt;/th&gt;
+&lt;th&gt;Objective&lt;/th&gt;
+&lt;th&gt;Key Result&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;掌握面向未来的技能&lt;/td&gt;
+&lt;td&gt;初步掌握机器学习的基本技能&lt;/td&gt;
+&lt;td&gt;学完 Coursera Machine Learning&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;学完「集体编程智慧」&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;掌握区块链知识&lt;/td&gt;
+&lt;td&gt;读一本区块链的书&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;掌握基础的技能&lt;/td&gt;
+&lt;td&gt;数学&lt;/td&gt;
+&lt;td&gt;看完「数学之美」&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;看完「什么是数学」&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;看完「如何解题」&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;写一篇关于数学的文章&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;弄清楚概率论的研究对象、范畴、方法论&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;提升英文水平&lt;/td&gt;
+&lt;td&gt;扇贝背完 TOFEL 词汇&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;扇贝背完 GAE 词汇&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;写 2 篇英文博客&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;经济管理&lt;/td&gt;
+&lt;td&gt;读完「经济学原理」&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;读完吴晓波的一系列书&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;读 3 本关于投资的书&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;通过投资获得 X 元收益&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;提升系统化思考能力&lt;/td&gt;
+&lt;td&gt;读 5 本相关书籍&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;学完 Coursera Model Thinking 课程&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;团队管理&lt;/td&gt;
+&lt;td&gt;阅读团队管理相关 5 本书籍&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;产出 3 篇相关文章&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;XXX&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;提升专业技能&lt;/td&gt;
+&lt;td&gt;Scala 语言深入&lt;/td&gt;
+&lt;td&gt;学完 Coursera Scala 课程&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;读完「Akka Cookbook」&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;读完「深入理解 Scala」&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;分布式系统深入&lt;/td&gt;
+&lt;td&gt;学习 MIT 课程&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;研究 TiDB，产出文章&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;写一篇 CAP 文章&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;计算机语言和基础&lt;/td&gt;
+&lt;td&gt;读完「Java Concurrency in Practice」&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;读完「Go 语言编程」&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;读完「算法新解」&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;读完「SICP」&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;提升家庭生活质量&lt;/td&gt;
+&lt;td&gt;旅行&lt;/td&gt;
+&lt;td&gt;出国旅行 1 次&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;出江浙沪旅行 2 次&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;父母&lt;/td&gt;
+&lt;td&gt;回父母家 10 次&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;小孩&lt;/td&gt;
+&lt;td&gt;生 1 个&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;车&lt;/td&gt;
+&lt;td&gt;买 1 辆车&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;养成习惯&lt;/td&gt;
+&lt;td&gt;运动&lt;/td&gt;
+&lt;td&gt;全年跑步或游泳 36 次&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;计划和复盘&lt;/td&gt;
+&lt;td&gt;全年做早晨计划 264 次&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;全年做习惯追踪 365 次&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;每周做 Review&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;提升个人 PR&lt;/td&gt;
+&lt;td&gt;结实外部朋友&lt;/td&gt;
+&lt;td&gt;参会 4 次&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;面向 100+ 人的外部做 1 次分享&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;外部代码贡献&lt;/td&gt;
+&lt;td&gt;参与 1 个开源项目，提交核心作用代码&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;提升写作能力&lt;/td&gt;
+&lt;td&gt;全年写作 12 篇&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;参加开智的课程&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;从目标执行的可行性上来说，年度 OKR 往往是允许甚至是推荐在执行过程中修改的。
+季度的 OKR 在确定之后不允许进行修改。毕竟计划赶不上变化，但是又不能朝令夕改。
+希望我今年在大方向保持稳定，每个季度能够执行贯彻到位，将时间价值最大化。&lt;/p&gt;
+&lt;p&gt;2017，混乱和秩序相交。2018，进入冰山之下。&lt;/p&gt;
+&lt;hr&gt;
+&lt;div class="panel"&gt;
+&lt;div class="panel-body"&gt;
+   &lt;small&gt;原文链接: &lt;a href="https://blog.alswl.com/2018/01/2017-2018/"&gt;https://blog.alswl.com/2018/01/2017-2018/&lt;/a&gt;&lt;/small&gt;&lt;br&gt;
+   &lt;small&gt;欢迎关注我的微信公众号：&lt;a href="http://mp.weixin.qq.com/mp/getmasssendmsg?__biz=MzIyNTIwMTU3MQ==#wechat_webview_type=1&amp;wechat_redirect"&gt;窥豹&lt;/a&gt;&lt;/small&gt;&lt;br&gt;
+   &lt;small&gt;&lt;img src="https://ohsolnxaa.qnssl.com/upload_dropbox/201605/qrcode_for_gh_17e2f9c2caa4_258.jpg"/&gt;&lt;/small&gt;&lt;br&gt;
+   &lt;small&gt;3a1ff193cee606bd1e2ea554a16353ee&lt;/small&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</summary><category term=""></category></entry><entry><title>工作和热情</title><link href="https://blog.alswl.com/2017/12/enthusiasm/" rel="alternate"></link><published>2017-12-21T23:46:59+08:00</published><updated>2017-12-21T23:46:59+08:00</updated><author><name>alswl</name></author><id>tag:blog.alswl.com,2017-12-21:2017/12/enthusiasm/</id><summary type="html">&lt;p&gt;&lt;img alt="201712/work.jpg" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201712/work.jpg"/&gt;&lt;/p&gt;
 &lt;p&gt;最近和一位老朋友吃饭，他说他最近比较苦恼：
 「开始有职业危机了，担心自己失去对工作的热情，似乎离油腻的中年人又进了一步」。
 作为一名互联网工程师，我深知这个行业技术日新月异，
@@ -3039,91 +3446,4 @@ Google 的一种做法，可以很好解决这个问题。分离 TL（techlead�
    &lt;small&gt;3a1ff193cee606bd1e2ea554a16353ee&lt;/small&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</summary><category term="confluence"></category></entry><entry><title>SS with Haproxy</title><link href="https://blog.alswl.com/2015/11/ss-with-haproxy/" rel="alternate"></link><published>2015-11-27T20:23:24+08:00</published><updated>2015-11-27T20:23:24+08:00</updated><author><name>alswl</name></author><id>tag:blog.alswl.com,2015-11-27:2015/11/ss-with-haproxy/</id><summary type="html">&lt;p&gt;&lt;img alt="shadowsocks.png" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201512/shadowsocks.png"/&gt;&lt;/p&gt;
-&lt;p&gt;以前用自己的 SS，Linode 美国，后来 Linode 日本，但是始终拼不过上海电信的国际带宽。
-经常不稳定，丢一半的包。&lt;/p&gt;
-&lt;p&gt;于是买了 &lt;a href="https://portal.shadowsocks.com.hk/aff.php?aff=4215"&gt;SS&lt;/a&gt; 服务，
-9 台服务器，自己挑觉得速度快的服务器。&lt;/p&gt;
-&lt;p&gt;但一直固定某台服务器也会偶尔出问题，导致邮件出不来，网页打不开。
-需要手动切换一下服务器。
-于是用 HA 做了一个本地代理，调整了一些参数，让 SS 总是有快速的服务器供选择。&lt;/p&gt;
-&lt;p&gt;结构：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;+-----------------+&lt;/span&gt;                                                  &lt;span class="o"&gt;+----------------+&lt;/span&gt;
-&lt;span class="o"&gt;|&lt;/span&gt;                 &lt;span class="o"&gt;|&lt;/span&gt;                                                  &lt;span class="o"&gt;|&lt;/span&gt;                &lt;span class="o"&gt;|&lt;/span&gt;
-&lt;span class="o"&gt;|&lt;/span&gt;    &lt;span class="n"&gt;Server&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;     &lt;span class="o"&gt;|&amp;gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;v&lt;/span&gt;                                           &lt;span class="o"&gt;&amp;gt;&amp;gt;|&lt;/span&gt;   &lt;span class="n"&gt;Mail&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;app&lt;/span&gt;     &lt;span class="o"&gt;|&lt;/span&gt;
-&lt;span class="o"&gt;|&lt;/span&gt;                 &lt;span class="o"&gt;|&lt;/span&gt;    &lt;span class="n"&gt;v&lt;/span&gt;                                           &lt;span class="o"&gt;^&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;                &lt;span class="o"&gt;|&lt;/span&gt;
-&lt;span class="o"&gt;+-----------------+&lt;/span&gt;    &lt;span class="n"&gt;v&lt;/span&gt;                                           &lt;span class="o"&gt;^&lt;/span&gt; &lt;span class="o"&gt;+----------------+&lt;/span&gt;
-                       &lt;span class="n"&gt;v&lt;/span&gt;                                           &lt;span class="o"&gt;^&lt;/span&gt;
-&lt;span class="o"&gt;+-----------------+&lt;/span&gt;    &lt;span class="n"&gt;v&lt;/span&gt;    &lt;span class="o"&gt;|----------------+&lt;/span&gt;      &lt;span class="o"&gt;+------------+&lt;/span&gt; &lt;span class="o"&gt;^&lt;/span&gt; &lt;span class="o"&gt;+----------------+&lt;/span&gt;
-&lt;span class="o"&gt;|&lt;/span&gt;                 &lt;span class="o"&gt;|&lt;/span&gt;    &lt;span class="n"&gt;v&lt;/span&gt;    &lt;span class="o"&gt;|&lt;/span&gt;                &lt;span class="o"&gt;|&lt;/span&gt;      &lt;span class="o"&gt;|&lt;/span&gt;            &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="o"&gt;^&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;                &lt;span class="o"&gt;|&lt;/span&gt;
-&lt;span class="o"&gt;|&lt;/span&gt;    &lt;span class="n"&gt;Server&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;     &lt;span class="o"&gt;|&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;|&lt;/span&gt;    &lt;span class="n"&gt;HAProxy&lt;/span&gt;     &lt;span class="o"&gt;|&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;|&lt;/span&gt; &lt;span class="n"&gt;SS&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;Client&lt;/span&gt;  &lt;span class="o"&gt;|&amp;gt;&amp;gt;&amp;gt;|&lt;/span&gt;   &lt;span class="n"&gt;Browser&lt;/span&gt;      &lt;span class="o"&gt;|&lt;/span&gt;
-&lt;span class="o"&gt;|&lt;/span&gt;                 &lt;span class="o"&gt;|&lt;/span&gt;    &lt;span class="o"&gt;^&lt;/span&gt;    &lt;span class="o"&gt;|&lt;/span&gt;                &lt;span class="o"&gt;|&lt;/span&gt;      &lt;span class="o"&gt;|&lt;/span&gt;            &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;v&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;                &lt;span class="o"&gt;|&lt;/span&gt;
-&lt;span class="o"&gt;+-----------------+&lt;/span&gt;    &lt;span class="o"&gt;^&lt;/span&gt;    &lt;span class="o"&gt;+----------------+&lt;/span&gt;      &lt;span class="o"&gt;+------------+&lt;/span&gt; &lt;span class="n"&gt;v&lt;/span&gt; &lt;span class="o"&gt;+----------------+&lt;/span&gt;
-                       &lt;span class="o"&gt;^&lt;/span&gt;                                           &lt;span class="n"&gt;v&lt;/span&gt;   
-&lt;span class="o"&gt;+-----------------+&lt;/span&gt;    &lt;span class="o"&gt;^&lt;/span&gt;                                           &lt;span class="n"&gt;v&lt;/span&gt; &lt;span class="o"&gt;+----------------+&lt;/span&gt;
-&lt;span class="o"&gt;|&lt;/span&gt;                 &lt;span class="o"&gt;|&lt;/span&gt;    &lt;span class="o"&gt;^&lt;/span&gt;                                           &lt;span class="n"&gt;v&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;                &lt;span class="o"&gt;|&lt;/span&gt;
-&lt;span class="o"&gt;|&lt;/span&gt;    &lt;span class="n"&gt;Server&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;     &lt;span class="o"&gt;|&amp;gt;&amp;gt;&amp;gt;&amp;gt;^&lt;/span&gt;                                           &lt;span class="n"&gt;v&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;|&lt;/span&gt;   &lt;span class="n"&gt;Evernote&lt;/span&gt;&lt;span class="p"&gt;...&lt;/span&gt;  &lt;span class="o"&gt;|&lt;/span&gt;
-&lt;span class="o"&gt;|&lt;/span&gt;                 &lt;span class="o"&gt;|&lt;/span&gt;                                                  &lt;span class="o"&gt;|&lt;/span&gt;                &lt;span class="o"&gt;|&lt;/span&gt;
-&lt;span class="o"&gt;+-----------------+&lt;/span&gt;                                                  &lt;span class="o"&gt;+----------------+&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;配置：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;global&lt;/span&gt;
-    &lt;span class="n"&gt;ulimit&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;  &lt;span class="mi"&gt;4096&lt;/span&gt;
-
-
-&lt;span class="n"&gt;defaults&lt;/span&gt;
-    &lt;span class="n"&gt;log&lt;/span&gt; &lt;span class="n"&gt;global&lt;/span&gt;
-    &lt;span class="n"&gt;mode&lt;/span&gt;    &lt;span class="n"&gt;tcp&lt;/span&gt;
-    &lt;span class="n"&gt;timeout&lt;/span&gt; &lt;span class="n"&gt;connect&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;
-    &lt;span class="n"&gt;timeout&lt;/span&gt; &lt;span class="n"&gt;client&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;
-    &lt;span class="n"&gt;timeout&lt;/span&gt; &lt;span class="n"&gt;server&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;
-
-
-&lt;span class="n"&gt;listen&lt;/span&gt; &lt;span class="n"&gt;stats&lt;/span&gt;
-    &lt;span class="n"&gt;bind&lt;/span&gt; &lt;span class="mf"&gt;127.0.0.1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;12222&lt;/span&gt;
-    &lt;span class="n"&gt;mode&lt;/span&gt; &lt;span class="n"&gt;http&lt;/span&gt;
-    &lt;span class="n"&gt;stats&lt;/span&gt; &lt;span class="n"&gt;enable&lt;/span&gt;
-    &lt;span class="n"&gt;stats&lt;/span&gt; &lt;span class="n"&gt;uri&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;
-    &lt;span class="n"&gt;stats&lt;/span&gt; &lt;span class="n"&gt;refresh&lt;/span&gt; &lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;
-
-
-&lt;span class="n"&gt;listen&lt;/span&gt; &lt;span class="n"&gt;ss&lt;/span&gt;
-    &lt;span class="n"&gt;bind&lt;/span&gt; &lt;span class="mf"&gt;127.0.0.1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;1081&lt;/span&gt;
-    &lt;span class="n"&gt;mode&lt;/span&gt; &lt;span class="n"&gt;tcp&lt;/span&gt;
-    &lt;span class="n"&gt;option&lt;/span&gt; &lt;span class="n"&gt;tcpka&lt;/span&gt;
-    &lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="n"&gt;balance&lt;/span&gt; &lt;span class="n"&gt;source&lt;/span&gt;
-    &lt;span class="n"&gt;balance&lt;/span&gt; &lt;span class="n"&gt;roundrobin&lt;/span&gt;
-    &lt;span class="n"&gt;log&lt;/span&gt; &lt;span class="n"&gt;global&lt;/span&gt;
-    &lt;span class="n"&gt;maxconn&lt;/span&gt; &lt;span class="mi"&gt;1024&lt;/span&gt;
-
-    &lt;span class="n"&gt;timeout&lt;/span&gt; &lt;span class="n"&gt;connect&lt;/span&gt; &lt;span class="mi"&gt;200&lt;/span&gt;&lt;span class="n"&gt;ms&lt;/span&gt;
-    &lt;span class="n"&gt;timeout&lt;/span&gt; &lt;span class="n"&gt;client&lt;/span&gt; &lt;span class="mi"&gt;600&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;
-    &lt;span class="n"&gt;timeout&lt;/span&gt; &lt;span class="n"&gt;server&lt;/span&gt; &lt;span class="mi"&gt;600&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;
-    &lt;span class="n"&gt;timeout&lt;/span&gt; &lt;span class="n"&gt;check&lt;/span&gt; &lt;span class="mi"&gt;80&lt;/span&gt;&lt;span class="n"&gt;ms&lt;/span&gt;  &lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;office&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="n"&gt;home&lt;/span&gt;
-    &lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="n"&gt;timeout&lt;/span&gt; &lt;span class="n"&gt;check&lt;/span&gt; &lt;span class="mi"&gt;400&lt;/span&gt;&lt;span class="n"&gt;ms&lt;/span&gt;  &lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;starbucks&lt;/span&gt;
-    &lt;span class="n"&gt;retries&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
-    &lt;span class="n"&gt;option&lt;/span&gt; &lt;span class="n"&gt;redispatch&lt;/span&gt;
-    &lt;span class="n"&gt;option&lt;/span&gt; &lt;span class="n"&gt;tcp&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;check&lt;/span&gt;
-
-    &lt;span class="n"&gt;server&lt;/span&gt; &lt;span class="n"&gt;s1&lt;/span&gt; &lt;span class="n"&gt;host1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;port&lt;/span&gt; &lt;span class="n"&gt;maxconn&lt;/span&gt; &lt;span class="mi"&gt;20&lt;/span&gt; &lt;span class="n"&gt;check&lt;/span&gt; &lt;span class="n"&gt;inter&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt; &lt;span class="n"&gt;rise&lt;/span&gt; &lt;span class="mi"&gt;30&lt;/span&gt; &lt;span class="n"&gt;fall&lt;/span&gt; &lt;span class="mi"&gt;6&lt;/span&gt; &lt;span class="n"&gt;backup&lt;/span&gt;
-    &lt;span class="n"&gt;server&lt;/span&gt; &lt;span class="n"&gt;s2&lt;/span&gt; &lt;span class="n"&gt;host2&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;port&lt;/span&gt; &lt;span class="n"&gt;maxconn&lt;/span&gt; &lt;span class="mi"&gt;20&lt;/span&gt; &lt;span class="n"&gt;check&lt;/span&gt; &lt;span class="n"&gt;inter&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt; &lt;span class="n"&gt;rise&lt;/span&gt; &lt;span class="mi"&gt;30&lt;/span&gt; &lt;span class="n"&gt;fall&lt;/span&gt; &lt;span class="mi"&gt;6&lt;/span&gt;
-    &lt;span class="n"&gt;server&lt;/span&gt; &lt;span class="n"&gt;s3&lt;/span&gt; &lt;span class="n"&gt;host2&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;port&lt;/span&gt; &lt;span class="n"&gt;maxconn&lt;/span&gt; &lt;span class="mi"&gt;20&lt;/span&gt; &lt;span class="n"&gt;check&lt;/span&gt; &lt;span class="n"&gt;inter&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt; &lt;span class="n"&gt;rise&lt;/span&gt; &lt;span class="mi"&gt;60&lt;/span&gt; &lt;span class="n"&gt;fall&lt;/span&gt; &lt;span class="mi"&gt;6&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;挺稳定，很快速。&lt;/p&gt;
-&lt;p&gt;update: 2015-12-15，添加 &lt;code&gt;backup&lt;/code&gt; 项，选一台最稳定的做 backup，避免所有连接都超时。
-update: 2015-12-13，添加 &lt;code&gt;redispatch&lt;/code&gt;  / &lt;code&gt;retries&lt;/code&gt; 项，换机器重试，
-大幅提高可用性，注意，可能在非幂等状态下面产生未知错误。&lt;/p&gt;
-&lt;p&gt;&lt;img alt="haproxy.png" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201512/haproxy.png"/&gt;&lt;/p&gt;
-&lt;p&gt;在跑的 node，有些延迟高，被干掉了。&lt;/p&gt;
-&lt;p&gt;&lt;img alt="youtube.png" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201512/youtube.png"/&gt;&lt;/p&gt;
-&lt;p&gt;看 1080P 也挺顺畅。&lt;/p&gt;
-&lt;hr&gt;
-&lt;div class="panel"&gt;
-&lt;div class="panel-body"&gt;
-   &lt;small&gt;原文链接: &lt;a href="https://blog.alswl.com/2015/11/ss-with-haproxy/"&gt;https://blog.alswl.com/2015/11/ss-with-haproxy/&lt;/a&gt;&lt;/small&gt;&lt;br&gt;
-   &lt;small&gt;欢迎关注我的微信公众号：&lt;a href="http://mp.weixin.qq.com/mp/getmasssendmsg?__biz=MzIyNTIwMTU3MQ==#wechat_webview_type=1&amp;wechat_redirect"&gt;窥豹&lt;/a&gt;&lt;/small&gt;&lt;br&gt;
-   &lt;small&gt;&lt;img src="https://ohsolnxaa.qnssl.com/upload_dropbox/201605/qrcode_for_gh_17e2f9c2caa4_258.jpg"/&gt;&lt;/small&gt;&lt;br&gt;
-   &lt;small&gt;3a1ff193cee606bd1e2ea554a16353ee&lt;/small&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-</summary><category term="SS"></category><category term="HAProxy"></category></entry></feed>
+</summary><category term="confluence"></category></entry></feed>

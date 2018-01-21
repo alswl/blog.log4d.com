@@ -67,6 +67,30 @@ Log4D            </a>
         <div class="col-lg-8 col-lg-offset-2">
 
             <article class="article-list">
+                <h2 class="title"><a href="https://blog.alswl.com/2009/09/python-to-read-and-write-files/">Python读写文件</a></h2>
+                <div class="summary"><p>本文来源：<a href="http://www.cnblogs.com/coderzh/archive/2008/05/10/1191410.html">Python天天美味(17) - open读写文件 - CoderZh的技术博客 -
+博客园</a></p>
+<p>「我本来想加上看到这篇文章的博客链接，结果粘贴时候发现了图片来源居然是cnblogs，这才反应过来这不是那个博客的原创。我不反对转载，看到的好文章我自己也会
+收藏下来，转载能帮助更多需要的人，可是，至少加上人家原作者的地址呀&hellip;&hellip;」-alswl</p>
+<p>Python中文件操作可以通过open函数，这的确很像C语言中的fopen。通过open函数获取一个file
+object，然后调用read()，write()等方法对文件进行读写操作。</p>
+<h2 id="1open">1.open</h2>
+<p>使用open打开文件后一定要记得调用文件对象的close()方法。比如可以用try/finally语句来确保最后能关闭文件。</p>
+<div class="highlight"><pre><span class="n">file_object</span> <span class="o">=</span> <span class="n">open</span><span class="p">(</span><span class="err">'</span><span class="n">thefile</span><span class="p">.</span><span class="n">txt</span><span class="err">'</span><span class="p">)</span>
+<span class="nl">try:</span>
+    <span class="n">all_the_text</span> <span class="o">=</span> <span class="n">file_object</span><span class="p">.</span><span class="n">read</span><span class="p">(</span> <span class="p">)</span>
+<span class="nl">finally:</span>
+    <span class="n">file_object</span><span class="p">.</span><span class="n">close</span><span class="p">(</span> <span class="p">)</span>
+</pre></div>
+<p>注：不能把open语句放在try块里，因为当打开文件出现异常时，文件对象file_object无法执行close()方法。</p>
+<h2 id="2du-wen-jian">2.读文件</h2>
+<h3 id="du-wen-ben-wen-jian">读文本文件</h3>
+<div class="highlight"><pre><span class="n">input</span> <span class="o">=</span> <span class="n">open ...</span></pre></div>
+                </div>
+                <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/09/python-to-read-and-write-files/"><i class="icon-circle-arrow-right"></i>more ...</a>
+            </article>
+            <hr/>
+            <article class="article-list">
                 <h2 class="title"><a href="https://blog.alswl.com/2009/09/those-times-those-who-do-log-archiving-2008/">那些时候，那些事-2008日志存档</a></h2>
                 <div class="summary"><p>2008这年我大二升大三，是我大学生活情感最失败的一个年度，也是我最幸福的一个年度。</p>
 <p>只是曾经```</p>
@@ -226,25 +250,6 @@ s.aspx?ReleaseId=27326">AJAX Control Toolkit</a>，其功能非常完整，几�
 素都覆盖了样式，AJAX Control Toolkit在样式上还是不如jQuery ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/08/ajaxcontroltoolkit-amendment-in-calendarextender-styles/"><i class="icon-circle-arrow-right"></i>more ...</a>
-            </article>
-            <hr/>
-            <article class="article-list">
-                <h2 class="title"><a href="https://blog.alswl.com/2009/08/no-photo-caused-by-the/">由No photo引起</a></h2>
-                <div class="summary"><p><a href="http://www.chinaqiugou.com/images/detail_no_pic.gif"><img alt="image" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201612/404.png"/></a></p>
-<p>某个系统，检查用户照片，如果发现用户并没有设定照片就返回一张No Photo的图片。</p>
-<p>返回数据库的图片代码比较格式化。</p>
-<div class="highlight"><pre><span class="kt">int</span> <span class="n">Id</span> <span class="o">=</span> <span class="n">Int32</span><span class="p">.</span><span class="n">Parse</span><span class="p">(</span><span class="n">Request</span><span class="p">.</span><span class="n">Params</span><span class="p">.</span><span class="n">Get</span><span class="p">(</span><span class="s">"Id"</span><span class="p">));</span>
-<span class="n">string</span> <span class="n">type</span> <span class="o">=</span> <span class="n">Request</span><span class="p">.</span><span class="n">Params</span><span class="p">.</span><span class="n">Get</span><span class="p">(</span><span class="s">"type"</span><span class="p">);</span>
-<span class="n">BLL</span><span class="p">.</span><span class="n">Student</span> <span class="n">bll</span> <span class="o">=</span> <span class="n">new</span> <span class="n">JznuManager</span><span class="p">.</span><span class="n">BLL</span><span class="p">.</span><span class="n">Student</span><span class="p">();</span>
-<span class="n">student</span> <span class="o">=</span> <span class="n">new</span> <span class="n">JznuManager</span><span class="p">.</span><span class="n">Model</span><span class="p">.</span><span class="n">Student</span><span class="p">();</span>
-<span class="n">student</span> <span class="o">=</span> <span class="n">bll</span><span class="p">.</span><span class="n">GetModel</span><span class="p">(</span><span class="n">Id</span><span class="p">);</span>
-<span class="n">Response</span><span class="p">.</span><span class="n">ContentType</span> <span class="o">=</span> <span class="s">"image/jpeg"</span><span class="p">;</span>
-<span class="n">Response</span><span class="p">.</span><span class="n">Cache</span><span class="p">.</span><span class="n">SetCacheability</span><span class="p">(</span><span class="n">HttpCacheability</span><span class="p">.</span><span class="n">Public</span><span class="p">);</span>
-<span class="n">Response</span><span class="p">.</span><span class="n">BufferOutput</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
-<span class="c1">//输出图片文件二进制数据</span>
-<span class="n">Response</span><span class="p">.</span><span class="n">OutputStream ...</span></pre></div>
-                </div>
-                <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/08/no-photo-caused-by-the/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
             <hr/>
 
@@ -427,7 +432,7 @@ s.aspx?ReleaseId=27326">AJAX Control Toolkit</a>，其功能非常完整，几�
    <div class="container">
       <hr>
       <div class="row">
-         <div class="col-xs-10">&copy; 2017 alswl
+         <div class="col-xs-10">&copy; 2018 alswl
             &middot; Powered by <a href="https://github.com/alswl/pelican-bootstrap3" target="_blank" style="font-weight: bold">pelican-bootstrap3</a>,
             <a href="http://docs.getpelican.com/" target="_blank" style="font-weight: bold">Pelican</a>,
             <a href="http://getbootstrap.com" target="_blank" style="font-weight: bold">Bootstrap</a>,
