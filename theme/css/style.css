@@ -39,7 +39,7 @@ article p, article li, article dd, article dt, article form input, article table
 	line-height: 200%;
 }
 
-article p,  article pre, article blockquote {
+article p,  article pre, article blockquote, article table {
 	margin-bottom: 1em;
 }
 
