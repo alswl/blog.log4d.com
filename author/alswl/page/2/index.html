@@ -218,21 +218,21 @@ Log4D            </a>
 需要手动切换一下服务器。
 于是用 HA 做了一个本地代理，调整了一些参数，让 SS 总是有快速的服务器供选择。</p>
 <p>结构：</p>
-<div class="highlight"><pre><span class="o">+-----------------+</span>                                                  <span class="o">+----------------+</span>
-<span class="o">|</span>                 <span class="o">|</span>                                                  <span class="o">|</span>                <span class="o">|</span>
-<span class="o">|</span>    <span class="n">Server</span> <span class="mi">1</span>     <span class="o">|&gt;&gt;&gt;&gt;</span><span class="n">v</span>                                           <span class="o">&gt;&gt;|</span>   <span class="n">Mail</span><span class="p">.</span><span class="n">app</span>     <span class="o">|</span>
-<span class="o">|</span>                 <span class="o">|</span>    <span class="n">v</span>                                           <span class="o">^</span> <span class="o">|</span>                <span class="o">|</span>
-<span class="o">+-----------------+</span>    <span class="n">v</span>                                           <span class="o">^</span> <span class="o">+----------------+</span>
-                       <span class="n">v</span>                                           <span class="o">^</span>
-<span class="o">+-----------------+</span>    <span class="n">v</span>    <span class="o">|----------------+</span>      <span class="o">+------------+</span> <span class="o">^</span> <span class="o">+----------------+</span>
-<span class="o">|</span>                 <span class="o">|</span>    <span class="n">v</span>    <span class="o">|</span>                <span class="o">|</span>      <span class="o">|</span>            <span class="o">|</span> <span class="o">^</span> <span class="o">|</span>                <span class="o">|</span>
-<span class="o">|</span>    <span class="n">Server</span> <span class="mi">2</span>     <span class="o">|&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;|</span>    <span class="n">HAProxy</span>     <span class="o">|&gt;&gt;&gt;&gt;&gt;&gt;|</span> <span class="n">SS</span><span class="o">-</span><span class="n">Client</span>  <span class="o">|&gt;&gt;&gt;|</span>   <span class="n">Browser</span>      <span class="o">|</span>
-<span class="o">|</span>                 <span class="o">|</span>    <span class="o">^</span>    <span class="o">|</span>                <span class="o">|</span>      <span class="o">|</span>            <span class="o">|</span> <span class="n">v</span> <span class="o">|</span>                <span class="o">|</span>
-<span class="o">+-----------------+</span>    <span class="o">^</span>    <span class="o">+----------------+</span>      <span class="o">+------------+</span> <span class="n">v</span> <span class="o">+----------------+</span>
-                       <span class="o">^</span>                                           <span class="n">v</span>   
-<span class="o">+-----------------+</span>    <span class="o">^</span>                                           <span class="n">v</span> <span class="o">+----------------+</span>
-<span class="o">|</span>                 <span class="o">|</span>    <span class="o">^</span>                                           <span class="n">v</span> <span class="o">|</span>                <span class="o">|</span>
-<span class="o">|</span>    <span class="n">Server ...</span></pre></div>
+<div class="highlight"><pre><span></span>+-----------------+                                                  +----------------+
+|                 |                                                  |                |
+|    Server 1     |&gt;&gt;&gt;&gt;v                                           &gt;&gt;|   Mail.app     |
+|                 |    v                                           ^ |                |
++-----------------+    v                                           ^ +----------------+
+                       v                                           ^
++-----------------+    v    |----------------+      +------------+ ^ +----------------+
+|                 |    v    |                |      |            | ^ |                |
+|    Server 2     |&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;|    HAProxy     |&gt;&gt;&gt;&gt;&gt;&gt;| SS-Client  |&gt;&gt;&gt;|   Browser      |
+|                 |    ^    |                |      |            | v |                |
++-----------------+    ^    +----------------+      +------------+ v +----------------+
+                       ^                                           v   
++-----------------+    ^                                           v +----------------+
+|                 |    ^                                           v |                |
+|    Server 3 ...</pre></div>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2015/11/ss-with-haproxy/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>

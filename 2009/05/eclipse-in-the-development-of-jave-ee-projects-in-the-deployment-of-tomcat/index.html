@@ -99,7 +99,7 @@ Log4D            </a>
 上也没有提供详细的步骤，也许大家都觉得这个问题很简单吧，呵呵。</p>
 <p>我琢磨了一会，终于整理出了头绪。</p>
 <p>1.修改Apache-conf-server.xml这个文件，修改其中一段<host>...</host>如下所示</p>
-<div class="highlight"><pre><span class="nt">&lt;host</span> <span class="na">appbase=</span><span class="s">"webapps"</span> <span class="na">name=</span><span class="s">"localhost"</span>
+<div class="highlight"><pre><span></span><span class="nt">&lt;host</span> <span class="na">appbase=</span><span class="s">"webapps"</span> <span class="na">name=</span><span class="s">"localhost"</span>
     <span class="na">unpackWARs=</span><span class="s">"true"</span> <span class="na">autoDeploy=</span><span class="s">"true"</span>
     <span class="na">xmlValidation=</span><span class="s">"false"</span> <span class="na">xmlNamespaceAware=</span><span class="s">"false"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;context</span> <span class="na">debug=</span><span class="s">"0"</span> <span class="na">docbase=</span><span class="s">"F:T3"</span> <span class="na">path=</span><span class="s">"/postbar"</span><span class="nt">&gt;</span>
@@ -109,7 +109,7 @@ Log4D            </a>
 </pre></div>
 <p>这一段的作用是在原先webapps的目录下添加虚拟目录/postbar，并且指定实际目录是"F:T3"</p>
 <p>2.打开目录listtings功能，这样能帮助调试，正式发布可以关闭。 在Apache-conf-web.xml中找到</p>
-<div class="highlight"><pre><span class="nt">&lt;init-param&gt;</span>
+<div class="highlight"><pre><span></span><span class="nt">&lt;init-param&gt;</span>
     <span class="nt">&lt;param-name&gt;</span>listings<span class="nt">&lt;/param-name&gt;</span>
     <span class="nt">&lt;param-value&gt;</span>false<span class="nt">&lt;/param-value&gt;</span>
 <span class="nt">&lt;/init-param&gt;</span>
@@ -125,10 +125,10 @@ inRAR解压缩WAR文件，然后复制到之前设置的目录中。</p>
 <p>又遇到乱码问题了，呵呵，幸好不是初哥，我用Log4j调试一下，查看Tomcat/logs/，检查下面相应的txt文件，发现Action读取时候就出现了乱码，
 数据库也是乱码，说明乱码产生原因在服务器端获取数据时候，我Google一下，发现Connector可以设置编码集，具体设置是Tomcat/conf/serv
 er.xml</p>
-<div class="highlight"><pre><span class="o">&lt;</span><span class="n">Connector</span> <span class="n">port</span><span class="o">=</span><span class="s">"8080"</span> <span class="n">protocol</span><span class="o">=</span><span class="s">"HTTP/1.1"</span> <span class="n">connectionTimeout</span><span class="o">=</span><span class="s">"20000"</span><span class="o">/&gt;</span>
+<div class="highlight"><pre><span></span>&lt;Connector port="8080" protocol="HTTP/1.1" connectionTimeout="20000"/&gt;
 </pre></div>
 <p>将其修改为</p>
-<div class="highlight"><pre><span class="o">&lt;</span><span class="n">Connector</span> <span class="n">port</span><span class="o">=</span><span class="s">"8080"</span> <span class="n">protocol</span><span class="o">=</span><span class="s">"HTTP/1.1"</span>  <span class="n">connectionTimeout</span><span class="o">=</span><span class="s">"20000"</span> <span class="n">redirectPort</span><span class="o">=</span><span class="s">"8443"</span> <span class="n">URIEncoding</span><span class="o">=</span><span class="s">"utf-8"</span> <span class="o">/&gt;</span>
+<div class="highlight"><pre><span></span>&lt;Connector port="8080" protocol="HTTP/1.1"  connectionTimeout="20000" redirectPort="8443" URIEncoding="utf-8" /&gt;
 </pre></div>
 <p>重新测试表单数据发送，一切没有问题了。 细节决定一切啊.</p>
             </div>

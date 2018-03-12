@@ -117,11 +117,11 @@ find action or result</p>
                 <h2 class="title"><a href="https://blog.alswl.com/2009/05/struts2-tags-the-curve-of-the-bug-and-the-use-of/">Struts2的s:if标签的Bug和曲线使用</a></h2>
                 <div class="summary"><p>贴吧的用户状态显示，登录和未登录应该是不同的div显示，我决定用做标签。</p>
 <p>本来应该很简单的事情，却没有我预想中的情形出现，检查后发现失效了，代码如下：</p>
-<div class="highlight"><pre><span class="nt">&lt;li&gt;</span><span class="cp">${</span><span class="n">session</span><span class="o">.</span><span class="n">userName</span><span class="cp">}</span>欢迎你<span class="nt">&lt;/li&gt;</span>
+<div class="highlight"><pre><span></span><span class="nt">&lt;li&gt;</span><span class="cp">${</span><span class="n">session</span><span class="o">.</span><span class="n">userName</span><span class="cp">}</span>欢迎你<span class="nt">&lt;/li&gt;</span>
 <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"Logout.action"</span><span class="nt">&gt;</span>注销<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
 </pre></div>
 <p>Struts2的官方文档中标签库介绍写的很清楚，官方示例文档如下</p>
-<div class="highlight"><pre><span class="nt">&lt;s:if</span> <span class="na">test=</span><span class="s">"%{false}"</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><span></span><span class="nt">&lt;s:if</span> <span class="na">test=</span><span class="s">"%{false}"</span><span class="nt">&gt;</span>
 <span class="nt">&lt;div&gt;</span>Will Not Be Executed<span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/s:if&gt;</span>
 <span class="nt">&lt;s:elseif</span> <span class="na">test=</span><span class="s">"%{true}"</span><span class="nt">&gt;</span>
@@ -168,9 +168,9 @@ tp://localhost:8080/PostBar/Category.action?categoryId=4&amp;categoryName=%E9%9F
                 <div class="summary"><p>贴吧在提交帖子时候必须提供贴吧分类id categoryId，但是怎么把这个id提交到PostAction就比较麻烦了，在jsp页面中我试了好多办法，尝试使
 用param和hidden（baidu用的hidden）标签，但是都不能读出cagegory.jsp页面的categoryId值。</p>
 <p>最后我索性用试所有的表达式</p>
-<div class="highlight"><pre><span class="o">&lt;</span><span class="n">s</span><span class="o">:</span><span class="n">hidden</span> <span class="n">name</span><span class="o">=</span><span class="s">"topicCategoryId"</span> <span class="n">value</span><span class="o">=</span><span class="s">"%{#categoryId}"</span> <span class="o">/&gt;</span>
-<span class="o">&lt;</span><span class="n">s</span><span class="o">:</span><span class="n">hidden</span> <span class="n">name</span><span class="o">=</span><span class="s">"topicCategoryId"</span> <span class="n">value</span><span class="o">=</span><span class="s">"#categoryId"</span> <span class="o">/&gt;</span>
-<span class="o">&lt;</span><span class="n">s</span><span class="o">:</span><span class="n">hidden</span> <span class="n">name</span><span class="o">=</span><span class="s">"topicCategoryId"</span> <span class="n">value</span><span class="o">=</span><span class="s">"%{categoryId}"</span> <span class="o">/&gt;</span>
+<div class="highlight"><pre><span></span>&lt;s:hidden name="topicCategoryId" value="%{#categoryId}" /&gt;
+&lt;s:hidden name="topicCategoryId" value="#categoryId" /&gt;
+&lt;s:hidden name="topicCategoryId" value="%{categoryId}" /&gt;
 </pre></div>
 <p>最后一个果然有效。。。</p>
 <p>貌似记得这是OPGL表达式？****</p>
@@ -183,7 +183,7 @@ tp://localhost:8080/PostBar/Category.action?categoryId=4&amp;categoryName=%E9%9F
                 <div class="summary"><p>继续昨天的编码问题 我一直全部采用UTF-8格式，而且在jUnit测试中并没有问题，说明是在Struts进行数据收集时候出错。</p>
 <p>Google之后，根据网上一些建议修改web.xml struts.xml 但都没有效果。</p>
 <p>网上建议在web.xml中添加 ：</p>
-<div class="highlight"><pre><span class="nt">&lt;filter&gt;</span>
+<div class="highlight"><pre><span></span><span class="nt">&lt;filter&gt;</span>
     <span class="nt">&lt;filter-name&gt;</span>struts-cleanup<span class="nt">&lt;/filter-name&gt;</span>
     <span class="nt">&lt;filter-class&gt;</span>org.apache.struts2.dispatcher.ActionContextCleanUp
     <span class="nt">&lt;/filter-class&gt;</span>
@@ -194,7 +194,7 @@ tp://localhost:8080/PostBar/Category.action?categoryId=4&amp;categoryName=%E9%9F
 <span class="nt">&lt;/filter-mapping&gt;</span>
 </pre></div>
 <p>来设定本地化和编码，然后在struts.xml中添加过滤器</p>
-<div class="highlight"><pre><span class="nt">&lt;constant</span> <span class="na">value=</span><span class="s">"UTF-8"</span> <span class="na">name=</span><span class="s">"struts.i18n.encoding"</span><span class="nt">&gt;&lt;/constant&gt;</span>
+<div class="highlight"><pre><span></span><span class="nt">&lt;constant</span> <span class="na">value=</span><span class="s">"UTF-8"</span> <span class="na">name=</span><span class="s">"struts.i18n.encoding"</span><span class="nt">&gt;&lt;/constant&gt;</span>
 <span class="nt">&lt;constant</span> <span class="na">value=</span><span class="s">"UTF-8"</span> <span class="na">name=</span><span class="s">"struts.locale"</span><span class="nt">&gt;&lt;/constant&gt;</span>
 </pre></div>
 <p>根据我测试 ...</p>

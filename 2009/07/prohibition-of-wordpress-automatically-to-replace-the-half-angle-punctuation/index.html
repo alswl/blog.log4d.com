@@ -96,17 +96,17 @@ Log4D            </a>
 <p>Wordpress虽好，可毛病也不少，今天发现WordPress会将半角标点符号自动转换成全角的，但并没有替换数据库里的信息，真搞不明白开发团队是怎么想的，
 现将解决方法记录如下。</p>
 <p>1、 编辑 wp-includes/formatting.php 文件，找到以下代码：</p>
-<div class="highlight"><pre><span class="c1">// static strings</span>
-<span class="err">$</span><span class="n">curl</span> <span class="o">=</span> <span class="n">str_replace</span><span class="p">(</span><span class="err">$</span><span class="n">static_characters</span><span class="p">,</span> <span class="err">$</span><span class="n">static_replacements</span><span class="p">,</span> <span class="err">$</span><span class="n">curl</span><span class="p">);</span>
-<span class="c1">// regular expressions</span>
-<span class="err">$</span><span class="n">curl</span> <span class="o">=</span> <span class="n">preg_replace</span><span class="p">(</span><span class="err">$</span><span class="n">dynamic_characters</span><span class="p">,</span> <span class="err">$</span><span class="n">dynamic_replacements</span><span class="p">,</span> <span class="err">$</span><span class="n">curl</span><span class="p">);</span>
+<div class="highlight"><pre><span></span>// static strings
+$curl = str_replace($static_characters, $static_replacements, $curl);
+// regular expressions
+$curl = preg_replace($dynamic_characters, $dynamic_replacements, $curl);
 </pre></div>
 <p>正是 str_replace() 和 preg_replace() 两个函数在作怪。</p>
 <p>2、 将相应语句注释，禁用自动替换功能：</p>
-<div class="highlight"><pre><span class="c1">// static strings</span>
-<span class="c1">//$curl = str_replace($static_characters, $static_replacements, $curl);</span>
-<span class="c1">// regular expressions</span>
-<span class="c1">//$curl = preg_replace($dynamic_characters, $dynamic_replacements, $curl);</span>
+<div class="highlight"><pre><span></span>// static strings
+//$curl = str_replace($static_characters, $static_replacements, $curl);
+// regular expressions
+//$curl = preg_replace($dynamic_characters, $dynamic_replacements, $curl);
 </pre></div>
 <p>OK，以后Wordpress在也不会自作聪明的将半角标点符号转换成全角标点符号了。</p>
             </div>

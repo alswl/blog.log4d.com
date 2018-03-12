@@ -95,17 +95,17 @@ Log4D            </a>
                 <p><a href="http://www.chinaqiugou.com/images/detail_no_pic.gif"><img alt="image" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201612/404.png"/></a></p>
 <p>某个系统，检查用户照片，如果发现用户并没有设定照片就返回一张No Photo的图片。</p>
 <p>返回数据库的图片代码比较格式化。</p>
-<div class="highlight"><pre><span class="kt">int</span> <span class="n">Id</span> <span class="o">=</span> <span class="n">Int32</span><span class="p">.</span><span class="n">Parse</span><span class="p">(</span><span class="n">Request</span><span class="p">.</span><span class="n">Params</span><span class="p">.</span><span class="n">Get</span><span class="p">(</span><span class="s">"Id"</span><span class="p">));</span>
-<span class="n">string</span> <span class="n">type</span> <span class="o">=</span> <span class="n">Request</span><span class="p">.</span><span class="n">Params</span><span class="p">.</span><span class="n">Get</span><span class="p">(</span><span class="s">"type"</span><span class="p">);</span>
-<span class="n">BLL</span><span class="p">.</span><span class="n">Student</span> <span class="n">bll</span> <span class="o">=</span> <span class="n">new</span> <span class="n">JznuManager</span><span class="p">.</span><span class="n">BLL</span><span class="p">.</span><span class="n">Student</span><span class="p">();</span>
-<span class="n">student</span> <span class="o">=</span> <span class="n">new</span> <span class="n">JznuManager</span><span class="p">.</span><span class="n">Model</span><span class="p">.</span><span class="n">Student</span><span class="p">();</span>
-<span class="n">student</span> <span class="o">=</span> <span class="n">bll</span><span class="p">.</span><span class="n">GetModel</span><span class="p">(</span><span class="n">Id</span><span class="p">);</span>
-<span class="n">Response</span><span class="p">.</span><span class="n">ContentType</span> <span class="o">=</span> <span class="s">"image/jpeg"</span><span class="p">;</span>
-<span class="n">Response</span><span class="p">.</span><span class="n">Cache</span><span class="p">.</span><span class="n">SetCacheability</span><span class="p">(</span><span class="n">HttpCacheability</span><span class="p">.</span><span class="n">Public</span><span class="p">);</span>
-<span class="n">Response</span><span class="p">.</span><span class="n">BufferOutput</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
-<span class="c1">//输出图片文件二进制数据</span>
-<span class="n">Response</span><span class="p">.</span><span class="n">OutputStream</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="n">student</span><span class="p">.</span><span class="n">entryPhoto</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">student</span><span class="p">.</span><span class="n">entryPhoto</span><span class="p">.</span><span class="n">Length</span><span class="p">);</span>
-<span class="n">Response</span><span class="p">.</span><span class="n">End</span><span class="p">();</span>
+<div class="highlight"><pre><span></span>int Id = Int32.Parse(Request.Params.Get("Id"));
+string type = Request.Params.Get("type");
+BLL.Student bll = new JznuManager.BLL.Student();
+student = new JznuManager.Model.Student();
+student = bll.GetModel(Id);
+Response.ContentType = "image/jpeg";
+Response.Cache.SetCacheability(HttpCacheability.Public);
+Response.BufferOutput = false;
+//输出图片文件二进制数据
+Response.OutputStream.Write(student.entryPhoto, 0, (int)student.entryPhoto.Length);
+Response.End();
 </pre></div>
 <p>而如果返回的图片为空时候，就需要填充原先的图片Img。</p>
 <p>1.我起初设置了Img的默认背景background，当没有图片出来时候，就可以显示出原先背景，但很快发现这个办法的弊病，如果数据库图片过小则会导致背景图片
@@ -113,7 +113,7 @@ Log4D            </a>
 <p>2.我考虑在GetPhoto.aspx这个方法内写入判断，在catch中读取一个本地图片文件，再转化为BitMap，再设置content-
 type，用Response.OutputStream输出~~~</p>
 <p>3.上面这个方法调试了很久，老是参数错误，最后我突然想起来一个方法。</p>
-<div class="highlight"><pre><span class="n">Response</span><span class="p">.</span><span class="n">Redirect</span><span class="p">(</span><span class="s">"./Images/nophot.gif"</span><span class="p">);</span>
+<div class="highlight"><pre><span></span>Response.Redirect("./Images/nophot.gif");
 </pre></div>
 <p>这几句话就能解决上述所有问题。</p>
 <p>呃，有时候花费了好久，饶了很多弯的问题，其实好好想想反而会很简单。</p>

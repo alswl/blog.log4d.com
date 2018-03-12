@@ -159,7 +159,7 @@ start= auto</code> 就可以将svnserve程序作为服务载入。关于sc命令
 1367668.htm">这里</a>查看更多。</p>
 <h2 id="svnfu-wu-qi-yong-hu-guan-li">SVN服务器用户管理</h2>
 <p>设定SVN服务器用户的权限，需要修改 confsvnserve.conf 文件，如下所示</p>
-<div class="highlight"><pre><span class="k">[general]</span>
+<div class="highlight"><pre><span></span><span class="k">[general]</span>
 <span class="c1"># password-db = passwd</span>
 <span class="c1"># anon-access = none</span>
 <span class="c1"># auth-access = write</span>
@@ -169,7 +169,7 @@ start= auto</code> 就可以将svnserve程序作为服务载入。关于sc命令
 <p>去之每行开头的#，其中第二行是指定身份验证的文件名，即passwd文件.a access = none
 是匿名用户不能访问，必须要有用户名和密码。（注意：问这，一定要注意格式去掉注释后要顶格不能有空）</p>
 <p>用户管理相当简单，只需要在confpasswd中打开相应的权限，之后在confpasswd 加入用户就可以了。</p>
-<div class="highlight"><pre><span class="k">[users]</span>
+<div class="highlight"><pre><span></span><span class="k">[users]</span>
 <span class="c1"># harry = harryssecret</span>
 <span class="c1"># sally = sallyssecret</span>
 <span class="na">alswl</span> <span class="o">=</span> <span class="s">alswl</span>

@@ -124,10 +124,10 @@ Jython 推翻重做了主要业务，效果立竿见影，但同时也把真实�
 Python debug 扩展包含了一些 debug 命令，并且添加了一些 Python 特定的命令到 <code>gdb</code>。
 在主流的 Linux 发行版中，你可以轻松的安装他们：</p>
 <p>Fedora:</p>
-<div class="highlight"><pre><span class="n">sudo</span> <span class="n">yum</span> <span class="n">install</span> <span class="n">gdb</span> <span class="n">python</span><span class="o">-</span><span class="n">debuginfo</span>
+<div class="highlight"><pre><span></span>sudo yum install gdb python-debuginfo
 </pre></div>
 <p>Ubunt:</p>
-<div class="highlight"><pre><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">gdb</span> <span class="n">python2</span><span class="mf">.7</span><span class="o">-</span><span class="n">dbg</span>
+<div class="highlight"><pre><span></span>sudo apt-get install gdb python2.7-dbg
 </pre></div>
 <p>在一些老系统上面，也一样可以使用 <code>gdb</code>，具体看文章末尾。</p>
 <h2 id="shi-yong-gdb">使用 <code>GDB</code></h2>
@@ -138,16 +138,16 @@ Python debug 扩展包含了一些 debug 命令，并且添加了一些 Python �
 </ol>
 <p>在 <code>gdb</code> 下面启动 Python 同样有两种方式：</p>
 <p>交互式：</p>
-<div class="highlight"><pre><span class="err">$</span> <span class="nx">gdb</span> <span class="nx">python</span>
-<span class="nx">...</span>
-<span class="p">(</span><span class="nx">gdb</span><span class="p">)</span> <span class="nb">run</span> <span class="o">&lt;</span><span class="nx">programname</span><span class="o">&gt;</span><span class="bp">.</span><span class="nx">py</span> <span class="o">&lt;</span><span class="nb">arguments</span><span class="o">&gt;</span>
+<div class="highlight"><pre><span></span>$ gdb python
+...
+<span class="o">(</span>gdb<span class="o">)</span> run &lt;programname&gt;.py &lt;arguments&gt;
 </pre></div>
 <p>自动：</p>
-<div class="highlight"><pre><span class="err">$</span> <span class="nx">gdb</span> <span class="na">-ex</span> <span class="nb">r</span> <span class="o">--</span><span class="nx">args</span> <span class="nx">python</span> <span class="o">&lt;</span><span class="nx">programname</span><span class="o">&gt;</span><span class="bp">.</span><span class="nx">py</span> <span class="o">&lt;</span><span class="nb">arguments</span><span class="o">&gt;</span>
+<div class="highlight"><pre><span></span>$ gdb -ex r --args python &lt;programname&gt;.py &lt;arguments&gt;
 </pre></div>
 <p>这样的话，它会一直运行直到退出、段错误、或者人为的停止（使用 <code>Ctrl+C</code>）。</p>
 <p>如果进程已经开始运行，你可以通过 PID 来接入它：</p>
-<div class="highlight"><pre><span class="err">$</span> <span class="n">gdb</span> <span class="n">python</span> <span class="o">&lt;</span><span class="n">pid</span> <span class="n">of</span> <span class="n">running</span> <span class="n">process</span><span class="o">&gt;</span>
+<div class="highlight"><pre><span></span>$ gdb python &lt;pid of running process&gt;
 </pre></div>
 <h2 id="diao-shi-jin-cheng">调试进程</h2>
 <p>如果你的程序段错误了， <code>gdb</code> 会自动暂停程序，这样你可以切换到 <code>gdb</code>
@@ -157,23 +157,23 @@ Python debug 扩展包含了一些 debug 命令，并且添加了一些 Python �
 <h2 id="cha-kan-c-diao-yong-zhan">查看 C 调用栈</h2>
 <p>如果你在 debug 段错误，你最想做的可能就是查看 C 调用栈。</p>
 <p>在 <code>gdb</code> 的命令行里面，只要运行一下命令：</p>
-<div class="highlight"><pre><span class="p">(</span><span class="nx">gdb</span><span class="p">)</span> <span class="nx">bt</span>
-<span class="err">#</span><span class="mi">0</span>  <span class="mh">0x0000002a95b3b705</span> <span class="k">in</span> <span class="nx">raise</span> <span class="p">()</span> <span class="nx">from</span> <span class="o">/</span><span class="nx">lib</span><span class="o">/</span><span class="nx">libc</span><span class="p">.</span><span class="nx">so</span><span class="p">.</span><span class="mi">6</span>
-<span class="err">#</span><span class="mi">1</span>  <span class="mh">0x0000002a95b3ce8e</span> <span class="k">in</span> <span class="nx">abort</span> <span class="p">()</span> <span class="nx">from</span> <span class="o">/</span><span class="nx">lib</span><span class="o">/</span><span class="nx">libc</span><span class="p">.</span><span class="nx">so</span><span class="p">.</span><span class="mi">6</span>
-<span class="err">#</span><span class="mi">2</span>  <span class="mh">0x00000000004c164f</span> <span class="k">in</span> <span class="nx">posix_abort</span> <span class="p">(</span><span class="nx">self</span><span class="o">=</span><span class="mh">0x0</span><span class="p">,</span> <span class="nx">noargs</span><span class="o">=</span><span class="mh">0x0</span><span class="p">)</span>
-    <span class="nx">at</span> <span class="p">..</span><span class="o">/</span><span class="nx">Modules</span><span class="o">/</span><span class="nx">posixmodule</span><span class="p">.</span><span class="nx">c</span><span class="o">:</span><span class="mi">7158</span>
-<span class="err">#</span><span class="mi">3</span>  <span class="mh">0x0000000000489fac</span> <span class="k">in</span> <span class="nx">call_function</span> <span class="p">(</span><span class="nx">pp_stack</span><span class="o">=</span><span class="mh">0x7fbffff110</span><span class="p">,</span> <span class="nx">oparg</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-    <span class="nx">at</span> <span class="p">..</span><span class="o">/</span><span class="nx">Python</span><span class="o">/</span><span class="nx">ceval</span><span class="p">.</span><span class="nx">c</span><span class="o">:</span><span class="mi">3531</span>
-<span class="err">#</span><span class="mi">4</span>  <span class="mh">0x0000000000485fc2</span> <span class="k">in</span> <span class="nx">PyEval_EvalFrame</span> <span class="p">(</span><span class="nx">f</span><span class="o">=</span><span class="mh">0x66ccd8</span><span class="p">)</span>
-    <span class="nx">at</span> <span class="p">..</span><span class="o">/</span><span class="nx">Python</span><span class="o">/</span><span class="nx">ceval</span><span class="p">.</span><span class="nx">c</span><span class="o">:</span><span class="mi">2163</span>
-<span class="p">...</span>
+<div class="highlight"><pre><span></span>(gdb) bt
+#0  0x0000002a95b3b705 in raise () from /lib/libc.so.6
+#1  0x0000002a95b3ce8e in abort () from /lib/libc.so.6
+#2  0x00000000004c164f in posix_abort (self=0x0, noargs=0x0)
+    at ../Modules/posixmodule.c:7158
+#3  0x0000000000489fac in call_function (pp_stack=0x7fbffff110, oparg=0)
+    at ../Python/ceval.c:3531
+#4  0x0000000000485fc2 in PyEval_EvalFrame (f=0x66ccd8)
+    at ../Python/ceval.c:2163
+...
 </pre></div>
 <p>运气好的话，你可以直接看到问题出现在什么地方。如果它提供的信息不能直接帮你解决问题，
 你可以尝试继续追踪调用栈。
 调式的结果取决于 debug 信息的有效程度。</p>
 <h2 id="cha-kan-python-diao-yong-zhan">查看 Python 调用栈</h2>
 <p>如果你安装了 Python 扩展，你可以使用</p>
-<div class="highlight"><pre><span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="n">py</span><span class="o">-</span><span class="n">bt</span>
+<div class="highlight"><pre><span></span>(gdb) py-bt
 </pre></div>
 <p>可以获取熟悉的 Python 源代码。</p>
 <h2 id="dui-gua-zhu-de-jin-cheng-kai-dao">对挂住的进程开刀</h2>
@@ -182,61 +182,61 @@ Python debug 扩展包含了一些 debug 命令，并且添加了一些 Python �
 <p>如果进程在疯狂循环，你可以先让它运行一会，使用 <code>cont</code> 命令，
 然后使用 <code>Ctrl+C</code> 来暂停，并且打印出调用栈。</p>
 <p>如果一些线程卡住了，下面的命令可能会帮上忙：</p>
-<div class="highlight"><pre><span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="n">info</span> <span class="n">threads</span>
-  <span class="n">Id</span>   <span class="n">Target</span> <span class="n">Id</span>         <span class="n">Frame</span>
-  <span class="mi">37</span>   <span class="n">Thread</span> <span class="mh">0xa29feb40</span> <span class="p">(</span><span class="n">LWP</span> <span class="mi">17914</span><span class="p">)</span> <span class="s">"NotificationThr"</span> <span class="mh">0xb7fdd424</span> <span class="n">in</span> <span class="n">__kernel_vsyscall</span> <span class="p">()</span>
-  <span class="mi">36</span>   <span class="n">Thread</span> <span class="mh">0xa03fcb40</span> <span class="p">(</span><span class="n">LWP</span> <span class="mi">17913</span><span class="p">)</span> <span class="s">"python2.7"</span> <span class="mh">0xb7fdd424</span> <span class="n">in</span> <span class="n">__kernel_vsyscall</span> <span class="p">()</span>
-  <span class="mi">35</span>   <span class="n">Thread</span> <span class="mh">0xa0bfdb40</span> <span class="p">(</span><span class="n">LWP</span> <span class="mi">17911</span><span class="p">)</span> <span class="s">"QProcessManager"</span> <span class="mh">0xb7fdd424</span> <span class="n">in</span> <span class="n">__kernel_vsyscall</span> <span class="p">()</span>
-  <span class="mi">34</span>   <span class="n">Thread</span> <span class="mh">0xa13feb40</span> <span class="p">(</span><span class="n">LWP</span> <span class="mi">17910</span><span class="p">)</span> <span class="s">"python2.7"</span> <span class="mh">0xb7fdd424</span> <span class="n">in</span> <span class="n">__kernel_vsyscall</span> <span class="p">()</span>
-  <span class="mi">33</span>   <span class="n">Thread</span> <span class="mh">0xa1bffb40</span> <span class="p">(</span><span class="n">LWP</span> <span class="mi">17909</span><span class="p">)</span> <span class="s">"python2.7"</span> <span class="mh">0xb7fdd424</span> <span class="n">in</span> <span class="n">__kernel_vsyscall</span> <span class="p">()</span>
-  <span class="mi">31</span>   <span class="n">Thread</span> <span class="mh">0xa31ffb40</span> <span class="p">(</span><span class="n">LWP</span> <span class="mi">17907</span><span class="p">)</span> <span class="s">"QFileInfoGather"</span> <span class="mh">0xb7fdd424</span> <span class="n">in</span> <span class="n">__kernel_vsyscall</span> <span class="p">()</span>
-  <span class="mi">30</span>   <span class="n">Thread</span> <span class="mh">0xa3fdfb40</span> <span class="p">(</span><span class="n">LWP</span> <span class="mi">17906</span><span class="p">)</span> <span class="s">"QInotifyFileSys"</span> <span class="mh">0xb7fdd424</span> <span class="n">in</span> <span class="n">__kernel_vsyscall</span> <span class="p">()</span>
-  <span class="mi">29</span>   <span class="n">Thread</span> <span class="mh">0xa481cb40</span> <span class="p">(</span><span class="n">LWP</span> <span class="mi">17905</span><span class="p">)</span> <span class="s">"QFileInfoGather"</span> <span class="mh">0xb7fdd424</span> <span class="n">in</span> <span class="n">__kernel_vsyscall</span> <span class="p">()</span>
-  <span class="mi">7</span>    <span class="n">Thread</span> <span class="mh">0xa508db40</span> <span class="p">(</span><span class="n">LWP</span> <span class="mi">17883</span><span class="p">)</span> <span class="s">"QThread"</span> <span class="mh">0xb7fdd424</span> <span class="n">in</span> <span class="n">__kernel_vsyscall</span> <span class="p">()</span>
-  <span class="mi">6</span>    <span class="n">Thread</span> <span class="mh">0xa5cebb40</span> <span class="p">(</span><span class="n">LWP</span> <span class="mi">17882</span><span class="p">)</span> <span class="s">"python2.7"</span> <span class="mh">0xb7fdd424</span> <span class="n">in</span> <span class="n">__kernel_vsyscall</span> <span class="p">()</span>
-  <span class="mi">5</span>    <span class="n">Thread</span> <span class="mh">0xa660cb40</span> <span class="p">(</span><span class="n">LWP</span> <span class="mi">17881</span><span class="p">)</span> <span class="s">"python2.7"</span> <span class="mh">0xb7fdd424</span> <span class="n">in</span> <span class="n">__kernel_vsyscall</span> <span class="p">()</span>
-  <span class="mi">3</span>    <span class="n">Thread</span> <span class="mh">0xabdffb40</span> <span class="p">(</span><span class="n">LWP</span> <span class="mi">17876</span><span class="p">)</span> <span class="s">"gdbus"</span> <span class="mh">0xb7fdd424</span> <span class="n">in</span> <span class="n">__kernel_vsyscall</span> <span class="p">()</span>
-  <span class="mi">2</span>    <span class="n">Thread</span> <span class="mh">0xac7b7b40</span> <span class="p">(</span><span class="n">LWP</span> <span class="mi">17875</span><span class="p">)</span> <span class="s">"dconf worker"</span> <span class="mh">0xb7fdd424</span> <span class="n">in</span> <span class="n">__kernel_vsyscall</span> <span class="p">()</span>
-<span class="o">*</span> <span class="mi">1</span>    <span class="n">Thread</span> <span class="mh">0xb7d876c0</span> <span class="p">(</span><span class="n">LWP</span> <span class="mi">17863</span><span class="p">)</span> <span class="s">"python2.7"</span> <span class="mh">0xb7fdd424</span> <span class="n">in</span> <span class="n">__kernel_vsyscall</span> <span class="p">()</span>
+<div class="highlight"><pre><span></span>(gdb) info threads
+  Id   Target Id         Frame
+  37   Thread 0xa29feb40 (LWP 17914) "NotificationThr" 0xb7fdd424 in __kernel_vsyscall ()
+  36   Thread 0xa03fcb40 (LWP 17913) "python2.7" 0xb7fdd424 in __kernel_vsyscall ()
+  35   Thread 0xa0bfdb40 (LWP 17911) "QProcessManager" 0xb7fdd424 in __kernel_vsyscall ()
+  34   Thread 0xa13feb40 (LWP 17910) "python2.7" 0xb7fdd424 in __kernel_vsyscall ()
+  33   Thread 0xa1bffb40 (LWP 17909) "python2.7" 0xb7fdd424 in __kernel_vsyscall ()
+  31   Thread 0xa31ffb40 (LWP 17907) "QFileInfoGather" 0xb7fdd424 in __kernel_vsyscall ()
+  30   Thread 0xa3fdfb40 (LWP 17906) "QInotifyFileSys" 0xb7fdd424 in __kernel_vsyscall ()
+  29   Thread 0xa481cb40 (LWP 17905) "QFileInfoGather" 0xb7fdd424 in __kernel_vsyscall ()
+  7    Thread 0xa508db40 (LWP 17883) "QThread" 0xb7fdd424 in __kernel_vsyscall ()
+  6    Thread 0xa5cebb40 (LWP 17882) "python2.7" 0xb7fdd424 in __kernel_vsyscall ()
+  5    Thread 0xa660cb40 (LWP 17881) "python2.7" 0xb7fdd424 in __kernel_vsyscall ()
+  3    Thread 0xabdffb40 (LWP 17876) "gdbus" 0xb7fdd424 in __kernel_vsyscall ()
+  2    Thread 0xac7b7b40 (LWP 17875) "dconf worker" 0xb7fdd424 in __kernel_vsyscall ()
+* 1    Thread 0xb7d876c0 (LWP 17863) "python2.7" 0xb7fdd424 in __kernel_vsyscall ()
 </pre></div>
 <p>当前运行的线程被标记为 <code>*</code>，要查看 Python 代码运行到哪里，使用 <code>py-list</code> 查看：</p>
-<div class="highlight"><pre><span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="n">py</span><span class="o">-</span><span class="n">list</span>
-<span class="mi">2025</span>        <span class="err">#</span> <span class="n">Open</span> <span class="n">external</span> <span class="n">files</span> <span class="n">with</span> <span class="n">our</span> <span class="n">Mac</span> <span class="n">app</span>
-<span class="mi">2026</span>        <span class="k">if</span> <span class="n">sys</span><span class="p">.</span><span class="n">platform</span> <span class="o">==</span> <span class="s">"darwin"</span> <span class="n">and</span> <span class="err">'</span><span class="n">Spyder</span><span class="p">.</span><span class="n">app</span><span class="err">'</span> <span class="n">in</span> <span class="n">__file__</span><span class="o">:</span>
-<span class="mi">2027</span>            <span class="n">main</span><span class="p">.</span><span class="n">connect</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">SIGNAL</span><span class="p">(</span><span class="err">'</span><span class="n">open_external_file</span><span class="p">(</span><span class="n">QString</span><span class="p">)</span><span class="err">'</span><span class="p">),</span>
-<span class="mi">2028</span>                         <span class="n">lambda</span> <span class="n">fname</span><span class="o">:</span> <span class="n">main</span><span class="p">.</span><span class="n">open_external_file</span><span class="p">(</span><span class="n">fname</span><span class="p">))</span>
-<span class="mi">2029</span>
-<span class="o">&gt;</span><span class="mi">2030</span>        <span class="n">app</span><span class="p">.</span><span class="n">exec_</span><span class="p">()</span>
-<span class="mi">2031</span>        <span class="k">return</span> <span class="n">main</span>
-<span class="mi">2032</span>
-<span class="mi">2033</span>
-<span class="mi">2034</span>    <span class="n">def</span> <span class="n">__remove_temp_session</span><span class="p">()</span><span class="o">:</span>
-<span class="mi">2035</span>        <span class="k">if</span> <span class="n">osp</span><span class="p">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">TEMP_SESSION_PATH</span><span class="p">)</span><span class="o">:</span>
+<div class="highlight"><pre><span></span>(gdb) py-list
+2025        # Open external files with our Mac app
+2026        if sys.platform == "darwin" and 'Spyder.app' in __file__:
+2027            main.connect(app, SIGNAL('open_external_file(QString)'),
+2028                         lambda fname: main.open_external_file(fname))
+2029
+&gt;2030        app.exec_()
+2031        return main
+2032
+2033
+2034    def __remove_temp_session():
+2035        if osp.isfile(TEMP_SESSION_PATH):
 </pre></div>
 <p>查看所有进程的 Python 代码位置，可以使用：</p>
-<div class="highlight"><pre><span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="kr">thread</span> <span class="n">apply</span> <span class="n">all</span> <span class="n">py</span><span class="o">-</span><span class="n">list</span>
-<span class="p">...</span>
- <span class="mi">200</span>
- <span class="mi">201</span>        <span class="n">def</span> <span class="n">accept</span><span class="p">(</span><span class="n">self</span><span class="p">)</span><span class="o">:</span>
-<span class="o">&gt;</span><span class="mi">202</span>            <span class="n">sock</span><span class="p">,</span> <span class="n">addr</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">_sock</span><span class="p">.</span><span class="n">accept</span><span class="p">()</span>
- <span class="mi">203</span>            <span class="k">return</span> <span class="n">_socketobject</span><span class="p">(</span><span class="n">_sock</span><span class="o">=</span><span class="n">sock</span><span class="p">),</span> <span class="n">addr</span>
- <span class="mi">204</span>        <span class="n">accept</span><span class="p">.</span><span class="n">__doc__</span> <span class="o">=</span> <span class="n">_realsocket</span><span class="p">.</span><span class="n">accept</span><span class="p">.</span><span class="n">__doc__</span>
- <span class="mi">205</span>
- <span class="mi">206</span>        <span class="n">def</span> <span class="n">dup</span><span class="p">(</span><span class="n">self</span><span class="p">)</span><span class="o">:</span>
- <span class="mi">207</span>            <span class="s">"""dup() -&gt; socket object</span>
+<div class="highlight"><pre><span></span>(gdb) thread apply all py-list
+...
+ 200
+ 201        def accept(self):
+&gt;202            sock, addr = self._sock.accept()
+ 203            return _socketobject(_sock=sock), addr
+ 204        accept.__doc__ = _realsocket.accept.__doc__
+ 205
+ 206        def dup(self):
+ 207            """dup() -&gt; socket object
 
-<span class="n">Thread</span> <span class="mi">35</span> <span class="p">(</span><span class="n">Thread</span> <span class="mh">0xa0bfdb40</span> <span class="p">(</span><span class="n">LWP</span> <span class="mi">17911</span><span class="p">))</span><span class="o">:</span>
-<span class="n">Unable</span> <span class="n">to</span> <span class="n">locate</span> <span class="n">python</span> <span class="n">frame</span>
+Thread 35 (Thread 0xa0bfdb40 (LWP 17911)):
+Unable to locate python frame
 
-<span class="n">Thread</span> <span class="mi">34</span> <span class="p">(</span><span class="n">Thread</span> <span class="mh">0xa13feb40</span> <span class="p">(</span><span class="n">LWP</span> <span class="mi">17910</span><span class="p">))</span><span class="o">:</span>
- <span class="mi">197</span>            <span class="k">for</span> <span class="n">method</span> <span class="n">in</span> <span class="n">_delegate_methods</span><span class="o">:</span>
- <span class="mi">198</span>                <span class="n">setattr</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="n">dummy</span><span class="p">)</span>
- <span class="mi">199</span>        <span class="n">close</span><span class="p">.</span><span class="n">__doc__</span> <span class="o">=</span> <span class="n">_realsocket</span><span class="p">.</span><span class="n">close</span><span class="p">.</span><span class="n">__doc__</span>
- <span class="mi">200</span>
- <span class="mi">201</span>        <span class="n">def</span> <span class="n">accept</span><span class="p">(</span><span class="n">self</span><span class="p">)</span><span class="o">:</span>
-<span class="o">&gt;</span><span class="mi">202</span>            <span class="n">sock</span><span class="p">,</span> <span class="n">addr</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">_sock</span><span class="p">.</span><span class="n">accept</span><span class="p">()</span>
- <span class="mi">203</span>            <span class="k">return</span> <span class="n">_socketobject</span><span class="p">(</span><span class="n">_sock</span><span class="o">=</span><span class="n">sock</span><span class="p">),</span> <span class="n">addr</span>
-<span class="p">...</span>
+Thread 34 (Thread 0xa13feb40 (LWP 17910)):
+ 197            for method in _delegate_methods:
+ 198                setattr(self, method, dummy)
+ 199        close.__doc__ = _realsocket.close.__doc__
+ 200
+ 201        def accept(self):
+&gt;202            sock, addr = self._sock.accept()
+ 203            return _socketobject(_sock=sock), addr
+...
 </pre></div>
 <h2 id="yin-yong">引用</h2>
 <ul>
@@ -259,10 +259,10 @@ Python debug 扩展包含了一些 debug 命令，并且添加了一些 Python �
 编译 Python 可以解决这个问题。</p>
 <h3 id="shi-yong-python-stack-traces-gdb-jiao-ben">使用 Python Stack Traces GDB 脚本</h3>
 <p>在 gdb 命令行里，可以这样查看 Python stack trace:</p>
-<div class="highlight"><pre><span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="n">pystack</span>
+<div class="highlight"><pre><span></span>(gdb) pystack
 </pre></div>
 <p>同样的，可以获取一列 stack frame 的 Python 变量：</p>
-<div class="highlight"><pre><span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="n">pystackv</span>
+<div class="highlight"><pre><span></span>(gdb) pystackv
 </pre></div>
 <p>更多 gdbinit 里面没定义的有用的脚本可以在这里找到：</p>
 <p><a href="http://web.archive.org/web/20070915134837/http://www.mashebali.com/?Python_GDB_macros:The_Macros">http://web.archive.org/web/20070915134837/http://www.mashebali.com/?Python_GDB_macros:The_Macros</a></p>

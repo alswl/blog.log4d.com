@@ -104,66 +104,66 @@ Log4D            </a>
 <a href="http://www.jvmer.com/jvm-xx-参数介绍/">JVM -XX: 参数介绍</a></p>
 
 <p>以下是一些经验调整：</p>
-<div class="highlight"><pre><span class="o">-</span><span class="s-Atom">d64</span>
-<span class="s-Atom">#</span> <span class="s-Atom">运行在</span> <span class="m">64</span> <span class="s-Atom">位数据模式下</span>
+<div class="highlight"><pre><span></span><span class="o">-</span><span class="s s-Atom">d64</span>
+<span class="c1"># 运行在 64 位数据模式下</span>
 
-<span class="o">-</span><span class="s-Atom">server</span>
-<span class="s-Atom">#</span> <span class="s-Atom">选择</span> <span class="s-Atom">server</span> <span class="nv">VM</span>
+<span class="o">-</span><span class="s s-Atom">server</span>
+<span class="c1"># 选择 server VM</span>
 
 <span class="o">-</span><span class="nv">Xms1024m</span>
-<span class="s-Atom">#</span> <span class="s-Atom">初始堆大小，直接固定到</span> <span class="nv">Xmx</span>
+<span class="c1"># 初始堆大小，直接固定到 Xmx</span>
 
 <span class="o">-</span><span class="nv">Xmx1024m</span>
-<span class="s-Atom">#</span> <span class="s-Atom">最大堆大小，根据服务器性能和请求量调整，太大了会导致</span> <span class="nv">GC</span> <span class="s-Atom">时间太长</span>
+<span class="c1"># 最大堆大小，根据服务器性能和请求量调整，太大了会导致 GC 时间太长</span>
 
-<span class="o">-</span><span class="nv">XX</span><span class="s-Atom">:+</span><span class="nv">DoEscapeAnalysis</span><span class="s-Atom">:</span>
-<span class="s-Atom">#</span> <span class="s-Atom">支持逃逸分析（将局部对象实例存储在栈上）</span>
-<span class="s-Atom">#</span> <span class="nn">http</span><span class="p">:</span><span class="o">//</span><span class="s-Atom">www</span><span class="p">.</span><span class="s-Atom">iteye</span><span class="p">.</span><span class="s-Atom">com</span><span class="o">/</span><span class="s-Atom">topic</span><span class="o">/</span><span class="m">473355</span>
+<span class="o">-</span><span class="nv">XX</span><span class="s s-Atom">:+</span><span class="nv">DoEscapeAnalysis</span><span class="s s-Atom">:</span>
+<span class="c1"># 支持逃逸分析（将局部对象实例存储在栈上）</span>
+<span class="c1"># http://www.iteye.com/topic/473355</span>
 
-<span class="o">-</span><span class="nv">XX</span><span class="s-Atom">:+</span><span class="nv">UseTLAB</span>
-<span class="s-Atom">#</span> <span class="nv">Use</span> <span class="s-Atom">thread</span><span class="o">-</span><span class="s-Atom">local</span> <span class="s-Atom">object</span> <span class="s-Atom">allocation</span>
-<span class="s-Atom">#</span> <span class="s-Atom">使用本地线程实例存储，可以减少堆共享锁的竞争</span>
+<span class="o">-</span><span class="nv">XX</span><span class="s s-Atom">:+</span><span class="nv">UseTLAB</span>
+<span class="c1"># Use thread-local object allocation</span>
+<span class="c1"># 使用本地线程实例存储，可以减少堆共享锁的竞争</span>
 
 <span class="o">-</span><span class="nv">XX</span><span class="p">:-</span><span class="nv">RelaxAccessControlCheck</span>
-<span class="s-Atom">#</span> <span class="nv">Relax</span> <span class="s-Atom">the</span> <span class="s-Atom">access</span> <span class="s-Atom">control</span> <span class="s-Atom">checks</span> <span class="s-Atom">in</span> <span class="s-Atom">the</span> <span class="s-Atom">verifier</span>
-<span class="s-Atom">#</span> <span class="nv">JDK7</span> <span class="s-Atom">默认不开启</span>
+<span class="c1"># Relax the access control checks in the verifier</span>
+<span class="c1"># JDK7 默认不开启</span>
 
-<span class="o">-</span><span class="nv">XX</span><span class="s-Atom">:+</span><span class="nv">AggressiveOpts</span>
-<span class="s-Atom">#</span> <span class="nv">Enable</span> <span class="s-Atom">aggressive</span> <span class="s-Atom">optimizations</span> <span class="o">-</span> <span class="s-Atom">see</span> <span class="s-Atom">arguments</span><span class="p">.</span><span class="s-Atom">cpp</span>
-<span class="s-Atom">#</span> <span class="s-Atom">启用最新</span> <span class="nv">JVM</span> <span class="s-Atom">调优成果</span>
+<span class="o">-</span><span class="nv">XX</span><span class="s s-Atom">:+</span><span class="nv">AggressiveOpts</span>
+<span class="c1"># Enable aggressive optimizations - see arguments.cpp</span>
+<span class="c1"># 启用最新 JVM 调优成果</span>
 
-<span class="o">-</span><span class="nv">XX</span><span class="s-Atom">:+</span><span class="nv">UseBiasedLocking</span>
-<span class="s-Atom">#</span> <span class="nv">Enable</span> <span class="s-Atom">biased</span> <span class="s-Atom">locking</span> <span class="s-Atom">in</span> <span class="nv">JVM</span>
-<span class="s-Atom">#</span> <span class="s-Atom">偏向锁（建议去了解一下轻量级锁和偏向锁）</span>
-<span class="s-Atom">#</span> <span class="s-Atom">优化单线程程序下面锁资源速度，不适合多线程（所以到底</span> <span class="s-Atom">+/-</span> <span class="s-Atom">我存疑）</span>
-<span class="s-Atom">#</span> <span class="nn">http</span><span class="p">:</span><span class="o">//</span><span class="s-Atom">www</span><span class="p">.</span><span class="s-Atom">iteye</span><span class="p">.</span><span class="s-Atom">com</span><span class="o">/</span><span class="s-Atom">topic</span><span class="o">/</span><span class="m">518066</span>
+<span class="o">-</span><span class="nv">XX</span><span class="s s-Atom">:+</span><span class="nv">UseBiasedLocking</span>
+<span class="c1"># Enable biased locking in JVM</span>
+<span class="c1"># 偏向锁（建议去了解一下轻量级锁和偏向锁）</span>
+<span class="c1"># 优化单线程程序下面锁资源速度，不适合多线程（所以到底 +/- 我存疑）</span>
+<span class="c1"># http://www.iteye.com/topic/518066</span>
 
-<span class="o">-</span><span class="nv">XX</span><span class="s-Atom">:+</span><span class="nv">UseFastAccessorMethods</span>
-<span class="s-Atom">#</span> <span class="nv">Use</span> <span class="s-Atom">fast</span> <span class="s-Atom">method</span> <span class="s-Atom">entry</span> <span class="s-Atom">code</span> <span class="s-Atom">for</span> <span class="s-Atom">accessor</span> <span class="s-Atom">methods</span>
-<span class="s-Atom">#</span> <span class="s-Atom">优化</span> <span class="s-Atom">get</span><span class="o">/</span><span class="s-Atom">set</span> <span class="s-Atom">方法</span>
+<span class="o">-</span><span class="nv">XX</span><span class="s s-Atom">:+</span><span class="nv">UseFastAccessorMethods</span>
+<span class="c1"># Use fast method entry code for accessor methods</span>
+<span class="c1"># 优化 get/set 方法</span>
 
-<span class="o">-</span><span class="nv">XX</span><span class="s-Atom">:</span><span class="nv">ThreadStackSize</span>
-<span class="s-Atom">#</span> <span class="nv">Thread</span> <span class="nv">Stack</span> <span class="nv">Size</span> <span class="p">(</span><span class="s-Atom">in</span> <span class="nv">Kbytes</span><span class="p">)</span>
-<span class="s-Atom">#</span> <span class="s-Atom">经验值</span> <span class="m">4096</span>
+<span class="o">-</span><span class="nv">XX</span><span class="s s-Atom">:</span><span class="nv">ThreadStackSize</span>
+<span class="c1"># Thread Stack Size (in Kbytes)</span>
+<span class="c1"># 经验值 4096</span>
 
-<span class="o">-</span><span class="nv">XX</span><span class="s-Atom">:+</span><span class="nv">UseLargePages</span>
-<span class="s-Atom">#</span> <span class="nv">Use</span> <span class="s-Atom">large</span> <span class="s-Atom">page</span> <span class="s-Atom">memory</span>
-<span class="s-Atom">#</span> <span class="s-Atom">大内存分页</span>
+<span class="o">-</span><span class="nv">XX</span><span class="s s-Atom">:+</span><span class="nv">UseLargePages</span>
+<span class="c1"># Use large page memory</span>
+<span class="c1"># 大内存分页</span>
 
-<span class="o">-</span><span class="nv">XX</span><span class="s-Atom">:+</span><span class="nv">UseStringCache</span>
-<span class="s-Atom">#</span> <span class="nv">Enables</span> <span class="s-Atom">caching</span> <span class="s-Atom">of</span> <span class="s-Atom">commonly</span> <span class="s-Atom">allocated</span> <span class="s-Atom">strings</span><span class="p">.</span>
-<span class="s-Atom">#</span> <span class="s-Atom">启用缓存常用的字符串</span>
+<span class="o">-</span><span class="nv">XX</span><span class="s s-Atom">:+</span><span class="nv">UseStringCache</span>
+<span class="c1"># Enables caching of commonly allocated strings.</span>
+<span class="c1"># 启用缓存常用的字符串</span>
 
-<span class="o">-</span><span class="nv">XX</span><span class="s-Atom">:+</span><span class="nv">UseCompressedStrings</span><span class="s-Atom">:</span> <span class="nv">Use</span> <span class="s-Atom">a</span> <span class="s-Atom">byte</span><span class="p">[]</span> <span class="s-Atom">for</span> <span class="nv">Strings</span> <span class="s-Atom">which</span> <span class="s-Atom">can</span> <span class="s-Atom">be</span> <span class="s-Atom">represented</span> <span class="s-Atom">as</span> <span class="s-Atom">pure</span> <span class="nv">ASCII</span><span class="p">.</span> <span class="p">(</span><span class="nv">Introduced</span> <span class="s-Atom">in</span> <span class="nv">Java</span> <span class="m">6</span> <span class="nv">Update</span> <span class="m">21</span> <span class="nv">Performance</span> <span class="nv">Release</span><span class="p">)</span>
-<span class="s-Atom">#</span> <span class="s-Atom">降低内存消耗，浪费一点</span> <span class="nv">CPU</span>
-<span class="s-Atom">#</span> <span class="nn">http</span><span class="p">:</span><span class="o">//</span><span class="s-Atom">stackoverflow</span><span class="p">.</span><span class="s-Atom">com</span><span class="o">/</span><span class="s-Atom">questions</span><span class="o">/</span><span class="m">8833385</span><span class="o">/is-</span><span class="s-Atom">support</span><span class="o">-</span><span class="s-Atom">for</span><span class="o">-</span><span class="s-Atom">compressed</span><span class="o">-</span><span class="s-Atom">strings</span><span class="o">-</span><span class="s-Atom">being</span><span class="o">-</span><span class="s-Atom">dropped</span>
+<span class="o">-</span><span class="nv">XX</span><span class="s s-Atom">:+</span><span class="nv">UseCompressedStrings</span><span class="s s-Atom">:</span> <span class="nv">Use</span> <span class="s s-Atom">a</span> <span class="s s-Atom">byte</span><span class="p">[]</span> <span class="s s-Atom">for</span> <span class="nv">Strings</span> <span class="s s-Atom">which</span> <span class="s s-Atom">can</span> <span class="s s-Atom">be</span> <span class="s s-Atom">represented</span> <span class="s s-Atom">as</span> <span class="s s-Atom">pure</span> <span class="nv">ASCII</span><span class="p">.</span> <span class="p">(</span><span class="nv">Introduced</span> <span class="s s-Atom">in</span> <span class="nv">Java</span> <span class="mi">6</span> <span class="nv">Update</span> <span class="mi">21</span> <span class="nv">Performance</span> <span class="nv">Release</span><span class="p">)</span>
+<span class="c1"># 降低内存消耗，浪费一点 CPU</span>
+<span class="c1"># http://stackoverflow.com/questions/8833385/is-support-for-compressed-strings-being-dropped</span>
 
-<span class="o">-</span><span class="nv">XX</span><span class="s-Atom">:+</span><span class="nv">OptimizeStringConcat</span><span class="s-Atom">:</span> <span class="nv">Optimize</span> <span class="nv">String</span> <span class="s-Atom">concatenation</span> <span class="s-Atom">operations</span> <span class="s-Atom">where</span> <span class="s-Atom">possible</span><span class="p">.</span> <span class="p">(</span><span class="nv">Introduced</span> <span class="s-Atom">in</span> <span class="nv">Java</span> <span class="m">6</span> <span class="nv">Update</span> <span class="m">20</span><span class="p">)</span>
-<span class="s-Atom">#</span> <span class="s-Atom">优化字符串连接，对模板渲染操作应该会很有意义</span>
+<span class="o">-</span><span class="nv">XX</span><span class="s s-Atom">:+</span><span class="nv">OptimizeStringConcat</span><span class="s s-Atom">:</span> <span class="nv">Optimize</span> <span class="nv">String</span> <span class="s s-Atom">concatenation</span> <span class="s s-Atom">operations</span> <span class="s s-Atom">where</span> <span class="s s-Atom">possible</span><span class="p">.</span> <span class="p">(</span><span class="nv">Introduced</span> <span class="s s-Atom">in</span> <span class="nv">Java</span> <span class="mi">6</span> <span class="nv">Update</span> <span class="mi">20</span><span class="p">)</span>
+<span class="c1"># 优化字符串连接，对模板渲染操作应该会很有意义</span>
 
-<span class="o">-</span><span class="nv">XX</span><span class="s-Atom">:</span><span class="nv">MaxPermSize</span>
-<span class="s-Atom">#</span> <span class="nv">Maximum</span> <span class="s-Atom">size</span> <span class="s-Atom">of</span> <span class="s-Atom">permanent</span> <span class="nf">generation</span> <span class="p">(</span><span class="s-Atom">in</span> <span class="s-Atom">bytes</span><span class="p">)</span>
-<span class="s-Atom">#</span> <span class="s-Atom">经验值</span> <span class="m">128</span><span class="s-Atom">m</span>
+<span class="o">-</span><span class="nv">XX</span><span class="s s-Atom">:</span><span class="nv">MaxPermSize</span>
+<span class="c1"># Maximum size of permanent generation (in bytes)</span>
+<span class="c1"># 经验值 128m</span>
 </pre></div>
             </div>
             <!-- /.entry-content -->

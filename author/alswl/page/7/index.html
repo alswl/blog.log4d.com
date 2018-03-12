@@ -72,13 +72,13 @@ Log4D            </a>
 于是为了让人人网的同学能看见我那些技术宅，又或非技术宅的文章，
 我只能昧着良心，给 Octopress 加上过时的 RSS2.0 输出。</p>
 <p>在 <code>source/</code> 下创建新文件 <code>rss.xml</code> ，内容如下：</p>
-<div class="highlight"><pre><span class="o">---</span>
-<span class="nx">layout</span><span class="p">:</span> <span class="nx">nil</span>
-<span class="o">---</span>
-<span class="o">&lt;?</span><span class="kt">xml</span> <span class="n">version</span><span class="o">=</span><span class="s2">"1.0"</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"UTF-8"</span><span class="cp">?&gt;</span>
+<div class="highlight"><pre><span></span>---
+layout: nil
+---
+<span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
 <span class="nt">&lt;rss</span> <span class="na">xmlns:dc=</span><span class="s">"http://purl.org/dc/elements/1.1/"</span> <span class="na">version=</span><span class="s">"2.0"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;channel&gt;</span>
-        <span class="nt">&lt;description&gt;</span><span class="cp">&lt;![</span><span class="nx">CDATA</span><span class="err">[</span><span class="p">{{</span> <span class="nx">site ...</span></pre></div>
+        <span class="nt">&lt;description&gt;</span><span class="cp">&lt;![CDATA[{{</span> <span class="nv">site ...</span></pre></div>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2012/05/support-rss/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -167,7 +167,7 @@ CF Image Host Script / minishowcase 等等图床软件，评测记录如下。</
                 <h2 class="title"><a href="https://blog.alswl.com/2012/04/vim-emacs-key-binding/">Vim 下模拟 Emacs 键绑定</a></h2>
                 <div class="summary"><p>Vimer 需要 Emacs 键绑定？看上去很蛋疼的需求吧。其实不然，大部分的 Shell / Readline 默认绑定的是 Emacs 键位绑定（处于输入状态下，Emacs 的键位很好用）。Vim 的模式切换很牛逼，但是 Insert 模式下面，只有寥寥几个快捷键，我修改了配置文件，绑定需要的 Emcas 按键到 Vim 中来。</p>
 <p>Github 中搜索关键字 Vim Emcas key bind，出来一些结果，不是很完美，我又慢慢调教了几个星期，放出我的 .vimrc。</p>
-<div class="highlight"><pre><span class="s2">" 模拟 Emacs 键绑定</span>
+<div class="highlight"><pre><span></span><span class="s2">" 模拟 Emacs 键绑定</span>
 <span class="s2">"</span> Move
 inoremap &lt;C-a&gt; &lt;Home&gt;
 inoremap &lt;C-e&gt; &lt;End&gt;
