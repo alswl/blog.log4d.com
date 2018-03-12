@@ -121,16 +121,16 @@ Log4D            </a>
 让这些构建的数据破坏 DOM 结构，从而让自己预先构造数据中的 JS 脚本被执行。</p>
 <p>检查存储型 XSS 漏洞的方法，可以在对应的 input field 里放入一些构造的数据，如果保存后可以被执行，就说明存在 XSS 漏洞。</p>
 <p>常见的检测方法（来自&nbsp;<a href="https://zh.wikipedia.org/zh-cn/%E8%B7%A8%E7%B6%B2%E7%AB%99%E6%8C%87%E4%BB%A4%E7%A2%BC#.E6.A3.80.E6.B5.8B.E6.96.B9.E6.B3.95">跨网站脚本 - 维基百科，自由的百科全书</a>：</p>
-<div class="highlight"><pre><span></span>&gt;<span class="nt">&lt;script&gt;</span>alert(document.cookie)<span class="nt">&lt;/script&gt;</span>
-='&gt;<span class="nt">&lt;script&gt;</span>alert(document.cookie)<span class="nt">&lt;/script&gt;</span>
-"&gt;<span class="nt">&lt;script&gt;</span>alert(document.cookie)<span class="nt">&lt;/script&gt;</span>
-<span class="nt">&lt;script&gt;</span>alert(document.cookie)<span class="nt">&lt;/script&gt;</span>
-<span class="nt">&lt;script&gt;</span>alert (vulnerable)<span class="nt">&lt;/script&gt;</span>
-%3Cscript%3Ealert('XSS')%3C/script%3E
-<span class="nt">&lt;script&gt;</span>alert('XSS')<span class="nt">&lt;/script&gt;</span>
-<span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"javascript:alert('XSS')"</span><span class="nt">&gt;</span>
-<span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"http://xxx.com/yyy.png"</span> <span class="na">onerror=</span><span class="s">"alert('XSS')"</span><span class="nt">&gt;</span>
-（这个仅限IE有效）
+<div class="highlight"><pre><span class="o">&gt;&lt;</span><span class="nb">script</span><span class="o">&gt;</span><span class="nx">alert</span><span class="p">(</span><span class="nx">document.cookie</span><span class="p">)</span><span class="o">&lt;/</span><span class="nb">script</span><span class="o">&gt;</span>
+<span class="o">=</span><span class="s1">'&gt;&lt;script&gt;alert(document.cookie)&lt;/script&gt;</span>
+<span class="s1">"&gt;&lt;script&gt;alert(document.cookie)&lt;/script&gt;</span>
+<span class="s1">&lt;script&gt;alert(document.cookie)&lt;/script&gt;</span>
+<span class="s1">&lt;script&gt;alert (vulnerable)&lt;/script&gt;</span>
+<span class="s1">%3Cscript%3Ealert('</span><span class="nx">XSS</span><span class="s1">')%3C/script%3E</span>
+<span class="s1">&lt;script&gt;alert('</span><span class="nx">XSS</span><span class="s1">')&lt;/script&gt;</span>
+<span class="s1">&lt;img src="javascript:alert('</span><span class="nx">XSS</span><span class="s1">')"&gt;</span>
+<span class="s1">&lt;img src="http://xxx.com/yyy.png" onerror="alert('</span><span class="nx">XSS</span><span class="s1">')"&gt;</span>
+<span class="s1">（这个仅限IE有效）</span>
 </pre></div>
 <p>攻击者通过 XSS 可以窃取用户的相关信息，如果用户是管理员，那么影响更大。
 通过这些身份信息，攻击者可以进一步篡改信息或者进行诈骗，后果不堪设想。

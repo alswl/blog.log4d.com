@@ -68,6 +68,22 @@ Log4D            </a>
         <div class="col-lg-8 col-lg-offset-2">
 
             <article class="article-list">
+                <h2 class="title"><a href="https://blog.alswl.com/2009/11/flex-builder3-in-the-launch-path-is-set/">Flex Builder3中的launch path设置</a></h2>
+                <div class="summary"><p>在Flex
+Builder3中，想运行或者调试一个Flex项目，有Run/Debug/Profile三种运行方式。当我点击这三种方式的按钮时，都会报出一下警告：</p>
+<blockquote>
+<p>Flash Player Not Found</p>
+</blockquote>
+<p>Flex Builder cannot locate the required version of Flash Player. You might
+need to install Flash Player 9 or reinstall Flex Builder.</p>
+<p>Do you want to try to run your application with the current version?</p>
+<p>大意就是说没有找到Flash
+Player，有两个选项Yes ...</p>
+                </div>
+                <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/11/flex-builder3-in-the-launch-path-is-set/"><i class="icon-circle-arrow-right"></i>more ...</a>
+            </article>
+            <hr/>
+            <article class="article-list">
                 <h2 class="title"><a href="https://blog.alswl.com/2009/11/pylexchat-feasibility-analysis/">PylexChat可行性分析</a></h2>
                 <div class="summary"><h2 id="pylexchatjie-shao">PylexChat介绍</h2>
 <p>PylexChat取名自<strong>Python</strong>+<strong>Flex</strong>+<strong>Chat</strong>部
@@ -165,9 +181,9 @@ Java ...</strong></p>
 多，正所谓温故而知新，我就把今天的"新"总结一下，加深记忆。良葛格也提倡"在网上写文章是我记录所学的一种方式"。</p>
 <h2 id="splitde-zheng-ze-shi-he-qi-zhong-de-zheng-ze-shi">split的正则式和其中的正则式</h2>
 <p>C语言其中有函数strtok，就是按某些char对字符串进行切割。下面给出一个C下面的范例</p>
-<div class="highlight"><pre><span></span>char str[] = "now # is the time for all # good men to come to the # aid of their country";
-char delims[] = "#";
-char *result = NULL;
+<div class="highlight"><pre><span class="kt">char</span> <span class="n">str</span><span class="p">[]</span> <span class="o">=</span> <span class="s">"now # is the time for all # good men to come to the # aid of their country"</span><span class="p">;</span>
+<span class="kt">char</span> <span class="n">delims</span><span class="p">[]</span> <span class="o">=</span> <span class="s">"#"</span><span class="p">;</span>
+<span class="kt">char</span> <span class="o">*</span><span class="n">result</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
 </pre></div>
 <p>result = strtok( str, delims );</p>
 <p>while( result != NULL ) {</p>
@@ -223,22 +239,6 @@ rights">http://log4d.com/2009/06/design-of-user-rights</a>)，但是这样还是
 2 ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/11/membership-the-use-of-experience/"><i class="icon-circle-arrow-right"></i>more ...</a>
-            </article>
-            <hr/>
-            <article class="article-list">
-                <h2 class="title"><a href="https://blog.alswl.com/2009/11/thishouse-housing-sales-system/">ThisHouse房屋销售系统</a></h2>
-                <div class="summary"><p>呃，这是我在一个星期内搞鼓的一个Asp.NET课程设计，没有什么太多的内容，把它发布到了Csdn了，开了5分，嗯，对得起我一个星期拼命码代码。（哦，我很无耻
-的使用了<a href="http://www.neoease.com/">MG12</a>的iNove主题&hellip;&hellip;）</p>
-<p><img alt="thisHouse" src="https://ohsolnxaa.qnssl.com/upload_dropbox/200911/thisHouse.jpg"/></p>
-<h2 id="readmetxtnei-rong">readme.txt内容：</h2>
-<p>This House房屋销售系统 本人大四一个课程设计，大概花费1周时间，构架2天，编码3天，零碎程序1天，论文1天。</p>
-<p>程序写的不好不坏，是DAL+BLL+Model+Web三层架构，使用的动软生成器生成的简单三层框架。压缩包包括源码，数据库，一个star
-uml简单设计图，数据库文档，需求分析和论文。</p>
-<p>系统关键词是： <strong>Asp.NET</strong>;&amp;nbsp_place_holder; <strong>MemberShip</strong>;&amp;nbsp_place_holder;
-<strong>iBatisNet</strong>;&amp;nbsp_place_holder; <strong>AjaxControlToolkit</strong>; <strong>房屋销售系统 </strong>
-数据库使用的是一个完整的MemberShip 权限管理系统，而不是我自己写的简单User in Role ...</p>
-                </div>
-                <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/11/thishouse-housing-sales-system/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
             <hr/>
 
@@ -379,7 +379,7 @@ uml简单设计图，数据库文档，需求分析和论文。</p>
    <div class="container">
       <hr>
       <div class="row">
-         <div class="col-xs-10">&copy; 2017 alswl
+         <div class="col-xs-10">&copy; 2018 alswl
             &middot; Powered by <a href="https://github.com/alswl/pelican-bootstrap3" target="_blank" style="font-weight: bold">pelican-bootstrap3</a>,
             <a href="http://docs.getpelican.com/" target="_blank" style="font-weight: bold">Pelican</a>,
             <a href="http://getbootstrap.com" target="_blank" style="font-weight: bold">Bootstrap</a>,

@@ -67,6 +67,23 @@ Log4D            </a>
         <div class="col-lg-8 col-lg-offset-2">
 
             <article class="article-list">
+                <h2 class="title"><a href="https://blog.alswl.com/2011/07/lrzsz/">安装lrzsz</a></h2>
+                <div class="summary"><p>lrzsz 是一款 Linux 下面的文件传输工具。实现原理是通过 Xmodem / Ymodem / Zmodem 协议传输文件。lrzsz
+可以在支持这三种协议的Shell界面的工具下工作，比如XShell。</p>
+<blockquote>
+<p>lrzsz是一个古老的软件，最新版本0.12.20是在1998年更新的。</p>
+</blockquote>
+<p>大部分linux发行版的安装工具都可以直接安装 lrzsz，比如apt-get /
+pacman，当然我们也可以下载安装包手动安装。这次由于我所在的服务器没有管理员权限，我就使用源码包安装。</p>
+<div class="highlight"><pre><span class="err">$</span> <span class="n">mkdir</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">alswl</span><span class="o">/</span><span class="n">app</span>
+<span class="err">$</span> <span class="n">wget</span> <span class="n">http</span><span class="o">:</span><span class="c1">//ohse.de/uwe/releases/lrzsz-0.12.20.tar.gz</span>
+<span class="err">$</span> <span class="n">tar</span> <span class="n">xzvf</span> <span class="n">lrzsz</span><span class="o">-</span><span class="mf">0.12.20</span><span class="p">.</span><span class="n">tar</span><span class="p">.</span><span class="n">gz</span>
+<span class="err">$</span> <span class="n">cd</span> <span class="n">lrzsz</span><span class="o">-</span><span class="mf">0.12 ...</span></pre></div>
+                </div>
+                <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2011/07/lrzsz/"><i class="icon-circle-arrow-right"></i>more ...</a>
+            </article>
+            <hr/>
+            <article class="article-list">
                 <h2 class="title"><a href="https://blog.alswl.com/2011/07/microlog/">微日记</a></h2>
                 <div class="summary"><p>每天用一个词形容自己当天的生活，就是微日记。</p>
 <p>从 <a href="Matrix67.com: Keywords in My Life">http://www.matrix67.com/keywords.html</a> 偷师。</p>
@@ -119,11 +136,11 @@ Log4D            </a>
 <p>Python中unicode转码一向是让人头疼的问题。数次碰壁之后，我也摸出了一些门道，
 研读完<a href="http://ipie.blogbus.com/logs/19379694.html">Python字符串的encode与decode</a>
 之后，就自认为找到了万金油，谁知道这次又碰上这个老冤家。</p>
-<div class="highlight"><pre><span></span>Traceback (most recent call last):
-  File "&lt;stdin&gt;", line 1, in &lt;module&gt;
-  File "/usr/lib/python2.6/urllib2.py", line 126, in urlopen
-    return _opener.open(url, data, timeout)
-  File "/usr/lib/python2.6/urllib2.py", line ...</pre></div>
+<div class="highlight"><pre><span class="nx">Traceback</span> <span class="p">(</span><span class="nx">most</span> <span class="nx">recent</span> <span class="nb">call</span> <span class="nb">last</span><span class="p">):</span>
+  <span class="nb">File</span> <span class="s2">"&lt;stdin&gt;"</span><span class="p">,</span> <span class="nb">line</span> <span class="mi">1</span><span class="p">,</span> <span class="k">in</span> <span class="o">&lt;</span><span class="nx">module</span><span class="o">&gt;</span>
+  <span class="nb">File</span> <span class="s2">"/usr/lib/python2.6/urllib2.py"</span><span class="p">,</span> <span class="nb">line</span> <span class="mi">126</span><span class="p">,</span> <span class="k">in</span> <span class="nx">urlopen</span>
+    <span class="k">return</span> <span class="nx">_opener.open</span><span class="p">(</span><span class="nb">url</span><span class="p">,</span> <span class="kd">data</span><span class="p">,</span> <span class="nx">timeout</span><span class="p">)</span>
+  <span class="nb">File</span> <span class="s2">"/usr/lib/python2.6/urllib2.py"</span><span class="p">,</span> <span class="nb">line ...</span></pre></div>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2011/06/urllib2-urlopen-unicode/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -216,11 +233,11 @@ through-eclipse">http://stackoverflow.com ...</p>
                 <h2 class="title"><a href="https://blog.alswl.com/2011/04/ubuntu-setup/">Ubuntu安装之后设定操作</a></h2>
                 <div class="summary"><p>前几天使用chmod时候，多打了一个/，导致根目录下面所有文件权限设定出了问题，额~重装系统吧，正好把装系统之后的配置过程记录下来。</p>
 <p>这些都是我操作过的命令，确切可靠，适用于Ubuntu 10.10 Desktop Edtion。</p>
-<div class="highlight"><pre><span></span>= init Linux programs and setting =
-:author: alswl
-:email: alswlx#gmail.com
-:toc:
-:numbered:
+<div class="highlight"><pre><span class="o">=</span> <span class="n">init</span> <span class="n">Linux</span> <span class="n">programs</span> <span class="n">and</span> <span class="n">setting</span> <span class="o">=</span>
+<span class="o">:</span><span class="n">author</span><span class="o">:</span> <span class="n">alswl</span>
+<span class="o">:</span><span class="n">email</span><span class="o">:</span> <span class="n">alswlx</span><span class="err">#</span><span class="n">gmail</span><span class="p">.</span><span class="n">com</span>
+<span class="o">:</span><span class="n">toc</span><span class="o">:</span>
+<span class="o">:</span><span class="n">numbered</span><span class="o">:</span>
 </pre></div>
 <p>== first of all ==</p>
 <p>.update (打补丁、升级)</p>
@@ -233,27 +250,6 @@ through-eclipse">http://stackoverflow.com ...</p>
 <p>find /home ...</p></hr/></hr/></hr/>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2011/04/ubuntu-setup/"><i class="icon-circle-arrow-right"></i>more ...</a>
-            </article>
-            <hr/>
-            <article class="article-list">
-                <h2 class="title"><a href="https://blog.alswl.com/2011/04/run-jetty-in-maven/">Maven下Jetty启动</a></h2>
-                <div class="summary"><p>部门最近开发的产品使用的开发服务器是Jetty（挂载在GWT中），启动方法是通过Eclipse的External
-Tool执行。我对此表示很好奇，特意在自己电脑下面组建了一个Jetty开发环境，发现Maven和Jetty合作起来非常愉快，现在小记之。</p>
-<h2 id="yi-zhun-bei-mavenpei-zhi-wen-jian">一、准备Maven配置文件</h2>
-<p>我使用Maven推荐的标准webapp结构，结构如下，官方文档可以参考<a href="http://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html">Maven - Introduction to the Standard Directory Layout</a></p>
-<p>src/main/java</p>
-<p>Application/Library sources</p>
-<p>src/main/resources</p>
-<p>Application/Library resources</p>
-<p>src/main/filters</p>
-<p>Resource filter files</p>
-<p>src/main/assembly</p>
-<p>Assembly descriptors</p>
-<p>src/main/config</p>
-<p>Configuration files</p>
-<p>src/main ...</p>
-                </div>
-                <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2011/04/run-jetty-in-maven/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
             <hr/>
 
@@ -346,6 +342,8 @@ Tool执行。我对此表示很好奇，特意在自己电脑下面组建了一�
 							href="https://blog.alswl.com/page/42/">42</a></li>
                     <li class=""><a
 							href="https://blog.alswl.com/page/43/">43</a></li>
+                    <li class=""><a
+							href="https://blog.alswl.com/page/44/">44</a></li>
                 <li class="next"><a
                         href="https://blog.alswl.com/page/13/">&raquo;</a></li>
         </ul>

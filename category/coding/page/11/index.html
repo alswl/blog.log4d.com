@@ -68,6 +68,25 @@ Log4D            </a>
         <div class="col-lg-8 col-lg-offset-2">
 
             <article class="article-list">
+                <h2 class="title"><a href="https://blog.alswl.com/2010/03/dwr2-0-jdk1-4-configuration/">DWR2.0在JDK1.4下的配置</a></h2>
+                <div class="summary"><p>服务器的WebLogic版本是8.1，使用自带的JDK1.4</p>
+<p>MyEclipse版本是6.6，项目文件的<strong>Compiler compliance level</strong>设置为1.4</p>
+<p>MyEclipse自带Tomcat使用MyEclipse6.6自带的JDK5</p>
+<p>开发时候系统运行无误。</p>
+<p>部署到应用服务器之后，使用WebLogic自带的JDK1.4，登录之后的一些页面一旦访问，会导致服务器报错停止。我检查了一下错误信息。</p>
+<blockquote>
+<p>"ListenThread.Default" listening on port 7001, ip address <em>.</em>&gt;</p>
+</blockquote>
+<ul>
+<li>DWR Version 2.0.5 starting.  </li>
+<li>
+<ul>
+<li>Servlet Engine: WebLogic XMLX Module 8.1 SP1 Fri Jun 20 23:06:40 PDT ...</li></ul></li></ul>
+                </div>
+                <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2010/03/dwr2-0-jdk1-4-configuration/"><i class="icon-circle-arrow-right"></i>more ...</a>
+            </article>
+            <hr/>
+            <article class="article-list">
                 <h2 class="title"><a href="https://blog.alswl.com/2010/02/wordpress-upgrade-to-resolve-after-warning-cannot-modify-header-information-headers-already-sent-by/">解决WordPress升级后出现Warning: Cannot modify header information - headers already sent by</a></h2>
                 <div class="summary"><p>WordPress 2.9.2升级之后出现一个问题，在一些操作，比如删除垃圾留言、发表新的文章时候会提醒一下的错误。</p>
 <blockquote></blockquote>
@@ -150,7 +169,7 @@ img/#comment-5968">问题</a></p>
 51CTO.COM</a></p>
 <p>更多参考：<a href="http://blog.chinaunix.net/u1/57759/showart_458439.html">SQL,PL/SQL编程规范 - PL/SQL -
 IT民工杂谈</a></p>
-<p><strong><em>*</em>分割线，Google真汉子</strong>***</p>
+<p><strong><em>**分割线，Google真汉子</em></strong>**</p>
 <h2 id="yi-plsqlbian-cheng-gui-fan-zhi-da-xiao-xie">一、PL/SQL编程规范之大小写</h2>
 <p>就像在SQL中一样，PL / SQL中是不区分大小写的。其一般准则如下：</p>
 <p>关键字(<code>BEGIN</code>, <code>EXCEPTION</code>, <code>END</code>, <code>IF THEN ELSE</code>,<code>LOOP</code>, <code>END
@@ -178,13 +197,13 @@ Environment Options 里面的 Library -&gt; Library Path ...</p>
                 <div class="summary"><p>起因是换了DDDSpace.com 这个域名，需要测试邮件回复情况，我发现在在iGoogle的GMail小窗口显示着实有些难看，就修改了一下样式，添加了圆角
 、增加了<code>padding</code>值，唔，这个<strong>圆角不对IE系列有效果</strong>。</p>
 <p>增加圆角的部分如下：</p>
-<div class="highlight"><pre><span></span><span class="nt">-moz-border-radius</span><span class="o">:</span> <span class="nt">10px</span><span class="o">;</span>
-<span class="nt">-khtml-border-radius</span><span class="o">:</span> <span class="nt">10px</span><span class="o">;</span>
-<span class="nt">-webkit-border-radius</span><span class="o">:</span> <span class="nt">10px</span><span class="o">;</span>
-<span class="nt">border-radius</span><span class="o">:</span> <span class="nt">10px</span><span class="o">;</span>
+<div class="highlight"><pre><span class="o">-</span><span class="n">moz</span><span class="o">-</span><span class="n">border</span><span class="o">-</span><span class="n">radius</span><span class="o">:</span> <span class="mi">10</span><span class="n">px</span><span class="p">;</span>
+<span class="o">-</span><span class="n">khtml</span><span class="o">-</span><span class="n">border</span><span class="o">-</span><span class="n">radius</span><span class="o">:</span> <span class="mi">10</span><span class="n">px</span><span class="p">;</span>
+<span class="o">-</span><span class="n">webkit</span><span class="o">-</span><span class="n">border</span><span class="o">-</span><span class="n">radius</span><span class="o">:</span> <span class="mi">10</span><span class="n">px</span><span class="p">;</span>
+<span class="n">border</span><span class="o">-</span><span class="n">radius</span><span class="o">:</span> <span class="mi">10</span><span class="n">px</span><span class="p">;</span>
 </pre></div>
 <p>修改之后的Mail To Commenter 模板如下</p>
-<div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">div</span> <span class="n">style</span><span class="o">=</span><span class="s">"border: 1px solid rgb(183, 183, 183); margin: 1em 40px; padding: 5pt 15px; background-color: #CCFFFF; color: rgb(17, 17, 17);-moz-border-radius: 10px ...</span></pre></div>
+<div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">style=</span><span class="s">"border: 1px solid rgb(183, 183, 183); margin: 1em 40px; padding ...</span></pre></div>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/12/add-a-border-fillet-under-firefox/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -212,20 +231,6 @@ exhausted"这个错误，大意就是说内存超出指定大小。我在WordPre
 Fatal error: Allowed memory size of 33554432 bytes exhausted ...</a></p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/12/dddspace-com-bathed-in-fire-and-gave-birth-to/"><i class="icon-circle-arrow-right"></i>more ...</a>
-            </article>
-            <hr/>
-            <article class="article-list">
-                <h2 class="title"><a href="https://blog.alswl.com/2009/12/godaddy-has-supported-alipay/">Godaddy已经支持支付宝</a></h2>
-                <div class="summary"><p>&amp;nbsp_place_holder;</p>
-<p>昨天在小张那里买了美国10号主机，今天下午开始买com域名。</p>
-<p>正在发愁代购的事情，小张突然跟我说，Godaddy已经支持支付宝了。</p>
-<p>我立马犀利的操作了一把。</p>
-<p>有图有真像</p>
-<p><img alt="image" src="https://ohsolnxaa.qnssl.com/upload_dropbox/200912/godaddy_alipay.jpg"/></p>
-<p>我犀利了，应该是今天下午开始支持的。</p>
-<p>同志们，冲啊！！！</p>
-                </div>
-                <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/12/godaddy-has-supported-alipay/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
             <hr/>
 
@@ -366,7 +371,7 @@ Fatal error: Allowed memory size of 33554432 bytes exhausted ...</a></p>
    <div class="container">
       <hr>
       <div class="row">
-         <div class="col-xs-10">&copy; 2017 alswl
+         <div class="col-xs-10">&copy; 2018 alswl
             &middot; Powered by <a href="https://github.com/alswl/pelican-bootstrap3" target="_blank" style="font-weight: bold">pelican-bootstrap3</a>,
             <a href="http://docs.getpelican.com/" target="_blank" style="font-weight: bold">Pelican</a>,
             <a href="http://getbootstrap.com" target="_blank" style="font-weight: bold">Bootstrap</a>,

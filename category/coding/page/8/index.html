@@ -68,6 +68,24 @@ Log4D            </a>
         <div class="col-lg-8 col-lg-offset-2">
 
             <article class="article-list">
+                <h2 class="title"><a href="https://blog.alswl.com/2011/04/ubuntu-crebs/">Ubuntu桌面自动换背景</a></h2>
+                <div class="summary"><p>GNOME桌面系统可以使用一系列的图片作为背景，每过一段时间能够自动更换。这个功能核Win7下面自动换背景效果一致。不过很可惜，系统自带的可自动更换图片集只
+有几张，也找不到什么按钮可以直接设定。</p>
+<p>下图就是系统自带的两个图片集（第二行第一组和第二组）。</p>
+<p><img alt="image" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201104/appearance_preferences.png"/></p>
+<p>我们可以通过撰写xml自己制作图片集，xml格式模板在<code>/usr/share/gnome-background-properties/cosmos.xml</code>
+，实际的xml存放在类似于<code>/usr/share/backgrounds/cosmos/background-1.xml</code>的配置文档里面。</p>
+<p>除了手工撰写xml，我们还可以通过crebs小软件来自动生成xml文件。</p>
+<p>官方介绍如下：</p>
+<blockquote>
+<p>A background slideshow creator for the GNOME desktop wallpaper.</p>
+</blockquote>
+<p>The GNOME desktop is able to use a sequence of images for its background ...</p>
+                </div>
+                <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2011/04/ubuntu-crebs/"><i class="icon-circle-arrow-right"></i>more ...</a>
+            </article>
+            <hr/>
+            <article class="article-list">
                 <h2 class="title"><a href="https://blog.alswl.com/2011/03/plrcmatch4d/">历史记录-歌词复制器</a></h2>
                 <div class="summary"><p>之前写过一个Java的小工具叫做Mp3Lrc歌词复制器，用来复制歌词到Mp3播放器中的对应目录下面。之前的文章参见<a href="http://log4d.com/2009/05/the-executable-file-
 mp3lrc">Mp3Lrc的可执行文件</a>和<a href="http://log4d.com/2009/05/lyrics-written-in-java-
@@ -91,8 +109,8 @@ pse下使用Maven不用插件也能完成，我们只需要使用bin/mvn下面�
 /getting-started/maven-in-five-minutes.html">Getting Started in 5 Minutes</a>和<a href="http://maven.apache.org/guides/getting-
 started/index.html">Getting Started in 30
 Minutes</a>两种教程，我这里再简化一下，记录一下常用命令。</p>
-<div class="highlight"><pre><span></span>#建立一个空项目，包含一个HelloWorld，可以通过
-#-DarchetypeGroupId=&lt;archetype-groupId ...</pre></div>
+<div class="highlight"><pre><span class="cp">#建立一个空项目，包含一个HelloWorld，可以通过</span>
+<span class="cp">#-DarchetypeGroupId=&lt;archetype-groupId ...</span></pre></div>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2011/03/maven-eclipse/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -190,7 +208,7 @@ Excel之后再在客户端上利用vba生成Excel成品。</p>
 <p>YAML使用起来相当方便，能够自动解析成对应语言中的变量，比如列表解析为列表，数字文字分别解析成对应的格式变量。</p>
 <p>之所以选择YAML，是看中它对语言的亲和性和可读性，GAE的配置文件就是YAML格式。YAML的语法相当简单，用:来分隔key: value，用 -
 来分隔列表，注意点是缩进需要用空格，关键符号和内容之间要加上一个空格。我的配置文件如下：</p>
-<div class="highlight"><pre><span></span><span class="n">taskId</span><span class="o">:</span> <span class="n">PQMI06</span>
+<div class="highlight"><pre><span class="n">taskId</span><span class="o">:</span> <span class="n">PQMI06</span>
 <span class="n">taskName</span><span class="o">:</span> <span class="err">测试建制作业</span>
 <span class="n">author</span><span class="o">:</span> <span class="n">alswl</span>
 <span class="n">confirmId</span><span class="o">:</span> <span class="mi">20101025</span><span class="n">xxx</span>
@@ -215,7 +233,7 @@ bodyFiles:</p>
                 <h2 class="title"><a href="https://blog.alswl.com/2010/10/python-clipboard/">Python读写剪贴板</a></h2>
                 <div class="summary"><p>最近在写一个CodeGenX代码生成器，说是生成器，其实是目前只完成一堆零散的脚本。这些脚本的调用方式一般是从某个txt中读取数据，再写到另外一个txt中。</p>
 <p>由于某些数据变动频繁，导致我操作txt次数大增，我怒了，就找了一个脚本自动读写剪贴板。</p>
-<div class="highlight"><pre><span></span><span class="c1">#coding=utf-8</span>
+<div class="highlight"><pre><span class="c">#coding=utf-8</span>
 <span class="sd">'''</span>
 <span class="sd">读写剪贴板</span>
 <span class="sd">'''</span>
@@ -238,27 +256,6 @@ bodyFiles:</p>
 <p>如果双击 <code>.py ...</code></p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2010/10/python-clipboard/"><i class="icon-circle-arrow-right"></i>more ...</a>
-            </article>
-            <hr/>
-            <article class="article-list">
-                <h2 class="title"><a href="https://blog.alswl.com/2010/09/script-mm2html/">小脚本mm->html</a></h2>
-                <div class="summary"><p>我同时在使用两套信息记录工具，知识收集记录工具BooguNote + KMS Wiz，关于这两套系统具体介绍请见<a href="http://log4d.com/2010/04/desktop-recording-tool-boogunote">桌面记录神器- BooguNote</a> &amp; <a href="http://log4d.com/2010/09/my-kms">我所使用的知识管理系统</a>。</p>
-<p>我的使用习惯是在BooguNote中收集日常的琐碎知识点，包括我所想的和工作记录。每个小知识节点的长度大概在200-300字左右。这些被我称为的知识碎片显然
-不能直接放入KMS。</p>
-<p>BooguNote可以将里面的文字直接复制出来，会在父亲节点上加入+，子节点加入-，这种简单的txt不能满足我的要求。于是我花了点时间写了一个mm文件到ht
-ml的转换脚本。</p>
-<p>BooguNote的文件格式是boo，可以转换成FreeMind的思维导图格式.mm，我认为用mm作为源数据格式适用范围更大。</p>
-<div class="highlight"><pre><span></span><span class="c1">#coding=utf-8</span>
-<span class="kn">from</span> <span class="nn">xml.dom</span> <span class="kn">import</span> <span class="n">minidom</span>
-<span class="kn">import</span> <span class="nn">sys</span>
-<span class="kn">import</span> <span class="nn">os</span>
-</pre></div>
-<p>class MM2Html:</p>
-<p>'转换MM-&gt;Html类'</p>
-<p>def <strong>init</strong>(self):</p>
-<p>self.html = '''&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1 ...</p>
-                </div>
-                <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2010/09/script-mm2html/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
             <hr/>
 
@@ -399,7 +396,7 @@ ml的转换脚本。</p>
    <div class="container">
       <hr>
       <div class="row">
-         <div class="col-xs-10">&copy; 2017 alswl
+         <div class="col-xs-10">&copy; 2018 alswl
             &middot; Powered by <a href="https://github.com/alswl/pelican-bootstrap3" target="_blank" style="font-weight: bold">pelican-bootstrap3</a>,
             <a href="http://docs.getpelican.com/" target="_blank" style="font-weight: bold">Pelican</a>,
             <a href="http://getbootstrap.com" target="_blank" style="font-weight: bold">Bootstrap</a>,

@@ -100,7 +100,7 @@ Log4D            </a>
 <p><img alt="CodeSmith" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201612/404.png"/></p>
 <h2 id="yi-ge-jian-dan-de-sample">一个简单的Sample</h2>
 <p>CodeSmith使用的模板使用方式类似于aspx/jsp页面，也就是基础代码+脚本的方式，大致代码如下（官方的sample2）。</p>
-<div class="highlight"><pre><span></span><span class="cp">&lt;%</span><span class="err">@</span> <span class="no">CodeTemplate</span> <span class="no">Language</span><span class="o">=</span><span class="s2">"C#"</span> <span class="no">TargetLanguage</span><span class="o">=</span><span class="s2">"Text"</span> <span class="no">Description</span><span class="o">=</span><span class="s2">"This template demonstrates using properties in your template."</span> <span class="cp">%&gt;</span><span class="x"></span>
+<div class="highlight"><pre><span class="cp">&lt;%</span><span class="err">@</span> <span class="no">CodeTemplate</span> <span class="no">Language</span><span class="o">=</span><span class="s2">"C#"</span> <span class="no">TargetLanguage</span><span class="o">=</span><span class="s2">"Text"</span> <span class="no">Description</span><span class="o">=</span><span class="s2">"This template demonstrates using properties in your template."</span> <span class="cp">%&gt;</span><span class="x"></span>
 <span class="cp">&lt;%</span><span class="err">@</span> <span class="no">Property</span> <span class="no">Name</span><span class="o">=</span><span class="s2">"Person"</span> <span class="no">Type</span><span class="o">=</span><span class="s2">"System.String"</span> <span class="no">Description</span><span class="o">=</span><span class="s2">"This will show up at the bottom of the property grid when the property is selected."</span> <span class="cp">%&gt;</span><span class="x"></span>
 <span class="cp">&lt;%-</span><span class="o">-</span> 
 <span class="no">This</span> <span class="n">template</span> <span class="n">demonstrates</span> <span class="n">using</span> <span class="n">properties</span> <span class="k">in</span> <span class="n">your</span> <span class="n">template</span><span class="o">.</span>
@@ -120,7 +120,7 @@ Log4D            </a>
 <p>SchemaExplorer的作用是给CodeSmith提供各类基础数据，比如字段的设计、表结构的设计。SchemaExplorer下面有两个比较常用的类，
 TableSchema和ViewSchema，能够读取表信息和视图信息。</p>
 <p>官方代码片段如下：</p>
-<div class="highlight"><pre><span></span><span class="cp">&lt;%</span><span class="err">@</span> <span class="no">Property</span> <span class="no">Category</span><span class="o">=</span><span class="s2">"1.Database"</span> <span class="no">Name</span><span class="o">=</span><span class="s2">"Tables"</span> <span class="no">Optional</span><span class="o">=</span><span class="s2">"False"</span>
+<div class="highlight"><pre><span class="cp">&lt;%</span><span class="err">@</span> <span class="no">Property</span> <span class="no">Category</span><span class="o">=</span><span class="s2">"1.Database"</span> <span class="no">Name</span><span class="o">=</span><span class="s2">"Tables"</span> <span class="no">Optional</span><span class="o">=</span><span class="s2">"False"</span>
     <span class="no">Type</span><span class="o">=</span><span class="s2">"SchemaExplorer.TableSchemaCollection"</span> 
     <span class="no">Description</span><span class="o">=</span><span class="s2">"Database to create SQLite DDL from."</span> <span class="cp">%&gt;</span><span class="x"></span>
 <span class="cp">&lt;%</span> <span class="n">foreach</span> <span class="p">(</span><span class="no">TableSchema</span> <span class="n">table</span> <span class="k">in</span> <span class="no">Tables</span><span class="p">)</span> <span class="p">{</span> <span class="cp">%&gt;</span><span class="x"></span>
@@ -149,7 +149,7 @@ ma来曲线实现读取数据库内容的功能。（ViewSchema可以读取具�
 <p>通过DataRow row in this.V_JOB.GetViewData().Rows，我可以获取视图里面所有数据列。这种方法比较取巧，缺点也显而易见
 ：每次不同的SQL需要定义一个额外的视图，很快我就放弃了这种办法。</p>
 <p>最后我决定使用原生的SQL来获取数据，例子如下</p>
-<div class="highlight"><pre><span></span><span class="cp">&lt;%</span><span class="err">@</span> <span class="no">Assembly</span> <span class="no">Name</span><span class="o">=</span><span class="s2">"Microsoft.ApplicationBlocks.Data"</span> <span class="cp">%&gt;</span><span class="x"></span>
+<div class="highlight"><pre><span class="cp">&lt;%</span><span class="err">@</span> <span class="no">Assembly</span> <span class="no">Name</span><span class="o">=</span><span class="s2">"Microsoft.ApplicationBlocks.Data"</span> <span class="cp">%&gt;</span><span class="x"></span>
 <span class="cp">&lt;%</span><span class="err">@</span> <span class="no">Import</span> <span class="no">Namespace</span><span class="o">=</span><span class="s2">"System.Data"</span> <span class="cp">%&gt;</span><span class="x"></span>
 <span class="cp">&lt;%</span><span class="err">@</span> <span class="no">Import</span> <span class="no">Namespace</span><span class="o">=</span><span class="s2">"System.Data.SqlClient"</span> <span class="cp">%&gt;</span><span class="x"></span>
 <span class="cp">&lt;%</span><span class="err">@</span> <span class="no">Import</span> <span class="no">Namespace</span><span class="o">=</span><span class="s2">"Microsoft.ApplicationBlocks.Data"</span> <span class="cp">%&gt;</span><span class="x"></span>
@@ -174,7 +174,7 @@ sql.ToString()).Tables[0];</p>
 soft.ApplicationBlocks.Data这个类库。（SqlHelper可以在微软官网下载到）需要引用的类库记得放入CodeSmith/bin目
 录下面。</p>
 <p>最后，如果Template过于复杂，记得把Template进行分割成小模块，再使用Register关键字引用，以提高复用，DRY。</p>
-<div class="highlight"><pre><span></span><span class="cp">&lt;%</span><span class="err">@</span> <span class="no">Register</span> <span class="no">Name</span><span class="o">=</span><span class="s2">"DscHideField"</span> <span class="no">Template</span><span class="o">=</span><span class="s2">"../Controler/DscHideField.cs.cst"</span> <span class="cp">%&gt;</span><span class="x"></span>
+<div class="highlight"><pre><span class="cp">&lt;%</span><span class="err">@</span> <span class="no">Register</span> <span class="no">Name</span><span class="o">=</span><span class="s2">"DscHideField"</span> <span class="no">Template</span><span class="o">=</span><span class="s2">"../Controler/DscHideField.cs.cst"</span> <span class="cp">%&gt;</span><span class="x"></span>
 </pre></div>
 <p>相关链接</p>
 <p><a href="http://www.codesmithtools.com/">CodeSmith官网</a></p>

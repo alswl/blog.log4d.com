@@ -121,28 +121,28 @@ diawiki到html，原文会有更多的wiki模板样式便于查看，有问题�
 <h2 id="bian-ji-pei-zhi-wen-jian_1">编辑配置文件</h2>
 <p>用你称手的编辑器打开/etc/ppp/options.pptp。这个文件为你的VPN连接启用了一系列默认安全设置。如果你连接时候出现问题，你可以自定义配置。
 你的options.pptp文件最少需要包含以下内容：</p>
-<div class="highlight"><pre><span></span>lock
-noauth
-nobsdcomp
-nodeflate
+<div class="highlight"><pre><span class="n">lock</span>
+<span class="n">noauth</span>
+<span class="n">nobsdcomp</span>
+<span class="n">nodeflate</span>
 </pre></div>
 <h2 id="bian-ji-mi-ma-wen-jian">编辑密码文件</h2>
 <p>下一步，打开或者创建/etc/ppp/chap-
 secrets。我们将在这个文件里面存储你的密码，记得修改权限让除root之外所有用户不能访问它。这个文件的格式如下：</p>
-<div class="highlight"><pre><span></span>&lt;DOMAIN&gt;\&lt;USERNAME&gt; PPTP &lt;PASSWORD&gt; *
+<div class="highlight"><pre><span class="nt">&lt;DOMAIN&gt;</span>\<span class="nt">&lt;USERNAME&gt;</span> PPTP <span class="nt">&lt;PASSWORD&gt;</span> *
 </pre></div>
 <p>如果你的服务器不要求域，则配置如下：</p>
-<div class="highlight"><pre><span></span>&lt;USERNAME&gt; PPTP &lt;PASSWORD&gt; *
+<div class="highlight"><pre><span class="nt">&lt;USERNAME&gt;</span> PPTP <span class="nt">&lt;PASSWORD&gt;</span> *
 </pre></div>
 <p>替换掉上文中范例中的占位符。注意，如果你的密码包含特殊字符，比如"$"，你需要用双引号把它们包起来。</p>
 <h2 id="ming-ming-ni-de-vpnsui-dao">命名你的VPN隧道</h2>
 <p>用你称手的编辑器创建类似/etc/ppp/peers/的文件，把这里替换成你的VPN连接名。这个文件设置之后看起来如下：</p>
-<div class="highlight"><pre><span></span>pty "pptp &lt;SERVER&gt; --nolaunchpppd"
-name &lt;DOMAIN&gt;\&lt;USERNAME&gt;
-remotename PPTP
-require-mppe-128
-file /etc/ppp/options.pptp
-ipparam &lt;TUNNEL&gt;
+<div class="highlight"><pre><span class="nx">pty</span> <span class="s2">"pptp &lt;SERVER&gt; --nolaunchpppd"</span>
+<span class="nb">name</span> <span class="o">&lt;</span><span class="nx">DOMAIN</span><span class="o">&gt;\&lt;</span><span class="nx">USERNAME</span><span class="o">&gt;</span>
+<span class="nx">remotename</span> <span class="nx">PPTP</span>
+<span class="k">require</span><span class="n">-</span><span class="nx">mppe</span><span class="o">-</span><span class="mi">128</span>
+<span class="nb">file</span> <span class="p">/</span><span class="nx">etc</span><span class="p">/</span><span class="nx">ppp</span><span class="p">/</span><span class="nx">options.pptp</span>
+<span class="nx">ipparam</span> <span class="o">&lt;</span><span class="nx">TUNNEL</span><span class="o">&gt;</span>
 </pre></div>
 <p>{{Note|跟刚才一样，如果你的连接不要求域，忽略范例中的"\"}} {{Note|PPTP远程主机使用Chap-Secrets文件中的}}</p>
 <p>是VPN服务器的地址，是你所属的域，是你将要用来连接服务器的用户名，是连接的名称。</p>
@@ -169,7 +169,7 @@ netmask 255.255.255.0 dev ppp0 这将路由所有目的地址为191.168.10.xxx�
 <h3 id="ba-yi-ge-vpnlian-jie-pei-wei-mo-ren-qi-dong">把一个VPN连接配为默认启动</h3>
 <p>你可以在rc.d创建一个快捷命令来实现自动在后台连接VPN网络。</p>
 <p>{{Note|和平常一样，是你隧道的名字，是你加入路由表的命令。}}</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span class="c">#!/bin/bash</span>
 </pre></div>
 </td></tr></table>
 <p>. /etc/rc.conf</p>

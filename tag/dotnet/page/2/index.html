@@ -72,16 +72,16 @@ Log4D            </a>
                 <div class="summary"><p><a href="http://www.chinaqiugou.com/images/detail_no_pic.gif"><img alt="image" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201612/404.png"/></a></p>
 <p>某个系统，检查用户照片，如果发现用户并没有设定照片就返回一张No Photo的图片。</p>
 <p>返回数据库的图片代码比较格式化。</p>
-<div class="highlight"><pre><span></span>int Id = Int32.Parse(Request.Params.Get("Id"));
-string type = Request.Params.Get("type");
-BLL.Student bll = new JznuManager.BLL.Student();
-student = new JznuManager.Model.Student();
-student = bll.GetModel(Id);
-Response.ContentType = "image/jpeg";
-Response.Cache.SetCacheability(HttpCacheability.Public);
-Response.BufferOutput = false;
-//输出图片文件二进制数据
-Response.OutputStream ...</pre></div>
+<div class="highlight"><pre><span class="kt">int</span> <span class="n">Id</span> <span class="o">=</span> <span class="n">Int32</span><span class="p">.</span><span class="n">Parse</span><span class="p">(</span><span class="n">Request</span><span class="p">.</span><span class="n">Params</span><span class="p">.</span><span class="n">Get</span><span class="p">(</span><span class="s">"Id"</span><span class="p">));</span>
+<span class="n">string</span> <span class="n">type</span> <span class="o">=</span> <span class="n">Request</span><span class="p">.</span><span class="n">Params</span><span class="p">.</span><span class="n">Get</span><span class="p">(</span><span class="s">"type"</span><span class="p">);</span>
+<span class="n">BLL</span><span class="p">.</span><span class="n">Student</span> <span class="n">bll</span> <span class="o">=</span> <span class="n">new</span> <span class="n">JznuManager</span><span class="p">.</span><span class="n">BLL</span><span class="p">.</span><span class="n">Student</span><span class="p">();</span>
+<span class="n">student</span> <span class="o">=</span> <span class="n">new</span> <span class="n">JznuManager</span><span class="p">.</span><span class="n">Model</span><span class="p">.</span><span class="n">Student</span><span class="p">();</span>
+<span class="n">student</span> <span class="o">=</span> <span class="n">bll</span><span class="p">.</span><span class="n">GetModel</span><span class="p">(</span><span class="n">Id</span><span class="p">);</span>
+<span class="n">Response</span><span class="p">.</span><span class="n">ContentType</span> <span class="o">=</span> <span class="s">"image/jpeg"</span><span class="p">;</span>
+<span class="n">Response</span><span class="p">.</span><span class="n">Cache</span><span class="p">.</span><span class="n">SetCacheability</span><span class="p">(</span><span class="n">HttpCacheability</span><span class="p">.</span><span class="n">Public</span><span class="p">);</span>
+<span class="n">Response</span><span class="p">.</span><span class="n">BufferOutput</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+<span class="c1">//输出图片文件二进制数据</span>
+<span class="n">Response</span><span class="p">.</span><span class="n">OutputStream ...</span></pre></div>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/08/no-photo-caused-by-the/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>

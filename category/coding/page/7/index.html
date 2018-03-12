@@ -68,6 +68,20 @@ Log4D            </a>
         <div class="col-lg-8 col-lg-offset-2">
 
             <article class="article-list">
+                <h2 class="title"><a href="https://blog.alswl.com/2011/08/go-pylons-py-in-python2-7/">go-pylons.py在Python2.7下错误解决</a></h2>
+                <div class="summary"><p>当使用 Python2.7 +<a href="http://pylonshq.com/download/1.0/go-pylons.py"> go-pylons.py</a>
+创建 Pylons 运行环境的话，会报一下错误。</p>
+<div class="highlight"><pre><span></span><span class="p">[</span><span class="n">alswl</span><span class="nd">@arch</span><span class="o">-</span><span class="n">vm</span> <span class="n">xingtong</span><span class="p">]</span><span class="err">$</span> <span class="n">python</span> <span class="n">go</span><span class="o">-</span><span class="n">pylons</span><span class="o">.</span><span class="n">py</span> <span class="n">myb_env</span>
+<span class="n">New</span> <span class="n">python</span> <span class="n">executable</span> <span class="ow">in</span> <span class="n">myb_env</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">python</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s2">"/home/alswl/work/xingtong/myb_env/lib/python2.7/site.py"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">67</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+    <span class="kn">import</span> <span class="nn">os</span>
+  <span class="n">File</span> <span class="s2">"/home/alswl ...</span></pre></div>
+                </div>
+                <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2011/08/go-pylons-py-in-python2-7/"><i class="icon-circle-arrow-right"></i>more ...</a>
+            </article>
+            <hr/>
+            <article class="article-list">
                 <h2 class="title"><a href="https://blog.alswl.com/2011/07/lrzsz/">安装lrzsz</a></h2>
                 <div class="summary"><p>lrzsz 是一款 Linux 下面的文件传输工具。实现原理是通过 Xmodem / Ymodem / Zmodem 协议传输文件。lrzsz
 可以在支持这三种协议的Shell界面的工具下工作，比如XShell。</p>
@@ -76,11 +90,10 @@ Log4D            </a>
 </blockquote>
 <p>大部分linux发行版的安装工具都可以直接安装 lrzsz，比如apt-get /
 pacman，当然我们也可以下载安装包手动安装。这次由于我所在的服务器没有管理员权限，我就使用源码包安装。</p>
-<div class="highlight"><pre><span></span>$ mkdir /home/alswl/app
-$ wget http://ohse.de/uwe/releases/lrzsz-0.12.20.tar.gz
-$ tar xzvf lrzsz-0.12.20.tar.gz
-$ <span class="nb">cd</span> lrzsz-0.12.20
-$ ./configure ...</pre></div>
+<div class="highlight"><pre><span class="err">$</span> <span class="n">mkdir</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">alswl</span><span class="o">/</span><span class="n">app</span>
+<span class="err">$</span> <span class="n">wget</span> <span class="n">http</span><span class="o">:</span><span class="c1">//ohse.de/uwe/releases/lrzsz-0.12.20.tar.gz</span>
+<span class="err">$</span> <span class="n">tar</span> <span class="n">xzvf</span> <span class="n">lrzsz</span><span class="o">-</span><span class="mf">0.12.20</span><span class="p">.</span><span class="n">tar</span><span class="p">.</span><span class="n">gz</span>
+<span class="err">$</span> <span class="n">cd</span> <span class="n">lrzsz</span><span class="o">-</span><span class="mf">0.12 ...</span></pre></div>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2011/07/lrzsz/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -128,11 +141,11 @@ $ ./configure ...</pre></div>
 <p>Python中unicode转码一向是让人头疼的问题。数次碰壁之后，我也摸出了一些门道，
 研读完<a href="http://ipie.blogbus.com/logs/19379694.html">Python字符串的encode与decode</a>
 之后，就自认为找到了万金油，谁知道这次又碰上这个老冤家。</p>
-<div class="highlight"><pre><span></span>Traceback (most recent call last):
-  File "&lt;stdin&gt;", line 1, in &lt;module&gt;
-  File "/usr/lib/python2.6/urllib2.py", line 126, in urlopen
-    return _opener.open(url, data, timeout)
-  File "/usr/lib/python2.6/urllib2.py", line ...</pre></div>
+<div class="highlight"><pre><span class="nx">Traceback</span> <span class="p">(</span><span class="nx">most</span> <span class="nx">recent</span> <span class="nb">call</span> <span class="nb">last</span><span class="p">):</span>
+  <span class="nb">File</span> <span class="s2">"&lt;stdin&gt;"</span><span class="p">,</span> <span class="nb">line</span> <span class="mi">1</span><span class="p">,</span> <span class="k">in</span> <span class="o">&lt;</span><span class="nx">module</span><span class="o">&gt;</span>
+  <span class="nb">File</span> <span class="s2">"/usr/lib/python2.6/urllib2.py"</span><span class="p">,</span> <span class="nb">line</span> <span class="mi">126</span><span class="p">,</span> <span class="k">in</span> <span class="nx">urlopen</span>
+    <span class="k">return</span> <span class="nx">_opener.open</span><span class="p">(</span><span class="nb">url</span><span class="p">,</span> <span class="kd">data</span><span class="p">,</span> <span class="nx">timeout</span><span class="p">)</span>
+  <span class="nb">File</span> <span class="s2">"/usr/lib/python2.6/urllib2.py"</span><span class="p">,</span> <span class="nb">line ...</span></pre></div>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2011/06/urllib2-urlopen-unicode/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -211,11 +224,11 @@ through-eclipse">http://stackoverflow.com ...</p>
                 <h2 class="title"><a href="https://blog.alswl.com/2011/04/ubuntu-setup/">Ubuntu安装之后设定操作</a></h2>
                 <div class="summary"><p>前几天使用chmod时候，多打了一个/，导致根目录下面所有文件权限设定出了问题，额~重装系统吧，正好把装系统之后的配置过程记录下来。</p>
 <p>这些都是我操作过的命令，确切可靠，适用于Ubuntu 10.10 Desktop Edtion。</p>
-<div class="highlight"><pre><span></span>= init Linux programs and setting =
-:author: alswl
-:email: alswlx#gmail.com
-:toc:
-:numbered:
+<div class="highlight"><pre><span class="o">=</span> <span class="n">init</span> <span class="n">Linux</span> <span class="n">programs</span> <span class="n">and</span> <span class="n">setting</span> <span class="o">=</span>
+<span class="o">:</span><span class="n">author</span><span class="o">:</span> <span class="n">alswl</span>
+<span class="o">:</span><span class="n">email</span><span class="o">:</span> <span class="n">alswlx</span><span class="err">#</span><span class="n">gmail</span><span class="p">.</span><span class="n">com</span>
+<span class="o">:</span><span class="n">toc</span><span class="o">:</span>
+<span class="o">:</span><span class="n">numbered</span><span class="o">:</span>
 </pre></div>
 <p>== first of all ==</p>
 <p>.update (打补丁、升级)</p>
@@ -249,24 +262,6 @@ Tool执行。我对此表示很好奇，特意在自己电脑下面组建了一�
 <p>src/main ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2011/04/run-jetty-in-maven/"><i class="icon-circle-arrow-right"></i>more ...</a>
-            </article>
-            <hr/>
-            <article class="article-list">
-                <h2 class="title"><a href="https://blog.alswl.com/2011/04/ubuntu-crebs/">Ubuntu桌面自动换背景</a></h2>
-                <div class="summary"><p>GNOME桌面系统可以使用一系列的图片作为背景，每过一段时间能够自动更换。这个功能核Win7下面自动换背景效果一致。不过很可惜，系统自带的可自动更换图片集只
-有几张，也找不到什么按钮可以直接设定。</p>
-<p>下图就是系统自带的两个图片集（第二行第一组和第二组）。</p>
-<p><img alt="image" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201104/appearance_preferences.png"/></p>
-<p>我们可以通过撰写xml自己制作图片集，xml格式模板在<code>/usr/share/gnome-background-properties/cosmos.xml</code>
-，实际的xml存放在类似于<code>/usr/share/backgrounds/cosmos/background-1.xml</code>的配置文档里面。</p>
-<p>除了手工撰写xml，我们还可以通过crebs小软件来自动生成xml文件。</p>
-<p>官方介绍如下：</p>
-<blockquote>
-<p>A background slideshow creator for the GNOME desktop wallpaper.</p>
-</blockquote>
-<p>The GNOME desktop is able to use a sequence of images for its background ...</p>
-                </div>
-                <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2011/04/ubuntu-crebs/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
             <hr/>
 
@@ -407,7 +402,7 @@ Tool执行。我对此表示很好奇，特意在自己电脑下面组建了一�
    <div class="container">
       <hr>
       <div class="row">
-         <div class="col-xs-10">&copy; 2017 alswl
+         <div class="col-xs-10">&copy; 2018 alswl
             &middot; Powered by <a href="https://github.com/alswl/pelican-bootstrap3" target="_blank" style="font-weight: bold">pelican-bootstrap3</a>,
             <a href="http://docs.getpelican.com/" target="_blank" style="font-weight: bold">Pelican</a>,
             <a href="http://getbootstrap.com" target="_blank" style="font-weight: bold">Bootstrap</a>,

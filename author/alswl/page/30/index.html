@@ -67,20 +67,36 @@ Log4D            </a>
         <div class="col-lg-8 col-lg-offset-2">
 
             <article class="article-list">
+                <h2 class="title"><a href="https://blog.alswl.com/2009/08/ajaxcontroltoolkit-amendment-in-calendarextender-styles/">AjaxControlToolkit中CalendarExtender样式修正</a></h2>
+                <div class="summary"><p>在<a href="http://www.asp.net">The Official Microsoft ASP.NET Site</a>上有一个很强大的控件<a href="http://ajaxcontroltoolkit.codeplex.com/Release/ProjectRelease
+s.aspx?ReleaseId=27326">AJAX Control Toolkit</a>，其功能非常完整，几乎涵盖了表现层方面各种应用，使用也很方便，有中文详细支持，能给程序员很大帮助。</p>
+<p>我现在使用的其中一款控件叫做CalendarExtender，其实是一个DatePicker（日期选择器），这个控件可以直接在Input控件上添加「扩展程序
+」，就完成了所有工作。</p>
+<p><a href="https://ohsolnxaa.qnssl.com/upload_dropbox/200909/0e9aa6590cdc.jpg"><img alt="偏移" src="https://ohsolnxaa.qnssl.com/upload_dropbox/200909/0e9aa6590cdc.jpg"/></a></p>
+<p>让我意外的是，这个控件在我的页面上工作时候样式似乎有些不正常。</p>
+<p>页面漂移了！我仔细检查了FireBug，发现下面的样式中的padding影响了其td。(页面可不是我设计的```)</p>
+<p><a href="https://ohsolnxaa.qnssl.com/upload_dropbox/200909/Firebug.jpg"><img alt="Firebug" src="https://ohsolnxaa.qnssl.com/upload_dropbox/200909/Firebug.jpg"/></a></p>
+<p>如果修改CSS，就带来了大量的页面需要修改class/id，所以我只能修正CalendarExtender。（话说人家jQuery在这儿丝毫不受影响，全部元
+素都覆盖了样式，AJAX Control Toolkit在样式上还是不如jQuery ...</p>
+                </div>
+                <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/08/ajaxcontroltoolkit-amendment-in-calendarextender-styles/"><i class="icon-circle-arrow-right"></i>more ...</a>
+            </article>
+            <hr/>
+            <article class="article-list">
                 <h2 class="title"><a href="https://blog.alswl.com/2009/08/no-photo-caused-by-the/">由No photo引起</a></h2>
                 <div class="summary"><p><a href="http://www.chinaqiugou.com/images/detail_no_pic.gif"><img alt="image" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201612/404.png"/></a></p>
 <p>某个系统，检查用户照片，如果发现用户并没有设定照片就返回一张No Photo的图片。</p>
 <p>返回数据库的图片代码比较格式化。</p>
-<div class="highlight"><pre><span></span>int Id = Int32.Parse(Request.Params.Get("Id"));
-string type = Request.Params.Get("type");
-BLL.Student bll = new JznuManager.BLL.Student();
-student = new JznuManager.Model.Student();
-student = bll.GetModel(Id);
-Response.ContentType = "image/jpeg";
-Response.Cache.SetCacheability(HttpCacheability.Public);
-Response.BufferOutput = false;
-//输出图片文件二进制数据
-Response.OutputStream ...</pre></div>
+<div class="highlight"><pre><span class="kt">int</span> <span class="n">Id</span> <span class="o">=</span> <span class="n">Int32</span><span class="p">.</span><span class="n">Parse</span><span class="p">(</span><span class="n">Request</span><span class="p">.</span><span class="n">Params</span><span class="p">.</span><span class="n">Get</span><span class="p">(</span><span class="s">"Id"</span><span class="p">));</span>
+<span class="n">string</span> <span class="n">type</span> <span class="o">=</span> <span class="n">Request</span><span class="p">.</span><span class="n">Params</span><span class="p">.</span><span class="n">Get</span><span class="p">(</span><span class="s">"type"</span><span class="p">);</span>
+<span class="n">BLL</span><span class="p">.</span><span class="n">Student</span> <span class="n">bll</span> <span class="o">=</span> <span class="n">new</span> <span class="n">JznuManager</span><span class="p">.</span><span class="n">BLL</span><span class="p">.</span><span class="n">Student</span><span class="p">();</span>
+<span class="n">student</span> <span class="o">=</span> <span class="n">new</span> <span class="n">JznuManager</span><span class="p">.</span><span class="n">Model</span><span class="p">.</span><span class="n">Student</span><span class="p">();</span>
+<span class="n">student</span> <span class="o">=</span> <span class="n">bll</span><span class="p">.</span><span class="n">GetModel</span><span class="p">(</span><span class="n">Id</span><span class="p">);</span>
+<span class="n">Response</span><span class="p">.</span><span class="n">ContentType</span> <span class="o">=</span> <span class="s">"image/jpeg"</span><span class="p">;</span>
+<span class="n">Response</span><span class="p">.</span><span class="n">Cache</span><span class="p">.</span><span class="n">SetCacheability</span><span class="p">(</span><span class="n">HttpCacheability</span><span class="p">.</span><span class="n">Public</span><span class="p">);</span>
+<span class="n">Response</span><span class="p">.</span><span class="n">BufferOutput</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+<span class="c1">//输出图片文件二进制数据</span>
+<span class="n">Response</span><span class="p">.</span><span class="n">OutputStream ...</span></pre></div>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/08/no-photo-caused-by-the/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -213,21 +229,6 @@ g/item/5a46d307004a05c97a894746.html">解决windows server 2003不认U盘或移�
 <p>3、输入AUTOMOUNT ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/08/jie-jue-windows-server-2003-bu-ren-u-pan-huo-yi-dong-ying-pan/"><i class="icon-circle-arrow-right"></i>more ...</a>
-            </article>
-            <hr/>
-            <article class="article-list">
-                <h2 class="title"><a href="https://blog.alswl.com/2009/08/the-theme-for-the-7color/">换了7Color的主题</a></h2>
-                <div class="summary"><p>买了空间后，就一直使用iNove主题，虽然iNove这个主题很优秀，但时间长了，难免有些审美疲劳。我一直想换一个主题，但苦于喜欢的主题要么没有汉化，要么在I
-E6下不兼容，要么就是色调、字体大小不符合我的要求。</p>
-<p>我喜欢大气，亲切一点的主题，比如说Fusion，我也花了几天时间汉化了Fusion的主题，可惜最后关节，发现Fusion在IE6下显示不正常，我又没有勇气抛
-弃IE6的用户，只能作罢。国内毕竟过半的人仍然在XP/IE6这个平台下，真无奈。</p>
-<p>看到<a href="http://wordpress.org/extend/themes/7color">7Color</a>这个主题后，被吸引住了，是国人自己的主题，作者为<a href="http://nishuang.de/">
-Ni Shuang</a>,
-色调什么都挺好看，界面是自适应宽度。唯一遗憾的是文章没有加上标签，瑕不掩瑜，这还是一个很优秀的主题。</p>
-<p><img alt="image" src="https://ohsolnxaa.qnssl.com/upload_dropbox/200908/screenshot.png"/></p>
-<p>调一下footer后，加入cnzz的分析，唔，可以enjoy it啦~</p>
-                </div>
-                <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/08/the-theme-for-the-7color/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
             <hr/>
 

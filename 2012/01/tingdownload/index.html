@@ -119,8 +119,8 @@ Log4D            </a>
 </ul>
 <h2 id="shi-yong-fang-fa">使用方法</h2>
 <p>在Shell(命令行)里输入下面随便一个命令，就会在当前目录下面出现 <code>musics</code> 文件夹， 里面就有下载好的音乐。</p>
-<div class="highlight"><pre><span></span># 使用说明
-usage: tingdownload.py [-h] [--input INPUT] [Keyword [Keyword ...]]
+<div class="highlight"><pre><span class="cp"># 使用说明</span>
+<span class="nl">usage:</span> <span class="n">tingdownload</span><span class="p">.</span><span class="n">py</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">input</span> <span class="n">INPUT</span><span class="p">]</span> <span class="p">[</span><span class="n">Keyword</span> <span class="p">[</span><span class="n">Keyword</span> <span class="p">...]]</span>
 </pre></div>
 <p>A script to download music from ting.baidu.com.</p>
 <p>positional arguments:</p>
@@ -129,25 +129,25 @@ usage: tingdownload.py [-h] [--input INPUT] [Keyword [Keyword ...]]
 <p>-h, --help show this help message and exit<br/>
 --input INPUT, -i INPUT<br/>
 a list file to input musics</p>
-<div class="highlight"><pre><span></span># 示例
-python tingdownload.py 老男孩 #单个文件下载
-./tingdownload.py 老男孩 #单个文件下载（给python文件加上可执行权限）
-python tingdownload.py 老男孩 Raise\n Me\n Up # 多文件名，如果有空格，请记得加上空格反转'\n'
+<div class="highlight"><pre><span class="cp"># 示例</span>
+<span class="n">python</span> <span class="n">tingdownload</span><span class="p">.</span><span class="n">py</span> <span class="err">老男孩</span> <span class="err">#单个文件下载</span>
+<span class="p">.</span><span class="o">/</span><span class="n">tingdownload</span><span class="p">.</span><span class="n">py</span> <span class="err">老男孩</span> <span class="err">#单个文件下载（给</span><span class="n">python</span><span class="err">文件加上可执行权限）</span>
+<span class="n">python</span> <span class="n">tingdownload</span><span class="p">.</span><span class="n">py</span> <span class="err">老男孩</span> <span class="n">Raise</span><span class="err">\</span><span class="n">n</span> <span class="n">Me</span><span class="err">\</span><span class="n">n</span> <span class="n">Up</span> <span class="err">#</span> <span class="err">多文件名，如果有空格，请记得加上空格反转</span><span class="sc">'\n'</span>
 </pre></div>
 <p>批量下载的话，可以准备一个列表文件，每个歌曲名用回车隔开，如下：</p>
-<div class="highlight"><pre><span></span>还过得去
-不敢太幸福
-小情歌
-爱情靠不住
-我爱我
-你可以不用给我答案     金莎
-没有这首歌         后弦
-        回不去了吗         萧亚轩
-        有些事现在不做 一辈子都不会做了  五月天
-        第一夫人    张杰
+<div class="highlight"><pre><span class="err">还过得去</span>
+<span class="err">不敢太幸福</span>
+<span class="err">小情歌</span>
+<span class="err">爱情靠不住</span>
+<span class="err">我爱我</span>
+<span class="err">你可以不用给我答案</span>     <span class="err">金莎</span>
+<span class="err">没有这首歌</span>         <span class="err">后弦</span>
+        <span class="err">回不去了吗</span>         <span class="err">萧亚轩</span>
+        <span class="err">有些事现在不做</span> <span class="err">一辈子都不会做了</span>  <span class="err">五月天</span>
+        <span class="err">第一夫人</span>    <span class="err">张杰</span>
 </pre></div>
 <p>将这个list文件作为输入传入执行脚本：</p>
-<div class="highlight"><pre><span></span>python2.7 tingdownload.py --input ~/music.txt
+<div class="highlight"><pre><span class="n">python2</span><span class="mf">.7</span> <span class="n">tingdownload</span><span class="p">.</span><span class="n">py</span> <span class="o">--</span><span class="n">input</span> <span class="o">~/</span><span class="n">music</span><span class="p">.</span><span class="n">txt</span>
 </pre></div>
 <p>运行结果如下，列出四种情况：</p>
 <ul>

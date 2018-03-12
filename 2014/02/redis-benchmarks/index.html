@@ -105,49 +105,49 @@ Log4D            </a>
 <p>Redis 自带了一个叫 <code>redis-benchmark</code> 的工具来模拟 N 个客户端同时发出 M 个请求。
 （类似于 Apache <code>ab</code> 程序）。你可以使用 <code>redis-benchmark -h</code> 来查看基准参数。</p>
 
-<div class="highlight"><pre><span></span>以下参数被支持：
+<div class="highlight"><pre><span class="err">以下参数被支持：</span>
 
-    Usage: redis-benchmark [-h &lt;host&gt;] [-p &lt;port&gt;] [-c &lt;clients&gt;] [-n &lt;requests]&gt; [-k &lt;boolean&gt;]
+    <span class="nb">Usage</span><span class="p">:</span> <span class="nx">redis</span><span class="na">-benchmark</span> <span class="err">[</span><span class="na">-h</span> <span class="o">&lt;</span><span class="nb">host</span><span class="o">&gt;</span><span class="cp">]</span> <span class="cp">[</span><span class="na">-p</span> <span class="o">&lt;</span><span class="nb">port</span><span class="o">&gt;</span><span class="cp">]</span> <span class="cp">[</span><span class="na">-c</span> <span class="o">&lt;</span><span class="nx">clients</span><span class="o">&gt;</span><span class="cp">]</span> <span class="cp">[</span><span class="na">-n</span> <span class="o">&lt;</span><span class="nx">requests</span><span class="cp">]</span>&gt; <span class="cp">[</span><span class="na">-k</span> <span class="o">&lt;</span><span class="nb">boolean</span><span class="o">&gt;</span><span class="cp">]</span>
 
-     -h &lt;hostname&gt;      Server hostname (default 127.0.0.1)
-     -p &lt;port&gt;          Server port (default 6379)
-     -s &lt;socket&gt;        Server socket (overrides host and port)
-     -c &lt;clients&gt;       Number of parallel connections (default 50)
-     -n &lt;requests&gt;      Total number of requests (default 10000)
-     -d &lt;size&gt;          Data size of SET/GET value in bytes (default 2)
-     -k &lt;boolean&gt;       1=keep alive 0=reconnect (default 1)
-     -r &lt;keyspacelen&gt;   Use random keys for SET/GET/INCR, random values for SADD
+     -h <span class="nt">&lt;hostname&gt;</span>      Server hostname (default 127.0.0.1)
+     -p <span class="nt">&lt;port&gt;</span>          Server port (default 6379)
+     -s <span class="nt">&lt;socket&gt;</span>        Server socket (overrides host and port)
+     -c <span class="nt">&lt;clients&gt;</span>       Number of parallel connections (default 50)
+     -n <span class="nt">&lt;requests&gt;</span>      Total number of requests (default 10000)
+     -d <span class="nt">&lt;size&gt;</span>          Data size of SET/GET value in bytes (default 2)
+     -k <span class="nt">&lt;boolean&gt;</span>       1=keep alive 0=reconnect (default 1)
+     -r <span class="nt">&lt;keyspacelen&gt;</span>   Use random keys for SET/GET/INCR, random values for SADD
       Using this option the benchmark will get/set keys
       in the form mykey_rand:000000012456 instead of constant
-      keys, the &lt;keyspacelen&gt; argument determines the max
+      keys, the <span class="nt">&lt;keyspacelen&gt;</span> argument determines the max
       number of values for the random number. For instance
       if set to 10 only rand:000000000000 - rand:000000000009
       range will be allowed.
-     -P &lt;numreq&gt;        Pipeline &lt;numreq&gt; requests. Default 1 (no pipeline).
+     -P <span class="nt">&lt;numreq&gt;</span>        Pipeline <span class="nt">&lt;numreq&gt;</span> requests. Default 1 (no pipeline).
      -q                 Quiet. Just show query/sec values
      --csv              Output in CSV format
      -l                 Loop. Run the tests forever
-     -t &lt;tests&gt;         Only run the comma separated list of tests. The test
+     -t <span class="nt">&lt;tests&gt;</span>         Only run the comma separated list of tests. The test
                         names are the same as the ones produced as output.
      -I                 Idle mode. Just open N idle connections and wait.
 </pre></div>
 <p>你需要在基准测试之前启动一个 Redis 实例。一般这样启动测试：</p>
-<div class="highlight"><pre><span></span>redis-benchmark -q -n 100000
+<div class="highlight"><pre><span class="n">redis</span><span class="o">-</span><span class="n">benchmark</span> <span class="o">-</span><span class="n">q</span> <span class="o">-</span><span class="n">n</span> <span class="mi">100000</span>
 </pre></div>
 <p>这个工具使用起来非常方便，同时你可以使用自己的基准测试工具，
 不过开始基准测试时候，我们需要注意一些细节。</p>
 <h2 id="zhi-yun-xing-yi-xie-ce-shi-yong-li-de-zi-ji">只运行一些测试用例的子集</h2>
 <p>你不必每次都运行 redis-benchmark 默认的所有测试。
 使用 <code>-t</code> 参数可以选择你需要运行的测试用例，比如下面的范例：</p>
-<div class="highlight"><pre><span></span>$ redis-benchmark -t set,lpush -n <span class="m">100000</span> -q
-SET: <span class="m">74239</span>.05 requests per second
-LPUSH: <span class="m">79239</span>.30 requests per second
+<div class="highlight"><pre><span class="err">$</span> <span class="n">redis</span><span class="o">-</span><span class="n">benchmark</span> <span class="o">-</span><span class="n">t</span> <span class="n">set</span><span class="p">,</span><span class="n">lpush</span> <span class="o">-</span><span class="n">n</span> <span class="mi">100000</span> <span class="o">-</span><span class="n">q</span>
+<span class="nl">SET:</span> <span class="mf">74239.05</span> <span class="n">requests</span> <span class="n">per</span> <span class="n">second</span>
+<span class="nl">LPUSH:</span> <span class="mf">79239.30</span> <span class="n">requests</span> <span class="n">per</span> <span class="n">second</span>
 </pre></div>
 <p>在上面的测试中，我们只运行了 SET 和 LPUSH 命令，
 并且运行在安静模式中（使用 <code>-q</code> 参数）。</p>
 <p>也可以直接指定命令来直接运行，比如下面的范例：</p>
-<div class="highlight"><pre><span></span>$ redis-benchmark -n <span class="m">100000</span> -q script load <span class="s2">"redis.call('set','foo','bar')"</span>
-script load redis.call<span class="o">(</span><span class="s1">'set'</span>,<span class="s1">'foo'</span>,<span class="s1">'bar'</span><span class="o">)</span>: <span class="m">69881</span>.20 requests per second
+<div class="highlight"><pre><span class="err">$</span> <span class="n">redis</span><span class="o">-</span><span class="n">benchmark</span> <span class="o">-</span><span class="n">n</span> <span class="mi">100000</span> <span class="o">-</span><span class="n">q</span> <span class="n">script</span> <span class="n">load</span> <span class="s">"redis.call('set','foo','bar')"</span>
+<span class="n">script</span> <span class="n">load</span> <span class="n">redis</span><span class="p">.</span><span class="n">call</span><span class="p">(</span><span class="err">'</span><span class="n">set</span><span class="sc">','</span><span class="n">foo</span><span class="sc">','</span><span class="n">bar</span><span class="err">'</span><span class="p">)</span><span class="o">:</span> <span class="mf">69881.20</span> <span class="n">requests</span> <span class="n">per</span> <span class="n">second</span>
 </pre></div>
 <h2 id="xuan-ze-ce-shi-jian-de-fan-wei-da-xiao">选择测试键的范围大小</h2>
 <p>默认情况下面，基准测试使用单一的 key。在一个基于内存的数据库里，
@@ -155,24 +155,24 @@ script load redis.call<span class="o">(</span><span class="s1">'set'</span>,<spa
 可以模拟现实情况下面的缓存不命中情况。</p>
 <p>这时候我们可以使用 <code>-r</code> 命令。比如，假设我们想设置 10 万随机 key
 连续 SET 100 万次，我们可以使用下列的命令：</p>
-<div class="highlight"><pre><span></span>$ redis-cli flushall
-OK
+<div class="highlight"><pre><span class="err">$</span> <span class="n">redis</span><span class="o">-</span><span class="n">cli</span> <span class="n">flushall</span>
+<span class="n">OK</span>
 
-$ redis-benchmark -t <span class="nb">set</span> -r <span class="m">100000</span> -n <span class="nv">1000000</span>
-<span class="o">======</span> <span class="nv">SET</span> <span class="o">======</span>
-  <span class="m">1000000</span> requests completed in <span class="m">13</span>.86 seconds
-  <span class="m">50</span> parallel clients
-  <span class="m">3</span> bytes payload
-  keep alive: <span class="m">1</span>
+<span class="err">$</span> <span class="n">redis</span><span class="o">-</span><span class="n">benchmark</span> <span class="o">-</span><span class="n">t</span> <span class="n">set</span> <span class="o">-</span><span class="n">r</span> <span class="mi">100000</span> <span class="o">-</span><span class="n">n</span> <span class="mi">1000000</span>
+<span class="o">======</span> <span class="n">SET</span> <span class="o">======</span>
+  <span class="mi">1000000</span> <span class="n">requests</span> <span class="n">completed</span> <span class="n">in</span> <span class="mf">13.86</span> <span class="n">seconds</span>
+  <span class="mi">50</span> <span class="n">parallel</span> <span class="n">clients</span>
+  <span class="mi">3</span> <span class="n">bytes</span> <span class="n">payload</span>
+  <span class="n">keep</span> <span class="n">alive</span><span class="o">:</span> <span class="mi">1</span>
 
-<span class="m">99</span>.76% <span class="sb">`</span>&lt;<span class="o">=</span><span class="sb">`</span> <span class="m">1</span> milliseconds
-<span class="m">99</span>.98% <span class="sb">`</span>&lt;<span class="o">=</span><span class="sb">`</span> <span class="m">2</span> milliseconds
-<span class="m">100</span>.00% <span class="sb">`</span>&lt;<span class="o">=</span><span class="sb">`</span> <span class="m">3</span> milliseconds
-<span class="m">100</span>.00% <span class="sb">`</span>&lt;<span class="o">=</span><span class="sb">`</span> <span class="m">3</span> milliseconds
-<span class="m">72144</span>.87 requests per second
+<span class="mf">99.76</span><span class="o">%</span> <span class="err">`</span><span class="o">&lt;=</span><span class="err">`</span> <span class="mi">1</span> <span class="n">milliseconds</span>
+<span class="mf">99.98</span><span class="o">%</span> <span class="err">`</span><span class="o">&lt;=</span><span class="err">`</span> <span class="mi">2</span> <span class="n">milliseconds</span>
+<span class="mf">100.00</span><span class="o">%</span> <span class="err">`</span><span class="o">&lt;=</span><span class="err">`</span> <span class="mi">3</span> <span class="n">milliseconds</span>
+<span class="mf">100.00</span><span class="o">%</span> <span class="err">`</span><span class="o">&lt;=</span><span class="err">`</span> <span class="mi">3</span> <span class="n">milliseconds</span>
+<span class="mf">72144.87</span> <span class="n">requests</span> <span class="n">per</span> <span class="n">second</span>
 
-$ redis-cli dbsize
-<span class="o">(</span>integer<span class="o">)</span> <span class="m">99993</span>
+<span class="err">$</span> <span class="n">redis</span><span class="o">-</span><span class="n">cli</span> <span class="n">dbsize</span>
+<span class="p">(</span><span class="n">integer</span><span class="p">)</span> <span class="mi">99993</span>
 </pre></div>
 <h2 id="shi-yong-pipelining">使用 pipelining</h2>
 <p>默认情况下，每个客户端都是在一个请求完成之后才发送下一个请求
@@ -183,9 +183,9 @@ $ redis-cli dbsize
 Redis pipelining 可以提高服务器的 TPS。</p>
 <p>下面这个案例是在 Macbook air 11" 上使用 pipelining 组织
 16 条命令的测试范例：</p>
-<div class="highlight"><pre><span></span>$ redis-benchmark -n <span class="m">1000000</span> -t set,get -P <span class="m">16</span> -q
-SET: <span class="m">403063</span>.28 requests per second
-GET: <span class="m">508388</span>.41 requests per second
+<div class="highlight"><pre><span class="err">$</span> <span class="n">redis</span><span class="o">-</span><span class="n">benchmark</span> <span class="o">-</span><span class="n">n</span> <span class="mi">1000000</span> <span class="o">-</span><span class="n">t</span> <span class="n">set</span><span class="p">,</span><span class="n">get</span> <span class="o">-</span><span class="n">P</span> <span class="mi">16</span> <span class="o">-</span><span class="n">q</span>
+<span class="nl">SET:</span> <span class="mf">403063.28</span> <span class="n">requests</span> <span class="n">per</span> <span class="n">second</span>
+<span class="nl">GET:</span> <span class="mf">508388.41</span> <span class="n">requests</span> <span class="n">per</span> <span class="n">second</span>
 </pre></div>
 <p>记得在多条命令需要处理时候使用 pipelining。</p>
 <h2 id="xian-jing-he-cuo-wu-de-ren-shi">陷阱和错误的认识</h2>
@@ -316,130 +316,130 @@ Amazon EC2 上 的 EBS）。</li>
 <li>同时测试了 有 pipelining 和没有的情况（16 条命令使用 pipelining）。</li>
 </ul>
 <p><strong>Intel(R) Xeon(R) CPU E5520  @ 2.27GHz (with pipelining)</strong></p>
-<div class="highlight"><pre><span></span>$ ./redis-benchmark -r <span class="m">1000000</span> -n <span class="m">2000000</span> -t get,set,lpush,lpop -P <span class="m">16</span> -q
-SET: <span class="m">552028</span>.75 requests per second
-GET: <span class="m">707463</span>.75 requests per second
-LPUSH: <span class="m">767459</span>.75 requests per second
-LPOP: <span class="m">770119</span>.38 requests per second
+<div class="highlight"><pre><span class="err">$</span> <span class="p">.</span><span class="o">/</span><span class="n">redis</span><span class="o">-</span><span class="n">benchmark</span> <span class="o">-</span><span class="n">r</span> <span class="mi">1000000</span> <span class="o">-</span><span class="n">n</span> <span class="mi">2000000</span> <span class="o">-</span><span class="n">t</span> <span class="n">get</span><span class="p">,</span><span class="n">set</span><span class="p">,</span><span class="n">lpush</span><span class="p">,</span><span class="n">lpop</span> <span class="o">-</span><span class="n">P</span> <span class="mi">16</span> <span class="o">-</span><span class="n">q</span>
+<span class="nl">SET:</span> <span class="mf">552028.75</span> <span class="n">requests</span> <span class="n">per</span> <span class="n">second</span>
+<span class="nl">GET:</span> <span class="mf">707463.75</span> <span class="n">requests</span> <span class="n">per</span> <span class="n">second</span>
+<span class="nl">LPUSH:</span> <span class="mf">767459.75</span> <span class="n">requests</span> <span class="n">per</span> <span class="n">second</span>
+<span class="nl">LPOP:</span> <span class="mf">770119.38</span> <span class="n">requests</span> <span class="n">per</span> <span class="n">second</span>
 </pre></div>
 <p><strong>Intel(R) Xeon(R) CPU E5520  @ 2.27GHz (without pipelining)</strong></p>
-<div class="highlight"><pre><span></span>$ ./redis-benchmark -r <span class="m">1000000</span> -n <span class="m">2000000</span> -t get,set,lpush,lpop -q
-SET: <span class="m">122556</span>.53 requests per second
-GET: <span class="m">123601</span>.76 requests per second
-LPUSH: <span class="m">136752</span>.14 requests per second
-LPOP: <span class="m">132424</span>.03 requests per second
+<div class="highlight"><pre><span class="err">$</span> <span class="p">.</span><span class="o">/</span><span class="n">redis</span><span class="o">-</span><span class="n">benchmark</span> <span class="o">-</span><span class="n">r</span> <span class="mi">1000000</span> <span class="o">-</span><span class="n">n</span> <span class="mi">2000000</span> <span class="o">-</span><span class="n">t</span> <span class="n">get</span><span class="p">,</span><span class="n">set</span><span class="p">,</span><span class="n">lpush</span><span class="p">,</span><span class="n">lpop</span> <span class="o">-</span><span class="n">q</span>
+<span class="nl">SET:</span> <span class="mf">122556.53</span> <span class="n">requests</span> <span class="n">per</span> <span class="n">second</span>
+<span class="nl">GET:</span> <span class="mf">123601.76</span> <span class="n">requests</span> <span class="n">per</span> <span class="n">second</span>
+<span class="nl">LPUSH:</span> <span class="mf">136752.14</span> <span class="n">requests</span> <span class="n">per</span> <span class="n">second</span>
+<span class="nl">LPOP:</span> <span class="mf">132424.03</span> <span class="n">requests</span> <span class="n">per</span> <span class="n">second</span>
 </pre></div>
 <p><strong>Linode 2048 instance (with pipelining)</strong></p>
-<div class="highlight"><pre><span></span>$ ./redis-benchmark -r <span class="m">1000000</span> -n <span class="m">2000000</span> -t get,set,lpush,lpop -q -P <span class="m">16</span>
-SET: <span class="m">195503</span>.42 requests per second
-GET: <span class="m">250187</span>.64 requests per second
-LPUSH: <span class="m">230547</span>.55 requests per second
-LPOP: <span class="m">250815</span>.16 requests per second
+<div class="highlight"><pre><span class="err">$</span> <span class="p">.</span><span class="o">/</span><span class="n">redis</span><span class="o">-</span><span class="n">benchmark</span> <span class="o">-</span><span class="n">r</span> <span class="mi">1000000</span> <span class="o">-</span><span class="n">n</span> <span class="mi">2000000</span> <span class="o">-</span><span class="n">t</span> <span class="n">get</span><span class="p">,</span><span class="n">set</span><span class="p">,</span><span class="n">lpush</span><span class="p">,</span><span class="n">lpop</span> <span class="o">-</span><span class="n">q</span> <span class="o">-</span><span class="n">P</span> <span class="mi">16</span>
+<span class="nl">SET:</span> <span class="mf">195503.42</span> <span class="n">requests</span> <span class="n">per</span> <span class="n">second</span>
+<span class="nl">GET:</span> <span class="mf">250187.64</span> <span class="n">requests</span> <span class="n">per</span> <span class="n">second</span>
+<span class="nl">LPUSH:</span> <span class="mf">230547.55</span> <span class="n">requests</span> <span class="n">per</span> <span class="n">second</span>
+<span class="nl">LPOP:</span> <span class="mf">250815.16</span> <span class="n">requests</span> <span class="n">per</span> <span class="n">second</span>
 </pre></div>
 <p><strong>Linode 2048 instance (without pipelining)</strong></p>
-<div class="highlight"><pre><span></span>$ ./redis-benchmark -r <span class="m">1000000</span> -n <span class="m">2000000</span> -t get,set,lpush,lpop -q
-SET: <span class="m">35001</span>.75 requests per second
-GET: <span class="m">37481</span>.26 requests per second
-LPUSH: <span class="m">36968</span>.58 requests per second
-LPOP: <span class="m">35186</span>.49 requests per second
+<div class="highlight"><pre><span class="err">$</span> <span class="p">.</span><span class="o">/</span><span class="n">redis</span><span class="o">-</span><span class="n">benchmark</span> <span class="o">-</span><span class="n">r</span> <span class="mi">1000000</span> <span class="o">-</span><span class="n">n</span> <span class="mi">2000000</span> <span class="o">-</span><span class="n">t</span> <span class="n">get</span><span class="p">,</span><span class="n">set</span><span class="p">,</span><span class="n">lpush</span><span class="p">,</span><span class="n">lpop</span> <span class="o">-</span><span class="n">q</span>
+<span class="nl">SET:</span> <span class="mf">35001.75</span> <span class="n">requests</span> <span class="n">per</span> <span class="n">second</span>
+<span class="nl">GET:</span> <span class="mf">37481.26</span> <span class="n">requests</span> <span class="n">per</span> <span class="n">second</span>
+<span class="nl">LPUSH:</span> <span class="mf">36968.58</span> <span class="n">requests</span> <span class="n">per</span> <span class="n">second</span>
+<span class="nl">LPOP:</span> <span class="mf">35186.49</span> <span class="n">requests</span> <span class="n">per</span> <span class="n">second</span>
 </pre></div>
 <h2 id="geng-duo-shi-yong-pipeline-de-ce-shi">更多使用 pipeline 的测试</h2>
-<div class="highlight"><pre><span></span>$ redis-benchmark -n <span class="nv">100000</span>
+<div class="highlight"><pre><span class="err">$</span> <span class="n">redis</span><span class="o">-</span><span class="n">benchmark</span> <span class="o">-</span><span class="n">n</span> <span class="mi">100000</span>
 
-<span class="o">======</span> <span class="nv">SET</span> <span class="o">======</span>
-  <span class="m">100007</span> requests completed in <span class="m">0</span>.88 seconds
-  <span class="m">50</span> parallel clients
-  <span class="m">3</span> bytes payload
-  keep alive: <span class="m">1</span>
+<span class="o">======</span> <span class="n">SET</span> <span class="o">======</span>
+  <span class="mi">100007</span> <span class="n">requests</span> <span class="n">completed</span> <span class="n">in</span> <span class="mf">0.88</span> <span class="n">seconds</span>
+  <span class="mi">50</span> <span class="n">parallel</span> <span class="n">clients</span>
+  <span class="mi">3</span> <span class="n">bytes</span> <span class="n">payload</span>
+  <span class="n">keep</span> <span class="n">alive</span><span class="o">:</span> <span class="mi">1</span>
 
-<span class="m">58</span>.50% &lt;<span class="o">=</span> <span class="m">0</span> milliseconds
-<span class="m">99</span>.17% &lt;<span class="o">=</span> <span class="m">1</span> milliseconds
-<span class="m">99</span>.58% &lt;<span class="o">=</span> <span class="m">2</span> milliseconds
-<span class="m">99</span>.85% &lt;<span class="o">=</span> <span class="m">3</span> milliseconds
-<span class="m">99</span>.90% &lt;<span class="o">=</span> <span class="m">6</span> milliseconds
-<span class="m">100</span>.00% &lt;<span class="o">=</span> <span class="m">9</span> milliseconds
-<span class="m">114293</span>.71 requests per <span class="nv">second</span>
+<span class="mf">58.50</span><span class="o">%</span> <span class="o">&lt;=</span> <span class="mi">0</span> <span class="n">milliseconds</span>
+<span class="mf">99.17</span><span class="o">%</span> <span class="o">&lt;=</span> <span class="mi">1</span> <span class="n">milliseconds</span>
+<span class="mf">99.58</span><span class="o">%</span> <span class="o">&lt;=</span> <span class="mi">2</span> <span class="n">milliseconds</span>
+<span class="mf">99.85</span><span class="o">%</span> <span class="o">&lt;=</span> <span class="mi">3</span> <span class="n">milliseconds</span>
+<span class="mf">99.90</span><span class="o">%</span> <span class="o">&lt;=</span> <span class="mi">6</span> <span class="n">milliseconds</span>
+<span class="mf">100.00</span><span class="o">%</span> <span class="o">&lt;=</span> <span class="mi">9</span> <span class="n">milliseconds</span>
+<span class="mf">114293.71</span> <span class="n">requests</span> <span class="n">per</span> <span class="n">second</span>
 
-<span class="o">======</span> <span class="nv">GET</span> <span class="o">======</span>
-  <span class="m">100000</span> requests completed in <span class="m">1</span>.23 seconds
-  <span class="m">50</span> parallel clients
-  <span class="m">3</span> bytes payload
-  keep alive: <span class="m">1</span>
+<span class="o">======</span> <span class="n">GET</span> <span class="o">======</span>
+  <span class="mi">100000</span> <span class="n">requests</span> <span class="n">completed</span> <span class="n">in</span> <span class="mf">1.23</span> <span class="n">seconds</span>
+  <span class="mi">50</span> <span class="n">parallel</span> <span class="n">clients</span>
+  <span class="mi">3</span> <span class="n">bytes</span> <span class="n">payload</span>
+  <span class="n">keep</span> <span class="n">alive</span><span class="o">:</span> <span class="mi">1</span>
 
-<span class="m">43</span>.12% &lt;<span class="o">=</span> <span class="m">0</span> milliseconds
-<span class="m">96</span>.82% &lt;<span class="o">=</span> <span class="m">1</span> milliseconds
-<span class="m">98</span>.62% &lt;<span class="o">=</span> <span class="m">2</span> milliseconds
-<span class="m">100</span>.00% &lt;<span class="o">=</span> <span class="m">3</span> milliseconds
-<span class="m">81234</span>.77 requests per <span class="nv">second</span>
+<span class="mf">43.12</span><span class="o">%</span> <span class="o">&lt;=</span> <span class="mi">0</span> <span class="n">milliseconds</span>
+<span class="mf">96.82</span><span class="o">%</span> <span class="o">&lt;=</span> <span class="mi">1</span> <span class="n">milliseconds</span>
+<span class="mf">98.62</span><span class="o">%</span> <span class="o">&lt;=</span> <span class="mi">2</span> <span class="n">milliseconds</span>
+<span class="mf">100.00</span><span class="o">%</span> <span class="o">&lt;=</span> <span class="mi">3</span> <span class="n">milliseconds</span>
+<span class="mf">81234.77</span> <span class="n">requests</span> <span class="n">per</span> <span class="n">second</span>
 
-<span class="o">======</span> <span class="nv">INCR</span> <span class="o">======</span>
-  <span class="m">100018</span> requests completed in <span class="m">1</span>.46 seconds
-  <span class="m">50</span> parallel clients
-  <span class="m">3</span> bytes payload
-  keep alive: <span class="m">1</span>
+<span class="o">======</span> <span class="n">INCR</span> <span class="o">======</span>
+  <span class="mi">100018</span> <span class="n">requests</span> <span class="n">completed</span> <span class="n">in</span> <span class="mf">1.46</span> <span class="n">seconds</span>
+  <span class="mi">50</span> <span class="n">parallel</span> <span class="n">clients</span>
+  <span class="mi">3</span> <span class="n">bytes</span> <span class="n">payload</span>
+  <span class="n">keep</span> <span class="n">alive</span><span class="o">:</span> <span class="mi">1</span>
 
-<span class="m">32</span>.32% &lt;<span class="o">=</span> <span class="m">0</span> milliseconds
-<span class="m">96</span>.67% &lt;<span class="o">=</span> <span class="m">1</span> milliseconds
-<span class="m">99</span>.14% &lt;<span class="o">=</span> <span class="m">2</span> milliseconds
-<span class="m">99</span>.83% &lt;<span class="o">=</span> <span class="m">3</span> milliseconds
-<span class="m">99</span>.88% &lt;<span class="o">=</span> <span class="m">4</span> milliseconds
-<span class="m">99</span>.89% &lt;<span class="o">=</span> <span class="m">5</span> milliseconds
-<span class="m">99</span>.96% &lt;<span class="o">=</span> <span class="m">9</span> milliseconds
-<span class="m">100</span>.00% &lt;<span class="o">=</span> <span class="m">18</span> milliseconds
-<span class="m">68458</span>.59 requests per <span class="nv">second</span>
+<span class="mf">32.32</span><span class="o">%</span> <span class="o">&lt;=</span> <span class="mi">0</span> <span class="n">milliseconds</span>
+<span class="mf">96.67</span><span class="o">%</span> <span class="o">&lt;=</span> <span class="mi">1</span> <span class="n">milliseconds</span>
+<span class="mf">99.14</span><span class="o">%</span> <span class="o">&lt;=</span> <span class="mi">2</span> <span class="n">milliseconds</span>
+<span class="mf">99.83</span><span class="o">%</span> <span class="o">&lt;=</span> <span class="mi">3</span> <span class="n">milliseconds</span>
+<span class="mf">99.88</span><span class="o">%</span> <span class="o">&lt;=</span> <span class="mi">4</span> <span class="n">milliseconds</span>
+<span class="mf">99.89</span><span class="o">%</span> <span class="o">&lt;=</span> <span class="mi">5</span> <span class="n">milliseconds</span>
+<span class="mf">99.96</span><span class="o">%</span> <span class="o">&lt;=</span> <span class="mi">9</span> <span class="n">milliseconds</span>
+<span class="mf">100.00</span><span class="o">%</span> <span class="o">&lt;=</span> <span class="mi">18</span> <span class="n">milliseconds</span>
+<span class="mf">68458.59</span> <span class="n">requests</span> <span class="n">per</span> <span class="n">second</span>
 
-<span class="o">======</span> <span class="nv">LPUSH</span> <span class="o">======</span>
-  <span class="m">100004</span> requests completed in <span class="m">1</span>.14 seconds
-  <span class="m">50</span> parallel clients
-  <span class="m">3</span> bytes payload
-  keep alive: <span class="m">1</span>
+<span class="o">======</span> <span class="n">LPUSH</span> <span class="o">======</span>
+  <span class="mi">100004</span> <span class="n">requests</span> <span class="n">completed</span> <span class="n">in</span> <span class="mf">1.14</span> <span class="n">seconds</span>
+  <span class="mi">50</span> <span class="n">parallel</span> <span class="n">clients</span>
+  <span class="mi">3</span> <span class="n">bytes</span> <span class="n">payload</span>
+  <span class="n">keep</span> <span class="n">alive</span><span class="o">:</span> <span class="mi">1</span>
 
-<span class="m">62</span>.27% &lt;<span class="o">=</span> <span class="m">0</span> milliseconds
-<span class="m">99</span>.74% &lt;<span class="o">=</span> <span class="m">1</span> milliseconds
-<span class="m">99</span>.85% &lt;<span class="o">=</span> <span class="m">2</span> milliseconds
-<span class="m">99</span>.86% &lt;<span class="o">=</span> <span class="m">3</span> milliseconds
-<span class="m">99</span>.89% &lt;<span class="o">=</span> <span class="m">5</span> milliseconds
-<span class="m">99</span>.93% &lt;<span class="o">=</span> <span class="m">7</span> milliseconds
-<span class="m">99</span>.96% &lt;<span class="o">=</span> <span class="m">9</span> milliseconds
-<span class="m">100</span>.00% &lt;<span class="o">=</span> <span class="m">22</span> milliseconds
-<span class="m">100</span>.00% &lt;<span class="o">=</span> <span class="m">208</span> milliseconds
-<span class="m">88109</span>.25 requests per <span class="nv">second</span>
+<span class="mf">62.27</span><span class="o">%</span> <span class="o">&lt;=</span> <span class="mi">0</span> <span class="n">milliseconds</span>
+<span class="mf">99.74</span><span class="o">%</span> <span class="o">&lt;=</span> <span class="mi">1</span> <span class="n">milliseconds</span>
+<span class="mf">99.85</span><span class="o">%</span> <span class="o">&lt;=</span> <span class="mi">2</span> <span class="n">milliseconds</span>
+<span class="mf">99.86</span><span class="o">%</span> <span class="o">&lt;=</span> <span class="mi">3</span> <span class="n">milliseconds</span>
+<span class="mf">99.89</span><span class="o">%</span> <span class="o">&lt;=</span> <span class="mi">5</span> <span class="n">milliseconds</span>
+<span class="mf">99.93</span><span class="o">%</span> <span class="o">&lt;=</span> <span class="mi">7</span> <span class="n">milliseconds</span>
+<span class="mf">99.96</span><span class="o">%</span> <span class="o">&lt;=</span> <span class="mi">9</span> <span class="n">milliseconds</span>
+<span class="mf">100.00</span><span class="o">%</span> <span class="o">&lt;=</span> <span class="mi">22</span> <span class="n">milliseconds</span>
+<span class="mf">100.00</span><span class="o">%</span> <span class="o">&lt;=</span> <span class="mi">208</span> <span class="n">milliseconds</span>
+<span class="mf">88109.25</span> <span class="n">requests</span> <span class="n">per</span> <span class="n">second</span>
 
-<span class="o">======</span> <span class="nv">LPOP</span> <span class="o">======</span>
-  <span class="m">100001</span> requests completed in <span class="m">1</span>.39 seconds
-  <span class="m">50</span> parallel clients
-  <span class="m">3</span> bytes payload
-  keep alive: <span class="m">1</span>
+<span class="o">======</span> <span class="n">LPOP</span> <span class="o">======</span>
+  <span class="mi">100001</span> <span class="n">requests</span> <span class="n">completed</span> <span class="n">in</span> <span class="mf">1.39</span> <span class="n">seconds</span>
+  <span class="mi">50</span> <span class="n">parallel</span> <span class="n">clients</span>
+  <span class="mi">3</span> <span class="n">bytes</span> <span class="n">payload</span>
+  <span class="n">keep</span> <span class="n">alive</span><span class="o">:</span> <span class="mi">1</span>
 
-<span class="m">54</span>.83% &lt;<span class="o">=</span> <span class="m">0</span> milliseconds
-<span class="m">97</span>.34% &lt;<span class="o">=</span> <span class="m">1</span> milliseconds
-<span class="m">99</span>.95% &lt;<span class="o">=</span> <span class="m">2</span> milliseconds
-<span class="m">99</span>.96% &lt;<span class="o">=</span> <span class="m">3</span> milliseconds
-<span class="m">99</span>.96% &lt;<span class="o">=</span> <span class="m">4</span> milliseconds
-<span class="m">100</span>.00% &lt;<span class="o">=</span> <span class="m">9</span> milliseconds
-<span class="m">100</span>.00% &lt;<span class="o">=</span> <span class="m">208</span> milliseconds
-<span class="m">71994</span>.96 requests per second
+<span class="mf">54.83</span><span class="o">%</span> <span class="o">&lt;=</span> <span class="mi">0</span> <span class="n">milliseconds</span>
+<span class="mf">97.34</span><span class="o">%</span> <span class="o">&lt;=</span> <span class="mi">1</span> <span class="n">milliseconds</span>
+<span class="mf">99.95</span><span class="o">%</span> <span class="o">&lt;=</span> <span class="mi">2</span> <span class="n">milliseconds</span>
+<span class="mf">99.96</span><span class="o">%</span> <span class="o">&lt;=</span> <span class="mi">3</span> <span class="n">milliseconds</span>
+<span class="mf">99.96</span><span class="o">%</span> <span class="o">&lt;=</span> <span class="mi">4</span> <span class="n">milliseconds</span>
+<span class="mf">100.00</span><span class="o">%</span> <span class="o">&lt;=</span> <span class="mi">9</span> <span class="n">milliseconds</span>
+<span class="mf">100.00</span><span class="o">%</span> <span class="o">&lt;=</span> <span class="mi">208</span> <span class="n">milliseconds</span>
+<span class="mf">71994.96</span> <span class="n">requests</span> <span class="n">per</span> <span class="n">second</span>
 </pre></div>
 <p>注意：包大小从 256 到 1024 或者 4096 bytes 不会改变结果的量级
 （但是到 1024 bytes 后，GETs 操作会变慢）。同样的，50 到 256 客户端的测试结果相同。
 10 个客户端时候，吞吐量会变小（译者按：总量到不了最大吞吐量）。</p>
 <p>不同机器可以获的不一样的结果，下面是 <em>Intel T5500 1.66 GHz 在 Linux 2.6</em>
 下面的结果：</p>
-<div class="highlight"><pre><span></span>$ ./redis-benchmark -q -n <span class="m">100000</span>
-SET: <span class="m">53684</span>.38 requests per second
-GET: <span class="m">45497</span>.73 requests per second
-INCR: <span class="m">39370</span>.47 requests per second
-LPUSH: <span class="m">34803</span>.41 requests per second
-LPOP: <span class="m">37367</span>.20 requests per second
+<div class="highlight"><pre><span class="err">$</span> <span class="p">.</span><span class="o">/</span><span class="n">redis</span><span class="o">-</span><span class="n">benchmark</span> <span class="o">-</span><span class="n">q</span> <span class="o">-</span><span class="n">n</span> <span class="mi">100000</span>
+<span class="nl">SET:</span> <span class="mf">53684.38</span> <span class="n">requests</span> <span class="n">per</span> <span class="n">second</span>
+<span class="nl">GET:</span> <span class="mf">45497.73</span> <span class="n">requests</span> <span class="n">per</span> <span class="n">second</span>
+<span class="nl">INCR:</span> <span class="mf">39370.47</span> <span class="n">requests</span> <span class="n">per</span> <span class="n">second</span>
+<span class="nl">LPUSH:</span> <span class="mf">34803.41</span> <span class="n">requests</span> <span class="n">per</span> <span class="n">second</span>
+<span class="nl">LPOP:</span> <span class="mf">37367.20</span> <span class="n">requests</span> <span class="n">per</span> <span class="n">second</span>
 </pre></div>
 <p>另外一个是 64 位 Xeon L5420 2.5 GHz 的结果：</p>
-<div class="highlight"><pre><span></span>$ ./redis-benchmark -q -n <span class="m">100000</span>
-PING: <span class="m">111731</span>.84 requests per second
-SET: <span class="m">108114</span>.59 requests per second
-GET: <span class="m">98717</span>.67 requests per second
-INCR: <span class="m">95241</span>.91 requests per second
-LPUSH: <span class="m">104712</span>.05 requests per second
-LPOP: <span class="m">93722</span>.59 requests per second
+<div class="highlight"><pre><span class="err">$</span> <span class="p">.</span><span class="o">/</span><span class="n">redis</span><span class="o">-</span><span class="n">benchmark</span> <span class="o">-</span><span class="n">q</span> <span class="o">-</span><span class="n">n</span> <span class="mi">100000</span>
+<span class="nl">PING:</span> <span class="mf">111731.84</span> <span class="n">requests</span> <span class="n">per</span> <span class="n">second</span>
+<span class="nl">SET:</span> <span class="mf">108114.59</span> <span class="n">requests</span> <span class="n">per</span> <span class="n">second</span>
+<span class="nl">GET:</span> <span class="mf">98717.67</span> <span class="n">requests</span> <span class="n">per</span> <span class="n">second</span>
+<span class="nl">INCR:</span> <span class="mf">95241.91</span> <span class="n">requests</span> <span class="n">per</span> <span class="n">second</span>
+<span class="nl">LPUSH:</span> <span class="mf">104712.05</span> <span class="n">requests</span> <span class="n">per</span> <span class="n">second</span>
+<span class="nl">LPOP:</span> <span class="mf">93722.59</span> <span class="n">requests</span> <span class="n">per</span> <span class="n">second</span>
 </pre></div>
 <h1>高性能硬件下面的基准测试</h1>
 <ul>
@@ -449,40 +449,40 @@ LPOP: <span class="m">93722</span>.59 requests per second
 <li>固定 CPU，但是使用不同 CPU 内核。</li>
 </ul>
 <p>使用 unix domain socket：</p>
-<div class="highlight"><pre><span></span>$ numactl -C <span class="m">6</span> ./redis-benchmark -q -n <span class="m">100000</span> -s /tmp/redis.sock -d <span class="m">256</span>
-PING <span class="o">(</span>inline<span class="o">)</span>: <span class="m">200803</span>.22 requests per second
-PING: <span class="m">200803</span>.22 requests per second
-MSET <span class="o">(</span><span class="m">10</span> keys<span class="o">)</span>: <span class="m">78064</span>.01 requests per second
-SET: <span class="m">198412</span>.69 requests per second
-GET: <span class="m">198019</span>.80 requests per second
-INCR: <span class="m">200400</span>.80 requests per second
-LPUSH: <span class="m">200000</span>.00 requests per second
-LPOP: <span class="m">198019</span>.80 requests per second
-SADD: <span class="m">203665</span>.98 requests per second
-SPOP: <span class="m">200803</span>.22 requests per second
-LPUSH <span class="o">(</span>again, in order to bench LRANGE<span class="o">)</span>: <span class="m">200000</span>.00 requests per second
-LRANGE <span class="o">(</span>first <span class="m">100</span> elements<span class="o">)</span>: <span class="m">42123</span>.00 requests per second
-LRANGE <span class="o">(</span>first <span class="m">300</span> elements<span class="o">)</span>: <span class="m">15015</span>.02 requests per second
-LRANGE <span class="o">(</span>first <span class="m">450</span> elements<span class="o">)</span>: <span class="m">10159</span>.50 requests per second
-LRANGE <span class="o">(</span>first <span class="m">600</span> elements<span class="o">)</span>: <span class="m">7548</span>.31 requests per second
+<div class="highlight"><pre><span class="err">$</span> <span class="n">numactl</span> <span class="o">-</span><span class="n">C</span> <span class="mi">6</span> <span class="p">.</span><span class="o">/</span><span class="n">redis</span><span class="o">-</span><span class="n">benchmark</span> <span class="o">-</span><span class="n">q</span> <span class="o">-</span><span class="n">n</span> <span class="mi">100000</span> <span class="o">-</span><span class="n">s</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">redis</span><span class="p">.</span><span class="n">sock</span> <span class="o">-</span><span class="n">d</span> <span class="mi">256</span>
+<span class="n">PING</span> <span class="p">(</span><span class="kr">inline</span><span class="p">)</span><span class="o">:</span> <span class="mf">200803.22</span> <span class="n">requests</span> <span class="n">per</span> <span class="n">second</span>
+<span class="nl">PING:</span> <span class="mf">200803.22</span> <span class="n">requests</span> <span class="n">per</span> <span class="n">second</span>
+<span class="n">MSET</span> <span class="p">(</span><span class="mi">10</span> <span class="n">keys</span><span class="p">)</span><span class="o">:</span> <span class="mf">78064.01</span> <span class="n">requests</span> <span class="n">per</span> <span class="n">second</span>
+<span class="nl">SET:</span> <span class="mf">198412.69</span> <span class="n">requests</span> <span class="n">per</span> <span class="n">second</span>
+<span class="nl">GET:</span> <span class="mf">198019.80</span> <span class="n">requests</span> <span class="n">per</span> <span class="n">second</span>
+<span class="nl">INCR:</span> <span class="mf">200400.80</span> <span class="n">requests</span> <span class="n">per</span> <span class="n">second</span>
+<span class="nl">LPUSH:</span> <span class="mf">200000.00</span> <span class="n">requests</span> <span class="n">per</span> <span class="n">second</span>
+<span class="nl">LPOP:</span> <span class="mf">198019.80</span> <span class="n">requests</span> <span class="n">per</span> <span class="n">second</span>
+<span class="nl">SADD:</span> <span class="mf">203665.98</span> <span class="n">requests</span> <span class="n">per</span> <span class="n">second</span>
+<span class="nl">SPOP:</span> <span class="mf">200803.22</span> <span class="n">requests</span> <span class="n">per</span> <span class="n">second</span>
+<span class="n">LPUSH</span> <span class="p">(</span><span class="n">again</span><span class="p">,</span> <span class="n">in</span> <span class="n">order</span> <span class="n">to</span> <span class="n">bench</span> <span class="n">LRANGE</span><span class="p">)</span><span class="o">:</span> <span class="mf">200000.00</span> <span class="n">requests</span> <span class="n">per</span> <span class="n">second</span>
+<span class="n">LRANGE</span> <span class="p">(</span><span class="n">first</span> <span class="mi">100</span> <span class="n">elements</span><span class="p">)</span><span class="o">:</span> <span class="mf">42123.00</span> <span class="n">requests</span> <span class="n">per</span> <span class="n">second</span>
+<span class="n">LRANGE</span> <span class="p">(</span><span class="n">first</span> <span class="mi">300</span> <span class="n">elements</span><span class="p">)</span><span class="o">:</span> <span class="mf">15015.02</span> <span class="n">requests</span> <span class="n">per</span> <span class="n">second</span>
+<span class="n">LRANGE</span> <span class="p">(</span><span class="n">first</span> <span class="mi">450</span> <span class="n">elements</span><span class="p">)</span><span class="o">:</span> <span class="mf">10159.50</span> <span class="n">requests</span> <span class="n">per</span> <span class="n">second</span>
+<span class="n">LRANGE</span> <span class="p">(</span><span class="n">first</span> <span class="mi">600</span> <span class="n">elements</span><span class="p">)</span><span class="o">:</span> <span class="mf">7548.31</span> <span class="n">requests</span> <span class="n">per</span> <span class="n">second</span>
 </pre></div>
 <p>使用 TCP loopback：</p>
-<div class="highlight"><pre><span></span>$ numactl -C <span class="m">6</span> ./redis-benchmark -q -n <span class="m">100000</span> -d <span class="m">256</span>
-PING <span class="o">(</span>inline<span class="o">)</span>: <span class="m">145137</span>.88 requests per second
-PING: <span class="m">144717</span>.80 requests per second
-MSET <span class="o">(</span><span class="m">10</span> keys<span class="o">)</span>: <span class="m">65487</span>.89 requests per second
-SET: <span class="m">142653</span>.36 requests per second
-GET: <span class="m">142450</span>.14 requests per second
-INCR: <span class="m">143061</span>.52 requests per second
-LPUSH: <span class="m">144092</span>.22 requests per second
-LPOP: <span class="m">142247</span>.52 requests per second
-SADD: <span class="m">144717</span>.80 requests per second
-SPOP: <span class="m">143678</span>.17 requests per second
-LPUSH <span class="o">(</span>again, in order to bench LRANGE<span class="o">)</span>: <span class="m">143061</span>.52 requests per second
-LRANGE <span class="o">(</span>first <span class="m">100</span> elements<span class="o">)</span>: <span class="m">29577</span>.05 requests per second
-LRANGE <span class="o">(</span>first <span class="m">300</span> elements<span class="o">)</span>: <span class="m">10431</span>.88 requests per second
-LRANGE <span class="o">(</span>first <span class="m">450</span> elements<span class="o">)</span>: <span class="m">7010</span>.66 requests per second
-LRANGE <span class="o">(</span>first <span class="m">600</span> elements<span class="o">)</span>: <span class="m">5296</span>.61 requests per second
+<div class="highlight"><pre><span class="err">$</span> <span class="n">numactl</span> <span class="o">-</span><span class="n">C</span> <span class="mi">6</span> <span class="p">.</span><span class="o">/</span><span class="n">redis</span><span class="o">-</span><span class="n">benchmark</span> <span class="o">-</span><span class="n">q</span> <span class="o">-</span><span class="n">n</span> <span class="mi">100000</span> <span class="o">-</span><span class="n">d</span> <span class="mi">256</span>
+<span class="n">PING</span> <span class="p">(</span><span class="kr">inline</span><span class="p">)</span><span class="o">:</span> <span class="mf">145137.88</span> <span class="n">requests</span> <span class="n">per</span> <span class="n">second</span>
+<span class="nl">PING:</span> <span class="mf">144717.80</span> <span class="n">requests</span> <span class="n">per</span> <span class="n">second</span>
+<span class="n">MSET</span> <span class="p">(</span><span class="mi">10</span> <span class="n">keys</span><span class="p">)</span><span class="o">:</span> <span class="mf">65487.89</span> <span class="n">requests</span> <span class="n">per</span> <span class="n">second</span>
+<span class="nl">SET:</span> <span class="mf">142653.36</span> <span class="n">requests</span> <span class="n">per</span> <span class="n">second</span>
+<span class="nl">GET:</span> <span class="mf">142450.14</span> <span class="n">requests</span> <span class="n">per</span> <span class="n">second</span>
+<span class="nl">INCR:</span> <span class="mf">143061.52</span> <span class="n">requests</span> <span class="n">per</span> <span class="n">second</span>
+<span class="nl">LPUSH:</span> <span class="mf">144092.22</span> <span class="n">requests</span> <span class="n">per</span> <span class="n">second</span>
+<span class="nl">LPOP:</span> <span class="mf">142247.52</span> <span class="n">requests</span> <span class="n">per</span> <span class="n">second</span>
+<span class="nl">SADD:</span> <span class="mf">144717.80</span> <span class="n">requests</span> <span class="n">per</span> <span class="n">second</span>
+<span class="nl">SPOP:</span> <span class="mf">143678.17</span> <span class="n">requests</span> <span class="n">per</span> <span class="n">second</span>
+<span class="n">LPUSH</span> <span class="p">(</span><span class="n">again</span><span class="p">,</span> <span class="n">in</span> <span class="n">order</span> <span class="n">to</span> <span class="n">bench</span> <span class="n">LRANGE</span><span class="p">)</span><span class="o">:</span> <span class="mf">143061.52</span> <span class="n">requests</span> <span class="n">per</span> <span class="n">second</span>
+<span class="n">LRANGE</span> <span class="p">(</span><span class="n">first</span> <span class="mi">100</span> <span class="n">elements</span><span class="p">)</span><span class="o">:</span> <span class="mf">29577.05</span> <span class="n">requests</span> <span class="n">per</span> <span class="n">second</span>
+<span class="n">LRANGE</span> <span class="p">(</span><span class="n">first</span> <span class="mi">300</span> <span class="n">elements</span><span class="p">)</span><span class="o">:</span> <span class="mf">10431.88</span> <span class="n">requests</span> <span class="n">per</span> <span class="n">second</span>
+<span class="n">LRANGE</span> <span class="p">(</span><span class="n">first</span> <span class="mi">450</span> <span class="n">elements</span><span class="p">)</span><span class="o">:</span> <span class="mf">7010.66</span> <span class="n">requests</span> <span class="n">per</span> <span class="n">second</span>
+<span class="n">LRANGE</span> <span class="p">(</span><span class="n">first</span> <span class="mi">600</span> <span class="n">elements</span><span class="p">)</span><span class="o">:</span> <span class="mf">5296.61</span> <span class="n">requests</span> <span class="n">per</span> <span class="n">second</span>
 </pre></div>
             </div>
             <!-- /.entry-content -->

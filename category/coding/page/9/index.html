@@ -68,6 +68,27 @@ Log4D            </a>
         <div class="col-lg-8 col-lg-offset-2">
 
             <article class="article-list">
+                <h2 class="title"><a href="https://blog.alswl.com/2010/09/script-mm2html/">小脚本mm->html</a></h2>
+                <div class="summary"><p>我同时在使用两套信息记录工具，知识收集记录工具BooguNote + KMS Wiz，关于这两套系统具体介绍请见<a href="http://log4d.com/2010/04/desktop-recording-tool-boogunote">桌面记录神器- BooguNote</a> &amp; <a href="http://log4d.com/2010/09/my-kms">我所使用的知识管理系统</a>。</p>
+<p>我的使用习惯是在BooguNote中收集日常的琐碎知识点，包括我所想的和工作记录。每个小知识节点的长度大概在200-300字左右。这些被我称为的知识碎片显然
+不能直接放入KMS。</p>
+<p>BooguNote可以将里面的文字直接复制出来，会在父亲节点上加入+，子节点加入-，这种简单的txt不能满足我的要求。于是我花了点时间写了一个mm文件到ht
+ml的转换脚本。</p>
+<p>BooguNote的文件格式是boo，可以转换成FreeMind的思维导图格式.mm，我认为用mm作为源数据格式适用范围更大。</p>
+<div class="highlight"><pre><span></span><span class="c1">#coding=utf-8</span>
+<span class="kn">from</span> <span class="nn">xml.dom</span> <span class="kn">import</span> <span class="n">minidom</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">os</span>
+</pre></div>
+<p>class MM2Html:</p>
+<p>'转换MM-&gt;Html类'</p>
+<p>def <strong>init</strong>(self):</p>
+<p>self.html = '''&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1 ...</p>
+                </div>
+                <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2010/09/script-mm2html/"><i class="icon-circle-arrow-right"></i>more ...</a>
+            </article>
+            <hr/>
+            <article class="article-list">
                 <h2 class="title"><a href="https://blog.alswl.com/2010/08/azaajaxchat-notes-implementation/">AzaAjaxChat笔记-实现</a></h2>
                 <div class="summary"><p>唔，继续整理笔记，这些是在代码编写中遇到的问题和解决办法的总结，不是Turtial，问题有针对性，内容枯燥，路人可以直接忽略~</p>
 <h3 id="yi-cometfu-wu-qi-tui-ji-zhu">一、Comet服务器推技术</h3>
@@ -221,52 +242,15 @@ cript脚本能够自动检测PC、Mac机器上各种主流浏览器对Flash插�
 <p>FMS （Flash Media Server）在安装时候，有一个选项是端口使用哪个，默认是1935 和
 80端口，安装之后发现在使用两个Apache在80端口发生冲突（FMS使用的也是Apache服务器），需要将这个端口修改。</p>
 <p>Google后，发现修改 Flash Media Server 3conffms.ini 删除80留下1935即可。</p>
-<div class="highlight"><pre><span></span># IP address and port(s) Flash Media Server should listen on
-# For example:
-#    ADAPTOR.HOSTPORT = :1935,80
-#
-ADAPTOR.HOSTPORT = :1935
+<div class="highlight"><pre><span class="cp"># IP address and port(s) Flash Media Server should listen on</span>
+<span class="cp"># For example:</span>
+<span class="cp">#    ADAPTOR.HOSTPORT = :1935,80</span>
+<span class="cp">#</span>
+<span class="n">ADAPTOR</span><span class="p">.</span><span class="n">HOSTPORT</span> <span class="o">=</span> <span class="o">:</span><span class="mi">1935</span>
 </pre></div>
 <p>唔～继续搞鼓Flex的流媒体传输了 ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2010/05/fms-80-port-used/"><i class="icon-circle-arrow-right"></i>more ...</a>
-            </article>
-            <hr/>
-            <article class="article-list">
-                <h2 class="title"><a href="https://blog.alswl.com/2010/05/cakephp-global-variables/">CakePHP的全局变量</a></h2>
-                <div class="summary"><p>毕业设计AzaAjaxChat 中有一个功能，记录当前在线用户，直观的看，用Application对象就可以解决。</p>
-<p>忙了一会发现，原来PHP没有Application对象这个概念，于是我想到了全局变量，噩梦便开始了。（Application
-和全局变量其实完全不是同一个概念）</p>
-<p>我使用的框架是CakePHP，查找资料后，找到了几种CakePHP中使用全局变量的方法。</p>
-<h3 id="yi-shi-yong-bootstrapphpwen-jian">一、使用bootstrap.php文件</h3>
-<p>在app/config 下面，有一个bootstrap文件，从名字就可以看出，这个是在控制器之前加载的文件，根据官方的描述，有下面几个用法。</p>
-<blockquote>
-<ul>
-<li>
-<p>定义方便的函数</p>
-</li>
-<li>
-<p>注册全局常量</p>
-</li>
-<li>
-<p>定义新增的控制器，视图，控制器路径</p>
-</li>
-</ul>
-</blockquote>
-<p>通过这个文件可以实现全局变量的声明。</p>
-<div class="highlight"><pre><span></span>if (!isset ($globalAAC)) {
-    global $globalAAC;
-    $globalAAC = array (
-        'currentMessageId' =&gt; -1,
-        'onlineUsers' =&gt; array()
-    );
-}
-</pre></div>
-<p>在其他文件中就可以调用这个全局变量了。</p>
-<h3 id="er-tong-guo-configure-lei">二、通过Configure 类</h3>
-<p>Configure类是CakePHP用来进行配置文件的地方，通过write() 和read()方法 ...</p>
-                </div>
-                <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2010/05/cakephp-global-variables/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
             <hr/>
 
@@ -407,7 +391,7 @@ ADAPTOR.HOSTPORT = :1935
    <div class="container">
       <hr>
       <div class="row">
-         <div class="col-xs-10">&copy; 2017 alswl
+         <div class="col-xs-10">&copy; 2018 alswl
             &middot; Powered by <a href="https://github.com/alswl/pelican-bootstrap3" target="_blank" style="font-weight: bold">pelican-bootstrap3</a>,
             <a href="http://docs.getpelican.com/" target="_blank" style="font-weight: bold">Pelican</a>,
             <a href="http://getbootstrap.com" target="_blank" style="font-weight: bold">Bootstrap</a>,

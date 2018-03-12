@@ -1,5 +1,351 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Log4D</title><link href="https://blog.alswl.com/" rel="alternate"></link><link href="https://blog.alswl.com/atom.xml" rel="self"></link><id>https://blog.alswl.com/</id><updated>2018-01-21T22:57:26+08:00</updated><entry><title>从 2017 到 2018</title><link href="https://blog.alswl.com/2018/01/2017-2018/" rel="alternate"></link><published>2018-01-21T22:57:26+08:00</published><updated>2018-01-21T22:57:26+08:00</updated><author><name>alswl</name></author><id>tag:blog.alswl.com,2018-01-21:2018/01/2017-2018/</id><summary type="html">&lt;p&gt;&lt;img alt="2017 年 2 月摄于瑞虹月亮湾" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201801/moon.png"/&gt;&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Log4D</title><link href="https://blog.alswl.com/" rel="alternate"></link><link href="https://blog.alswl.com/atom.xml" rel="self"></link><id>https://blog.alswl.com/</id><updated>2018-03-12T21:08:56+08:00</updated><entry><title>从 SQL Server 到 MySQL （一）：异构数据库迁移</title><link href="https://blog.alswl.com/2018/03/sql-server-migration-1/" rel="alternate"></link><published>2018-03-12T21:08:56+08:00</published><updated>2018-03-12T21:08:56+08:00</updated><author><name>alswl</name></author><id>tag:blog.alswl.com,2018-03-12:2018/03/sql-server-migration-1/</id><summary type="html">&lt;p&gt;&lt;img alt="201803/migration-bird.png" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201803/migration-bird.png"/&gt;&lt;/p&gt;
+&lt;h2 id="bei-jing"&gt;背景&lt;/h2&gt;
+&lt;p&gt;沪江成立于 2001 年，作为较早期的教育学习网站，
+当时技术选型范围并不大：
+Java 的版本是 1.2，C# 尚未诞生，MySQL 还没有被 Sun 收购，
+版本号是 3.23。
+工程师们选择了当时最合适的微软体系，并在日后的岁月里，
+逐步从 ASP 过度到 .net，数据库也跟随 SQL Server 进行版本升级。&lt;/p&gt;
+&lt;p&gt;十几年过去了，技术社区已经发生了天翻地覆的变化。
+沪江的技术栈还基本在 .net 体系上，这给业务持续发展带来了一些限制。
+人才招聘、社区生态、架构优化、成本风险方面都面临挑战。
+集团经过慎重考虑，发起了大规模的去 Windows 化项目。
+这其中包含两个重点子项目：开发语言从 C# 迁移到 Java，
+数据库从 SQL Server 迁移到 MySQL。&lt;/p&gt;
+&lt;p&gt;本系列文章就是向大家介绍，
+从 SQL Server 迁移到 MySQL 所面临的问题和我们的解决方案。&lt;/p&gt;
+
+&lt;h2 id="qian-yi-fang-an-de-ji-ben-liu-cheng"&gt;迁移方案的基本流程&lt;/h2&gt;
+&lt;p&gt;设计迁移方案需要考量以下几个指标：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;迁移前后的数据一致性&lt;/li&gt;
+&lt;li&gt;业务停机时间&lt;/li&gt;
+&lt;li&gt;迁移项目是否对业务代码有侵入&lt;/li&gt;
+&lt;li&gt;需要提供额外的功能：表结构重构、字段调整&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;经过仔细调研，在平衡复杂性和业务方需求后，
+迁移方案设计为两种：停机数据迁移和在线数据迁移。
+如果业务场景允许数小时的停机，那么使用停机迁移方案，
+复杂度低，数据损失风险低。
+如果业务场景不允许长时间停机，或者迁移数据量过大，
+无法在几个小时内迁移完成，那么就需要使用在线迁移方案了。&lt;/p&gt;
+&lt;p&gt;数据库停机迁移的流程：&lt;/p&gt;
+&lt;p&gt;&lt;img alt="201803/migration-db-offline-readonly.png" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201803/migration-db-offline-readonly.png"/&gt;&lt;/p&gt;
+&lt;p&gt;停机迁移逻辑比较简单，使用 ETL（Extract Translate Load）
+工具从 Source 写入 Target，然后进行一致性校验，最后确认应用运行 OK，
+将 Source 表名改掉进行备份。&lt;/p&gt;
+&lt;p&gt;在线迁移的流程：&lt;/p&gt;
+&lt;p&gt;&lt;img alt="201803/migration-db-online.png" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201803/migration-db-online.png"/&gt;&lt;/p&gt;
+&lt;p&gt;在线迁移的方案稍微复杂一些，流程上有准备全量数据，然后实时同步增量数据，
+在数据同步跟上（延迟秒级别）之后，进行短暂停机（Hang 住，确保没有流量），
+就可以使用新的应用配置，并使用新的数据库。&lt;/p&gt;
+&lt;h2 id="xu-yao-jie-jue-de-wen-ti"&gt;需要解决的问题&lt;/h2&gt;
+&lt;p&gt;从 SQL Server 迁移到 MySQL，核心是完成异构数据库的迁移。&lt;/p&gt;
+&lt;p&gt;基于两种数据迁移方案，我们需要解决以下问题：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;两个数据库的数据结构是否可以一一对应？出现不一致如何处理？&lt;/li&gt;
+&lt;li&gt;MySQL 的使用方式和 SQL Server 使用方式是否一致？有哪些地方需要注意？&lt;/li&gt;
+&lt;li&gt;如何确保迁移前后的数据一致性？&lt;/li&gt;
+&lt;li&gt;在迁移中，如何支持数据结构调整？&lt;/li&gt;
+&lt;li&gt;如何保证业务不停情况下面，实现在线迁移？&lt;/li&gt;
+&lt;li&gt;数据迁移后如果发现业务异常需要回滚，如何处理新产生的数据？&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;为了解决以上的问题，我们需要引入一整套解决方案，包含以下部分：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;指导文档 A：SQL Server 转换 MySQL 的数据类型对应表&lt;/li&gt;
+&lt;li&gt;指导文档 B：MySQL 的使用方式以及注意点&lt;/li&gt;
+&lt;li&gt;支持表结构变更，从 SQL Server 到 MySQL 的 ETL 工具&lt;/li&gt;
+&lt;li&gt;支持 SQL Server 到 MySQL 的在线 ETL 工具&lt;/li&gt;
+&lt;li&gt;一致性校验工具&lt;/li&gt;
+&lt;li&gt;一个回滚工具&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;让我们一一来解决这些问题。&lt;/p&gt;
+&lt;h2 id="sql-server-dao-mysql-zhi-dao-wen-dang"&gt;SQL Server 到 MySQL 指导文档&lt;/h2&gt;
+&lt;p&gt;非常幸运的是，MySQL 官方早就准备了一份如何其他数据库迁移到
+MySQL 的白皮书。
+&lt;a href="https://www.mysql.com/it/why-mysql/white-papers/guide-to-migrating-from-sql-server-to-mysql/"&gt;MySQL :: Guide to Migrating from Microsoft SQL Server to MySQL&lt;/a&gt;
+里提供了详尽的 SQL Server 到 MySQL 的对应方案。
+包含了：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;SQL Server to MySQL - Datatypes 数据类型对应表&lt;/li&gt;
+&lt;li&gt;SQL Server to MySQL - Predicates 逻辑算子对应表&lt;/li&gt;
+&lt;li&gt;SQL Server to MySQL &amp;ndash; Operators and Date Functions 函数对应表&lt;/li&gt;
+&lt;li&gt;T-SQL Conversion Suggestions 存储过程转换建议&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;需要额外处理的数据类型：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;SQL Server&lt;/th&gt;
+&lt;th&gt;MySQL&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;IDENTITY&lt;/td&gt;
+&lt;td&gt;AUTO_INCREMENT&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;NTEXT, NATIONAL TEXT&lt;/td&gt;
+&lt;td&gt;TEXT CHARACTER SET UTF8&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SMALLDATETIME&lt;/td&gt;
+&lt;td&gt;DATETIME&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;MONEY&lt;/td&gt;
+&lt;td&gt;DECIMAL(19,4)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SMALL MONEY&lt;/td&gt;
+&lt;td&gt;DECIMAL(10,4)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;UNIQUEIDENTIFIER&lt;/td&gt;
+&lt;td&gt;BINARY(16)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SYSNAME&lt;/td&gt;
+&lt;td&gt;CHAR(256)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;在实际进行中，还额外遇到了一个用来解决树形结构存储的字段类型
+Hierarchyid。这个场景需要额外进行业务调整。&lt;/p&gt;
+&lt;p&gt;我们在内部做了针对 MySQL 知识的摸底排查工作，
+并进行了若干次的 MySQL 使用技巧培训，
+将工程师对 MySQL 的认知拉到一根统一的线。&lt;/p&gt;
+&lt;p&gt;关于存储过程使用，我们和业务方也达成了一致：所有 SQL Server
+存储过程使用业务代码进行重构，不能在 MySQL 中使用存储过程。
+原因是存储过程增加了业务和 DB 的耦合，会让维护成本变得极高。
+另外 MySQL 的存储过程功能和性能都较弱，无法大规模使用。&lt;/p&gt;
+&lt;p&gt;最后我们提供了一个 MySQL 开发规范文档，借数据库迁移的机会，
+将之前相对混乱的表结构设计做了统一了约束（部分有业务绑定的设计，
+在考虑成本之后没有做调整）。&lt;/p&gt;
+&lt;h2 id="etl-gong-ju"&gt;ETL 工具&lt;/h2&gt;
+&lt;p&gt;ETL 的全称是 Extract Translate Load（读取、转换、载入），
+数据库迁移最核心过程就是 ETL 过程。
+如果将 ETL 过程简化，去掉 Translate 过程，
+就退化为一个简单的数据导入导出工具。
+我们可以先看一下市面上常见的导入导出工具，
+了解他们的原理和特性，方便我们选型。&lt;/p&gt;
+&lt;p&gt;MySQL 同构数据库数据迁移工具：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html"&gt;mysqldump&lt;/a&gt;
+    和 &lt;a href="https://dev.mysql.com/doc/refman/5.7/en/mysqlimport.html"&gt;mysqlimport&lt;/a&gt;
+    MySQL 官方提供的 SQL 导出导出工具&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.percona.com/doc/percona-toolkit/LATEST/pt-table-sync.html"&gt;pt-table-sync&lt;/a&gt;
+    Percona 提供的主从同步工具&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.percona.com/software/mysql-database/percona-xtrabackup"&gt;XtraBackup&lt;/a&gt;
+    Percona 提供的备份工具&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;异构数据库迁移工具：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://www.convert-in.com/"&gt;Database migration and synchronization tools&lt;/a&gt;
+    ：国外一家提供数据库迁移解决方案的公司&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/alibaba/DataX"&gt;DataX&lt;/a&gt;
+    ：阿里巴巴开发的数据库同步工具&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/alibaba/yugong"&gt;yugong&lt;/a&gt;
+    ：阿里巴巴开发的数据库迁移工具&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.mysql.com/cn/products/workbench/"&gt;MySQL Workbench&lt;/a&gt;
+    ：MySQL 提供的 GUI 管理工具，包含数据库迁移功能&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://community.hds.com/docs/DOC-1009855"&gt;Data Integration - Kettle&lt;/a&gt;
+    ：国外的一款 GUI ETL 工具&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.ispirer.cn/products/sql-server-to-mysql-migration"&gt;Ispirer&lt;/a&gt;
+    ：提供应用程序、数据库异构迁移方案的公司&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.szmesoft.com/DB2DB"&gt;DB2DB 数据库转换工具&lt;/a&gt; 
+    ：一个国产的商业数据库迁移软件&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.navicat.com/en/products/navicat-premium"&gt;Navicat Premium&lt;/a&gt;
+    ：经典的数据库管理工具，带数据迁移功能&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.cnblogs.com/cyq1162/p/5637978.html"&gt;DBImport&lt;/a&gt;
+    ：个人维护的迁移工具，非常简陋，需要付费&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;看上去异构数据库迁移工具和方案很多，但是经过我们调研，其中不少是为老派的传统行业服务的。
+比如 Kettle / Ispirerer，他们关注的特性，不能满足互联网公司对性能、迁移耗时的要求。
+简单筛选后，以下几个工具进入我们候选列表（为了做特性对比，加入几个同构数据库迁移工具）：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;工具名称&lt;/th&gt;
+&lt;th&gt;热数据备份保证一致性&lt;/th&gt;
+&lt;th&gt;batch 操作&lt;/th&gt;
+&lt;th&gt;支持异构数据库&lt;/th&gt;
+&lt;th&gt;断点续接&lt;/th&gt;
+&lt;th&gt;开源&lt;/th&gt;
+&lt;th&gt;开发语言&lt;/th&gt;
+&lt;th&gt;GUI&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;mysqldump&lt;/td&gt;
+&lt;td&gt;V 使用 &lt;code&gt;single-transaction&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;X&lt;/td&gt;
+&lt;td&gt;X&lt;/td&gt;
+&lt;td&gt;X&lt;/td&gt;
+&lt;td&gt;V&lt;/td&gt;
+&lt;td&gt;C&lt;/td&gt;
+&lt;td&gt;X&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;pt-table-sync&lt;/td&gt;
+&lt;td&gt;V 使用 transaction 或 &lt;code&gt;lock table&lt;/code&gt; 的 FTWRL&lt;/td&gt;
+&lt;td&gt;V&lt;/td&gt;
+&lt;td&gt;X&lt;/td&gt;
+&lt;td&gt;V&lt;/td&gt;
+&lt;td&gt;V&lt;/td&gt;
+&lt;td&gt;Pell&lt;/td&gt;
+&lt;td&gt;X&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;DataX&lt;/td&gt;
+&lt;td&gt;X&lt;/td&gt;
+&lt;td&gt;V&lt;/td&gt;
+&lt;td&gt;V&lt;/td&gt;
+&lt;td&gt;X&lt;/td&gt;
+&lt;td&gt;V&lt;/td&gt;
+&lt;td&gt;Java&lt;/td&gt;
+&lt;td&gt;X&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;yugong&lt;/td&gt;
+&lt;td&gt;X&lt;/td&gt;
+&lt;td&gt;V&lt;/td&gt;
+&lt;td&gt;V&lt;/td&gt;
+&lt;td&gt;V&lt;/td&gt;
+&lt;td&gt;V&lt;/td&gt;
+&lt;td&gt;Java&lt;/td&gt;
+&lt;td&gt;X&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;DB2DB&lt;/td&gt;
+&lt;td&gt;X&lt;/td&gt;
+&lt;td&gt;V&lt;/td&gt;
+&lt;td&gt;V&lt;/td&gt;
+&lt;td&gt;X&lt;/td&gt;
+&lt;td&gt;X&lt;/td&gt;
+&lt;td&gt;.net&lt;/td&gt;
+&lt;td&gt;V&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;MySQL Workbench&lt;/td&gt;
+&lt;td&gt;X&lt;/td&gt;
+&lt;td&gt;?&lt;/td&gt;
+&lt;td&gt;V&lt;/td&gt;
+&lt;td&gt;X&lt;/td&gt;
+&lt;td&gt;V&lt;/td&gt;
+&lt;td&gt;C++&lt;/td&gt;
+&lt;td&gt;V&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;由于异构数据库迁移，真正能够进入我们选型的只有
+DataX / yugong / DB2DB / MySQL Workbench。
+经过综合考虑，我们最终选用了三种方案，
+DB2DB 提供小数据量、简单模式的停机模式支持，
+足以应付小数据量的停机迁移，开发工程师可以自助完成。
+DataX 为大数据量的停机模式提供服务，
+使用 JSON 进行配置，通过修改查询 SQL，可以完成一部分结构调整工程。
+yugong 的强大可定制性也为在线迁移提供了基础，
+我们在官方开源版本的基础之上，增加了以下额外功能：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;支持 SQL Server 作为 Source 和 Target&lt;/li&gt;
+&lt;li&gt;支持 MySQL 作为 Source&lt;/li&gt;
+&lt;li&gt;支持 SQL Server 增量更新&lt;/li&gt;
+&lt;li&gt;支持使用 YAML 作为配置格式&lt;/li&gt;
+&lt;li&gt;调整 yugong 为 fat jar 模式运行&lt;/li&gt;
+&lt;li&gt;支持表名、字段名大小写格式变化，驼峰和下划线自由转换&lt;/li&gt;
+&lt;li&gt;支持表名、字段名细粒度自定义&lt;/li&gt;
+&lt;li&gt;支持复合主键迁移&lt;/li&gt;
+&lt;li&gt;支持迁移过程中完成 Range / Time / Mod / Hash 分表&lt;/li&gt;
+&lt;li&gt;支持新增、删除字段&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;关于 yugong 的二次开发，我们也积累了一些经验，这个我们下篇文章会来分享。&lt;/p&gt;
+&lt;h2 id="yi-zhi-xing-xiao-yan-gong-ju"&gt;一致性校验工具&lt;/h2&gt;
+&lt;p&gt;在 ETL 之后，需要有一个流程来确认数据迁移前后是否一致。
+虽然理论上不会有差异，但是如果中间有程序异常，
+或者数据库在迁移过程中发生操作，数据就会不一致。&lt;/p&gt;
+&lt;p&gt;业界有没有类似的工具呢？
+有，Percona 提供了 pt-table-checksum 这样的工具，
+这个工具设计从 master 使用 &lt;code&gt;checksum&lt;/code&gt; 来和 slave 进行数据对比。
+这个设计场景是为 MySQL 主从同步设计，
+显然无法完成从 SQL Server 到 MySQL 的一致性校验。
+尽管如此，它的一些技术设计特性也值得参考：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;一次检查一张表&lt;/li&gt;
+&lt;li&gt;每次检查表，将表数据拆分为多个 trunk 进行检查&lt;/li&gt;
+&lt;li&gt;使用 &lt;code&gt;REPLACE...SELECT&lt;/code&gt; 查询，避免大表查询的长时间带来的不一致性&lt;/li&gt;
+&lt;li&gt;每个 trunk 的查询预期时间是 0.5s&lt;/li&gt;
+&lt;li&gt;动态调整 trunk 大小，使用指数级增长控制大小&lt;/li&gt;
+&lt;li&gt;查询超时时间 1s / 并发量 25&lt;/li&gt;
+&lt;li&gt;支持故障后断点恢复&lt;/li&gt;
+&lt;li&gt;在数据库内部维护 src / diff，meta 信息&lt;/li&gt;
+&lt;li&gt;通过 Master 提供的信息自动连接上 slave&lt;/li&gt;
+&lt;li&gt;必须 Schema 结构一致&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;我们选择 yugong 作为 ETL 工具的一大原因也是因为它提供了多种模式。
+支持 CHECK / FULL / INC / AUTO 四种模式。
+其中 CHECK 模式就是将 yugong 作为数据一致性检查工具使用。
+yugong 工作原理是通过 JDBC 根据主键范围变化，将数据取出进行批量对比。&lt;/p&gt;
+&lt;p&gt;这个模式会遇到一点点小问题，如果数据库表没有主键，将无法进行顺序对比。
+其实不同数据库有自己的逻辑主键，Oracle 有 &lt;code&gt;rowid&lt;/code&gt;，
+SQL Server 有 &lt;code&gt;physloc&lt;/code&gt;。这种方案可以解决无主键进行比对的问题。&lt;/p&gt;
+&lt;h2 id="ru-he-hui-gun"&gt;如何回滚&lt;/h2&gt;
+&lt;p&gt;我们需要考虑一个场景，在数据库迁移成功之后业务已经运行了几个小时，
+但是遇到了一些 Critical 级别的问题，必须回滚到迁移之前状态。
+这时候如何保证这段时间内的数据更新到老的数据库里面去？&lt;/p&gt;
+&lt;p&gt;最朴素的做法是，在业务层面植入 DAO 层的打点，
+将 SQL 操作记录下来到老数据库进行重放。
+这种方式虽然直观，但是要侵入业务系统，直接被我们否决了。
+其实这种方式是 binlog statement based 模式，
+理论上我们可以直接从 MySQL 的 binlog 里面获取数据变更记录。
+以 row based 方式重放到 SQL Server。&lt;/p&gt;
+&lt;p&gt;这时候又涉及到逆向 ETL 过程，
+因为很可能 Translate 过程中，做了表结构重构。
+我们的解决方法是，使用 Canal 对 MySQL binlog 进行解析，
+然后将解析之后的数据作为数据源，
+将其中的变更重放到 SQL Server。&lt;/p&gt;
+&lt;p&gt;由于回滚的过程也是 ETL，基于 yugong，
+我们继续定制了 SQL Server 的写入功能，
+这个模式类似于在线迁移，只不过方向是从 MySQL 到 SQL Server。&lt;/p&gt;
+&lt;h2 id="qi-ta-shi-jian"&gt;其他实践&lt;/h2&gt;
+&lt;p&gt;我们在迁移之前做了大量压测工作，
+并针对每个迁移的 DB 进行线上环境一致的全真演练。
+我们构建了和生产环境机器配置一样，
+数据量一样的测试环境，并要求每个系统在上线之前都进行若干次演练。
+演练之前准备详尽的操作手册和事故处理方案。
+演练准出的标准是：能够在单次演练中不出任何意外，时间在估计范围内。
+通过演练我们保证了整个操作时间可控，减少操作时候的风险。&lt;/p&gt;
+&lt;p&gt;为了让数据库的状态更为直观的展现出来，
+我们对 MySQL / SQL Server 添加了细致的 Metrics 监控。
+在测试和迁移过程中，可以便利地看到数据库的响应情况。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="201803/sql-server-metrics.png" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201803/sql-server-metrics.png"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="201803/mysql-metrics.png" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201803/mysql-metrics.png"/&gt;&lt;/p&gt;
+&lt;p&gt;为了方便 DBA 快速 Review SQL。
+我们提供了一些工具，直接将代码库中的 SQL 拎出来，
+可以方便地进行 SQL Review。
+再配合其他 SQL Review 工具，
+比如 &lt;a href="https://github.com/Meituan-Dianping/SQLAdvisor"&gt;Meituan-Dianping/SQLAdvisor&lt;/a&gt;，
+可以实现一部分自动化，提高 DBA 效率，避免线上出现明显的 Slow SQL。&lt;/p&gt;
+&lt;h2 id="zui-hou"&gt;最后&lt;/h2&gt;
+&lt;p&gt;基于这几种方案我们打了一套组合拳。经过将近一年的使用，
+进行了 28 个通宵，迁移了 42 个系统，
+完成了包括用户、订单、支付、电商、学习、社群、内容和工具的迁移。
+迁移的数据总规模接近百亿，所有迁移项目均一次成功。
+迁移过程中积累了丰富的实战经验，保障了业务快速向前发展。&lt;/p&gt;
+&lt;hr&gt;
+&lt;div class="panel"&gt;
+&lt;div class="panel-body"&gt;
+   &lt;small&gt;原文链接: &lt;a href="https://blog.alswl.com/2018/03/sql-server-migration-1/"&gt;https://blog.alswl.com/2018/03/sql-server-migration-1/&lt;/a&gt;&lt;/small&gt;&lt;br&gt;
+   &lt;small&gt;3a1ff193cee606bd1e2ea554a16353ee&lt;/small&gt;&lt;br&gt;
+   &lt;small&gt;欢迎关注我的微信公众号：&lt;a href="http://mp.weixin.qq.com/mp/getmasssendmsg?__biz=MzIyNTIwMTU3MQ==#wechat_webview_type=1&amp;wechat_redirect"&gt;窥豹&lt;/a&gt;&lt;/small&gt;&lt;br&gt;
+   &lt;small&gt;&lt;img src="https://ohsolnxaa.qnssl.com/upload_dropbox/201605/qrcode_for_gh_17e2f9c2caa4_258.jpg"/&gt;&lt;/small&gt;
+   &lt;small&gt;&lt;img src="https://ohsolnxaa.qnssl.com/upload_dropbox/meta/wechat-pay-s-crop.png"/&gt;&lt;/small&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</summary><category term="SQLServer"></category><category term="MySQL"></category><category term="Migration"></category></entry><entry><title>从 2017 到 2018</title><link href="https://blog.alswl.com/2018/01/2017-2018/" rel="alternate"></link><published>2018-01-21T22:57:26+08:00</published><updated>2018-01-21T22:57:26+08:00</updated><author><name>alswl</name></author><id>tag:blog.alswl.com,2018-01-21:2018/01/2017-2018/</id><summary type="html">&lt;p&gt;&lt;img alt="2017 年 2 月摄于瑞虹月亮湾" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201801/moon.png"/&gt;&lt;/p&gt;
 &lt;p&gt;&lt;small&gt;（2017 年 2 月摄于瑞虹月亮湾）&lt;/small&gt;&lt;/p&gt;
 &lt;p&gt;我有两年没公开年终总结了，原因很简单：年终结果无法让自己满意，
 生活持续呈线性发展。那今年为什么又要将总结发出来呢？
@@ -408,7 +754,7 @@ SQL Server 到 MySQL。
    &lt;small&gt;&lt;img src="https://ohsolnxaa.qnssl.com/upload_dropbox/meta/wechat-pay-s-crop.png"/&gt;&lt;/small&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</summary><category term=""></category></entry><entry><title>工作和热情</title><link href="https://blog.alswl.com/2017/12/enthusiasm/" rel="alternate"></link><published>2017-12-21T23:46:59+08:00</published><updated>2017-12-21T23:46:59+08:00</updated><author><name>alswl</name></author><id>tag:blog.alswl.com,2017-12-21:2017/12/enthusiasm/</id><summary type="html">&lt;p&gt;&lt;img alt="201712/work.jpg" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201712/work.jpg"/&gt;&lt;/p&gt;
+</summary><category term="2017"></category><category term="年度"></category></entry><entry><title>工作和热情</title><link href="https://blog.alswl.com/2017/12/enthusiasm/" rel="alternate"></link><published>2017-12-21T23:46:59+08:00</published><updated>2017-12-21T23:46:59+08:00</updated><author><name>alswl</name></author><id>tag:blog.alswl.com,2017-12-21:2017/12/enthusiasm/</id><summary type="html">&lt;p&gt;&lt;img alt="201712/work.jpg" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201712/work.jpg"/&gt;&lt;/p&gt;
 &lt;p&gt;最近和一位老朋友吃饭，他说他最近比较苦恼：
 「开始有职业危机了，担心自己失去对工作的热情，似乎离油腻的中年人又进了一步」。
 作为一名互联网工程师，我深知这个行业技术日新月异，
@@ -529,7 +875,7 @@ SQL Server 到 MySQL。
    &lt;small&gt;&lt;img src="https://ohsolnxaa.qnssl.com/upload_dropbox/meta/wechat-pay-s-crop.png"/&gt;&lt;/small&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</summary><category term=""></category></entry><entry><title>服务性能监控：USE 方法（The USE Method）</title><link href="https://blog.alswl.com/2017/11/use-method/" rel="alternate"></link><published>2017-11-12T15:30:12+08:00</published><updated>2017-11-12T15:30:12+08:00</updated><author><name>小莞</name></author><id>tag:blog.alswl.com,2017-11-12:2017/11/use-method/</id><summary type="html">&lt;p&gt;本文首发在沪江技术学院公众号，小莞翻译，我做了校对。
+</summary><category term="Enthusiasm"></category><category term="Passion"></category></entry><entry><title>服务性能监控：USE 方法（The USE Method）</title><link href="https://blog.alswl.com/2017/11/use-method/" rel="alternate"></link><published>2017-11-12T15:30:12+08:00</published><updated>2017-11-12T15:30:12+08:00</updated><author><name>小莞</name></author><id>tag:blog.alswl.com,2017-11-12:2017/11/use-method/</id><summary type="html">&lt;p&gt;本文首发在沪江技术学院公众号，小莞翻译，我做了校对。
 由于微信公众号的封闭性，我担心未来文章不容易被发现。
 为了避免沧海遗珠，特意转到这里。&lt;/p&gt;
 &lt;p&gt;英文原文：&lt;a href="http://www.brendangregg.com/usemethod.html"&gt;The USE Method&lt;/a&gt;。&lt;/p&gt;
@@ -2003,16 +2349,16 @@ Brend Gregg 是 Netflix 的首席 SRE，著有 &lt;a href="http://www.brendangre
 让这些构建的数据破坏 DOM 结构，从而让自己预先构造数据中的 JS 脚本被执行。&lt;/p&gt;
 &lt;p&gt;检查存储型 XSS 漏洞的方法，可以在对应的 input field 里放入一些构造的数据，如果保存后可以被执行，就说明存在 XSS 漏洞。&lt;/p&gt;
 &lt;p&gt;常见的检测方法（来自&amp;nbsp;&lt;a href="https://zh.wikipedia.org/zh-cn/%E8%B7%A8%E7%B6%B2%E7%AB%99%E6%8C%87%E4%BB%A4%E7%A2%BC#.E6.A3.80.E6.B5.8B.E6.96.B9.E6.B3.95"&gt;跨网站脚本 - 维基百科，自由的百科全书&lt;/a&gt;：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;gt;&lt;span class="nt"&gt;&amp;lt;script&amp;gt;&lt;/span&gt;alert(document.cookie)&lt;span class="nt"&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-='&amp;gt;&lt;span class="nt"&gt;&amp;lt;script&amp;gt;&lt;/span&gt;alert(document.cookie)&lt;span class="nt"&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-"&amp;gt;&lt;span class="nt"&gt;&amp;lt;script&amp;gt;&lt;/span&gt;alert(document.cookie)&lt;span class="nt"&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-&lt;span class="nt"&gt;&amp;lt;script&amp;gt;&lt;/span&gt;alert(document.cookie)&lt;span class="nt"&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-&lt;span class="nt"&gt;&amp;lt;script&amp;gt;&lt;/span&gt;alert (vulnerable)&lt;span class="nt"&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-%3Cscript%3Ealert('XSS')%3C/script%3E
-&lt;span class="nt"&gt;&amp;lt;script&amp;gt;&lt;/span&gt;alert('XSS')&lt;span class="nt"&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-&lt;span class="nt"&gt;&amp;lt;img&lt;/span&gt; &lt;span class="na"&gt;src=&lt;/span&gt;&lt;span class="s"&gt;"javascript:alert('XSS')"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
-&lt;span class="nt"&gt;&amp;lt;img&lt;/span&gt; &lt;span class="na"&gt;src=&lt;/span&gt;&lt;span class="s"&gt;"http://xxx.com/yyy.png"&lt;/span&gt; &lt;span class="na"&gt;onerror=&lt;/span&gt;&lt;span class="s"&gt;"alert('XSS')"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
-（这个仅限IE有效）
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;script&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="nx"&gt;alert&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;document.cookie&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nb"&gt;script&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'&amp;gt;&amp;lt;script&amp;gt;alert(document.cookie)&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;span class="s1"&gt;"&amp;gt;&amp;lt;script&amp;gt;alert(document.cookie)&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;span class="s1"&gt;&amp;lt;script&amp;gt;alert(document.cookie)&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;span class="s1"&gt;&amp;lt;script&amp;gt;alert (vulnerable)&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;span class="s1"&gt;%3Cscript%3Ealert('&lt;/span&gt;&lt;span class="nx"&gt;XSS&lt;/span&gt;&lt;span class="s1"&gt;')%3C/script%3E&lt;/span&gt;
+&lt;span class="s1"&gt;&amp;lt;script&amp;gt;alert('&lt;/span&gt;&lt;span class="nx"&gt;XSS&lt;/span&gt;&lt;span class="s1"&gt;')&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;span class="s1"&gt;&amp;lt;img src="javascript:alert('&lt;/span&gt;&lt;span class="nx"&gt;XSS&lt;/span&gt;&lt;span class="s1"&gt;')"&amp;gt;&lt;/span&gt;
+&lt;span class="s1"&gt;&amp;lt;img src="http://xxx.com/yyy.png" onerror="alert('&lt;/span&gt;&lt;span class="nx"&gt;XSS&lt;/span&gt;&lt;span class="s1"&gt;')"&amp;gt;&lt;/span&gt;
+&lt;span class="s1"&gt;（这个仅限IE有效）&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;攻击者通过 XSS 可以窃取用户的相关信息，如果用户是管理员，那么影响更大。
 通过这些身份信息，攻击者可以进一步篡改信息或者进行诈骗，后果不堪设想。
@@ -2469,15 +2815,15 @@ APP 无法在发起连接时候，也没有权限直接操作 socket。
 &lt;p&gt;为了解决同一个 IP 下面多个域名的问题，我们引入了一个URL参数： &lt;code&gt;__domain&lt;/code&gt;。
 当请求 IP 域名时候，必须带着这个参数，服务器会将请求域名解析出来，再分发到对应的域名。&lt;/p&gt;
 &lt;p&gt;实现这个逻辑的 Nginx 核心代码：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;set&lt;/span&gt; &lt;span class="o"&gt;$&lt;/span&gt;&lt;span class="nt"&gt;query_domain&lt;/span&gt; &lt;span class="o"&gt;$&lt;/span&gt;&lt;span class="nt"&gt;arg___domain&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
-&lt;span class="nt"&gt;if&lt;/span&gt; &lt;span class="o"&gt;($&lt;/span&gt;&lt;span class="nt"&gt;query_domain&lt;/span&gt; &lt;span class="o"&gt;!~&lt;/span&gt; &lt;span class="s1"&gt;'(www|a|b)\.example\.com'&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="err"&gt;rewrite&lt;/span&gt; &lt;span class="err"&gt;^&lt;/span&gt; &lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;www&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;example&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;404&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="n"&gt;redirect&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;set&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;query_domain&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;arg___domain&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;query_domain&lt;/span&gt; &lt;span class="o"&gt;!~&lt;/span&gt; &lt;span class="err"&gt;'&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;www&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;example&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="err"&gt;'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="n"&gt;rewrite&lt;/span&gt; &lt;span class="o"&gt;^&lt;/span&gt; &lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//www.example.com/404/ redirect;&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
-&lt;span class="nt"&gt;set&lt;/span&gt; &lt;span class="o"&gt;$&lt;/span&gt;&lt;span class="nt"&gt;my_host&lt;/span&gt; &lt;span class="o"&gt;$&lt;/span&gt;&lt;span class="nt"&gt;query_domain&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
-&lt;span class="nt"&gt;location&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="err"&gt;proxy_set_header&lt;/span&gt; &lt;span class="err"&gt;Host&lt;/span&gt; &lt;span class="err"&gt;$my_host&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-    &lt;span class="err"&gt;proxy_set_header&lt;/span&gt; &lt;span class="err"&gt;X-REAL-IP&lt;/span&gt; &lt;span class="err"&gt;$remote_addr&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-    &lt;span class="err"&gt;proxy_pass&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;scheme&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="mf"&gt;127.0.0.1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="n"&gt;set&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;my_host&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;query_domain&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="n"&gt;location&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="n"&gt;proxy_set_header&lt;/span&gt; &lt;span class="n"&gt;Host&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;my_host&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;proxy_set_header&lt;/span&gt; &lt;span class="n"&gt;X&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;REAL&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;IP&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;remote_addr&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;proxy_pass&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;scheme&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//127.0.0.1;&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;最后一个注意事项是，记得调整 Nginx 配置的 remote_addr，否则都变成了 127.0.0.1，
@@ -2825,7 +3171,7 @@ APP 无法在发起连接时候，也没有权限直接操作 socket。
    &lt;small&gt;&lt;img src="https://ohsolnxaa.qnssl.com/upload_dropbox/meta/wechat-pay-s-crop.png"/&gt;&lt;/small&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</summary><category term=""></category></entry><entry><title>一次「分答」记录</title><link href="https://blog.alswl.com/2016/06/q-and-a/" rel="alternate"></link><published>2016-06-15T09:59:16+08:00</published><updated>2016-06-15T09:59:16+08:00</updated><author><name>alswl</name></author><id>tag:blog.alswl.com,2016-06-15:2016/06/q-and-a/</id><summary type="html">&lt;p&gt;尝试在团队内部发起一次类似「分答」的沟通方式，一对一面聊。
+</summary><category term="Capacity"></category><category term="SRE"></category><category term="Architect"></category></entry><entry><title>一次「分答」记录</title><link href="https://blog.alswl.com/2016/06/q-and-a/" rel="alternate"></link><published>2016-06-15T09:59:16+08:00</published><updated>2016-06-15T09:59:16+08:00</updated><author><name>alswl</name></author><id>tag:blog.alswl.com,2016-06-15:2016/06/q-and-a/</id><summary type="html">&lt;p&gt;尝试在团队内部发起一次类似「分答」的沟通方式，一对一面聊。
 回答其他工程师的问题，这种沟通的方式暨在提供一个特定的场合，帮助加强双方了解，
 解决团队中其他工程师的一些实际的问题。&lt;/p&gt;
 &lt;p&gt;在征得对方同意之后，我将他的问题和我的回答 PO 出来。&lt;/p&gt;
@@ -2907,7 +3253,7 @@ APP 无法在发起连接时候，也没有权限直接操作 socket。
    &lt;small&gt;&lt;img src="https://ohsolnxaa.qnssl.com/upload_dropbox/meta/wechat-pay-s-crop.png"/&gt;&lt;/small&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</summary><category term=""></category></entry><entry><title>海贼王和创业团队</title><link href="https://blog.alswl.com/2016/04/onepiece-startup/" rel="alternate"></link><published>2016-04-27T00:36:10+08:00</published><updated>2016-04-27T00:36:10+08:00</updated><author><name>alswl</name></author><id>tag:blog.alswl.com,2016-04-27:2016/04/onepiece-startup/</id><summary type="html">&lt;p&gt;一个同事在知乎提了一个问题 &lt;a href="https://www.zhihu.com/question/35037806"&gt;如果把草帽海贼团比作一个创业团队,这个Team的组织架构是怎样的?有哪些优势,又有哪些不足?&lt;/a&gt;&lt;/p&gt;
+</summary><category term="Team"></category><category term="Startup"></category></entry><entry><title>海贼王和创业团队</title><link href="https://blog.alswl.com/2016/04/onepiece-startup/" rel="alternate"></link><published>2016-04-27T00:36:10+08:00</published><updated>2016-04-27T00:36:10+08:00</updated><author><name>alswl</name></author><id>tag:blog.alswl.com,2016-04-27:2016/04/onepiece-startup/</id><summary type="html">&lt;p&gt;一个同事在知乎提了一个问题 &lt;a href="https://www.zhihu.com/question/35037806"&gt;如果把草帽海贼团比作一个创业团队,这个Team的组织架构是怎样的?有哪些优势,又有哪些不足?&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img alt="201604/onepiece.jpg" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201604/onepiece.jpg"/&gt;&lt;/p&gt;
 &lt;p&gt;这个话题很有趣，作为追了多年的 fans ，又是身处互联网创业团队的我要来强答一记。&lt;/p&gt;
 &lt;p&gt;海贼王的世界很大，富有个性的角色和团队也很多，恰好可以和显示世界中的互联网创业团队进行对比。
@@ -3024,7 +3370,7 @@ APP 无法在发起连接时候，也没有权限直接操作 socket。
    &lt;small&gt;&lt;img src="https://ohsolnxaa.qnssl.com/upload_dropbox/meta/wechat-pay-s-crop.png"/&gt;&lt;/small&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</summary><category term=""></category></entry><entry><title>Windows management for hacker</title><link href="https://blog.alswl.com/2016/04/windows-management-for-hacker/" rel="alternate"></link><published>2016-04-24T16:36:16+08:00</published><updated>2016-04-24T16:36:16+08:00</updated><author><name>alswl</name></author><id>tag:blog.alswl.com,2016-04-24:2016/04/windows-management-for-hacker/</id><summary type="html">&lt;p&gt;团队里的同学有时看见我键指如飞，可以用快捷键将 Mac 的窗口玩转于手心。他们表示酷炫非常，
+</summary><category term="Startup"></category><category term="Comics"></category><category term="OnePiece"></category></entry><entry><title>Windows management for hacker</title><link href="https://blog.alswl.com/2016/04/windows-management-for-hacker/" rel="alternate"></link><published>2016-04-24T16:36:16+08:00</published><updated>2016-04-24T16:36:16+08:00</updated><author><name>alswl</name></author><id>tag:blog.alswl.com,2016-04-24:2016/04/windows-management-for-hacker/</id><summary type="html">&lt;p&gt;团队里的同学有时看见我键指如飞，可以用快捷键将 Mac 的窗口玩转于手心。他们表示酷炫非常，
 心生羡慕的同时，希望掌握这门技艺，我就把使用的 Phoenix 介绍给大家。结果过了一段时间，
 发现普及率并不高，本着好为人师的精神，今天我就来八一八这款优秀的桌面管理工具。&lt;/p&gt;
 &lt;p&gt;在介绍我使用的工具之前，我要先介绍一下我选择的原因和历史。&lt;/p&gt;
@@ -3303,24 +3649,24 @@ Google 的一种做法，可以很好解决这个问题。分离 TL（techlead�
 &lt;p&gt;早晨刚到公司， HAProxy 报警，Trtornis（第三方云存储网关，用来统一管理阿里云和七牛云的对象存储） 全飘红。&lt;/p&gt;
 
 &lt;p&gt;检查日志，并没有 ERROR 信息，但是大量 WARN 报错。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;WARN&lt;/span&gt;  &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2015&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;09&lt;/span&gt; &lt;span class="mi"&gt;11&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mo"&gt;01&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mo"&gt;02&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;730&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;eclipse&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jetty&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;util&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="kr"&gt;thread&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nl"&gt;QueuedThreadPool&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;dw&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="n"&gt;STARTED&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;=&lt;/span&gt;&lt;span class="mi"&gt;50&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;=&lt;/span&gt;&lt;span class="mi"&gt;50&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;q&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1024&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="n"&gt;rejected&lt;/span&gt; &lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;eclipse&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jetty&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;io&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;AbstractConne&lt;/span&gt;
-&lt;span class="n"&gt;ction&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="mi"&gt;2@62&lt;/span&gt;&lt;span class="n"&gt;c021c6&lt;/span&gt;
-&lt;span class="n"&gt;WARN&lt;/span&gt;  &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2015&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;09&lt;/span&gt; &lt;span class="mi"&gt;11&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mo"&gt;01&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mo"&gt;02&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;731&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;eclipse&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jetty&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;io&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nl"&gt;SelectorManager&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Could&lt;/span&gt; &lt;span class="n"&gt;not&lt;/span&gt; &lt;span class="n"&gt;process&lt;/span&gt; &lt;span class="n"&gt;key&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;channel&lt;/span&gt; &lt;span class="n"&gt;java&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;nio&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;channels&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;SocketChannel&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;connected&lt;/span&gt; &lt;span class="n"&gt;local&lt;/span&gt;&lt;span class="o"&gt;=/&lt;/span&gt;&lt;span class="mf"&gt;10.&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;WARN&lt;/span&gt;  &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2015&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;09&lt;/span&gt; &lt;span class="mi"&gt;11&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mo"&gt;01&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mo"&gt;02&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;730&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;eclipse&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jetty&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;util&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="kr"&gt;thread&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;QueuedThreadPool&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;dw&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="n"&gt;STARTED&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;=&lt;/span&gt;&lt;span class="mi"&gt;50&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;=&lt;/span&gt;&lt;span class="mi"&gt;50&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;q&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1024&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="n"&gt;rejected&lt;/span&gt; &lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;eclipse&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jetty&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;io&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;AbstractConne&lt;/span&gt;
+&lt;span class="n"&gt;ction&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="err"&gt;@&lt;/span&gt;&lt;span class="mi"&gt;62&lt;/span&gt;&lt;span class="n"&gt;c021c6&lt;/span&gt;
+&lt;span class="n"&gt;WARN&lt;/span&gt;  &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2015&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;09&lt;/span&gt; &lt;span class="mi"&gt;11&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mo"&gt;01&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mo"&gt;02&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;731&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;eclipse&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jetty&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;io&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;SelectorManager&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Could&lt;/span&gt; &lt;span class="n"&gt;not&lt;/span&gt; &lt;span class="n"&gt;process&lt;/span&gt; &lt;span class="n"&gt;key&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;channel&lt;/span&gt; &lt;span class="n"&gt;java&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;nio&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;channels&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;SocketChannel&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;connected&lt;/span&gt; &lt;span class="n"&gt;local&lt;/span&gt;&lt;span class="o"&gt;=/&lt;/span&gt;&lt;span class="mf"&gt;10.&lt;/span&gt;
 &lt;span class="mf"&gt;1.1.78&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;8350&lt;/span&gt; &lt;span class="n"&gt;remote&lt;/span&gt;&lt;span class="o"&gt;=/&lt;/span&gt;&lt;span class="mf"&gt;10.1.1.74&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;63290&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-&lt;span class="o"&gt;!&lt;/span&gt; &lt;span class="n"&gt;java&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;util&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;concurrent&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nl"&gt;RejectedExecutionException&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;eclipse&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jetty&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;io&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;AbstractConnection&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="mi"&gt;2@62&lt;/span&gt;&lt;span class="n"&gt;c021c6&lt;/span&gt;
-&lt;span class="o"&gt;!&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;eclipse&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jetty&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;util&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="kr"&gt;thread&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;QueuedThreadPool&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;execute&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;QueuedThreadPool&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nl"&gt;java&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;362&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;tritonis&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;shaded&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nl"&gt;jar&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mf"&gt;0.0.1&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;SNAPSHOT&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-&lt;span class="o"&gt;!&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;eclipse&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jetty&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;io&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;AbstractConnection&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;FillingState&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;onEnter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;AbstractConnection&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nl"&gt;java&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;379&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;~&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;tritonis&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;shaded&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nl"&gt;jar&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mf"&gt;0.0.1&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;SNAPSHOT&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-&lt;span class="o"&gt;!&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;eclipse&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jetty&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;io&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;AbstractConnection&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;next&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;AbstractConnection&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nl"&gt;java&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;273&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;~&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;tritonis&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;shaded&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nl"&gt;jar&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mf"&gt;0.0.1&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;SNAPSHOT&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-&lt;span class="o"&gt;!&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;eclipse&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jetty&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;io&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;AbstractConnection&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;ReadCallback&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;succeeded&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;AbstractConnection&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nl"&gt;java&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;563&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;~&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;tritonis&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;shaded&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nl"&gt;jar&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mf"&gt;0.0.1&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;SNAPSHOT&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-&lt;span class="o"&gt;!&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;eclipse&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jetty&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;io&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;FillInterest&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fillable&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;FillInterest&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nl"&gt;java&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;82&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;~&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;tritonis&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;shaded&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nl"&gt;jar&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mf"&gt;0.0.1&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;SNAPSHOT&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-&lt;span class="o"&gt;!&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;eclipse&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jetty&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;io&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;SelectChannelEndPoint&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;onSelected&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;SelectChannelEndPoint&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nl"&gt;java&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;109&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;~&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;tritonis&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;shaded&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nl"&gt;jar&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mf"&gt;0.0.1&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;SNAPSHOT&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-&lt;span class="o"&gt;!&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;eclipse&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jetty&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;io&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;SelectorManager&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;ManagedSelector&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;processKey&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;SelectorManager&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nl"&gt;java&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;636&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;tritonis&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;shaded&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nl"&gt;jar&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mf"&gt;0.0.1&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;SNAPSHOT&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-&lt;span class="o"&gt;!&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;eclipse&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jetty&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;io&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;SelectorManager&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;ManagedSelector&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;select&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;SelectorManager&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nl"&gt;java&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;607&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;tritonis&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;shaded&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nl"&gt;jar&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mf"&gt;0.0.1&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;SNAPSHOT&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-&lt;span class="o"&gt;!&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;eclipse&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jetty&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;io&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;SelectorManager&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;ManagedSelector&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;SelectorManager&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nl"&gt;java&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;545&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;tritonis&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;shaded&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nl"&gt;jar&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mf"&gt;0.0.1&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;SNAPSHOT&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-&lt;span class="o"&gt;!&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;eclipse&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jetty&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;util&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="kr"&gt;thread&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;NonBlockingThread&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;NonBlockingThread&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nl"&gt;java&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;52&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;tritonis&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;shaded&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nl"&gt;jar&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mf"&gt;0.0.1&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;SNAPSHOT&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-&lt;span class="o"&gt;!&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;eclipse&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jetty&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;util&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="kr"&gt;thread&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;QueuedThreadPool&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;runJob&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;QueuedThreadPool&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nl"&gt;java&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;635&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;tritonis&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;shaded&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nl"&gt;jar&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mf"&gt;0.0.1&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;SNAPSHOT&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-&lt;span class="o"&gt;!&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;eclipse&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jetty&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;util&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="kr"&gt;thread&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;QueuedThreadPool&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="mf"&gt;3.&lt;/span&gt;&lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;QueuedThreadPool&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nl"&gt;java&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;555&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;tritonis&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;shaded&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nl"&gt;jar&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mf"&gt;0.0.1&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;SNAPSHOT&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-&lt;span class="o"&gt;!&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="n"&gt;java&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;lang&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Thread&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Thread&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nl"&gt;java&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;745&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nl"&gt;na&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mf"&gt;1.8.0&lt;/span&gt;&lt;span class="n"&gt;_51&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="o"&gt;!&lt;/span&gt; &lt;span class="n"&gt;java&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;util&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;concurrent&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;RejectedExecutionException&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;eclipse&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jetty&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;io&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;AbstractConnection&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="err"&gt;@&lt;/span&gt;&lt;span class="mi"&gt;62&lt;/span&gt;&lt;span class="n"&gt;c021c6&lt;/span&gt;
+&lt;span class="o"&gt;!&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;eclipse&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jetty&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;util&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="kr"&gt;thread&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;QueuedThreadPool&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;execute&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;QueuedThreadPool&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;java&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;362&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;tritonis&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;shaded&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jar&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mf"&gt;0.0.1&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;SNAPSHOT&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="o"&gt;!&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;eclipse&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jetty&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;io&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;AbstractConnection&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;FillingState&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;onEnter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;AbstractConnection&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;java&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;379&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;~&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;tritonis&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;shaded&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jar&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mf"&gt;0.0.1&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;SNAPSHOT&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="o"&gt;!&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;eclipse&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jetty&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;io&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;AbstractConnection&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;next&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;AbstractConnection&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;java&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;273&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;~&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;tritonis&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;shaded&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jar&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mf"&gt;0.0.1&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;SNAPSHOT&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="o"&gt;!&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;eclipse&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jetty&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;io&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;AbstractConnection&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;ReadCallback&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;succeeded&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;AbstractConnection&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;java&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;563&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;~&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;tritonis&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;shaded&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jar&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mf"&gt;0.0.1&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;SNAPSHOT&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="o"&gt;!&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;eclipse&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jetty&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;io&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;FillInterest&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fillable&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;FillInterest&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;java&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;82&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;~&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;tritonis&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;shaded&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jar&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mf"&gt;0.0.1&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;SNAPSHOT&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="o"&gt;!&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;eclipse&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jetty&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;io&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;SelectChannelEndPoint&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;onSelected&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;SelectChannelEndPoint&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;java&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;109&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;~&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;tritonis&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;shaded&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jar&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mf"&gt;0.0.1&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;SNAPSHOT&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="o"&gt;!&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;eclipse&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jetty&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;io&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;SelectorManager&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;ManagedSelector&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;processKey&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;SelectorManager&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;java&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;636&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;tritonis&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;shaded&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jar&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mf"&gt;0.0.1&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;SNAPSHOT&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="o"&gt;!&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;eclipse&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jetty&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;io&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;SelectorManager&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;ManagedSelector&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;select&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;SelectorManager&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;java&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;607&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;tritonis&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;shaded&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jar&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mf"&gt;0.0.1&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;SNAPSHOT&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="o"&gt;!&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;eclipse&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jetty&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;io&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;SelectorManager&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;ManagedSelector&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;SelectorManager&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;java&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;545&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;tritonis&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;shaded&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jar&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mf"&gt;0.0.1&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;SNAPSHOT&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="o"&gt;!&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;eclipse&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jetty&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;util&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="kr"&gt;thread&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;NonBlockingThread&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;NonBlockingThread&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;java&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;52&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;tritonis&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;shaded&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jar&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mf"&gt;0.0.1&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;SNAPSHOT&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="o"&gt;!&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;eclipse&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jetty&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;util&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="kr"&gt;thread&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;QueuedThreadPool&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;runJob&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;QueuedThreadPool&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;java&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;635&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;tritonis&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;shaded&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jar&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mf"&gt;0.0.1&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;SNAPSHOT&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="o"&gt;!&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;eclipse&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jetty&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;util&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="kr"&gt;thread&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;QueuedThreadPool&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="mf"&gt;3.&lt;/span&gt;&lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;QueuedThreadPool&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;java&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;555&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;tritonis&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;shaded&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jar&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mf"&gt;0.0.1&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;SNAPSHOT&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="o"&gt;!&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="n"&gt;java&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;lang&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Thread&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Thread&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;java&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;745&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;na&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mf"&gt;1.8.0&lt;/span&gt;&lt;span class="n"&gt;_51&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;这是七牛 API 调用出现问题，通过应用 Metrics API 检查 Threads：&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;http http://A-DOMAIN:8351/threads | sort | uniq -c | sort -gr G qiniu&lt;/code&gt;&lt;/p&gt;
@@ -3330,7 +3676,7 @@ Google 的一种做法，可以很好解决这个问题。分离 TL（techlead�
 &lt;p&gt;&lt;img alt="image2015-12-9_2.png" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201602/image2015-12-9_2.png"/&gt;&lt;/p&gt;
 &lt;p&gt;确认是七牛服务慢导致现成爆掉，但是 46 这个值来自于哪里？&lt;/p&gt;
 &lt;p&gt;检查了 App 的配置文件，的确配置了 &lt;code&gt;maxThreads&lt;/code&gt; 为 50:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;server&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;server&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
   &lt;span class="n"&gt;gzip&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
     &lt;span class="n"&gt;enabled&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;false&lt;/span&gt;
   &lt;span class="n"&gt;requestLog&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
@@ -3346,13 +3692,13 @@ Google 的一种做法，可以很好解决这个问题。分离 TL（techlead�
       &lt;span class="n"&gt;port&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;8351&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;一般对应服务不稳定，有个简单策略，超时，那么七牛服务超时是多少？找了一下相关代码，下巴都没合上：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# com.qiniu.http.Client
-    this.httpClient.setConnectTimeout((long)Config.CONNECT_TIMEOUT, TimeUnit.SECONDS);
-    this.httpClient.setReadTimeout((long)Config.RESPONSE_TIMEOUT, TimeUnit.SECONDS);
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;# com.qiniu.http.Client&lt;/span&gt;
+    &lt;span class="n"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;httpClient&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;setConnectTimeout&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="kt"&gt;long&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="n"&gt;Config&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;CONNECT_TIMEOUT&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;TimeUnit&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;SECONDS&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="n"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;httpClient&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;setReadTimeout&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="kt"&gt;long&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="n"&gt;Config&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;RESPONSE_TIMEOUT&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;TimeUnit&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;SECONDS&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
 
-# com.qiniu.common.Config
-public static int CONNECT_TIMEOUT = 10000;
-public static int RESPONSE_TIMEOUT = 30000;
+&lt;span class="cp"&gt;# com.qiniu.common.Config&lt;/span&gt;
+&lt;span class="n"&gt;public&lt;/span&gt; &lt;span class="k"&gt;static&lt;/span&gt; &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;CONNECT_TIMEOUT&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;10000&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="n"&gt;public&lt;/span&gt; &lt;span class="k"&gt;static&lt;/span&gt; &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;RESPONSE_TIMEOUT&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;30000&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;超时时间 8h，吓得我赶紧关掉了显示器。
 赶紧将这个 Connection 改成了 2 分钟，Connect 改成了 5s。 &lt;/p&gt;
@@ -3372,99 +3718,4 @@ public static int RESPONSE_TIMEOUT = 30000;
    &lt;small&gt;&lt;img src="https://ohsolnxaa.qnssl.com/upload_dropbox/meta/wechat-pay-s-crop.png"/&gt;&lt;/small&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</summary><category term="Qiniu"></category><category term="TCP"></category></entry><entry><title>一次艰难的 Wiki 升级</title><link href="https://blog.alswl.com/2016/01/confluence-upgrade/" rel="alternate"></link><published>2016-01-12T22:53:55+08:00</published><updated>2016-01-12T22:53:55+08:00</updated><author><name>alswl</name></author><id>tag:blog.alswl.com,2016-01-12:2016/01/confluence-upgrade/</id><summary type="html">&lt;p&gt;公司使用 &lt;a href="https://www.atlassian.com/software/confluence"&gt;Confluence&lt;/a&gt;
-管理自己的知识库，
-现在使用的版本还是 3.0.1，而最新的 Confluence 版本已经是 5.4+。
-新版本加入的一些现代化 Web 系统的新特性很吸引人（拖拽上传，可见即所得编辑），
-在群众的强烈呼声下，我着手开始升级。&lt;/p&gt;
-&lt;p&gt;&lt;img alt="201601/confluence_river.jpg" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201601/confluence_river.jpg"/&gt;&lt;/p&gt;
-
-&lt;p&gt;官方的升级路线很扯，3.0.1 的升级路线是：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;3.0.1 -&amp;gt; 3.5.17&lt;/li&gt;
-&lt;li&gt;5.0.3 -&amp;gt; 5.4.4&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;中间两次大版本升级，第一次原因不明，第二次是更新了 markup 渲染引擎，
-改为 HTML 格式类型的渲染模式。&lt;/p&gt;
-&lt;p&gt;由于一些原因，我们系统还跑在 embedded 模式下（其实就是 HyperSQL），这种大版本升级，
-需要先从内置库升级到外部数据库，比如 MySQL。&lt;/p&gt;
-&lt;p&gt;苦逼旅程就开始了。&lt;/p&gt;
-&lt;h2 id="from-embedded-to-mysql"&gt;From embedded to MySQL&lt;/h2&gt;
-&lt;p&gt;更新内置库到外部库的操作流程：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;导出当前的数据备份，包括附件，我导出后 1G+&lt;/li&gt;
-&lt;li&gt;使用当前同版本（3.0.1）安装一个全新的 wiki，注意下载 JDBC-connector&lt;/li&gt;
-&lt;li&gt;安装之后，配置好 MySQL，开始导入之前准备好的备份&lt;/li&gt;
-&lt;li&gt;悲剧上演&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;遇到了错误：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Import failed. Hibernate operation: could not insert: [com.atlassian.confluence.core.BodyContent#12028015]; SQL []; Duplicate entry '12028015' for key 'PRIMARY'; nested exception is com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry '12028015' for key 'PRIMARY'&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;官方文档 &lt;a href="https://confluence.atlassian.com/doc/troubleshooting-xml-backups-that-fail-on-restore-199034.html"&gt;https://confluence.atlassian.com/doc/troubleshooting-xml-backups-that-fail-on-restore-199034.html&lt;/a&gt;
-让修改重复键数据，好吧，我改，搜索一把重复主键，将备份里面的 &lt;code&gt;entities.xml&lt;/code&gt; 弄出来。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# 格式化
-awk '{s=s $0}END{gsub(/&amp;gt;&lt;span class="err"&gt;&amp;lt;&lt;/span&gt;/,"&amp;gt;\n&lt;span class="err"&gt;&amp;lt;&lt;/span&gt;",s);s=gensub(/&amp;gt;([^ \n&amp;gt;]*)&lt;span class="err"&gt;&amp;lt;&lt;/span&gt;/,"&amp;gt;\n\\1\n&lt;span class="err"&gt;&amp;lt;&lt;/span&gt;","g",s);print s}' entities.xml &amp;gt; entities.xml.format
-# 找重复主键 cat entities.xml.format G 'content" class="Page' -A 2 G -E '[0-9]+' | sort | uniq -c | sort -gr L cat entities.xml.format | grep 'name="id"' -A 1 -B 1 | grep -E '[0-9]+' -B 2 L
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;操作过程中，发现有数据就一条数据（grep entities.xml），还是插入重复（13238835）。
-官方文档解释是，内置数据库的锁有时候会不灵，插入重复键。
-于是决定再试试去掉主键约束方案，大不了那个数据我就不要了。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;ALTER TABLE BODYCONTENT DROP PRIMARY KEY;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;结果还有其他 PK 约束，我于是一条一条解开，然后&amp;hellip;&amp;hellip;还是不行，真是作了一手的好死。&lt;/p&gt;
-&lt;p&gt;结论是，这数据错误了太多，已经无法手工修复。&lt;/p&gt;
-&lt;h2 id="heng-cha-yi-dao-de-emoji"&gt;横插一刀的 Emoji 😊😢💗&lt;/h2&gt;
-&lt;p&gt;导入时候报了这么一个错误：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Caused by: java.sql.SQLException: Incorrect string value: '\xF0\x9F\x8C\x8D\xE5\x9B...' for column 'BODY' at row 1 org.xml.sax.SAXException: Error while parsing 2015-10-19 23:14:13,108 ERROR [Importing data task] [confluence.importexport.impl.ReverseDatabinder] fromXML Error processing backup: -- referer: http://10.1.2.155:8087/setup/setup-restore-start.action | url: /setup/setup-restore-local.action | userName: anonymous | action: setup-restore-local org.xml.sax.SAXException: Error while parsing net.sf.hibernate.exception.GenericJDBCException: could not insert: [com.atlassian.confluence.core.BodyContent#12028161]&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;这是 Emoji 编码的问题，理论上 MySQL 换到 5.6+，更新 encoding 就可以了。&lt;/p&gt;
-&lt;p&gt;但是&amp;hellip;&amp;hellip;Confluence 的建表 SQL 爆出了 255 varchar 超过 1000 限制的错误
-，我尝试使用&amp;nbsp;&lt;a href="https://github.com/rails/rails/issues/9855"&gt;innodb_large_prefix&lt;/a&gt;
-似乎可以解决（因为重复键的问题，导致导入已经行不通）。&lt;/p&gt;
-&lt;p&gt;另外&amp;nbsp;innodb_large_prefix&amp;nbsp;是 5.6.3 才有的，只能升级 MySQL，
-并且需要创建表时候使用&amp;nbsp;DYNAMIC&amp;nbsp;参数。&lt;/p&gt;
-&lt;p&gt;弄个 Emoji 这么绕，这导致我直接弃用了 MySQL。&lt;/p&gt;
-&lt;p&gt;如果是正常迁移，不遇到重复键，Emoji 的问题，可以参考官方的文档，完成平滑迁移：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;https://confluence.atlassian.com/doc/migrating-to-another-database-148867.html&lt;/li&gt;
-&lt;li&gt;https://confluence.atlassian.com/doc/database-setup-for-mysql-128747.html&lt;/li&gt;
-&lt;li&gt;https://confluence.atlassian.com/doc/upgrading-confluence-4578.html&lt;/li&gt;
-&lt;li&gt;https://confluence.atlassian.com/doc/upgrading-confluence-manually-255363437.html&lt;/li&gt;
-&lt;li&gt;https://confluence.atlassian.com/conf56/confluence-user-s-guide/creating-content/using-the-editor/using-symbols-emoticons-and-special-characters&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id="ma-dan-zi-ji-gan"&gt;妈蛋，自己干&lt;/h2&gt;
-&lt;p&gt;上面这么点东西，陆陆续续花了我两周的时间（晚上）。已经确认走不通平滑迁移，那就别怪我手段糙了。&lt;/p&gt;
-&lt;p&gt;使用 API 导出后直接导入，这种做法最大问题是不平滑，会丢掉 Wiki 修改的历史记录，
-在和各个业务方沟通之后，最后达成了一致：可以暴力升级。&lt;/p&gt;
-&lt;p&gt;升级流程：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;准备最新 Confluence 新站点&lt;/li&gt;
-&lt;li&gt;关停站点&lt;/li&gt;
-&lt;li&gt;导出数据，包括 Page、评论、附件&lt;/li&gt;
-&lt;li&gt;导入 Page，评论，附件&lt;/li&gt;
-&lt;li&gt;启动旧站点，开启只读模式&lt;/li&gt;
-&lt;li&gt;启用新站点&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;官方有一个 &lt;a href="https://migrations.atlassian.net/wiki"&gt;Universal Wiki Converter&lt;/a&gt;，
-我在 Bitbucket 上面找到了源码，但是已经不可工作了。
-虽然宣称「The UWC will however save you 1-2+ weeks of scripting development time, compared with starting from scratch, for many of the most common conversion cases.」
-但并没有卵用。&lt;/p&gt;
-&lt;p&gt;不行就自己随便搞搞好了，看了一下开发需要的 &lt;a href="https://confluence.atlassian.com/display/CONF30/Remote+API+Specification+2.4#RemoteAPISpecification2.4-Page"&gt;Conflunce API&lt;/a&gt;，
-和尤其贴心的新版本 &lt;a href="https://developer.atlassian.com/confdev/confluence-rest-api?continue=https%3A%2F%2Fdeveloper.atlassian.com%2Fconfdev%2Fconfluence-rest-api&amp;amp;application=dac"&gt;RESTful API&lt;/a&gt;，就开始搞了。&lt;/p&gt;
-&lt;p&gt;写迁移代码，在这里 &lt;a href="https://github.com/duitang/atlassian-confluence-xxoo"&gt;atlassian-confluence-xxoo&lt;/a&gt;，已经开源了，只使用过一次，成功的从 3.0.1 迁移到 5.4.4，
-理论上，支持任意版本的 3.x/4.x Confluence 迁移到最新。&lt;/p&gt;
-&lt;p&gt;使用 &lt;code&gt;python app.py -h&lt;/code&gt; 查看帮助，不行就看看代码。&lt;/p&gt;
-&lt;p&gt;希望有迁移需求的同学，搜索到这里能够获得一些帮助。&lt;/p&gt;
-&lt;hr&gt;
-&lt;div class="panel"&gt;
-&lt;div class="panel-body"&gt;
-   &lt;small&gt;原文链接: &lt;a href="https://blog.alswl.com/2016/01/confluence-upgrade/"&gt;https://blog.alswl.com/2016/01/confluence-upgrade/&lt;/a&gt;&lt;/small&gt;&lt;br&gt;
-   &lt;small&gt;3a1ff193cee606bd1e2ea554a16353ee&lt;/small&gt;&lt;br&gt;
-   &lt;small&gt;欢迎关注我的微信公众号：&lt;a href="http://mp.weixin.qq.com/mp/getmasssendmsg?__biz=MzIyNTIwMTU3MQ==#wechat_webview_type=1&amp;wechat_redirect"&gt;窥豹&lt;/a&gt;&lt;/small&gt;&lt;br&gt;
-   &lt;small&gt;&lt;img src="https://ohsolnxaa.qnssl.com/upload_dropbox/201605/qrcode_for_gh_17e2f9c2caa4_258.jpg"/&gt;&lt;/small&gt;
-   &lt;small&gt;&lt;img src="https://ohsolnxaa.qnssl.com/upload_dropbox/meta/wechat-pay-s-crop.png"/&gt;&lt;/small&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-</summary><category term="confluence"></category></entry></feed>
+</summary><category term="Qiniu"></category><category term="TCP"></category></entry></feed>

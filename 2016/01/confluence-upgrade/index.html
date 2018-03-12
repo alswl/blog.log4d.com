@@ -124,14 +124,14 @@ Log4D            </a>
 </blockquote>
 <p>官方文档 <a href="https://confluence.atlassian.com/doc/troubleshooting-xml-backups-that-fail-on-restore-199034.html">https://confluence.atlassian.com/doc/troubleshooting-xml-backups-that-fail-on-restore-199034.html</a>
 让修改重复键数据，好吧，我改，搜索一把重复主键，将备份里面的 <code>entities.xml</code> 弄出来。</p>
-<div class="highlight"><pre><span></span># 格式化
-awk '{s=s $0}END{gsub(/&gt;<span class="err">&lt;</span>/,"&gt;\n<span class="err">&lt;</span>",s);s=gensub(/&gt;([^ \n&gt;]*)<span class="err">&lt;</span>/,"&gt;\n\\1\n<span class="err">&lt;</span>","g",s);print s}' entities.xml &gt; entities.xml.format
-# 找重复主键 cat entities.xml.format G 'content" class="Page' -A 2 G -E '[0-9]+' | sort | uniq -c | sort -gr L cat entities.xml.format | grep 'name="id"' -A 1 -B 1 | grep -E '[0-9]+' -B 2 L
+<div class="highlight"><pre><span class="err">#</span> <span class="err">格式化</span>
+<span class="nx">awk</span> <span class="s1">'{s=s $0}END{gsub(/&gt;&lt;/,"&gt;</span><span class="se">\n</span><span class="s1">&lt;",s);s=gensub(/&gt;([^ </span><span class="se">\n</span><span class="s1">&gt;]*)&lt;/,"&gt;</span><span class="se">\n\\</span><span class="s1">1</span><span class="se">\n</span><span class="s1">&lt;","g",s);print s}'</span> <span class="nx">entities.xml</span> <span class="o">&gt;</span> <span class="nx">entities.xml.format</span>
+<span class="err">#</span> <span class="err">找重复主键</span> <span class="nx">cat</span> <span class="nx">entities.xml.format</span> <span class="nx">G</span> <span class="s1">'content" class="Page'</span> <span class="na">-A</span> <span class="mi">2</span> <span class="nx">G</span> <span class="na">-E</span> <span class="s1">'[0-9]+'</span> <span class="o">|</span> <span class="nb">sort</span> <span class="o">|</span> <span class="nx">uniq</span> <span class="na">-c</span> <span class="o">|</span> <span class="nb">sort</span> <span class="na">-gr</span> <span class="nx">L</span> <span class="nx">cat</span> <span class="nx">entities.xml.format</span> <span class="o">|</span> <span class="nx">grep</span> <span class="s1">'name="id"'</span> <span class="na">-A</span> <span class="mi">1</span> <span class="na">-B</span> <span class="mi">1</span> <span class="o">|</span> <span class="nx">grep</span> <span class="na">-E</span> <span class="s1">'[0-9]+'</span> <span class="na">-B</span> <span class="mi">2</span> <span class="nx">L</span>
 </pre></div>
 <p>操作过程中，发现有数据就一条数据（grep entities.xml），还是插入重复（13238835）。
 官方文档解释是，内置数据库的锁有时候会不灵，插入重复键。
 于是决定再试试去掉主键约束方案，大不了那个数据我就不要了。</p>
-<div class="highlight"><pre><span></span>ALTER TABLE BODYCONTENT DROP PRIMARY KEY;
+<div class="highlight"><pre><span class="n">ALTER</span> <span class="n">TABLE</span> <span class="n">BODYCONTENT</span> <span class="n">DROP</span> <span class="n">PRIMARY</span> <span class="n">KEY</span><span class="p">;</span>
 </pre></div>
 <p>结果还有其他 PK 约束，我于是一条一条解开，然后&hellip;&hellip;还是不行，真是作了一手的好死。</p>
 <p>结论是，这数据错误了太多，已经无法手工修复。</p>

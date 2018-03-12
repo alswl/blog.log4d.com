@@ -148,15 +148,15 @@ APP 无法在发起连接时候，也没有权限直接操作 socket。
 <p>为了解决同一个 IP 下面多个域名的问题，我们引入了一个URL参数： <code>__domain</code>。
 当请求 IP 域名时候，必须带着这个参数，服务器会将请求域名解析出来，再分发到对应的域名。</p>
 <p>实现这个逻辑的 Nginx 核心代码：</p>
-<div class="highlight"><pre><span></span><span class="nt">set</span> <span class="o">$</span><span class="nt">query_domain</span> <span class="o">$</span><span class="nt">arg___domain</span><span class="o">;</span>
-<span class="nt">if</span> <span class="o">($</span><span class="nt">query_domain</span> <span class="o">!~</span> <span class="s1">'(www|a|b)\.example\.com'</span><span class="o">)</span> <span class="p">{</span>
-    <span class="err">rewrite</span> <span class="err">^</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="mi">404</span><span class="o">/</span> <span class="n">redirect</span><span class="p">;</span>
+<div class="highlight"><pre><span class="n">set</span> <span class="err">$</span><span class="n">query_domain</span> <span class="err">$</span><span class="n">arg___domain</span><span class="p">;</span>
+<span class="k">if</span> <span class="p">(</span><span class="err">$</span><span class="n">query_domain</span> <span class="o">!~</span> <span class="err">'</span><span class="p">(</span><span class="n">www</span><span class="o">|</span><span class="n">a</span><span class="o">|</span><span class="n">b</span><span class="p">)</span><span class="err">\</span><span class="p">.</span><span class="n">example</span><span class="err">\</span><span class="p">.</span><span class="n">com</span><span class="err">'</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">rewrite</span> <span class="o">^</span> <span class="n">http</span><span class="o">:</span><span class="c1">//www.example.com/404/ redirect;</span>
 <span class="p">}</span>
-<span class="nt">set</span> <span class="o">$</span><span class="nt">my_host</span> <span class="o">$</span><span class="nt">query_domain</span><span class="o">;</span>
-<span class="nt">location</span> <span class="o">/</span> <span class="p">{</span>
-    <span class="err">proxy_set_header</span> <span class="err">Host</span> <span class="err">$my_host</span><span class="p">;</span>
-    <span class="err">proxy_set_header</span> <span class="err">X-REAL-IP</span> <span class="err">$remote_addr</span><span class="p">;</span>
-    <span class="err">proxy_pass</span> <span class="err">$</span><span class="n">scheme</span><span class="p">:</span><span class="o">//</span><span class="mf">127.0.0.1</span><span class="p">;</span>
+<span class="n">set</span> <span class="err">$</span><span class="n">my_host</span> <span class="err">$</span><span class="n">query_domain</span><span class="p">;</span>
+<span class="n">location</span> <span class="o">/</span> <span class="p">{</span>
+    <span class="n">proxy_set_header</span> <span class="n">Host</span> <span class="err">$</span><span class="n">my_host</span><span class="p">;</span>
+    <span class="n">proxy_set_header</span> <span class="n">X</span><span class="o">-</span><span class="n">REAL</span><span class="o">-</span><span class="n">IP</span> <span class="err">$</span><span class="n">remote_addr</span><span class="p">;</span>
+    <span class="n">proxy_pass</span> <span class="err">$</span><span class="n">scheme</span><span class="o">:</span><span class="c1">//127.0.0.1;</span>
 <span class="p">}</span>
 </pre></div>
 <p>最后一个注意事项是，记得调整 Nginx 配置的 remote_addr，否则都变成了 127.0.0.1，

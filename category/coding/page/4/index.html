@@ -68,6 +68,23 @@ Log4D            </a>
         <div class="col-lg-8 col-lg-offset-2">
 
             <article class="article-list">
+                <h2 class="title"><a href="https://blog.alswl.com/2012/05/support-rss/">让 Octopress 支持 RSS2.0</a></h2>
+                <div class="summary"><p>土鳖人人网的 <strong>日志导入</strong> 功能仅支持 RSS2.0，而 Octopress 输出的订阅格式是 Atom1.0。
+于是为了让人人网的同学能看见我那些技术宅，又或非技术宅的文章，
+我只能昧着良心，给 Octopress 加上过时的 RSS2.0 输出。</p>
+<p>在 <code>source/</code> 下创建新文件 <code>rss.xml</code> ，内容如下：</p>
+<div class="highlight"><pre><span class="o">---</span>
+<span class="nx">layout</span><span class="p">:</span> <span class="nx">nil</span>
+<span class="o">---</span>
+<span class="o">&lt;?</span><span class="kt">xml</span> <span class="n">version</span><span class="o">=</span><span class="s2">"1.0"</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"UTF-8"</span><span class="cp">?&gt;</span>
+<span class="nt">&lt;rss</span> <span class="na">xmlns:dc=</span><span class="s">"http://purl.org/dc/elements/1.1/"</span> <span class="na">version=</span><span class="s">"2.0"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;channel&gt;</span>
+        <span class="nt">&lt;description&gt;</span><span class="cp">&lt;![</span><span class="nx">CDATA</span><span class="err">[</span><span class="p">{{</span> <span class="nx">site ...</span></pre></div>
+                </div>
+                <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2012/05/support-rss/"><i class="icon-circle-arrow-right"></i>more ...</a>
+            </article>
+            <hr/>
+            <article class="article-list">
                 <h2 class="title"><a href="https://blog.alswl.com/2012/05/tag-cloud/">给 Octopress 加上标签功能</a></h2>
                 <div class="summary"><p>上周，我将 Log4D 由 Wordpress 转换为 Octopress，略加打理，颇为顺手。
 自动分类 / 评论转移 / 代码高亮 / 图床 的问题一一解决之后，
@@ -180,7 +197,7 @@ CF Image Host Script / minishowcase 等等图床软件，评测记录如下。</
 <h2 id="zai-python-zhong-diao-shi">在 Python 中调试</h2>
 <h3 id="pdb">pdb</h3>
 <p>在代码中加入下列语句即可启用交互式调试。</p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pdb</span><span class="p">;</span><span class="n">pdb</span><span class="o">.</span><span class="n">set_trace</span><span class="p">()</span>
+<div class="highlight"><pre><span class="n">import</span> <span class="n">pdb</span><span class="p">;</span><span class="n">pdb</span><span class="p">.</span><span class="n">set_trace</span><span class="p">()</span>
 </pre></div>
 <p>在 pdb 中，可以使用 <code>h / l / b / n / s / c / j / a / p / ! / q</code> 这些命令所代表的含义可以通过
 <code>h(elp)</code> 打印出来。</p>
@@ -250,36 +267,6 @@ CF Image Host Script / minishowcase 等等图床软件，评测记录如下。</
 <p>对软件内部结构的一种调整，目的是在不改变"软件之可察行为 ...</p></blockquote>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2012/02/refactory/"><i class="icon-circle-arrow-right"></i>more ...</a>
-            </article>
-            <hr/>
-            <article class="article-list">
-                <h2 class="title"><a href="https://blog.alswl.com/2012/01/tingdownload/">baidu ting下载音乐脚本</a></h2>
-                <div class="summary"><p>度娘终于干了一件好事，<a href="http://ting.baidu.com">Baidu Ting</a>上线了，
-正版音乐免费下载，类似于<a href="http://www.google.cn/music">谷歌音乐</a>。 关于音乐版权和免费的问题， 有很多问题需要取讨论，
-比如说这种商业模式是否对传统唱片业产生冲击又或是有积极影响？ 作为普通消费者，暂时不用考虑这些问题，先享受这些服务好了。</p>
-<p>Baidu Ting的音乐质量是128KBps，音质算好，里面的idv3信息也勉强可以，有:</p>
-<ul>
-<li>歌名</li>
-<li>歌手</li>
-<li>部分专辑名（偶尔也出现"201-8月新歌快递"这种比较山寨的字）</li>
-<li>部分唱片封面图片</li>
-</ul>
-<p>虽然比不上谷歌音乐连歌曲风格都准备好了，但是比杂乱无章的那些音乐mp3要好太多了。</p>
-<h2 id="zi-dong-xia-zai-jiao-ben-tingdownload">自动下载脚本tingdownload</h2>
-<p>早上下了几首音乐，就顺手写了一个脚本，用来批量从Badu Ting下载音乐。</p>
-<p>代码在<a href="https://github.com/alswl/tingdownload">github-tingdownload</a></p>
-<h2 id="xu-yao">需要</h2>
-<ul>
-<li>Python 2 (仅在Python2.7下测试)</li>
-<li>BeautifulSoup(已包含在目录下)</li>
-<li>simplejson（已包含在目录下)</li>
-<li>一点点Python基础</li>
-<li>Linux/Windows（我在Linux没问题，Windows应该也可以）</li>
-</ul>
-<h2 id="shi-yong-fang-fa">使用方法</h2>
-<p>在Shell ...</p>
-                </div>
-                <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2012/01/tingdownload/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
             <hr/>
 
@@ -420,7 +407,7 @@ CF Image Host Script / minishowcase 等等图床软件，评测记录如下。</
    <div class="container">
       <hr>
       <div class="row">
-         <div class="col-xs-10">&copy; 2017 alswl
+         <div class="col-xs-10">&copy; 2018 alswl
             &middot; Powered by <a href="https://github.com/alswl/pelican-bootstrap3" target="_blank" style="font-weight: bold">pelican-bootstrap3</a>,
             <a href="http://docs.getpelican.com/" target="_blank" style="font-weight: bold">Pelican</a>,
             <a href="http://getbootstrap.com" target="_blank" style="font-weight: bold">Bootstrap</a>,

@@ -67,17 +67,53 @@ Log4D            </a>
         <div class="col-lg-8 col-lg-offset-2">
 
             <article class="article-list">
+                <h2 class="title"><a href="https://blog.alswl.com/2011/07/eventbug/">Html元素事件查看器Eventbug</a></h2>
+                <div class="summary"><p>Chrome的开发者工具里面有一个小功能：查看当前元素的Event，比如onclick/onblur等事件。</p>
+<p><img alt="image" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201107/chrome_event.png"/></p>
+<p>一直想在Firefox里面也找到类似的插件，今天正好看到这么一个好东西，叫做EventBug。</p>
+<p>官方的介绍如下</p>
+<blockquote>
+<p>Eventbug是一款能够列出所有绑定事件的Firebug扩展，它将这些事件按事件类型排列。</p>
+<ul>
+<li>
+<p>需要Firebug1.5</p>
+</li>
+<li>
+<p>源码沿用Firebug的BSD风格协议</p>
+</li>
+<li>
+<p>请使用Firebug的Bug报告列表来提交问题</p>
+</li>
+<li>
+<p>请使用Firebug的新闻列表来提出问题</p>
+</li>
+</ul>
+<p>作者：John J. Barton, Jan Odvarko</p>
+</blockquote>
+<p>测试发现在Firefox5下面没有问题。</p>
+<p><a href="http://upload-log4d.qiniudn.com/2011/07/eventbug.png"><img alt="image" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201107/eventbug.png"/></a></p>
+<p>这么一款插件在调试js或者对别人的页面做一些js hack特别有用，强烈推荐之。</p>
+<ul>
+<li><a href="http://getfirebug.com/wiki/index.php/Firebug_Extensions#Eventbug">Eventbug官方地址</a></li>
+<li><a href="http://www.softwareishard.com/blog/firebug/eventbug-alpha-released/">Eventbug介绍博文（En）</a></li>
+<li><a href="http://getfirebug.com/releases/eventbug/">Eventbug下载链接</a></li>
+</ul>
+                </div>
+                <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2011/07/eventbug/"><i class="icon-circle-arrow-right"></i>more ...</a>
+            </article>
+            <hr/>
+            <article class="article-list">
                 <h2 class="title"><a href="https://blog.alswl.com/2011/06/urllib2-urlopen-unicode/">urllib2.urlopen的中文URL问题</a></h2>
                 <div class="summary"><p>在url中使用中文其实是一个坏习惯，会带来一系列的转码问题， 我更喜欢英文译名或者id来标识某个uri。但是现实往往是残酷的，
 特别是在我们调用别人服务时候，有时候被逼无奈使用中文URL。</p>
 <p>Python中unicode转码一向是让人头疼的问题。数次碰壁之后，我也摸出了一些门道，
 研读完<a href="http://ipie.blogbus.com/logs/19379694.html">Python字符串的encode与decode</a>
 之后，就自认为找到了万金油，谁知道这次又碰上这个老冤家。</p>
-<div class="highlight"><pre><span></span>Traceback (most recent call last):
-  File "&lt;stdin&gt;", line 1, in &lt;module&gt;
-  File "/usr/lib/python2.6/urllib2.py", line 126, in urlopen
-    return _opener.open(url, data, timeout)
-  File "/usr/lib/python2.6/urllib2.py", line ...</pre></div>
+<div class="highlight"><pre><span class="nx">Traceback</span> <span class="p">(</span><span class="nx">most</span> <span class="nx">recent</span> <span class="nb">call</span> <span class="nb">last</span><span class="p">):</span>
+  <span class="nb">File</span> <span class="s2">"&lt;stdin&gt;"</span><span class="p">,</span> <span class="nb">line</span> <span class="mi">1</span><span class="p">,</span> <span class="k">in</span> <span class="o">&lt;</span><span class="nx">module</span><span class="o">&gt;</span>
+  <span class="nb">File</span> <span class="s2">"/usr/lib/python2.6/urllib2.py"</span><span class="p">,</span> <span class="nb">line</span> <span class="mi">126</span><span class="p">,</span> <span class="k">in</span> <span class="nx">urlopen</span>
+    <span class="k">return</span> <span class="nx">_opener.open</span><span class="p">(</span><span class="nb">url</span><span class="p">,</span> <span class="kd">data</span><span class="p">,</span> <span class="nx">timeout</span><span class="p">)</span>
+  <span class="nb">File</span> <span class="s2">"/usr/lib/python2.6/urllib2.py"</span><span class="p">,</span> <span class="nb">line ...</span></pre></div>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2011/06/urllib2-urlopen-unicode/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -170,11 +206,11 @@ through-eclipse">http://stackoverflow.com ...</p>
                 <h2 class="title"><a href="https://blog.alswl.com/2011/04/ubuntu-setup/">Ubuntu安装之后设定操作</a></h2>
                 <div class="summary"><p>前几天使用chmod时候，多打了一个/，导致根目录下面所有文件权限设定出了问题，额~重装系统吧，正好把装系统之后的配置过程记录下来。</p>
 <p>这些都是我操作过的命令，确切可靠，适用于Ubuntu 10.10 Desktop Edtion。</p>
-<div class="highlight"><pre><span></span>= init Linux programs and setting =
-:author: alswl
-:email: alswlx#gmail.com
-:toc:
-:numbered:
+<div class="highlight"><pre><span class="o">=</span> <span class="n">init</span> <span class="n">Linux</span> <span class="n">programs</span> <span class="n">and</span> <span class="n">setting</span> <span class="o">=</span>
+<span class="o">:</span><span class="n">author</span><span class="o">:</span> <span class="n">alswl</span>
+<span class="o">:</span><span class="n">email</span><span class="o">:</span> <span class="n">alswlx</span><span class="err">#</span><span class="n">gmail</span><span class="p">.</span><span class="n">com</span>
+<span class="o">:</span><span class="n">toc</span><span class="o">:</span>
+<span class="o">:</span><span class="n">numbered</span><span class="o">:</span>
 </pre></div>
 <p>== first of all ==</p>
 <p>.update (打补丁、升级)</p>
@@ -226,21 +262,6 @@ Tool执行。我对此表示很好奇，特意在自己电脑下面组建了一�
 <p>The GNOME desktop is able to use a sequence of images for its background ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2011/04/ubuntu-crebs/"><i class="icon-circle-arrow-right"></i>more ...</a>
-            </article>
-            <hr/>
-            <article class="article-list">
-                <h2 class="title"><a href="https://blog.alswl.com/2011/03/plrcmatch4d/">历史记录-歌词复制器</a></h2>
-                <div class="summary"><p>之前写过一个Java的小工具叫做Mp3Lrc歌词复制器，用来复制歌词到Mp3播放器中的对应目录下面。之前的文章参见<a href="http://log4d.com/2009/05/the-executable-file-
-mp3lrc">Mp3Lrc的可执行文件</a>和<a href="http://log4d.com/2009/05/lyrics-written-in-java-
-replicator-mp3">Java写的Mp3歌词复制器</a>。</p>
-<p>这几天整理硬盘时候发现大四时候还用Delphi写了一个完整的GUI界面的Mp3歌词复制工具叫做PLrcMatch4D。</p>
-<p>源码已经丢失，只剩下可执行文件，T_T。</p>
-<p>如果非要定义以下这个工具的作用，就是从某个固定文件夹（歌词文件夹）复制对应Mp3播放器中歌曲的lrc文件到目标文件夹，从而让Mp3播放器可以正常显示歌词。</p>
-<p>下载点击这里，<a href="https://ohsolnxaa.qnssl.com/upload_dropbox/201103/PLrcMatch4D.zip">PLrcMatch4D.zip</a></p>
-<p>界面比较实在，大致是这样：</p>
-<p><img alt="image" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201103/plrcmatch4d.jpg"/></p>
-                </div>
-                <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2011/03/plrcmatch4d/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
             <hr/>
 

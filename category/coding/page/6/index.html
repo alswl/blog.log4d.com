@@ -68,6 +68,21 @@ Log4D            </a>
         <div class="col-lg-8 col-lg-offset-2">
 
             <article class="article-list">
+                <h2 class="title"><a href="https://blog.alswl.com/2011/11/to-log4d/">域名迁移</a></h2>
+                <div class="summary"><p>各位好，我将在一个星期之内完成<a href="http://dddspace.com">dddspace.com</a>到<a href="http://log4d.com">log4d.com</a>域名的迁移。</p>
+<p>Log4D的域名最早叫dddspace.cn，创建于2009年5月14日，再之后09年12月份某次cn域名爆发群体性拔线之后，我注册了dddspace.co
+m这个域名。</p>
+<p>不知不觉Log4D博客已经走过了2个多年头，我也终于在守候1年多时间里面抢到了名正言顺的log4d.com域名。同时我在<a href="http://www.photonvps.com/billing/aff.php?aff=2188">PhotonVPS</a>购买了一个XEN
+VPS，128M内存，300G流量，我用来运行这个博客，同时配置了VPN用作它用，你们懂的。</p>
+<p>顺便给PhotonVPS做个广告，我那款VPS每个月4.95美元，然后用优惠码打7折，差不多26块钱一个月。我之前使用的虚拟主机+VPN每个月也是26块钱，
+何乐而不为呢。PhotonVPS速度还凑合（有些线路可能比较慢，江苏电信/江苏联通速度不错），128M内存小了一点，需要优化一下才能跑的很顺畅。有兴趣的可以
+压力测试一下我的Log4D。</p>
+<p>Log4D的主题也在紧锣密鼓的重写中，我现在使用Toolbox 1.3版本作为模板来写主题，新主题的源码在 <a href="https://github.com/alswl/simpletoolbox">https://github ...</a></p>
+                </div>
+                <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2011/11/to-log4d/"><i class="icon-circle-arrow-right"></i>more ...</a>
+            </article>
+            <hr/>
+            <article class="article-list">
                 <h2 class="title"><a href="https://blog.alswl.com/2011/09/new-logo/">新logo</a></h2>
                 <div class="summary"><p>策划了一年的博客改版终于跨出了第一步----新Logo。</p>
 <p><img alt="image" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201109/d3_128.png"/></p>
@@ -145,12 +160,12 @@ Log4D            </a>
 <p>Pylons的测试主要使用的其中的 Paste / nose / WebOb / WebTest。 遇到问题的时候，可以去翻一翻上面的文档。</p>
 <h2 id="2-pylonszhong-ce-shi-mu-lu-jie-gou">2. Pylons中测试目录结构</h2>
 <p>目录结构如下</p>
-<div class="highlight"><pre><span></span>├─config
-├─controllers
-├─lib
-├─model
-├─public
-├─templates ...</pre></div>
+<div class="highlight"><pre><span class="err">├─</span><span class="nx">config</span>
+<span class="err">├─</span><span class="nx">controllers</span>
+<span class="err">├─</span><span class="nx">lib</span>
+<span class="err">├─</span><span class="nx">model</span>
+<span class="err">├─</span><span class="kr">public</span>
+<span class="err">├─</span><span class="nx">templates ...</span></pre></div>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2011/09/nose/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -245,20 +260,6 @@ in-ie</a></p>
 <p>狗日的 IE！</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2011/08/get-json-failed-in-ie/"><i class="icon-circle-arrow-right"></i>more ...</a>
-            </article>
-            <hr/>
-            <article class="article-list">
-                <h2 class="title"><a href="https://blog.alswl.com/2011/08/go-pylons-py-in-python2-7/">go-pylons.py在Python2.7下错误解决</a></h2>
-                <div class="summary"><p>当使用 Python2.7 +<a href="http://pylonshq.com/download/1.0/go-pylons.py"> go-pylons.py</a>
-创建 Pylons 运行环境的话，会报一下错误。</p>
-<div class="highlight"><pre><span></span><span class="p">[</span><span class="n">alswl</span><span class="nd">@arch</span><span class="o">-</span><span class="n">vm</span> <span class="n">xingtong</span><span class="p">]</span><span class="err">$</span> <span class="n">python</span> <span class="n">go</span><span class="o">-</span><span class="n">pylons</span><span class="o">.</span><span class="n">py</span> <span class="n">myb_env</span>
-<span class="n">New</span> <span class="n">python</span> <span class="n">executable</span> <span class="ow">in</span> <span class="n">myb_env</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">python</span>
-<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
-  <span class="n">File</span> <span class="s2">"/home/alswl/work/xingtong/myb_env/lib/python2.7/site.py"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">67</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-    <span class="kn">import</span> <span class="nn">os</span>
-  <span class="n">File</span> <span class="s2">"/home/alswl ...</span></pre></div>
-                </div>
-                <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2011/08/go-pylons-py-in-python2-7/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
             <hr/>
 
@@ -399,7 +400,7 @@ in-ie</a></p>
    <div class="container">
       <hr>
       <div class="row">
-         <div class="col-xs-10">&copy; 2017 alswl
+         <div class="col-xs-10">&copy; 2018 alswl
             &middot; Powered by <a href="https://github.com/alswl/pelican-bootstrap3" target="_blank" style="font-weight: bold">pelican-bootstrap3</a>,
             <a href="http://docs.getpelican.com/" target="_blank" style="font-weight: bold">Pelican</a>,
             <a href="http://getbootstrap.com" target="_blank" style="font-weight: bold">Bootstrap</a>,
