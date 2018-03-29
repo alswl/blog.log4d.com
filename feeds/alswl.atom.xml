@@ -2021,7 +2021,7 @@ APP 无法在发起连接时候，也没有权限直接操作 socket。
 &lt;ul&gt;
 &lt;li&gt;功能太简单了，简单到几乎可以自己写掉，不算一个 test framework&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;pyresettest：&lt;/p&gt;
+&lt;p&gt;pyresttest：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;哈哈哈，YAML based，dreamed feature&lt;/li&gt;
 &lt;li&gt;支持 YAML / extractor / validator&lt;/li&gt;
