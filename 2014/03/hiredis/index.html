@@ -106,59 +106,59 @@ Log4D            </a>
 
 <h2 id="yi-fen-zhong-shi-yong-ru-men">一分钟使用入门</h2>
 <p>同步 API 的调用方法：</p>
-<div class="highlight"><pre><span class="n">redisContext</span> <span class="o">*</span><span class="n">context</span> <span class="o">=</span> <span class="n">redisConnect</span><span class="p">(</span><span class="s">"127.0.0.1"</span><span class="p">,</span> <span class="mi">6379</span><span class="p">);</span>
-<span class="n">reply</span> <span class="o">=</span> <span class="n">redisCommand</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="s">"SET foo %s"</span><span class="p">,</span> <span class="n">value</span><span class="p">);</span> 
-<span class="n">printf</span><span class="p">(</span><span class="s">"PING: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">reply</span><span class="o">-&gt;</span><span class="n">str</span><span class="p">);</span>
-<span class="n">freeReplyObject</span><span class="p">(</span><span class="n">reply</span><span class="p">)</span>
-<span class="n">redisFree</span><span class="p">(</span><span class="n">context</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><span class="nt">redisContext</span> <span class="o">*</span><span class="nt">context</span> <span class="o">=</span> <span class="nt">redisConnect</span><span class="o">(</span><span class="s2">"127.0.0.1"</span><span class="o">,</span> <span class="nt">6379</span><span class="o">);</span>
+<span class="nt">reply</span> <span class="o">=</span> <span class="nt">redisCommand</span><span class="o">(</span><span class="nt">context</span><span class="o">,</span> <span class="s2">"SET foo %s"</span><span class="o">,</span> <span class="nt">value</span><span class="o">);</span> 
+<span class="nt">printf</span><span class="o">(</span><span class="s2">"PING: %s\n"</span><span class="o">,</span> <span class="nt">reply-</span><span class="o">&gt;</span><span class="nt">str</span><span class="o">);</span>
+<span class="nt">freeReplyObject</span><span class="o">(</span><span class="nt">reply</span><span class="o">)</span>
+<span class="nt">redisFree</span><span class="o">(</span><span class="nt">context</span><span class="o">);</span>
 </pre></div>
 <p>Redis ae 异步 API 的调用方法，使用 Redis 自己的 ae 事件库，
 至于为什么 Redis 没有使用 libevent 或者 libev，可以参考
 <a href="http://groups.google.com/group/redis-db/browse_thread/thread/b52814e9ef15b8d0/">Reason</a>，
 <a href="http://blog.csdn.net/archimedes_zht/article/details/6909074">中文翻译</a>：</p>
-<div class="highlight"><pre><span class="kt">void</span> <span class="nf">connectCallback</span><span class="p">(</span><span class="k">const</span> <span class="n">redisAsyncContext</span> <span class="o">*</span><span class="n">c</span><span class="p">,</span> <span class="kt">int</span> <span class="n">status</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">printf</span><span class="p">(</span><span class="s">"Connected...</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
-<span class="p">}</span>
+<div class="highlight"><pre><span></span>void connectCallback(const redisAsyncContext *c, int status) {
+    printf("Connected...\n");
+}
 
-<span class="kt">void</span> <span class="nf">disconnectCallback</span><span class="p">(</span><span class="k">const</span> <span class="n">redisAsyncContext</span> <span class="o">*</span><span class="n">c</span><span class="p">,</span> <span class="kt">int</span> <span class="n">status</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">printf</span><span class="p">(</span><span class="s">"Disconnected...</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
-<span class="p">}</span>
-<span class="kt">void</span> <span class="nf">getCallback</span><span class="p">(</span><span class="n">redisAsyncContext</span> <span class="o">*</span><span class="n">c</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">r</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">privdata</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">redisReply</span> <span class="o">*</span><span class="n">reply</span> <span class="o">=</span> <span class="n">r</span><span class="p">;</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">reply</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
-    <span class="n">printf</span><span class="p">(</span><span class="s">"argv[%s]: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="p">(</span><span class="kt">char</span><span class="o">*</span><span class="p">)</span><span class="n">privdata</span><span class="p">,</span> <span class="n">reply</span><span class="o">-&gt;</span><span class="n">str</span><span class="p">);</span>
-    <span class="n">redisAsyncDisconnect</span><span class="p">(</span><span class="n">c</span><span class="p">);</span>
-<span class="p">}</span>
+void disconnectCallback(const redisAsyncContext *c, int status) {
+    printf("Disconnected...\n");
+}
+void getCallback(redisAsyncContext *c, void *r, void *privdata) {
+    redisReply *reply = r;
+    if (reply == NULL) return;
+    printf("argv[%s]: %s\n", (char*)privdata, reply-&gt;str);
+    redisAsyncDisconnect(c);
+}
 
-<span class="n">redisAsyncContext</span> <span class="o">*</span><span class="n">c</span> <span class="o">=</span> <span class="n">redisAsyncConnect</span><span class="p">(</span><span class="s">"127.0.0.1"</span><span class="p">,</span> <span class="mi">6379</span><span class="p">);</span>
-<span class="n">loop</span> <span class="o">=</span> <span class="n">aeCreateEventLoop</span><span class="p">();</span>
-<span class="n">redisAeAttach</span><span class="p">(</span><span class="n">loop</span><span class="p">,</span> <span class="n">c</span><span class="p">);</span>
-<span class="n">redisAsyncSetConnectCallback</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="n">connectCallback</span><span class="p">);</span>
-<span class="n">redisAsyncSetDisconnectCallback</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="n">disconnectCallback</span><span class="p">);</span>
+redisAsyncContext *c = redisAsyncConnect("127.0.0.1", 6379);
+loop = aeCreateEventLoop();
+redisAeAttach(loop, c);
+redisAsyncSetConnectCallback(c,connectCallback);
+redisAsyncSetDisconnectCallback(c,disconnectCallback);
 
-<span class="n">redisAsyncCommand</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">getCallback</span><span class="p">,</span> <span class="p">(</span><span class="kt">char</span><span class="o">*</span><span class="p">)</span><span class="s">"end-1"</span><span class="p">,</span> <span class="s">"GET key"</span><span class="p">);</span>
+redisAsyncCommand(c, getCallback, (char*)"end-1", "GET key");
 </pre></div>
 <p>Libev 异步 API 调用，因为 <code>adapters/*.h</code> 封装的好，所以几乎和 ae 调用一致：</p>
-<div class="highlight"><pre><span class="kt">void</span> <span class="nf">connectCallback</span><span class="p">(</span><span class="k">const</span> <span class="n">redisAsyncContext</span> <span class="o">*</span><span class="n">c</span><span class="p">,</span> <span class="kt">int</span> <span class="n">status</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">printf</span><span class="p">(</span><span class="s">"Connected...</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
-<span class="p">}</span>
-<span class="kt">void</span> <span class="nf">disconnectCallback</span><span class="p">(</span><span class="k">const</span> <span class="n">redisAsyncContext</span> <span class="o">*</span><span class="n">c</span><span class="p">,</span> <span class="kt">int</span> <span class="n">status</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">printf</span><span class="p">(</span><span class="s">"Disconnected...</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
-<span class="p">}</span>
-<span class="kt">void</span> <span class="nf">getCallback</span><span class="p">(</span><span class="n">redisAsyncContext</span> <span class="o">*</span><span class="n">c</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">r</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">privdata</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">redisReply</span> <span class="o">*</span><span class="n">reply</span> <span class="o">=</span> <span class="n">r</span><span class="p">;</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">reply</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
-    <span class="n">printf</span><span class="p">(</span><span class="s">"argv[%s]: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="p">(</span><span class="kt">char</span><span class="o">*</span><span class="p">)</span><span class="n">privdata</span><span class="p">,</span> <span class="n">reply</span><span class="o">-&gt;</span><span class="n">str</span><span class="p">);</span>
+<div class="highlight"><pre><span></span>void connectCallback(const redisAsyncContext *c, int status) {
+    printf("Connected...\n");
+}
+void disconnectCallback(const redisAsyncContext *c, int status) {
+    printf("Disconnected...\n");
+}
+void getCallback(redisAsyncContext *c, void *r, void *privdata) {
+    redisReply *reply = r;
+    if (reply == NULL) return;
+    printf("argv[%s]: %s\n", (char*)privdata, reply-&gt;str);
 
-    <span class="cm">/* Disconnect after receiving the reply to GET */</span>
-    <span class="n">redisAsyncDisconnect</span><span class="p">(</span><span class="n">c</span><span class="p">);</span>
-<span class="p">}</span>
+    /* Disconnect after receiving the reply to GET */
+    redisAsyncDisconnect(c);
+}
 
-<span class="n">redisAsyncContext</span> <span class="o">*</span><span class="n">c</span> <span class="o">=</span> <span class="n">redisAsyncConnect</span><span class="p">(</span><span class="s">"127.0.0.1"</span><span class="p">,</span> <span class="mi">6379</span><span class="p">);</span>
-<span class="n">redisLibevAttach</span><span class="p">(</span><span class="n">EV_DEFAULT_</span> <span class="n">c</span><span class="p">);</span>
-<span class="n">redisAsyncSetConnectCallback</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="n">connectCallback</span><span class="p">);</span>
-<span class="n">redisAsyncSetDisconnectCallback</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="n">disconnectCallback</span><span class="p">);</span>
-<span class="n">redisAsyncCommand</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">getCallback</span><span class="p">,</span> <span class="p">(</span><span class="kt">char</span><span class="o">*</span><span class="p">)</span><span class="s">"end-1"</span><span class="p">,</span> <span class="s">"GET key"</span><span class="p">);</span>
+redisAsyncContext *c = redisAsyncConnect("127.0.0.1", 6379);
+redisLibevAttach(EV_DEFAULT_ c);
+redisAsyncSetConnectCallback(c,connectCallback);
+redisAsyncSetDisconnectCallback(c,disconnectCallback);
+redisAsyncCommand(c, getCallback, (char*)"end-1", "GET key");
 </pre></div>
 <p>Hiredis 还支持使用 libevent，我就不列出来了。</p>
 <p>详细的使用 example 可以看
@@ -184,11 +184,11 @@ hiredis 在连接成功之后，按照之前需求重新设定为阻塞或者非
 <p>关于如何设计超时功能，可以参考 <a href="http://blog.csdn.net/ast_224/article/details/2957294">http://blog.csdn.net/ast_224/article/details/2957294</a>。</p>
 <h3 id="ming-ling">命令</h3>
 <p>使用 va_list 解决变参问题（C 也支持变长参数，被惊呆了，我果然是 C 盲啊）。</p>
-<div class="highlight"><pre><span class="kt">int</span> <span class="nf">redisFormatCommand</span><span class="p">(</span><span class="kt">char</span> <span class="o">**</span><span class="n">target</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">format</span><span class="p">,</span> <span class="p">...)</span> <span class="p">{</span>
-    <span class="kt">va_list</span> <span class="n">ap</span><span class="p">;</span>
-    <span class="kt">int</span> <span class="n">len</span><span class="p">;</span>
-    <span class="n">va_start</span><span class="p">(</span><span class="n">ap</span><span class="p">,</span><span class="n">format</span><span class="p">);</span>
-<span class="p">}</span>
+<div class="highlight"><pre><span></span>int redisFormatCommand(char **target, const char *format, ...) {
+    va_list ap;
+    int len;
+    va_start(ap,format);
+}
 </pre></div>
 <p><code>redisvCommand</code> 用来执行阻塞Redis 命令，它会调用 <code>__redisBlockForReply</code>，
 内部调用 <code>redisBufferWrite</code> 从 socket 写 buffer，然后同步等待，从

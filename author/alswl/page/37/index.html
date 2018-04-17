@@ -111,7 +111,7 @@ Release i386 (20081029.5)]/ intrepid main restricted</p>
 我们完全可以不必大费周折去找lrc，只要把这个歌词文件夹和Mp3播放器同步就可以了。
 以前就想写一个东西完成这个麻烦的工程，现在贴吧1.0完成了，可以休息几天，晚上花了一点时间用Java写了一个这样的小东西。
 如果大家碰到和我一样的麻烦，可以试试。呃，时间仓促，没有图形界面，而且必须是Java程序员才能用，因为我这儿只提供了源码....</p>
-<div class="highlight"><pre><span class="n">package</span> <span class="n">ddd</span><span class="p">;</span>
+<div class="highlight"><pre><span></span>package ddd;
 </pre></div>
 <p>import java.io.BufferedReader;</p>
 <p>import java.io.File;</p>
@@ -133,13 +133,13 @@ Release i386 (20081029.5)]/ intrepid main restricted</p>
 <p>正是因为功能太丰富，所以往往带来安全原因，用这个可以随意上传图片和文件，还能浏览服务器？！</p>
 <p>不行不行，这一定得禁用，否则就是给脚本小子提供工具了嘛。</p>
 <p>配置fckconfig.js 118行左右，修改Basic模板，加入图片和表情功能</p>
-<div class="highlight"><pre><span class="nt">FCKConfig</span><span class="nc">.ToolbarSets</span><span class="cp">[</span><span class="s2">"Basic"</span><span class="cp">]</span> <span class="o">=</span> <span class="cp">[</span>
-<span class="err">[</span><span class="s1">'Bold'</span><span class="p">,</span><span class="s1">'Italic'</span><span class="p">,</span><span class="s1">'-'</span><span class="p">,</span><span class="s1">'OrderedList'</span><span class="p">,</span><span class="s1">'UnorderedList'</span><span class="p">,</span><span class="s1">'-'</span><span class="p">,</span><span class="s1">'Link'</span><span class="p">,</span><span class="s1">'Unlink'</span><span class="p">,</span><span class="s1">'-'</span><span class="p">,</span><span class="s1">'Image'</span><span class="p">,</span><span class="s1">'Smiley'</span><span class="cp">]</span>
-<span class="o">]</span> <span class="o">;</span>
+<div class="highlight"><pre><span></span>FCKConfig.ToolbarSets["Basic"] = [
+['Bold','Italic','-','OrderedList','UnorderedList','-','Link','Unlink','-','Image','Smiley']
+] ;
 </pre></div>
 <p>继续修改tckconfig.js 284左右，去除一些浏览功能，修改为false</p>
-<div class="highlight"><pre><span class="n">FCKConfig</span><span class="p">.</span><span class="n">LinkBrowser</span> <span class="o">=</span> <span class="nb">false</span> <span class="p">;</span><span class="c1">//关闭增加连接中浏览服务器功能</span>
-<span class="n">FCKConfig</span><span class="p">.</span><span class="n">LinkBrowserURL</span> <span class="o">=</span> <span class="n">FCKConfig</span><span class="p">.</span><span class="n">BasePath</span> <span class="o">+</span> <span class="err">'</span><span class="n">filemanager</span><span class="o">/</span><span class="n">browser</span><span class="o">/</span><span class="k">default</span><span class="o">/</span><span class="n">browser</span><span class="p">.</span><span class="n">html</span><span class="o">?</span><span class="n">Connector</span><span class="o">=</span><span class="err">'</span> <span class="o">+</span> <span class="n">encodeURIComponent</span><span class="p">(</span> <span class="n">FCKConfig</span><span class="p">.</span><span class="n">BasePath ...</span></pre></div>
+<div class="highlight"><pre><span></span>FCKConfig.LinkBrowser = false ;//关闭增加连接中浏览服务器功能
+FCKConfig.LinkBrowserURL = FCKConfig.BasePath + 'filemanager/browser/default/browser.html?Connector=' + encodeURIComponent( FCKConfig.BasePath ...</pre></div>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/05/fckeditor-browse-server-function-is-disabled/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -212,22 +212,22 @@ find action or result</p>
                 <h2 class="title"><a href="https://blog.alswl.com/2009/05/landscaping-postviews/">美化postviews</a></h2>
                 <div class="summary"><p>很多朋友用postviews这个插件，的确很适合国人的风格，但是如果单纯的添加到页面中，会显得很突兀，难看，我做了几个美化工作。</p>
 <p>首先，在用到postviews函数时候都定义span id，比如在single.php中修改，在下面代码</p>
-<div class="highlight"><pre><span class="nt">&lt;span&gt;</span><span class="cp">&lt;?php the_author_posts_link(); ?&gt;</span><span class="nt">&lt;/span&gt;</span><span class="cp">&lt;?php endif; ?&gt;</span>
+<div class="highlight"><pre><span></span><span class="nt">&lt;span&gt;</span><span class="cp">&lt;?php</span> <span class="nx">the_author_posts_link</span><span class="p">();</span> <span class="cp">?&gt;</span><span class="nt">&lt;/span&gt;</span><span class="cp">&lt;?php</span> <span class="k">endif</span><span class="p">;</span> <span class="cp">?&gt;</span>
 </pre></div>
 <p>后面跟上一段显示浏览次数的代码</p>
-<div class="highlight"><pre><span class="nt">&lt;span&gt;</span><span class="cp">&lt;?php the_author_posts_link(); ?&gt;</span><span class="nt">&lt;/span&gt;</span><span class="cp">&lt;?php endif; ?&gt;</span>
+<div class="highlight"><pre><span></span><span class="nt">&lt;span&gt;</span><span class="cp">&lt;?php</span> <span class="nx">the_author_posts_link</span><span class="p">();</span> <span class="cp">?&gt;</span><span class="nt">&lt;/span&gt;</span><span class="cp">&lt;?php</span> <span class="k">endif</span><span class="p">;</span> <span class="cp">?&gt;</span>
 </pre></div>
 <p>这样就可以显示浏览次数。</p>
 <p>然后修改style.css文件，我的是inove主题，在382行附近修改</p>
-<div class="highlight"><pre><span class="p">.</span><span class="n">post</span> <span class="p">.</span><span class="n">date</span><span class="p">,</span>
-<span class="p">.</span><span class="n">post</span> <span class="p">.</span><span class="n">author</span><span class="p">,</span>
-<span class="p">.</span><span class="n">post</span> <span class="p">.</span><span class="n">postviews</span><span class="p">,</span>
-<span class="p">.</span><span class="n">post</span> <span class="p">.</span><span class="n">editpost</span><span class="p">,</span>
-<span class="p">.</span><span class="n">post</span> <span class="p">.</span><span class="n">comments</span><span class="p">,</span>
-<span class="p">.</span><span class="n">post</span> <span class="p">.</span><span class="n">addcomment</span><span class="p">,</span>
-<span class="p">.</span><span class="n">post</span> <span class="p">.</span><span class="n">addlink</span><span class="p">,</span>
-<span class="p">.</span><span class="n">post</span> <span class="p">.</span><span class="n">editlinks</span> <span class="p">{</span>
-<span class="nl">background:</span><span class="n">url</span><span class="p">(</span><span class="n">img</span><span class="o">/</span><span class="n">icons ...</span></pre></div>
+<div class="highlight"><pre><span></span><span class="na">.post</span> <span class="no">.date</span><span class="p">,</span>
+<span class="na">.post</span> <span class="no">.author</span><span class="p">,</span>
+<span class="na">.post</span> <span class="no">.postviews</span><span class="p">,</span>
+<span class="na">.post</span> <span class="no">.editpost</span><span class="p">,</span>
+<span class="na">.post</span> <span class="no">.comments</span><span class="p">,</span>
+<span class="na">.post</span> <span class="no">.addcomment</span><span class="p">,</span>
+<span class="na">.post</span> <span class="no">.addlink</span><span class="p">,</span>
+<span class="na">.post</span> <span class="no">.editlinks</span> <span class="err">{</span>
+<span class="nl">background:</span><span class="nf">url</span><span class="p">(</span><span class="no">img</span><span class="err">/</span><span class="no">icons ...</span></pre></div>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/05/landscaping-postviews/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>

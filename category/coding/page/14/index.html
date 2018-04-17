@@ -127,9 +127,9 @@ Ship(微软推出的一个Asp.NET的权限系统)。</p>
 16进制，而不是字符串类型。如'x00xa0'"。（其实这是用在处理文本上的） 不知道各位大大有没有明白我的意思，我花了很长时间没有一个好的解决方案。
 第一种方案，先用int()转换，然后转换hex()，直接失败，hex()转换后格式为'0x00a0'，是字符串格式，根本不是我需要的内容。
 我苦思冥想三天，终于找到一个最傻，也最好用的方法，用list进行匹配。 下面是生成匹配list的脚本：</p>
-<div class="highlight"><pre><span class="n">lst</span> <span class="o">=</span> <span class="sc">'{'</span>
-<span class="k">for</span> <span class="n">i</span> <span class="n">in</span> <span class="n">range</span><span class="p">(</span><span class="kt">int</span><span class="p">(</span><span class="err">'</span><span class="mh">0x00</span><span class="err">'</span><span class="p">,</span> <span class="mi">16</span><span class="p">),</span> <span class="kt">int</span><span class="p">(</span><span class="err">'</span><span class="mh">0xff</span><span class="err">'</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span><span class="o">:</span>
-    <span class="n">hv ...</span></pre></div>
+<div class="highlight"><pre><span></span>lst = '{'
+for i in range(int('0x00', 16), int('0xff', 16) + 1):
+    hv ...</pre></div>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/10/python-enter-the-16-hex-save-to-file/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>

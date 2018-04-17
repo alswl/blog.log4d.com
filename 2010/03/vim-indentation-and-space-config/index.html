@@ -113,11 +113,11 @@ p</code>=4呢？那么一开始，插入的就是4个空格，此时一旦你再
 stop</code>是"逢8空格进1制表符",前提是你<code>tabstop=8</code>。</p>
 <h2 id="4-guan-yu-expandtab">4 关于expandtab</h2>
 <p>举个例子，在多人一起开发项目时，为了使代码风格尽量保持一致，一般不允许在代码使用TAB符，而以4个空格代之。我们可以编辑一个文件，包含下面的内容：</p>
-<div class="highlight"><pre><span class="n">set</span> <span class="n">shiftwidth</span><span class="o">=</span><span class="mi">4</span>
-<span class="n">set</span> <span class="n">expandtab</span>
+<div class="highlight"><pre><span></span>set shiftwidth=4
+set expandtab
 </pre></div>
 <p>然后把下面的命令加入到.vimrc中：</p>
-<div class="highlight"><pre><span class="n">autocmd</span> <span class="n">FileType</span> <span class="n">c</span><span class="p">,</span><span class="n">cpp</span> <span class="n">set</span> <span class="n">shiftwidth</span><span class="o">=</span><span class="mi">4</span> <span class="o">|</span> <span class="n">set</span> <span class="n">expandtab</span>
+<div class="highlight"><pre><span></span>autocmd FileType c,cpp set shiftwidth=4 | set expandtab
 </pre></div>
 <p>就可以只在编辑c和cpp文件时实行这种设置了。</p>
             </div>

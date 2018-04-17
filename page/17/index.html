@@ -179,11 +179,11 @@ cript脚本能够自动检测PC、Mac机器上各种主流浏览器对Flash插�
 <p>FMS （Flash Media Server）在安装时候，有一个选项是端口使用哪个，默认是1935 和
 80端口，安装之后发现在使用两个Apache在80端口发生冲突（FMS使用的也是Apache服务器），需要将这个端口修改。</p>
 <p>Google后，发现修改 Flash Media Server 3conffms.ini 删除80留下1935即可。</p>
-<div class="highlight"><pre><span class="cp"># IP address and port(s) Flash Media Server should listen on</span>
-<span class="cp"># For example:</span>
-<span class="cp">#    ADAPTOR.HOSTPORT = :1935,80</span>
-<span class="cp">#</span>
-<span class="n">ADAPTOR</span><span class="p">.</span><span class="n">HOSTPORT</span> <span class="o">=</span> <span class="o">:</span><span class="mi">1935</span>
+<div class="highlight"><pre><span></span># IP address and port(s) Flash Media Server should listen on
+# For example:
+#    ADAPTOR.HOSTPORT = :1935,80
+#
+ADAPTOR.HOSTPORT = :1935
 </pre></div>
 <p>唔～继续搞鼓Flex的流媒体传输了 ...</p>
                 </div>

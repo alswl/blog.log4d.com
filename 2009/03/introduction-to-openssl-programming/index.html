@@ -109,7 +109,8 @@ man手册都相当优秀,可是这些手册失去了大的背景 因为它们只
 <p>由于篇幅原因, 本文只包涵了源代码的一些摘录, 完整的代码可以从作者的站点<a href="http://www.rtfm.com/openssl-examples/">http://www.rtfm.com/openssl-
 examples/</a>上下载.</p>
 <p><strong>程序</strong><br/>
-我们的客户端是一个简单的HTTPS(见 RFC 281<img alt="image" src="/DOCUME~1/%E7%8B%84%E6%95%AC%E8%B6%85/LOCALS~1/" title="Temp/msohtml1/01/clip_image001.gif"/>客户端,它在初始化了一个到达服务器的SSL连接之后便通过这个连接将HTTP请求传送给H
+我们的客户端是一个简单的HTTPS(见 RFC 281![image](/DOCUME~1/%E7%8B%84%E6%95%AC%E8%B6%85/LOCALS~1/
+Temp/msohtml1/01/clip_image001.gif)客户端,它在初始化了一个到达服务器的SSL连接之后便通过这个连接将HTTP请求传送给H
 TTP服务器. 然后等待服务器端的响应,并将响应信息打印在屏幕上.这是对通常那些"获取并且打印信息"的程序功能更简化的一个例子.</p>
 <p>服务器端程序是一个简单的HTTPS 服务器, 它等待从客户端发出的TCP连接, 每当接收到一个连接时,它会磋商这个连接(的合法性).
 一旦这个连接被确定下来, 它会读取客户端的HTTP请求, 并将HTTP请求的响应信息传输给客户端. 当响应传输完毕时它会关闭这个连接.</p>
@@ -317,8 +318,8 @@ tify消息，相反，如果严格的遵守协议并且要求其它人也这么�
 e 要求你首先发送一个TCP FIN标志。因此我们在第二次调用SSL_shutdown()之前调用了shutdown(s,1)函数，当我们使用1作为第一个参
 数时，shutdown()函数发送了</p>
 <p>一个FIN标志，但是却使得套接字处于打开并且读的状态。服务器端关闭的代码如列表7所示.</p>
-<p><strong>列表<strong><em>*7 </em></strong>*访问</strong><strong>SSL_shutdown()</strong><br/>
-<strong>其它相关的东西</strong><br/>
+<p><strong>列表<strong><em>*7 </em></strong>*访问<strong><em>*SSL_shutdown()</em>*<br/>
+</strong>其它相关的东西</strong><br/>
 在本文，我们只是提及了使用OpenSSL时的一些表面的观点，下面是更多的一些观点：</p>
 <p>一种更复杂的检测证书中服务器名字的方法就是使用X.509当中的subjectAltName扩展部分。为了做这个检测，我们需要从证书中提取出这个部分来，然后根
 据hostname检测这个部分，同样，能够在证书中根据wild-carded 名字来检测主机名也是非常有意思的事情。</p>

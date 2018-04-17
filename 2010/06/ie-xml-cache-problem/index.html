@@ -117,7 +117,7 @@ me请求时候都能获得正确的数据，而IE则常常出现无法获取实�
 <h3 id="1shi-yong-urlcan-shu-sui-ji-shi-jian">1.使用URL参数随机事件</h3>
 <p>在AJAX请求的页面后加个随机函数,我们可以使用随机时间函数，在javascript发送的URL后加上t=Math.random()。</p>
 <p>当然，不是直接把t=Math.random()拷贝到URL后面,应该像这样:</p>
-<div class="highlight"><pre><span class="n">url</span> <span class="o">=</span> <span class="n">url</span> <span class="o">+</span> <span class="s">"&amp; amp;"</span> <span class="o">+</span> <span class="s">"t="</span> <span class="o">+</span> <span class="n">Math</span><span class="p">.</span><span class="n">random</span><span class="p">();</span>
+<div class="highlight"><pre><span></span>url = url + "&amp; amp;" + "t=" + Math.random();
 </pre></div>
 <h3 id="2xiu-gai-headerhuan-cun-shi-jian">2.修改Header缓存时间</h3>
 <p>在XMLHttpRequest发送请求之前加上 XMLHttpRequest.setRequestHeader("If-Modified-
@@ -129,10 +129,10 @@ Since","0")。一般情况下,这里的 XMLHttpRequest 不会直接使用。</p>
 <p>XXXXX.send(YYYYYY);</p>
 <h2 id="a-sample_1">a Sample</h2>
 <p>我选择的是第一种方法，我觉得这种更为直观。我的具体代码如下（使用jQuery）：</p>
-<div class="highlight"><pre><span class="n">jQuery</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">"http://localhost/AzaAjaxChat/src/Chat/getXml"</span><span class="p">,</span> <span class="p">{</span>
-    <span class="nl">messageId:</span> <span class="n">aacGlobal</span><span class="p">.</span><span class="n">currentMessageId</span><span class="p">,</span>
-    <span class="nl">version:</span> <span class="n">Math</span><span class="p">.</span><span class="n">random</span><span class="p">()</span>
-<span class="p">},</span> <span class="n">getRemoteDataCallBack</span><span class="p">);</span>
+<div class="highlight"><pre><span></span>jQuery.get("http://localhost/AzaAjaxChat/src/Chat/getXml", {
+    messageId: aacGlobal.currentMessageId,
+    version: Math.random()
+}, getRemoteDataCallBack);
 </pre></div>
             </div>
             <!-- /.entry-content -->

@@ -104,10 +104,10 @@ pse下使用Maven不用插件也能完成，我们只需要使用bin/mvn下面�
 /getting-started/maven-in-five-minutes.html">Getting Started in 5 Minutes</a>和<a href="http://maven.apache.org/guides/getting-
 started/index.html">Getting Started in 30
 Minutes</a>两种教程，我这里再简化一下，记录一下常用命令。</p>
-<div class="highlight"><pre><span class="cp">#建立一个空项目，包含一个HelloWorld，可以通过</span>
-<span class="cp">#-DarchetypeGroupId=&lt;archetype-groupId&gt; -DarchetypeArtifactId=&lt;archetype-artifactId&gt;</span>
-<span class="cp">#命令创建更多类型项目</span>
-<span class="n">mvn</span> <span class="n">archetype</span><span class="o">:</span><span class="n">create</span> <span class="o">-</span><span class="n">DgroupId</span><span class="o">=</span><span class="n">com</span><span class="p">.</span><span class="n">dddspace</span><span class="p">.</span><span class="n">java</span> <span class="o">-</span><span class="n">DartifactId</span><span class="o">=</span><span class="n">helloworld</span>
+<div class="highlight"><pre><span></span>#建立一个空项目，包含一个HelloWorld，可以通过
+#-DarchetypeGroupId=&lt;archetype-groupId&gt; -DarchetypeArtifactId=&lt;archetype-artifactId&gt;
+#命令创建更多类型项目
+mvn archetype:create -DgroupId=com.dddspace.java -DartifactId=helloworld
 </pre></div>
 <h1>编译打包到jar或者war，根据pom中定义</h1>
 <p>maven package</p>
@@ -130,12 +130,12 @@ Maven在哪里。配置Eclipse-&gt;preferences-&gt;Run/Debug-&gt;String Subsitut
 =&amp;nbsp_place_holder;D:/dotj_dev/tools/apache-maven-2.2.1/bin/mvn.bat。</p>
 <h3 id="jian-li-launchwen-jian">建立Launch文件</h3>
 <p>Launch其实是Eclipse的Launcher框架的配置文件，可以定义Application的启动方式。新建一个mvn-war.launch如下：</p>
-<div class="highlight"><pre><span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;</span>
+<div class="highlight"><pre><span></span><span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;</span>
 <span class="nt">&lt;launchConfiguration</span> <span class="na">type=</span><span class="s">"org.eclipse.ui.externaltools.ProgramLaunchConfigurationType"</span><span class="nt">&gt;</span>
-<span class="nt">&lt;stringAttribute</span> <span class="na">key=</span><span class="s">"bad_container_name"</span> <span class="na">value=</span><span class="s">"helloworldmvn-war.launch"</span><span class="nt">/&gt;</span>
-<span class="nt">&lt;stringAttribute</span> <span class="na">key=</span><span class="s">"org.eclipse.ui.externaltools.ATTR_LOCATION"</span> <span class="na">value=</span><span class="s">"${mvn}"</span><span class="nt">/&gt;</span>
-<span class="nt">&lt;stringAttribute</span> <span class="na">key=</span><span class="s">"org.eclipse.ui.externaltools.ATTR_TOOL_ARGUMENTS"</span> <span class="na">value=</span><span class="s">"clean compile war:war -U"</span><span class="nt">/&gt;</span>
-<span class="nt">&lt;stringAttribute</span> <span class="na">key=</span><span class="s">"org.eclipse.ui.externaltools.ATTR_WORKING_DIRECTORY"</span> <span class="na">value=</span><span class="s">"${workspace_loc:/helloworld}"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;stringAttribute</span> <span class="na">key=</span><span class="s">"bad_container_name"</span> <span class="na">value=</span><span class="s">"helloworldmvn-war.launch"/</span><span class="nt">&gt;</span>
+<span class="nt">&lt;stringAttribute</span> <span class="na">key=</span><span class="s">"org.eclipse.ui.externaltools.ATTR_LOCATION"</span> <span class="na">value=</span><span class="s">"</span><span class="cp">${</span><span class="n">mvn</span><span class="cp">}</span><span class="s">"/</span><span class="nt">&gt;</span>
+<span class="nt">&lt;stringAttribute</span> <span class="na">key=</span><span class="s">"org.eclipse.ui.externaltools.ATTR_TOOL_ARGUMENTS"</span> <span class="na">value=</span><span class="s">"clean compile war:war -U"/</span><span class="nt">&gt;</span>
+<span class="nt">&lt;stringAttribute</span> <span class="na">key=</span><span class="s">"org.eclipse.ui.externaltools.ATTR_WORKING_DIRECTORY"</span> <span class="na">value=</span><span class="s">"</span><span class="cp">${</span><span class="n">workspace_loc</span><span class="p">:</span><span class="o">/</span><span class="n">helloworld</span><span class="cp">}</span><span class="s">"/</span><span class="nt">&gt;</span>
 <span class="nt">&lt;/launchConfiguration&gt;</span>
 </pre></div>
 <p>Update（2011/03/21）：后来测试发现<code>bad_container_name</code>没有也可以正常运行；<code>${workspace_loc:/hello
