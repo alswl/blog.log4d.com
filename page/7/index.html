@@ -115,7 +115,7 @@ Log4D            </a>
 会将所有插件管理在 <code>.vim/bundle/</code> 中，详情可看
 <a href="/2012/04/vundle/">使用 Vundle 管理 Vim 插件</a>。</p>
 <p>官方安装 Vundle 方法如下：</p>
-$ git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 </pre>
 <p>我的 Vundle 的版本是 <code>59bff0c457f68c3d52bcebbf6068ea01ac8f5dac</code>，
 git 版本是 <code>git version 1.7.10.2</code> 。
@@ -170,13 +170,13 @@ submodule 比如 <code>.vim/bundle/The-NERD-Commenter (untracked content)</code>
 于是为了让人人网的同学能看见我那些技术宅，又或非技术宅的文章，
 我只能昧着良心，给 Octopress 加上过时的 RSS2.0 输出。</p>
 <p>在 <code>source/</code> 下创建新文件 <code>rss.xml</code> ，内容如下：</p>
-<div class="highlight"><pre><span></span>---
-layout: nil
----
-<span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<div class="highlight"><pre><span class="o">---</span>
+<span class="nx">layout</span><span class="p">:</span> <span class="nx">nil</span>
+<span class="o">---</span>
+<span class="o">&lt;?</span><span class="kt">xml</span> <span class="n">version</span><span class="o">=</span><span class="s2">"1.0"</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"UTF-8"</span><span class="cp">?&gt;</span>
 <span class="nt">&lt;rss</span> <span class="na">xmlns:dc=</span><span class="s">"http://purl.org/dc/elements/1.1/"</span> <span class="na">version=</span><span class="s">"2.0"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;channel&gt;</span>
-        <span class="nt">&lt;description&gt;</span><span class="cp">&lt;![CDATA[{{</span> <span class="nv">site ...</span></pre></div>
+        <span class="nt">&lt;description&gt;</span><span class="cp">&lt;![</span><span class="nx">CDATA</span><span class="err">[</span><span class="p">{{</span> <span class="nx">site ...</span></pre></div>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2012/05/support-rss/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>

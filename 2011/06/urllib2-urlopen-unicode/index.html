@@ -98,88 +98,88 @@ Log4D            </a>
 <p>Python中unicode转码一向是让人头疼的问题。数次碰壁之后，我也摸出了一些门道，
 研读完<a href="http://ipie.blogbus.com/logs/19379694.html">Python字符串的encode与decode</a>
 之后，就自认为找到了万金油，谁知道这次又碰上这个老冤家。</p>
-<div class="highlight"><pre><span></span>Traceback (most recent call last):
-  File "&lt;stdin&gt;", line 1, in &lt;module&gt;
-  File "/usr/lib/python2.6/urllib2.py", line 126, in urlopen
-    return _opener.open(url, data, timeout)
-  File "/usr/lib/python2.6/urllib2.py", line 391, in open
-    response = self._open(req, data)
-  File "/usr/lib/python2.6/urllib2.py", line 409, in _open
-    '_open', req)
-  File "/usr/lib/python2.6/urllib2.py", line 369, in _call_chain
-    result = func(*args)
-  File "/usr/lib/python2.6/urllib2.py", line 1170, in http_open
-    return self.do_open(httplib.HTTPConnection, req)
-  File "/usr/lib/python2.6/urllib2.py", line 1142, in do_open
-    h.request(req.get_method(), req.get_selector(), req.data, headers)
-  File "/usr/lib/python2.6/httplib.py", line 914, in request
-    self._send_request(method, url, body, headers)
-  File "/usr/lib/python2.6/httplib.py", line 951, in _send_request
-    self.endheaders()
-  File "/usr/lib/python2.6/httplib.py", line 908, in endheaders
-    self._send_output()
-  File "/usr/lib/python2.6/httplib.py", line 780, in _send_output
-    self.send(msg)
-  File "/usr/lib/python2.6/httplib.py", line 759, in send
-    self.sock.sendall(str)
-  File "&lt;string&gt;", line 1, in sendall
-UnicodeEncodeError: 'ascii' codec can't encode characters in position 7-8: ordinal not in range(128)
+<div class="highlight"><pre><span class="nx">Traceback</span> <span class="p">(</span><span class="nx">most</span> <span class="nx">recent</span> <span class="nb">call</span> <span class="nb">last</span><span class="p">):</span>
+  <span class="nb">File</span> <span class="s2">"&lt;stdin&gt;"</span><span class="p">,</span> <span class="nb">line</span> <span class="mi">1</span><span class="p">,</span> <span class="k">in</span> <span class="o">&lt;</span><span class="nx">module</span><span class="o">&gt;</span>
+  <span class="nb">File</span> <span class="s2">"/usr/lib/python2.6/urllib2.py"</span><span class="p">,</span> <span class="nb">line</span> <span class="mi">126</span><span class="p">,</span> <span class="k">in</span> <span class="nx">urlopen</span>
+    <span class="k">return</span> <span class="nx">_opener.open</span><span class="p">(</span><span class="nb">url</span><span class="p">,</span> <span class="kd">data</span><span class="p">,</span> <span class="nx">timeout</span><span class="p">)</span>
+  <span class="nb">File</span> <span class="s2">"/usr/lib/python2.6/urllib2.py"</span><span class="p">,</span> <span class="nb">line</span> <span class="mi">391</span><span class="p">,</span> <span class="k">in</span> <span class="nb">open</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="bp">self.</span><span class="nx">_open</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="kd">data</span><span class="p">)</span>
+  <span class="nb">File</span> <span class="s2">"/usr/lib/python2.6/urllib2.py"</span><span class="p">,</span> <span class="nb">line</span> <span class="mi">409</span><span class="p">,</span> <span class="k">in</span> <span class="nx">_open</span>
+    <span class="s1">'_open'</span><span class="p">,</span> <span class="nx">req</span><span class="p">)</span>
+  <span class="nb">File</span> <span class="s2">"/usr/lib/python2.6/urllib2.py"</span><span class="p">,</span> <span class="nb">line</span> <span class="mi">369</span><span class="p">,</span> <span class="k">in</span> <span class="nx">_call_chain</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="nx">func</span><span class="p">(</span><span class="o">*</span><span class="nx">args</span><span class="p">)</span>
+  <span class="nb">File</span> <span class="s2">"/usr/lib/python2.6/urllib2.py"</span><span class="p">,</span> <span class="nb">line</span> <span class="mi">1170</span><span class="p">,</span> <span class="k">in</span> <span class="nx">http_open</span>
+    <span class="k">return</span> <span class="bp">self.</span><span class="nx">do_open</span><span class="p">(</span><span class="nx">httplib.HTTPConnection</span><span class="p">,</span> <span class="nx">req</span><span class="p">)</span>
+  <span class="nb">File</span> <span class="s2">"/usr/lib/python2.6/urllib2.py"</span><span class="p">,</span> <span class="nb">line</span> <span class="mi">1142</span><span class="p">,</span> <span class="k">in</span> <span class="nx">do_open</span>
+    <span class="nx">h.request</span><span class="p">(</span><span class="nx">req.get_method</span><span class="p">(),</span> <span class="nx">req.get_selector</span><span class="p">(),</span> <span class="nx">req.data</span><span class="p">,</span> <span class="nb">headers</span><span class="p">)</span>
+  <span class="nb">File</span> <span class="s2">"/usr/lib/python2.6/httplib.py"</span><span class="p">,</span> <span class="nb">line</span> <span class="mi">914</span><span class="p">,</span> <span class="k">in</span> <span class="nx">request</span>
+    <span class="bp">self.</span><span class="nx">_send_request</span><span class="p">(</span><span class="nb">method</span><span class="p">,</span> <span class="nb">url</span><span class="p">,</span> <span class="nb">body</span><span class="p">,</span> <span class="nb">headers</span><span class="p">)</span>
+  <span class="nb">File</span> <span class="s2">"/usr/lib/python2.6/httplib.py"</span><span class="p">,</span> <span class="nb">line</span> <span class="mi">951</span><span class="p">,</span> <span class="k">in</span> <span class="nx">_send_request</span>
+    <span class="bp">self.</span><span class="nx">endheaders</span><span class="p">()</span>
+  <span class="nb">File</span> <span class="s2">"/usr/lib/python2.6/httplib.py"</span><span class="p">,</span> <span class="nb">line</span> <span class="mi">908</span><span class="p">,</span> <span class="k">in</span> <span class="nx">endheaders</span>
+    <span class="bp">self.</span><span class="nx">_send_output</span><span class="p">()</span>
+  <span class="nb">File</span> <span class="s2">"/usr/lib/python2.6/httplib.py"</span><span class="p">,</span> <span class="nb">line</span> <span class="mi">780</span><span class="p">,</span> <span class="k">in</span> <span class="nx">_send_output</span>
+    <span class="bp">self.</span><span class="nb">send</span><span class="p">(</span><span class="nb">msg</span><span class="p">)</span>
+  <span class="nb">File</span> <span class="s2">"/usr/lib/python2.6/httplib.py"</span><span class="p">,</span> <span class="nb">line</span> <span class="mi">759</span><span class="p">,</span> <span class="k">in</span> <span class="nb">send</span>
+    <span class="bp">self.</span><span class="nx">sock.sendall</span><span class="p">(</span><span class="nx">str</span><span class="p">)</span>
+  <span class="nb">File</span> <span class="s2">"&lt;string&gt;"</span><span class="p">,</span> <span class="nb">line</span> <span class="mi">1</span><span class="p">,</span> <span class="k">in</span> <span class="nx">sendall</span>
+<span class="nx">UnicodeEncodeError</span><span class="p">:</span> <span class="s1">'ascii'</span> <span class="nx">codec</span> <span class="nx">can</span><span class="s1">'t encode characters in position 7-8: ordinal not in range(128)</span>
 </pre></div>
 <p>这次错误引发是在 <code>urlopen()</code> 引起的，很有特色，开始使用 <code>url.encode('utf-8')</code> 就可以解决了。 今天我做了一些测试。</p>
 <h2 id="1-ascii-unicode-ce-shi">1. ascii + unicode 测试</h2>
-<div class="highlight"><pre><span></span>&gt;&gt;&gt; 'a' + u'b'
-&gt;&gt;&gt; '你' + u'好'
-Traceback (most recent call last):
-  File "&lt;stdin&gt;", line 1, in &lt;module&gt;
-UnicodeDecodeError: 'ascii' codec can't decode byte 0xe4 in position 0: ordinal not in range(128)
-&gt;&gt;&gt; u'你' + u'好'
-u'u4f60u597d'
-&gt;&gt;&gt; u'a' + '你' + u'好'
-Traceback (most recent call last):
-  File "&lt;stdin&gt;", line 1, in &lt;module&gt;
-UnicodeDecodeError: 'ascii' codec can't decode byte 0xe4 in position 0: ordinal not in range(128)
+<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="s1">'a'</span> <span class="o">+</span> <span class="nx">u</span><span class="s1">'b'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s1">'你'</span> <span class="o">+</span> <span class="nx">u</span><span class="s1">'好'</span>
+<span class="nx">Traceback</span> <span class="p">(</span><span class="nx">most</span> <span class="nx">recent</span> <span class="nb">call</span> <span class="nb">last</span><span class="p">):</span>
+  <span class="nb">File</span> <span class="s2">"&lt;stdin&gt;"</span><span class="p">,</span> <span class="nb">line</span> <span class="mi">1</span><span class="p">,</span> <span class="k">in</span> <span class="o">&lt;</span><span class="nx">module</span><span class="o">&gt;</span>
+<span class="nx">UnicodeDecodeError</span><span class="p">:</span> <span class="s1">'ascii'</span> <span class="nx">codec</span> <span class="nx">can</span><span class="s1">'t decode byte 0xe4 in position 0: ordinal not in range(128)</span>
+<span class="s1">&gt;&gt;&gt; u'</span><span class="err">你</span><span class="s1">' + u'</span><span class="err">好</span><span class="s1">'</span>
+<span class="s1">u'</span><span class="nx">u4f60u597d</span><span class="s1">'</span>
+<span class="s1">&gt;&gt;&gt; u'</span><span class="nx">a</span><span class="s1">' + '</span><span class="err">你</span><span class="s1">' + u'</span><span class="err">好</span><span class="s1">'</span>
+<span class="s1">Traceback (most recent call last):</span>
+<span class="s1">  File "&lt;stdin&gt;", line 1, in &lt;module&gt;</span>
+<span class="s1">UnicodeDecodeError: '</span><span class="nx">ascii</span><span class="s1">' codec can'</span><span class="nb">t</span> <span class="nx">decode</span> <span class="nx">byte</span> <span class="mh">0xe4</span> <span class="k">in</span> <span class="nb">position</span> <span class="mi">0</span><span class="p">:</span> <span class="nx">ordinal</span> <span class="n">not</span> <span class="k">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">128</span><span class="p">)</span>
 </pre></div>
 <p>上面的测试说明ascii码和unicode码相连操作，结论是有中文记得带上u，就不会有问题。
 Python默认解码器是ascii，无法解码unicode中的中文。</p>
 <h2 id="2-urllib2de-ce-shi">2. urllib2的测试</h2>
-<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">urllib2</span>
+<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="k">import</span> <span class="nx">urllib2</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">h1</span> <span class="o">=</span> <span class="s1">'http://baidu.com'</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">h1</span><span class="p">)</span>
-<span class="o">&lt;</span><span class="n">addinfourl</span> <span class="n">at</span> <span class="mi">153439532</span> <span class="n">whose</span> <span class="n">fp</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">socket</span><span class="o">.</span><span class="n">_fileobject</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0xb74e51ac</span><span class="o">&gt;&gt;</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">h2</span> <span class="o">=</span> <span class="sa">u</span><span class="s1">'http://baidu.com'</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">h2</span><span class="p">)</span>
-<span class="o">&lt;</span><span class="n">addinfourl</span> <span class="n">at</span> <span class="mi">153440236</span> <span class="n">whose</span> <span class="n">fp</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">socket</span><span class="o">.</span><span class="n">_fileobject</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x925912c</span><span class="o">&gt;&gt;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nx">urllib2.urlopen</span><span class="p">(</span><span class="nx">h1</span><span class="p">)</span>
+<span class="o">&lt;</span><span class="nx">addinfourl</span> <span class="nx">at</span> <span class="mi">153439532</span> <span class="nx">whose</span> <span class="n">fp</span> <span class="o">=</span> <span class="o">&lt;</span><span class="nx">socket._fileobject</span> <span class="nb">object</span> <span class="nx">at</span> <span class="mh">0xb74e51ac</span><span class="o">&gt;&gt;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">h2</span> <span class="o">=</span> <span class="nx">u</span><span class="s1">'http://baidu.com'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nx">urllib2.urlopen</span><span class="p">(</span><span class="nx">h2</span><span class="p">)</span>
+<span class="o">&lt;</span><span class="nx">addinfourl</span> <span class="nx">at</span> <span class="mi">153440236</span> <span class="nx">whose</span> <span class="n">fp</span> <span class="o">=</span> <span class="o">&lt;</span><span class="nx">socket._fileobject</span> <span class="nb">object</span> <span class="nx">at</span> <span class="mh">0x925912c</span><span class="o">&gt;&gt;</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">h3</span> <span class="o">=</span> <span class="s1">'http://baidu.com?w=测试'</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">h3</span><span class="p">)</span>
-<span class="o">&lt;</span><span class="n">addinfourl</span> <span class="n">at</span> <span class="mi">153482348</span> <span class="n">whose</span> <span class="n">fp</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">socket</span><span class="o">.</span><span class="n">_fileobject</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x92593ac</span><span class="o">&gt;&gt;</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">h4</span> <span class="o">=</span> <span class="sa">u</span><span class="s1">'http://baidu.com?w=测试'</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">h4</span><span class="p">)</span>
-<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
-  <span class="n">File</span> <span class="s2">"&lt;stdin&gt;"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-  <span class="n">File</span> <span class="s2">"/usr/lib/python2.6/urllib2.py"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">126</span><span class="p">,</span> <span class="ow">in</span> <span class="n">urlopen</span>
-    <span class="k">return</span> <span class="n">_opener</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">timeout</span><span class="p">)</span>
-  <span class="n">File</span> <span class="s2">"/usr/lib/python2.6/urllib2.py"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">391</span><span class="p">,</span> <span class="ow">in</span> <span class="nb">open</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_open</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
-  <span class="n">File</span> <span class="s2">"/usr/lib/python2.6/urllib2.py"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">409</span><span class="p">,</span> <span class="ow">in</span> <span class="n">_open</span>
-    <span class="s1">'_open'</span><span class="p">,</span> <span class="n">req</span><span class="p">)</span>
-  <span class="n">File</span> <span class="s2">"/usr/lib/python2.6/urllib2.py"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">369</span><span class="p">,</span> <span class="ow">in</span> <span class="n">_call_chain</span>
-    <span class="n">result</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
-  <span class="n">File</span> <span class="s2">"/usr/lib/python2.6/urllib2.py"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1170</span><span class="p">,</span> <span class="ow">in</span> <span class="n">http_open</span>
-    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">do_open</span><span class="p">(</span><span class="n">httplib</span><span class="o">.</span><span class="n">HTTPConnection</span><span class="p">,</span> <span class="n">req</span><span class="p">)</span>
-  <span class="n">File</span> <span class="s2">"/usr/lib/python2.6/urllib2.py"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1142</span><span class="p">,</span> <span class="ow">in</span> <span class="n">do_open</span>
-    <span class="n">h</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">req</span><span class="o">.</span><span class="n">get_method</span><span class="p">(),</span> <span class="n">req</span><span class="o">.</span><span class="n">get_selector</span><span class="p">(),</span> <span class="n">req</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">headers</span><span class="p">)</span>
-  <span class="n">File</span> <span class="s2">"/usr/lib/python2.6/httplib.py"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">914</span><span class="p">,</span> <span class="ow">in</span> <span class="n">request</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">_send_request</span><span class="p">(</span><span class="n">method</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">body</span><span class="p">,</span> <span class="n">headers</span><span class="p">)</span>
-  <span class="n">File</span> <span class="s2">"/usr/lib/python2.6/httplib.py"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">951</span><span class="p">,</span> <span class="ow">in</span> <span class="n">_send_request</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">endheaders</span><span class="p">()</span>
-  <span class="n">File</span> <span class="s2">"/usr/lib/python2.6/httplib.py"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">908</span><span class="p">,</span> <span class="ow">in</span> <span class="n">endheaders</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">_send_output</span><span class="p">()</span>
-  <span class="n">File</span> <span class="s2">"/usr/lib/python2.6/httplib.py"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">780</span><span class="p">,</span> <span class="ow">in</span> <span class="n">_send_output</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
-  <span class="n">File</span> <span class="s2">"/usr/lib/python2.6/httplib.py"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">759</span><span class="p">,</span> <span class="ow">in</span> <span class="n">send</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">sock</span><span class="o">.</span><span class="n">sendall</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
-  <span class="n">File</span> <span class="s2">"&lt;string&gt;"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="n">sendall</span>
-<span class="ne">UnicodeEncodeError</span><span class="p">:</span> <span class="s1">'ascii'</span> <span class="n">codec</span> <span class="n">can</span><span class="s1">'t encode characters in position 7-8: ordinal not in range(128)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nx">urllib2.urlopen</span><span class="p">(</span><span class="nx">h3</span><span class="p">)</span>
+<span class="o">&lt;</span><span class="nx">addinfourl</span> <span class="nx">at</span> <span class="mi">153482348</span> <span class="nx">whose</span> <span class="n">fp</span> <span class="o">=</span> <span class="o">&lt;</span><span class="nx">socket._fileobject</span> <span class="nb">object</span> <span class="nx">at</span> <span class="mh">0x92593ac</span><span class="o">&gt;&gt;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">h4</span> <span class="o">=</span> <span class="nx">u</span><span class="s1">'http://baidu.com?w=测试'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nx">urllib2.urlopen</span><span class="p">(</span><span class="nx">h4</span><span class="p">)</span>
+<span class="nx">Traceback</span> <span class="p">(</span><span class="nx">most</span> <span class="nx">recent</span> <span class="nb">call</span> <span class="nb">last</span><span class="p">):</span>
+  <span class="nb">File</span> <span class="s2">"&lt;stdin&gt;"</span><span class="p">,</span> <span class="nb">line</span> <span class="mi">1</span><span class="p">,</span> <span class="k">in</span> <span class="o">&lt;</span><span class="nx">module</span><span class="o">&gt;</span>
+  <span class="nb">File</span> <span class="s2">"/usr/lib/python2.6/urllib2.py"</span><span class="p">,</span> <span class="nb">line</span> <span class="mi">126</span><span class="p">,</span> <span class="k">in</span> <span class="nx">urlopen</span>
+    <span class="k">return</span> <span class="nx">_opener.open</span><span class="p">(</span><span class="nb">url</span><span class="p">,</span> <span class="kd">data</span><span class="p">,</span> <span class="nx">timeout</span><span class="p">)</span>
+  <span class="nb">File</span> <span class="s2">"/usr/lib/python2.6/urllib2.py"</span><span class="p">,</span> <span class="nb">line</span> <span class="mi">391</span><span class="p">,</span> <span class="k">in</span> <span class="nb">open</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="bp">self.</span><span class="nx">_open</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="kd">data</span><span class="p">)</span>
+  <span class="nb">File</span> <span class="s2">"/usr/lib/python2.6/urllib2.py"</span><span class="p">,</span> <span class="nb">line</span> <span class="mi">409</span><span class="p">,</span> <span class="k">in</span> <span class="nx">_open</span>
+    <span class="s1">'_open'</span><span class="p">,</span> <span class="nx">req</span><span class="p">)</span>
+  <span class="nb">File</span> <span class="s2">"/usr/lib/python2.6/urllib2.py"</span><span class="p">,</span> <span class="nb">line</span> <span class="mi">369</span><span class="p">,</span> <span class="k">in</span> <span class="nx">_call_chain</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="nx">func</span><span class="p">(</span><span class="o">*</span><span class="nx">args</span><span class="p">)</span>
+  <span class="nb">File</span> <span class="s2">"/usr/lib/python2.6/urllib2.py"</span><span class="p">,</span> <span class="nb">line</span> <span class="mi">1170</span><span class="p">,</span> <span class="k">in</span> <span class="nx">http_open</span>
+    <span class="k">return</span> <span class="bp">self.</span><span class="nx">do_open</span><span class="p">(</span><span class="nx">httplib.HTTPConnection</span><span class="p">,</span> <span class="nx">req</span><span class="p">)</span>
+  <span class="nb">File</span> <span class="s2">"/usr/lib/python2.6/urllib2.py"</span><span class="p">,</span> <span class="nb">line</span> <span class="mi">1142</span><span class="p">,</span> <span class="k">in</span> <span class="nx">do_open</span>
+    <span class="nx">h.request</span><span class="p">(</span><span class="nx">req.get_method</span><span class="p">(),</span> <span class="nx">req.get_selector</span><span class="p">(),</span> <span class="nx">req.data</span><span class="p">,</span> <span class="nb">headers</span><span class="p">)</span>
+  <span class="nb">File</span> <span class="s2">"/usr/lib/python2.6/httplib.py"</span><span class="p">,</span> <span class="nb">line</span> <span class="mi">914</span><span class="p">,</span> <span class="k">in</span> <span class="nx">request</span>
+    <span class="bp">self.</span><span class="nx">_send_request</span><span class="p">(</span><span class="nb">method</span><span class="p">,</span> <span class="nb">url</span><span class="p">,</span> <span class="nb">body</span><span class="p">,</span> <span class="nb">headers</span><span class="p">)</span>
+  <span class="nb">File</span> <span class="s2">"/usr/lib/python2.6/httplib.py"</span><span class="p">,</span> <span class="nb">line</span> <span class="mi">951</span><span class="p">,</span> <span class="k">in</span> <span class="nx">_send_request</span>
+    <span class="bp">self.</span><span class="nx">endheaders</span><span class="p">()</span>
+  <span class="nb">File</span> <span class="s2">"/usr/lib/python2.6/httplib.py"</span><span class="p">,</span> <span class="nb">line</span> <span class="mi">908</span><span class="p">,</span> <span class="k">in</span> <span class="nx">endheaders</span>
+    <span class="bp">self.</span><span class="nx">_send_output</span><span class="p">()</span>
+  <span class="nb">File</span> <span class="s2">"/usr/lib/python2.6/httplib.py"</span><span class="p">,</span> <span class="nb">line</span> <span class="mi">780</span><span class="p">,</span> <span class="k">in</span> <span class="nx">_send_output</span>
+    <span class="bp">self.</span><span class="nb">send</span><span class="p">(</span><span class="nb">msg</span><span class="p">)</span>
+  <span class="nb">File</span> <span class="s2">"/usr/lib/python2.6/httplib.py"</span><span class="p">,</span> <span class="nb">line</span> <span class="mi">759</span><span class="p">,</span> <span class="k">in</span> <span class="nb">send</span>
+    <span class="bp">self.</span><span class="nx">sock.sendall</span><span class="p">(</span><span class="nx">str</span><span class="p">)</span>
+  <span class="nb">File</span> <span class="s2">"&lt;string&gt;"</span><span class="p">,</span> <span class="nb">line</span> <span class="mi">1</span><span class="p">,</span> <span class="k">in</span> <span class="nx">sendall</span>
+<span class="nx">UnicodeEncodeError</span><span class="p">:</span> <span class="s1">'ascii'</span> <span class="nx">codec</span> <span class="nx">can</span><span class="s1">'t encode characters in position 7-8: ordinal not in range(128)</span>
 </pre></div>
 <p>这个测试说明， <code>urllib2.urlopen()</code> 可以接受ascii/unicode的英文，也可以接受ascii的中文，
 但是一旦是unicode的中文url，就会报转码错误。</p>

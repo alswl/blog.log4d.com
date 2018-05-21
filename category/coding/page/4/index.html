@@ -98,13 +98,13 @@ Log4D            </a>
 于是为了让人人网的同学能看见我那些技术宅，又或非技术宅的文章，
 我只能昧着良心，给 Octopress 加上过时的 RSS2.0 输出。</p>
 <p>在 <code>source/</code> 下创建新文件 <code>rss.xml</code> ，内容如下：</p>
-<div class="highlight"><pre><span></span>---
-layout: nil
----
-<span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<div class="highlight"><pre><span class="o">---</span>
+<span class="nx">layout</span><span class="p">:</span> <span class="nx">nil</span>
+<span class="o">---</span>
+<span class="o">&lt;?</span><span class="kt">xml</span> <span class="n">version</span><span class="o">=</span><span class="s2">"1.0"</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"UTF-8"</span><span class="cp">?&gt;</span>
 <span class="nt">&lt;rss</span> <span class="na">xmlns:dc=</span><span class="s">"http://purl.org/dc/elements/1.1/"</span> <span class="na">version=</span><span class="s">"2.0"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;channel&gt;</span>
-        <span class="nt">&lt;description&gt;</span><span class="cp">&lt;![CDATA[{{</span> <span class="nv">site ...</span></pre></div>
+        <span class="nt">&lt;description&gt;</span><span class="cp">&lt;![</span><span class="nx">CDATA</span><span class="err">[</span><span class="p">{{</span> <span class="nx">site ...</span></pre></div>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2012/05/support-rss/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -222,7 +222,7 @@ CF Image Host Script / minishowcase 等等图床软件，评测记录如下。</
 <h2 id="zai-python-zhong-diao-shi">在 Python 中调试</h2>
 <h3 id="pdb">pdb</h3>
 <p>在代码中加入下列语句即可启用交互式调试。</p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pdb</span><span class="p">;</span><span class="n">pdb</span><span class="o">.</span><span class="n">set_trace</span><span class="p">()</span>
+<div class="highlight"><pre><span class="n">import</span> <span class="n">pdb</span><span class="p">;</span><span class="n">pdb</span><span class="p">.</span><span class="n">set_trace</span><span class="p">()</span>
 </pre></div>
 <p>在 pdb 中，可以使用 <code>h / l / b / n / s / c / j / a / p / ! / q</code> 这些命令所代表的含义可以通过
 <code>h(elp)</code> 打印出来。</p>

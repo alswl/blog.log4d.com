@@ -16,7 +16,7 @@
 
         <meta name="author" content="alswl" />
         <meta name="keywords" content="综合技术,Database,Oracle,PL/SQL" />
-        <meta name="description" content="学习PL/SQL不可避免遇到规范的问题，这里转载一篇比较精的文章。 当然，各个公司和个人有自己的风格和规范，甚至Oracle官方的教程代码也没有完全遵守这些规则，这里只是一个推荐和介绍。 来源：Oracle PL/SQL编程规范指南 - 51CTO.COM 更多参考：SQL,PL/SQL编程规范 - PL/SQL - IT民工杂谈 *分割线，Google真汉子*** 一、PL/SQL编程规范之大小写 就像在SQL中一样，PL / SQL中是不区分大小写的。其一般准则如下： 关键字(BEGIN, EXCEPTION, END, IF THEN ELSE,LOOP, END LOOP)、数据类型(VARCHAR2, NUMBER)、内部函数(LEAST, SUBSTR)和用户定义的子程序(procedures, functions,packages)，使用大写 ..." />
+        <meta name="description" content="学习PL/SQL不可避免遇到规范的问题，这里转载一篇比较精的文章。 当然，各个公司和个人有自己的风格和规范，甚至Oracle官方的教程代码也没有完全遵守这些规则，这里只是一个推荐和介绍。 来源：Oracle PL/SQL编程规范指南 - 51CTO.COM 更多参考：SQL,PL/SQL编程规范 - PL/SQL - IT民工杂谈 **分割线，Google真汉子** 一、PL/SQL编程规范之大小写 就像在SQL中一样，PL / SQL中是不区分大小写的。其一般准则如下： 关键字(BEGIN, EXCEPTION, END, IF THEN ELSE,LOOP, END LOOP)、数据类型(VARCHAR2, NUMBER)、内部函数(LEAST, SUBSTR)和用户定义的子程序(procedures, functions,packages)，使用大写 ..." />
 
 
 
@@ -105,7 +105,7 @@ Log4D            </a>
 51CTO.COM</a></p>
 <p>更多参考：<a href="http://blog.chinaunix.net/u1/57759/showart_458439.html">SQL,PL/SQL编程规范 - PL/SQL -
 IT民工杂谈</a></p>
-<p><strong><em>*</em>分割线，Google真汉子</strong>***</p>
+<p><strong><em>**分割线，Google真汉子</em></strong>**</p>
 <h2 id="yi-plsqlbian-cheng-gui-fan-zhi-da-xiao-xie">一、PL/SQL编程规范之大小写</h2>
 <p>就像在SQL中一样，PL / SQL中是不区分大小写的。其一般准则如下：</p>
 <p>关键字(<code>BEGIN</code>, <code>EXCEPTION</code>, <code>END</code>, <code>IF THEN ELSE</code>,<code>LOOP</code>, <code>END
@@ -138,11 +138,11 @@ LOOP</code>）居左排列。另外，结构中的嵌套结构要缩进三个空
 <p>存储过程的名称应该描述该存储过程所执行的动作</p>
 <p>函数的名称应该描述所返回的变量</p>
 <p>例如：</p>
-<div class="highlight"><pre><span></span>PACKAGE student_admin
---admin 后缀可能是用于表示管理功能.
-PROCEDURE remove_student (i_student_id IN student.studid%TYPE);
-FUNCTION student_enroll_count (i_student_id student.studid%TYPE)
-RETURN INTEGER;
+<div class="highlight"><pre><span class="n">PACKAGE</span> <span class="n">student_admin</span>
+<span class="o">--</span><span class="n">admin</span> <span class="err">后缀可能是用于表示管理功能</span><span class="p">.</span>
+<span class="n">PROCEDURE</span> <span class="n">remove_student</span> <span class="p">(</span><span class="n">i_student_id</span> <span class="n">IN</span> <span class="n">student</span><span class="p">.</span><span class="n">studid</span><span class="o">%</span><span class="n">TYPE</span><span class="p">);</span>
+<span class="n">FUNCTION</span> <span class="n">student_enroll_count</span> <span class="p">(</span><span class="n">i_student_id</span> <span class="n">student</span><span class="p">.</span><span class="n">studid</span><span class="o">%</span><span class="n">TYPE</span><span class="p">)</span>
+<span class="n">RETURN</span> <span class="n">INTEGER</span><span class="p">;</span>
 </pre></div>
 <h2 id="si-plsqlbian-cheng-gui-fan-zhi-zhu-shi">四、PL/SQL编程规范之注释</h2>
 <p>PL/SQL中的注释如同SQL中的注释一样重要。他们应该解释程序的主要部分和所有关键的逻辑步骤。</p>
@@ -153,7 +153,7 @@ RETURN INTEGER;
 <p>提供一个头部注释，用于说明代码块的用途并列出创建日期和作者名字。并且每个修订版都要有一行注释，包含作者名、日期和修订版描述。</p>
 <p>例如：下面的这个示例体现了上述建议。请注意该示例还使用了等宽字体（Courier
 New），因为每个字体占据同等宽度可以使格式化更加简便。等比例空格字体会隐藏空格使得行间对齐比较困难。多数文本和程序编辑器默认使用等宽字体。</p>
-<div class="highlight"><pre><span></span><span class="cm">/********************************************************</span>
+<div class="highlight"><pre><span class="cm">/********************************************************</span>
 <span class="cm">* 文件名：coursediscount01.sql  </span>
 <span class="cm">* 版本：1  </span>
 <span class="cm">* 用途：对于至少有一部分超过十个学生登记的课程给予折扣  </span>
@@ -162,56 +162,56 @@ New），因为每个字体占据同等宽度可以使格式化更加简便。�
 <span class="cm">* 作者：s.tashi  时间：2000.1.1  </span>
 <span class="cm">* 修改者：y.sonam 时间：2000.2.1  </span>
 <span class="cm">* 描述：修正游标，添加缩进和注释。  </span>
-<span class="cm">********************************************************/</span><span class="w"></span>
-DECLARE<span class="w"></span>
-<span class="w">  </span><span class="o">--</span><span class="w"> </span>C_DISCOUNT_COURSE<span class="w"> </span><span class="err">找出那些至少有一部分超过十个学生登记的课程</span><span class="w">  </span>
-<span class="w">  </span>CURSOR<span class="w"> </span>c_discount_course<span class="w"> </span>IS<span class="w"></span>
-<span class="w">    </span><span class="kr">SELECT</span><span class="w"> </span>DISTINCT<span class="w"> </span>course_no<span class="w"></span>
-<span class="w">      </span>FROM<span class="w"> </span>section<span class="w"> </span>sect<span class="w"></span>
-<span class="w">     </span>WHERE<span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="o">(</span><span class="kr">SELECT</span><span class="w"> </span>COUNT<span class="o">(*)</span><span class="w"></span>
-<span class="w">                    </span>FROM<span class="w"> </span>enrollment<span class="w"> </span>enr<span class="w"></span>
-<span class="w">                   </span>WHERE<span class="w"> </span>enr<span class="o">.</span>section_id<span class="w"> </span><span class="o">=</span><span class="w"> </span>sect<span class="o">.</span>section_id<span class="o">)</span><span class="err">;</span><span class="w"></span>
-<span class="w">  </span><span class="o">--</span><span class="w"> </span><span class="err">费用超过</span><span class="w"> </span><span class="err">$</span><span class="m">2000.00</span><span class="err">的课程的折扣率</span><span class="w">  </span>
-<span class="w">  </span>con_discount_2000<span class="w"> </span>CONSTANT<span class="w"> </span><span class="nl">NUMBER</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">.</span><span class="m">90</span><span class="err">;</span><span class="w"></span>
-<span class="w">  </span><span class="o">--</span><span class="w"> </span><span class="err">费用在$</span><span class="m">1001.00</span><span class="err">和$</span><span class="m">2000.00</span><span class="err">之间的课程的折扣率</span><span class="w">  </span>
-<span class="w">  </span>con_discount_other<span class="w"> </span>CONSTANT<span class="w"> </span><span class="nl">NUMBER</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">.</span><span class="m">95</span><span class="err">;</span><span class="w"></span>
-<span class="w">  </span>v_current_course_cost<span class="w"> </span>course<span class="o">.</span>cost<span class="o">%</span>TYPE<span class="err">;</span><span class="w"></span>
-<span class="w">  </span>v_discount_all<span class="w">        </span>NUMBER<span class="err">;</span><span class="w"></span>
-<span class="w">  </span>e_update_is_problematic<span class="w"> </span>EXCEPTION<span class="err">;</span><span class="w"></span>
-BEGIN<span class="w"></span>
-<span class="w">  </span><span class="o">--</span><span class="w"> </span><span class="err">对于那些要打折的课程</span><span class="o">,</span><span class="w"> </span><span class="err">确定当前费用和新的费用</span><span class="w">  </span>
-<span class="w">  </span><span class="kr">FOR</span><span class="w"> </span>r_discount_course<span class="w"> </span>in<span class="w"> </span>c_discount_course<span class="w"> </span>LOOP<span class="w"></span>
-<span class="w">    </span><span class="kr">SELECT</span><span class="w"> </span>cost<span class="w"></span>
-<span class="w">      </span>INTO<span class="w"> </span>v_current_course_cost<span class="w"></span>
-<span class="w">      </span>FROM<span class="w"> </span>course<span class="w"></span>
-<span class="w">     </span>WHERE<span class="w"> </span>course_no<span class="w"> </span><span class="o">=</span><span class="w"> </span>r_discount_course<span class="o">.</span>course_no<span class="err">;</span><span class="w"></span>
-<span class="w">    </span><span class="kr">IF</span><span class="w"> </span>v_current_course_cost<span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">2000</span><span class="w"> </span><span class="kr">THEN</span><span class="w"></span>
-<span class="w">      </span><span class="nl">v_discount_all</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span>con_discount_2000<span class="err">;</span><span class="w"></span>
-<span class="w">    </span><span class="kr">ELSE</span><span class="w"></span>
-<span class="w">      </span><span class="kr">IF</span><span class="w"> </span>v_current_course_cost<span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">1000</span><span class="w"> </span><span class="kr">THEN</span><span class="w"></span>
-<span class="w">        </span><span class="nl">v_discount_all</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span>con_discount_other<span class="err">;</span><span class="w"></span>
-<span class="w">      </span><span class="kr">ELSE</span><span class="w"></span>
-<span class="w">        </span><span class="nl">v_discount_all</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="m">1</span><span class="err">;</span><span class="w"></span>
-<span class="w">      </span><span class="kr">END</span><span class="w"> </span><span class="kr">IF</span><span class="err">;</span><span class="w"></span>
-<span class="w">    </span><span class="kr">END</span><span class="w"> </span><span class="kr">IF</span><span class="err">;</span><span class="w"></span>
-<span class="w">    </span>BEGIN<span class="w"></span>
-<span class="w">      </span>UPDATE<span class="w"> </span>course<span class="w"></span>
-<span class="w">         </span>SET<span class="w"> </span>cost<span class="w"> </span><span class="o">=</span><span class="w"> </span>cost<span class="w"> </span><span class="o">*</span><span class="w"> </span>v_discount_all<span class="w"></span>
-<span class="w">       </span>WHERE<span class="w"> </span>course_no<span class="w"> </span><span class="o">=</span><span class="w"> </span>r_discount_course<span class="o">.</span>course_no<span class="err">;</span><span class="w"></span>
-<span class="w">    </span>EXCEPTION<span class="w"></span>
-<span class="w">      </span>WHEN<span class="w"> </span>OTHERS<span class="w"> </span><span class="kr">THEN</span><span class="w"></span>
-<span class="w">        </span>RAISE<span class="w"> </span>e_update_is_problematic<span class="err">;</span><span class="w"></span>
-<span class="w">    </span><span class="kr">END</span><span class="err">;</span><span class="w"> </span><span class="o">--</span><span class="w"> </span><span class="err">更新记录的子代码块结束</span><span class="w">  </span>
-<span class="w">  </span><span class="kr">END</span><span class="w"> </span>LOOP<span class="err">;</span><span class="w"> </span><span class="o">--</span><span class="w"> </span><span class="err">主循环结束</span><span class="w">  </span>
-<span class="w">  </span>COMMIT<span class="err">;</span><span class="w"></span>
-EXCEPTION<span class="w"></span>
-<span class="w">  </span>WHEN<span class="w"> </span>e_update_is_problematic<span class="w"> </span><span class="kr">THEN</span><span class="w"></span>
-<span class="w">    </span><span class="o">--</span><span class="w"> </span><span class="err">事务回滚</span><span class="w">  </span>
-<span class="w">    </span>ROLLBACK<span class="err">;</span><span class="w"></span>
-<span class="w">    </span>DBMS_OUTPUT<span class="o">.</span>PUT_LINE<span class="o">(</span><span class="s">'There was a problem updating a course cost.'</span><span class="o">)</span><span class="err">;</span><span class="w"></span>
-<span class="w">  </span>WHEN<span class="w"> </span>OTHERS<span class="w"> </span><span class="kr">THEN</span><span class="w"></span>
-<span class="w">    </span>NULL<span class="err">;</span><span class="w"></span>
-<span class="kr">END</span><span class="err">;</span><span class="w"></span>
+<span class="cm">********************************************************/</span>
+<span class="no">DECLARE</span>
+  <span class="o">--</span> <span class="no">C_DISCOUNT_COURSE</span> <span class="err">找出那些至少有一部分超过十个学生登记的课程</span>  
+  <span class="no">CURSOR</span> <span class="n">c_discount_course</span> <span class="no">IS</span>
+    <span class="no">SELECT</span> <span class="no">DISTINCT</span> <span class="n">course_no</span>
+      <span class="no">FROM</span> <span class="n">section</span> <span class="n">sect</span>
+     <span class="no">WHERE</span> <span class="mh">10</span> <span class="o">&lt;=</span> <span class="p">(</span><span class="no">SELECT</span> <span class="no">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
+                    <span class="no">FROM</span> <span class="n">enrollment</span> <span class="n">enr</span>
+                   <span class="no">WHERE</span> <span class="n">enr</span><span class="p">.</span><span class="n">section_id</span> <span class="o">=</span> <span class="n">sect</span><span class="p">.</span><span class="n">section_id</span><span class="p">);</span>
+  <span class="o">--</span> <span class="err">费用超过</span> <span class="err">$</span><span class="mf">2000.00</span><span class="err">的课程的折扣率</span>  
+  <span class="n">con_discount_2000</span> <span class="no">CONSTANT</span> <span class="no">NUMBER</span> <span class="o">:=</span> <span class="mf">.90</span><span class="p">;</span>
+  <span class="o">--</span> <span class="err">费用在$</span><span class="mf">1001.00</span><span class="err">和$</span><span class="mf">2000.00</span><span class="err">之间的课程的折扣率</span>  
+  <span class="n">con_discount_other</span> <span class="no">CONSTANT</span> <span class="no">NUMBER</span> <span class="o">:=</span> <span class="mf">.95</span><span class="p">;</span>
+  <span class="n">v_current_course_cost</span> <span class="n">course</span><span class="p">.</span><span class="n">cost</span><span class="o">%</span><span class="no">TYPE</span><span class="p">;</span>
+  <span class="n">v_discount_all</span>        <span class="no">NUMBER</span><span class="p">;</span>
+  <span class="n">e_update_is_problematic</span> <span class="no">EXCEPTION</span><span class="p">;</span>
+<span class="no">BEGIN</span>
+  <span class="o">--</span> <span class="err">对于那些要打折的课程</span><span class="p">,</span> <span class="err">确定当前费用和新的费用</span>  
+  <span class="no">FOR</span> <span class="n">r_discount_course</span> <span class="n">in</span> <span class="n">c_discount_course</span> <span class="no">LOOP</span>
+    <span class="no">SELECT</span> <span class="n">cost</span>
+      <span class="no">INTO</span> <span class="n">v_current_course_cost</span>
+      <span class="no">FROM</span> <span class="n">course</span>
+     <span class="no">WHERE</span> <span class="n">course_no</span> <span class="o">=</span> <span class="n">r_discount_course</span><span class="p">.</span><span class="n">course_no</span><span class="p">;</span>
+    <span class="no">IF</span> <span class="n">v_current_course_cost</span> <span class="o">&gt;</span> <span class="mh">2000</span> <span class="no">THEN</span>
+      <span class="n">v_discount_all</span> <span class="o">:=</span> <span class="n">con_discount_2000</span><span class="p">;</span>
+    <span class="no">ELSE</span>
+      <span class="no">IF</span> <span class="n">v_current_course_cost</span> <span class="o">&gt;</span> <span class="mh">1000</span> <span class="no">THEN</span>
+        <span class="n">v_discount_all</span> <span class="o">:=</span> <span class="n">con_discount_other</span><span class="p">;</span>
+      <span class="no">ELSE</span>
+        <span class="n">v_discount_all</span> <span class="o">:=</span> <span class="mh">1</span><span class="p">;</span>
+      <span class="no">END</span> <span class="no">IF</span><span class="p">;</span>
+    <span class="no">END</span> <span class="no">IF</span><span class="p">;</span>
+    <span class="no">BEGIN</span>
+      <span class="no">UPDATE</span> <span class="n">course</span>
+         <span class="no">SET</span> <span class="n">cost</span> <span class="o">=</span> <span class="n">cost</span> <span class="o">*</span> <span class="n">v_discount_all</span>
+       <span class="no">WHERE</span> <span class="n">course_no</span> <span class="o">=</span> <span class="n">r_discount_course</span><span class="p">.</span><span class="n">course_no</span><span class="p">;</span>
+    <span class="no">EXCEPTION</span>
+      <span class="no">WHEN</span> <span class="no">OTHERS</span> <span class="no">THEN</span>
+        <span class="no">RAISE</span> <span class="n">e_update_is_problematic</span><span class="p">;</span>
+    <span class="no">END</span><span class="p">;</span> <span class="o">--</span> <span class="err">更新记录的子代码块结束</span>  
+  <span class="no">END</span> <span class="no">LOOP</span><span class="p">;</span> <span class="o">--</span> <span class="err">主循环结束</span>  
+  <span class="no">COMMIT</span><span class="p">;</span>
+<span class="no">EXCEPTION</span>
+  <span class="no">WHEN</span> <span class="n">e_update_is_problematic</span> <span class="no">THEN</span>
+    <span class="o">--</span> <span class="err">事务回滚</span>  
+    <span class="no">ROLLBACK</span><span class="p">;</span>
+    <span class="no">DBMS_OUTPUT</span><span class="p">.</span><span class="no">PUT_LINE</span><span class="p">('</span><span class="n">There</span> <span class="n">was</span> <span class="n">a</span> <span class="n">problem</span> <span class="n">updating</span> <span class="n">a</span> <span class="n">course</span> <span class="n">cost</span><span class="p">.');</span>
+  <span class="no">WHEN</span> <span class="no">OTHERS</span> <span class="no">THEN</span>
+    <span class="no">NULL</span><span class="p">;</span>
+<span class="no">END</span><span class="p">;</span>
 </pre></div>
 <p>&amp;nbsp_place_holder;-EOF-</p>
             </div>

@@ -113,10 +113,10 @@ Octopress 的设计方法显然和我长期养成的知识归纳体系冲突，�
 <p>这两个插件使用很简单，将插件文件放入对应的目录（<strong>注意备份，存在覆盖的情况</strong>）。
 然后再给插件「octopress-tag-cloud」添加一个专属页面存放标签云即可。
 这个标签云生成的标记是 <code>li...li</code> ，需要在 <code>sass/custom/_styles.scss</code> 添加对应的样式：</p>
-<div class="highlight"><pre><span></span><span class="p">#</span><span class="nn">content</span> <span class="nt">article</span> <span class="p">.</span><span class="nc">cloud</span> <span class="nt">li</span><span class="p">{</span>
-    <span class="k">display</span><span class="p">:</span> <span class="kc">inline</span><span class="p">;</span>
-    <span class="k">list-style</span><span class="p">:</span> <span class="kc">none</span> <span class="kc">outside</span> <span class="kc">none</span><span class="p">;</span>
-    <span class="k">padding</span><span class="p">:</span> <span class="mi">0</span> <span class="mi">4</span><span class="kt">px</span><span class="p">;</span>
+<div class="highlight"><pre><span class="nf">#content</span> <span class="nt">article</span> <span class="nc">.cloud</span> <span class="nt">li</span><span class="p">{</span>
+    <span class="k">display</span><span class="o">:</span> <span class="k">inline</span><span class="p">;</span>
+    <span class="k">list-style</span><span class="o">:</span> <span class="k">none</span> <span class="k">outside</span> <span class="k">none</span><span class="p">;</span>
+    <span class="k">padding</span><span class="o">:</span> <span class="m">0</span> <span class="m">4px</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 <p>第二个插件 octopress-tag-cloud 会和 Octopress 官方推荐的所谓「Octopress Tag Cloud」

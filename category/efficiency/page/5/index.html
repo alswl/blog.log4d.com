@@ -118,13 +118,13 @@ Log4D            </a>
 <p>正是因为功能太丰富，所以往往带来安全原因，用这个可以随意上传图片和文件，还能浏览服务器？！</p>
 <p>不行不行，这一定得禁用，否则就是给脚本小子提供工具了嘛。</p>
 <p>配置fckconfig.js 118行左右，修改Basic模板，加入图片和表情功能</p>
-<div class="highlight"><pre><span></span>FCKConfig.ToolbarSets["Basic"] = [
-['Bold','Italic','-','OrderedList','UnorderedList','-','Link','Unlink','-','Image','Smiley']
-] ;
+<div class="highlight"><pre><span class="nt">FCKConfig</span><span class="nc">.ToolbarSets</span><span class="cp">[</span><span class="s2">"Basic"</span><span class="cp">]</span> <span class="o">=</span> <span class="cp">[</span>
+<span class="err">[</span><span class="s1">'Bold'</span><span class="p">,</span><span class="s1">'Italic'</span><span class="p">,</span><span class="s1">'-'</span><span class="p">,</span><span class="s1">'OrderedList'</span><span class="p">,</span><span class="s1">'UnorderedList'</span><span class="p">,</span><span class="s1">'-'</span><span class="p">,</span><span class="s1">'Link'</span><span class="p">,</span><span class="s1">'Unlink'</span><span class="p">,</span><span class="s1">'-'</span><span class="p">,</span><span class="s1">'Image'</span><span class="p">,</span><span class="s1">'Smiley'</span><span class="cp">]</span>
+<span class="o">]</span> <span class="o">;</span>
 </pre></div>
 <p>继续修改tckconfig.js 284左右，去除一些浏览功能，修改为false</p>
-<div class="highlight"><pre><span></span>FCKConfig.LinkBrowser = false ;//关闭增加连接中浏览服务器功能
-FCKConfig.LinkBrowserURL = FCKConfig.BasePath + 'filemanager/browser/default/browser.html?Connector=' + encodeURIComponent( FCKConfig.BasePath ...</pre></div>
+<div class="highlight"><pre><span class="n">FCKConfig</span><span class="p">.</span><span class="n">LinkBrowser</span> <span class="o">=</span> <span class="nb">false</span> <span class="p">;</span><span class="c1">//关闭增加连接中浏览服务器功能</span>
+<span class="n">FCKConfig</span><span class="p">.</span><span class="n">LinkBrowserURL</span> <span class="o">=</span> <span class="n">FCKConfig</span><span class="p">.</span><span class="n">BasePath</span> <span class="o">+</span> <span class="err">'</span><span class="n">filemanager</span><span class="o">/</span><span class="n">browser</span><span class="o">/</span><span class="k">default</span><span class="o">/</span><span class="n">browser</span><span class="p">.</span><span class="n">html</span><span class="o">?</span><span class="n">Connector</span><span class="o">=</span><span class="err">'</span> <span class="o">+</span> <span class="n">encodeURIComponent</span><span class="p">(</span> <span class="n">FCKConfig</span><span class="p">.</span><span class="n">BasePath ...</span></pre></div>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/05/fckeditor-browse-server-function-is-disabled/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>

@@ -102,33 +102,33 @@ Log4D            </a>
 于是为了让人人网的同学能看见我那些技术宅，又或非技术宅的文章，
 我只能昧着良心，给 Octopress 加上过时的 RSS2.0 输出。</p>
 <p>在 <code>source/</code> 下创建新文件 <code>rss.xml</code> ，内容如下：</p>
-<div class="highlight"><pre><span></span>---
-layout: nil
----
-<span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<div class="highlight"><pre><span class="o">---</span>
+<span class="nx">layout</span><span class="p">:</span> <span class="nx">nil</span>
+<span class="o">---</span>
+<span class="o">&lt;?</span><span class="kt">xml</span> <span class="n">version</span><span class="o">=</span><span class="s2">"1.0"</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"UTF-8"</span><span class="cp">?&gt;</span>
 <span class="nt">&lt;rss</span> <span class="na">xmlns:dc=</span><span class="s">"http://purl.org/dc/elements/1.1/"</span> <span class="na">version=</span><span class="s">"2.0"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;channel&gt;</span>
-        <span class="nt">&lt;description&gt;</span><span class="cp">&lt;![CDATA[{{</span> <span class="nv">site.title</span> <span class="cp">}}]]&gt;</span><span class="nt">&lt;/description&gt;</span>
-        <span class="nt">&lt;title&gt;</span><span class="cp">&lt;![CDATA[{{</span> <span class="nv">site.title</span> <span class="cp">}}]]&gt;</span><span class="nt">&lt;/title&gt;</span>
-        <span class="nt">&lt;link&gt;</span><span class="cp">{{</span> <span class="nv">site.url</span> <span class="cp">}}</span>/<span class="nt">&lt;/link&gt;</span>
-        <span class="nt">&lt;pubDate&gt;</span><span class="cp">{{</span> <span class="nv">site.time</span> <span class="o">|</span> <span class="nf">date_to_xmlschema</span> <span class="cp">}}</span><span class="nt">&lt;/pubDate&gt;</span>
+        <span class="nt">&lt;description&gt;</span><span class="cp">&lt;![</span><span class="nx">CDATA</span><span class="err">[</span><span class="p">{{</span> <span class="nx">site.title</span> <span class="p">}}</span><span class="cp">]]&gt;</span><span class="nt">&lt;/description&gt;</span>
+        <span class="nt">&lt;title&gt;</span><span class="cp">&lt;![</span><span class="nx">CDATA</span><span class="err">[</span><span class="p">{{</span> <span class="nx">site.title</span> <span class="p">}}</span><span class="cp">]]&gt;</span><span class="nt">&lt;/title&gt;</span>
+        <span class="nt">&lt;link&gt;</span>{{ site.url }}/<span class="nt">&lt;/link&gt;</span>
+        <span class="nt">&lt;pubDate&gt;</span>{{ site.time | date_to_xmlschema }}<span class="nt">&lt;/pubDate&gt;</span>
 
-        <span class="cp">{%</span> <span class="k">for</span> <span class="nv">post</span> <span class="k">in</span> <span class="nv">site.posts</span> <span class="nv">limit</span><span class="o">:</span> <span class="m">20</span> <span class="cp">%}</span>
+        {% for post in site.posts limit: 20 %}
         <span class="nt">&lt;item&gt;</span>
             <span class="nt">&lt;description&gt;</span>
-                <span class="cp">&lt;![CDATA[</span>
-<span class="cp">                {{</span> <span class="nv">post.content</span> <span class="o">|</span> <span class="nf">expand_urls</span><span class="o">:</span> <span class="nv">site.url</span> <span class="o">|</span> <span class="nf">cdata_escape</span> <span class="cp">}}</span>
-<span class="cp">                {%</span> <span class="k">include</span> <span class="nv">post</span><span class="o">/</span><span class="nv">copyright.html</span> <span class="cp">%}</span>
-<span class="cp">                ]]&gt;</span>
+                <span class="cp">&lt;![</span><span class="nx">CDATA</span><span class="err">[</span>
+                <span class="p">{{</span> <span class="nx">post.content</span> <span class="o">|</span> <span class="nx">expand_urls</span><span class="p">:</span> <span class="nx">site.url</span> <span class="o">|</span> <span class="nx">cdata_escape</span> <span class="p">}}</span>
+                <span class="p">{</span><span class="o">%</span> <span class="nb">include</span> <span class="nx">post</span><span class="p">/</span><span class="nx">copyright.html</span> <span class="o">%</span><span class="p">}</span>
+                <span class="cp">]]&gt;</span>
             <span class="nt">&lt;/description&gt;</span>
-            <span class="nt">&lt;title&gt;</span><span class="cp">&lt;![CDATA[{{</span> <span class="nv">post.title</span> <span class="o">|</span> <span class="nf">cdata_escape</span> <span class="cp">}}]]&gt;</span><span class="nt">&lt;/title&gt;</span>
-            <span class="nt">&lt;link&gt;</span><span class="cp">{{</span> <span class="nv">site.url</span> <span class="cp">}}{{</span> <span class="nv">post.url</span> <span class="cp">}}</span><span class="nt">&lt;/link&gt;</span>
-            <span class="nt">&lt;pubDate&gt;</span><span class="cp">{{</span> <span class="nv">post.date</span> <span class="o">|</span> <span class="nf">date_to_xmlschema</span> <span class="cp">}}</span><span class="nt">&lt;/pubDate&gt;</span>
-            <span class="nt">&lt;guid</span> <span class="na">isPermaLink=</span><span class="s">"false"</span><span class="nt">&gt;</span><span class="cp">{{</span> <span class="nv">site.url</span> <span class="cp">}}{{</span> <span class="nv">post.id</span> <span class="cp">}}</span><span class="nt">&lt;/guid&gt;</span>
+            <span class="nt">&lt;title&gt;</span><span class="cp">&lt;![</span><span class="nx">CDATA</span><span class="err">[</span><span class="p">{{</span> <span class="nx">post.title</span> <span class="o">|</span> <span class="nx">cdata_escape</span> <span class="p">}}</span><span class="cp">]]&gt;</span><span class="nt">&lt;/title&gt;</span>
+            <span class="nt">&lt;link&gt;</span>{{ site.url }}{{ post.url }}<span class="nt">&lt;/link&gt;</span>
+            <span class="nt">&lt;pubDate&gt;</span>{{ post.date | date_to_xmlschema }}<span class="nt">&lt;/pubDate&gt;</span>
+            <span class="nt">&lt;guid</span> <span class="na">isPermaLink=</span><span class="s">"false"</span><span class="nt">&gt;</span>{{ site.url }}{{ post.id }}<span class="nt">&lt;/guid&gt;</span>
 
-            <span class="nt">&lt;source</span> <span class="na">url=</span><span class="s">"</span><span class="cp">{{</span> <span class="nv">site.url</span> <span class="cp">}}</span><span class="s">/rss.xml"</span><span class="nt">&gt;</span><span class="cp">&lt;![CDATA[{{</span> <span class="nv">site.title</span> <span class="cp">}}]]&gt;</span><span class="nt">&lt;/source&gt;</span>
+            <span class="nt">&lt;source</span> <span class="na">url=</span><span class="s">"{{ site.url }}/rss.xml"</span><span class="nt">&gt;</span><span class="cp">&lt;![</span><span class="nx">CDATA</span><span class="err">[</span><span class="p">{{</span> <span class="nx">site.title</span> <span class="p">}}</span><span class="cp">]]&gt;</span><span class="nt">&lt;/source&gt;</span>
         <span class="nt">&lt;/item&gt;</span>
-        <span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span>
+        {% endfor %}
     <span class="nt">&lt;/channel&gt;</span>
 <span class="nt">&lt;/rss&gt;</span>
 </pre></div>

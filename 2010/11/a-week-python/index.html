@@ -106,7 +106,7 @@ Log4D            </a>
 <p>YAML使用起来相当方便，能够自动解析成对应语言中的变量，比如列表解析为列表，数字文字分别解析成对应的格式变量。</p>
 <p>之所以选择YAML，是看中它对语言的亲和性和可读性，GAE的配置文件就是YAML格式。YAML的语法相当简单，用:来分隔key: value，用 -
 来分隔列表，注意点是缩进需要用空格，关键符号和内容之间要加上一个空格。我的配置文件如下：</p>
-<div class="highlight"><pre><span></span><span class="n">taskId</span><span class="o">:</span> <span class="n">PQMI06</span>
+<div class="highlight"><pre><span class="n">taskId</span><span class="o">:</span> <span class="n">PQMI06</span>
 <span class="n">taskName</span><span class="o">:</span> <span class="err">测试建制作业</span>
 <span class="n">author</span><span class="o">:</span> <span class="n">alswl</span>
 <span class="n">confirmId</span><span class="o">:</span> <span class="mi">20101025</span><span class="n">xxx</span>
@@ -139,14 +139,14 @@ bodyFiles:</p>
 <p>Python有几种YAML的实现，我这里推荐使用PyYAML，比较流行的模块，毕竟我这里只需要简单的读写操作。</p>
 <p>PyYAML通过官方宣称的神奇的yaml.load()方法载入YAML文件，可以将列表识别为list和dictionary，通过key可以直接读取对应的值。</p>
 <p>我的Demo代码如下：</p>
-<div class="highlight"><pre><span></span><span class="c1">#coding=utf-8</span>
-<span class="sd">'''</span>
-<span class="sd">全局配置文件</span>
-<span class="sd">alswl</span>
-<span class="sd">20101026</span>
-<span class="sd">'''</span>
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">yaml</span>
+<div class="highlight"><pre><span class="cp">#coding=utf-8</span>
+<span class="err">'''</span>
+<span class="err">全局配置文件</span>
+<span class="n">alswl</span>
+<span class="mi">20101026</span>
+<span class="err">'''</span>
+<span class="n">import</span> <span class="n">os</span>
+<span class="n">import</span> <span class="n">yaml</span>
 </pre></div>
 <p>rootPath = os.path.normpath(os.path.dirname(<strong>file</strong>) + '..')</p>
 <p>configFile = open(rootPath + '''inconfig.yaml''')</p>
@@ -168,29 +168,29 @@ Woodpecker Wiki for CPUG</a></p>
 _mssql就会崩溃，这个Bug已经在pymssql报告了），所以当操作pymssql时候必须使用PythonWin或者Python
 Shell。另外截止目前，pymssql还仅仅支持Python2.6。</p>
 <p>下面的Code是简单的操作数据库，定义数据库连接，获取dataset，在for循环读取一遍，完成一个简单的检测动作</p>
-<div class="highlight"><pre><span></span>conn =_mssql.connect(server=CONFIG['server'], user=CONFIG['user'], password=str(CONFIG['dbpassword']), database=CONFIG['databaseSys'])
+<div class="highlight"><pre><span class="n">conn</span> <span class="o">=</span><span class="n">_mssql</span><span class="p">.</span><span class="n">connect</span><span class="p">(</span><span class="n">server</span><span class="o">=</span><span class="n">CONFIG</span><span class="p">[</span><span class="err">'</span><span class="n">server</span><span class="err">'</span><span class="p">],</span> <span class="n">user</span><span class="o">=</span><span class="n">CONFIG</span><span class="p">[</span><span class="err">'</span><span class="n">user</span><span class="err">'</span><span class="p">],</span> <span class="n">password</span><span class="o">=</span><span class="n">str</span><span class="p">(</span><span class="n">CONFIG</span><span class="p">[</span><span class="err">'</span><span class="n">dbpassword</span><span class="err">'</span><span class="p">]),</span> <span class="n">database</span><span class="o">=</span><span class="n">CONFIG</span><span class="p">[</span><span class="err">'</span><span class="n">databaseSys</span><span class="err">'</span><span class="p">])</span>
 
-def validateEntityInFrmFields(self, webControls, conn, boid):
-    if webControls[0].d_ != '':
-        boid = boid + '_d' + webControls[0].d_.rjust(2, '0')
-    sqlCmd = "SELECT FieldName FROM SYSFrmFields WHERE BOID='%s'" %boid
-    conn.execute_query(sqlCmd)
-    res = [r for r in conn]
-    fs = [i[0] for i in res]
-    l = [i.fieldName for i in webControls]
-    for i in l[:]:
-        if i.strip() == '':
-            l.remove(i)
-    isSuccess = True
-    for i in l:
-        if i not in fs:
-            isSuccess = False
-            print u'SYSFrmFields中不存在栏位%s' %i
-    if isSuccess:
-        print u'检测成功，恭喜你'
-        print u'页面元件需要的Field全部存在于在SYSFrmFieldsn'
-    else:
-        print u'检测失败'
+<span class="n">def</span> <span class="n">validateEntityInFrmFields</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">webControls</span><span class="p">,</span> <span class="n">conn</span><span class="p">,</span> <span class="n">boid</span><span class="p">)</span><span class="o">:</span>
+    <span class="k">if</span> <span class="n">webControls</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">d_</span> <span class="o">!=</span> <span class="err">''</span><span class="o">:</span>
+        <span class="n">boid</span> <span class="o">=</span> <span class="n">boid</span> <span class="o">+</span> <span class="err">'</span><span class="n">_d</span><span class="err">'</span> <span class="o">+</span> <span class="n">webControls</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">d_</span><span class="p">.</span><span class="n">rjust</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="sc">'0'</span><span class="p">)</span>
+    <span class="n">sqlCmd</span> <span class="o">=</span> <span class="s">"SELECT FieldName FROM SYSFrmFields WHERE BOID='%s'"</span> <span class="o">%</span><span class="n">boid</span>
+    <span class="n">conn</span><span class="p">.</span><span class="n">execute_query</span><span class="p">(</span><span class="n">sqlCmd</span><span class="p">)</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="p">[</span><span class="n">r</span> <span class="k">for</span> <span class="n">r</span> <span class="n">in</span> <span class="n">conn</span><span class="p">]</span>
+    <span class="n">fs</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="n">in</span> <span class="n">res</span><span class="p">]</span>
+    <span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="p">.</span><span class="n">fieldName</span> <span class="k">for</span> <span class="n">i</span> <span class="n">in</span> <span class="n">webControls</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="n">in</span> <span class="n">l</span><span class="p">[</span><span class="o">:</span><span class="p">]</span><span class="o">:</span>
+        <span class="k">if</span> <span class="n">i</span><span class="p">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">==</span> <span class="err">''</span><span class="o">:</span>
+            <span class="n">l</span><span class="p">.</span><span class="n">remove</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="n">isSuccess</span> <span class="o">=</span> <span class="n">True</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="n">in</span> <span class="n">l</span><span class="o">:</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="n">not</span> <span class="n">in</span> <span class="n">fs</span><span class="o">:</span>
+            <span class="n">isSuccess</span> <span class="o">=</span> <span class="n">False</span>
+            <span class="n">print</span> <span class="n">u</span><span class="err">'</span><span class="n">SYSFrmFields</span><span class="err">中不存在栏位</span><span class="o">%</span><span class="n">s</span><span class="err">'</span> <span class="o">%</span><span class="n">i</span>
+    <span class="k">if</span> <span class="n">isSuccess</span><span class="o">:</span>
+        <span class="n">print</span> <span class="n">u</span><span class="err">'检测成功，恭喜你'</span>
+        <span class="n">print</span> <span class="n">u</span><span class="err">'页面元件需要的</span><span class="n">Field</span><span class="err">全部存在于在</span><span class="n">SYSFrmFieldsn</span><span class="err">'</span>
+    <span class="nl">else:</span>
+        <span class="n">print</span> <span class="n">u</span><span class="err">'检测失败'</span>
 </pre></div>
 <p>print u'检测完毕'</p>
 <p>简单的pymssql就这么用，import _mssql就可以了，如果需要原生的支持DB-API方式编程，可以使用import mssql。</p>
@@ -199,8 +199,8 @@ def validateEntityInFrmFields(self, webControls, conn, boid):
 决办法。</p>
 <p>下面是我自己摸索出来的方法，也许不是最佳办法，但是可以用，可以在脚本执行完之后继续操作里面定义的变量，以完成更多动作。</p>
 <p>用IDE打开Script，然后在里面键入类似代码。</p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">codegenx</span><span class="p">;</span><span class="kn">from</span> <span class="nn">codegenx</span> <span class="kn">import</span> <span class="n">WEBCONTROLS</span><span class="p">;</span><span class="n">codegenx</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
-<span class="n">qbe</span> <span class="o">=</span> <span class="n">WEBCONTROLS</span><span class="p">[</span><span class="s1">'qbe'</span><span class="p">];</span>
+<div class="highlight"><pre><span class="n">import</span> <span class="n">codegenx</span><span class="p">;</span><span class="n">from</span> <span class="n">codegenx</span> <span class="n">import</span> <span class="n">WEBCONTROLS</span><span class="p">;</span><span class="n">codegenx</span><span class="p">.</span><span class="n">main</span><span class="p">()</span>
+<span class="n">qbe</span> <span class="o">=</span> <span class="n">WEBCONTROLS</span><span class="p">[</span><span class="err">'</span><span class="n">qbe</span><span class="err">'</span><span class="p">];</span>
 </pre></div>
 <p>Python中可以通过加入分号来让多条语句放在同一行。经过上面代码的执行，我就可以获取WEBCONTROLS这个codegenx模块中的对象。如果担心cod
 egenx中的WEBCONTROLS和Shell中的不一致，可以用id()来看一下内存标示，经我检测发现是一致的。</p>

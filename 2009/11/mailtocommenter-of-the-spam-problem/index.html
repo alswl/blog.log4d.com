@@ -102,14 +102,14 @@ happiness</a>和<a href="http://www.evlos.org/2009/11/03/edit-the-poster-of-
 mailtocomments/#comment-1278">邪罗刹的菠萝阁 &raquo;
 如何修改MailToCommenter插件的发件人</a>，html部分代码是模仿<a href="http://www.evlos.org/">邪 罗刹</a>的回复修改。</p>
 <p>修改<code>wp-content/plugins/mailtocommenter</code>下面的<code>mailtocommenter_functions.php</code></p>
-<div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">mailtocommenter_send_email</span><span class="p">(</span><span class="nx">$to</span><span class="p">,</span><span class="nx">$subject</span><span class="p">,</span><span class="nx">$message</span><span class="p">){</span>
-    <span class="nx">$hostname</span> <span class="o">=</span> <span class="nx">get_option</span><span class="p">(</span><span class="s1">'home'</span><span class="p">);</span>
-    <span class="nx">preg_match</span><span class="p">(</span><span class="s2">"/^(http://)?([^/]+)/i"</span><span class="p">,</span><span class="nx">$hostname</span><span class="p">,</span> <span class="nx">$matches</span><span class="p">);</span>
-    <span class="nx">$blogname</span> <span class="o">=</span> <span class="nx">get_option</span><span class="p">(</span><span class="s1">'blogname'</span><span class="p">);</span>
-    <span class="nx">$blognameO</span> <span class="o">=</span> <span class="nx">$blogname</span><span class="p">;</span>
-    <span class="nx">$blogname</span> <span class="p">.</span><span class="o">=</span> <span class="s2">" &lt;no-reply@"</span><span class="p">;</span>
-    <span class="nx">$blogname</span> <span class="p">.</span><span class="o">=</span> <span class="nx">$matches</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
-    <span class="nx">$blogname</span> <span class="p">.</span><span class="o">=</span> <span class="s2">"&gt;"</span><span class="p">;</span>
+<div class="highlight"><pre><span class="n">function</span> <span class="nf">mailtocommenter_send_email</span><span class="p">(</span><span class="err">$</span><span class="n">to</span><span class="p">,</span><span class="err">$</span><span class="n">subject</span><span class="p">,</span><span class="err">$</span><span class="n">message</span><span class="p">){</span>
+    <span class="err">$</span><span class="n">hostname</span> <span class="o">=</span> <span class="n">get_option</span><span class="p">(</span><span class="err">'</span><span class="n">home</span><span class="err">'</span><span class="p">);</span>
+    <span class="n">preg_match</span><span class="p">(</span><span class="s">"/^(http://)?([^/]+)/i"</span><span class="p">,</span><span class="err">$</span><span class="n">hostname</span><span class="p">,</span> <span class="err">$</span><span class="n">matches</span><span class="p">);</span>
+    <span class="err">$</span><span class="n">blogname</span> <span class="o">=</span> <span class="n">get_option</span><span class="p">(</span><span class="err">'</span><span class="n">blogname</span><span class="err">'</span><span class="p">);</span>
+    <span class="err">$</span><span class="n">blognameO</span> <span class="o">=</span> <span class="err">$</span><span class="n">blogname</span><span class="p">;</span>
+    <span class="err">$</span><span class="n">blogname</span> <span class="p">.</span><span class="o">=</span> <span class="s">" &lt;no-reply@"</span><span class="p">;</span>
+    <span class="err">$</span><span class="n">blogname</span> <span class="p">.</span><span class="o">=</span> <span class="err">$</span><span class="n">matches</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+    <span class="err">$</span><span class="n">blogname</span> <span class="p">.</span><span class="o">=</span> <span class="s">"&gt;"</span><span class="p">;</span>
 </pre></div>
 <p>$charset = get_option('blog_charset');</p>
 <p>$headers = "From: $blognameO <a href="mailto:no-reply@$matches[2]">no-reply@$matches[2]</a> n" ;</p>
@@ -119,17 +119,17 @@ mailtocomments/#comment-1278">邪罗刹的菠萝阁 &raquo;
 <p>return @wp_mail($to, $subject, $message, $headers);</p>
 <p>}</p>
 <p>&amp;nbsp_place_holder;修改Mail To Commenter的邮件代码，我的如下</p>
-<div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">div</span> <span class="n">style</span><span class="o">=</span><span class="s">"border: 1px solid rgb(183, 183, 183); margin: 1em 40px; padding: 0pt 15px; background-color: #CCFFFF; color: rgb(17, 17, 17);"</span><span class="o">&gt;</span>
-  <span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">Hi</span><span class="err">！</span><span class="o">&lt;</span><span class="n">strong</span><span class="o">&gt;</span><span class="nf">%user</span><span class="o">%&lt;/</span><span class="n">strong</span><span class="o">&gt;</span><span class="err">，你在</span> <span class="o">&lt;</span><span class="n">strong</span><span class="o">&gt;</span><span class="nf">%post_title</span><span class="o">%&lt;/</span><span class="n">strong</span><span class="o">&gt;</span> <span class="err">上的评论有了新回复</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-<span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">div</span> <span class="n">style</span><span class="o">=</span><span class="s">"border: 1px solid rgb(183, 183, 183); margin: 1em 40px; padding: 0pt 15px; background-color: #CCFFFF; color: rgb(17, 17, 17);"</span><span class="o">&gt;</span>
-  <span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;&gt;&gt;&lt;</span><span class="n">strong</span><span class="o">&gt;</span><span class="err">你</span><span class="o">&lt;/</span><span class="n">strong</span><span class="o">&gt;</span> <span class="err">说：</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span>
-    <span class="nf">%your_comment</span><span class="o">%</span>
-  <span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;&gt;&gt;</span> <span class="o">&lt;</span><span class="n">strong</span><span class="o">&gt;</span><span class="nf">%comment_author</span><span class="o">%&lt;/</span><span class="n">strong</span><span class="o">&gt;</span> <span class="err">回复说：</span> <span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span>
-    <span class="nf">%reply_comment</span><span class="o">%</span>
-  <span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;&gt;&gt;</span> <span class="err">查看原文，请至：</span> <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s">"%comment_link%"</span> <span class="n">target</span><span class="o">=</span><span class="s">"_blank"</span><span class="o">&gt;</span><span class="nf">%comment_link</span><span class="o">%&lt;/</span><span class="n">a</span><span class="o">&gt;&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-  <span class="o">&lt;</span><span class="n">p</span> <span class="n">style</span><span class="o">=</span><span class="s">"float: right;"</span><span class="o">&gt;</span> <span class="o">----</span> <span class="n">From</span> <span class="o">&lt;</span><span class="n">a</span> <span class="n">target</span><span class="o">=</span><span class="s">"_blank"</span> <span class="n">href</span><span class="o">=</span><span class="s">"%blog_link%/"</span><span class="o">&gt;&lt;</span><span class="n">strong</span><span class="o">&gt;</span><span class="nf">%blog_name</span><span class="o">%&lt;/</span><span class="n">strong</span><span class="o">&gt;&lt;/</span><span class="n">a</span><span class="o">&gt;&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-<span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">style=</span><span class="s">"border: 1px solid rgb(183, 183, 183); margin: 1em 40px; padding: 0pt 15px; background-color: #CCFFFF; color: rgb(17, 17, 17);"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;p&gt;</span>Hi！<span class="nt">&lt;strong&gt;</span>%user%<span class="nt">&lt;/strong&gt;</span>，你在 <span class="nt">&lt;strong&gt;</span>%post_title%<span class="nt">&lt;/strong&gt;</span> 上的评论有了新回复<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">style=</span><span class="s">"border: 1px solid rgb(183, 183, 183); margin: 1em 40px; padding: 0pt 15px; background-color: #CCFFFF; color: rgb(17, 17, 17);"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;p&gt;</span>&gt;&gt;<span class="nt">&lt;strong&gt;</span>你<span class="nt">&lt;/strong&gt;</span> 说：<span class="nt">&lt;br/&gt;</span>
+    %your_comment%
+  <span class="nt">&lt;p&gt;</span>&gt;&gt; <span class="nt">&lt;strong&gt;</span>%comment_author%<span class="nt">&lt;/strong&gt;</span> 回复说： <span class="nt">&lt;br/&gt;</span>
+    %reply_comment%
+  <span class="nt">&lt;p&gt;</span>&gt;&gt; 查看原文，请至： <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"%comment_link%"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>%comment_link%<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+  <span class="nt">&lt;p</span> <span class="na">style=</span><span class="s">"float: right;"</span><span class="nt">&gt;</span> ---- From <span class="nt">&lt;a</span> <span class="na">target=</span><span class="s">"_blank"</span> <span class="na">href=</span><span class="s">"%blog_link%/"</span><span class="nt">&gt;&lt;strong&gt;</span>%blog_name%<span class="nt">&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
 </pre></div>
 <p>&amp;nbsp_place_holder;收到邮件的效果如下</p>
 <blockquote>

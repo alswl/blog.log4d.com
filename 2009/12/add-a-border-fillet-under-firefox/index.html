@@ -16,7 +16,7 @@
 
         <meta name="author" content="alswl" />
         <meta name="keywords" content="前端,WordPress" />
-        <meta name="description" content="起因是换了DDDSpace.com 这个域名，需要测试邮件回复情况，我发现在在iGoogle的GMail小窗口显示着实有些难看，就修改了一下样式，添加了圆角 、增加了padding值，唔，这个圆角不对IE系列有效果。 增加圆角的部分如下： -moz-border-radius: 10px; -khtml-border-radius: 10px; -webkit-border-radius: 10px; border-radius: 10px; 修改之后的Mail To Commenter 模板如下 &lt;div style=&#34;border: 1px solid rgb(183, 183, 183); margin: 1em 40px; padding: 5pt 15px; background-color: #CCFFFF; color: rgb(17, 17, 17);-moz-border-radius: 10px ..." />
+        <meta name="description" content="起因是换了DDDSpace.com 这个域名，需要测试邮件回复情况，我发现在在iGoogle的GMail小窗口显示着实有些难看，就修改了一下样式，添加了圆角 、增加了padding值，唔，这个圆角不对IE系列有效果。 增加圆角的部分如下： -moz-border-radius: 10px; -khtml-border-radius: 10px; -webkit-border-radius: 10px; border-radius: 10px; 修改之后的Mail To Commenter 模板如下 &lt;div style=&#34;border: 1px solid rgb(183, 183, 183); margin: 1em 40px; padding ..." />
 
 
 
@@ -95,23 +95,23 @@ Log4D            </a>
                 <p>起因是换了DDDSpace.com 这个域名，需要测试邮件回复情况，我发现在在iGoogle的GMail小窗口显示着实有些难看，就修改了一下样式，添加了圆角
 、增加了<code>padding</code>值，唔，这个<strong>圆角不对IE系列有效果</strong>。</p>
 <p>增加圆角的部分如下：</p>
-<div class="highlight"><pre><span></span><span class="nt">-moz-border-radius</span><span class="o">:</span> <span class="nt">10px</span><span class="o">;</span>
-<span class="nt">-khtml-border-radius</span><span class="o">:</span> <span class="nt">10px</span><span class="o">;</span>
-<span class="nt">-webkit-border-radius</span><span class="o">:</span> <span class="nt">10px</span><span class="o">;</span>
-<span class="nt">border-radius</span><span class="o">:</span> <span class="nt">10px</span><span class="o">;</span>
+<div class="highlight"><pre><span class="o">-</span><span class="n">moz</span><span class="o">-</span><span class="n">border</span><span class="o">-</span><span class="n">radius</span><span class="o">:</span> <span class="mi">10</span><span class="n">px</span><span class="p">;</span>
+<span class="o">-</span><span class="n">khtml</span><span class="o">-</span><span class="n">border</span><span class="o">-</span><span class="n">radius</span><span class="o">:</span> <span class="mi">10</span><span class="n">px</span><span class="p">;</span>
+<span class="o">-</span><span class="n">webkit</span><span class="o">-</span><span class="n">border</span><span class="o">-</span><span class="n">radius</span><span class="o">:</span> <span class="mi">10</span><span class="n">px</span><span class="p">;</span>
+<span class="n">border</span><span class="o">-</span><span class="n">radius</span><span class="o">:</span> <span class="mi">10</span><span class="n">px</span><span class="p">;</span>
 </pre></div>
 <p>修改之后的Mail To Commenter 模板如下</p>
-<div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">div</span> <span class="n">style</span><span class="o">=</span><span class="s">"border: 1px solid rgb(183, 183, 183); margin: 1em 40px; padding: 5pt 15px; background-color: #CCFFFF; color: rgb(17, 17, 17);-moz-border-radius: 10px; -khtml-border-radius: 10px; -webkit-border-radius: 10px; border-radius: 10px;"</span><span class="o">&gt;</span>
-  <span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">Hi</span><span class="err">！</span><span class="o">&lt;</span><span class="n">strong</span><span class="o">&gt;</span><span class="nf">%user</span><span class="o">%&lt;/</span><span class="n">strong</span><span class="o">&gt;</span><span class="err">，你在</span> <span class="o">&lt;</span><span class="n">strong</span><span class="o">&gt;</span><span class="nf">%post_title</span><span class="o">%&lt;/</span><span class="n">strong</span><span class="o">&gt;</span> <span class="err">上的评论有了新回复</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-<span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">div</span> <span class="n">style</span><span class="o">=</span><span class="s">"border: 1px solid rgb(183, 183, 183); margin: 1em 40px; padding: 5pt 15px; background-color: #CCFFFF; color: rgb(17, 17, 17);-moz-border-radius: 10px; -khtml-border-radius: 10px; -webkit-border-radius: 10px; border-radius: 10px;"</span><span class="o">&gt;</span>
-  <span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;&gt;&gt;&lt;</span><span class="n">strong</span><span class="o">&gt;</span><span class="err">你</span><span class="o">&lt;/</span><span class="n">strong</span><span class="o">&gt;</span> <span class="err">说：</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span>
-    <span class="nf">%your_comment</span><span class="o">%</span>
-  <span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;&gt;&gt;</span> <span class="o">&lt;</span><span class="n">strong</span><span class="o">&gt;</span><span class="nf">%comment_author</span><span class="o">%&lt;/</span><span class="n">strong</span><span class="o">&gt;</span> <span class="err">回复说：</span> <span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span>
-    <span class="nf">%reply_comment</span><span class="o">%</span>
-  <span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;&gt;&gt;</span> <span class="err">查看原文，请至：</span> <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s">"%comment_link%"</span> <span class="n">target</span><span class="o">=</span><span class="s">"_blank"</span><span class="o">&gt;</span><span class="nf">%comment_link</span><span class="o">%&lt;/</span><span class="n">a</span><span class="o">&gt;&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-  <span class="o">&lt;</span><span class="n">p</span> <span class="n">style</span><span class="o">=</span><span class="s">"float: right;"</span><span class="o">&gt;</span> <span class="o">----</span> <span class="n">From</span> <span class="o">&lt;</span><span class="n">a</span> <span class="n">target</span><span class="o">=</span><span class="s">"_blank"</span> <span class="n">href</span><span class="o">=</span><span class="s">"%blog_link%/"</span><span class="o">&gt;&lt;</span><span class="n">strong</span><span class="o">&gt;</span><span class="nf">%blog_name</span><span class="o">%&lt;/</span><span class="n">strong</span><span class="o">&gt;&lt;/</span><span class="n">a</span><span class="o">&gt;&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-<span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">style=</span><span class="s">"border: 1px solid rgb(183, 183, 183); margin: 1em 40px; padding: 5pt 15px; background-color: #CCFFFF; color: rgb(17, 17, 17);-moz-border-radius: 10px; -khtml-border-radius: 10px; -webkit-border-radius: 10px; border-radius: 10px;"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;p&gt;</span>Hi！<span class="nt">&lt;strong&gt;</span>%user%<span class="nt">&lt;/strong&gt;</span>，你在 <span class="nt">&lt;strong&gt;</span>%post_title%<span class="nt">&lt;/strong&gt;</span> 上的评论有了新回复<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">style=</span><span class="s">"border: 1px solid rgb(183, 183, 183); margin: 1em 40px; padding: 5pt 15px; background-color: #CCFFFF; color: rgb(17, 17, 17);-moz-border-radius: 10px; -khtml-border-radius: 10px; -webkit-border-radius: 10px; border-radius: 10px;"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;p&gt;</span>&gt;&gt;<span class="nt">&lt;strong&gt;</span>你<span class="nt">&lt;/strong&gt;</span> 说：<span class="nt">&lt;br/&gt;</span>
+    %your_comment%
+  <span class="nt">&lt;p&gt;</span>&gt;&gt; <span class="nt">&lt;strong&gt;</span>%comment_author%<span class="nt">&lt;/strong&gt;</span> 回复说： <span class="nt">&lt;br/&gt;</span>
+    %reply_comment%
+  <span class="nt">&lt;p&gt;</span>&gt;&gt; 查看原文，请至： <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"%comment_link%"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>%comment_link%<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+  <span class="nt">&lt;p</span> <span class="na">style=</span><span class="s">"float: right;"</span><span class="nt">&gt;</span> ---- From <span class="nt">&lt;a</span> <span class="na">target=</span><span class="s">"_blank"</span> <span class="na">href=</span><span class="s">"%blog_link%/"</span><span class="nt">&gt;&lt;strong&gt;</span>%blog_name%<span class="nt">&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
 </pre></div>
 <p>&amp;nbsp_place_holder;效果演示如下</p>
 <p>Hi！<strong>%user%</strong>，你在 <strong>%post_title%</strong> 上的评论有了新回复</p>
@@ -151,18 +151,18 @@ bottomleft</code>来设置。</p>
 <code>-webkit-border-radius：{1,2} | inherit;</code></p>
 <p>如果你想设置四个角都是一样圆角的话，依然可以像这样子直接设置<code>-moz-border-radius:3px;</code></p>
 <p>如果是单独设置四个角的话，需要采取这种方式</p>
-<div class="highlight"><pre><span></span><span class="nt">-webkit-border-top-left-radius</span><span class="p">:</span><span class="nd">5px</span> <span class="nt">10px</span><span class="o">;</span>
-<span class="nt">-webkit-border-top-right-radius</span><span class="p">:</span><span class="nd">5px</span> <span class="nt">10px</span><span class="o">;</span>
-<span class="nt">-webkit-border-bottom-right-radius</span><span class="p">:</span><span class="nd">5px</span> <span class="nt">10px</span><span class="o">;</span>
-<span class="nt">-webkit-border-bottom-left-radius</span><span class="p">:</span><span class="nd">5px</span> <span class="nt">10px</span><span class="o">;</span>
+<div class="highlight"><pre><span class="o">-</span><span class="n">webkit</span><span class="o">-</span><span class="n">border</span><span class="o">-</span><span class="n">top</span><span class="o">-</span><span class="n">left</span><span class="o">-</span><span class="n">radius</span><span class="o">:</span><span class="mi">5</span><span class="n">px</span> <span class="mi">10</span><span class="n">px</span><span class="p">;</span>
+<span class="o">-</span><span class="n">webkit</span><span class="o">-</span><span class="n">border</span><span class="o">-</span><span class="n">top</span><span class="o">-</span><span class="n">right</span><span class="o">-</span><span class="n">radius</span><span class="o">:</span><span class="mi">5</span><span class="n">px</span> <span class="mi">10</span><span class="n">px</span><span class="p">;</span>
+<span class="o">-</span><span class="n">webkit</span><span class="o">-</span><span class="n">border</span><span class="o">-</span><span class="n">bottom</span><span class="o">-</span><span class="n">right</span><span class="o">-</span><span class="n">radius</span><span class="o">:</span><span class="mi">5</span><span class="n">px</span> <span class="mi">10</span><span class="n">px</span><span class="p">;</span>
+<span class="o">-</span><span class="n">webkit</span><span class="o">-</span><span class="n">border</span><span class="o">-</span><span class="n">bottom</span><span class="o">-</span><span class="n">left</span><span class="o">-</span><span class="n">radius</span><span class="o">:</span><span class="mi">5</span><span class="n">px</span> <span class="mi">10</span><span class="n">px</span><span class="p">;</span>
 </pre></div>
 <p>如果是要合并的话，只支持<code>-webkit-border-radius:3px;</code>或者是这样子<code>-webkit-border-radius:3px
 4px;</code><strong>使用<code>-webkit-border-radius:5px 0 5px 0;</code>将不会有任何效果。</strong></p>
 <p><strong>著名皮肤制作人<a href="http://utombox.com/new-lastfm/">utom</a>总结了圆角属性不同浏览器下的运用</strong></p>
-<div class="highlight"><pre><span></span><span class="nt">-moz-border-radius</span><span class="o">:</span> <span class="nt">5px</span><span class="o">;</span>
-<span class="nt">-khtml-border-radius</span><span class="o">:</span> <span class="nt">5px</span><span class="o">;</span>
-<span class="nt">-webkit-border-radius</span><span class="o">:</span> <span class="nt">5px</span><span class="o">;</span>
-<span class="nt">border-radius</span><span class="o">:</span> <span class="nt">5px</span><span class="o">;</span>
+<div class="highlight"><pre><span class="o">-</span><span class="n">moz</span><span class="o">-</span><span class="n">border</span><span class="o">-</span><span class="n">radius</span><span class="o">:</span> <span class="mi">5</span><span class="n">px</span><span class="p">;</span>
+<span class="o">-</span><span class="n">khtml</span><span class="o">-</span><span class="n">border</span><span class="o">-</span><span class="n">radius</span><span class="o">:</span> <span class="mi">5</span><span class="n">px</span><span class="p">;</span>
+<span class="o">-</span><span class="n">webkit</span><span class="o">-</span><span class="n">border</span><span class="o">-</span><span class="n">radius</span><span class="o">:</span> <span class="mi">5</span><span class="n">px</span><span class="p">;</span>
+<span class="n">border</span><span class="o">-</span><span class="n">radius</span><span class="o">:</span> <span class="mi">5</span><span class="n">px</span><span class="p">;</span>
 </pre></div>
 <p>更多详细的请大家自己查看以下链接：</p>
 <p><a href="http://weibin.org/html/moz-border-radius-webkit-

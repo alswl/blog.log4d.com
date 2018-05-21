@@ -133,9 +133,9 @@ Java ...</strong></p>
 多，正所谓温故而知新，我就把今天的"新"总结一下，加深记忆。良葛格也提倡"在网上写文章是我记录所学的一种方式"。</p>
 <h2 id="splitde-zheng-ze-shi-he-qi-zhong-de-zheng-ze-shi">split的正则式和其中的正则式</h2>
 <p>C语言其中有函数strtok，就是按某些char对字符串进行切割。下面给出一个C下面的范例</p>
-<div class="highlight"><pre><span></span>char str[] = "now # is the time for all # good men to come to the # aid of their country";
-char delims[] = "#";
-char *result = NULL;
+<div class="highlight"><pre><span class="kt">char</span> <span class="n">str</span><span class="p">[]</span> <span class="o">=</span> <span class="s">"now # is the time for all # good men to come to the # aid of their country"</span><span class="p">;</span>
+<span class="kt">char</span> <span class="n">delims</span><span class="p">[]</span> <span class="o">=</span> <span class="s">"#"</span><span class="p">;</span>
+<span class="kt">char</span> <span class="o">*</span><span class="n">result</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
 </pre></div>
 <p>result = strtok( str, delims );</p>
 <p>while( result != NULL ) {</p>
@@ -153,7 +153,7 @@ SAX等。我看了之后，感觉都比较麻烦，我个人比较喜欢使用jd
 <a href="http://www.xom.nu">猛击这里打开www.xom.nu</a> 友情提示一下，网站可以打开，但是下载的连接貌似被墙了，至少我教育网连不上去。推荐
 一个在线代理服务器古狗在线代理（<a href="http://www.ggproxy.com/">猛击这里打开</a>），通过它就可以下载类库了。
 使用类库非常简单，我这里提供个小例子。XiaoneiUser类</p>
-<div class="highlight"><pre><span></span>package cn.dddspace.xiaonei.bean;
+<div class="highlight"><pre><span class="n">package</span> <span class="n">cn</span><span class="p">.</span><span class="n">dddspace</span><span class="p">.</span><span class="n">xiaonei</span><span class="p">.</span><span class="n">bean</span><span class="p">;</span>
 </pre></div>
 <p>import java.io.OutputStream;</p>
 <p>import nu.xom.*;</p>

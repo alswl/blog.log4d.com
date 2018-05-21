@@ -911,6 +911,7 @@ SQL Server 有 &lt;code&gt;physloc&lt;/code&gt;。这种方案可以解决无主
 完成了包括用户、订单、支付、电商、学习、社群、内容和工具的迁移。
 迁移的数据总规模接近百亿，所有迁移项目均一次成功。
 迁移过程中积累了丰富的实战经验，保障了业务快速向前发展。&lt;/p&gt;
+&lt;p&gt;下一篇：&lt;a href="https://blog.alswl.com/2018/05/sql-server-migration-2/"&gt;从 SQL Server 到 MySQL（二）：在线迁移，空中换发动机 - Log4D&lt;/a&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;div class="panel"&gt;
 &lt;div class="panel-body"&gt;
@@ -2924,16 +2925,16 @@ Brend Gregg 是 Netflix 的首席 SRE，著有 &lt;a href="http://www.brendangre
 让这些构建的数据破坏 DOM 结构，从而让自己预先构造数据中的 JS 脚本被执行。&lt;/p&gt;
 &lt;p&gt;检查存储型 XSS 漏洞的方法，可以在对应的 input field 里放入一些构造的数据，如果保存后可以被执行，就说明存在 XSS 漏洞。&lt;/p&gt;
 &lt;p&gt;常见的检测方法（来自&amp;nbsp;&lt;a href="https://zh.wikipedia.org/zh-cn/%E8%B7%A8%E7%B6%B2%E7%AB%99%E6%8C%87%E4%BB%A4%E7%A2%BC#.E6.A3.80.E6.B5.8B.E6.96.B9.E6.B3.95"&gt;跨网站脚本 - 维基百科，自由的百科全书&lt;/a&gt;：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;gt;&lt;span class="nt"&gt;&amp;lt;script&amp;gt;&lt;/span&gt;alert(document.cookie)&lt;span class="nt"&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-='&amp;gt;&lt;span class="nt"&gt;&amp;lt;script&amp;gt;&lt;/span&gt;alert(document.cookie)&lt;span class="nt"&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-"&amp;gt;&lt;span class="nt"&gt;&amp;lt;script&amp;gt;&lt;/span&gt;alert(document.cookie)&lt;span class="nt"&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-&lt;span class="nt"&gt;&amp;lt;script&amp;gt;&lt;/span&gt;alert(document.cookie)&lt;span class="nt"&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-&lt;span class="nt"&gt;&amp;lt;script&amp;gt;&lt;/span&gt;alert (vulnerable)&lt;span class="nt"&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-%3Cscript%3Ealert('XSS')%3C/script%3E
-&lt;span class="nt"&gt;&amp;lt;script&amp;gt;&lt;/span&gt;alert('XSS')&lt;span class="nt"&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-&lt;span class="nt"&gt;&amp;lt;img&lt;/span&gt; &lt;span class="na"&gt;src=&lt;/span&gt;&lt;span class="s"&gt;"javascript:alert('XSS')"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
-&lt;span class="nt"&gt;&amp;lt;img&lt;/span&gt; &lt;span class="na"&gt;src=&lt;/span&gt;&lt;span class="s"&gt;"http://xxx.com/yyy.png"&lt;/span&gt; &lt;span class="na"&gt;onerror=&lt;/span&gt;&lt;span class="s"&gt;"alert('XSS')"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
-（这个仅限IE有效）
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;script&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="nx"&gt;alert&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;document.cookie&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nb"&gt;script&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'&amp;gt;&amp;lt;script&amp;gt;alert(document.cookie)&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;span class="s1"&gt;"&amp;gt;&amp;lt;script&amp;gt;alert(document.cookie)&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;span class="s1"&gt;&amp;lt;script&amp;gt;alert(document.cookie)&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;span class="s1"&gt;&amp;lt;script&amp;gt;alert (vulnerable)&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;span class="s1"&gt;%3Cscript%3Ealert('&lt;/span&gt;&lt;span class="nx"&gt;XSS&lt;/span&gt;&lt;span class="s1"&gt;')%3C/script%3E&lt;/span&gt;
+&lt;span class="s1"&gt;&amp;lt;script&amp;gt;alert('&lt;/span&gt;&lt;span class="nx"&gt;XSS&lt;/span&gt;&lt;span class="s1"&gt;')&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;span class="s1"&gt;&amp;lt;img src="javascript:alert('&lt;/span&gt;&lt;span class="nx"&gt;XSS&lt;/span&gt;&lt;span class="s1"&gt;')"&amp;gt;&lt;/span&gt;
+&lt;span class="s1"&gt;&amp;lt;img src="http://xxx.com/yyy.png" onerror="alert('&lt;/span&gt;&lt;span class="nx"&gt;XSS&lt;/span&gt;&lt;span class="s1"&gt;')"&amp;gt;&lt;/span&gt;
+&lt;span class="s1"&gt;（这个仅限IE有效）&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;攻击者通过 XSS 可以窃取用户的相关信息，如果用户是管理员，那么影响更大。
 通过这些身份信息，攻击者可以进一步篡改信息或者进行诈骗，后果不堪设想。
@@ -3390,15 +3391,15 @@ APP 无法在发起连接时候，也没有权限直接操作 socket。
 &lt;p&gt;为了解决同一个 IP 下面多个域名的问题，我们引入了一个URL参数： &lt;code&gt;__domain&lt;/code&gt;。
 当请求 IP 域名时候，必须带着这个参数，服务器会将请求域名解析出来，再分发到对应的域名。&lt;/p&gt;
 &lt;p&gt;实现这个逻辑的 Nginx 核心代码：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;set&lt;/span&gt; &lt;span class="o"&gt;$&lt;/span&gt;&lt;span class="nt"&gt;query_domain&lt;/span&gt; &lt;span class="o"&gt;$&lt;/span&gt;&lt;span class="nt"&gt;arg___domain&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
-&lt;span class="nt"&gt;if&lt;/span&gt; &lt;span class="o"&gt;($&lt;/span&gt;&lt;span class="nt"&gt;query_domain&lt;/span&gt; &lt;span class="o"&gt;!~&lt;/span&gt; &lt;span class="s1"&gt;'(www|a|b)\.example\.com'&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="err"&gt;rewrite&lt;/span&gt; &lt;span class="err"&gt;^&lt;/span&gt; &lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;www&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;example&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;404&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="n"&gt;redirect&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;set&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;query_domain&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;arg___domain&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;query_domain&lt;/span&gt; &lt;span class="o"&gt;!~&lt;/span&gt; &lt;span class="err"&gt;'&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;www&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;example&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="err"&gt;'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="n"&gt;rewrite&lt;/span&gt; &lt;span class="o"&gt;^&lt;/span&gt; &lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//www.example.com/404/ redirect;&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
-&lt;span class="nt"&gt;set&lt;/span&gt; &lt;span class="o"&gt;$&lt;/span&gt;&lt;span class="nt"&gt;my_host&lt;/span&gt; &lt;span class="o"&gt;$&lt;/span&gt;&lt;span class="nt"&gt;query_domain&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
-&lt;span class="nt"&gt;location&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="err"&gt;proxy_set_header&lt;/span&gt; &lt;span class="err"&gt;Host&lt;/span&gt; &lt;span class="err"&gt;$my_host&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-    &lt;span class="err"&gt;proxy_set_header&lt;/span&gt; &lt;span class="err"&gt;X-REAL-IP&lt;/span&gt; &lt;span class="err"&gt;$remote_addr&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-    &lt;span class="err"&gt;proxy_pass&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;scheme&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="mf"&gt;127.0.0.1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="n"&gt;set&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;my_host&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;query_domain&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="n"&gt;location&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="n"&gt;proxy_set_header&lt;/span&gt; &lt;span class="n"&gt;Host&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;my_host&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;proxy_set_header&lt;/span&gt; &lt;span class="n"&gt;X&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;REAL&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;IP&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;remote_addr&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;proxy_pass&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;scheme&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//127.0.0.1;&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;最后一个注意事项是，记得调整 Nginx 配置的 remote_addr，否则都变成了 127.0.0.1，

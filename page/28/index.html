@@ -73,9 +73,9 @@ Log4D            </a>
 16进制，而不是字符串类型。如'x00xa0'"。（其实这是用在处理文本上的） 不知道各位大大有没有明白我的意思，我花了很长时间没有一个好的解决方案。
 第一种方案，先用int()转换，然后转换hex()，直接失败，hex()转换后格式为'0x00a0'，是字符串格式，根本不是我需要的内容。
 我苦思冥想三天，终于找到一个最傻，也最好用的方法，用list进行匹配。 下面是生成匹配list的脚本：</p>
-<div class="highlight"><pre><span></span>lst = '{'
-for i in range(int('0x00', 16), int('0xff', 16) + 1):
-    hv ...</pre></div>
+<div class="highlight"><pre><span class="n">lst</span> <span class="o">=</span> <span class="sc">'{'</span>
+<span class="k">for</span> <span class="n">i</span> <span class="n">in</span> <span class="n">range</span><span class="p">(</span><span class="kt">int</span><span class="p">(</span><span class="err">'</span><span class="mh">0x00</span><span class="err">'</span><span class="p">,</span> <span class="mi">16</span><span class="p">),</span> <span class="kt">int</span><span class="p">(</span><span class="err">'</span><span class="mh">0xff</span><span class="err">'</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span><span class="o">:</span>
+    <span class="n">hv ...</span></pre></div>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/10/python-enter-the-16-hex-save-to-file/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -112,7 +112,7 @@ ThinkPHP官方论坛</a></p>
             <article class="article-list">
                 <h2 class="title"><a href="https://blog.alswl.com/2009/09/summer-internship-report-on-the-community/">暑假社会实习报告</a></h2>
                 <div class="summary"><p><strong>注意：本文是我申请学校社会实践优秀奖学金的附文，阿懂？</strong></p>
-<p><strong><em>*</em></strong><strong><em>*</em></strong><strong><em>*</em>残酷的分割</strong><strong><em>*</em></strong><strong><em>*</em></strong>*</p>
+<p><strong><em>*</em></strong><strong><em>*</em></strong><strong><em>**残酷的分割</em></strong><strong><em>*</em></strong><strong><em>*</em></strong></p>
 <p>作为一个即将毕业的大四学生，在学好理论知识的同时应更重视培养自身的实践能力。抱着这种想法，我准备在大四这最后一个假期里面做点有意义的事情。让即将毕业的我，慢
 慢的积累着融入社会工作的经验，增强着对计算机行业的实际操作知识。正好整个时候，杨老师给了我一份实习生招聘单，给了我这次实习的机会。</p>
 <p>我于7月24日回到学校，就急匆匆到公司面试。公司就在X大科技园，这家公司是X大科技园的信息服务部，同时也是XXX信息技术有限公司这样一个子公司。主要从事We
