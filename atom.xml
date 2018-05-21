@@ -574,7 +574,7 @@ Google 有一系列方法，包括 OKR 透明化，TGIF（Thank God It&amp;rsquo
    &lt;small&gt;&lt;img src="https://ohsolnxaa.qnssl.com/upload_dropbox/meta/wechat-pay-s-crop.png"/&gt;&lt;/small&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</summary><category term="management"></category><category term="team"></category></entry><entry><title>从 SQL Server 到 MySQL （一）：异构数据库迁移</title><link href="https://blog.alswl.com/2018/03/sql-server-migration-1/" rel="alternate"></link><published>2018-03-12T21:08:56+08:00</published><updated>2018-03-12T21:08:56+08:00</updated><author><name>alswl</name></author><id>tag:blog.alswl.com,2018-03-12:2018/03/sql-server-migration-1/</id><summary type="html">&lt;p&gt;&lt;img alt="201803/migration-bird.png" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201803/migration-bird.png"/&gt;&lt;/p&gt;
+</summary><category term="management"></category><category term="team"></category></entry><entry><title>从 SQL Server 到 MySQL（一）：异构数据库迁移</title><link href="https://blog.alswl.com/2018/03/sql-server-migration-1/" rel="alternate"></link><published>2018-03-12T21:08:56+08:00</published><updated>2018-03-12T21:08:56+08:00</updated><author><name>alswl</name></author><id>tag:blog.alswl.com,2018-03-12:2018/03/sql-server-migration-1/</id><summary type="html">&lt;p&gt;&lt;img alt="201803/migration-bird.png" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201803/migration-bird.png"/&gt;&lt;/p&gt;
 &lt;h2 id="bei-jing"&gt;背景&lt;/h2&gt;
 &lt;p&gt;沪江成立于 2001 年，作为较早期的教育学习网站，
 当时技术选型范围并不大：
