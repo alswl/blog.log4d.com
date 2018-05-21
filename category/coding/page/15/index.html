@@ -68,6 +68,23 @@ Log4D            </a>
         <div class="col-lg-8 col-lg-offset-2">
 
             <article class="article-list">
+                <h2 class="title"><a href="https://blog.alswl.com/2009/09/python-data-format-conversion-using-struct/">Python中使用Struct数据格式转换</a></h2>
+                <div class="summary"><p>本文来源：<a href="http://blog.csdn.net/JGood/archive/2009/06/22/4290158.aspx">Python模块学习 ---- struct 数据格式转换 - JGood的专栏 -
+CSDN博客</a></p>
+<p>Python是一门非常简洁的语言，对于数据类型的表示，不像其他语言预定义了许多类型（如：在C#中，光整型就定义了8种），它只定义了六种基本类型：字符串，整数
+，浮点数，元组，列表，字典。通过这六种数据类型，我们可以完成大部分工作。但当Python需要通过网络与其他的平台进行交互的时候，必须考虑到将这些数据类型与其
+他平台或语言之间的类型进行互相转换问题。打个比方：C++写的客户端发送一个int型(4字节)变量的数据到
+Python写的服务器，Python接收到表示这个整数的4个字节数据，怎么解析成Python认识的整数呢？
+Python的标准模块struct就用来解决这个问题。</p>
+<p>struct模块的内容不多，也不是太难，下面对其中最常用的方法进行介绍：</p>
+<h2 id="structpack">struct.pack</h2>
+<p>struct.pack用于将Python的值根据格式符，转换为字符串（因为Python中没有字节(Byte)类型，可以把这里的字符串理解为字节流，或字节数组
+）。其函数原型为：struct.pack ...</p>
+                </div>
+                <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/09/python-data-format-conversion-using-struct/"><i class="icon-circle-arrow-right"></i>more ...</a>
+            </article>
+            <hr/>
+            <article class="article-list">
                 <h2 class="title"><a href="https://blog.alswl.com/2009/09/encoding-ascii-ansi-gb-2312-unicode-utf-8-utf-16/">编码: ASCII(ANSI), GB-2312, UNICODE, UTF-8，UTF-16</a></h2>
                 <div class="summary"><h2 id="asciizi-fu-ji">ASCII字符集</h2>
 <p>7位的编码方案，总共表示128个字符，其中包括了大小写英文字母、数字、标点符号等常用字符。英语世界已经足够应付。</p>
@@ -235,25 +252,6 @@ s.aspx?ReleaseId=27326">AJAX Control Toolkit</a>，其功能非常完整，几�
 素都覆盖了样式，AJAX Control Toolkit在样式上还是不如jQuery ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/08/ajaxcontroltoolkit-amendment-in-calendarextender-styles/"><i class="icon-circle-arrow-right"></i>more ...</a>
-            </article>
-            <hr/>
-            <article class="article-list">
-                <h2 class="title"><a href="https://blog.alswl.com/2009/08/no-photo-caused-by-the/">由No photo引起</a></h2>
-                <div class="summary"><p><a href="http://www.chinaqiugou.com/images/detail_no_pic.gif"><img alt="image" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201612/404.png"/></a></p>
-<p>某个系统，检查用户照片，如果发现用户并没有设定照片就返回一张No Photo的图片。</p>
-<p>返回数据库的图片代码比较格式化。</p>
-<div class="highlight"><pre><span></span>int Id = Int32.Parse(Request.Params.Get("Id"));
-string type = Request.Params.Get("type");
-BLL.Student bll = new JznuManager.BLL.Student();
-student = new JznuManager.Model.Student();
-student = bll.GetModel(Id);
-Response.ContentType = "image/jpeg";
-Response.Cache.SetCacheability(HttpCacheability.Public);
-Response.BufferOutput = false;
-//输出图片文件二进制数据
-Response.OutputStream ...</pre></div>
-                </div>
-                <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/08/no-photo-caused-by-the/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
             <hr/>
 

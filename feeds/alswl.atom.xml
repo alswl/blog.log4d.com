@@ -1,5 +1,497 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Log4D</title><link href="https://blog.alswl.com/" rel="alternate"></link><link href="https://blog.alswl.com/feeds/alswl.atom.xml" rel="self"></link><id>https://blog.alswl.com/</id><updated>2018-04-09T23:13:03+08:00</updated><entry><title>如何逃离死海效应</title><link href="https://blog.alswl.com/2018/04/death-sea-effect/" rel="alternate"></link><published>2018-04-09T23:13:03+08:00</published><updated>2018-04-09T23:13:03+08:00</updated><author><name>alswl</name></author><id>tag:blog.alswl.com,2018-04-09:2018/04/death-sea-effect/</id><summary type="html">&lt;p&gt;&lt;img alt="201804/death-sea.jpg" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201804/death-sea.jpg"/&gt;&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Log4D</title><link href="https://blog.alswl.com/" rel="alternate"></link><link href="https://blog.alswl.com/feeds/alswl.atom.xml" rel="self"></link><id>https://blog.alswl.com/</id><updated>2018-05-21T11:24:36+08:00</updated><entry><title>从 SQL Server 到 MySQL（二）：在线迁移，空中换发动机</title><link href="https://blog.alswl.com/2018/05/sql-server-migration-2/" rel="alternate"></link><published>2018-05-21T11:24:36+08:00</published><updated>2018-05-21T11:24:36+08:00</updated><author><name>alswl</name></author><id>tag:blog.alswl.com,2018-05-21:2018/05/sql-server-migration-2/</id><summary type="html">&lt;p&gt;&lt;img alt="flying-tanker" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201805/flying-tanker.png"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;smaill&gt;（image via https://pixabay.com/en/military-stealth-bomber-refueling-602729/ ）&lt;/smaill&gt;&lt;/p&gt;
+&lt;p&gt;在上篇文章
+&lt;a href="https://blog.alswl.com/2018/03/sql-server-migration-1/"&gt;从 SQL Server 到 MySQL （一）：异构数据库迁移 - Log4D&lt;/a&gt;
+中，我们给大家介绍了从 SQL Server 到 MySQL 异构数据库迁移的基本问题和全量解决方案。
+全量方案可以满足一部分场景的需求，但是这个方案仍然是有缺陷的：
+迁移过程中需要停机，停机的时长和数据量相关。
+对于核心业务来说，停机就意味着损失。
+比如用户中心的服务，以它的数据量来使用全量方案，会导致迁移过程中停机若干个小时。
+而一旦用户中心停止服务，几乎所有依赖于这个中央服务的系统都会停摆。&lt;/p&gt;
+&lt;p&gt;能不能做到无缝的在线迁移呢？系统不需要停机或者极短暂时间的停机？
+作为有追求的技术人，我们一定要想方设法解决上面的问题。&lt;/p&gt;
+
+&lt;h2 id="zai-xian-qian-yi-de-yuan-li-he-liu-cheng"&gt;在线迁移的原理和流程&lt;/h2&gt;
+&lt;p&gt;针对 Oracle 到 MySQL，市面上已经有比较成熟的解决方案 - alibaba 的
+&lt;a href="https://github.com/alibaba/yugong"&gt;yugong&lt;/a&gt;
+项目。
+在解决 SQL Server 到 MySQL 在线迁移之前，我们先研究一下 yugong 是如何做到 Oracle
+的在线迁移。&lt;/p&gt;
+&lt;p&gt;下图是 yugong 针对 Oracle 到 MySQL 的增量迁移流程：&lt;/p&gt;
+&lt;p&gt;&lt;img alt="yugong-oracle.png" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201805/yugong-oracle.png"/&gt;&lt;/p&gt;
+&lt;p&gt;这其中有四个步骤：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;增量数据收集 (创建 Oracle 表的增量物化视图)&lt;/li&gt;
+&lt;li&gt;进行全量复制&lt;/li&gt;
+&lt;li&gt;进行增量复制 (可并行进行数据校验)&lt;/li&gt;
+&lt;li&gt;原库停写，切到新库&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Oracle 物化视图（Materialized View）是 Oracle 提供的一个机制。
+一个物化视图就是主库在某一个时间点上的复制，可以理解为是这个时间点上的 Snapshot。
+当主库的数据持续更新时，物化视图的更新则是要通过独立的批量更新完成，称之为 &lt;code&gt;refreshes&lt;/code&gt;。
+一批 &lt;code&gt;refreshes&lt;/code&gt; 之间的变化，就可以对应到数据库的内容变化情况。
+物化视图经常用来将主库的数据复制到从库，也常常在数据仓库用来缓存复杂查询。&lt;/p&gt;
+&lt;p&gt;物化视图有多种配置方式，这里比较关心刷新方式和刷新时间。
+刷新方式有三种：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Complete Refresh：删除所有数据记录重新生成物化视图&lt;/li&gt;
+&lt;li&gt;Fast Refresh：增量刷新&lt;/li&gt;
+&lt;li&gt;Force Refresh：根据条件判断使用 Complete Refresh 和 Fast Refres&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;刷新机制有两种模式： Refresh-on-commit 和 Refresh-On-Demand，&lt;/p&gt;
+&lt;p&gt;Oracle 基于物化视图，就可以完成增量数据的获取，从而满足阿里的数据在线迁移。
+将这个技术问题泛化一下，想做到在线增量迁移需要有哪些特性？
+我们得到如下结论（针对源数据库）：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;增量变化：支持增量获得增量数据库变化&lt;/li&gt;
+&lt;li&gt;延迟：获取变化数据这个动作耗时需要尽可能低&lt;/li&gt;
+&lt;li&gt;幂等一致性：变化数据的消费应当做到幂等，即不管目标数据库已有数据什么状态，都可以无差别消费&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;回到我们面临的问题上来，SQL Server 是否有这个机制满足这三个特性呢？
+答案是肯定的，SQL Server 官方提供了 CDC 功能。&lt;/p&gt;
+&lt;h2 id="cdc-de-gong-zuo-yuan-li"&gt;CDC 的工作原理&lt;/h2&gt;
+&lt;p&gt;什么是 CDC？
+CDC 全称 Change Data Capture，设计目的就是用来解决增量数据的。
+它是 SQL Server 2008 新增的特性，
+在这之前可以使用 SQl Server 2005 中的 &lt;code&gt;after insert&lt;/code&gt; / &lt;code&gt;after delete&lt;/code&gt;
+/ &lt;code&gt;after update&lt;/code&gt; Triiger 功能来获得数据变化。&lt;/p&gt;
+&lt;p&gt;CDC 的工作原理如下：&lt;/p&gt;
+&lt;p&gt;&lt;img alt="cdc-data-flow.png" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201805/cdc-data-flow.png"/&gt;&lt;/p&gt;
+&lt;p&gt;当数据库表发生变化时候，Capture process 会从 transaction log 里面获取数据变化，
+然后将这些数据记录到 Change Table 里面。
+有了这些数据，用户可以通过特定的 cdc 存储查询函数将这些变化数据查出来。&lt;/p&gt;
+&lt;h2 id="cdc-de-shu-ju-jie-gou-he-ji-ben-shi-yong"&gt;CDC 的数据结构和基本使用&lt;/h2&gt;
+&lt;p&gt;CDC 的核心数据就是那些 Change Table 了，这里我们给大家看一下
+Change Table 长什么样，可以有个直观的认识。&lt;/p&gt;
+&lt;p&gt;通过以下的函数打开一张表（fruits）的 CDC 功能。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;-- enable cdc for db&lt;/span&gt;
+&lt;span class="n"&gt;sys&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sp_cdc_enable_db&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="c1"&gt;-- enable by table&lt;/span&gt;
+&lt;span class="k"&gt;EXEC&lt;/span&gt; &lt;span class="n"&gt;sys&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sp_cdc_enable_table&lt;/span&gt; &lt;span class="o"&gt;@&lt;/span&gt;&lt;span class="n"&gt;source_schema&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;N&lt;/span&gt;&lt;span class="s1"&gt;'dbo'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;@&lt;/span&gt;&lt;span class="n"&gt;source_name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;N&lt;/span&gt;&lt;span class="s1"&gt;'fruits'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;@&lt;/span&gt;&lt;span class="n"&gt;role_name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;NULL&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="c1"&gt;-- list cdc enabled table&lt;/span&gt;
+&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;is_cdc_enabled&lt;/span&gt; &lt;span class="k"&gt;from&lt;/span&gt; &lt;span class="n"&gt;sys&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;databases&lt;/span&gt; &lt;span class="k"&gt;where&lt;/span&gt; &lt;span class="n"&gt;is_cdc_enabled&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;至此 CDC 功能已经开启，如果需要查看哪些表开启了 CDC 功能，可以使用一下 SQL：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;-- list cdc enabled table&lt;/span&gt;
+&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;is_cdc_enabled&lt;/span&gt; &lt;span class="k"&gt;from&lt;/span&gt; &lt;span class="n"&gt;sys&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;databases&lt;/span&gt; &lt;span class="k"&gt;where&lt;/span&gt; &lt;span class="n"&gt;is_cdc_enabled&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;开启 CDC 会导致产生一张 Change Table 表 &lt;code&gt;cdc.dbo_fruits_CT&lt;/code&gt;，这张表的表结构如何呢？&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="k"&gt;schema&lt;/span&gt; &lt;span class="n"&gt;cdc&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;dbo_fruits_CT&lt;/span&gt;
+&lt;span class="n"&gt;name&lt;/span&gt;            &lt;span class="k"&gt;default&lt;/span&gt;  &lt;span class="k"&gt;nullable&lt;/span&gt;  &lt;span class="k"&gt;type&lt;/span&gt;          &lt;span class="k"&gt;length&lt;/span&gt;  &lt;span class="n"&gt;indexed&lt;/span&gt;
+&lt;span class="c1"&gt;--------------  -------  --------  ------------  ------  -------&lt;/span&gt;
+&lt;span class="n"&gt;__$end_lsn&lt;/span&gt;      &lt;span class="k"&gt;null&lt;/span&gt;     &lt;span class="n"&gt;YES&lt;/span&gt;       &lt;span class="nb"&gt;binary&lt;/span&gt;        &lt;span class="mi"&gt;10&lt;/span&gt;      &lt;span class="k"&gt;NO&lt;/span&gt;
+&lt;span class="n"&gt;__$operation&lt;/span&gt;    &lt;span class="k"&gt;null&lt;/span&gt;     &lt;span class="k"&gt;NO&lt;/span&gt;        &lt;span class="nb"&gt;int&lt;/span&gt;           &lt;span class="mi"&gt;4&lt;/span&gt;       &lt;span class="k"&gt;NO&lt;/span&gt;
+&lt;span class="n"&gt;__$seqval&lt;/span&gt;       &lt;span class="k"&gt;null&lt;/span&gt;     &lt;span class="k"&gt;NO&lt;/span&gt;        &lt;span class="nb"&gt;binary&lt;/span&gt;        &lt;span class="mi"&gt;10&lt;/span&gt;      &lt;span class="k"&gt;NO&lt;/span&gt;
+&lt;span class="n"&gt;__$start_lsn&lt;/span&gt;    &lt;span class="k"&gt;null&lt;/span&gt;     &lt;span class="k"&gt;NO&lt;/span&gt;        &lt;span class="nb"&gt;binary&lt;/span&gt;        &lt;span class="mi"&gt;10&lt;/span&gt;      &lt;span class="n"&gt;YES&lt;/span&gt;
+&lt;span class="n"&gt;__$update_mask&lt;/span&gt;  &lt;span class="k"&gt;null&lt;/span&gt;     &lt;span class="n"&gt;YES&lt;/span&gt;       &lt;span class="n"&gt;varbinary&lt;/span&gt;     &lt;span class="mi"&gt;128&lt;/span&gt;     &lt;span class="k"&gt;NO&lt;/span&gt;
+&lt;span class="n"&gt;id&lt;/span&gt;              &lt;span class="k"&gt;null&lt;/span&gt;     &lt;span class="n"&gt;YES&lt;/span&gt;       &lt;span class="nb"&gt;int&lt;/span&gt;           &lt;span class="mi"&gt;4&lt;/span&gt;       &lt;span class="k"&gt;NO&lt;/span&gt;
+&lt;span class="n"&gt;name&lt;/span&gt;            &lt;span class="k"&gt;null&lt;/span&gt;     &lt;span class="n"&gt;YES&lt;/span&gt;       &lt;span class="nb"&gt;varchar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;255&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  &lt;span class="mi"&gt;255&lt;/span&gt;     &lt;span class="k"&gt;NO&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;这张表的 &lt;code&gt;__&lt;/code&gt; 开头的字段是 CDC 所记录的元数据，&lt;code&gt;id&lt;/code&gt; 和 &lt;code&gt;name&lt;/code&gt; 是 fruits 表的原始字段。
+这意味着 CDC 的表结构和原始表结构是一一对应的。&lt;/p&gt;
+&lt;p&gt;接下来我们做一些业务操作，让数据库的数据发生一些变化，然后查看 CDC 的 Change Table：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;-- 1 step&lt;/span&gt;
+&lt;span class="k"&gt;DECLARE&lt;/span&gt; &lt;span class="o"&gt;@&lt;/span&gt;&lt;span class="n"&gt;begin_time&lt;/span&gt; &lt;span class="n"&gt;datetime&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;@&lt;/span&gt;&lt;span class="n"&gt;end_time&lt;/span&gt; &lt;span class="n"&gt;datetime&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;@&lt;/span&gt;&lt;span class="n"&gt;begin_lsn&lt;/span&gt; &lt;span class="nb"&gt;binary&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="o"&gt;@&lt;/span&gt;&lt;span class="n"&gt;end_lsn&lt;/span&gt; &lt;span class="nb"&gt;binary&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="c1"&gt;-- 2 step&lt;/span&gt;
+&lt;span class="k"&gt;SET&lt;/span&gt; &lt;span class="o"&gt;@&lt;/span&gt;&lt;span class="n"&gt;begin_time&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'2017-09-11 14:03:00.000'&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="k"&gt;SET&lt;/span&gt; &lt;span class="o"&gt;@&lt;/span&gt;&lt;span class="n"&gt;end_time&lt;/span&gt;   &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'2017-09-11 14:10:00.000'&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="c1"&gt;-- 3 step&lt;/span&gt;
+&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="o"&gt;@&lt;/span&gt;&lt;span class="n"&gt;begin_lsn&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sys&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fn_cdc_map_time_to_lsn&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'smallest greater than'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;@&lt;/span&gt;&lt;span class="n"&gt;begin_time&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="o"&gt;@&lt;/span&gt;&lt;span class="n"&gt;end_lsn&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sys&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fn_cdc_map_time_to_lsn&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'largest less than or equal'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;@&lt;/span&gt;&lt;span class="n"&gt;end_time&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="c1"&gt;-- 4 step&lt;/span&gt;
+&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="n"&gt;cdc&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fn_cdc_get_all_changes_dbo_fruits&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;@&lt;/span&gt;&lt;span class="n"&gt;begin_lsn&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;@&lt;/span&gt;&lt;span class="n"&gt;end_lsn&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'all'&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;这里的操作含义是：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;定义存储过程中需要使用的 4 个变量&lt;/li&gt;
+&lt;li&gt;begin_time / end_time 是 Human Readable 的字符串格式时间&lt;/li&gt;
+&lt;li&gt;begin_lsn / end_lsn 是通过 CDC 函数转化过的 Log Sequence Number，代表数据库变更的唯一操作 ID&lt;/li&gt;
+&lt;li&gt;根据 begin_lsn / end_lsn 查询到 CDC 变化数据&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;查询出来的数据如下所示：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;__$start_lsn&lt;/span&gt;          &lt;span class="n"&gt;__$end_lsn&lt;/span&gt;  &lt;span class="n"&gt;__$seqval&lt;/span&gt;             &lt;span class="n"&gt;__$operation&lt;/span&gt;  &lt;span class="n"&gt;__$update_mask&lt;/span&gt;  &lt;span class="n"&gt;id&lt;/span&gt;  &lt;span class="n"&gt;name&lt;/span&gt;
+&lt;span class="c1"&gt;--------------------  ----------  --------------------  ------------  --------------  --  ------&lt;/span&gt;
+&lt;span class="mi"&gt;0000&lt;/span&gt;&lt;span class="n"&gt;dede0000019f001a&lt;/span&gt;  &lt;span class="k"&gt;null&lt;/span&gt;        &lt;span class="mi"&gt;0000&lt;/span&gt;&lt;span class="n"&gt;dede0000019f0018&lt;/span&gt;  &lt;span class="mi"&gt;2&lt;/span&gt;             &lt;span class="mi"&gt;03&lt;/span&gt;              &lt;span class="mi"&gt;1&lt;/span&gt;   &lt;span class="n"&gt;apple&lt;/span&gt;
+&lt;span class="mi"&gt;0000&lt;/span&gt;&lt;span class="n"&gt;dede000001ad0004&lt;/span&gt;  &lt;span class="k"&gt;null&lt;/span&gt;        &lt;span class="mi"&gt;0000&lt;/span&gt;&lt;span class="n"&gt;dede000001ad0003&lt;/span&gt;  &lt;span class="mi"&gt;2&lt;/span&gt;             &lt;span class="mi"&gt;03&lt;/span&gt;              &lt;span class="mi"&gt;2&lt;/span&gt;   &lt;span class="n"&gt;apple2&lt;/span&gt;
+&lt;span class="mi"&gt;0000&lt;/span&gt;&lt;span class="n"&gt;dede000001ba0003&lt;/span&gt;  &lt;span class="k"&gt;null&lt;/span&gt;        &lt;span class="mi"&gt;0000&lt;/span&gt;&lt;span class="n"&gt;dede000001ba0002&lt;/span&gt;  &lt;span class="mi"&gt;3&lt;/span&gt;             &lt;span class="mi"&gt;02&lt;/span&gt;              &lt;span class="mi"&gt;2&lt;/span&gt;   &lt;span class="n"&gt;apple2&lt;/span&gt;
+&lt;span class="mi"&gt;0000&lt;/span&gt;&lt;span class="n"&gt;dede000001ba0003&lt;/span&gt;  &lt;span class="k"&gt;null&lt;/span&gt;        &lt;span class="mi"&gt;0000&lt;/span&gt;&lt;span class="n"&gt;dede000001ba0002&lt;/span&gt;  &lt;span class="mi"&gt;4&lt;/span&gt;             &lt;span class="mi"&gt;02&lt;/span&gt;              &lt;span class="mi"&gt;2&lt;/span&gt;   &lt;span class="n"&gt;apple3&lt;/span&gt;
+&lt;span class="mi"&gt;0000&lt;/span&gt;&lt;span class="n"&gt;dede000001c10003&lt;/span&gt;  &lt;span class="k"&gt;null&lt;/span&gt;        &lt;span class="mi"&gt;0000&lt;/span&gt;&lt;span class="n"&gt;dede000001c10002&lt;/span&gt;  &lt;span class="mi"&gt;2&lt;/span&gt;             &lt;span class="mi"&gt;03&lt;/span&gt;              &lt;span class="mi"&gt;3&lt;/span&gt;   &lt;span class="n"&gt;apple4&lt;/span&gt;
+&lt;span class="mi"&gt;0000&lt;/span&gt;&lt;span class="n"&gt;dede000001cc0005&lt;/span&gt;  &lt;span class="k"&gt;null&lt;/span&gt;        &lt;span class="mi"&gt;0000&lt;/span&gt;&lt;span class="n"&gt;dede000001cc0002&lt;/span&gt;  &lt;span class="mi"&gt;1&lt;/span&gt;             &lt;span class="mi"&gt;03&lt;/span&gt;              &lt;span class="mi"&gt;3&lt;/span&gt;   &lt;span class="n"&gt;apple4&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;可以看到 Change Table 已经如实的记录了我们操作内容，注意 &lt;code&gt;__$operation&lt;/code&gt;
+代表了数据库操作：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;1  删除&lt;/li&gt;
+&lt;li&gt;2  插入&lt;/li&gt;
+&lt;li&gt;3  更新前数据&lt;/li&gt;
+&lt;li&gt;4  更新后数据&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;根据查出来的数据，我们可以重现这段时间数据库的操作：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;新增了 id 为 1 / 2 的两条数据&lt;/li&gt;
+&lt;li&gt;更新了 id 为 2 的数据&lt;/li&gt;
+&lt;li&gt;插入了 id 为 3 的数据&lt;/li&gt;
+&lt;li&gt;删除了 id 为 3 的数据&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="cdc-diao-you"&gt;CDC 调优&lt;/h2&gt;
+&lt;p&gt;有了 CDC 这个利器，终于意味着我们的方向是没有问题的，我们终于稍稍吁了一口气。
+但除了了解原理和使用方式，我们还需要深入了解 CDC 的工作机制，对其进行压测、调优，
+了解其极限和边界，否则一旦线上出现不可控的情况，就会对业务带来巨大损失。&lt;/p&gt;
+&lt;p&gt;我们先看看 CDC 的工作流程，就可以知道有哪些核心参数可以调整：&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Influence of capture job parameters" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201805/cdc-influence.png"/&gt;&lt;/p&gt;
+&lt;p&gt;上图是 CDC Job 的工作流程：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;蓝色区域是一次 Log 扫描执行的最大扫描次数：maxscans number（maxscans）&lt;/li&gt;
+&lt;li&gt;蓝色区域同时被最大扫描 transcation 数量控制：maxtrans&lt;/li&gt;
+&lt;li&gt;浅蓝色区域是扫描间隔时间，单位是秒：pollinginterval&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这三个参数平衡着 CDC 的服务器资源消耗、吞吐量和延迟，
+根据具体场景，比如大字段，宽表，BLOB 表，可以调整从而达到满足业务需要。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;maxscan 默认值 10&lt;/li&gt;
+&lt;li&gt;maxtrans 默认值 500&lt;/li&gt;
+&lt;li&gt;pollinginterval 默认值 5 秒&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="cdc-ya-ce"&gt;CDC 压测&lt;/h2&gt;
+&lt;p&gt;掌握了能够调整的核心参数，我们即将对 CDC 进行了多种形式的测试。
+在压测之前，我们还需要确定关键的健康指标，这些指标有：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;内存：buffer-cache-hit / page-life-expectancy / page-split 等&lt;/li&gt;
+&lt;li&gt;吞吐：batch-requets / sql-compilations / sql-re-compilations / transactions count&lt;/li&gt;
+&lt;li&gt;资源消耗：user-connections / processes-blocked / lock-waits / checkpoint-pages&lt;/li&gt;
+&lt;li&gt;操作系统层面：CPU 利用率、磁盘 IO&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;出于篇幅考虑，我们无法将所有测试结果贴出来，
+这里放一个在并发 30 下面插入一百万数据（随机数据）进行展示：&lt;/p&gt;
+&lt;p&gt;&lt;img alt="cdc-metrics.png" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201805/cdc-metrics.png"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="cdc-system-load.png" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201805/cdc-system-load.png"/&gt;&lt;/p&gt;
+&lt;p&gt;测试结论是，在默认的 CDC 参数下面：&lt;/p&gt;
+&lt;p&gt;CDC 的开启/关闭过程中会导致若干个 Process Block，
+大流量请求下面（15k TPS）过程会导致约 20 个左右 Process Block。
+这个过程中对服务器的 IO / CPU 无明显波动，
+开启/关闭瞬间会带来 mssql.sql-statistics.sql-compilations 剧烈波动。
+CDC 开启后，在大流量请求下面对 QPS / Page IO 无明显波动，
+对服务器的 IO / CPU 也无明显波动， CDC 开启后可以在 16k TPS 下正常工作。&lt;/p&gt;
+&lt;p&gt;如果对性能不达标，官方有一些简单的优化指南：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;调整 maxscan maxtrans pollinginterval&lt;/li&gt;
+&lt;li&gt;减少在插入后立刻插入&lt;/li&gt;
+&lt;li&gt;避免大批量写操作&lt;/li&gt;
+&lt;li&gt;限制需要记录的字段&lt;/li&gt;
+&lt;li&gt;尽可能关闭 net changes&lt;/li&gt;
+&lt;li&gt;没任务压力时跑 cleanup&lt;/li&gt;
+&lt;li&gt;监控 log file 大小和 IO 压力，确保不会写爆磁盘&lt;/li&gt;
+&lt;li&gt;要设置 filegroup_name&lt;/li&gt;
+&lt;li&gt;开启 sp_cdc_enable_table 之前设置 filegroup&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="yugong-de-zai-xian-qian-yi-ji-zhi"&gt;yugong 的在线迁移机制&lt;/h2&gt;
+&lt;p&gt;OK，截目前位置，我们已经具备了 CDC 这个工具，但是这仅仅提供了一种可能性，
+我们还需要一个工具将 CDC 的数据消费出来，并喂到 MySQL 里面去。&lt;/p&gt;
+&lt;p&gt;好在有 yugong。
+Yugong 官方提供了 Oracle 到 MySQL 的封装，并且抽象了 Source / Target /
+SQL Tempalte 等接口，
+我们只要实现相关接口，就可以完成从 SQL Server 消费数据到 MySQL 了。&lt;/p&gt;
+&lt;p&gt;这里我们不展开，我还会花专门的一篇文章讲如何在 yugong 上面进行开发。
+可以提前剧透一下，我们已经将支持 SQL Server 的 yugong 版本开源了。&lt;/p&gt;
+&lt;h2 id="ru-he-hui-gun"&gt;如何回滚&lt;/h2&gt;
+&lt;p&gt;数据库迁移这样的项目，我们不仅仅要保证单向从 SQL Server 到 MySQL 的写入，
+同时要从 MySQL 写入 SQL Server。&lt;/p&gt;
+&lt;p&gt;这个流程同样考虑增量写入的要素：增量消费，延迟，幂等一致性。&lt;/p&gt;
+&lt;p&gt;MySQL 的 binlog 可以满足这三个要素，需要注意的是，MySQL binlog 有三种模式，
+Statement based，Row based 和 Mixed。只有 Row based 才能满足幂等一致性的要求。&lt;/p&gt;
+&lt;p&gt;确认理论上可行之后，我们一样需要一个工具将 binlog 读取出来，并且将其转化为
+SQL Server 可以消费的数据格式，然后写入 SQL Server。&lt;/p&gt;
+&lt;p&gt;我们目光转到 alibaba 的另外一个项目 Canal。
+Canal 是阿里中间件团队提供的 binlog 增量订阅 &amp;amp; 消费组件。
+之所以叫组件，是由于 Canal 提供了 Canal-Server 应用和 Canal Client Library，
+Canal 会模拟成一个 MySQL 实例，作为 Slave 连接到 Master 上面，
+然后实时将 binlog 读取出来。
+至于 binlog 读出之后想怎么使用，权看用户如何使用。&lt;/p&gt;
+&lt;p&gt;我们基于 Canal 设计了一个简单的数据流，在 yugong 中增加了这么几个功能：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;SQL Server 的写入功能&lt;/li&gt;
+&lt;li&gt;消费 Canal 数据源的功能&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Canal Server 中的 binlog 只能做一次性消费，
+内部实现是一个 Queue，
+为了满足我们可以重复消费数据的能力，我们还额外设计了一个环节，将 Canal
+的数据放到 Queue 中，在未来任意时间可以重复消费数据。
+我们选择了 Redis 作为这个 Queue，数据流如下。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="canal.png" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201805/canal.png"/&gt;&lt;/p&gt;
+&lt;h2 id="zui-jia-shi-jian"&gt;最佳实践&lt;/h2&gt;
+&lt;p&gt;数据库的迁移在去 Windows 中，是最不容得出错的环节。
+应用是无状态的，出现问题可以通过回切较快地解决。
+但数据库的迁移就需要考虑周到，做好资源准备，发布流程，
+故障预案处理。&lt;/p&gt;
+&lt;p&gt;考虑到多个事业部都需要经历这个一个过程，我们项目组将每一个步骤都固化下来，
+形成了一个最佳实践。我们的迁移步骤如下，供大家参考：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;大阶段&lt;/th&gt;
+&lt;th&gt;阶段&lt;/th&gt;
+&lt;th&gt;事项&lt;/th&gt;
+&lt;th&gt;是否完成&lt;/th&gt;
+&lt;th&gt;负责人&lt;/th&gt;
+&lt;th&gt;耗时&lt;/th&gt;
+&lt;th&gt;开始时间&lt;/th&gt;
+&lt;th&gt;完成时间&lt;/th&gt;
+&lt;th&gt;备注&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;白天&lt;/td&gt;
+&lt;td&gt;存量数据阶段&lt;/td&gt;
+&lt;td&gt;创建 MySQL 数据库，准备相关账号资源&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;DBA&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;开启 CDC&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;DBA&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;从 Slave SQLServer dump 一份 snapshot 到 Backup SQL Server&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;DBA&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;Backup SQL Server 消费数据， ETL 到 MySQL&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;DBA&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;增量数据阶段&lt;/td&gt;
+&lt;td&gt;确认 ETL 数据已经消费完成，检查数据总条数&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;DBA&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;从 Slave SQLServer 开始消费 CDC 数据，持续写入 MySQL&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;DBA&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;使用 yugong 检查一天内数据的一致性&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;DBA&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;检查不一致的数据，10 分钟之后人工进行检查，确认是 CDC 延迟带来的问题&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;DBA&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;检查数据总量条目&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;DBA&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;使用 yugong 对抽样表进行全量检查&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;DBA&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;凌晨&lt;/td&gt;
+&lt;td&gt;应用发布阶段&lt;/td&gt;
+&lt;td&gt;停止 SQL Server 的应用&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;技术经理&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;检查没有连接进入 SQL Server&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;DBA&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;使用 yugong 检查一天内数据的一致性&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;DBA&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;检查数据总量条目&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;DBA&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;启用基于 MySQL 的应用&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;运维&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;测试阶段&lt;/td&gt;
+&lt;td&gt;测试应用是否正常，回归所有功能&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;QA&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;（临时新增）测试 ReadOnly DB 的应用访问情况&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;QA&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;完成阶段&lt;/td&gt;
+&lt;td&gt;接入流量&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;运维&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;（可选）回滚阶段&lt;/td&gt;
+&lt;td&gt;发现问题，直接将应用切回 SQL Server&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;运维&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;事后进行数据审计，进行新增数据补偿&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;DBA&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;（可选）回滚过程中，使用 Canal 读取 binlog，并使用 Canal Client 重放到 SQL Server&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;DBA&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id="reference"&gt;Reference&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://docs.oracle.com/cd/B10500_01/server.920/a96567/repmview.htm"&gt;Materialized View Concepts and Architecture&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://docs.microsoft.com/en-us/previous-versions/sql/sql-server-2008/dd266396(v=sql.100)"&gt;Tuning the Performance of Change Data Capture in SQL Server 2008 | Microsoft Docs&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/alibaba/yugong"&gt;alibaba/yugong: 阿里巴巴去Oracle数据迁移同步工具(全量+增量,目标支持MySQL/DRDS)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/alibaba/canal"&gt;alibaba/canal: 阿里巴巴mysql数据库binlog的增量订阅&amp;amp;消费组件 。阿里云DRDS( https://www.aliyun.com/product/drds )、阿里巴巴TDDL 二级索引、小表复制powerd by canal.&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;div class="panel"&gt;
+&lt;div class="panel-body"&gt;
+   &lt;small&gt;原文链接: &lt;a href="https://blog.alswl.com/2018/05/sql-server-migration-2/"&gt;https://blog.alswl.com/2018/05/sql-server-migration-2/&lt;/a&gt;&lt;/small&gt;&lt;br&gt;
+   &lt;small&gt;3a1ff193cee606bd1e2ea554a16353ee&lt;/small&gt;&lt;br&gt;
+   &lt;small&gt;欢迎关注我的微信公众号：&lt;a href="http://mp.weixin.qq.com/mp/getmasssendmsg?__biz=MzIyNTIwMTU3MQ==#wechat_webview_type=1&amp;wechat_redirect"&gt;窥豹&lt;/a&gt;&lt;/small&gt;&lt;br&gt;
+   &lt;small&gt;&lt;img src="https://ohsolnxaa.qnssl.com/upload_dropbox/201605/qrcode_for_gh_17e2f9c2caa4_258.jpg"/&gt;&lt;/small&gt;
+   &lt;small&gt;&lt;img src="https://ohsolnxaa.qnssl.com/upload_dropbox/meta/wechat-pay-s-crop.png"/&gt;&lt;/small&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</summary><category term="SQLServer"></category><category term="MySQL"></category><category term="Migration"></category></entry><entry><title>如何逃离死海效应</title><link href="https://blog.alswl.com/2018/04/death-sea-effect/" rel="alternate"></link><published>2018-04-09T23:13:03+08:00</published><updated>2018-04-09T23:13:03+08:00</updated><author><name>alswl</name></author><id>tag:blog.alswl.com,2018-04-09:2018/04/death-sea-effect/</id><summary type="html">&lt;p&gt;&lt;img alt="201804/death-sea.jpg" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201804/death-sea.jpg"/&gt;&lt;/p&gt;
 &lt;p&gt;（图片来自 &lt;a href="https://www.flickr.com/photos/tsaiproject/8298557641"&gt;The Dead Sea, Israel | One of the lowest, saltiest and unusu&amp;hellip; | Flickr&lt;/a&gt;）&lt;/p&gt;
 &lt;p&gt;最近听团队老大的一个分享，介绍公司提倡的工程师的核心价值观，受益良多。
 这也让我想起了一篇文章，
@@ -2817,99 +3309,4 @@ public static int RESPONSE_TIMEOUT = 30000;
    &lt;small&gt;&lt;img src="https://ohsolnxaa.qnssl.com/upload_dropbox/meta/wechat-pay-s-crop.png"/&gt;&lt;/small&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</summary><category term="Qiniu"></category><category term="TCP"></category></entry><entry><title>一次艰难的 Wiki 升级</title><link href="https://blog.alswl.com/2016/01/confluence-upgrade/" rel="alternate"></link><published>2016-01-12T22:53:55+08:00</published><updated>2016-01-12T22:53:55+08:00</updated><author><name>alswl</name></author><id>tag:blog.alswl.com,2016-01-12:2016/01/confluence-upgrade/</id><summary type="html">&lt;p&gt;公司使用 &lt;a href="https://www.atlassian.com/software/confluence"&gt;Confluence&lt;/a&gt;
-管理自己的知识库，
-现在使用的版本还是 3.0.1，而最新的 Confluence 版本已经是 5.4+。
-新版本加入的一些现代化 Web 系统的新特性很吸引人（拖拽上传，可见即所得编辑），
-在群众的强烈呼声下，我着手开始升级。&lt;/p&gt;
-&lt;p&gt;&lt;img alt="201601/confluence_river.jpg" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201601/confluence_river.jpg"/&gt;&lt;/p&gt;
-
-&lt;p&gt;官方的升级路线很扯，3.0.1 的升级路线是：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;3.0.1 -&amp;gt; 3.5.17&lt;/li&gt;
-&lt;li&gt;5.0.3 -&amp;gt; 5.4.4&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;中间两次大版本升级，第一次原因不明，第二次是更新了 markup 渲染引擎，
-改为 HTML 格式类型的渲染模式。&lt;/p&gt;
-&lt;p&gt;由于一些原因，我们系统还跑在 embedded 模式下（其实就是 HyperSQL），这种大版本升级，
-需要先从内置库升级到外部数据库，比如 MySQL。&lt;/p&gt;
-&lt;p&gt;苦逼旅程就开始了。&lt;/p&gt;
-&lt;h2 id="from-embedded-to-mysql"&gt;From embedded to MySQL&lt;/h2&gt;
-&lt;p&gt;更新内置库到外部库的操作流程：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;导出当前的数据备份，包括附件，我导出后 1G+&lt;/li&gt;
-&lt;li&gt;使用当前同版本（3.0.1）安装一个全新的 wiki，注意下载 JDBC-connector&lt;/li&gt;
-&lt;li&gt;安装之后，配置好 MySQL，开始导入之前准备好的备份&lt;/li&gt;
-&lt;li&gt;悲剧上演&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;遇到了错误：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Import failed. Hibernate operation: could not insert: [com.atlassian.confluence.core.BodyContent#12028015]; SQL []; Duplicate entry '12028015' for key 'PRIMARY'; nested exception is com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry '12028015' for key 'PRIMARY'&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;官方文档 &lt;a href="https://confluence.atlassian.com/doc/troubleshooting-xml-backups-that-fail-on-restore-199034.html"&gt;https://confluence.atlassian.com/doc/troubleshooting-xml-backups-that-fail-on-restore-199034.html&lt;/a&gt;
-让修改重复键数据，好吧，我改，搜索一把重复主键，将备份里面的 &lt;code&gt;entities.xml&lt;/code&gt; 弄出来。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# 格式化
-awk '{s=s $0}END{gsub(/&amp;gt;&lt;span class="err"&gt;&amp;lt;&lt;/span&gt;/,"&amp;gt;\n&lt;span class="err"&gt;&amp;lt;&lt;/span&gt;",s);s=gensub(/&amp;gt;([^ \n&amp;gt;]*)&lt;span class="err"&gt;&amp;lt;&lt;/span&gt;/,"&amp;gt;\n\\1\n&lt;span class="err"&gt;&amp;lt;&lt;/span&gt;","g",s);print s}' entities.xml &amp;gt; entities.xml.format
-# 找重复主键 cat entities.xml.format G 'content" class="Page' -A 2 G -E '[0-9]+' | sort | uniq -c | sort -gr L cat entities.xml.format | grep 'name="id"' -A 1 -B 1 | grep -E '[0-9]+' -B 2 L
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;操作过程中，发现有数据就一条数据（grep entities.xml），还是插入重复（13238835）。
-官方文档解释是，内置数据库的锁有时候会不灵，插入重复键。
-于是决定再试试去掉主键约束方案，大不了那个数据我就不要了。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;ALTER TABLE BODYCONTENT DROP PRIMARY KEY;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;结果还有其他 PK 约束，我于是一条一条解开，然后&amp;hellip;&amp;hellip;还是不行，真是作了一手的好死。&lt;/p&gt;
-&lt;p&gt;结论是，这数据错误了太多，已经无法手工修复。&lt;/p&gt;
-&lt;h2 id="heng-cha-yi-dao-de-emoji"&gt;横插一刀的 Emoji 😊😢💗&lt;/h2&gt;
-&lt;p&gt;导入时候报了这么一个错误：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Caused by: java.sql.SQLException: Incorrect string value: '\xF0\x9F\x8C\x8D\xE5\x9B...' for column 'BODY' at row 1 org.xml.sax.SAXException: Error while parsing 2015-10-19 23:14:13,108 ERROR [Importing data task] [confluence.importexport.impl.ReverseDatabinder] fromXML Error processing backup: -- referer: http://10.1.2.155:8087/setup/setup-restore-start.action | url: /setup/setup-restore-local.action | userName: anonymous | action: setup-restore-local org.xml.sax.SAXException: Error while parsing net.sf.hibernate.exception.GenericJDBCException: could not insert: [com.atlassian.confluence.core.BodyContent#12028161]&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;这是 Emoji 编码的问题，理论上 MySQL 换到 5.6+，更新 encoding 就可以了。&lt;/p&gt;
-&lt;p&gt;但是&amp;hellip;&amp;hellip;Confluence 的建表 SQL 爆出了 255 varchar 超过 1000 限制的错误
-，我尝试使用&amp;nbsp;&lt;a href="https://github.com/rails/rails/issues/9855"&gt;innodb_large_prefix&lt;/a&gt;
-似乎可以解决（因为重复键的问题，导致导入已经行不通）。&lt;/p&gt;
-&lt;p&gt;另外&amp;nbsp;innodb_large_prefix&amp;nbsp;是 5.6.3 才有的，只能升级 MySQL，
-并且需要创建表时候使用&amp;nbsp;DYNAMIC&amp;nbsp;参数。&lt;/p&gt;
-&lt;p&gt;弄个 Emoji 这么绕，这导致我直接弃用了 MySQL。&lt;/p&gt;
-&lt;p&gt;如果是正常迁移，不遇到重复键，Emoji 的问题，可以参考官方的文档，完成平滑迁移：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;https://confluence.atlassian.com/doc/migrating-to-another-database-148867.html&lt;/li&gt;
-&lt;li&gt;https://confluence.atlassian.com/doc/database-setup-for-mysql-128747.html&lt;/li&gt;
-&lt;li&gt;https://confluence.atlassian.com/doc/upgrading-confluence-4578.html&lt;/li&gt;
-&lt;li&gt;https://confluence.atlassian.com/doc/upgrading-confluence-manually-255363437.html&lt;/li&gt;
-&lt;li&gt;https://confluence.atlassian.com/conf56/confluence-user-s-guide/creating-content/using-the-editor/using-symbols-emoticons-and-special-characters&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id="ma-dan-zi-ji-gan"&gt;妈蛋，自己干&lt;/h2&gt;
-&lt;p&gt;上面这么点东西，陆陆续续花了我两周的时间（晚上）。已经确认走不通平滑迁移，那就别怪我手段糙了。&lt;/p&gt;
-&lt;p&gt;使用 API 导出后直接导入，这种做法最大问题是不平滑，会丢掉 Wiki 修改的历史记录，
-在和各个业务方沟通之后，最后达成了一致：可以暴力升级。&lt;/p&gt;
-&lt;p&gt;升级流程：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;准备最新 Confluence 新站点&lt;/li&gt;
-&lt;li&gt;关停站点&lt;/li&gt;
-&lt;li&gt;导出数据，包括 Page、评论、附件&lt;/li&gt;
-&lt;li&gt;导入 Page，评论，附件&lt;/li&gt;
-&lt;li&gt;启动旧站点，开启只读模式&lt;/li&gt;
-&lt;li&gt;启用新站点&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;官方有一个 &lt;a href="https://migrations.atlassian.net/wiki"&gt;Universal Wiki Converter&lt;/a&gt;，
-我在 Bitbucket 上面找到了源码，但是已经不可工作了。
-虽然宣称「The UWC will however save you 1-2+ weeks of scripting development time, compared with starting from scratch, for many of the most common conversion cases.」
-但并没有卵用。&lt;/p&gt;
-&lt;p&gt;不行就自己随便搞搞好了，看了一下开发需要的 &lt;a href="https://confluence.atlassian.com/display/CONF30/Remote+API+Specification+2.4#RemoteAPISpecification2.4-Page"&gt;Conflunce API&lt;/a&gt;，
-和尤其贴心的新版本 &lt;a href="https://developer.atlassian.com/confdev/confluence-rest-api?continue=https%3A%2F%2Fdeveloper.atlassian.com%2Fconfdev%2Fconfluence-rest-api&amp;amp;application=dac"&gt;RESTful API&lt;/a&gt;，就开始搞了。&lt;/p&gt;
-&lt;p&gt;写迁移代码，在这里 &lt;a href="https://github.com/duitang/atlassian-confluence-xxoo"&gt;atlassian-confluence-xxoo&lt;/a&gt;，已经开源了，只使用过一次，成功的从 3.0.1 迁移到 5.4.4，
-理论上，支持任意版本的 3.x/4.x Confluence 迁移到最新。&lt;/p&gt;
-&lt;p&gt;使用 &lt;code&gt;python app.py -h&lt;/code&gt; 查看帮助，不行就看看代码。&lt;/p&gt;
-&lt;p&gt;希望有迁移需求的同学，搜索到这里能够获得一些帮助。&lt;/p&gt;
-&lt;hr&gt;
-&lt;div class="panel"&gt;
-&lt;div class="panel-body"&gt;
-   &lt;small&gt;原文链接: &lt;a href="https://blog.alswl.com/2016/01/confluence-upgrade/"&gt;https://blog.alswl.com/2016/01/confluence-upgrade/&lt;/a&gt;&lt;/small&gt;&lt;br&gt;
-   &lt;small&gt;3a1ff193cee606bd1e2ea554a16353ee&lt;/small&gt;&lt;br&gt;
-   &lt;small&gt;欢迎关注我的微信公众号：&lt;a href="http://mp.weixin.qq.com/mp/getmasssendmsg?__biz=MzIyNTIwMTU3MQ==#wechat_webview_type=1&amp;wechat_redirect"&gt;窥豹&lt;/a&gt;&lt;/small&gt;&lt;br&gt;
-   &lt;small&gt;&lt;img src="https://ohsolnxaa.qnssl.com/upload_dropbox/201605/qrcode_for_gh_17e2f9c2caa4_258.jpg"/&gt;&lt;/small&gt;
-   &lt;small&gt;&lt;img src="https://ohsolnxaa.qnssl.com/upload_dropbox/meta/wechat-pay-s-crop.png"/&gt;&lt;/small&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-</summary><category term="confluence"></category></entry></feed>
+</summary><category term="Qiniu"></category><category term="TCP"></category></entry></feed>

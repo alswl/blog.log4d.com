@@ -68,6 +68,26 @@ Log4D            </a>
         <div class="col-lg-8 col-lg-offset-2">
 
             <article class="article-list">
+                <h2 class="title"><a href="https://blog.alswl.com/2013/11/python-gdb/">在 Python 中使用 GDB 来调试[译文]</a></h2>
+                <div class="summary"><p>大约一年前，我接触了 Java 中的 <a href="http://kenai.com/projects/btrace">Btrace</a>
+能够不停机查看线上 JVM 运行情况的特性让我艳羡不已。
+另外还有强悍的 jStack 和 jConsole 来进行运行期侦测，JVM 的工业级强度果然不是盖的。</p>
+<p>当时公司技术方面也遇到了一些瓶颈，一部分原因是 CPython 本身的 IO 模型问题，
+另一方面也和早期代码写的极不工整脱不了关系。万般无奈之下，我们用
+Jython 推翻重做了主要业务，效果立竿见影，但同时也把真实问题给规避掉了。</p>
+<p>在这之后我们在 JVM 的领导下，走上了康庄大道。但我心中始终还有一个梗，
+就是想对性能遇到瓶颈的 Python Process 进行线上侦测。
+这篇文章就是开始的第一步。</p>
+<p>PS:这篇文章理论上是可行的，但是在我机器（Ubuntu 12.04 / 系统自带 Python）
+无法正常执行，会爆出 <code>unable to read python frame information</code>
+的问题。解决方法我会在下篇文章中写出。这里只是单纯翻译一下原文。</p>
+<p>原文可以移步 <a href="https://wiki.python.org/moin/DebuggingWithGdb">https://wiki.python.org/moin/DebuggingWithGdb</a>。</p>
+
+                </div>
+                <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2013/11/python-gdb/"><i class="icon-circle-arrow-right"></i>more ...</a>
+            </article>
+            <hr/>
+            <article class="article-list">
                 <h2 class="title"><a href="https://blog.alswl.com/2013/10/r-tutorial/">15 分钟学会 R 语言[译文]</a></h2>
                 <div class="summary"><p>仗着自己有几门语言的基础，我在学新语言时候，都会选择一些快速入门教程。
 比如 <a href="http://learnxinyminutes.com/">Learn X in Y minuts</a> 就是我经常光顾的站点。</p>
@@ -227,31 +247,6 @@ PyCon 大会。这次 PyCon 2012 分成两个场地同时进行，北京和上�
 
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2012/07/moin2txt/"><i class="icon-circle-arrow-right"></i>more ...</a>
-            </article>
-            <hr/>
-            <article class="article-list">
-                <h2 class="title"><a href="https://blog.alswl.com/2012/05/comet/">服务器 Push 技术</a></h2>
-                <div class="summary"><p>服务器 Push 技术表示服务器可以主动推送消息给客户端浏览器。</p>
-<h2 id="shi-xian-fang-shi">实现方式</h2>
-<ul>
-<li>Comet</li>
-<li>Ajax 轮询</li>
-<li>iframe / htmlfile</li>
-<li>script tag （不中断的连续请求）</li>
-<li>Flash 通讯</li>
-<li>WebSocket</li>
-</ul>
-<p>Comet 本意是彗星，彗星尾巴痕迹很像长连接工作方式，所以 Comet 指代长连接。
-在 Ajax 轮询的分类上，存在一些分歧，这里我把轮询认为一种 Comet 方式。</p>
-<p>ps：「长连接」在一些场景下，是另外一种意义「HTTP: Keep alive」。不在本文讨论的范围中。</p>
-<p>参考链接：</p>
-<ul>
-<li><a href="http://www.ibm.com/developerworks/cn/web/wa-lo-comet/">Comet：基于 HTTP 长连接的「服务器推」技术</a></li>
-<li><a href="http://socket.io/#browser-support">Socket.IO Supported transports</a></li>
-</ul>
-
-                </div>
-                <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2012/05/comet/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
             <hr/>
 

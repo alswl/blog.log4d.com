@@ -68,6 +68,30 @@ Log4D            </a>
         <div class="col-lg-8 col-lg-offset-2">
 
             <article class="article-list">
+                <h2 class="title"><a href="https://blog.alswl.com/2009/05/struts2-encoding-problem/">Struts2的编码问题</a></h2>
+                <div class="summary"><p>继续昨天的编码问题 我一直全部采用UTF-8格式，而且在jUnit测试中并没有问题，说明是在Struts进行数据收集时候出错。</p>
+<p>Google之后，根据网上一些建议修改web.xml struts.xml 但都没有效果。</p>
+<p>网上建议在web.xml中添加 ：</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;filter&gt;</span>
+    <span class="nt">&lt;filter-name&gt;</span>struts-cleanup<span class="nt">&lt;/filter-name&gt;</span>
+    <span class="nt">&lt;filter-class&gt;</span>org.apache.struts2.dispatcher.ActionContextCleanUp
+    <span class="nt">&lt;/filter-class&gt;</span>
+<span class="nt">&lt;/filter&gt;</span>
+<span class="nt">&lt;filter-mapping&gt;</span>
+    <span class="nt">&lt;filter-name&gt;</span>struts-cleanup<span class="nt">&lt;/filter-name&gt;</span>
+    <span class="nt">&lt;url-pattern&gt;</span>/*<span class="nt">&lt;/url-pattern&gt;</span>
+<span class="nt">&lt;/filter-mapping&gt;</span>
+</pre></div>
+<p>来设定本地化和编码，然后在struts.xml中添加过滤器</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;constant</span> <span class="na">value=</span><span class="s">"UTF-8"</span> <span class="na">name=</span><span class="s">"struts.i18n.encoding"</span><span class="nt">&gt;&lt;/constant&gt;</span>
+<span class="nt">&lt;constant</span> <span class="na">value=</span><span class="s">"UTF-8"</span> <span class="na">name=</span><span class="s">"struts.locale"</span><span class="nt">&gt;&lt;/constant&gt;</span>
+</pre></div>
+<p>根据我测试 ...</p>
+                </div>
+                <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/05/struts2-encoding-problem/"><i class="icon-circle-arrow-right"></i>more ...</a>
+            </article>
+            <hr/>
+            <article class="article-list">
                 <h2 class="title"><a href="https://blog.alswl.com/2009/05/learning-to-use-log4j/">学习使用log4j</a></h2>
                 <div class="summary"><p>今天用Log4j时候，感觉只显示message讯息太少了，直觉上这些流行的工具应该会提供更强大的定制功能，就去google了一下</p>
 <p>果不其然：相关配置参数如下</p>
@@ -207,23 +231,6 @@ L_SENT_SHUTDOWN|SSL_RECEIVED_SHUTDOWN</p>
 <p>SSL_CTX_load_verify_locations用于加载受信任的CA证书 ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/03/programming-with-openssl-for-ssl/"><i class="icon-circle-arrow-right"></i>more ...</a>
-            </article>
-            <hr/>
-            <article class="article-list">
-                <h2 class="title"><a href="https://blog.alswl.com/2009/03/safe-use-of-openssl-api-programming/">使用 OpenSSL API 进行安全编程【转载】</a></h2>
-                <div class="summary"><p>使用 OpenSSL API 进行安全编程</p>
-<p>创建基本的安全连接和非安全连接</p>
-<p>级别： 初级</p>
-<p>Kenneth Ballard (<a href="mailto:kenneth.ballard@ptk.org">kenneth.ballard@ptk.org</a>),
-自由程序员</p>
-<p>2004 年 8 月 09 日</p>
-<p>学习如何使用 OpenSSL ---- 用于安全通信的最著名的开放库 ---- 的 API
-有些强人所难，因为其文档并不完全。您可以通过本文中的提示补充这方面的知识，并驾驭该 API。在建立基本的连接之后，就可以查看如何使用 OpenSSL 的
-BIO 库来建立安全连接和非安全连接。与此同时，您还会学到一些关于错误检测的知识。</p>
-<p>OpenSSL API 的文档有些含糊不清。因为还没有多少关于 OpenSSL
-使用的教程，所以对初学者来说，在应用程序中使用它可能会有一些困难。那么怎样才能使用 OpenSSL 实现一个基本的安全连接呢？本教程将帮助您解决这个问题 ...</p>
-                </div>
-                <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/03/safe-use-of-openssl-api-programming/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
             <hr/>
 

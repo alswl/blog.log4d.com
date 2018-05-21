@@ -68,6 +68,35 @@ Log4D            </a>
         <div class="col-lg-8 col-lg-offset-2">
 
             <article class="article-list">
+                <h2 class="title"><a href="https://blog.alswl.com/2010/10/python-clipboard/">Python读写剪贴板</a></h2>
+                <div class="summary"><p>最近在写一个CodeGenX代码生成器，说是生成器，其实是目前只完成一堆零散的脚本。这些脚本的调用方式一般是从某个txt中读取数据，再写到另外一个txt中。</p>
+<p>由于某些数据变动频繁，导致我操作txt次数大增，我怒了，就找了一个脚本自动读写剪贴板。</p>
+<div class="highlight"><pre><span></span><span class="c1">#coding=utf-8</span>
+<span class="sd">'''</span>
+<span class="sd">读写剪贴板</span>
+<span class="sd">'''</span>
+<span class="kn">import</span> <span class="nn">win32clipboard</span> <span class="kn">as</span> <span class="nn">w</span>
+<span class="kn">import</span> <span class="nn">win32con</span>
+
+<span class="k">def</span> <span class="nf">getText</span><span class="p">():</span>
+  <span class="n">w</span><span class="o">.</span><span class="n">OpenClipboard</span><span class="p">()</span>
+  <span class="n">d</span> <span class="o">=</span> <span class="n">w</span><span class="o">.</span><span class="n">GetClipboardData</span><span class="p">(</span><span class="n">win32con</span><span class="o">.</span><span class="n">CF_TEXT</span><span class="p">)</span>
+  <span class="n">w</span><span class="o">.</span><span class="n">CloseClipboard</span><span class="p">()</span>
+  <span class="k">return</span> <span class="n">d</span>
+
+<span class="k">def</span> <span class="nf">setText</span><span class="p">(</span><span class="n">aString</span><span class="p">):</span>
+  <span class="n">w</span><span class="o">.</span><span class="n">OpenClipboard</span><span class="p">()</span>
+  <span class="n">w</span><span class="o">.</span><span class="n">EmptyClipboard</span><span class="p">()</span>
+  <span class="n">w</span><span class="o">.</span><span class="n">SetClipboardData</span><span class="p">(</span><span class="n">win32con</span><span class="o">.</span><span class="n">CF_TEXT</span><span class="p">,</span> <span class="n">aString</span><span class="p">)</span>
+  <span class="n">w</span><span class="o">.</span><span class="n">CloseClipboard</span><span class="p">()</span>
+</pre></div>
+<p>别说有了这个脚本用起来还是蛮方便的，建议丢到Python的lib下面，然后可以方便调用。</p>
+<p>如果双击 <code>.py ...</code></p>
+                </div>
+                <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2010/10/python-clipboard/"><i class="icon-circle-arrow-right"></i>more ...</a>
+            </article>
+            <hr/>
+            <article class="article-list">
                 <h2 class="title"><a href="https://blog.alswl.com/2010/09/script-mm2html/">小脚本mm->html</a></h2>
                 <div class="summary"><p>我同时在使用两套信息记录工具，知识收集记录工具BooguNote + KMS Wiz，关于这两套系统具体介绍请见<a href="http://log4d.com/2010/04/desktop-recording-tool-boogunote">桌面记录神器- BooguNote</a> &amp; <a href="http://log4d.com/2010/09/my-kms">我所使用的知识管理系统</a>。</p>
 <p>我的使用习惯是在BooguNote中收集日常的琐碎知识点，包括我所想的和工作记录。每个小知识节点的长度大概在200-300字左右。这些被我称为的知识碎片显然
@@ -233,24 +262,6 @@ cript脚本能够自动检测PC、Mac机器上各种主流浏览器对Flash插�
 <p>[swfobject - Project Hosting on ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2010/05/swfobject/"><i class="icon-circle-arrow-right"></i>more ...</a>
-            </article>
-            <hr/>
-            <article class="article-list">
-                <h2 class="title"><a href="https://blog.alswl.com/2010/05/fms-80-port-used/">FMS的80端口占用</a></h2>
-                <div class="summary"><p>AzaAjaxChat 的语音聊天需要使用的Flex的流媒体传输，我在评估的方案有两套：1.使用原声Socket在客户端进行连接，2.使用FMS
-流媒体服务器进行数据传输。</p>
-<p>FMS （Flash Media Server）在安装时候，有一个选项是端口使用哪个，默认是1935 和
-80端口，安装之后发现在使用两个Apache在80端口发生冲突（FMS使用的也是Apache服务器），需要将这个端口修改。</p>
-<p>Google后，发现修改 Flash Media Server 3conffms.ini 删除80留下1935即可。</p>
-<div class="highlight"><pre><span></span># IP address and port(s) Flash Media Server should listen on
-# For example:
-#    ADAPTOR.HOSTPORT = :1935,80
-#
-ADAPTOR.HOSTPORT = :1935
-</pre></div>
-<p>唔～继续搞鼓Flex的流媒体传输了 ...</p>
-                </div>
-                <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2010/05/fms-80-port-used/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
             <hr/>
 

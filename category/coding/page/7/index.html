@@ -68,6 +68,19 @@ Log4D            </a>
         <div class="col-lg-8 col-lg-offset-2">
 
             <article class="article-list">
+                <h2 class="title"><a href="https://blog.alswl.com/2011/08/get-json-failed-in-ie/">get json failed in IE</a></h2>
+                <div class="summary"><p>半夜在开工打补丁，某个 bug 是 Firefox 下面能接受到 Ajax 回调请求，而 IE 不行。</p>
+<p>解决方案在<a href="http://stackoverflow.com/questions/425854/jquery-ajax-request-failing-
+in-ie">http://stackoverflow.com/questions/425854/jquery-ajax-request-failing-
+in-ie</a></p>
+<p>缘由是由于 IE 不能正常识别<code>application/json; charset=utf8</code></p>
+<p>于是修改为<code>response.headers['Content-Type'] = 'application/json'</code></p>
+<p>狗日的 IE！</p>
+                </div>
+                <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2011/08/get-json-failed-in-ie/"><i class="icon-circle-arrow-right"></i>more ...</a>
+            </article>
+            <hr/>
+            <article class="article-list">
                 <h2 class="title"><a href="https://blog.alswl.com/2011/08/go-pylons-py-in-python2-7/">go-pylons.py在Python2.7下错误解决</a></h2>
                 <div class="summary"><p>当使用 Python2.7 +<a href="http://pylonshq.com/download/1.0/go-pylons.py"> go-pylons.py</a>
 创建 Pylons 运行环境的话，会报一下错误。</p>
@@ -242,27 +255,6 @@ through-eclipse">http://stackoverflow.com ...</p>
 <p>find /home ...</p></hr/></hr/></hr/>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2011/04/ubuntu-setup/"><i class="icon-circle-arrow-right"></i>more ...</a>
-            </article>
-            <hr/>
-            <article class="article-list">
-                <h2 class="title"><a href="https://blog.alswl.com/2011/04/run-jetty-in-maven/">Maven下Jetty启动</a></h2>
-                <div class="summary"><p>部门最近开发的产品使用的开发服务器是Jetty（挂载在GWT中），启动方法是通过Eclipse的External
-Tool执行。我对此表示很好奇，特意在自己电脑下面组建了一个Jetty开发环境，发现Maven和Jetty合作起来非常愉快，现在小记之。</p>
-<h2 id="yi-zhun-bei-mavenpei-zhi-wen-jian">一、准备Maven配置文件</h2>
-<p>我使用Maven推荐的标准webapp结构，结构如下，官方文档可以参考<a href="http://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html">Maven - Introduction to the Standard Directory Layout</a></p>
-<p>src/main/java</p>
-<p>Application/Library sources</p>
-<p>src/main/resources</p>
-<p>Application/Library resources</p>
-<p>src/main/filters</p>
-<p>Resource filter files</p>
-<p>src/main/assembly</p>
-<p>Assembly descriptors</p>
-<p>src/main/config</p>
-<p>Configuration files</p>
-<p>src/main ...</p>
-                </div>
-                <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2011/04/run-jetty-in-maven/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
             <hr/>
 

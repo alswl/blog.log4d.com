@@ -67,6 +67,19 @@ Log4D            </a>
         <div class="col-lg-8 col-lg-offset-2">
 
             <article class="article-list">
+                <h2 class="title"><a href="https://blog.alswl.com/2009/12/use-ssh-to-the-wordpress-directory-package/">使用SSH对WordPress目录进行打包</a></h2>
+                <div class="summary"><p>最近用上了小张的10号主机，cPanel界面，支持SSH连接，<strong>DDD的一亩三分地</strong>也换了log4d.com域名。我想趁着这个机会对整个系统进行改版，迎
+接2010年的到来。</p>
+<p>我用<strong>Apache+PHP+MySQL</strong>在本地假设了服务器，然后取10号主机服务器上的<code>wp-
+content</code>界面。当准备把整个目录打包时候，居然发现没有打包命令，无奈之下，只能登录<strong>SSH</strong>，使用Linux命令打包了。</p>
+<p>我连接SSH使用的是<strong>Putty</strong>，点击<a href="http://www.xdowns.com/soft/6/65/2006/Soft_28585.htm
+l">这里</a>下载(via 绿软)，这个是<strong>绿色中文Final</strong>版本，比较好使唤。</p>
+<p>用到几个简单的Linux命令如下（好在我学过几周Linux啊 ...</p>
+                </div>
+                <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/12/use-ssh-to-the-wordpress-directory-package/"><i class="icon-circle-arrow-right"></i>more ...</a>
+            </article>
+            <hr/>
+            <article class="article-list">
                 <h2 class="title"><a href="https://blog.alswl.com/2009/12/dddspace-com-bathed-in-fire-and-gave-birth-to/">DDDSpace.com浴火重生了</a></h2>
                 <div class="summary"><p>一大早过来，我就开始部署DDDSpace.com，上传文件和数据，修改数据库的域名，文章参考了<a href="http://wange.im/after-change-
 domain.html">"更换域名后应该做的事情 &raquo; Life Studio</a>"。我原来的DDDSpace.cn所在的重庆主机还在停止80端口状态，域名管理器我也无法登录，所以不能做301修改了。</p>
@@ -230,21 +243,6 @@ TButton).Caption</code>这种语句来转换<code>TObject</code>类型。</p>
 <p>项目组文件，由多目标项目管理器产生 ...</p>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/12/dlphi-a-small-summary-of-knowledge/"><i class="icon-circle-arrow-right"></i>more ...</a>
-            </article>
-            <hr/>
-            <article class="article-list">
-                <h2 class="title"><a href="https://blog.alswl.com/2009/12/can-not-be-accessed-on-the-blog-description-of-the-recent/">关于博客最近无法访问的说明</a></h2>
-                <div class="summary"><p>呃，由于某些原因，服务器所在的江西机房停止了IDC服务，我今天晚上刚更换了服务器。我向在这段时间访问我博客却发现404错误的童鞋们报以10万分抱歉~</p>
-<p>网上搜索相关新闻，原来很多机房有非法信息和未备案网站，被叫停了，我所在的江西景德镇服务器属于重灾区。幸好那天早晨备份了数据库和文件，基本没有造成什么损失。花
-了1个多小时搬家，除了一个Share-This插件工作不正常，貌似没有发现其他问题。</p>
-<p>Share-This的这个插件在<a href="http://log4d.com/wp-content/plugins/share-this/share-this.php?akst_action=css">http://log4d.com/wp-content/plugins/share-this/share-this.php?akst_action=css</a>路径上会返回500内部服务器错误，搜索结果为文件权限问题，我之后设定为755/777都没有效
-果。没办法，暂时停用这个插件了。</p>
-<p>Update:09_12_04-23:29：这个问题我已经解决，问题出在wp-content/wp-include文件夹的权限当初被我错误的设定为777，正
-确的应该为755，导致读取错误，就有了内部服务器500错误。用Ftp工具对这两个文件夹及其子文件夹进行轮询修改为755，问题即可解决。</p>
-<p>ps:感慨到，搬家果然难啊~</p>
-<p>附：近期被封机房名单 ...</p>
-                </div>
-                <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/12/can-not-be-accessed-on-the-blog-description-of-the-recent/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
             <hr/>
 

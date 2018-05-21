@@ -68,6 +68,27 @@ Log4D            </a>
         <div class="col-lg-8 col-lg-offset-2">
 
             <article class="article-list">
+                <h2 class="title"><a href="https://blog.alswl.com/2011/04/run-jetty-in-maven/">Maven下Jetty启动</a></h2>
+                <div class="summary"><p>部门最近开发的产品使用的开发服务器是Jetty（挂载在GWT中），启动方法是通过Eclipse的External
+Tool执行。我对此表示很好奇，特意在自己电脑下面组建了一个Jetty开发环境，发现Maven和Jetty合作起来非常愉快，现在小记之。</p>
+<h2 id="yi-zhun-bei-mavenpei-zhi-wen-jian">一、准备Maven配置文件</h2>
+<p>我使用Maven推荐的标准webapp结构，结构如下，官方文档可以参考<a href="http://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html">Maven - Introduction to the Standard Directory Layout</a></p>
+<p>src/main/java</p>
+<p>Application/Library sources</p>
+<p>src/main/resources</p>
+<p>Application/Library resources</p>
+<p>src/main/filters</p>
+<p>Resource filter files</p>
+<p>src/main/assembly</p>
+<p>Assembly descriptors</p>
+<p>src/main/config</p>
+<p>Configuration files</p>
+<p>src/main ...</p>
+                </div>
+                <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2011/04/run-jetty-in-maven/"><i class="icon-circle-arrow-right"></i>more ...</a>
+            </article>
+            <hr/>
+            <article class="article-list">
                 <h2 class="title"><a href="https://blog.alswl.com/2011/04/ubuntu-crebs/">Ubuntu桌面自动换背景</a></h2>
                 <div class="summary"><p>GNOME桌面系统可以使用一系列的图片作为背景，每过一段时间能够自动更换。这个功能核Win7下面自动换背景效果一致。不过很可惜，系统自带的可自动更换图片集只
 有几张，也找不到什么按钮可以直接设定。</p>
@@ -227,35 +248,6 @@ bodyFiles:</p>
 <li>body2 ...</li></ul>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2010/11/a-week-python/"><i class="icon-circle-arrow-right"></i>more ...</a>
-            </article>
-            <hr/>
-            <article class="article-list">
-                <h2 class="title"><a href="https://blog.alswl.com/2010/10/python-clipboard/">Python读写剪贴板</a></h2>
-                <div class="summary"><p>最近在写一个CodeGenX代码生成器，说是生成器，其实是目前只完成一堆零散的脚本。这些脚本的调用方式一般是从某个txt中读取数据，再写到另外一个txt中。</p>
-<p>由于某些数据变动频繁，导致我操作txt次数大增，我怒了，就找了一个脚本自动读写剪贴板。</p>
-<div class="highlight"><pre><span></span><span class="c1">#coding=utf-8</span>
-<span class="sd">'''</span>
-<span class="sd">读写剪贴板</span>
-<span class="sd">'''</span>
-<span class="kn">import</span> <span class="nn">win32clipboard</span> <span class="kn">as</span> <span class="nn">w</span>
-<span class="kn">import</span> <span class="nn">win32con</span>
-
-<span class="k">def</span> <span class="nf">getText</span><span class="p">():</span>
-  <span class="n">w</span><span class="o">.</span><span class="n">OpenClipboard</span><span class="p">()</span>
-  <span class="n">d</span> <span class="o">=</span> <span class="n">w</span><span class="o">.</span><span class="n">GetClipboardData</span><span class="p">(</span><span class="n">win32con</span><span class="o">.</span><span class="n">CF_TEXT</span><span class="p">)</span>
-  <span class="n">w</span><span class="o">.</span><span class="n">CloseClipboard</span><span class="p">()</span>
-  <span class="k">return</span> <span class="n">d</span>
-
-<span class="k">def</span> <span class="nf">setText</span><span class="p">(</span><span class="n">aString</span><span class="p">):</span>
-  <span class="n">w</span><span class="o">.</span><span class="n">OpenClipboard</span><span class="p">()</span>
-  <span class="n">w</span><span class="o">.</span><span class="n">EmptyClipboard</span><span class="p">()</span>
-  <span class="n">w</span><span class="o">.</span><span class="n">SetClipboardData</span><span class="p">(</span><span class="n">win32con</span><span class="o">.</span><span class="n">CF_TEXT</span><span class="p">,</span> <span class="n">aString</span><span class="p">)</span>
-  <span class="n">w</span><span class="o">.</span><span class="n">CloseClipboard</span><span class="p">()</span>
-</pre></div>
-<p>别说有了这个脚本用起来还是蛮方便的，建议丢到Python的lib下面，然后可以方便调用。</p>
-<p>如果双击 <code>.py ...</code></p>
-                </div>
-                <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2010/10/python-clipboard/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
             <hr/>
 

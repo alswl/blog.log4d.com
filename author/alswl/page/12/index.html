@@ -67,6 +67,24 @@ Log4D            </a>
         <div class="col-lg-8 col-lg-offset-2">
 
             <article class="article-list">
+                <h2 class="title"><a href="https://blog.alswl.com/2011/07/lrzsz/">安装lrzsz</a></h2>
+                <div class="summary"><p>lrzsz 是一款 Linux 下面的文件传输工具。实现原理是通过 Xmodem / Ymodem / Zmodem 协议传输文件。lrzsz
+可以在支持这三种协议的Shell界面的工具下工作，比如XShell。</p>
+<blockquote>
+<p>lrzsz是一个古老的软件，最新版本0.12.20是在1998年更新的。</p>
+</blockquote>
+<p>大部分linux发行版的安装工具都可以直接安装 lrzsz，比如apt-get /
+pacman，当然我们也可以下载安装包手动安装。这次由于我所在的服务器没有管理员权限，我就使用源码包安装。</p>
+<div class="highlight"><pre><span></span>$ mkdir /home/alswl/app
+$ wget http://ohse.de/uwe/releases/lrzsz-0.12.20.tar.gz
+$ tar xzvf lrzsz-0.12.20.tar.gz
+$ <span class="nb">cd</span> lrzsz-0.12.20
+$ ./configure ...</pre></div>
+                </div>
+                <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2011/07/lrzsz/"><i class="icon-circle-arrow-right"></i>more ...</a>
+            </article>
+            <hr/>
+            <article class="article-list">
                 <h2 class="title"><a href="https://blog.alswl.com/2011/07/microlog/">微日记</a></h2>
                 <div class="summary"><p>每天用一个词形容自己当天的生活，就是微日记。</p>
 <p>从 <a href="Matrix67.com: Keywords in My Life">http://www.matrix67.com/keywords.html</a> 偷师。</p>
@@ -235,27 +253,6 @@ through-eclipse">http://stackoverflow.com ...</p>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2011/04/ubuntu-setup/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
             <hr/>
-            <article class="article-list">
-                <h2 class="title"><a href="https://blog.alswl.com/2011/04/run-jetty-in-maven/">Maven下Jetty启动</a></h2>
-                <div class="summary"><p>部门最近开发的产品使用的开发服务器是Jetty（挂载在GWT中），启动方法是通过Eclipse的External
-Tool执行。我对此表示很好奇，特意在自己电脑下面组建了一个Jetty开发环境，发现Maven和Jetty合作起来非常愉快，现在小记之。</p>
-<h2 id="yi-zhun-bei-mavenpei-zhi-wen-jian">一、准备Maven配置文件</h2>
-<p>我使用Maven推荐的标准webapp结构，结构如下，官方文档可以参考<a href="http://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html">Maven - Introduction to the Standard Directory Layout</a></p>
-<p>src/main/java</p>
-<p>Application/Library sources</p>
-<p>src/main/resources</p>
-<p>Application/Library resources</p>
-<p>src/main/filters</p>
-<p>Resource filter files</p>
-<p>src/main/assembly</p>
-<p>Assembly descriptors</p>
-<p>src/main/config</p>
-<p>Configuration files</p>
-<p>src/main ...</p>
-                </div>
-                <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2011/04/run-jetty-in-maven/"><i class="icon-circle-arrow-right"></i>more ...</a>
-            </article>
-            <hr/>
 
         <ul class="pagination">
                 <li class="prev"><a href="https://blog.alswl.com/author/alswl/page/11/">&laquo;</a>
@@ -346,6 +343,8 @@ Tool执行。我对此表示很好奇，特意在自己电脑下面组建了一�
 							href="https://blog.alswl.com/author/alswl/page/42/">42</a></li>
                     <li class=""><a
 							href="https://blog.alswl.com/author/alswl/page/43/">43</a></li>
+                    <li class=""><a
+							href="https://blog.alswl.com/author/alswl/page/44/">44</a></li>
                 <li class="next"><a
                         href="https://blog.alswl.com/author/alswl/page/13/">&raquo;</a></li>
         </ul>

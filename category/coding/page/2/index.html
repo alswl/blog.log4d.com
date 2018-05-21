@@ -68,6 +68,34 @@ Log4D            </a>
         <div class="col-lg-8 col-lg-offset-2">
 
             <article class="article-list">
+                <h2 class="title"><a href="https://blog.alswl.com/2016/08/api-integration-test/">API 集成测试实践</a></h2>
+                <div class="summary"><p><img alt="abao.png" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201608/abao_thumbnail.png"/></p>
+<p>为了提高测试，工程师需要对自己提交的产物进行测试，一般是单元测试、集成测试。
+之后提交物流转到 QA 团队，QA 团队根据需求描述对提交物进行测试，
+这个测试过程非常耗费人力。
+尤其是当开发交付的质量不高时候，很可能自身没有经过测试，会遇到主干流程都无法进行的状况。</p>
+<p>如果在 QA 人工介入测试之前，就进行一轮黑盒自动化集成测试，可以大大地提高 QA 团队的工作效率。
+基于这样的判断，我们团队花了一些时间，将基于 API 的自动化测试系统搭建起来。
+现在将这个系统的选型和运行状况拎出来，和大家分享。</p>
+<h2 id="que-ren-ce-shi-fan-wei-mu-biao-he-yi-yi">确认测试范围、目标和意义</h2>
+<ul>
+<li>范围<ul>
+<li>后台输出的 API 级别 URL</li>
+<li>使用场景<ul>
+<li>打包时候的冒烟</li>
+<li>Dev / QA 手工添加添加新特性用例</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>目标<ul>
+<li>覆盖大部分的 URL，当期设计为 top 10 URL，仅包含 GET 接口</li>
+<li>选型时 ...</li></ul></li></ul>
+                </div>
+                <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2016/08/api-integration-test/"><i class="icon-circle-arrow-right"></i>more ...</a>
+            </article>
+            <hr/>
+            <article class="article-list">
                 <h2 class="title"><a href="https://blog.alswl.com/2016/06/capacity-planning/">搞定暴涨的流量</a></h2>
                 <div class="summary"><p>2013 年左右，我司业务发展迅速，每天晚上都会面临服务器濒临崩溃情况。
 我相信每个高速发展的互联网企业在某个阶段都会面临这样的情形，比如去年爆红的「足迹」。
@@ -206,26 +234,6 @@ Debian 的主机，提供了一个发挥自己想象的平台。13 年 <a href="
 
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2013/11/postfix-basic-configuration/"><i class="icon-circle-arrow-right"></i>more ...</a>
-            </article>
-            <hr/>
-            <article class="article-list">
-                <h2 class="title"><a href="https://blog.alswl.com/2013/11/python-gdb/">在 Python 中使用 GDB 来调试[译文]</a></h2>
-                <div class="summary"><p>大约一年前，我接触了 Java 中的 <a href="http://kenai.com/projects/btrace">Btrace</a>
-能够不停机查看线上 JVM 运行情况的特性让我艳羡不已。
-另外还有强悍的 jStack 和 jConsole 来进行运行期侦测，JVM 的工业级强度果然不是盖的。</p>
-<p>当时公司技术方面也遇到了一些瓶颈，一部分原因是 CPython 本身的 IO 模型问题，
-另一方面也和早期代码写的极不工整脱不了关系。万般无奈之下，我们用
-Jython 推翻重做了主要业务，效果立竿见影，但同时也把真实问题给规避掉了。</p>
-<p>在这之后我们在 JVM 的领导下，走上了康庄大道。但我心中始终还有一个梗，
-就是想对性能遇到瓶颈的 Python Process 进行线上侦测。
-这篇文章就是开始的第一步。</p>
-<p>PS:这篇文章理论上是可行的，但是在我机器（Ubuntu 12.04 / 系统自带 Python）
-无法正常执行，会爆出 <code>unable to read python frame information</code>
-的问题。解决方法我会在下篇文章中写出。这里只是单纯翻译一下原文。</p>
-<p>原文可以移步 <a href="https://wiki.python.org/moin/DebuggingWithGdb">https://wiki.python.org/moin/DebuggingWithGdb</a>。</p>
-
-                </div>
-                <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2013/11/python-gdb/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
             <hr/>
 
