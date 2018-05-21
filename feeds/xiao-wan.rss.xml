@@ -182,7 +182,7 @@ CPU 限制和存储I / O限制。 所有这些资源限制，都可以使用USE 
 我想到了一个我没有完全不了解的系统，并且不知道从哪里开始：阿波罗月球模块指导系统。
 USE 方法提供了一个简单的流程来尝试第一步是寻找一个资源列表，或者更理想的话，找到一个功能模块图表。我在
 【Lunar Module - LM10 Through LM14 Familiarization Manual】中发现了以下内容：&lt;/p&gt;
-&lt;p&gt;&lt;img alt="" src="http://image.voidcn.com/proxy?url=https://mmbiz.qpic.cn/mmbiz_png/pibXop4Ees9ogIVrptf2J3flJzBVxonqzaGUONHPH5Ko6Fw8MianuSriaibppiaD7FeJNx3oZzzpyBYKCWuvcRUg8nA/0"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Apollo" src="https://mmbiz.qpic.cn/mmbiz_png/pibXop4Ees9ogIVrptf2J3flJzBVxonqzaGUONHPH5Ko6Fw8MianuSriaibppiaD7FeJNx3oZzzpyBYKCWuvcRUg8nA/0"/&gt;&lt;/p&gt;
 &lt;p&gt;这些组件中的一部分可能未表现出利用率或饱和度特性。在迭代后，
 就可以重新绘制只包含相关组件的图表（还可以包括："可擦除存储"部分的内存，"核心区域"和 "vac区域 "寄存器）。&lt;/p&gt;
 &lt;p&gt;我将从阿波罗主脑（AGC）本身开始。
