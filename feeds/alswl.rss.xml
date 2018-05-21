@@ -1452,7 +1452,7 @@ SQL Server 到 MySQL。
    &lt;small&gt;&lt;img src="https://ohsolnxaa.qnssl.com/upload_dropbox/meta/wechat-pay-s-crop.png"/&gt;&lt;/small&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">alswl</dc:creator><pubDate>Thu, 21 Dec 2017 23:46:59 +0800</pubDate><guid isPermaLink="false">tag:blog.alswl.com,2017-12-21:2017/12/enthusiasm/</guid><category>Enthusiasm</category><category>Passion</category></item><item><title>一个关于 nolock 的故事</title><link>https://blog.alswl.com/2017/09/sql-server-nolock/</link><description>&lt;p&gt;&lt;img alt="sql-server.png" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201709/sql-server.png"/&gt;&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">alswl</dc:creator><pubDate>Thu, 21 Dec 2017 23:46:59 +0800</pubDate><guid isPermaLink="false">tag:blog.alswl.com,2017-12-21:2017/12/enthusiasm/</guid><category>Enthusiasm</category><category>Passion</category></item><item><title>一个关于 nolock 的故事：深入理解数据库隔离级别</title><link>https://blog.alswl.com/2017/09/sql-server-nolock/</link><description>&lt;p&gt;&lt;img alt="sql-server.png" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201709/sql-server.png"/&gt;&lt;/p&gt;
 &lt;p&gt;加入沪江不久，我就被扔到一个将集团 SQL Sever 的数据库迁移到 MySQL 的项目里，
 同时伴随进行的还有 .net 系统迁移到 Java 系统。
 在这个过程中我发现了一个很有趣的现象：历史遗留的 .net 项目中，
