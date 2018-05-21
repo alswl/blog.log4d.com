@@ -16,7 +16,7 @@
 
         <meta name="author" content="alswl" />
         <meta name="keywords" content="SQLServer,MySQL,DB-Migration" />
-        <meta name="description" content="（image via https://pixabay.com/en/military-stealth-bomber-refueling-602729/ ） 在上篇文章 从 SQL Server 到 MySQL （一）：异构数据库迁移 - Log4D 中，我们给大家介绍了从 SQL Server 到 MySQL 异构数据库迁移的基本问题和全量解决方案。 全量方案可以满足一部分场景的需求，但是这个方案仍然是有缺陷的： 迁移过程中需要停机，停机的时长和数据量相关。 对于核心业务来说，停机就意味着损失。 比如用户中心的服务，以它的数据量来使用全量方案，会导致迁移过程中停机若干个小时。 而一旦用户中心停止服务，几乎所有依赖于这个中央服务的系统都会停摆。 能不能做到无缝的在线迁移呢？系统不需要停机或者极短暂时间的停机？ 作为有追求的技术人，我们一定要想方设法解决上面的问题。" />
+        <meta name="description" content="（image via https://pixabay.com/en/military-stealth-bomber-refueling-602729/ ） 在上篇文章 从 SQL Server 到 MySQL （一）：异构数据库迁移 - Log4D 中，我们给大家介绍了从 SQL Server 到 MySQL 异构数据库迁移的基本问题和全量解决方案。 全量方案可以满足一部分场景的需求，但是这个方案仍然是有缺陷的： 迁移过程中需要停机，停机的时长和数据量相关。 对于核心业务来说，停机就意味着损失。 比如用户中心的服务，以它的数据量来使用全量方案，会导致迁移过程中停机若干个小时。 而一旦用户中心停止服务，几乎所有依赖于这个中央服务的系统都会停摆。 能不能做到无缝的在线迁移呢？系统不需要或者只需要极短暂的停机？ 作为有追求的技术人，我们一定要想办法解决上面的问题。" />
 
 
 
@@ -107,8 +107,8 @@ Log4D            </a>
 对于核心业务来说，停机就意味着损失。
 比如用户中心的服务，以它的数据量来使用全量方案，会导致迁移过程中停机若干个小时。
 而一旦用户中心停止服务，几乎所有依赖于这个中央服务的系统都会停摆。</p>
-<p>能不能做到无缝的在线迁移呢？系统不需要停机或者极短暂时间的停机？
-作为有追求的技术人，我们一定要想方设法解决上面的问题。</p>
+<p>能不能做到无缝的在线迁移呢？系统不需要或者只需要极短暂的停机？
+作为有追求的技术人，我们一定要想办法解决上面的问题。</p>
 
 <h2 id="zai-xian-qian-yi-de-yuan-li-he-liu-cheng">在线迁移的原理和流程</h2>
 <p>针对 Oracle 到 MySQL，市面上已经有比较成熟的解决方案 - alibaba 的
@@ -127,8 +127,8 @@ Log4D            </a>
 </ol>
 <p>Oracle 物化视图（Materialized View）是 Oracle 提供的一个机制。
 一个物化视图就是主库在某一个时间点上的复制，可以理解为是这个时间点上的 Snapshot。
-当主库的数据持续更新时，物化视图的更新则是要通过独立的批量更新完成，称之为 <code>refreshes</code>。
-一批 <code>refreshes</code> 之间的变化，就可以对应到数据库的内容变化情况。
+当主库的数据持续更新时，物化视图的更新可以通过独立的批量更新完成，称之为 <code>refreshes</code>。
+一批 <code>refreshes</code> 之间的变化，就对应到数据库的内容变化情况。
 物化视图经常用来将主库的数据复制到从库，也常常在数据仓库用来缓存复杂查询。</p>
 <p>物化视图有多种配置方式，这里比较关心刷新方式和刷新时间。
 刷新方式有三种：</p>
@@ -137,7 +137,7 @@ Log4D            </a>
 <li>Fast Refresh：增量刷新</li>
 <li>Force Refresh：根据条件判断使用 Complete Refresh 和 Fast Refres</li>
 </ul>
-<p>刷新机制有两种模式： Refresh-on-commit 和 Refresh-On-Demand，</p>
+<p>刷新机制有两种模式： Refresh-on-commit 和 Refresh-On-Demand。</p>
 <p>Oracle 基于物化视图，就可以完成增量数据的获取，从而满足阿里的数据在线迁移。
 将这个技术问题泛化一下，想做到在线增量迁移需要有哪些特性？
 我们得到如下结论（针对源数据库）：</p>
@@ -152,13 +152,13 @@ Log4D            </a>
 <p>什么是 CDC？
 CDC 全称 Change Data Capture，设计目的就是用来解决增量数据的。
 它是 SQL Server 2008 新增的特性，
-在这之前可以使用 SQl Server 2005 中的 <code>after insert</code> / <code>after delete</code>
-/ <code>after update</code> Triiger 功能来获得数据变化。</p>
+在这之前只能使用 SQl Server 2005 中的 <code>after insert</code> / <code>after delete</code>
+/ <code>after update</code> Trigger 功能来获得数据变化。</p>
 <p>CDC 的工作原理如下：</p>
 <p><img alt="cdc-data-flow.png" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201805/cdc-data-flow.png"/></p>
 <p>当数据库表发生变化时候，Capture process 会从 transaction log 里面获取数据变化，
 然后将这些数据记录到 Change Table 里面。
-有了这些数据，用户可以通过特定的 cdc 存储查询函数将这些变化数据查出来。</p>
+有了这些数据，用户可以通过特定的 CDC 查询函数将这些变化数据查出来。</p>
 <h2 id="cdc-de-shu-ju-jie-gou-he-ji-ben-shi-yong">CDC 的数据结构和基本使用</h2>
 <p>CDC 的核心数据就是那些 Change Table 了，这里我们给大家看一下
 Change Table 长什么样，可以有个直观的认识。</p>
@@ -186,7 +186,7 @@ Change Table 长什么样，可以有个直观的认识。</p>
 <span class="n">id</span>              <span class="k">null</span>     <span class="n">YES</span>       <span class="nb">int</span>           <span class="mi">4</span>       <span class="k">NO</span>
 <span class="n">name</span>            <span class="k">null</span>     <span class="n">YES</span>       <span class="nb">varchar</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span>  <span class="mi">255</span>     <span class="k">NO</span>
 </pre></div>
-<p>这张表的 <code>__</code> 开头的字段是 CDC 所记录的元数据，<code>id</code> 和 <code>name</code> 是 fruits 表的原始字段。
+<p>这张表中以 <code>__</code> 开头的字段是 CDC 所记录的元数据，<code>id</code> 和 <code>name</code> 是 fruits 表的原始字段。
 这意味着 CDC 的表结构和原始表结构是一一对应的。</p>
 <p>接下来我们做一些业务操作，让数据库的数据发生一些变化，然后查看 CDC 的 Change Table：</p>
 <div class="highlight"><pre><span></span><span class="c1">-- 1 step</span>
@@ -220,17 +220,17 @@ Change Table 长什么样，可以有个直观的认识。</p>
 <p>可以看到 Change Table 已经如实的记录了我们操作内容，注意 <code>__$operation</code>
 代表了数据库操作：</p>
 <ul>
-<li>1  删除</li>
-<li>2  插入</li>
-<li>3  更新前数据</li>
-<li>4  更新后数据</li>
+<li>1  =&gt; 删除</li>
+<li>2  =&gt; 插入</li>
+<li>3  =&gt; 更新前数据</li>
+<li>4  =&gt; 更新后数据</li>
 </ul>
 <p>根据查出来的数据，我们可以重现这段时间数据库的操作：</p>
 <ul>
-<li>新增了 id 为 1 / 2 的两条数据</li>
-<li>更新了 id 为 2 的数据</li>
-<li>插入了 id 为 3 的数据</li>
-<li>删除了 id 为 3 的数据</li>
+<li>新增了 <code>id</code> 为 1 / 2 的两条数据</li>
+<li>更新了 <code>id</code> 为 2 的数据</li>
+<li>插入了 <code>id</code> 为 3 的数据</li>
+<li>删除了 <code>id</code> 为 3 的数据</li>
 </ul>
 <h2 id="cdc-diao-you">CDC 调优</h2>
 <p>有了 CDC 这个利器，终于意味着我们的方向是没有问题的，我们终于稍稍吁了一口气。
@@ -240,16 +240,17 @@ Change Table 长什么样，可以有个直观的认识。</p>
 <p><img alt="Influence of capture job parameters" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201805/cdc-influence.png"/></p>
 <p>上图是 CDC Job 的工作流程：</p>
 <ul>
-<li>蓝色区域是一次 Log 扫描执行的最大扫描次数：maxscans number（maxscans）</li>
-<li>蓝色区域同时被最大扫描 transcation 数量控制：maxtrans</li>
-<li>浅蓝色区域是扫描间隔时间，单位是秒：pollinginterval</li>
+<li>蓝色区域是一次 Log 扫描执行的最大扫描次数：maxscans number（<code>maxscans</code>）</li>
+<li>蓝色区域同时被最大扫描 transcation 数量控制：<code>maxtrans</code></li>
+<li>浅蓝色区域是扫描间隔时间，单位是秒：<code>pollinginterval</code></li>
 </ul>
 <p>这三个参数平衡着 CDC 的服务器资源消耗、吞吐量和延迟，
-根据具体场景，比如大字段，宽表，BLOB 表，可以调整从而达到满足业务需要。</p>
+根据具体场景，比如大字段，宽表，BLOB 表，可以调整从而达到满足业务需要。
+他们的默认值如下：</p>
 <ul>
-<li>maxscan 默认值 10</li>
-<li>maxtrans 默认值 500</li>
-<li>pollinginterval 默认值 5 秒</li>
+<li><code>maxscan</code> 默认值 10</li>
+<li><code>maxtrans</code> 默认值 500</li>
+<li><code>pollinginterval</code> 默认值 5 秒</li>
 </ul>
 <h2 id="cdc-ya-ce">CDC 压测</h2>
 <p>掌握了能够调整的核心参数，我们即将对 CDC 进行了多种形式的测试。
@@ -319,7 +320,7 @@ Canal 会模拟成一个 MySQL 实例，作为 Slave 连接到 Master 上面，
 <p><img alt="canal.png" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201805/canal.png"/></p>
 <h2 id="zui-jia-shi-jian">最佳实践</h2>
 <p>数据库的迁移在去 Windows 中，是最不容得出错的环节。
-应用是无状态的，出现问题可以通过回切较快地解决。
+应用是无状态的，出现问题可以通过回切较快地回滚。
 但数据库的迁移就需要考虑周到，做好资源准备，发布流程，
 故障预案处理。</p>
 <p>考虑到多个事业部都需要经历这个一个过程，我们项目组将每一个步骤都固化下来，
