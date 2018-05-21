@@ -491,7 +491,7 @@ Canal 会模拟成一个 MySQL 实例，作为 Slave 连接到 Master 上面，
    &lt;small&gt;&lt;img src="https://ohsolnxaa.qnssl.com/upload_dropbox/meta/wechat-pay-s-crop.png"/&gt;&lt;/small&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</summary><category term="SQLServer"></category><category term="MySQL"></category><category term="Migration"></category></entry><entry><title>如何逃离死海效应</title><link href="https://blog.alswl.com/2018/04/death-sea-effect/" rel="alternate"></link><published>2018-04-09T23:13:03+08:00</published><updated>2018-04-09T23:13:03+08:00</updated><author><name>alswl</name></author><id>tag:blog.alswl.com,2018-04-09:2018/04/death-sea-effect/</id><summary type="html">&lt;p&gt;&lt;img alt="201804/death-sea.jpg" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201804/death-sea.jpg"/&gt;&lt;/p&gt;
+</summary><category term="SQLServer"></category><category term="MySQL"></category><category term="DB-Migration"></category></entry><entry><title>如何逃离死海效应</title><link href="https://blog.alswl.com/2018/04/death-sea-effect/" rel="alternate"></link><published>2018-04-09T23:13:03+08:00</published><updated>2018-04-09T23:13:03+08:00</updated><author><name>alswl</name></author><id>tag:blog.alswl.com,2018-04-09:2018/04/death-sea-effect/</id><summary type="html">&lt;p&gt;&lt;img alt="201804/death-sea.jpg" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201804/death-sea.jpg"/&gt;&lt;/p&gt;
 &lt;p&gt;（图片来自 &lt;a href="https://www.flickr.com/photos/tsaiproject/8298557641"&gt;The Dead Sea, Israel | One of the lowest, saltiest and unusu&amp;hellip; | Flickr&lt;/a&gt;）&lt;/p&gt;
 &lt;p&gt;最近听团队老大的一个分享，介绍公司提倡的工程师的核心价值观，受益良多。
 这也让我想起了一篇文章，
@@ -920,7 +920,7 @@ SQL Server 有 &lt;code&gt;physloc&lt;/code&gt;。这种方案可以解决无主
    &lt;small&gt;&lt;img src="https://ohsolnxaa.qnssl.com/upload_dropbox/meta/wechat-pay-s-crop.png"/&gt;&lt;/small&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</summary><category term="SQLServer"></category><category term="MySQL"></category><category term="Migration"></category></entry><entry><title>从 2017 到 2018</title><link href="https://blog.alswl.com/2018/01/2017-2018/" rel="alternate"></link><published>2018-01-21T22:57:26+08:00</published><updated>2018-01-21T22:57:26+08:00</updated><author><name>alswl</name></author><id>tag:blog.alswl.com,2018-01-21:2018/01/2017-2018/</id><summary type="html">&lt;p&gt;&lt;img alt="2017 年 2 月摄于瑞虹月亮湾" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201801/moon.png"/&gt;&lt;/p&gt;
+</summary><category term="SQLServer"></category><category term="MySQL"></category><category term="DB-Migration"></category></entry><entry><title>从 2017 到 2018</title><link href="https://blog.alswl.com/2018/01/2017-2018/" rel="alternate"></link><published>2018-01-21T22:57:26+08:00</published><updated>2018-01-21T22:57:26+08:00</updated><author><name>alswl</name></author><id>tag:blog.alswl.com,2018-01-21:2018/01/2017-2018/</id><summary type="html">&lt;p&gt;&lt;img alt="2017 年 2 月摄于瑞虹月亮湾" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201801/moon.png"/&gt;&lt;/p&gt;
 &lt;p&gt;&lt;small&gt;（2017 年 2 月摄于瑞虹月亮湾）&lt;/small&gt;&lt;/p&gt;
 &lt;p&gt;我有两年没公开年终总结了，原因很简单：年终结果无法让自己满意，
 生活持续呈线性发展。那今年为什么又要将总结发出来呢？
