@@ -158,12 +158,12 @@ It can create a page action to save images from web to page's attachments.</p>
 <p>Pylons的测试主要使用的其中的 Paste / nose / WebOb / WebTest。 遇到问题的时候，可以去翻一翻上面的文档。</p>
 <h2 id="2-pylonszhong-ce-shi-mu-lu-jie-gou">2. Pylons中测试目录结构</h2>
 <p>目录结构如下</p>
-<div class="highlight"><pre><span class="err">├─</span><span class="nx">config</span>
-<span class="err">├─</span><span class="nx">controllers</span>
-<span class="err">├─</span><span class="nx">lib</span>
-<span class="err">├─</span><span class="nx">model</span>
-<span class="err">├─</span><span class="kr">public</span>
-<span class="err">├─</span><span class="nx">templates ...</span></pre></div>
+<div class="highlight"><pre><span></span>├─config
+├─controllers
+├─lib
+├─model
+├─public
+├─templates ...</pre></div>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2011/09/nose/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>
@@ -206,11 +206,11 @@ packages/Pylons-0.9 ...</p></blockquote>
 <p>Python中unicode转码一向是让人头疼的问题。数次碰壁之后，我也摸出了一些门道，
 研读完<a href="http://ipie.blogbus.com/logs/19379694.html">Python字符串的encode与decode</a>
 之后，就自认为找到了万金油，谁知道这次又碰上这个老冤家。</p>
-<div class="highlight"><pre><span class="nx">Traceback</span> <span class="p">(</span><span class="nx">most</span> <span class="nx">recent</span> <span class="nb">call</span> <span class="nb">last</span><span class="p">):</span>
-  <span class="nb">File</span> <span class="s2">"&lt;stdin&gt;"</span><span class="p">,</span> <span class="nb">line</span> <span class="mi">1</span><span class="p">,</span> <span class="k">in</span> <span class="o">&lt;</span><span class="nx">module</span><span class="o">&gt;</span>
-  <span class="nb">File</span> <span class="s2">"/usr/lib/python2.6/urllib2.py"</span><span class="p">,</span> <span class="nb">line</span> <span class="mi">126</span><span class="p">,</span> <span class="k">in</span> <span class="nx">urlopen</span>
-    <span class="k">return</span> <span class="nx">_opener.open</span><span class="p">(</span><span class="nb">url</span><span class="p">,</span> <span class="kd">data</span><span class="p">,</span> <span class="nx">timeout</span><span class="p">)</span>
-  <span class="nb">File</span> <span class="s2">"/usr/lib/python2.6/urllib2.py"</span><span class="p">,</span> <span class="nb">line ...</span></pre></div>
+<div class="highlight"><pre><span></span>Traceback (most recent call last):
+  File "&lt;stdin&gt;", line 1, in &lt;module&gt;
+  File "/usr/lib/python2.6/urllib2.py", line 126, in urlopen
+    return _opener.open(url, data, timeout)
+  File "/usr/lib/python2.6/urllib2.py", line ...</pre></div>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2011/06/urllib2-urlopen-unicode/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>

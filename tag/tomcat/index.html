@@ -74,7 +74,7 @@ Log4D            </a>
 上也没有提供详细的步骤，也许大家都觉得这个问题很简单吧，呵呵。</p>
 <p>我琢磨了一会，终于整理出了头绪。</p>
 <p>1.修改Apache-conf-server.xml这个文件，修改其中一段<host>...</host>如下所示</p>
-<div class="highlight"><pre><span class="nt">&lt;host</span> <span class="na">appbase=</span><span class="s">"webapps"</span> <span class="na">name=</span><span class="s">"localhost"</span>
+<div class="highlight"><pre><span></span><span class="nt">&lt;host</span> <span class="na">appbase=</span><span class="s">"webapps"</span> <span class="na">name=</span><span class="s">"localhost"</span>
     <span class="na">unpackWARs=</span><span class="s">"true"</span> <span class="na">autoDeploy=</span><span class="s">"true"</span>
     <span class="na">xmlValidation=</span><span class="s">"false"</span> <span class="na">xmlNamespaceAware=</span><span class="s">"false"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;context</span> <span class="na">debug=</span><span class="s">"0"</span> <span class="na">docbase=</span><span class="s">"F:T3"</span> <span class="na">path=</span><span class="s">"/postbar"</span><span class="nt">&gt;</span>

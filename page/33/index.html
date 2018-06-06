@@ -141,7 +141,7 @@ Life's Good</p>
 <p>资料都是来自于网上，作者不详，不好意思了&hellip;</p>
 <p>资料内容很多，我没有仔细排版整理，也就没有弄成doc的文本，直接粘上来了。</p>
 <p>值得注意的是，各地的参考书可能存在细微差别，不过《保险法》都是一样的啦。</p>
-<p><strong><em>**正文开始</em></strong>****</p>
+<p><strong><em>*</em>正文开始</strong><strong>*</strong></p>
 <blockquote>
 <p>保险代理人资格考试复习要点汇总（1）</p>
 </blockquote>
@@ -237,17 +237,17 @@ Live)上面。那里的文章有着我珍贵的记忆，很多甚至都是在课
 <p>Wordpress虽好，可毛病也不少，今天发现WordPress会将半角标点符号自动转换成全角的，但并没有替换数据库里的信息，真搞不明白开发团队是怎么想的，
 现将解决方法记录如下。</p>
 <p>1、 编辑 wp-includes/formatting.php 文件，找到以下代码：</p>
-<div class="highlight"><pre><span class="c1">// static strings</span>
-<span class="err">$</span><span class="n">curl</span> <span class="o">=</span> <span class="n">str_replace</span><span class="p">(</span><span class="err">$</span><span class="n">static_characters</span><span class="p">,</span> <span class="err">$</span><span class="n">static_replacements</span><span class="p">,</span> <span class="err">$</span><span class="n">curl</span><span class="p">);</span>
-<span class="c1">// regular expressions</span>
-<span class="err">$</span><span class="n">curl</span> <span class="o">=</span> <span class="n">preg_replace</span><span class="p">(</span><span class="err">$</span><span class="n">dynamic_characters</span><span class="p">,</span> <span class="err">$</span><span class="n">dynamic_replacements</span><span class="p">,</span> <span class="err">$</span><span class="n">curl</span><span class="p">);</span>
+<div class="highlight"><pre><span></span>// static strings
+$curl = str_replace($static_characters, $static_replacements, $curl);
+// regular expressions
+$curl = preg_replace($dynamic_characters, $dynamic_replacements, $curl);
 </pre></div>
 <p>正是 str_replace() 和 preg_replace() 两个函数在作怪。</p>
 <p>2、 将相应语句注释，禁用自动替换功能：</p>
-<div class="highlight"><pre><span class="c1">// static strings</span>
-<span class="c1">//$curl = str_replace($static_characters, $static_replacements, $curl);</span>
-<span class="c1">// regular expressions</span>
-<span class="c1">//$curl = preg_replace ...</span></pre></div>
+<div class="highlight"><pre><span></span>// static strings
+//$curl = str_replace($static_characters, $static_replacements, $curl);
+// regular expressions
+//$curl = preg_replace ...</pre></div>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/07/prohibition-of-wordpress-automatically-to-replace-the-half-angle-punctuation/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>

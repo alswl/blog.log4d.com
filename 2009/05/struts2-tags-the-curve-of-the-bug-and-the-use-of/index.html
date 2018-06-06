@@ -96,11 +96,11 @@ Log4D            </a>
                 </div>
                 <p>贴吧的用户状态显示，登录和未登录应该是不同的div显示，我决定用做标签。</p>
 <p>本来应该很简单的事情，却没有我预想中的情形出现，检查后发现失效了，代码如下：</p>
-<div class="highlight"><pre><span class="nt">&lt;li&gt;</span><span class="cp">${</span><span class="n">session</span><span class="o">.</span><span class="n">userName</span><span class="cp">}</span>欢迎你<span class="nt">&lt;/li&gt;</span>
+<div class="highlight"><pre><span></span><span class="nt">&lt;li&gt;</span><span class="cp">${</span><span class="n">session</span><span class="o">.</span><span class="n">userName</span><span class="cp">}</span>欢迎你<span class="nt">&lt;/li&gt;</span>
 <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"Logout.action"</span><span class="nt">&gt;</span>注销<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
 </pre></div>
 <p>Struts2的官方文档中标签库介绍写的很清楚，官方示例文档如下</p>
-<div class="highlight"><pre><span class="nt">&lt;s:if</span> <span class="na">test=</span><span class="s">"%{false}"</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><span></span><span class="nt">&lt;s:if</span> <span class="na">test=</span><span class="s">"%{false}"</span><span class="nt">&gt;</span>
 <span class="nt">&lt;div&gt;</span>Will Not Be Executed<span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/s:if&gt;</span>
 <span class="nt">&lt;s:elseif</span> <span class="na">test=</span><span class="s">"%{true}"</span><span class="nt">&gt;</span>
@@ -114,7 +114,7 @@ Log4D            </a>
 <p>OGNL有三种取值方式，%,$和#，我之前已经转载过一篇小介绍，按官方文档，这里的$是应该起作用的，但是很可惜，这儿出现了错误。</p>
 <p>网友阿木的博客讨论了相关问题：<a href="http://blog.sina.com.cn/s/blog_5cecbc550100ck4f.
 html">struts2的if标签</a>，我没有像他那样详细测试，尝试几次后，代码修改为：</p>
-<div class="highlight"><pre><span class="nt">&lt;li&gt;</span><span class="cp">${</span><span class="n">session</span><span class="o">.</span><span class="n">userName</span><span class="cp">}</span>欢迎你<span class="nt">&lt;/li&gt;</span>
+<div class="highlight"><pre><span></span><span class="nt">&lt;li&gt;</span><span class="cp">${</span><span class="n">session</span><span class="o">.</span><span class="n">userName</span><span class="cp">}</span>欢迎你<span class="nt">&lt;/li&gt;</span>
 <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"Logout.action"</span><span class="nt">&gt;</span>注销<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
 </pre></div>
 <p>使用#选择符，而不是其他的，这样就可以正确运行了。</p>

@@ -106,7 +106,7 @@ Python的标准模块struct就用来解决这个问题。</p>
 ）。其函数原型为：struct.pack(fmt, v1, v2, ...)，参数fmt是格式字符串，关于格式字符串的相关信息在<a href="http://bl
 og.csdn.net/JGood/archive/2009/06/22/4290158.aspx#fmt">下面</a>有所介绍。v1, v2,
 ...表示要转换的python值。下面的例子将两个整数转换为字符串（字节流）:</p>
-<div class="highlight"><pre><span class="n">import</span> <span class="k">struct</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">struct</span>
 
 <span class="n">a</span> <span class="o">=</span> <span class="mi">20</span>  
 <span class="n">b</span> <span class="o">=</span> <span class="mi">400</span>
@@ -123,22 +123,22 @@ print 'length:', len(str) print str print repr(str)</p>
 <h2 id="structunpack">struct.unpack</h2>
 <p>struct.unpack做的工作刚好与struct.pack相反，用于将字节流转换成python数据类型。它的函数原型为：struct.unpack(fm
 t, string)，该函数返回一个<strong>元组</strong>。 下面是一个简单的例子：</p>
-<div class="highlight"><pre><span class="n">str</span> <span class="o">=</span> <span class="k">struct</span><span class="p">.</span><span class="n">pack</span><span class="p">(</span><span class="s">"ii"</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">400</span><span class="p">)</span>  
-<span class="n">a1</span><span class="p">,</span> <span class="n">a2</span> <span class="o">=</span> <span class="k">struct</span><span class="p">.</span><span class="n">unpack</span><span class="p">(</span><span class="s">"ii"</span><span class="p">,</span> <span class="n">str</span><span class="p">)</span>  
-<span class="n">print</span> <span class="err">'</span><span class="n">a1</span><span class="o">:</span><span class="err">'</span><span class="p">,</span> <span class="n">a1</span>  
-<span class="n">print</span> <span class="err">'</span><span class="n">a2</span><span class="o">:</span><span class="err">'</span><span class="p">,</span> <span class="n">a2</span>
+<div class="highlight"><pre><span></span>str = struct.pack("ii", 20, 400)  
+a1, a2 = struct.unpack("ii", str)  
+print 'a1:', a1  
+print 'a2:', a2
 
-<span class="cp">#---- result:  </span>
-<span class="cp">#a1: 20  </span>
-<span class="cp">#a2: 400</span>
+#---- result:  
+#a1: 20  
+#a2: 400
 </pre></div>
 <h2 id="structcalcsize">struct.calcsize</h2>
 <p>struct.calcsize用于计算格式字符串所对应的结果的长度，如：struct.calcsize('ii')，返回8。因为两个int类型所占用的长度是
 8个字节。</p>
 <h2 id="structpack_into-structunpack_from">struct.pack_into, struct.unpack_from</h2>
 <p>这两个函数在Python手册中有所介绍，但没有给出如何使用的例子。其实它们在实际应用中用的并不多。Google了很久，才找到一个例子，贴出来共享一下：</p>
-<div class="highlight"><pre><span class="n">import</span> <span class="k">struct</span>
-<span class="n">from</span> <span class="n">ctypes</span> <span class="n">import</span> <span class="n">create_string_buffer</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">struct</span>
+<span class="kn">from</span> <span class="nn">ctypes</span> <span class="kn">import</span> <span class="n">create_string_buffer</span>
 </pre></div>
 <p>buf = create_string_buffer(12) print repr(buf.raw)</p>
 <p>struct.pack_into("iii", buf, 0, 1, 2, -1) print repr(buf.raw)</p>

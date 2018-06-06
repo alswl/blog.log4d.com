@@ -95,7 +95,7 @@ Log4D            </a>
 会将所有插件管理在 <code>.vim/bundle/</code> 中，详情可看
 <a href="/2012/04/vundle/">使用 Vundle 管理 Vim 插件</a>。</p>
 <p>官方安装 Vundle 方法如下：</p>
-git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+$ git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 </pre>
 <p>我的 Vundle 的版本是 <code>59bff0c457f68c3d52bcebbf6068ea01ac8f5dac</code>，
 git 版本是 <code>git version 1.7.10.2</code> 。
@@ -113,7 +113,7 @@ submodule 比如 <code>.vim/bundle/The-NERD-Commenter (untracked content)</code>
                 <h2 class="title"><a href="https://blog.alswl.com/2012/04/vim-emacs-key-binding/">Vim 下模拟 Emacs 键绑定</a></h2>
                 <div class="summary"><p>Vimer 需要 Emacs 键绑定？看上去很蛋疼的需求吧。其实不然，大部分的 Shell / Readline 默认绑定的是 Emacs 键位绑定（处于输入状态下，Emacs 的键位很好用）。Vim 的模式切换很牛逼，但是 Insert 模式下面，只有寥寥几个快捷键，我修改了配置文件，绑定需要的 Emcas 按键到 Vim 中来。</p>
 <p>Github 中搜索关键字 Vim Emcas key bind，出来一些结果，不是很完美，我又慢慢调教了几个星期，放出我的 .vimrc。</p>
-<div class="highlight"><pre><span class="s2">" 模拟 Emacs 键绑定</span>
+<div class="highlight"><pre><span></span><span class="s2">" 模拟 Emacs 键绑定</span>
 <span class="s2">"</span> Move
 inoremap &lt;C-a&gt; &lt;Home&gt;
 inoremap &lt;C-e&gt; &lt;End&gt;
@@ -200,7 +200,7 @@ reSQL/Ruby on Rails/Linux/VLC Player这几个非常漂亮的开源软件视频�
 <p><img alt="CodeSmith" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201612/404.png"/></p>
 <h2 id="yi-ge-jian-dan-de-sample">一个简单的Sample</h2>
 <p>CodeSmith使用的模板使用方式类似于aspx/jsp页面，也就是基础代码+脚本的方式，大致代码如下（官方的sample2）。</p>
-<div class="highlight"><pre><span class="cp">&lt;%</span><span class="err">@</span> <span class="no">CodeTemplate</span> <span class="no">Language</span><span class="o">=</span><span class="s2">"C#"</span> <span class="no">TargetLanguage</span><span class="o">=</span><span class="s2">"Text"</span> <span class="no">Description</span><span class="o">=</span><span class="s2">"This template demonstrates using properties in your template."</span> <span class="cp">%&gt;</span><span class="x"></span>
+<div class="highlight"><pre><span></span><span class="cp">&lt;%</span><span class="err">@</span> <span class="no">CodeTemplate</span> <span class="no">Language</span><span class="o">=</span><span class="s2">"C#"</span> <span class="no">TargetLanguage</span><span class="o">=</span><span class="s2">"Text"</span> <span class="no">Description</span><span class="o">=</span><span class="s2">"This template demonstrates using properties in your template."</span> <span class="cp">%&gt;</span><span class="x"></span>
 <span class="cp">&lt;%</span><span class="err">@</span> <span class="no">Property</span> <span class="no">Name</span><span class="o">=</span><span class="s2">"Person"</span> <span class="no">Type</span><span class="o">=</span><span class="s2">"System.String"</span> <span class="no">Description</span><span class="o">=</span><span class="s2">"This will show up at the bottom of the ...</span></pre></div>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2011/02/codesmith/"><i class="icon-circle-arrow-right"></i>more ...</a>

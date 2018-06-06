@@ -126,7 +126,7 @@ brought up to date by propagating the changes in each replica to the other.</p>
 </blockquote>
 <p>unison使用时候有服务器、客户机之分，客户机通过ssh连接到服务器端， 所以相对而言，数据通道还是安全的。</p>
 <h2 id="4-an-zhuang">4. 安装</h2>
-<div class="highlight"><pre><span class="n">sudo</span> <span class="n">pacman</span> <span class="o">-</span><span class="n">S</span> <span class="n">unison</span>
+<div class="highlight"><pre><span></span>sudo pacman -S unison
 </pre></div>
 <p>感谢众神赐予我们各种软件包，以上是Arch Linux的安装命令。 Ubuntu之类的也差不多apt-get了。</p>
 <h2 id="5-pei-zhi">5. 配置</h2>
@@ -134,9 +134,9 @@ brought up to date by propagating the changes in each replica to the other.</p>
 <a href="http://log4d.com/2011/06/ddns-ssh">使用DDNS+SSH连通家庭/工作电脑</a>。</p>
 <p>unison使用 <code>~/.unison/*.prf</code> 的配置文件，默认应该会有一个 <code>default.prf</code> ， 我的 <code>default.prf</code>
 配置如下。</p>
-<div class="highlight"><pre><span class="c"># Unison preferences file</span>
-<span class="c">#root = /cygdrive/f</span>
-<span class="c">#root = ssh://mm061.log4d.com//home/alswl</span>
+<div class="highlight"><pre><span></span># Unison preferences file
+#root = /cygdrive/f
+#root = ssh://mm061.log4d.com//home/alswl
 </pre></div>
 <p>log = true</p>
 <p>logfile = /home/alswl/.unison/.unison.log</p>
@@ -149,8 +149,8 @@ brought up to date by propagating the changes in each replica to the other.</p>
 是同步之后列出同步建议清单， 选择 <code>yes</code> or <code>no</code> 即可。 <code>ignorecase</code> 是忽略大小写，在跨平台同步时候蛮有用。 <code>ignore</code>
 指忽略文件列表，分为 <code>Name</code> 和 <code>Path</code> 。</p>
 <p>我的default配置并不是一个可用配置，只是一个基础配置文件，用来给其他配置文件使用</p>
-<div class="highlight"><pre><span class="cp"># Unison preferences file</span>
-<span class="n">include</span> <span class="k">default</span>
+<div class="highlight"><pre><span></span># Unison preferences file
+include default
 </pre></div>
 <p>root = /home/alswl</p>
 <p>root = ssh://mm061.log4d.com//home/alswl</p>
@@ -158,7 +158,7 @@ brought up to date by propagating the changes in each replica to the other.</p>
 <p>我使用 <code>include</code> 选项来加入 <code>default</code> 配置，就可以使用通用配置了。</p>
 <h2 id="6-yun-xing">6. 运行</h2>
 <p>终于到了激动人心的时刻了，我们使用下面命令同步文件夹。</p>
-<div class="highlight"><pre><span class="n">unison</span> <span class="n">music</span>
+<div class="highlight"><pre><span></span>unison music
 </pre></div>
 <p>其中 <code>music</code> 就是之前配置好的 <code>music.prf</code> 。Papapa之后，就是各种选项了。</p>
 <p>unison默认情况下面会依次提醒每个差异文件的差别，可以使用键盘命令查看具体差异。 依次查看文件会很烦，所以我习惯性使用 <code>auto</code> 命令来自动合并。

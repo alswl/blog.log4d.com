@@ -112,16 +112,16 @@ Python的标准模块struct就用来解决这个问题。</p>
 object，然后调用read()，write()等方法对文件进行读写操作。</p>
 <h2 id="1open">1.open</h2>
 <p>使用open打开文件后一定要记得调用文件对象的close()方法。比如可以用try/finally语句来确保最后能关闭文件。</p>
-<div class="highlight"><pre><span class="n">file_object</span> <span class="o">=</span> <span class="n">open</span><span class="p">(</span><span class="err">'</span><span class="n">thefile</span><span class="p">.</span><span class="n">txt</span><span class="err">'</span><span class="p">)</span>
-<span class="nl">try:</span>
-    <span class="n">all_the_text</span> <span class="o">=</span> <span class="n">file_object</span><span class="p">.</span><span class="n">read</span><span class="p">(</span> <span class="p">)</span>
-<span class="nl">finally:</span>
-    <span class="n">file_object</span><span class="p">.</span><span class="n">close</span><span class="p">(</span> <span class="p">)</span>
+<div class="highlight"><pre><span></span>file_object = open('thefile.txt')
+try:
+    all_the_text = file_object.read( )
+finally:
+    file_object.close( )
 </pre></div>
 <p>注：不能把open语句放在try块里，因为当打开文件出现异常时，文件对象file_object无法执行close()方法。</p>
 <h2 id="2du-wen-jian">2.读文件</h2>
 <h3 id="du-wen-ben-wen-jian">读文本文件</h3>
-<div class="highlight"><pre><span class="n">input</span> <span class="o">=</span> <span class="n">open ...</span></pre></div>
+<div class="highlight"><pre><span></span>input = open ...</pre></div>
                 </div>
                 <a class="btn btn-default btn-lg" href="https://blog.alswl.com/2009/09/python-to-read-and-write-files/"><i class="icon-circle-arrow-right"></i>more ...</a>
             </article>

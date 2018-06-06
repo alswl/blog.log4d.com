@@ -99,9 +99,9 @@ Log4D            </a>
 多，正所谓温故而知新，我就把今天的"新"总结一下，加深记忆。良葛格也提倡"在网上写文章是我记录所学的一种方式"。</p>
 <h2 id="splitde-zheng-ze-shi-he-qi-zhong-de-zheng-ze-shi">split的正则式和其中的正则式</h2>
 <p>C语言其中有函数strtok，就是按某些char对字符串进行切割。下面给出一个C下面的范例</p>
-<div class="highlight"><pre><span class="kt">char</span> <span class="n">str</span><span class="p">[]</span> <span class="o">=</span> <span class="s">"now # is the time for all # good men to come to the # aid of their country"</span><span class="p">;</span>
-<span class="kt">char</span> <span class="n">delims</span><span class="p">[]</span> <span class="o">=</span> <span class="s">"#"</span><span class="p">;</span>
-<span class="kt">char</span> <span class="o">*</span><span class="n">result</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+<div class="highlight"><pre><span></span>char str[] = "now # is the time for all # good men to come to the # aid of their country";
+char delims[] = "#";
+char *result = NULL;
 </pre></div>
 <p>result = strtok( str, delims );</p>
 <p>while( result != NULL ) {</p>
@@ -110,8 +110,8 @@ Log4D            </a>
 <p>}</p>
 <p>在Java中也有类似的StringTokenizer，但是在JDK5中，已经被标记为Legacy
 Class(遗产类)，推荐使用String.split(String regex)，可以接受正则表达式。范例如下。</p>
-<div class="highlight"><pre><span class="n">private</span> <span class="kt">void</span> <span class="nf">init</span><span class="p">()</span> <span class="p">{</span>
-    <span class="n">Scanner</span> <span class="n">scanner</span> <span class="o">=</span> <span class="n">new</span> <span class="n">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="n">in</span><span class="p">);</span>
+<div class="highlight"><pre><span></span>private void init() {
+    Scanner scanner = new Scanner(System.in);
 </pre></div>
 <p>System.out.println("input n and data");</p>
 <p>n = scanner.nextInt();</p>
@@ -143,7 +143,7 @@ Class(遗产类)，推荐使用String.split(String regex)，可以接受正则�
 <h2 id="bu-ding-chang-du-can-shu">不定长度参数</h2>
 <p>听名字这东西就相当有用，也是JDK5开始支持的。（话说现在都JDK6.0了，我们很多童鞋对Java的概念还停留在最开始，其中也包括我，咱们要与时俱进嘛）直接
 上代码，就知道怎么用了。</p>
-<div class="highlight"><pre><span class="n">package</span> <span class="n">dddspace</span><span class="p">.</span><span class="n">job</span><span class="p">.</span><span class="n">exercise1115</span><span class="p">;</span>
+<div class="highlight"><pre><span></span>package dddspace.job.exercise1115;
 </pre></div>
 <p>/**</p>
 <ul>
@@ -173,7 +173,7 @@ public class VarArgs {</li>
 tml?wtp=tt">Baidu Zhidao</a>)，这个在C++中运用广泛，在JDK5.0加入Java大家族。我这里要解释的是泛型类型的通配符，呃，有点绕口。其实就是让泛型T这个T通
 过支持一个接口来支持其实现类。</p>
 <p>咱们还是让代码来反应思想吧。</p>
-<div class="highlight"><pre><span class="n">package</span> <span class="n">dddspace</span><span class="p">.</span><span class="n">job</span><span class="p">.</span><span class="n">exercise1115</span><span class="p">;</span>
+<div class="highlight"><pre><span></span>package dddspace.job.exercise1115;
 </pre></div>
 <p>import java.util.ArrayList;</p>
 <p>import java.util.LinkedList;</p>
