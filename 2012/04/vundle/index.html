@@ -1,224 +1,59 @@
-<!DOCTYPE html>
-<html lang="en"
->
-<head>
-    <title>使用 Vundle 管理 Vim 插件 - Log4D</title>
-    <!-- Using the latest rendering mode for IE -->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="block-all-mixed-content">
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+<!DOCTYPE html><html lang=en> <head><title>使用 Vundle 管理 Vim 插件 - Log4D</title><!-- Using the latest rendering mode for IE --><meta http-equiv=X-UA-Compatible content="IE=edge"><meta charset=utf-8><meta name=viewport content="width=device-width, initial-scale=1.0"><meta http-equiv=Content-Security-Policy content=block-all-mixed-content><link rel="shortcut icon" href=/favicon.ico type=image/x-icon><link href=https://blog.alswl.com/2012/04/vundle/ rel=canonical><meta name=author content=alswl><meta name=keywords content=工欲善其事必先利其器,Vim,Vundle><meta name=description content="早在这个月初，我就在 Vim 的邮件列表看到了一封关于 Vim 插件管理的 邮件。 才惊呼原来有这么强大的插件可以用来管理我那一坨插件， 今天细细阅读并查了一些资料，变开始配置自己的 Vim。 几种管理插件 Vim 的插件管理工具有蛮多，比如： Vundle vim-addon-manager vpathogen.vim vvundle vvimana 一位同学自己写的 Vim-addon-manager 和 vimana 的对比，参见 Vim的插件管理工具 我最会选择了 Vundle，通过子目录管理插件，支持 Git 更新。 我其实不太喜欢子目录，觉得目录太多看着烦，但是考虑到在没有一个良好的 PKG 包描述文件的前提下，分子目录是一种简单有效的方法。"><!-- Bootstrap --><link rel=stylesheet href=https://blog.alswl.com/theme/css/bootstrap.min.css type=text/css><link href=https://blog.alswl.com/theme/css/font-awesome.min.css rel=stylesheet><link href=https://blog.alswl.com/theme/css/pygments/native.css rel=stylesheet><link rel=stylesheet href=https://blog.alswl.com/theme/css/style.css type=text/css><link href=https://blog.alswl.com/atom.xml type=application/atom+xml rel=alternate title="Log4D Atom Feed"><link href=https://blog.alswl.com/rss.xml type=application/rss+xml rel=alternate title="Log4D RSS Feed"></head> <body> <div class="navbar navbar-default" role=navigation> <div class="container  col-lg-8 col-lg-offset-2"> <div class=navbar-header> <button type=button class=navbar-toggle data-toggle=collapse data-target=.navbar-ex1-collapse> <span class=sr-only>Toggle navigation</span> <span class=icon-bar></span> <span class=icon-bar></span> <span class=icon-bar></span> </button> <a href=https://blog.alswl.com/ class=navbar-brand> Log4D </a> </div> <div class="collapse navbar-collapse navbar-ex1-collapse"> <ul class="nav navbar-nav"> <li><a href=/tags/ >Tags</a></li> <li><a href=/links/ >Links</a></li> <li><a href=/about/ >About</a></li> </ul> <ul class="nav navbar-nav navbar-right"> <li><a href=https://blog.alswl.com/archives/ ><i class="fa fa-th-list"></i><span class=icon-label>Archives</span></a></li> </ul> </div> <!-- /.navbar-collapse --> </div> </div> <!-- /.navbar --> <div class=container> <div class=row> <div class="col-lg-8 col-lg-offset-2"> <section id=content> <article class=article-detail> <header class=page-header> <h1 class=title> <a href=https://blog.alswl.com/2012/04/vundle/ rel=bookmark title="Permalink to 使用 Vundle 管理 Vim 插件"> 使用 Vundle 管理 Vim 插件 </a> </h1> </header> <div class=entry-content> <div class=panel> <div class=panel-body> <footer class=post-info> <span class="label label-default">Date</span> <span class=published> <i class="fa fa-calendar"></i><time datetime=2012-04-14T00:00:00> 2012-04-14</time> </span> <span class="label label-default">Tags</span> <a href=https://blog.alswl.com/tag/gong-yu-shan-qi-shi-bi-xian-li-qi-qi/ >工欲善其事必先利其器</a> / <a href=https://blog.alswl.com/tag/vim/ >Vim</a> / <a href=https://blog.alswl.com/tag/vundle/ >Vundle</a> </footer><!-- /.post-info --> </div> </div> <nav class=toc> <div id=toc><ul><li><a class=toc-href href=#ji-chong-guan-li-cha-jian title=几种管理插件>几种管理插件</a></li><li><a class=toc-href href=#vundle-an-zhuang title="Vundle 安装">Vundle 安装</a></li></ul></div> </nav> <p>早在这个月初，我就在 Vim 的邮件列表看到了一封关于 Vim 插件管理的 <a href=https://groups.google.com/d/topic/vim-cn/mPES0sNT87Q/discussion>邮件</a>。 才惊呼原来有这么强大的插件可以用来管理我那一坨插件， 今天细细阅读并查了一些资料，变开始配置自己的 Vim。</p> <h2 id=ji-chong-guan-li-cha-jian>几种管理插件</h2> <p>Vim 的插件管理工具有蛮多，比如：</p> <ul> <li><a href=https://github.com/gmarik/vundle>Vundle</a></li> <li><a href="http://www.vim.org/scripts/script.php?script_id=2905">vim-addon-manager</a></li> <li><a href="http://www.vim.org/scripts/script.php?script_id=2332">vpathogen.vim</a></li> <li><a href="http://www.vim.org/scripts/script.php?script_id=3458">vvundle</a></li> <li><a href=https://github.com/c9s/Vimana>vvimana</a></li> <li><a href=http://www.douban.com/note/173144456/ >一位同学自己写的</a></li> </ul> <p>Vim-addon-manager 和 vimana 的对比，参见 <a href=http://yixf.name/2011/10/26/vim的插件管理工具/ >Vim的插件管理工具</a></p> <p>我最会选择了 Vundle，通过子目录管理插件，支持 Git 更新。 我其实不太喜欢子目录，觉得目录太多看着烦，但是考虑到在没有一个良好的 PKG 包描述文件的前提下，分子目录是一种简单有效的方法。</p> <p>Vundle 通过 git 来对插件进行更新，有三种源可以添加：</p> <ul> <li>github 中 vim-scripts 的项目（这个账号是为 Pathogen 建的，用来建立对 Vim.org 上脚本的镜像）</li> <li>github 某个 Vim 插件项目</li> <li>某个 git 源</li> </ul> <p>以上也是我推荐的选择插件顺序，我认为没有必要去取最新的开发版插件。</p> <h2 id=vundle-an-zhuang>Vundle 安装</h2> <p>无二话，官方文档的 <a href=https://github.com/gmarik/vundle>Quick Start</a> 写的很详细 ，一句话：</p> <div class=highlight><pre><span></span>$ git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+</pre></div> <p>然后开始配置 .vimrc，我的 <a href=https://github.com/alswl/dotfiles/blob/master/.vimrc>.vimrc</a></p> <p>重点是配置各种 <code>Bundle</code> 我的配置如下</p> <div class=highlight><pre><span></span><span class=c>" My Bundles here:</span>
 
+<span class=c>" vim-scripts repos</span>
 
+<span class=c>" Syntax</span>
+Bundle <span class=s1>'asciidoc.vim'</span>
+Bundle <span class=s1>'confluencewiki.vim'</span>
+Bundle <span class=s1>'html5.vim'</span>
+Bundle <span class=s1>'JavaScript-syntax'</span>
+<span class=c>"Bundle 'mako.vim'</span>
+Bundle <span class=s1>'moin.vim'</span>
+Bundle <span class=s1>'python.vim--Vasiliev'</span>
+Bundle <span class=s1>'xml.vim'</span>
 
-<link rel="canonical" href="https://blog.alswl.com/2012/04/vundle/">
+<span class=c>" Color</span>
 
-        <meta name="author" content="alswl" />
-        <meta name="keywords" content="工欲善其事必先利其器,Vim,Vundle" />
-        <meta name="description" content="早在这个月初，我就在 Vim 的邮件列表看到了一封关于 Vim 插件管理的 邮件。 才惊呼原来有这么强大的插件可以用来管理我那一坨插件， 今天细细阅读并查了一些资料，变开始配置自己的 Vim。 几种管理插件 Vim 的插件管理工具有蛮多，比如： Vundle vim-addon-manager vpathogen.vim vvundle vvimana 一位同学自己写的 Vim-addon-manager 和 vimana 的对比，参见 Vim的插件管理工具 我最会选择了 Vundle，通过子目录管理插件，支持 Git 更新。 我其实不太喜欢子目录，觉得目录太多看着烦，但是考虑到在没有一个良好的 PKG 包描述文件的前提下，分子目录是一种简单有效的方法。" />
+Bundle <span class=s1>'desert256.vim'</span>
+Bundle <span class=s1>'Impact'</span>
+Bundle <span class=s1>'matrix.vim'</span>
+Bundle <span class=s1>'vibrantink'</span>
+Bundle <span class=s1>'vividchalk.vim'</span>
 
+<span class=c>" Ftplugin</span>
+Bundle <span class=s1>'python_fold'</span>
 
+<span class=c>" Indent</span>
+<span class=c>"Bundle 'indent/html.vim'</span>
+Bundle <span class=s1>'IndentAnything'</span>
+Bundle <span class=s1>'Javascript-Indentation'</span>
+Bundle <span class=s1>'mako.vim--Torborg'</span>
+Bundle <span class=s1>'gg/python.vim'</span>
 
-    <!-- Bootstrap -->
-        <link rel="stylesheet" href="https://blog.alswl.com/theme/css/bootstrap.min.css" type="text/css"/>
-    <link href="https://blog.alswl.com/theme/css/font-awesome.min.css" rel="stylesheet">
-
-    <link href="https://blog.alswl.com/theme/css/pygments/native.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://blog.alswl.com/theme/css/style.css" type="text/css"/>
-
-    <link href="https://blog.alswl.com/atom.xml" type="application/atom+xml" rel="alternate" title="Log4D Atom Feed" />
-    <link href="https://blog.alswl.com/rss.xml" type="application/rss+xml" rel="alternate" title="Log4D RSS Feed" />
-
-</head>
-<body>
-
-<div class="navbar navbar-default" role="navigation">
-    <div class="container  col-lg-8 col-lg-offset-2">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a href="https://blog.alswl.com/" class="navbar-brand">
-Log4D            </a>
-        </div>
-        <div class="collapse navbar-collapse navbar-ex1-collapse">
-            <ul class="nav navbar-nav">
-                    <li><a href="/tags/">Tags</a></li>
-                    <li><a href="/links/">Links</a></li>
-                    <li><a href="/about/">About</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="https://blog.alswl.com/archives/"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
-            </ul>
-        </div>
-        <!-- /.navbar-collapse -->
-    </div>
-</div> <!-- /.navbar -->
-
-<div class="container">
-    <div class="row">
-        <div class="col-lg-8 col-lg-offset-2">
-
-    <section id="content">
-        <article class="article-detail">
-            <header class="page-header">
-                <h1 class="title">
-                    <a href="https://blog.alswl.com/2012/04/vundle/"
-                       rel="bookmark"
-                       title="Permalink to 使用 Vundle 管理 Vim 插件">
-                        使用 Vundle 管理 Vim 插件
-                    </a>
-                </h1>
-            </header>
-            <div class="entry-content">
-                <div class="panel">
-                    <div class="panel-body">
-<footer class="post-info">
-    <span class="label label-default">Date</span>
-    <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2012-04-14T00:00:00"> 2012-04-14</time>
-    </span>
-
-
-
-<span class="label label-default">Tags</span>
-	<a href="https://blog.alswl.com/tag/gong-yu-shan-qi-shi-bi-xian-li-qi-qi/">工欲善其事必先利其器</a>
-        /
-	<a href="https://blog.alswl.com/tag/vim/">Vim</a>
-        /
-	<a href="https://blog.alswl.com/tag/vundle/">Vundle</a>
-    
-</footer><!-- /.post-info -->                    </div>
-                </div>
-                <nav class="toc">
-                  <div id="toc"><ul><li><a class="toc-href" href="#ji-chong-guan-li-cha-jian" title="几种管理插件">几种管理插件</a></li><li><a class="toc-href" href="#vundle-an-zhuang" title="Vundle 安装">Vundle 安装</a></li></ul></div>
-                </nav>
-                <p>早在这个月初，我就在 Vim 的邮件列表看到了一封关于 Vim 插件管理的
-<a href="https://groups.google.com/d/topic/vim-cn/mPES0sNT87Q/discussion">邮件</a>。
-才惊呼原来有这么强大的插件可以用来管理我那一坨插件，
-今天细细阅读并查了一些资料，变开始配置自己的 Vim。</p>
-<h2 id="ji-chong-guan-li-cha-jian">几种管理插件</h2>
-<p>Vim 的插件管理工具有蛮多，比如：</p>
-<ul>
-<li><a href="https://github.com/gmarik/vundle">Vundle</a></li>
-<li><a href="http://www.vim.org/scripts/script.php?script_id=2905">vim-addon-manager</a></li>
-<li><a href="http://www.vim.org/scripts/script.php?script_id=2332">vpathogen.vim</a></li>
-<li><a href="http://www.vim.org/scripts/script.php?script_id=3458">vvundle</a></li>
-<li><a href="https://github.com/c9s/Vimana">vvimana</a></li>
-<li><a href="http://www.douban.com/note/173144456/">一位同学自己写的</a></li>
-</ul>
-<p>Vim-addon-manager 和 vimana 的对比，参见
-<a href="http://yixf.name/2011/10/26/vim的插件管理工具/">Vim的插件管理工具</a></p>
-<p>我最会选择了 Vundle，通过子目录管理插件，支持 Git 更新。
-我其实不太喜欢子目录，觉得目录太多看着烦，但是考虑到在没有一个良好的 PKG
-包描述文件的前提下，分子目录是一种简单有效的方法。</p>
-
-<p>Vundle 通过 git 来对插件进行更新，有三种源可以添加：</p>
-<ul>
-<li>github 中 vim-scripts 的项目（这个账号是为 Pathogen 建的，用来建立对 Vim.org 上脚本的镜像）</li>
-<li>github 某个 Vim 插件项目</li>
-<li>某个 git 源</li>
-</ul>
-<p>以上也是我推荐的选择插件顺序，我认为没有必要去取最新的开发版插件。</p>
-<h2 id="vundle-an-zhuang">Vundle 安装</h2>
-<p>无二话，官方文档的 <a href="https://github.com/gmarik/vundle">Quick Start</a>
-写的很详细 ，一句话：</p>
-<div class="highlight"><pre><span></span>$ git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
-</pre></div>
-<p>然后开始配置 .vimrc，我的 <a href="https://github.com/alswl/dotfiles/blob/master/.vimrc">.vimrc</a></p>
-<p>重点是配置各种 <code>Bundle</code> 我的配置如下</p>
-<div class="highlight"><pre><span></span><span class="c">" My Bundles here:</span>
-
-<span class="c">" vim-scripts repos</span>
-
-<span class="c">" Syntax</span>
-Bundle <span class="s1">'asciidoc.vim'</span>
-Bundle <span class="s1">'confluencewiki.vim'</span>
-Bundle <span class="s1">'html5.vim'</span>
-Bundle <span class="s1">'JavaScript-syntax'</span>
-<span class="c">"Bundle 'mako.vim'</span>
-Bundle <span class="s1">'moin.vim'</span>
-Bundle <span class="s1">'python.vim--Vasiliev'</span>
-Bundle <span class="s1">'xml.vim'</span>
-
-<span class="c">" Color</span>
-
-Bundle <span class="s1">'desert256.vim'</span>
-Bundle <span class="s1">'Impact'</span>
-Bundle <span class="s1">'matrix.vim'</span>
-Bundle <span class="s1">'vibrantink'</span>
-Bundle <span class="s1">'vividchalk.vim'</span>
-
-<span class="c">" Ftplugin</span>
-Bundle <span class="s1">'python_fold'</span>
-
-<span class="c">" Indent</span>
-<span class="c">"Bundle 'indent/html.vim'</span>
-Bundle <span class="s1">'IndentAnything'</span>
-Bundle <span class="s1">'Javascript-Indentation'</span>
-Bundle <span class="s1">'mako.vim--Torborg'</span>
-Bundle <span class="s1">'gg/python.vim'</span>
-
-<span class="c">" Plugin</span>
-Bundle <span class="s1">'The-NERD-tree'</span>
-Bundle <span class="s1">'AutoClose--Alves'</span>
-Bundle <span class="s1">'auto_mkdir'</span>
-Bundle <span class="s1">'cecutil'</span>
-Bundle <span class="s1">'fcitx.vim'</span>
-Bundle <span class="s1">'FencView.vim'</span>
-<span class="c">"Bundle 'FuzzyFinder'</span>
-Bundle <span class="s1">'jsbeautify'</span>
-Bundle <span class="s1">'L9'</span>
-Bundle <span class="s1">'Mark'</span>
-Bundle <span class="s1">'matrix.vim'</span>
-Bundle <span class="s1">'mru.vim'</span>
-Bundle <span class="s1">'The-NERD-Commenter'</span>
-<span class="c">"Bundle 'project.vim'</span>
-Bundle <span class="s1">'restart.vim'</span>
-Bundle <span class="s1">'taglist.vim'</span>
-<span class="c">"Bundle 'templates.vim'</span>
-<span class="c">"Bundle 'vimim.vim'</span>
-Bundle <span class="s1">'ZenCoding.vim'</span>
-Bundle <span class="s1">'css_color.vim'</span>
-Bundle <span class="s1">'hallettj/jslint.vim'</span>
-</pre></div>
-<p>需要注意的是，Vim 插件名称可能存在重名的情况，这时候就需要在插件后面加上作者的姓氏，
-比如 <code>Bundle 'Javascript-Indentation'</code> ，而遇到插件名有空格和斜杠的话，
-需要将空格和斜杠替换为 <code>-</code> 。</p>
-<p>执行 <code>BundleInstall</code> 即可完成安装，如果出现错误提示，多半是名称有问题，
-去 github 和 vim.org 搜索一下吧。</p>
-<p>更多参考：</p>
-<ul>
-<li><a href="http://blog.houqp.me/use-vundle-to-manage-your-plugins/">Vim插件管理利器&mdash;&mdash;Vundle</a></li>
-<li><a href="http://www.cnblogs.com/qiangji/archive/2011/07/31/Vundle.html">使用Vundle 来管理 Vim 插件</a></li>
-</ul>
-<p>ps：这篇文章使用 Markdown 写的，以前都是用 Asciidoc 写，貌似是由于 github 带动，
-Mardown 自 2010 年之后使用人群猛涨，证据在此，上图是 Markdown，下图是 Asciidoc</p>
-<p><img alt="Markdown vs Asciidoc" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201204/markdown-asciidoc.png"/></p>
-            </div>
-            <!-- /.entry-content -->
-              
-<hr>
-<div class="panel">
-<div class="panel-body">
-   <small>原文链接: <a href="https://blog.alswl.com/2012/04/vundle/">https://blog.alswl.com/2012/04/vundle/</a></small><br>
-   <small>3a1ff193cee606bd1e2ea554a16353ee</small><br>
-   <small>欢迎关注我的微信公众号：<a href="http://mp.weixin.qq.com/mp/getmasssendmsg?__biz=MzIyNTIwMTU3MQ==#wechat_webview_type=1&wechat_redirect">窥豹</a></small><br>
-   <small><img src="https://ohsolnxaa.qnssl.com/upload_dropbox/201605/qrcode_for_gh_17e2f9c2caa4_258.jpg"/></small>
-   <small><img src="https://ohsolnxaa.qnssl.com/upload_dropbox/meta/wechat-pay-s-crop.png"/></small>
-</div>
-</div>
-
-    <hr/>
-    <section class="comments" id="comments">
-        <h2>Comments</h2>
-
-        <div id="disqus_thread"></div>
-        <script type="text/javascript">
+<span class=c>" Plugin</span>
+Bundle <span class=s1>'The-NERD-tree'</span>
+Bundle <span class=s1>'AutoClose--Alves'</span>
+Bundle <span class=s1>'auto_mkdir'</span>
+Bundle <span class=s1>'cecutil'</span>
+Bundle <span class=s1>'fcitx.vim'</span>
+Bundle <span class=s1>'FencView.vim'</span>
+<span class=c>"Bundle 'FuzzyFinder'</span>
+Bundle <span class=s1>'jsbeautify'</span>
+Bundle <span class=s1>'L9'</span>
+Bundle <span class=s1>'Mark'</span>
+Bundle <span class=s1>'matrix.vim'</span>
+Bundle <span class=s1>'mru.vim'</span>
+Bundle <span class=s1>'The-NERD-Commenter'</span>
+<span class=c>"Bundle 'project.vim'</span>
+Bundle <span class=s1>'restart.vim'</span>
+Bundle <span class=s1>'taglist.vim'</span>
+<span class=c>"Bundle 'templates.vim'</span>
+<span class=c>"Bundle 'vimim.vim'</span>
+Bundle <span class=s1>'ZenCoding.vim'</span>
+Bundle <span class=s1>'css_color.vim'</span>
+Bundle <span class=s1>'hallettj/jslint.vim'</span>
+</pre></div> <p>需要注意的是，Vim 插件名称可能存在重名的情况，这时候就需要在插件后面加上作者的姓氏， 比如 <code>Bundle 'Javascript-Indentation'</code> ，而遇到插件名有空格和斜杠的话， 需要将空格和斜杠替换为 <code>-</code> 。</p> <p>执行 <code>BundleInstall</code> 即可完成安装，如果出现错误提示，多半是名称有问题， 去 github 和 vim.org 搜索一下吧。</p> <p>更多参考：</p> <ul> <li><a href=http://blog.houqp.me/use-vundle-to-manage-your-plugins/ >Vim插件管理利器&mdash;&mdash;Vundle</a></li> <li><a href=http://www.cnblogs.com/qiangji/archive/2011/07/31/Vundle.html>使用Vundle 来管理 Vim 插件</a></li> </ul> <p>ps：这篇文章使用 Markdown 写的，以前都是用 Asciidoc 写，貌似是由于 github 带动， Mardown 自 2010 年之后使用人群猛涨，证据在此，上图是 Markdown，下图是 Asciidoc</p> <p><img alt="Markdown vs Asciidoc" src=https://ohsolnxaa.qnssl.com/upload_dropbox/201204/markdown-asciidoc.png></p> </div> <!-- /.entry-content --> <hr> <div class=panel> <div class=panel-body> <small>原文链接: <a href=https://blog.alswl.com/2012/04/vundle/ >https://blog.alswl.com/2012/04/vundle/</a></small><br> <small>3a1ff193cee606bd1e2ea554a16353ee</small><br> <small>欢迎关注我的微信公众号：<a href="http://mp.weixin.qq.com/mp/getmasssendmsg?__biz=MzIyNTIwMTU3MQ==#wechat_webview_type=1&wechat_redirect">窥豹</a></small><br> <small><img src=https://ohsolnxaa.qnssl.com/upload_dropbox/201605/qrcode_for_gh_17e2f9c2caa4_258.jpg></small> <small><img src=https://ohsolnxaa.qnssl.com/upload_dropbox/meta/wechat-pay-s-crop.png></small> </div> </div> <hr> <section class=comments id=comments> <h2>Comments</h2> <div id=disqus_thread></div> <script type=text/javascript>
             /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
             var disqus_shortname = 'log4d'; // required: replace example with your forum shortname
 
@@ -235,126 +70,7 @@ Mardown 自 2010 年之后使用人群猛涨，证据在此，上图是 Markdown
             dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
             (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
         })();
-        </script>
-		<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-		<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-    
-
-    </section>
-        </article>
-    </section>
-
-        </div>
-        <div class="col-lg-3 col-lg-offset-2" id="sidebar">
-
-<aside>
-    <section>
-        <ul class="list-group list-group-flush">
-                <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
-                  <ul class="list-group" id="social">
-                    <li class="list-group-item"><a href="https://blog.alswl.com/atom.xml"><i class="fa fa-rss-square fa-lg"></i> RSS</a></li>
-                    <li class="list-group-item"><a href="https://twitter.com/alswl"><i class="fa fa-twitter-square fa-lg"></i> Twitter</a></li>
-                    <li class="list-group-item"><a href="https://github.com/alswl"><i class="fa fa-github-square fa-lg"></i> Github</a></li>
-                    <li class="list-group-item"><a href="http://weibo.com/alswlx"><i class="fa fa-weibo fa-lg"></i> Weibo</a></li>
-                  </ul>
-                </li>
-
-
-
-
-        </ul>
-    </section>
-
-</aside>        </div>
-    <div class="col-lg-3" id="sidebar">
-<aside>
-    <section>
-        <ul class="list-group list-group-flush">
-                <li class="list-group-item"><a href="https://blog.alswl.com/"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Categories</span></h4></a>
-                    <ul class="list-group" id="categories">
-                        <li class="list-group-item">
-                            <a href="https://blog.alswl.com/category/coding/">
-                                <i class="fa fa-folder-open fa-lg"></i> Coding
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="https://blog.alswl.com/category/efficiency/">
-                                <i class="fa fa-folder-open fa-lg"></i> Efficiency
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="https://blog.alswl.com/category/fun/">
-                                <i class="fa fa-folder-open fa-lg"></i> Fun
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="https://blog.alswl.com/category/internet/">
-                                <i class="fa fa-folder-open fa-lg"></i> Internet
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="https://blog.alswl.com/category/life/">
-                                <i class="fa fa-folder-open fa-lg"></i> Life
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="https://blog.alswl.com/category/managment/">
-                                <i class="fa fa-folder-open fa-lg"></i> Managment
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="https://blog.alswl.com/category/thinking/">
-                                <i class="fa fa-folder-open fa-lg"></i> Thinking
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="https://blog.alswl.com/category/ui/">
-                                <i class="fa fa-folder-open fa-lg"></i> UI
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="https://blog.alswl.com/category/viewpoint/">
-                                <i class="fa fa-folder-open fa-lg"></i> Viewpoint
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-
-
-        </ul>
-    </section>
-
-</aside>    </div>
-    </div>
-</div>
-<footer>
-   <div class="container">
-      <hr>
-      <div class="row">
-         <div class="col-xs-10">&copy; 2018 alswl
-            &middot; Powered by <a href="https://github.com/alswl/pelican-bootstrap3" target="_blank" style="font-weight: bold">pelican-bootstrap3</a>,
-            <a href="http://docs.getpelican.com/" target="_blank" style="font-weight: bold">Pelican</a>,
-            <a href="http://getbootstrap.com" target="_blank" style="font-weight: bold">Bootstrap</a>,
-            Hosted by <a href="https://pages.coding.me" target="_blank" style="font-weight: bold">Coding Pages</a>              <p><small>  <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="//i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" /></a>
-    Content
-  licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution 4.0 International-NonCommercial-NoDerivatives License</a>, except where indicated otherwise.
-</small></p>
-         </div>
-         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
-      </div>
-   </div>
-</footer>
-<script src="https://blog.alswl.com/theme/js/jquery.min.js"></script>
-<!--<script src="http://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>-->
-
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="https://blog.alswl.com/theme/js/bootstrap.min.js"></script>
-
-<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
-<script src="https://blog.alswl.com/theme/js/respond.min.js"></script>
-
-    <!-- Disqus -->
-    <script type="text/javascript">
+        </script> <noscript>Please enable JavaScript to view the <a href=http://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript> <a href=http://disqus.com class=dsq-brlink>comments powered by <span class=logo-disqus>Disqus</span></a> </section> </article> </section> </div> <div class="col-lg-3 col-lg-offset-2" id=sidebar> <aside> <section> <ul class="list-group list-group-flush"> <li class=list-group-item><h4><i class="fa fa-home fa-lg"></i><span class=icon-label>Social</span></h4> <ul class=list-group id=social> <li class=list-group-item><a href=https://blog.alswl.com/atom.xml><i class="fa fa-rss-square fa-lg"></i> RSS</a></li> <li class=list-group-item><a href=https://twitter.com/alswl><i class="fa fa-twitter-square fa-lg"></i> Twitter</a></li> <li class=list-group-item><a href=https://github.com/alswl><i class="fa fa-github-square fa-lg"></i> Github</a></li> <li class=list-group-item><a href=http://weibo.com/alswlx><i class="fa fa-weibo fa-lg"></i> Weibo</a></li> </ul> </li> </ul> </section> </aside> </div> <div class=col-lg-3 id=sidebar> <aside> <section> <ul class="list-group list-group-flush"> <li class=list-group-item><a href=https://blog.alswl.com/ ><h4><i class="fa fa-home fa-lg"></i><span class=icon-label>Categories</span></h4></a> <ul class=list-group id=categories> <li class=list-group-item> <a href=https://blog.alswl.com/category/coding/ > <i class="fa fa-folder-open fa-lg"></i> Coding </a> </li> <li class=list-group-item> <a href=https://blog.alswl.com/category/efficiency/ > <i class="fa fa-folder-open fa-lg"></i> Efficiency </a> </li> <li class=list-group-item> <a href=https://blog.alswl.com/category/fun/ > <i class="fa fa-folder-open fa-lg"></i> Fun </a> </li> <li class=list-group-item> <a href=https://blog.alswl.com/category/internet/ > <i class="fa fa-folder-open fa-lg"></i> Internet </a> </li> <li class=list-group-item> <a href=https://blog.alswl.com/category/life/ > <i class="fa fa-folder-open fa-lg"></i> Life </a> </li> <li class=list-group-item> <a href=https://blog.alswl.com/category/managment/ > <i class="fa fa-folder-open fa-lg"></i> Managment </a> </li> <li class=list-group-item> <a href=https://blog.alswl.com/category/thinking/ > <i class="fa fa-folder-open fa-lg"></i> Thinking </a> </li> <li class=list-group-item> <a href=https://blog.alswl.com/category/ui/ > <i class="fa fa-folder-open fa-lg"></i> UI </a> </li> <li class=list-group-item> <a href=https://blog.alswl.com/category/viewpoint/ > <i class="fa fa-folder-open fa-lg"></i> Viewpoint </a> </li> </ul> </li> </ul> </section> </aside> </div> </div> </div> <footer> <div class=container> <hr> <div class=row> <div class=col-xs-10>&copy; 2018 alswl &middot; Powered by <a href=https://github.com/alswl/pelican-bootstrap3 target=_blank style="font-weight: bold">pelican-bootstrap3</a>, <a href=http://docs.getpelican.com/ target=_blank style="font-weight: bold">Pelican</a>, <a href=http://getbootstrap.com target=_blank style="font-weight: bold">Bootstrap</a>, Hosted by <a href=https://pages.coding.me target=_blank style="font-weight: bold">Coding Pages</a> <p><small> <a href=http://creativecommons.org/licenses/by-nc-nd/4.0/ rel=license><img alt="Creative Commons License" style=border-width:0 src=//i.creativecommons.org/l/by-nc-nd/4.0/80x15.png></a> Content licensed under a <a href=http://creativecommons.org/licenses/by-nc-nd/4.0/ rel=license>Creative Commons Attribution 4.0 International-NonCommercial-NoDerivatives License</a>, except where indicated otherwise. </small></p> </div> <div class=col-xs-2><p class=pull-right><i class="fa fa-arrow-up"></i> <a href=#>Back to top</a></p></div> </div> </div> </footer> <script src=https://blog.alswl.com/theme/js/jquery.min.js></script> <!--<script src="http://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>--> <!-- Include all compiled plugins (below), or include individual files as needed --> <script src=https://blog.alswl.com/theme/js/bootstrap.min.js></script> <!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) --> <script src=https://blog.alswl.com/theme/js/respond.min.js></script> <!-- Disqus --> <script type=text/javascript>
         /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
         var disqus_shortname = 'log4d'; // required: replace example with your forum shortname
 
@@ -366,10 +82,7 @@ Mardown 自 2010 年之后使用人群猛涨，证据在此，上图是 Markdown
             s.src = '//' + disqus_shortname + '.disqus.com/count.js';
             (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
         }());
-    </script>
-    <!-- End Disqus Code -->
-    <!-- Google Analytics -->
-    <script type="text/javascript">
+    </script> <!-- End Disqus Code --> <!-- Google Analytics --> <script type=text/javascript>
 
         var _gaq = _gaq || [];
         _gaq.push(['_setAccount', 'UA-8822123-3']);
@@ -383,7 +96,4 @@ Mardown 自 2010 年之后使用人群猛涨，证据在此，上图是 Markdown
             var s = document.getElementsByTagName('script')[0];
             s.parentNode.insertBefore(ga, s);
         })();
-    </script>
-    <!-- End Google Analytics Code -->
-</body>
-</html>
+    </script> <!-- End Google Analytics Code --> </body> </html>
