@@ -1,5 +1,174 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Log4D</title><link href="https://blog.alswl.com/" rel="alternate"></link><link href="https://blog.alswl.com/atom.xml" rel="self"></link><id>https://blog.alswl.com/</id><updated>2018-05-21T11:24:36+08:00</updated><entry><title>从 SQL Server 到 MySQL（二）：在线迁移，空中换发动机</title><link href="https://blog.alswl.com/2018/05/sql-server-migration-2/" rel="alternate"></link><published>2018-05-21T11:24:36+08:00</published><updated>2018-05-21T11:24:36+08:00</updated><author><name>alswl</name></author><id>tag:blog.alswl.com,2018-05-21:2018/05/sql-server-migration-2/</id><summary type="html">&lt;p&gt;&lt;img alt="flying-tanker" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201805/flying-tanker.png"/&gt;&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Log4D</title><link href="https://blog.alswl.com/" rel="alternate"></link><link href="https://blog.alswl.com/atom.xml" rel="self"></link><id>https://blog.alswl.com/</id><updated>2018-06-20T20:18:52+08:00</updated><entry><title>从 SQL Server 到 MySQL（二）：在线迁移，空中换发动机</title><link href="https://blog.alswl.com/2018/06/sql-server-migration-3/" rel="alternate"></link><published>2018-06-20T20:18:52+08:00</published><updated>2018-06-20T20:18:52+08:00</updated><author><name>alswl</name></author><id>tag:blog.alswl.com,2018-06-20:2018/06/sql-server-migration-3/</id><summary type="html">&lt;p&gt;我们用了两章文章
+&lt;a href="https://blog.alswl.com/2018/03/sql-server-migration-1/"&gt;从 SQL Server 到 MySQL（一）：异构数据库迁移&lt;/a&gt;
+/
+&lt;a href="https://blog.alswl.com/2018/05/sql-server-migration-2/"&gt;从 SQL Server 到 MySQL（二）：在线迁移，空中换发动机&lt;/a&gt;
+介绍我们遇到问题和解决方案。
+不管是离线全量迁移还是在线无缝迁移，
+核心 ETL 工具就是 yugong。&lt;/p&gt;
+&lt;p&gt;Yugong 是一个成熟工具， 在阿里巴巴去 IOE 行动中起了重要作用，
+它与 Otter / Canal 都是阿里中间件团队出品。
+它们三者各有分工：
+Yugong 设计目标是异构数据库迁移；
+Canal 设计用来解决 MySQL binlog 订阅和消费问题；
+Otter 则是在 Canal 之上，以准实时标准解决数据库同步问题。
+Otter 配备了相对 yugong 更健壮管理工具、分布式协调工具，
+从而长期稳定运行。Yugong 设计目标则是一次性迁移工作，偏 Job 类型。
+当然 yugong 本身质量不错，长期运行也没问题。
+我们有个产线小伙伴使用我们魔改后 yugong，
+用来将数据从管理平台同步数据到用户前台，已经稳定跑了半年多了。&lt;/p&gt;
+
+&lt;h2 id="yugong-xi-tong-jie-gou"&gt;yugong 系统结构&lt;/h2&gt;
+&lt;p&gt;这里我不赘述如何使用 yugong，有需求同学直接去
+&lt;a href="https://github.com/alibaba/yugong"&gt;官方文档&lt;/a&gt; 查看使用文档。&lt;/p&gt;
+&lt;p&gt;我直接进入关键环节：解剖 yugong 核心模块。
+Yugong 数据流是标准 ETL 流程，分别有 Extractor / Translator / Applier
+这三个大类来实现 ETL 过程:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="ETL &amp;amp; Java Class" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201806/etl.png"/&gt;&lt;/p&gt;
+&lt;p&gt;我们依次来看看这三大类具体设计。&lt;/p&gt;
+&lt;h3 id="extractor"&gt;Extractor&lt;/h3&gt;
+&lt;p&gt;&lt;img alt="Extractor Class" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201806/extractor.png"/&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;YuGongLifeCycle&lt;/code&gt;：Yugong 组件生命周期声明&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;AbstractYuGongLifeCycle&lt;/code&gt;：Yugong 组件生命周期一些实现&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;RecordExtractor&lt;/code&gt;：基础 Extractor Interface&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;AbstractRecordExtractor&lt;/code&gt;：基础 Extractor 虚拟类，做了一部分实现&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;AbstractOracleRecordExtractor&lt;/code&gt;：Oracle Extractor 虚拟类，做了一部分 Oracle 相关实现&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;OracleOnceFullRecordExtractor&lt;/code&gt;：Oracle 基于特定 SQL 一次性 Extractor&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;OracleFullRecordExtractor&lt;/code&gt;：Oracle 全量 Extractor&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;OracleRecRecordExtractor&lt;/code&gt;：Oracle 记录 Extractor，用来创建物化视图&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;OracleMaterializedIncRecordExtractor&lt;/code&gt;：基于（已有）物化视图 Oracle 增量 Extrator&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;OracleAllRecordExtractor&lt;/code&gt;：Oracle 自动化 Extractor，先 Mark 再 Full，再 Inc&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Exctractor 从 Source DB 读取数据写入内存，
+Yugong 官方提供 Extractor 抽象出 &lt;code&gt;AbstractRecordExtractor&lt;/code&gt; 类，
+其余类都是围绕 Oracle 实现。
+另外 Yugong 设计了 &lt;code&gt;YuGongLifeCycle&lt;/code&gt; 类实现了组件生命周期管理。&lt;/p&gt;
+&lt;h3 id="translator"&gt;Translator&lt;/h3&gt;
+&lt;p&gt;&lt;img alt="Translator Class" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201806/translator.png"/&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;DataTranslator&lt;/code&gt;：Translator 基类，为 Row 级别数据处理&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;TableTranslator&lt;/code&gt;：Translator 基类，为 Table 级别提供处理（官方代码中没有使用）&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;AbstractDataTranslator&lt;/code&gt;：Data Translator 虚拟类，做了部分实现&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;EncodeDataTranslator&lt;/code&gt;：转换编码格式 Translator&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;OracleIncreamentDataTranslator&lt;/code&gt;：为 Oracle 增量数据准备 Translator，会调整一些数据状态&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;BackTableDataTranslator&lt;/code&gt;：Demo，允许在 Translator 中做回写数据操作&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;BillOutDataTranslator&lt;/code&gt;：Demo，包含一些阿里业务逻辑 Translator&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;MidBillOutDetailDataTranslator&lt;/code&gt;：Demo，包含一些阿里业务逻辑 Translator&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Translator 读取内存中 RowData 然后变换，
+大部分 Translator 做一些无状态操作，比如编码转换。
+另外还有一小部分 Translator 做了业务逻辑操作，比如做一些数据回写。&lt;/p&gt;
+&lt;h3 id="applier"&gt;Applier&lt;/h3&gt;
+&lt;p&gt;&lt;img alt="Applier Class" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201806/applier.png"/&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;RecordApplier&lt;/code&gt;：基础 Applier Interface&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;AbstractRecordApplier&lt;/code&gt;：基础 Applier 虚拟类，做了一部分实现&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;CheckRecordRecordApplier&lt;/code&gt;：检查数据一致性 Applier，不做数据写入&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;FullRecordRecordApplier&lt;/code&gt;：全量数据 Applier，使用 UPSERT 做数据更新&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;IncreamentRecordApplier&lt;/code&gt;：增量 Applier，使用 Oracle 物化视图为数据源&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;AllRecordRecordApplier&lt;/code&gt;：自动化 Applier，先使用全量数据 Applier，然后使用增量数据 Applier&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Applier 将经过 Translator 处理过的数据写入 Target DB。
+Yugong 提供了一致性检查、全量、增量 Applier。
+比较特殊是 &lt;code&gt;AllRecordRecordApplier&lt;/code&gt; 提供了全套自动化操作。&lt;/p&gt;
+&lt;h2 id="others_1"&gt;Others&lt;/h2&gt;
+&lt;p&gt;除了 ETL 三个要素，yugong 还有一些重要类：控制类和工具类。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;SqlTemplate&lt;/code&gt;：提供 CRUD / UPSERT 等操作的基类 SQL 模板&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;OracleSqlTemplate&lt;/code&gt;：基于 SqlTemplate 实现的 Oracle SQL 模板&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;RecordDiffer&lt;/code&gt;：一致性检查 differ&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;YugongController&lt;/code&gt;：应用控制器，控制整个应用数据流向&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;YugongInstance&lt;/code&gt;：控制单个迁移任务实例，一张表对应一个 YugongInstance&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="lao-zhan-shi-de-wen-ti"&gt;老战士的问题&lt;/h2&gt;
+&lt;p&gt;说 yugong 有问题会有些标题党，毕竟它是久经考验老战士了。
+但对我们来说，开源版本 yugong 还有一些不足：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;不支持 SQL Server 读取&lt;/li&gt;
+&lt;li&gt;不支持 SQL Server 写入（Rollback 需要写入 SQL Server）&lt;/li&gt;
+&lt;li&gt;不支持 MySQL 读取&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;除了数据库支持，Yugong 在工程上面倒是也有一些改善空间。
+我们最后花费了不少时间，做了工程上改进。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;抛弃默认打包方式（基于 maven-assembly-plugin 生成类似 LFS 结构 tar.gz 文件），
+    改为使用 fat jar 模式打包，仅生成单文件可执行 jar 包&lt;/li&gt;
+&lt;li&gt;抛弃 ini 配置文件，使用 YAML 配置文件格式（已有老配置仍然使用 ini 文件，YAML 主要管理表结构变更）&lt;/li&gt;
+&lt;li&gt;改造 Plugin 模式，将 Java 运行时编译改为反射获取 Java 类&lt;/li&gt;
+&lt;li&gt;拆分 Unit Test / Integration Test，降低重构成本&lt;/li&gt;
+&lt;li&gt;重构 Oracle 继承结构，使其开放 SQL Server / MySQL 接口&lt;/li&gt;
+&lt;li&gt;支持 Canal Redis 格式数据作为 MySQL 在线增量数据源&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="gai-zao-zhi-hou-jie-gou"&gt;改造之后结构&lt;/h2&gt;
+&lt;p&gt;Extractor：&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Extractor New Class" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201806/extractor-new.png"/&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;AbstractSqlServerExtractor&lt;/code&gt;：新增抽象 SqlServer Extractor&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;AbstractMysqlExtractor&lt;/code&gt;：新增抽象 MySQL Extractor&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;AbstractFullRecordExtractor&lt;/code&gt;：新增抽象 Full 模式 Extractor&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;SqlServerCdcExtractor&lt;/code&gt;：新增 SQL Server CDC 增量模式 Extractor&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;MysqlCanalExtractor&lt;/code&gt;：新增 MySQL Canal 格式增量消费 Extractor&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;MysqlCanalRedisExtractor&lt;/code&gt;：新增 MySQL Canal 格式增量消费 Extractor，使用 Redis 做回溯&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;MysqlFullExtractor&lt;/code&gt;：新增 MySQL 全量 Extractor&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;SqlServerFullExtractor&lt;/code&gt;：新增 SQL Server 全量 Extractor&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;在抽象出三个抽象类之后，整体逻辑更为清晰，如果未来要增加新数据库格式支持，也更为简单。&lt;/p&gt;
+&lt;p&gt;Translator：&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Translator New Class" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201806/translator-new.png"/&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Sha1ShardingTranslator&lt;/code&gt;：根据 Sha1 Sharding Translator&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ModShardingTranslator&lt;/code&gt;：根据 Value Mode Sharding Translator&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;RangeShardingTranslator&lt;/code&gt;：根据范围 Sharding Translator&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;UserRouterMapShardingTranslator&lt;/code&gt;：特定业务使用， 用户分表 Sharding Translator&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;UserRouterMapMobileShardingTranslator&lt;/code&gt;：特定业务使用， 用户分表 Sharding Translator&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ClassLearningNoteInfoShardingTranslator&lt;/code&gt;：特定业务使用自定义 Translator&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ClassLearningIsActiveReverseShardingTranslator&lt;/code&gt;：特定业务使用自定义 Translator&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ColumnFixDataTranslator&lt;/code&gt;：调整表结构 Translator&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;NameStyleDataTranslator&lt;/code&gt;：调整表字段名 Translator，支持按风格对整个表自动转换&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;CompositeIndexesDataTranslator&lt;/code&gt;：解决复合主键下唯一 PK 确定问题的 Translator&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Applier：&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Applier New Class" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201806/applier-new.png"/&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;SqlServerIncreamentRecordApplier&lt;/code&gt;：新增 SQL Server 增量消费 Applier&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="er-ci-kai-fa-xin-de"&gt;二次开发心得&lt;/h2&gt;
+&lt;p&gt;如何快速了解一个开源项目？很多同学第一反应就是阅读源码。
+看源码固然是有效果，但是性价比太低。
+如果项目设计不合理，很快会迷失在代码细节之中。
+我的经验是先阅读官方出品的一些 Slide 分享，然后阅读官方核心文档。
+Slide 含金量高，在讲述核心中核心。&lt;/p&gt;
+&lt;p&gt;如果真要去了解细节去阅读源码，那我建议要善用工具，
+比如使用 IntelliJ 的 Diagram 功能，抽象出核心类。
+还有一些插件比如 SequencePluginReload 方便地生成函数之间调用，实为查看数据流利器。
+我在这次开发过程中，也根据生成类图发现了一些问题，
+从而在进入 Coding 之前，先对框架继承结构重构。提高了整体开发效率&lt;/p&gt;
+&lt;p&gt;根据代码风格判断，Yugong 并非是出自一个人之手。这多少会导致代码风格和设计上面不一致。
+我自己也常年在业务线里面摸爬滚打，能想象到在快速推进项目中需要糙快猛。
+但后人接受开发，多少会有些头疼。
+于是我在进入开发之前，引入标准化 CheckStyle，用 Google Style 全局格式化，
+使用 Sonar 扫描保证一个代码质量基线。
+同时这也是一把双刃剑，格式化项目会导致大量 diff，
+这也给我自己埋下了一个苦果，在后期给上游提交 PR 引入无尽问题。&lt;/p&gt;
+&lt;p&gt;开发过程中我也犯了一些错误。最为头疼是没有在早期考虑到向开源社区贡献，
+导致未来向上游合并困难重重，现在还在头疼合并代码中。
+另外，由于整体项目时间紧，我贪图实现速度，没有做更详尽单元测试覆盖。
+这里没有遵循开源软件的最佳实践。&lt;/p&gt;
+&lt;p&gt;经过我改造的 Yugong 版本开源地址是：https://github.com/alswl/yugong 。
+我也提交了 Pull Request https://github.com/alibaba/yugong/pull/66 ，
+正在与官方沟通如何将这部分提交并入上游。&lt;/p&gt;
+&lt;hr&gt;
+&lt;div class="panel"&gt;
+&lt;div class="panel-body"&gt;
+   &lt;small&gt;原文链接: &lt;a href="https://blog.alswl.com/2018/06/sql-server-migration-3/"&gt;https://blog.alswl.com/2018/06/sql-server-migration-3/&lt;/a&gt;&lt;/small&gt;&lt;br&gt;
+   &lt;small&gt;3a1ff193cee606bd1e2ea554a16353ee&lt;/small&gt;&lt;br&gt;
+   &lt;small&gt;欢迎关注我的微信公众号：&lt;a href="http://mp.weixin.qq.com/mp/getmasssendmsg?__biz=MzIyNTIwMTU3MQ==#wechat_webview_type=1&amp;wechat_redirect"&gt;窥豹&lt;/a&gt;&lt;/small&gt;&lt;br&gt;
+   &lt;small&gt;&lt;img src="https://ohsolnxaa.qnssl.com/upload_dropbox/201605/qrcode_for_gh_17e2f9c2caa4_258.jpg"/&gt;&lt;/small&gt;
+   &lt;small&gt;&lt;img src="https://ohsolnxaa.qnssl.com/upload_dropbox/meta/wechat-pay-s-crop.png"/&gt;&lt;/small&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</summary><category term="SQLServer"></category><category term="MySQL"></category><category term="DB-Migration"></category></entry><entry><title>从 SQL Server 到 MySQL（二）：在线迁移，空中换发动机</title><link href="https://blog.alswl.com/2018/05/sql-server-migration-2/" rel="alternate"></link><published>2018-05-21T11:24:36+08:00</published><updated>2018-05-21T11:24:36+08:00</updated><author><name>alswl</name></author><id>tag:blog.alswl.com,2018-05-21:2018/05/sql-server-migration-2/</id><summary type="html">&lt;p&gt;&lt;img alt="flying-tanker" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201805/flying-tanker.png"/&gt;&lt;/p&gt;
 &lt;p&gt;&lt;smaill&gt;（image via https://pixabay.com/en/military-stealth-bomber-refueling-602729/ ）&lt;/smaill&gt;&lt;/p&gt;
 &lt;p&gt;在上篇文章
 &lt;a href="https://blog.alswl.com/2018/03/sql-server-migration-1/"&gt;从 SQL Server 到 MySQL （一）：异构数据库迁移 - Log4D&lt;/a&gt;
@@ -2925,16 +3094,16 @@ Brend Gregg 是 Netflix 的首席 SRE，著有 &lt;a href="http://www.brendangre
 让这些构建的数据破坏 DOM 结构，从而让自己预先构造数据中的 JS 脚本被执行。&lt;/p&gt;
 &lt;p&gt;检查存储型 XSS 漏洞的方法，可以在对应的 input field 里放入一些构造的数据，如果保存后可以被执行，就说明存在 XSS 漏洞。&lt;/p&gt;
 &lt;p&gt;常见的检测方法（来自&amp;nbsp;&lt;a href="https://zh.wikipedia.org/zh-cn/%E8%B7%A8%E7%B6%B2%E7%AB%99%E6%8C%87%E4%BB%A4%E7%A2%BC#.E6.A3.80.E6.B5.8B.E6.96.B9.E6.B3.95"&gt;跨网站脚本 - 维基百科，自由的百科全书&lt;/a&gt;：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;gt;&lt;span class="nt"&gt;&amp;lt;script&amp;gt;&lt;/span&gt;alert(document.cookie)&lt;span class="nt"&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-='&amp;gt;&lt;span class="nt"&gt;&amp;lt;script&amp;gt;&lt;/span&gt;alert(document.cookie)&lt;span class="nt"&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-"&amp;gt;&lt;span class="nt"&gt;&amp;lt;script&amp;gt;&lt;/span&gt;alert(document.cookie)&lt;span class="nt"&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-&lt;span class="nt"&gt;&amp;lt;script&amp;gt;&lt;/span&gt;alert(document.cookie)&lt;span class="nt"&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-&lt;span class="nt"&gt;&amp;lt;script&amp;gt;&lt;/span&gt;alert (vulnerable)&lt;span class="nt"&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-%3Cscript%3Ealert('XSS')%3C/script%3E
-&lt;span class="nt"&gt;&amp;lt;script&amp;gt;&lt;/span&gt;alert('XSS')&lt;span class="nt"&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-&lt;span class="nt"&gt;&amp;lt;img&lt;/span&gt; &lt;span class="na"&gt;src=&lt;/span&gt;&lt;span class="s"&gt;"javascript:alert('XSS')"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
-&lt;span class="nt"&gt;&amp;lt;img&lt;/span&gt; &lt;span class="na"&gt;src=&lt;/span&gt;&lt;span class="s"&gt;"http://xxx.com/yyy.png"&lt;/span&gt; &lt;span class="na"&gt;onerror=&lt;/span&gt;&lt;span class="s"&gt;"alert('XSS')"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
-（这个仅限IE有效）
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;script&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="nx"&gt;alert&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;document.cookie&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nb"&gt;script&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'&amp;gt;&amp;lt;script&amp;gt;alert(document.cookie)&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;span class="s1"&gt;"&amp;gt;&amp;lt;script&amp;gt;alert(document.cookie)&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;span class="s1"&gt;&amp;lt;script&amp;gt;alert(document.cookie)&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;span class="s1"&gt;&amp;lt;script&amp;gt;alert (vulnerable)&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;span class="s1"&gt;%3Cscript%3Ealert('&lt;/span&gt;&lt;span class="nx"&gt;XSS&lt;/span&gt;&lt;span class="s1"&gt;')%3C/script%3E&lt;/span&gt;
+&lt;span class="s1"&gt;&amp;lt;script&amp;gt;alert('&lt;/span&gt;&lt;span class="nx"&gt;XSS&lt;/span&gt;&lt;span class="s1"&gt;')&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;span class="s1"&gt;&amp;lt;img src="javascript:alert('&lt;/span&gt;&lt;span class="nx"&gt;XSS&lt;/span&gt;&lt;span class="s1"&gt;')"&amp;gt;&lt;/span&gt;
+&lt;span class="s1"&gt;&amp;lt;img src="http://xxx.com/yyy.png" onerror="alert('&lt;/span&gt;&lt;span class="nx"&gt;XSS&lt;/span&gt;&lt;span class="s1"&gt;')"&amp;gt;&lt;/span&gt;
+&lt;span class="s1"&gt;（这个仅限IE有效）&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;攻击者通过 XSS 可以窃取用户的相关信息，如果用户是管理员，那么影响更大。
 通过这些身份信息，攻击者可以进一步篡改信息或者进行诈骗，后果不堪设想。
@@ -3391,15 +3560,15 @@ APP 无法在发起连接时候，也没有权限直接操作 socket。
 &lt;p&gt;为了解决同一个 IP 下面多个域名的问题，我们引入了一个URL参数： &lt;code&gt;__domain&lt;/code&gt;。
 当请求 IP 域名时候，必须带着这个参数，服务器会将请求域名解析出来，再分发到对应的域名。&lt;/p&gt;
 &lt;p&gt;实现这个逻辑的 Nginx 核心代码：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;set&lt;/span&gt; &lt;span class="o"&gt;$&lt;/span&gt;&lt;span class="nt"&gt;query_domain&lt;/span&gt; &lt;span class="o"&gt;$&lt;/span&gt;&lt;span class="nt"&gt;arg___domain&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
-&lt;span class="nt"&gt;if&lt;/span&gt; &lt;span class="o"&gt;($&lt;/span&gt;&lt;span class="nt"&gt;query_domain&lt;/span&gt; &lt;span class="o"&gt;!~&lt;/span&gt; &lt;span class="s1"&gt;'(www|a|b)\.example\.com'&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="err"&gt;rewrite&lt;/span&gt; &lt;span class="err"&gt;^&lt;/span&gt; &lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;www&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;example&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;404&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="n"&gt;redirect&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;set&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;query_domain&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;arg___domain&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;query_domain&lt;/span&gt; &lt;span class="o"&gt;!~&lt;/span&gt; &lt;span class="err"&gt;'&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;www&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;example&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="err"&gt;'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="n"&gt;rewrite&lt;/span&gt; &lt;span class="o"&gt;^&lt;/span&gt; &lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//www.example.com/404/ redirect;&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
-&lt;span class="nt"&gt;set&lt;/span&gt; &lt;span class="o"&gt;$&lt;/span&gt;&lt;span class="nt"&gt;my_host&lt;/span&gt; &lt;span class="o"&gt;$&lt;/span&gt;&lt;span class="nt"&gt;query_domain&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
-&lt;span class="nt"&gt;location&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="err"&gt;proxy_set_header&lt;/span&gt; &lt;span class="err"&gt;Host&lt;/span&gt; &lt;span class="err"&gt;$my_host&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-    &lt;span class="err"&gt;proxy_set_header&lt;/span&gt; &lt;span class="err"&gt;X-REAL-IP&lt;/span&gt; &lt;span class="err"&gt;$remote_addr&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-    &lt;span class="err"&gt;proxy_pass&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;scheme&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="mf"&gt;127.0.0.1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="n"&gt;set&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;my_host&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;query_domain&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="n"&gt;location&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="n"&gt;proxy_set_header&lt;/span&gt; &lt;span class="n"&gt;Host&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;my_host&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;proxy_set_header&lt;/span&gt; &lt;span class="n"&gt;X&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;REAL&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;IP&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;remote_addr&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;proxy_pass&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;scheme&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//127.0.0.1;&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;最后一个注意事项是，记得调整 Nginx 配置的 remote_addr，否则都变成了 127.0.0.1，
@@ -3946,159 +4115,4 @@ APP 无法在发起连接时候，也没有权限直接操作 socket。
    &lt;small&gt;&lt;img src="https://ohsolnxaa.qnssl.com/upload_dropbox/meta/wechat-pay-s-crop.png"/&gt;&lt;/small&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</summary><category term="Startup"></category><category term="Comics"></category><category term="OnePiece"></category></entry><entry><title>Windows management for hacker</title><link href="https://blog.alswl.com/2016/04/windows-management-for-hacker/" rel="alternate"></link><published>2016-04-24T16:36:16+08:00</published><updated>2016-04-24T16:36:16+08:00</updated><author><name>alswl</name></author><id>tag:blog.alswl.com,2016-04-24:2016/04/windows-management-for-hacker/</id><summary type="html">&lt;p&gt;团队里的同学有时看见我键指如飞，可以用快捷键将 Mac 的窗口玩转于手心。他们表示酷炫非常，
-心生羡慕的同时，希望掌握这门技艺，我就把使用的 Phoenix 介绍给大家。结果过了一段时间，
-发现普及率并不高，本着好为人师的精神，今天我就来八一八这款优秀的桌面管理工具。&lt;/p&gt;
-&lt;p&gt;在介绍我使用的工具之前，我要先介绍一下我选择的原因和历史。&lt;/p&gt;
-&lt;p&gt;&lt;img alt="201604/ergodox_infinity.jpg" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201604/ergodox_infinity.jpg"/&gt;&lt;/p&gt;
-&lt;p&gt;ps：配图是我长草多年的 Ergodox Infinity。（@夫人，看到这里的时候，请留步思考 5s）。&lt;/p&gt;
-&lt;h2 id="alttab-ku-nan-de-li-shi"&gt;Alt+Tab = 苦难的历史&lt;/h2&gt;
-&lt;p&gt;当我还年轻的时候，曾经对 Alt+Tab 这个快捷键愤慨无比，觉得这种设计虽然简单但是很蠢。&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;命中率低&lt;/strong&gt;。要在茫茫图标中查找自己需要的窗口，如果开了 20 个应用，切换到一个非常用窗口至多可能需要 20-1 次按键。
-    不要跟我说有 Alt+Shift+Tab 的反向循环操作，估计大部分用户都不知道。而且 正向/反向 切换伤脑子。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;交互方式耗时&lt;/strong&gt;。由于 Alt+Tab 的操作需要用户进行反馈才能进行，是 &lt;code&gt;眼-手-眼-手&lt;/code&gt; 的操作反馈方式，
-    这种交互模式费时费脑子。跟这种需要实时反馈对立的交互模式应当是类似「一键呼出」的操作。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;在大显示器、多显示器的环境下面，Alt-Tab 模式没有做任何优化&lt;/strong&gt;。&lt;/li&gt;
-&lt;li&gt;频繁切出窗口进行切换，容易让人分神，比如切换时候看到某个播放器的标题，在放一首喜欢的歌，很可能吸引过去。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;有人会问，难道不优化都是缺陷么？
-    我的答案是肯定的。Alt+Tab 是几乎除鼠标之外的唯一一种窗口操作方式。如果它不能跟上时代的步伐，
-    对大显示器、多显示器做优化，那就是不作为，不努力，不上进。跟不上变化是要被淘汰的！&lt;/p&gt;
-&lt;p&gt;&lt;img alt="201604/alt_tab_windows.jpeg" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201604/alt_tab_windows.jpeg"/&gt;&lt;/p&gt;
-&lt;h2 id="ping-pu-shi-chuang-kou-guan-li-qi"&gt;平铺式窗口管理器&lt;/h2&gt;
-&lt;p&gt;在被 Windows Alt-Tab 虐了多年之后，我长大了，开始接触 Linux，但是这种痛苦仍然时刻包围着我。
-当我分期购买一个外置显示器之后，这种痛苦到达到了顶端。
-恰好彼时我是 &lt;a href="https://www.archlinux.org/"&gt;ArchLinux&lt;/a&gt; 的信徒，很快就发现了一片桃源：
-自己安装 &lt;a href="https://wiki.archlinux.org/index.php/window_manager"&gt;Window manager&lt;/a&gt;。&lt;/p&gt;
-&lt;p&gt;我重新认识了桌面系统世界，除了介绍常规的 Gnome / KDE / xfce 之外，还有一类窗口管理系统，他们叫做「平铺式窗口管理器」。
-（严格来说，Gnome / KDE / xfce 属于 Desktop environment，层级比「窗口管理系统」要高，我这里不做严格区分）。&lt;/p&gt;
-&lt;p&gt;什么是平铺式窗口管理器？来一个直观的认识：&lt;/p&gt;
-&lt;p&gt;&lt;img alt="201604/awesome_1.jpeg" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201604/awesome_1.jpeg"/&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img alt="201604/awesome_2.jpeg" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201604/awesome_2.jpeg"/&gt;&lt;/p&gt;
-&lt;p&gt;官方的解释是&amp;hellip;&amp;hellip;呵呵，自己点进去看解释吧。平铺式桌面管理器（包括同时支持平铺式和堆叠式的混合式桌面管理器）给我带来了新的认知，
-原来桌面系统是可以进行接口编程的，我不那么 care 到底是哪种风格，我 care 的是，
-能否通过编程定制来解决我的 Alt-Tab 问题。&lt;/p&gt;
-&lt;h2 id="wo-qi-wang-de-chuang-kou-guan-li-mo-shi"&gt;我期望的窗口管理模式&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;快速启动最常用的应用，同时也能将其快速呼出&lt;/li&gt;
-&lt;li&gt;对大屏幕友好，现在显示器普遍是大屏幕，可以自由控制窗体的移动，方便多个窗口同时进行操作&lt;/li&gt;
-&lt;li&gt;对多屏幕友好，多屏幕间的切换，要友好。可以快速屏幕间切换&lt;/li&gt;
-&lt;li&gt;对键盘友好，对鼠标友好，全键盘操作模式，但同时要对鼠标友好，比如鼠标跟随焦点功能，毕竟一些操作还是鼠标方便&lt;/li&gt;
-&lt;li&gt;帮助集中注意力，将操作界面隔离成多个目的区分的空间，比如写作时候，期望只有一个 Evernote + Chrome 在眼前&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id="wo-zai-mac-xia-mian-de-fang-an"&gt;我在 Mac 下面的方案&lt;/h2&gt;
-&lt;p&gt;呜呼，感谢伟大的 &lt;a href="https://github.com/jasonm23/"&gt;Jason Milkins&lt;/a&gt; 做了一堆尝试，
-创造了一堆乱七八糟的桌面管理器。然后感谢 &lt;a href="https://github.com/kasper"&gt;Kasper Hirvikoski&lt;/a&gt;
-在 Jason 拍拍屁股走人之后，接过了 Jason 的棒子，将 Phoenix 这个项目快速推进，解决了一堆导致不可用的 bug，
-并新增了很多特性。&lt;/p&gt;
-&lt;p&gt;回到要介绍的主角身上，&lt;a href="https://github.com/kasper/phoenix"&gt;Phoenix&lt;/a&gt;：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;A lightweight OS X window and app manager scriptable with JavaScript&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;基本特性是：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Javascript 作为配置文件，定制性超级强&lt;/li&gt;
-&lt;li&gt;支持 App / Window / Space / Screen 等对象的操作&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;基于 Phoenix，我达成了我的窗口管理模式的目标：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;快速启动&lt;ul&gt;
-&lt;li&gt;使用 &lt;code&gt;Option&lt;/code&gt; + ` / 1 / 2 / 3 / 4 / 8 / 9 / e / a / s / z /, / . / / 启动&lt;/li&gt;
-&lt;li&gt;iTerm / Chrome / Safari / QQ / Bearychat / Wechat / Neteasy Music / MacVim / IntelliJ IDEA / Macdown / Mail / Evernote / Finder&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;窗口操作&lt;ul&gt;
-&lt;li&gt;Option + - / =&lt;ul&gt;
-&lt;li&gt;大小控制&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Option + m&lt;ul&gt;
-&lt;li&gt;窗口移动到屏幕中央&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Option + Space&lt;ul&gt;
-&lt;li&gt;鼠标找回到窗口中央&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;屏幕内操作&lt;ul&gt;
-&lt;li&gt;Option + J / K&lt;ul&gt;
-&lt;li&gt;焦点在同屏幕窗口切换&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Ctrl + Option + J / K / H / L&lt;ul&gt;
-&lt;li&gt;窗口移动&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;屏幕间操作&lt;ul&gt;
-&lt;li&gt;Option + H / L&lt;ul&gt;
-&lt;li&gt;焦点左右屏幕切换&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Space 操作&lt;ul&gt;
-&lt;li&gt;Option + I / O&lt;ul&gt;
-&lt;li&gt;Space 左右切换&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Option + Ctrl + I / O&lt;ul&gt;
-&lt;li&gt;将当前窗口移动到相邻 Space&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Option + Enter&lt;ul&gt;
-&lt;li&gt;将当前窗口移动到 Work Space&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Option + Delete&lt;ul&gt;
-&lt;li&gt;将当前窗口移动到 Park Space&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Work / Park Space 就是用来帮助我集中精力的&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;我的配置文件在 &lt;a href="https://github.com/alswl/.oOo./blob/master/mac/.phoenix.js"&gt;.oOo./.phoenix.js at master &amp;middot; alswl/.oOo.&lt;/a&gt;
-我的配置文件可以开箱即用，但这是我自己的工作模式，想要获得自己最舒适的效果，需要自己进行一些研究和定制。&lt;/p&gt;
-&lt;h2 id="qi-ta-yi-xie-ti-dai-fang-an"&gt;其他一些替代方案&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Mac&lt;ul&gt;
-&lt;li&gt;SizeUp  # 简单的桌面平铺工具，不支持一键切换&lt;/li&gt;
-&lt;li&gt;Spectacle  # 类 SizeUp&lt;/li&gt;
-&lt;li&gt;Divvy  # 类 SizeUp，收费&lt;/li&gt;
-&lt;li&gt;Slate  # 支持配置，支持一键切换（推荐）&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Linux&lt;ul&gt;
-&lt;li&gt;Awesome&lt;ul&gt;
-&lt;li&gt;&lt;a href="http://hahack.com/tools/awesome/"&gt;平铺式窗口管理器-Awesome | HaHack&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/alswl/awesome"&gt;我的 Awesome 配置文件（停止位置）&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;xmonad&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Windows&lt;ul&gt;
-&lt;li&gt;&lt;a href="https://github.com/fuhsjr00/bug.n"&gt;fuhsjr00/bug.n: Tiling Window Manager for Windows&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr/&gt;
-&lt;p&gt;我曾经写过一篇 &lt;a href="http://blog.alswl.com/2013/12/mac/"&gt;Linux 程序员的 Mac 安装记录&lt;/a&gt;，
-告诉大家我在 Mac 上面常用的工具、包管理器。&lt;/p&gt;
-&lt;hr&gt;
-&lt;div class="panel"&gt;
-&lt;div class="panel-body"&gt;
-   &lt;small&gt;原文链接: &lt;a href="https://blog.alswl.com/2016/04/windows-management-for-hacker/"&gt;https://blog.alswl.com/2016/04/windows-management-for-hacker/&lt;/a&gt;&lt;/small&gt;&lt;br&gt;
-   &lt;small&gt;3a1ff193cee606bd1e2ea554a16353ee&lt;/small&gt;&lt;br&gt;
-   &lt;small&gt;欢迎关注我的微信公众号：&lt;a href="http://mp.weixin.qq.com/mp/getmasssendmsg?__biz=MzIyNTIwMTU3MQ==#wechat_webview_type=1&amp;wechat_redirect"&gt;窥豹&lt;/a&gt;&lt;/small&gt;&lt;br&gt;
-   &lt;small&gt;&lt;img src="https://ohsolnxaa.qnssl.com/upload_dropbox/201605/qrcode_for_gh_17e2f9c2caa4_258.jpg"/&gt;&lt;/small&gt;
-   &lt;small&gt;&lt;img src="https://ohsolnxaa.qnssl.com/upload_dropbox/meta/wechat-pay-s-crop.png"/&gt;&lt;/small&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-</summary><category term="Mac"></category></entry></feed>
+</summary><category term="Startup"></category><category term="Comics"></category><category term="OnePiece"></category></entry></feed>
