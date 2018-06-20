@@ -102,7 +102,7 @@ Yugong 提供了一致性检查、全量、增量 Applier。
 &lt;li&gt;支持 Canal Redis 格式数据作为 MySQL 在线增量数据源&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id="gai-zao-zhi-hou-jie-gou"&gt;改造之后结构&lt;/h2&gt;
-&lt;p&gt;Extractor：&lt;/p&gt;
+&lt;h3 id="extractor_1"&gt;Extractor&lt;/h3&gt;
 &lt;p&gt;&lt;img alt="Extractor New Class" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201806/extractor-new.png"/&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;AbstractSqlServerExtractor&lt;/code&gt;：新增抽象 SqlServer Extractor&lt;/li&gt;
@@ -115,7 +115,7 @@ Yugong 提供了一致性检查、全量、增量 Applier。
 &lt;li&gt;&lt;code&gt;SqlServerFullExtractor&lt;/code&gt;：新增 SQL Server 全量 Extractor&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;在抽象出三个抽象类之后，整体逻辑更为清晰，如果未来要增加新数据库格式支持，也更为简单。&lt;/p&gt;
-&lt;p&gt;Translator：&lt;/p&gt;
+&lt;h3 id="translator_1"&gt;Translator&lt;/h3&gt;
 &lt;p&gt;&lt;img alt="Translator New Class" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201806/translator-new.png"/&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;Sha1ShardingTranslator&lt;/code&gt;：根据 Sha1 Sharding Translator&lt;/li&gt;
@@ -129,12 +129,14 @@ Yugong 提供了一致性检查、全量、增量 Applier。
 &lt;li&gt;&lt;code&gt;NameStyleDataTranslator&lt;/code&gt;：调整表字段名 Translator，支持按风格对整个表自动转换&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;CompositeIndexesDataTranslator&lt;/code&gt;：解决复合主键下唯一 PK 确定问题的 Translator&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Applier：&lt;/p&gt;
+&lt;p&gt;新增了一系列 Translator。&lt;/p&gt;
+&lt;h3 id="applier_1"&gt;Applier&lt;/h3&gt;
 &lt;p&gt;&lt;img alt="Applier New Class" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201806/applier-new.png"/&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;SqlServerIncreamentRecordApplier&lt;/code&gt;：新增 SQL Server 增量消费 Applier&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id="er-ci-kai-fa-xin-de"&gt;二次开发心得&lt;/h2&gt;
+&lt;p&gt;Applier 结构调整挺小，主要是增加了 SQL Server 的支持。&lt;/p&gt;
+&lt;h2 id="er-ci-kai-fa-xin-de_1"&gt;二次开发心得&lt;/h2&gt;
 &lt;p&gt;如何快速了解一个开源项目？很多同学第一反应就是阅读源码。
 看源码固然是有效果，但是性价比太低。
 如果项目设计不合理，很快会迷失在代码细节之中。
