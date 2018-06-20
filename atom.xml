@@ -73,7 +73,7 @@ Yugong 官方提供 Extractor 抽象出 &lt;code&gt;AbstractRecordExtractor&lt;/
 &lt;p&gt;Applier 将经过 Translator 处理过的数据写入 Target DB。
 Yugong 提供了一致性检查、全量、增量 Applier。
 比较特殊是 &lt;code&gt;AllRecordRecordApplier&lt;/code&gt; 提供了全套自动化操作。&lt;/p&gt;
-&lt;h2 id="others_1"&gt;Others&lt;/h2&gt;
+&lt;h3 id="others"&gt;Others&lt;/h3&gt;
 &lt;p&gt;除了 ETL 三个要素，yugong 还有一些重要类：控制类和工具类。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;SqlTemplate&lt;/code&gt;：提供 CRUD / UPSERT 等操作的基类 SQL 模板&lt;/li&gt;
@@ -82,7 +82,7 @@ Yugong 提供了一致性检查、全量、增量 Applier。
 &lt;li&gt;&lt;code&gt;YugongController&lt;/code&gt;：应用控制器，控制整个应用数据流向&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;YugongInstance&lt;/code&gt;：控制单个迁移任务实例，一张表对应一个 YugongInstance&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id="lao-zhan-shi-de-wen-ti"&gt;老战士的问题&lt;/h2&gt;
+&lt;h2 id="lao-zhan-shi-de-wen-ti_1"&gt;老战士的问题&lt;/h2&gt;
 &lt;p&gt;说 yugong 有问题会有些标题党，毕竟它是久经考验老战士了。
 但对我们来说，开源版本 yugong 还有一些不足：&lt;/p&gt;
 &lt;ul&gt;
