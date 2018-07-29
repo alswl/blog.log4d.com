@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>Log4D</title><link href="https://blog.alswl.com/" rel="alternate"></link><link href="https://blog.alswl.com/feeds/alswl.atom.xml" rel="self"></link><id>https://blog.alswl.com/</id><updated>2018-07-29T19:19:36+08:00</updated><entry><title>破解三才五格姓名测试</title><link href="https://blog.alswl.com/2018/07/naming-algorithem/" rel="alternate"></link><published>2018-07-29T19:19:36+08:00</published><updated>2018-07-29T19:19:36+08:00</updated><author><name>alswl</name></author><id>tag:blog.alswl.com,2018-07-29:2018/07/naming-algorithem/</id><summary type="html">&lt;p&gt;&lt;img alt="201807/bagua.png" src="https://ohsolnxaa.qnssl.com/upload_dropbox/201807/bagua.png"/&gt;
-&lt;small&gt;image from wikipedia &lt;a href="https://zh.wikipedia.org/wiki/%E5%85%AB%E5%8D%A6"&gt;八卦&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;small&gt;image from Wikipedia &lt;a href="https://zh.wikipedia.org/wiki/%E5%85%AB%E5%8D%A6"&gt;八卦&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
 &lt;p&gt;随着孩子预产期临近，我还有一个重要的任务没有完成：给孩子起一个名字。
 这本来是个随性的任务，但是由于上一辈笃信某个算命先生的姓名测试算法，让这个任务难度倍增。
 我根据一些古文取了不少名字，但是最后都败在姓名测试上面：得分不高。得分不高老一辈就要有说辞，
 我自己就是一个活生生案例，曾用名得分不高，中考被逼换了名字，改头换面重新做人。&lt;/p&gt;
-&lt;p&gt;而现在大量名字都败在算分数上面，我得琢磨一下其中奥秘，提高取名效率，避免再出现差错。&lt;/p&gt;
-&lt;p&gt;不少网站都提供姓名测试算命，得出的分数的确也是接近的：&lt;/p&gt;
+&lt;p&gt;我根据韵律取的名字几乎都败在算分数上面，我得琢磨一下其中奥秘，提高取名效率，避免再出现差错。
+不少网站都提供姓名测试算命，我且先看看上面的得分，研究一下规律：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="http://www.123cha.com/xm/"&gt;姓名测试,姓名打评分,姓名算命,姓名分析,在线三才五格五行吉凶剖象&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="http://www.zhonghuaqiming.com/testname.aspx"&gt;姓名测试打分，根据周易三才五格取名法为您评测姓名-中华起名网&lt;/a&gt;&lt;/li&gt;
