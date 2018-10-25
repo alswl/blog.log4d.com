@@ -10,7 +10,7 @@
 &lt;li&gt;运维可以轻松转身 DevOps 工程师&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;让我一一给你讲解吧。&lt;/p&gt;
-&lt;p&gt;&lt;img alt="sre-and-devops.png" src="http://4ocf5n.dijingchao.com/upload_dropbox/201809/sre-and-devops.png"/&gt;
+&lt;p&gt;&lt;img alt="sre-and-devops.png" src="https://4ocf5n.dijingchao.com/upload_dropbox/201809/sre-and-devops.png"/&gt;
 &lt;small&gt;&lt;a href="https://www.youtube.com/watch?v=uTEL8Ff1Zvk"&gt;image via YouTube&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
 
 &lt;h2 id="devops-he-sre-ding-yi"&gt;DevOps 和 SRE 定义&lt;/h2&gt;
@@ -43,7 +43,7 @@
 传统软件发布是一个重量级操作。一旦发布，Dev 几乎不再直接操作。
 80 后可能会记得 QQ 每年都会有一个大版本发布吧，QQ 2000 / 2003 / 2004 等等。
 此时 Ops 不用和 Dev 直接高频接触，甚至针对一些纯离线业务，压根没有设立 Ops 这个岗位。&lt;/p&gt;
-&lt;p&gt;&lt;img alt="qq-2004.png" src="http://4ocf5n.dijingchao.com/upload_dropbox/201809/qq-2004.png"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="qq-2004.png" src="https://4ocf5n.dijingchao.com/upload_dropbox/201809/qq-2004.png"/&gt;&lt;/p&gt;
 &lt;p&gt;互联网浪潮之后，软件由传统意义上桌面软件演变为面向网站、手机应用。
 这时候业务核心逻辑，比如交易，社交行为都不在用户桌面完成，而是在服务器后端完成。
 这给互联网企业给予了极大操作空间：随时可以改变业务逻辑，这促进了业务快速迭代变更。
@@ -57,7 +57,7 @@ Flicker 提出了几个核心理念：&lt;/p&gt;
 &lt;li&gt;高效沟通：IRC / IM Robot（现在那些 ChatBot 套路，10 年前就被 Flicker 玩过了）&lt;/li&gt;
 &lt;li&gt;信任、透明、高效、互助的沟通文化&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img alt="flicker.png" src="http://4ocf5n.dijingchao.com/upload_dropbox/201809/flicker.png"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="flicker.png" src="https://4ocf5n.dijingchao.com/upload_dropbox/201809/flicker.png"/&gt;&lt;/p&gt;
 &lt;p&gt;原文 SlideShare 在这
 &lt;a href="https://www.slideshare.net/jallspaw/10-deploys-per-day-dev-and-ops-cooperation-at-flickr"&gt;10+ Deploys Per Day: Dev and Ops Cooperation at Flickr&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;真是让人难以想象，今天各种培训公司和一些知名大 V 在呼唤这些 DevOps 理念，
@@ -267,11 +267,11 @@ DevOps 工程师掌握相关技能之后，也有机会可以发展为 SRE 工�
    &lt;small&gt;原文链接: &lt;a href="https://blog.alswl.com/2018/09/devops-and-sre/"&gt;https://blog.alswl.com/2018/09/devops-and-sre/&lt;/a&gt;&lt;/small&gt;&lt;br&gt;
    &lt;small&gt;3a1ff193cee606bd1e2ea554a16353ee&lt;/small&gt;&lt;br&gt;
    &lt;small&gt;欢迎关注我的微信公众号：&lt;a href="http://mp.weixin.qq.com/mp/getmasssendmsg?__biz=MzIyNTIwMTU3MQ==#wechat_webview_type=1&amp;wechat_redirect"&gt;窥豹&lt;/a&gt;&lt;/small&gt;&lt;br&gt;
-   &lt;small&gt;&lt;img src="http://4ocf5n.dijingchao.com/upload_dropbox/201605/qrcode_for_gh_17e2f9c2caa4_258.jpg"/&gt;&lt;/small&gt;
-   &lt;small&gt;&lt;img src="http://4ocf5n.dijingchao.com/upload_dropbox/meta/wechat-pay-s-crop.png"/&gt;&lt;/small&gt;
+   &lt;small&gt;&lt;img src="https://4ocf5n.dijingchao.com/upload_dropbox/201605/qrcode_for_gh_17e2f9c2caa4_258.jpg"/&gt;&lt;/small&gt;
+   &lt;small&gt;&lt;img src="https://4ocf5n.dijingchao.com/upload_dropbox/meta/wechat-pay-s-crop.png"/&gt;&lt;/small&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</summary><category term="DevOps"></category><category term="SRE"></category></entry><entry><title>破解三才五格姓名测试</title><link href="https://blog.alswl.com/2018/07/naming-algorithem/" rel="alternate"></link><published>2018-07-29T19:19:36+08:00</published><updated>2018-07-29T19:19:36+08:00</updated><author><name>alswl</name></author><id>tag:blog.alswl.com,2018-07-29:2018/07/naming-algorithem/</id><summary type="html">&lt;p&gt;&lt;img alt="201807/bagua.png" src="http://4ocf5n.dijingchao.com/upload_dropbox/201807/bagua.png"/&gt;
+</summary><category term="DevOps"></category><category term="SRE"></category></entry><entry><title>破解三才五格姓名测试</title><link href="https://blog.alswl.com/2018/07/naming-algorithem/" rel="alternate"></link><published>2018-07-29T19:19:36+08:00</published><updated>2018-07-29T19:19:36+08:00</updated><author><name>alswl</name></author><id>tag:blog.alswl.com,2018-07-29:2018/07/naming-algorithem/</id><summary type="html">&lt;p&gt;&lt;img alt="201807/bagua.png" src="https://4ocf5n.dijingchao.com/upload_dropbox/201807/bagua.png"/&gt;
 &lt;small&gt;image from Wikipedia &lt;a href="https://zh.wikipedia.org/wiki/%E5%85%AB%E5%8D%A6"&gt;八卦&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
 &lt;p&gt;随着孩子预产期临近，我还有一个重要的任务没有完成：给孩子起一个名字。
 这本来是个随性的任务，但是由于上一辈笃信某个算命先生的姓名测试算法，让这个任务难度倍增。
@@ -434,11 +434,11 @@ DevOps 工程师掌握相关技能之后，也有机会可以发展为 SRE 工�
    &lt;small&gt;原文链接: &lt;a href="https://blog.alswl.com/2018/07/naming-algorithem/"&gt;https://blog.alswl.com/2018/07/naming-algorithem/&lt;/a&gt;&lt;/small&gt;&lt;br&gt;
    &lt;small&gt;3a1ff193cee606bd1e2ea554a16353ee&lt;/small&gt;&lt;br&gt;
    &lt;small&gt;欢迎关注我的微信公众号：&lt;a href="http://mp.weixin.qq.com/mp/getmasssendmsg?__biz=MzIyNTIwMTU3MQ==#wechat_webview_type=1&amp;wechat_redirect"&gt;窥豹&lt;/a&gt;&lt;/small&gt;&lt;br&gt;
-   &lt;small&gt;&lt;img src="http://4ocf5n.dijingchao.com/upload_dropbox/201605/qrcode_for_gh_17e2f9c2caa4_258.jpg"/&gt;&lt;/small&gt;
-   &lt;small&gt;&lt;img src="http://4ocf5n.dijingchao.com/upload_dropbox/meta/wechat-pay-s-crop.png"/&gt;&lt;/small&gt;
+   &lt;small&gt;&lt;img src="https://4ocf5n.dijingchao.com/upload_dropbox/201605/qrcode_for_gh_17e2f9c2caa4_258.jpg"/&gt;&lt;/small&gt;
+   &lt;small&gt;&lt;img src="https://4ocf5n.dijingchao.com/upload_dropbox/meta/wechat-pay-s-crop.png"/&gt;&lt;/small&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</summary><category term="Family"></category></entry><entry><title>从 SQL Server 到 MySQL（三）：愚公移山 - 开源力量</title><link href="https://blog.alswl.com/2018/06/sql-server-migration-3/" rel="alternate"></link><published>2018-06-20T20:18:52+08:00</published><updated>2018-06-20T20:18:52+08:00</updated><author><name>alswl</name></author><id>tag:blog.alswl.com,2018-06-20:2018/06/sql-server-migration-3/</id><summary type="html">&lt;p&gt;&lt;img alt="201806/refactor.png" src="http://4ocf5n.dijingchao.com/upload_dropbox/201806/refactor.png"/&gt;&lt;/p&gt;
+</summary><category term="Family"></category></entry><entry><title>从 SQL Server 到 MySQL（三）：愚公移山 - 开源力量</title><link href="https://blog.alswl.com/2018/06/sql-server-migration-3/" rel="alternate"></link><published>2018-06-20T20:18:52+08:00</published><updated>2018-06-20T20:18:52+08:00</updated><author><name>alswl</name></author><id>tag:blog.alswl.com,2018-06-20:2018/06/sql-server-migration-3/</id><summary type="html">&lt;p&gt;&lt;img alt="201806/refactor.png" src="https://4ocf5n.dijingchao.com/upload_dropbox/201806/refactor.png"/&gt;&lt;/p&gt;
 &lt;p&gt;我们用了两章文章
 &lt;a href="https://blog.alswl.com/2018/03/sql-server-migration-1/"&gt;从 SQL Server 到 MySQL（一）：异构数据库迁移&lt;/a&gt;
 /
@@ -464,10 +464,10 @@ Otter 配备了相对 yugong 更健壮管理工具、分布式协调工具，
 &lt;p&gt;我直接进入关键环节：解剖 yugong 核心模块。
 Yugong 数据流是标准 ETL 流程，分别有 Extractor / Translator / Applier
 这三个大类来实现 ETL 过程:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="ETL &amp;amp; Java Class" src="http://4ocf5n.dijingchao.com/upload_dropbox/201806/etl.png"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="ETL &amp;amp; Java Class" src="https://4ocf5n.dijingchao.com/upload_dropbox/201806/etl.png"/&gt;&lt;/p&gt;
 &lt;p&gt;我们依次来看看这三大类具体设计。&lt;/p&gt;
 &lt;h3 id="extractor"&gt;Extractor&lt;/h3&gt;
-&lt;p&gt;&lt;img alt="Extractor Class" src="http://4ocf5n.dijingchao.com/upload_dropbox/201806/extractor.png"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Extractor Class" src="https://4ocf5n.dijingchao.com/upload_dropbox/201806/extractor.png"/&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;YuGongLifeCycle&lt;/code&gt;：Yugong 组件生命周期声明&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;AbstractYuGongLifeCycle&lt;/code&gt;：Yugong 组件生命周期一些实现&lt;/li&gt;
@@ -485,7 +485,7 @@ Yugong 官方提供 Extractor 抽象出 &lt;code&gt;AbstractRecordExtractor&lt;/
 其余类都是围绕 Oracle 实现。
 另外 Yugong 设计了 &lt;code&gt;YuGongLifeCycle&lt;/code&gt; 类实现了组件生命周期管理。&lt;/p&gt;
 &lt;h3 id="translator"&gt;Translator&lt;/h3&gt;
-&lt;p&gt;&lt;img alt="Translator Class" src="http://4ocf5n.dijingchao.com/upload_dropbox/201806/translator.png"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Translator Class" src="https://4ocf5n.dijingchao.com/upload_dropbox/201806/translator.png"/&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;DataTranslator&lt;/code&gt;：Translator 基类，为 Row 级别数据处理&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;TableTranslator&lt;/code&gt;：Translator 基类，为 Table 级别提供处理（官方代码中没有使用）&lt;/li&gt;
@@ -500,7 +500,7 @@ Yugong 官方提供 Extractor 抽象出 &lt;code&gt;AbstractRecordExtractor&lt;/
 大部分 Translator 做一些无状态操作，比如编码转换。
 另外还有一小部分 Translator 做了业务逻辑操作，比如做一些数据回写。&lt;/p&gt;
 &lt;h3 id="applier"&gt;Applier&lt;/h3&gt;
-&lt;p&gt;&lt;img alt="Applier Class" src="http://4ocf5n.dijingchao.com/upload_dropbox/201806/applier.png"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Applier Class" src="https://4ocf5n.dijingchao.com/upload_dropbox/201806/applier.png"/&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;RecordApplier&lt;/code&gt;：基础 Applier Interface&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;AbstractRecordApplier&lt;/code&gt;：基础 Applier 虚拟类，做了一部分实现&lt;/li&gt;
@@ -542,7 +542,7 @@ Yugong 提供了一致性检查、全量、增量 Applier。
 &lt;/ul&gt;
 &lt;h2 id="gai-zao-zhi-hou-jie-gou"&gt;改造之后结构&lt;/h2&gt;
 &lt;h3 id="extractor_1"&gt;Extractor&lt;/h3&gt;
-&lt;p&gt;&lt;img alt="Extractor New Class" src="http://4ocf5n.dijingchao.com/upload_dropbox/201806/extractor-new.png"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Extractor New Class" src="https://4ocf5n.dijingchao.com/upload_dropbox/201806/extractor-new.png"/&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;AbstractSqlServerExtractor&lt;/code&gt;：新增抽象 SqlServer Extractor&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;AbstractMysqlExtractor&lt;/code&gt;：新增抽象 MySQL Extractor&lt;/li&gt;
@@ -555,7 +555,7 @@ Yugong 提供了一致性检查、全量、增量 Applier。
 &lt;/ul&gt;
 &lt;p&gt;在抽象出三个抽象类之后，整体逻辑更为清晰，如果未来要增加新数据库格式支持，也更为简单。&lt;/p&gt;
 &lt;h3 id="translator_1"&gt;Translator&lt;/h3&gt;
-&lt;p&gt;&lt;img alt="Translator New Class" src="http://4ocf5n.dijingchao.com/upload_dropbox/201806/translator-new.png"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Translator New Class" src="https://4ocf5n.dijingchao.com/upload_dropbox/201806/translator-new.png"/&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;Sha1ShardingTranslator&lt;/code&gt;：根据 Sha1 Sharding Translator&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;ModShardingTranslator&lt;/code&gt;：根据 Value Mode Sharding Translator&lt;/li&gt;
@@ -570,7 +570,7 @@ Yugong 提供了一致性检查、全量、增量 Applier。
 &lt;/ul&gt;
 &lt;p&gt;新增了一系列 Translator。&lt;/p&gt;
 &lt;h3 id="applier_1"&gt;Applier&lt;/h3&gt;
-&lt;p&gt;&lt;img alt="Applier New Class" src="http://4ocf5n.dijingchao.com/upload_dropbox/201806/applier-new.png"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Applier New Class" src="https://4ocf5n.dijingchao.com/upload_dropbox/201806/applier-new.png"/&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;SqlServerIncreamentRecordApplier&lt;/code&gt;：新增 SQL Server 增量消费 Applier&lt;/li&gt;
 &lt;/ul&gt;
@@ -606,11 +606,11 @@ Slide 含金量高，在讲述核心中核心。&lt;/p&gt;
    &lt;small&gt;原文链接: &lt;a href="https://blog.alswl.com/2018/06/sql-server-migration-3/"&gt;https://blog.alswl.com/2018/06/sql-server-migration-3/&lt;/a&gt;&lt;/small&gt;&lt;br&gt;
    &lt;small&gt;3a1ff193cee606bd1e2ea554a16353ee&lt;/small&gt;&lt;br&gt;
    &lt;small&gt;欢迎关注我的微信公众号：&lt;a href="http://mp.weixin.qq.com/mp/getmasssendmsg?__biz=MzIyNTIwMTU3MQ==#wechat_webview_type=1&amp;wechat_redirect"&gt;窥豹&lt;/a&gt;&lt;/small&gt;&lt;br&gt;
-   &lt;small&gt;&lt;img src="http://4ocf5n.dijingchao.com/upload_dropbox/201605/qrcode_for_gh_17e2f9c2caa4_258.jpg"/&gt;&lt;/small&gt;
-   &lt;small&gt;&lt;img src="http://4ocf5n.dijingchao.com/upload_dropbox/meta/wechat-pay-s-crop.png"/&gt;&lt;/small&gt;
+   &lt;small&gt;&lt;img src="https://4ocf5n.dijingchao.com/upload_dropbox/201605/qrcode_for_gh_17e2f9c2caa4_258.jpg"/&gt;&lt;/small&gt;
+   &lt;small&gt;&lt;img src="https://4ocf5n.dijingchao.com/upload_dropbox/meta/wechat-pay-s-crop.png"/&gt;&lt;/small&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</summary><category term="SQLServer"></category><category term="MySQL"></category><category term="DB-Migration"></category></entry><entry><title>从 SQL Server 到 MySQL（二）：在线迁移，空中换发动机</title><link href="https://blog.alswl.com/2018/05/sql-server-migration-2/" rel="alternate"></link><published>2018-05-21T11:24:36+08:00</published><updated>2018-05-21T11:24:36+08:00</updated><author><name>alswl</name></author><id>tag:blog.alswl.com,2018-05-21:2018/05/sql-server-migration-2/</id><summary type="html">&lt;p&gt;&lt;img alt="flying-tanker" src="http://4ocf5n.dijingchao.com/upload_dropbox/201805/flying-tanker.png"/&gt;&lt;/p&gt;
+</summary><category term="SQLServer"></category><category term="MySQL"></category><category term="DB-Migration"></category></entry><entry><title>从 SQL Server 到 MySQL（二）：在线迁移，空中换发动机</title><link href="https://blog.alswl.com/2018/05/sql-server-migration-2/" rel="alternate"></link><published>2018-05-21T11:24:36+08:00</published><updated>2018-05-21T11:24:36+08:00</updated><author><name>alswl</name></author><id>tag:blog.alswl.com,2018-05-21:2018/05/sql-server-migration-2/</id><summary type="html">&lt;p&gt;&lt;img alt="flying-tanker" src="https://4ocf5n.dijingchao.com/upload_dropbox/201805/flying-tanker.png"/&gt;&lt;/p&gt;
 &lt;p&gt;&lt;smaill&gt;（image via https://pixabay.com/en/military-stealth-bomber-refueling-602729/ ）&lt;/smaill&gt;&lt;/p&gt;
 &lt;p&gt;在上篇文章
 &lt;a href="https://blog.alswl.com/2018/03/sql-server-migration-1/"&gt;从 SQL Server 到 MySQL （一）：异构数据库迁移 - Log4D&lt;/a&gt;
@@ -630,7 +630,7 @@ Slide 含金量高，在讲述核心中核心。&lt;/p&gt;
 在解决 SQL Server 到 MySQL 在线迁移之前，我们先研究一下 yugong 是如何做到 Oracle
 的在线迁移。&lt;/p&gt;
 &lt;p&gt;下图是 yugong 针对 Oracle 到 MySQL 的增量迁移流程：&lt;/p&gt;
-&lt;p&gt;&lt;img alt="yugong-oracle.png" src="http://4ocf5n.dijingchao.com/upload_dropbox/201805/yugong-oracle.png"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="yugong-oracle.png" src="https://4ocf5n.dijingchao.com/upload_dropbox/201805/yugong-oracle.png"/&gt;&lt;/p&gt;
 &lt;p&gt;这其中有四个步骤：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;增量数据收集 (创建 Oracle 表的增量物化视图)&lt;/li&gt;
@@ -668,7 +668,7 @@ CDC 全称 Change Data Capture，设计目的就是用来解决增量数据的�
 在这之前只能使用 SQl Server 2005 中的 &lt;code&gt;after insert&lt;/code&gt; / &lt;code&gt;after delete&lt;/code&gt;
 / &lt;code&gt;after update&lt;/code&gt; Trigger 功能来获得数据变化。&lt;/p&gt;
 &lt;p&gt;CDC 的工作原理如下：&lt;/p&gt;
-&lt;p&gt;&lt;img alt="cdc-data-flow.png" src="http://4ocf5n.dijingchao.com/upload_dropbox/201805/cdc-data-flow.png"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="cdc-data-flow.png" src="https://4ocf5n.dijingchao.com/upload_dropbox/201805/cdc-data-flow.png"/&gt;&lt;/p&gt;
 &lt;p&gt;当数据库表发生变化时候，Capture process 会从 transaction log 里面获取数据变化，
 然后将这些数据记录到 Change Table 里面。
 有了这些数据，用户可以通过特定的 CDC 查询函数将这些变化数据查出来。&lt;/p&gt;
@@ -750,7 +750,7 @@ Change Table 长什么样，可以有个直观的认识。&lt;/p&gt;
 但除了了解原理和使用方式，我们还需要深入了解 CDC 的工作机制，对其进行压测、调优，
 了解其极限和边界，否则一旦线上出现不可控的情况，就会对业务带来巨大损失。&lt;/p&gt;
 &lt;p&gt;我们先看看 CDC 的工作流程，就可以知道有哪些核心参数可以调整：&lt;/p&gt;
-&lt;p&gt;&lt;img alt="Influence of capture job parameters" src="http://4ocf5n.dijingchao.com/upload_dropbox/201805/cdc-influence.png"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Influence of capture job parameters" src="https://4ocf5n.dijingchao.com/upload_dropbox/201805/cdc-influence.png"/&gt;&lt;/p&gt;
 &lt;p&gt;上图是 CDC Job 的工作流程：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;蓝色区域是一次 Log 扫描执行的最大扫描次数：maxscans number（&lt;code&gt;maxscans&lt;/code&gt;）&lt;/li&gt;
@@ -776,8 +776,8 @@ Change Table 长什么样，可以有个直观的认识。&lt;/p&gt;
 &lt;/ul&gt;
 &lt;p&gt;出于篇幅考虑，我们无法将所有测试结果贴出来，
 这里放一个在并发 30 下面插入一百万数据（随机数据）进行展示：&lt;/p&gt;
-&lt;p&gt;&lt;img alt="cdc-metrics.png" src="http://4ocf5n.dijingchao.com/upload_dropbox/201805/cdc-metrics.png"/&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img alt="cdc-system-load.png" src="http://4ocf5n.dijingchao.com/upload_dropbox/201805/cdc-system-load.png"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="cdc-metrics.png" src="https://4ocf5n.dijingchao.com/upload_dropbox/201805/cdc-metrics.png"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="cdc-system-load.png" src="https://4ocf5n.dijingchao.com/upload_dropbox/201805/cdc-system-load.png"/&gt;&lt;/p&gt;
 &lt;p&gt;测试结论是，在默认的 CDC 参数下面：&lt;/p&gt;
 &lt;p&gt;CDC 的开启/关闭过程中会导致若干个 Process Block，
 大流量请求下面（15k TPS）过程会导致约 20 个左右 Process Block。
@@ -830,7 +830,7 @@ Canal 会模拟成一个 MySQL 实例，作为 Slave 连接到 Master 上面，
 为了满足我们可以重复消费数据的能力，我们还额外设计了一个环节，将 Canal
 的数据放到 Queue 中，在未来任意时间可以重复消费数据。
 我们选择了 Redis 作为这个 Queue，数据流如下。&lt;/p&gt;
-&lt;p&gt;&lt;img alt="canal.png" src="http://4ocf5n.dijingchao.com/upload_dropbox/201805/canal.png"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="canal.png" src="https://4ocf5n.dijingchao.com/upload_dropbox/201805/canal.png"/&gt;&lt;/p&gt;
 &lt;h2 id="zui-jia-shi-jian"&gt;最佳实践&lt;/h2&gt;
 &lt;p&gt;数据库的迁移在去 Windows 中，是最不容得出错的环节。
 应用是无状态的，出现问题可以通过回切较快地回滚。
@@ -1099,11 +1099,11 @@ Canal 会模拟成一个 MySQL 实例，作为 Slave 连接到 Master 上面，
    &lt;small&gt;原文链接: &lt;a href="https://blog.alswl.com/2018/05/sql-server-migration-2/"&gt;https://blog.alswl.com/2018/05/sql-server-migration-2/&lt;/a&gt;&lt;/small&gt;&lt;br&gt;
    &lt;small&gt;3a1ff193cee606bd1e2ea554a16353ee&lt;/small&gt;&lt;br&gt;
    &lt;small&gt;欢迎关注我的微信公众号：&lt;a href="http://mp.weixin.qq.com/mp/getmasssendmsg?__biz=MzIyNTIwMTU3MQ==#wechat_webview_type=1&amp;wechat_redirect"&gt;窥豹&lt;/a&gt;&lt;/small&gt;&lt;br&gt;
-   &lt;small&gt;&lt;img src="http://4ocf5n.dijingchao.com/upload_dropbox/201605/qrcode_for_gh_17e2f9c2caa4_258.jpg"/&gt;&lt;/small&gt;
-   &lt;small&gt;&lt;img src="http://4ocf5n.dijingchao.com/upload_dropbox/meta/wechat-pay-s-crop.png"/&gt;&lt;/small&gt;
+   &lt;small&gt;&lt;img src="https://4ocf5n.dijingchao.com/upload_dropbox/201605/qrcode_for_gh_17e2f9c2caa4_258.jpg"/&gt;&lt;/small&gt;
+   &lt;small&gt;&lt;img src="https://4ocf5n.dijingchao.com/upload_dropbox/meta/wechat-pay-s-crop.png"/&gt;&lt;/small&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</summary><category term="SQLServer"></category><category term="MySQL"></category><category term="DB-Migration"></category></entry><entry><title>如何逃离死海效应</title><link href="https://blog.alswl.com/2018/04/death-sea-effect/" rel="alternate"></link><published>2018-04-09T23:13:03+08:00</published><updated>2018-04-09T23:13:03+08:00</updated><author><name>alswl</name></author><id>tag:blog.alswl.com,2018-04-09:2018/04/death-sea-effect/</id><summary type="html">&lt;p&gt;&lt;img alt="201804/death-sea.jpg" src="http://4ocf5n.dijingchao.com/upload_dropbox/201804/death-sea.jpg"/&gt;&lt;/p&gt;
+</summary><category term="SQLServer"></category><category term="MySQL"></category><category term="DB-Migration"></category></entry><entry><title>如何逃离死海效应</title><link href="https://blog.alswl.com/2018/04/death-sea-effect/" rel="alternate"></link><published>2018-04-09T23:13:03+08:00</published><updated>2018-04-09T23:13:03+08:00</updated><author><name>alswl</name></author><id>tag:blog.alswl.com,2018-04-09:2018/04/death-sea-effect/</id><summary type="html">&lt;p&gt;&lt;img alt="201804/death-sea.jpg" src="https://4ocf5n.dijingchao.com/upload_dropbox/201804/death-sea.jpg"/&gt;&lt;/p&gt;
 &lt;p&gt;（图片来自 &lt;a href="https://www.flickr.com/photos/tsaiproject/8298557641"&gt;The Dead Sea, Israel | One of the lowest, saltiest and unusu&amp;hellip; | Flickr&lt;/a&gt;）&lt;/p&gt;
 &lt;p&gt;最近听团队老大的一个分享，介绍公司提倡的工程师的核心价值观，受益良多。
 这也让我想起了一篇文章，
@@ -1182,11 +1182,11 @@ Google 有一系列方法，包括 OKR 透明化，TGIF（Thank God It&amp;rsquo
    &lt;small&gt;原文链接: &lt;a href="https://blog.alswl.com/2018/04/death-sea-effect/"&gt;https://blog.alswl.com/2018/04/death-sea-effect/&lt;/a&gt;&lt;/small&gt;&lt;br&gt;
    &lt;small&gt;3a1ff193cee606bd1e2ea554a16353ee&lt;/small&gt;&lt;br&gt;
    &lt;small&gt;欢迎关注我的微信公众号：&lt;a href="http://mp.weixin.qq.com/mp/getmasssendmsg?__biz=MzIyNTIwMTU3MQ==#wechat_webview_type=1&amp;wechat_redirect"&gt;窥豹&lt;/a&gt;&lt;/small&gt;&lt;br&gt;
-   &lt;small&gt;&lt;img src="http://4ocf5n.dijingchao.com/upload_dropbox/201605/qrcode_for_gh_17e2f9c2caa4_258.jpg"/&gt;&lt;/small&gt;
-   &lt;small&gt;&lt;img src="http://4ocf5n.dijingchao.com/upload_dropbox/meta/wechat-pay-s-crop.png"/&gt;&lt;/small&gt;
+   &lt;small&gt;&lt;img src="https://4ocf5n.dijingchao.com/upload_dropbox/201605/qrcode_for_gh_17e2f9c2caa4_258.jpg"/&gt;&lt;/small&gt;
+   &lt;small&gt;&lt;img src="https://4ocf5n.dijingchao.com/upload_dropbox/meta/wechat-pay-s-crop.png"/&gt;&lt;/small&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</summary><category term="management"></category><category term="team"></category></entry><entry><title>从 SQL Server 到 MySQL（一）：异构数据库迁移</title><link href="https://blog.alswl.com/2018/03/sql-server-migration-1/" rel="alternate"></link><published>2018-03-12T21:08:56+08:00</published><updated>2018-03-12T21:08:56+08:00</updated><author><name>alswl</name></author><id>tag:blog.alswl.com,2018-03-12:2018/03/sql-server-migration-1/</id><summary type="html">&lt;p&gt;&lt;img alt="201803/migration-bird.png" src="http://4ocf5n.dijingchao.com/upload_dropbox/201803/migration-bird.png"/&gt;&lt;/p&gt;
+</summary><category term="management"></category><category term="team"></category></entry><entry><title>从 SQL Server 到 MySQL（一）：异构数据库迁移</title><link href="https://blog.alswl.com/2018/03/sql-server-migration-1/" rel="alternate"></link><published>2018-03-12T21:08:56+08:00</published><updated>2018-03-12T21:08:56+08:00</updated><author><name>alswl</name></author><id>tag:blog.alswl.com,2018-03-12:2018/03/sql-server-migration-1/</id><summary type="html">&lt;p&gt;&lt;img alt="201803/migration-bird.png" src="https://4ocf5n.dijingchao.com/upload_dropbox/201803/migration-bird.png"/&gt;&lt;/p&gt;
 &lt;h2 id="bei-jing"&gt;背景&lt;/h2&gt;
 &lt;p&gt;沪江成立于 2001 年，作为较早期的教育学习网站，
 当时技术选型范围并不大：
@@ -1218,12 +1218,12 @@ Java 的版本是 1.2，C# 尚未诞生，MySQL 还没有被 Sun 收购，
 如果业务场景不允许长时间停机，或者迁移数据量过大，
 无法在几个小时内迁移完成，那么就需要使用在线迁移方案了。&lt;/p&gt;
 &lt;p&gt;数据库停机迁移的流程：&lt;/p&gt;
-&lt;p&gt;&lt;img alt="201803/migration-db-offline-readonly.png" src="http://4ocf5n.dijingchao.com/upload_dropbox/201803/migration-db-offline-readonly.png"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="201803/migration-db-offline-readonly.png" src="https://4ocf5n.dijingchao.com/upload_dropbox/201803/migration-db-offline-readonly.png"/&gt;&lt;/p&gt;
 &lt;p&gt;停机迁移逻辑比较简单，使用 ETL（Extract Translate Load）
 工具从 Source 写入 Target，然后进行一致性校验，最后确认应用运行 OK，
 将 Source 表名改掉进行备份。&lt;/p&gt;
 &lt;p&gt;在线迁移的流程：&lt;/p&gt;
-&lt;p&gt;&lt;img alt="201803/migration-db-online.png" src="http://4ocf5n.dijingchao.com/upload_dropbox/201803/migration-db-online.png"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="201803/migration-db-online.png" src="https://4ocf5n.dijingchao.com/upload_dropbox/201803/migration-db-online.png"/&gt;&lt;/p&gt;
 &lt;p&gt;在线迁移的方案稍微复杂一些，流程上有准备全量数据，然后实时同步增量数据，
 在数据同步跟上（延迟秒级别）之后，进行短暂停机（Hang 住，确保没有流量），
 就可以使用新的应用配置，并使用新的数据库。&lt;/p&gt;
@@ -1508,8 +1508,8 @@ SQL Server 有 &lt;code&gt;physloc&lt;/code&gt;。这种方案可以解决无主
 &lt;p&gt;为了让数据库的状态更为直观的展现出来，
 我们对 MySQL / SQL Server 添加了细致的 Metrics 监控。
 在测试和迁移过程中，可以便利地看到数据库的响应情况。&lt;/p&gt;
-&lt;p&gt;&lt;img alt="201803/sql-server-metrics.png" src="http://4ocf5n.dijingchao.com/upload_dropbox/201803/sql-server-metrics.png"/&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img alt="201803/mysql-metrics.png" src="http://4ocf5n.dijingchao.com/upload_dropbox/201803/mysql-metrics.png"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="201803/sql-server-metrics.png" src="https://4ocf5n.dijingchao.com/upload_dropbox/201803/sql-server-metrics.png"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="201803/mysql-metrics.png" src="https://4ocf5n.dijingchao.com/upload_dropbox/201803/mysql-metrics.png"/&gt;&lt;/p&gt;
 &lt;p&gt;为了方便 DBA 快速 Review SQL。
 我们提供了一些工具，直接将代码库中的 SQL 拎出来，
 可以方便地进行 SQL Review。
@@ -1529,11 +1529,11 @@ SQL Server 有 &lt;code&gt;physloc&lt;/code&gt;。这种方案可以解决无主
    &lt;small&gt;原文链接: &lt;a href="https://blog.alswl.com/2018/03/sql-server-migration-1/"&gt;https://blog.alswl.com/2018/03/sql-server-migration-1/&lt;/a&gt;&lt;/small&gt;&lt;br&gt;
    &lt;small&gt;3a1ff193cee606bd1e2ea554a16353ee&lt;/small&gt;&lt;br&gt;
    &lt;small&gt;欢迎关注我的微信公众号：&lt;a href="http://mp.weixin.qq.com/mp/getmasssendmsg?__biz=MzIyNTIwMTU3MQ==#wechat_webview_type=1&amp;wechat_redirect"&gt;窥豹&lt;/a&gt;&lt;/small&gt;&lt;br&gt;
-   &lt;small&gt;&lt;img src="http://4ocf5n.dijingchao.com/upload_dropbox/201605/qrcode_for_gh_17e2f9c2caa4_258.jpg"/&gt;&lt;/small&gt;
-   &lt;small&gt;&lt;img src="http://4ocf5n.dijingchao.com/upload_dropbox/meta/wechat-pay-s-crop.png"/&gt;&lt;/small&gt;
+   &lt;small&gt;&lt;img src="https://4ocf5n.dijingchao.com/upload_dropbox/201605/qrcode_for_gh_17e2f9c2caa4_258.jpg"/&gt;&lt;/small&gt;
+   &lt;small&gt;&lt;img src="https://4ocf5n.dijingchao.com/upload_dropbox/meta/wechat-pay-s-crop.png"/&gt;&lt;/small&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</summary><category term="SQLServer"></category><category term="MySQL"></category><category term="DB-Migration"></category></entry><entry><title>从 2017 到 2018</title><link href="https://blog.alswl.com/2018/01/2017-2018/" rel="alternate"></link><published>2018-01-21T22:57:26+08:00</published><updated>2018-01-21T22:57:26+08:00</updated><author><name>alswl</name></author><id>tag:blog.alswl.com,2018-01-21:2018/01/2017-2018/</id><summary type="html">&lt;p&gt;&lt;img alt="2017 年 2 月摄于瑞虹月亮湾" src="http://4ocf5n.dijingchao.com/upload_dropbox/201801/moon.png"/&gt;&lt;/p&gt;
+</summary><category term="SQLServer"></category><category term="MySQL"></category><category term="DB-Migration"></category></entry><entry><title>从 2017 到 2018</title><link href="https://blog.alswl.com/2018/01/2017-2018/" rel="alternate"></link><published>2018-01-21T22:57:26+08:00</published><updated>2018-01-21T22:57:26+08:00</updated><author><name>alswl</name></author><id>tag:blog.alswl.com,2018-01-21:2018/01/2017-2018/</id><summary type="html">&lt;p&gt;&lt;img alt="2017 年 2 月摄于瑞虹月亮湾" src="https://4ocf5n.dijingchao.com/upload_dropbox/201801/moon.png"/&gt;&lt;/p&gt;
 &lt;p&gt;&lt;small&gt;（2017 年 2 月摄于瑞虹月亮湾）&lt;/small&gt;&lt;/p&gt;
 &lt;p&gt;我有两年没公开年终总结了，原因很简单：年终结果无法让自己满意，
 生活持续呈线性发展。那今年为什么又要将总结发出来呢？
@@ -1938,11 +1938,11 @@ SQL Server 到 MySQL。
    &lt;small&gt;原文链接: &lt;a href="https://blog.alswl.com/2018/01/2017-2018/"&gt;https://blog.alswl.com/2018/01/2017-2018/&lt;/a&gt;&lt;/small&gt;&lt;br&gt;
    &lt;small&gt;3a1ff193cee606bd1e2ea554a16353ee&lt;/small&gt;&lt;br&gt;
    &lt;small&gt;欢迎关注我的微信公众号：&lt;a href="http://mp.weixin.qq.com/mp/getmasssendmsg?__biz=MzIyNTIwMTU3MQ==#wechat_webview_type=1&amp;wechat_redirect"&gt;窥豹&lt;/a&gt;&lt;/small&gt;&lt;br&gt;
-   &lt;small&gt;&lt;img src="http://4ocf5n.dijingchao.com/upload_dropbox/201605/qrcode_for_gh_17e2f9c2caa4_258.jpg"/&gt;&lt;/small&gt;
-   &lt;small&gt;&lt;img src="http://4ocf5n.dijingchao.com/upload_dropbox/meta/wechat-pay-s-crop.png"/&gt;&lt;/small&gt;
+   &lt;small&gt;&lt;img src="https://4ocf5n.dijingchao.com/upload_dropbox/201605/qrcode_for_gh_17e2f9c2caa4_258.jpg"/&gt;&lt;/small&gt;
+   &lt;small&gt;&lt;img src="https://4ocf5n.dijingchao.com/upload_dropbox/meta/wechat-pay-s-crop.png"/&gt;&lt;/small&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</summary><category term="2017"></category><category term="年度"></category></entry><entry><title>工作和热情</title><link href="https://blog.alswl.com/2017/12/enthusiasm/" rel="alternate"></link><published>2017-12-21T23:46:59+08:00</published><updated>2017-12-21T23:46:59+08:00</updated><author><name>alswl</name></author><id>tag:blog.alswl.com,2017-12-21:2017/12/enthusiasm/</id><summary type="html">&lt;p&gt;&lt;img alt="201712/work.jpg" src="http://4ocf5n.dijingchao.com/upload_dropbox/201712/work.jpg"/&gt;&lt;/p&gt;
+</summary><category term="2017"></category><category term="年度"></category></entry><entry><title>工作和热情</title><link href="https://blog.alswl.com/2017/12/enthusiasm/" rel="alternate"></link><published>2017-12-21T23:46:59+08:00</published><updated>2017-12-21T23:46:59+08:00</updated><author><name>alswl</name></author><id>tag:blog.alswl.com,2017-12-21:2017/12/enthusiasm/</id><summary type="html">&lt;p&gt;&lt;img alt="201712/work.jpg" src="https://4ocf5n.dijingchao.com/upload_dropbox/201712/work.jpg"/&gt;&lt;/p&gt;
 &lt;p&gt;最近和一位老朋友吃饭，他说他最近比较苦恼：
 「开始有职业危机了，担心自己失去对工作的热情，似乎离油腻的中年人又进了一步」。
 作为一名互联网工程师，我深知这个行业技术日新月异，
@@ -2059,8 +2059,8 @@ SQL Server 到 MySQL。
    &lt;small&gt;原文链接: &lt;a href="https://blog.alswl.com/2017/12/enthusiasm/"&gt;https://blog.alswl.com/2017/12/enthusiasm/&lt;/a&gt;&lt;/small&gt;&lt;br&gt;
    &lt;small&gt;3a1ff193cee606bd1e2ea554a16353ee&lt;/small&gt;&lt;br&gt;
    &lt;small&gt;欢迎关注我的微信公众号：&lt;a href="http://mp.weixin.qq.com/mp/getmasssendmsg?__biz=MzIyNTIwMTU3MQ==#wechat_webview_type=1&amp;wechat_redirect"&gt;窥豹&lt;/a&gt;&lt;/small&gt;&lt;br&gt;
-   &lt;small&gt;&lt;img src="http://4ocf5n.dijingchao.com/upload_dropbox/201605/qrcode_for_gh_17e2f9c2caa4_258.jpg"/&gt;&lt;/small&gt;
-   &lt;small&gt;&lt;img src="http://4ocf5n.dijingchao.com/upload_dropbox/meta/wechat-pay-s-crop.png"/&gt;&lt;/small&gt;
+   &lt;small&gt;&lt;img src="https://4ocf5n.dijingchao.com/upload_dropbox/201605/qrcode_for_gh_17e2f9c2caa4_258.jpg"/&gt;&lt;/small&gt;
+   &lt;small&gt;&lt;img src="https://4ocf5n.dijingchao.com/upload_dropbox/meta/wechat-pay-s-crop.png"/&gt;&lt;/small&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 </summary><category term="Enthusiasm"></category><category term="Passion"></category></entry><entry><title>服务性能监控：USE 方法（The USE Method）</title><link href="https://blog.alswl.com/2017/11/use-method/" rel="alternate"></link><published>2017-11-12T15:30:12+08:00</published><updated>2017-11-12T15:30:12+08:00</updated><author><name>小莞</name></author><id>tag:blog.alswl.com,2017-11-12:2017/11/use-method/</id><summary type="html">&lt;p&gt;本文首发在沪江技术学院公众号，小莞翻译，我做了校对。
@@ -2068,7 +2068,7 @@ SQL Server 到 MySQL。
 为了避免沧海遗珠，特意转到这里。&lt;/p&gt;
 &lt;p&gt;英文原文：&lt;a href="http://www.brendangregg.com/usemethod.html"&gt;The USE Method&lt;/a&gt;。&lt;/p&gt;
 &lt;hr/&gt;
-&lt;p&gt;&lt;img alt="201711/performance.jpg" src="http://4ocf5n.dijingchao.com/upload_dropbox/201711/performance_900.jpg"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="201711/performance.jpg" src="https://4ocf5n.dijingchao.com/upload_dropbox/201711/performance_900.jpg"/&gt;&lt;/p&gt;
 &lt;p&gt;USE 方法是一种能分析任何系统性能的方法论。
 我们可以根据能帮助系统分析的结构化清单，来迅速的定位资源的瓶颈和错误所在。
 它通常会先以列出问题为开始，然后再寻找适合的指标，而不是给你制定一些固定的指标，
@@ -2141,7 +2141,7 @@ CPU 饱和度依然有问题（延迟）监控工具报告了
 &lt;p&gt;另外一种迭代资源的方法，是找到或者绘制一张系统的功能模块示意图。&lt;/p&gt;
 &lt;p&gt;这些显示了模块关系的图，在你查找数据流的瓶颈的时候是非常有用的，这里有一张Sun
 Fire V480 Guide(page 82)的例图：&lt;/p&gt;
-&lt;p&gt;&lt;img alt="201711/v480.png" src="http://4ocf5n.dijingchao.com/upload_dropbox/201711/v480.png"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="201711/v480.png" src="https://4ocf5n.dijingchao.com/upload_dropbox/201711/v480.png"/&gt;&lt;/p&gt;
 &lt;p&gt;我喜欢这些图表，尽管制作出它很难。
 不过，由硬件工程师来画这张图是最适合的-他们最善于做这类事。如果不信的话你可以自己试试。&lt;/p&gt;
 &lt;p&gt;在确定各种总线的利用率的同时，为每个总线的功能图表，注释好它的最大带宽。这样我们就能在进行单次测量之前，得到能将系统瓶颈识别出来的图表。&lt;/p&gt;
@@ -2233,7 +2233,7 @@ CPU 限制和存储I / O限制。 所有这些资源限制，都可以使用USE 
 &lt;h2 id="strategy"&gt;Strategy&lt;/h2&gt;
 &lt;p&gt;下面是用流程图 的方式画了 USE 方法的示意图。
 请注意，错误检查优先于利用率和饱和度检查（因为通常错误更快的表现出来，并更容易解释）。&lt;/p&gt;
-&lt;p&gt;&lt;img alt="201711/usemethod_flow.png" src="http://4ocf5n.dijingchao.com/upload_dropbox/201711/usemethod_flow.png"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="201711/usemethod_flow.png" src="https://4ocf5n.dijingchao.com/upload_dropbox/201711/usemethod_flow.png"/&gt;&lt;/p&gt;
 &lt;p&gt;USE 方法定位到的问题，可能是系统瓶颈。
 不幸的是，系统可能会遇到多个性能问题，因此您发现的第一个可能的问题最终却不是个问题。
 发现的每个问题都可以用方法持续的挖掘，然后继续使用 USE
@@ -2246,7 +2246,7 @@ CPU 限制和存储I / O限制。 所有这些资源限制，都可以使用USE 
 我想到了一个我没有完全不了解的系统，并且不知道从哪里开始：阿波罗月球模块指导系统。
 USE 方法提供了一个简单的流程来尝试第一步是寻找一个资源列表，或者更理想的话，找到一个功能模块图表。我在
 【Lunar Module - LM10 Through LM14 Familiarization Manual】中发现了以下内容：&lt;/p&gt;
-&lt;p&gt;&lt;img alt="201711/apollo_LM_guidance.png" src="http://4ocf5n.dijingchao.com/upload_dropbox/201711/apollo_LM_guidance.png"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="201711/apollo_LM_guidance.png" src="https://4ocf5n.dijingchao.com/upload_dropbox/201711/apollo_LM_guidance.png"/&gt;&lt;/p&gt;
 &lt;p&gt;这些组件中的一部分可能未表现出利用率或饱和度特性。在迭代后，
 就可以重新绘制只包含相关组件的图表（还可以包括："可擦除存储"部分的内存，"核心区域"和 "vac区域 "寄存器）。&lt;/p&gt;
 &lt;p&gt;我将从阿波罗主脑（AGC）本身开始。
@@ -2351,11 +2351,11 @@ USE 方法提供了一个简单的流程来尝试第一步是寻找一个资源�
    &lt;small&gt;原文链接: &lt;a href="https://blog.alswl.com/2017/11/use-method/"&gt;https://blog.alswl.com/2017/11/use-method/&lt;/a&gt;&lt;/small&gt;&lt;br&gt;
    &lt;small&gt;3a1ff193cee606bd1e2ea554a16353ee&lt;/small&gt;&lt;br&gt;
    &lt;small&gt;欢迎关注我的微信公众号：&lt;a href="http://mp.weixin.qq.com/mp/getmasssendmsg?__biz=MzIyNTIwMTU3MQ==#wechat_webview_type=1&amp;wechat_redirect"&gt;窥豹&lt;/a&gt;&lt;/small&gt;&lt;br&gt;
-   &lt;small&gt;&lt;img src="http://4ocf5n.dijingchao.com/upload_dropbox/201605/qrcode_for_gh_17e2f9c2caa4_258.jpg"/&gt;&lt;/small&gt;
-   &lt;small&gt;&lt;img src="http://4ocf5n.dijingchao.com/upload_dropbox/meta/wechat-pay-s-crop.png"/&gt;&lt;/small&gt;
+   &lt;small&gt;&lt;img src="https://4ocf5n.dijingchao.com/upload_dropbox/201605/qrcode_for_gh_17e2f9c2caa4_258.jpg"/&gt;&lt;/small&gt;
+   &lt;small&gt;&lt;img src="https://4ocf5n.dijingchao.com/upload_dropbox/meta/wechat-pay-s-crop.png"/&gt;&lt;/small&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</summary><category term="Metrics"></category><category term="Brendan Gregg"></category><category term="译文"></category></entry><entry><title>Stack Overflow 的 HTTPS 化：漫漫长路的终点</title><link href="https://blog.alswl.com/2017/09/https-on-stack-overflow/" rel="alternate"></link><published>2017-09-27T12:07:44+08:00</published><updated>2017-09-27T12:07:44+08:00</updated><author><name>罗晟, alswl</name></author><id>tag:blog.alswl.com,2017-09-27:2017/09/https-on-stack-overflow/</id><summary type="html">&lt;p&gt;&lt;img alt="Stack Overflow" src="http://4ocf5n.dijingchao.com/upload_dropbox/201709/stack-overflow.jpg"/&gt;&lt;/p&gt;
+</summary><category term="Metrics"></category><category term="Brendan Gregg"></category><category term="译文"></category></entry><entry><title>Stack Overflow 的 HTTPS 化：漫漫长路的终点</title><link href="https://blog.alswl.com/2017/09/https-on-stack-overflow/" rel="alternate"></link><published>2017-09-27T12:07:44+08:00</published><updated>2017-09-27T12:07:44+08:00</updated><author><name>罗晟, alswl</name></author><id>tag:blog.alswl.com,2017-09-27:2017/09/https-on-stack-overflow/</id><summary type="html">&lt;p&gt;&lt;img alt="Stack Overflow" src="https://4ocf5n.dijingchao.com/upload_dropbox/201709/stack-overflow.jpg"/&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;原文作者：Nick Craver&lt;/li&gt;
 &lt;li&gt;翻译作者：&lt;a href="https://twitter.com/luosheng"&gt;罗晟 @luosheng&lt;/a&gt; &amp;amp; &lt;a href="https://twitter.com/alswl"&gt;@alswl&lt;/a&gt;&lt;/li&gt;
@@ -2506,7 +2506,7 @@ USE 方法提供了一个简单的流程来尝试第一步是寻找一个资源�
 &lt;p&gt;答案是：这个方案不适合我们。 Let&amp;rsquo;s Encrypt 的确是一个伟大的产品，我希望他们能够长期服务于大家。当你只有一个或少数几个域名时，它是非常出色的选择。但是很可惜，我们 Stack Exchange 有&lt;a href="https://stackexchange.com/sites"&gt;数百个站点&lt;/a&gt;，而 Let&amp;rsquo;s Encrypt 并&lt;a href="https://letsencrypt.org/docs/faq/"&gt;不支持通配域名配置&lt;/a&gt;。这导致 Let&amp;rsquo;s Encrypt 无法满足我们的需求。要这么做，我们就不得不在每上一个新的 Q&amp;amp;A 站点的时候都部署一个（或两个）证书。这样会增加我们部署的复杂性，并且我们要么放弃不支持 SNI 的客户端（大约占 2% 的流量）要么提供超多的 IP&amp;mdash;&amp;mdash;而我们目前没这么多的 IP。&lt;/p&gt;
 &lt;p&gt;我们之所以想控制证书，还有另外一个原因是我们想在本地负载均衡器以及 CDN / 代理提供商那边使用完成相同的证书。如果不做到这个，我们无法顺畅地做从代理那里做失效备援（failover）。支持&amp;nbsp;&lt;a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Public_Key_Pinning"&gt;HTTP 公钥固定（HPKP）&lt;/a&gt;的客户端会报认证失败。虽然我们仍在评估是否使用 HPKP，但是如果有一天要用的话我们得提前做好准备。&lt;/p&gt;
 &lt;p&gt;很多朋友在看见我们的主证书时候会吓得目瞪口呆，因为它包含了我们的主域名和通配符子域名。它看上去长成这样：&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://4ocf5n.dijingchao.com/upload_dropbox/201709/HTTPS-MainCertificate.png"&gt;&lt;img alt="Main Certificate" src="http://4ocf5n.dijingchao.com/upload_dropbox/201709/HTTPS-MainCertificate.png"/&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://4ocf5n.dijingchao.com/upload_dropbox/201709/HTTPS-MainCertificate.png"&gt;&lt;img alt="Main Certificate" src="https://4ocf5n.dijingchao.com/upload_dropbox/201709/HTTPS-MainCertificate.png"/&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;为什么这么做？老实说，是我们让&amp;nbsp;&lt;a href="https://www.digicert.com/"&gt;DigiCert&lt;/a&gt;&amp;nbsp;替我们做的。这么做会导致每次发生变化的时候都需要手动合并证书，了　我们为什么要忍受这么麻烦的事呢？首先，我们期望能够尽可能让更多用户使用我们产品。这里面包括了那些还不支持 SNI 的用户（比如在我们项目启动的时候 Android 2.3 势头正猛）。另外，也包括 HTTP/2 与一些现实问题&amp;mdash;&amp;mdash;我们过会儿会谈到这一块。&lt;/p&gt;
 &lt;p&gt;Meta 子域（meta.*.&lt;a href="http://stackexcange.com/"&gt;stackexcange.com&lt;/a&gt;）&lt;/p&gt;
 &lt;p&gt;Stack Exchage 的一个设计理念是，针对每个 Q&amp;amp;A 站点，我们都有一个地方供讨论。我们称之为&amp;nbsp;&lt;a href="https://stackoverflow.blog/2010/04/29/do-trilogy-sites-need-a-third-place/"&gt;&amp;ldquo;second place&amp;rdquo;&lt;/a&gt;。比如&amp;nbsp;&lt;code&gt;meta.gaming.stackexchange.com&lt;/code&gt;&amp;nbsp;用来讨论&amp;nbsp;&lt;code&gt;gaming.stackexchange.com&lt;/code&gt;。这个有什么特别之处呢？好吧，并没有，除了域名：这是一个 4 级域名。&lt;/p&gt;
@@ -2593,7 +2593,7 @@ cdn.sstatic.net.        724     IN      A       151.101.129.69
 &lt;/ul&gt;
 &lt;p&gt;HAProxy 比较简单，这是我们使用一个 SSL 证书来支持 :433 端口的第一步。事后看来，这也只是一小步。&lt;/p&gt;
 &lt;p&gt;这里是上面描述情况下的架构图，我们马上来说前面的那块云是怎么回事：&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://4ocf5n.dijingchao.com/upload_dropbox/201709/HTTPS-Layout.svg"&gt;&lt;img alt="Logical Architecture" src="http://4ocf5n.dijingchao.com/upload_dropbox/201709/HTTPS-Layout.svg"/&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://4ocf5n.dijingchao.com/upload_dropbox/201709/HTTPS-Layout.svg"&gt;&lt;img alt="Logical Architecture" src="https://4ocf5n.dijingchao.com/upload_dropbox/201709/HTTPS-Layout.svg"/&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id="cdndai-li-ceng-tong-guo-cloudflare-he-fastly-you-hua-yan-chi"&gt;CDN/代理层：通过 Cloudflare 和 Fastly 优化延迟&lt;/h3&gt;
 &lt;p&gt;我对 Stack Overflow&amp;nbsp;&lt;a href="https://nickcraver.com/blog/2016/02/17/stack-overflow-the-architecture-2016-edition/"&gt;架构&lt;/a&gt;&lt;a href="https://stackexchange.com/performance"&gt;的效率&lt;/a&gt;一直很自豪。我们很厉害吧？仅用一个数据中心和几个服务器就撑起了一个大型网站。不过这次不一样了。尽管效率这件事情很好，但是在延迟上就成了个问题。我们不需要那么多服务器，我们也不需要多地扩展（不过我们有一个灾备节点）。这一次，这就成为了问题。由于光速，我们（暂时）无法解决延迟这个基础性问题。我们听说有人已经在处理这个问题了，不过他们造的时间机器好像有点问题。&lt;/p&gt;
 &lt;p&gt;让我们用数字来理解延迟。赤道长度是 40000 公里（光绕地球一圈的最坏情况）。&lt;a href="https://en.wikipedia.org/wiki/Speed_of_light"&gt;光速&lt;/a&gt;在真空中是 299,792,458 米/秒。很多人用这个数字，但光纤并不是真空的。实际上光纤有&amp;nbsp;&lt;a href="https://physics.stackexchange.com/q/80043/653"&gt;30-31% 损耗&lt;/a&gt;，所以我们的这个数字是：(40,075,000 m) / (299,792,458 m/s * .70) = 0.191s，也就是说最坏情况下绕地球一圈是 191ms，对吧？不对。这假设的是一条理想路径，而实际上两个网络节点的之间几乎不可能是直线。中间还有路由器、交换机、缓存、处理器队列等各种各样的延迟。累加起来的延迟相当可观。&lt;/p&gt;
@@ -2607,7 +2607,7 @@ cdn.sstatic.net.        724     IN      A       151.101.129.69
 &lt;/ul&gt;
 &lt;h3 id="you-hua-dai-li-ceng-de-zhun-bei-ke-hu-duan-xing-neng-ce-shi"&gt;优化代理层的准备：客户端性能测试&lt;/h3&gt;
 &lt;p&gt;开始正式启用终端链路加速之前，我们需要有性能测试报告。我们在浏览器搭好了一整套覆盖全链路性能数据的测试。 浏览器里可以通过 JavaScript 从&amp;nbsp;&lt;a href="https://www.w3.org/TR/navigation-timing/"&gt;&lt;code&gt;window.performance&lt;/code&gt;&lt;/a&gt;&amp;nbsp;取性能耗时。打开你浏览器的审查器，你可以亲手试一下。我们希望这个过程透明，所以从第一天开始就把详细信息&lt;a href="https://teststackoverflow.com/"&gt;放在了 teststackoverflow.com&lt;/a&gt;&amp;nbsp;上。这上面并没有敏感信息，只有一些由页面&lt;em&gt;直接&lt;/em&gt;载入的 URI 和资源，以及它们的耗时。每一张记录下来的页面大概长这样：&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://4ocf5n.dijingchao.com/upload_dropbox/201709/HTTPS-Teststackoverflow.png"&gt;&lt;img alt="teststackoverflow.com" src="http://4ocf5n.dijingchao.com/upload_dropbox/201709/HTTPS-Teststackoverflow.png"/&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://4ocf5n.dijingchao.com/upload_dropbox/201709/HTTPS-Teststackoverflow.png"&gt;&lt;img alt="teststackoverflow.com" src="https://4ocf5n.dijingchao.com/upload_dropbox/201709/HTTPS-Teststackoverflow.png"/&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;我们目前对 5% 的流量做性能监控。这个过程没有那么复杂，但是我们需要做的事情包括：
 1. 把耗时转成 JSON
 2. 页面加载后上传性能测试数据
@@ -2615,9 +2615,9 @@ cdn.sstatic.net.        724     IN      A       151.101.129.69
 4. 在 SQL Server 中使用&amp;nbsp;&lt;a href="http://www.nikoport.com/columnstore/"&gt;clustered columnstore&lt;/a&gt;&amp;nbsp;存储数据
 5. 使用&amp;nbsp;&lt;a href="https://bosun.org/"&gt;Bosun&lt;/a&gt;&amp;nbsp;(具体是&amp;nbsp;&lt;a href="https://github.com/bretcope/BosunReporter.NET"&gt;BosunReporter.NET&lt;/a&gt;) 汇集数据&lt;/p&gt;
 &lt;p&gt;最终的结果是我们有了一份来自于全球&lt;em&gt;真实&lt;/em&gt;用户的很好的实时汇总。这些数据可供我们分析、监控、报警，以及用于评估变化。它大概长这样：&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://4ocf5n.dijingchao.com/upload_dropbox/201709/HTTPS-ClientTimings.png"&gt;&lt;img alt="Client Timings Dashboard" src="http://4ocf5n.dijingchao.com/upload_dropbox/201709/HTTPS-ClientTimings.png"/&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://4ocf5n.dijingchao.com/upload_dropbox/201709/HTTPS-ClientTimings.png"&gt;&lt;img alt="Client Timings Dashboard" src="https://4ocf5n.dijingchao.com/upload_dropbox/201709/HTTPS-ClientTimings.png"/&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;幸好，我们有持续的流量来获取数据以供我们决策使用，目前的量级是 50 亿，并且还在增长中。这些数据概览如下：&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://4ocf5n.dijingchao.com/upload_dropbox/201709/HTTPS-ClientTimingsDatabase.png"&gt;&lt;img alt="Client Timings Database" src="http://4ocf5n.dijingchao.com/upload_dropbox/201709/HTTPS-ClientTimingsDatabase.png"/&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://4ocf5n.dijingchao.com/upload_dropbox/201709/HTTPS-ClientTimingsDatabase.png"&gt;&lt;img alt="Client Timings Database" src="https://4ocf5n.dijingchao.com/upload_dropbox/201709/HTTPS-ClientTimingsDatabase.png"/&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;OK，我们已经把基础工作准备好了，是时候来测试 CDN/代理层供应商了。&lt;/p&gt;
 &lt;h3 id="cloudflare"&gt;Cloudflare&lt;/h3&gt;
 &lt;p&gt;我们评估了很多 CDN/DDoS 防护层供应商。最终选择了&amp;nbsp;&lt;a href="https://www.cloudflare.com/"&gt;Cloudflare&lt;/a&gt;，主要是考虑到他们的基础设施、快速响应、还有他们承诺的&amp;nbsp;&lt;a href="https://www.cloudflare.com/website-optimization/railgun/"&gt;Railgun&lt;/a&gt;。那么我们如何测试使用了 Cloudfalre 之后用户的真实效果？是否需要部署服务来获取用户数据？答案是不需要！&lt;/p&gt;
@@ -2879,9 +2879,9 @@ END)
 &lt;li&gt;可以支持更多用户。因为很多老的代理不能很好地处理 websockets。如果使用加密流量，大多数代理就只是透传而不会弄乱流量。对移动用户来说尤其是这样。&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;最大的问题就是：「我们能处理了这个负载吗？」我们全网处理了不少并发 websocket，在我写这估的时候我们有超过 600000 个&lt;strong&gt;并发&lt;/strong&gt;的连接。这个是我们 HAProxy 的仪表盘在 &lt;a href="https://github.com/opserver/Opserver"&gt;Opserver&lt;/a&gt; 中的界面：&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://4ocf5n.dijingchao.com/upload_dropbox/201709/HTTPS-Websockets.png"&gt;&lt;img alt="HAProxy Websockets" src="http://4ocf5n.dijingchao.com/upload_dropbox/201709/HTTPS-Websockets.png"/&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://4ocf5n.dijingchao.com/upload_dropbox/201709/HTTPS-Websockets.png"&gt;&lt;img alt="HAProxy Websockets" src="https://4ocf5n.dijingchao.com/upload_dropbox/201709/HTTPS-Websockets.png"/&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;不管是在终端、抽象命名空间套接字还是前端来说都有很多连接。由于启用了 &lt;a href="https://tools.ietf.org/html/rfc5077"&gt;TLS 会话恢复&lt;/a&gt;，HAProxy 本身的负载也很重。要让用户下一次重新连接更快，第一次协商之后用户会拿到一个令牌，下一次会把这个令牌发送过来。如果我们的内存足够并且没有超时，我们会恢复上次的会话而不是再开一个。这个操作可以节省 CPU，对用户来说有性能提升，但会用到到更多内存。这个多因 key 大小而异（2048，4096 或是更多？）我们现在用的是 4096 位的 key。在开了 600000 个 websocket 的情况下，我们只用掉了负载均衡器 64GB 内存里的 19GB。这里面 12GB 是 HAProxy 在用，大多数为 TLS 会话缓存。所以结果来说还不错，如果&lt;em&gt;我们不得不买内存的话&lt;/em&gt;，这也会是整个 HTTPS 迁移中最便宜的东西。&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://4ocf5n.dijingchao.com/upload_dropbox/201709/HTTPS-WebsocketMemory.png"&gt;&lt;img alt="HAProxy Websocket Memory" src="http://4ocf5n.dijingchao.com/upload_dropbox/201709/HTTPS-WebsocketMemory.png"/&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://4ocf5n.dijingchao.com/upload_dropbox/201709/HTTPS-WebsocketMemory.png"&gt;&lt;img alt="HAProxy Websocket Memory" src="https://4ocf5n.dijingchao.com/upload_dropbox/201709/HTTPS-WebsocketMemory.png"/&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id="wei-zhi"&gt;未知&lt;/h3&gt;
 &lt;p&gt;我猜现在可能是我们来谈论一些未知问题的时候。有些问题是在我们尝试之前无法真正知道的：&lt;/p&gt;
 &lt;ul&gt;
@@ -2980,7 +2980,7 @@ END)
 &lt;p&gt;记得我们必须修复的帮助文档吗？帮助文档都是按语言区分，只有极少数是按站点来分，所以本来它们是可以共享的。为了不产生大量重复代码及存储结构，我们做了一点小小的处理。我们把实际上的帖子对象（和问题、答案一样）存在了&amp;nbsp;&lt;code&gt;meta.stackexchange.com&lt;/code&gt;&amp;nbsp;或者是这篇帖子关联的站点中。我们把生成的&amp;nbsp;&lt;code&gt;HelpPost&lt;/code&gt;&amp;nbsp;存在中心的&amp;nbsp;&lt;code&gt;Sites&lt;/code&gt;&amp;nbsp;数据库里，其实也就是生成的 HTML。在处理混合内容的时候，我们也处理了单个站里的帖子，简单吧！&lt;/p&gt;
 &lt;p&gt;当原始的帖子修复后，我们只需要为每个站点去再生成 HTML 然后填充回去就行了。但是这个时候我犯了个错误。回填的时候拿的是&lt;em&gt;当前站点&lt;/em&gt;（调用回填的那个站点），而不是原始站。这导致&amp;nbsp;&lt;code&gt;meta.stackexchange.com&lt;/code&gt;&amp;nbsp;里的 12345 帖子被&amp;nbsp;&lt;code&gt;stackoverflow.com&lt;/code&gt;&amp;nbsp;里的 12345 帖子所替代。有的时候是答案、有的时候是问题，有的时候有一个 tag wiki。这也导致了一些&lt;a href="https://meta.stackoverflow.com/q/345280/13249"&gt;很有意思的帮助文档&lt;/a&gt;。这里有一些&lt;a href="https://meta.stackoverflow.com/a/345282/13249"&gt;相应的后果&lt;/a&gt;。&lt;/p&gt;
 &lt;p&gt;我只能说，还好修复的过程挺简单的：&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://4ocf5n.dijingchao.com/upload_dropbox/201709/HTTPS-HelpCommit.png"&gt;&lt;img alt="Me being a dumbass" src="http://4ocf5n.dijingchao.com/upload_dropbox/201709/HTTPS-HelpCommit.png"/&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://4ocf5n.dijingchao.com/upload_dropbox/201709/HTTPS-HelpCommit.png"&gt;&lt;img alt="Me being a dumbass" src="https://4ocf5n.dijingchao.com/upload_dropbox/201709/HTTPS-HelpCommit.png"/&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;再一次将数据填充回去就能修复了。不过怎么说，这个当时算是在公共场合闹了个笑话。抱歉。&lt;/p&gt;
 &lt;h3 id="kai-yuan_1"&gt;开源&lt;/h3&gt;
 &lt;p&gt;这里有我们在这个过程中产出的项目，帮助我们改进了 HTTPS 部署的工作，希望有一天这些能拯救世界吧：&lt;/p&gt;
@@ -3042,11 +3042,11 @@ END)
    &lt;small&gt;原文链接: &lt;a href="https://blog.alswl.com/2017/09/https-on-stack-overflow/"&gt;https://blog.alswl.com/2017/09/https-on-stack-overflow/&lt;/a&gt;&lt;/small&gt;&lt;br&gt;
    &lt;small&gt;3a1ff193cee606bd1e2ea554a16353ee&lt;/small&gt;&lt;br&gt;
    &lt;small&gt;欢迎关注我的微信公众号：&lt;a href="http://mp.weixin.qq.com/mp/getmasssendmsg?__biz=MzIyNTIwMTU3MQ==#wechat_webview_type=1&amp;wechat_redirect"&gt;窥豹&lt;/a&gt;&lt;/small&gt;&lt;br&gt;
-   &lt;small&gt;&lt;img src="http://4ocf5n.dijingchao.com/upload_dropbox/201605/qrcode_for_gh_17e2f9c2caa4_258.jpg"/&gt;&lt;/small&gt;
-   &lt;small&gt;&lt;img src="http://4ocf5n.dijingchao.com/upload_dropbox/meta/wechat-pay-s-crop.png"/&gt;&lt;/small&gt;
+   &lt;small&gt;&lt;img src="https://4ocf5n.dijingchao.com/upload_dropbox/201605/qrcode_for_gh_17e2f9c2caa4_258.jpg"/&gt;&lt;/small&gt;
+   &lt;small&gt;&lt;img src="https://4ocf5n.dijingchao.com/upload_dropbox/meta/wechat-pay-s-crop.png"/&gt;&lt;/small&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</summary><category term="译文"></category><category term="HTTPS"></category></entry><entry><title>一个关于 nolock 的故事：深入理解数据库隔离级别</title><link href="https://blog.alswl.com/2017/09/sql-server-nolock/" rel="alternate"></link><published>2017-09-19T16:43:45+08:00</published><updated>2017-09-19T16:43:45+08:00</updated><author><name>alswl</name></author><id>tag:blog.alswl.com,2017-09-19:2017/09/sql-server-nolock/</id><summary type="html">&lt;p&gt;&lt;img alt="sql-server.png" src="http://4ocf5n.dijingchao.com/upload_dropbox/201709/sql-server.png"/&gt;&lt;/p&gt;
+</summary><category term="译文"></category><category term="HTTPS"></category></entry><entry><title>一个关于 nolock 的故事：深入理解数据库隔离级别</title><link href="https://blog.alswl.com/2017/09/sql-server-nolock/" rel="alternate"></link><published>2017-09-19T16:43:45+08:00</published><updated>2017-09-19T16:43:45+08:00</updated><author><name>alswl</name></author><id>tag:blog.alswl.com,2017-09-19:2017/09/sql-server-nolock/</id><summary type="html">&lt;p&gt;&lt;img alt="sql-server.png" src="https://4ocf5n.dijingchao.com/upload_dropbox/201709/sql-server.png"/&gt;&lt;/p&gt;
 &lt;p&gt;加入沪江不久，我就被扔到一个将集团 SQL Sever 的数据库迁移到 MySQL 的项目里，
 同时伴随进行的还有 .net 系统迁移到 Java 系统。
 在这个过程中我发现了一个很有趣的现象：历史遗留的 .net 项目中，
@@ -3112,21 +3112,21 @@ Hints 的设计目的是为了能够让 SQL 语句在运行时，动态修改查
 &lt;h4 id="read-uncommitted"&gt;Read Uncommitted&lt;/h4&gt;
 &lt;p&gt;Read Uncommitted 这个隔离级别是最低粒度的隔离级别，
 如同它的名字一般，它允许在操作过程中不会锁，从而让当前事务读取到其他事务的数据。&lt;/p&gt;
-&lt;p&gt;&lt;img alt="read-uncommitted.png" src="http://4ocf5n.dijingchao.com/upload_dropbox/201709/read-uncommitted.png"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="read-uncommitted.png" src="https://4ocf5n.dijingchao.com/upload_dropbox/201709/read-uncommitted.png"/&gt;&lt;/p&gt;
 &lt;p&gt;如上图所示，在 Transaction 2 查询时候，Transaction 1 未提交的数据就已经对外暴露。
 如果 Transaction 1 最后 Rollback 了，那么 Transaction 读取的数据就是错误的。&lt;/p&gt;
 &lt;p&gt;「读到了其他事务修改了但是未提交的数据」即是&lt;strong&gt;脏读&lt;/strong&gt;。&lt;/p&gt;
 &lt;h3 id="read-committed_1"&gt;Read Committed&lt;/h3&gt;
 &lt;p&gt;想要避免脏读，最简单的方式就是在事务更新操作上加一把写锁，
 其他事务需要读取数据时候，需要等待这把写锁释放。&lt;/p&gt;
-&lt;p&gt;&lt;img alt="read-committed-1.png" src="http://4ocf5n.dijingchao.com/upload_dropbox/201709/read-committed-1.png"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="read-committed-1.png" src="https://4ocf5n.dijingchao.com/upload_dropbox/201709/read-committed-1.png"/&gt;&lt;/p&gt;
 &lt;p&gt;如上图所示，Transaction 1 在写操作时候，对数据 A 加了写锁，
 那么 Transaction 2 想要读取 A，就必须等待这把锁释放。
 这样就避免当前事务读取其他事务的未提交数据。&lt;/p&gt;
 &lt;p&gt;但是除了脏读，一致性的要求还需要「可重复读」，即
 「在一个事务内，多次读取的特定数据都必须是一致的
 （即便在这过程中该数据被其他事务修改）」。&lt;/p&gt;
-&lt;p&gt;&lt;img alt="read-committed-2.png" src="http://4ocf5n.dijingchao.com/upload_dropbox/201709/read-committed-2.png"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="read-committed-2.png" src="https://4ocf5n.dijingchao.com/upload_dropbox/201709/read-committed-2.png"/&gt;&lt;/p&gt;
 &lt;p&gt;上图就是没能保证「可重复度」，Transaction 2 第一次读取到了数据 A，
 然后 Transaction 1 对数据 A 更新到 A'，那么当 Tranction 2 再次读取 A 时候，
 它本来期望读到 A，但是却读到了 A'，这和它的预期不相符了。
@@ -3134,7 +3134,7 @@ Hints 的设计目的是为了能够让 SQL 语句在运行时，动态修改查
 &lt;h3 id="repeatable-read"&gt;Repeatable Read&lt;/h3&gt;
 &lt;p&gt;这个名字非常容易理解，即保障在一个事务内重复读取时，
 始终能够读取到相同的内容。来看图：&lt;/p&gt;
-&lt;p&gt;&lt;img alt="repeatable-read.png" src="http://4ocf5n.dijingchao.com/upload_dropbox/201709/repeatable-read.png"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="repeatable-read.png" src="https://4ocf5n.dijingchao.com/upload_dropbox/201709/repeatable-read.png"/&gt;&lt;/p&gt;
 &lt;p&gt;如上所示，当 Transation 2 读取 A 时候，会同时加上一把 Read Lock，
 这把锁会阻止 Transaction 1 将 A 更新为 A'，Transaction 1 要么选择等待，
 要么就选择结束。&lt;/p&gt;
@@ -3144,7 +3144,7 @@ Hints 的设计目的是为了能够让 SQL 语句在运行时，动态修改查
 &lt;p&gt;上述的三个隔离级别，都是对特定的一行数据进行加锁，
 那假如将要更新的数据还没有写入数据库，如何进行加锁呢？
 比如自增表的新键，或者现有数据内的空缺 Key？&lt;/p&gt;
-&lt;p&gt;&lt;img alt="repeatable-read-2.png" src="http://4ocf5n.dijingchao.com/upload_dropbox/201709/repeatable-read-2.png"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="repeatable-read-2.png" src="https://4ocf5n.dijingchao.com/upload_dropbox/201709/repeatable-read-2.png"/&gt;&lt;/p&gt;
 &lt;p&gt;如图所示，在上述操作中，Transaction 2 查询了一个范围 Range 之后，Transaction 1
 在这个范围内插入了一条新的数据。此时 Transaction 2 再次进行范围查询时候，
 会发现查询到的 Range 和上次已经不一样了，多了一个 newA。&lt;/p&gt;
@@ -3155,7 +3155,7 @@ Hints 的设计目的是为了能够让 SQL 语句在运行时，动态修改查
 &lt;p&gt;从字面意思看，该隔离级别需要将被操作的数据加锁加一把锁。
 任何读写操作都需要先获得这把锁才能进行。如果操作中带 WHERE 条件，
 还需要将 WHERE 条件相关的范围全部加锁。&lt;/p&gt;
-&lt;p&gt;&lt;img alt="serializable.png" src="http://4ocf5n.dijingchao.com/upload_dropbox/201709/serializable.png"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="serializable.png" src="https://4ocf5n.dijingchao.com/upload_dropbox/201709/serializable.png"/&gt;&lt;/p&gt;
 &lt;p&gt;如图所示，在 Transaction 2 操作过程中，会对 Range 进行加锁，
 此时其他事务无法操作其中的数据，只能等待或者放弃。&lt;/p&gt;
 &lt;h3 id="db-de-mo-ren-ge-chi-ji-bie"&gt;DB 的默认隔离级别&lt;/h3&gt;
@@ -3339,14 +3339,14 @@ Insert 同时 Query 不会被 Block，
    &lt;small&gt;原文链接: &lt;a href="https://blog.alswl.com/2017/09/sql-server-nolock/"&gt;https://blog.alswl.com/2017/09/sql-server-nolock/&lt;/a&gt;&lt;/small&gt;&lt;br&gt;
    &lt;small&gt;3a1ff193cee606bd1e2ea554a16353ee&lt;/small&gt;&lt;br&gt;
    &lt;small&gt;欢迎关注我的微信公众号：&lt;a href="http://mp.weixin.qq.com/mp/getmasssendmsg?__biz=MzIyNTIwMTU3MQ==#wechat_webview_type=1&amp;wechat_redirect"&gt;窥豹&lt;/a&gt;&lt;/small&gt;&lt;br&gt;
-   &lt;small&gt;&lt;img src="http://4ocf5n.dijingchao.com/upload_dropbox/201605/qrcode_for_gh_17e2f9c2caa4_258.jpg"/&gt;&lt;/small&gt;
-   &lt;small&gt;&lt;img src="http://4ocf5n.dijingchao.com/upload_dropbox/meta/wechat-pay-s-crop.png"/&gt;&lt;/small&gt;
+   &lt;small&gt;&lt;img src="https://4ocf5n.dijingchao.com/upload_dropbox/201605/qrcode_for_gh_17e2f9c2caa4_258.jpg"/&gt;&lt;/small&gt;
+   &lt;small&gt;&lt;img src="https://4ocf5n.dijingchao.com/upload_dropbox/meta/wechat-pay-s-crop.png"/&gt;&lt;/small&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 </summary><category term="SQL Server"></category><category term="MySQL"></category></entry><entry><title>当我们在聊监控，我们在聊什么？</title><link href="https://blog.alswl.com/2017/06/monitoring-introducing/" rel="alternate"></link><published>2017-06-08T15:40:41+08:00</published><updated>2017-06-08T15:40:41+08:00</updated><author><name>alswl</name></author><id>tag:blog.alswl.com,2017-06-08:2017/06/monitoring-introducing/</id><summary type="html">&lt;p&gt;最近在团队中给大家做了一个分享，泛泛地聊了一些有关「监控」的话题。
 其实做分享对分享者的作用往往大于参与者。
 这是一次将自己知识的梳理的过程，于是我将这次分享整理成这篇文章。&lt;/p&gt;
-&lt;p&gt;&lt;img alt="201706/stock-exchange.png" src="http://4ocf5n.dijingchao.com/upload_dropbox/201706/stock-exchange.png"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="201706/stock-exchange.png" src="https://4ocf5n.dijingchao.com/upload_dropbox/201706/stock-exchange.png"/&gt;&lt;/p&gt;
 
 &lt;h2 id="mu-de"&gt;目的 🎯&lt;/h2&gt;
 &lt;p&gt;我们先来聊聊，什么是「监控」，以及我们期望通过「监控」完成哪些目的？&lt;/p&gt;
@@ -3504,13 +3504,13 @@ Brend Gregg 是 Netflix 的首席 SRE，著有 &lt;a href="http://www.brendangre
    &lt;small&gt;原文链接: &lt;a href="https://blog.alswl.com/2017/06/monitoring-introducing/"&gt;https://blog.alswl.com/2017/06/monitoring-introducing/&lt;/a&gt;&lt;/small&gt;&lt;br&gt;
    &lt;small&gt;3a1ff193cee606bd1e2ea554a16353ee&lt;/small&gt;&lt;br&gt;
    &lt;small&gt;欢迎关注我的微信公众号：&lt;a href="http://mp.weixin.qq.com/mp/getmasssendmsg?__biz=MzIyNTIwMTU3MQ==#wechat_webview_type=1&amp;wechat_redirect"&gt;窥豹&lt;/a&gt;&lt;/small&gt;&lt;br&gt;
-   &lt;small&gt;&lt;img src="http://4ocf5n.dijingchao.com/upload_dropbox/201605/qrcode_for_gh_17e2f9c2caa4_258.jpg"/&gt;&lt;/small&gt;
-   &lt;small&gt;&lt;img src="http://4ocf5n.dijingchao.com/upload_dropbox/meta/wechat-pay-s-crop.png"/&gt;&lt;/small&gt;
+   &lt;small&gt;&lt;img src="https://4ocf5n.dijingchao.com/upload_dropbox/201605/qrcode_for_gh_17e2f9c2caa4_258.jpg"/&gt;&lt;/small&gt;
+   &lt;small&gt;&lt;img src="https://4ocf5n.dijingchao.com/upload_dropbox/meta/wechat-pay-s-crop.png"/&gt;&lt;/small&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 </summary><category term="Monitoring"></category></entry><entry><title>XSS 攻击的处理</title><link href="https://blog.alswl.com/2017/05/xss/" rel="alternate"></link><published>2017-05-31T22:04:00+08:00</published><updated>2017-05-31T22:04:00+08:00</updated><author><name>alswl</name></author><id>tag:blog.alswl.com,2017-05-31:2017/05/xss/</id><summary type="html">&lt;p&gt;这是一年前写的项目笔记，一直在我的待办事项里等待做总结，今天偶然翻到，就整理成文章发出来。
 谨以此文怀念 &lt;a href="http://wooyun.org/"&gt;乌云&lt;/a&gt;。&lt;/p&gt;
-&lt;p&gt;&lt;img alt="201705/wooyun.jpg" src="http://4ocf5n.dijingchao.com/upload_dropbox/201705/wooyun.jpg"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="201705/wooyun.jpg" src="https://4ocf5n.dijingchao.com/upload_dropbox/201705/wooyun.jpg"/&gt;&lt;/p&gt;
 &lt;hr/&gt;
 &lt;h2 id="shi-qing-yuan-you"&gt;事情缘由&lt;/h2&gt;
 &lt;p&gt;春节前的某一天，收到一封来自乌云（国内知名白帽子团队）的邮件，
@@ -3600,11 +3600,11 @@ Freemarker 居然在 2.3.24-rc01 才支持，现在都没有发布，唉&amp;hel
    &lt;small&gt;原文链接: &lt;a href="https://blog.alswl.com/2017/05/xss/"&gt;https://blog.alswl.com/2017/05/xss/&lt;/a&gt;&lt;/small&gt;&lt;br&gt;
    &lt;small&gt;3a1ff193cee606bd1e2ea554a16353ee&lt;/small&gt;&lt;br&gt;
    &lt;small&gt;欢迎关注我的微信公众号：&lt;a href="http://mp.weixin.qq.com/mp/getmasssendmsg?__biz=MzIyNTIwMTU3MQ==#wechat_webview_type=1&amp;wechat_redirect"&gt;窥豹&lt;/a&gt;&lt;/small&gt;&lt;br&gt;
-   &lt;small&gt;&lt;img src="http://4ocf5n.dijingchao.com/upload_dropbox/201605/qrcode_for_gh_17e2f9c2caa4_258.jpg"/&gt;&lt;/small&gt;
-   &lt;small&gt;&lt;img src="http://4ocf5n.dijingchao.com/upload_dropbox/meta/wechat-pay-s-crop.png"/&gt;&lt;/small&gt;
+   &lt;small&gt;&lt;img src="https://4ocf5n.dijingchao.com/upload_dropbox/201605/qrcode_for_gh_17e2f9c2caa4_258.jpg"/&gt;&lt;/small&gt;
+   &lt;small&gt;&lt;img src="https://4ocf5n.dijingchao.com/upload_dropbox/meta/wechat-pay-s-crop.png"/&gt;&lt;/small&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</summary><category term="security"></category></entry><entry><title>👁️ 预测未来？</title><link href="https://blog.alswl.com/2017/01/prophecy/" rel="alternate"></link><published>2017-01-31T11:12:43+08:00</published><updated>2017-01-31T11:12:43+08:00</updated><author><name>alswl</name></author><id>tag:blog.alswl.com,2017-01-31:2017/01/prophecy/</id><summary type="html">&lt;p&gt;&lt;img alt="201702/clock.jpg" src="http://4ocf5n.dijingchao.com/upload_dropbox/201702/clock.jpg"/&gt;&lt;/p&gt;
+</summary><category term="security"></category></entry><entry><title>👁️ 预测未来？</title><link href="https://blog.alswl.com/2017/01/prophecy/" rel="alternate"></link><published>2017-01-31T11:12:43+08:00</published><updated>2017-01-31T11:12:43+08:00</updated><author><name>alswl</name></author><id>tag:blog.alswl.com,2017-01-31:2017/01/prophecy/</id><summary type="html">&lt;p&gt;&lt;img alt="201702/clock.jpg" src="https://4ocf5n.dijingchao.com/upload_dropbox/201702/clock.jpg"/&gt;&lt;/p&gt;
 &lt;h2 id="la-pu-la-si-zhi-yao"&gt;拉普拉斯之妖&lt;/h2&gt;
 &lt;p&gt;未来是可以被预测的么？&lt;/p&gt;
 &lt;p&gt;专家在预测股票趋势变化，天气预报员可以预测未来一周甚至更长时间的天气。
@@ -3629,7 +3629,7 @@ Freemarker 居然在 2.3.24-rc01 才支持，现在都没有发布，唉&amp;hel
 &lt;p&gt;那既然是无法预测，是否表示，预测未来这件事情是无稽之谈，未来是不成规律的？&lt;/p&gt;
 &lt;h2 id="hun-dun-bei-li-jie-cuo-wu-de-hu-die-xiao-ying"&gt;混沌：被理解错误的「蝴蝶效应」&lt;/h2&gt;
 &lt;p&gt;针对未来的预测，动力系统中，有相当多的研究和思考，其中比较注明的一项是：蝴蝶效应。&lt;/p&gt;
-&lt;p&gt;&lt;img alt="201702/chaos-butterfly.png" src="http://4ocf5n.dijingchao.com/upload_dropbox/201702/chaos-butterfly_400.png"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="201702/chaos-butterfly.png" src="https://4ocf5n.dijingchao.com/upload_dropbox/201702/chaos-butterfly_400.png"/&gt;&lt;/p&gt;
 &lt;p&gt;关于「蝴蝶效应」，不用过多解释。命名的来源据说是发现者 Edward Lorenz 觉得图形像是蝴蝶。
 而有另一种另一说法是，Edward 的一个比喻「巴西蝴蝶煽动，引起德克萨斯的龙卷风」。&lt;/p&gt;
 &lt;p&gt;事实上这种说法是不精准的。Edward 在预测天气模型中，发现起始数据的微小差异，
@@ -3652,7 +3652,7 @@ IFS（Iterated Function System）是迭代函数系统，即在数学上被认�
 分形的图案，部分可以抽象出 IFS 公式。&lt;/p&gt;
 &lt;p&gt;这个公式的奇妙之处是在于，在公式渐进推算过程之中，初始看到的结果是混沌无序的，而在逐步运算之后，可以看出分形的特征。&lt;/p&gt;
 &lt;p&gt;下图是根据一个 IFS 公式，逐步构造出一个分形图片的过程：&lt;/p&gt;
-&lt;p&gt;&lt;img alt="201702/chaosgame.gif" src="http://4ocf5n.dijingchao.com/upload_dropbox/201702/chaosgame.gif"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="201702/chaosgame.gif" src="https://4ocf5n.dijingchao.com/upload_dropbox/201702/chaosgame.gif"/&gt;&lt;/p&gt;
 &lt;p&gt;图片来自 Wikipedia &lt;a href="https://en.wikipedia.org/wiki/Iterated_function_system"&gt;https://en.wikipedia.org/wiki/Iterated_function_system&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;这种由初期混沌，逐渐表现为分形的情况，被学者总结为：「混沌在（生成）时间上是分形的；而分形的在空间（展示）上是混沌的。」
 混沌中可以找到有序，在非线性中找到理性，混沌中可以演化出非规则，也可以演化出在规则中混沌。&lt;/p&gt;
@@ -3675,8 +3675,8 @@ IFS（Iterated Function System）是迭代函数系统，即在数学上被认�
    &lt;small&gt;原文链接: &lt;a href="https://blog.alswl.com/2017/01/prophecy/"&gt;https://blog.alswl.com/2017/01/prophecy/&lt;/a&gt;&lt;/small&gt;&lt;br&gt;
    &lt;small&gt;3a1ff193cee606bd1e2ea554a16353ee&lt;/small&gt;&lt;br&gt;
    &lt;small&gt;欢迎关注我的微信公众号：&lt;a href="http://mp.weixin.qq.com/mp/getmasssendmsg?__biz=MzIyNTIwMTU3MQ==#wechat_webview_type=1&amp;wechat_redirect"&gt;窥豹&lt;/a&gt;&lt;/small&gt;&lt;br&gt;
-   &lt;small&gt;&lt;img src="http://4ocf5n.dijingchao.com/upload_dropbox/201605/qrcode_for_gh_17e2f9c2caa4_258.jpg"/&gt;&lt;/small&gt;
-   &lt;small&gt;&lt;img src="http://4ocf5n.dijingchao.com/upload_dropbox/meta/wechat-pay-s-crop.png"/&gt;&lt;/small&gt;
+   &lt;small&gt;&lt;img src="https://4ocf5n.dijingchao.com/upload_dropbox/201605/qrcode_for_gh_17e2f9c2caa4_258.jpg"/&gt;&lt;/small&gt;
+   &lt;small&gt;&lt;img src="https://4ocf5n.dijingchao.com/upload_dropbox/meta/wechat-pay-s-crop.png"/&gt;&lt;/small&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 </summary><category term="Math"></category></entry><entry><title>👷如何做年前大扫除</title><link href="https://blog.alswl.com/2017/01/spring-cleaning/" rel="alternate"></link><published>2017-01-03T23:20:50+08:00</published><updated>2017-01-03T23:20:50+08:00</updated><author><name>alswl</name></author><id>tag:blog.alswl.com,2017-01-03:2017/01/spring-cleaning/</id><summary type="html">&lt;p&gt;今年过年特别早，离春节只剩下二十多天了。
@@ -3685,7 +3685,7 @@ IFS（Iterated Function System）是迭代函数系统，即在数学上被认�
 而作为创业团队人少，难做到在线值守，就需要对线上进行一些整理盘点，找出潜在问题，为春节长假做一些准备。&lt;/p&gt;
 &lt;p&gt;我们称之为年前大扫除。&lt;/p&gt;
 &lt;p&gt;大扫除需要做些什么呢，且听我一一道来。&lt;/p&gt;
-&lt;p&gt;&lt;img alt="201701/saber.jpeg" src="http://4ocf5n.dijingchao.com/upload_dropbox/201701/saber.jpeg"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="201701/saber.jpeg" src="https://4ocf5n.dijingchao.com/upload_dropbox/201701/saber.jpeg"/&gt;&lt;/p&gt;
 &lt;p&gt;PS: 冷知识，大扫除英文是 spring cleaning，所以春节大扫除是 Spring Festival spring cleaning。&lt;/p&gt;
 &lt;h2 id="da-sao-chu-de-nei-rong"&gt;大扫除的内容&lt;/h2&gt;
 &lt;p&gt;大扫除其实是一个查漏补缺+囤积粮草的事情。&lt;/p&gt;
@@ -3733,7 +3733,7 @@ TPS 、Latency 和 Capacity。
 「Google SRE」里面有个小段子，一个绝对不能被按的按钮，
 这个按钮会清空内存数据，在飞行过程中被宇航员按了。幸亏美女工程师（下图）写了相关的救命手册，
 专门写了针对这种情况的操作，救了这些宇航员的命。&lt;/p&gt;
-&lt;p&gt;&lt;img alt="201701/sre.jpeg" src="http://4ocf5n.dijingchao.com/upload_dropbox/201701/sre.jpeg"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="201701/sre.jpeg" src="https://4ocf5n.dijingchao.com/upload_dropbox/201701/sre.jpeg"/&gt;&lt;/p&gt;
 &lt;p&gt;图片来自 「Google SRE」&lt;/p&gt;
 &lt;p&gt;从这个故事里面可以看到，一个紧急操作手册是多么重要。
 &lt;strong&gt;&lt;strong&gt;所以在大扫除期间，我们还要补一补平时的文档，将一些常见问题 / 常规操作记录下来。&lt;/strong&gt;&lt;/strong&gt;
@@ -3757,11 +3757,11 @@ TPS 、Latency 和 Capacity。
    &lt;small&gt;原文链接: &lt;a href="https://blog.alswl.com/2017/01/spring-cleaning/"&gt;https://blog.alswl.com/2017/01/spring-cleaning/&lt;/a&gt;&lt;/small&gt;&lt;br&gt;
    &lt;small&gt;3a1ff193cee606bd1e2ea554a16353ee&lt;/small&gt;&lt;br&gt;
    &lt;small&gt;欢迎关注我的微信公众号：&lt;a href="http://mp.weixin.qq.com/mp/getmasssendmsg?__biz=MzIyNTIwMTU3MQ==#wechat_webview_type=1&amp;wechat_redirect"&gt;窥豹&lt;/a&gt;&lt;/small&gt;&lt;br&gt;
-   &lt;small&gt;&lt;img src="http://4ocf5n.dijingchao.com/upload_dropbox/201605/qrcode_for_gh_17e2f9c2caa4_258.jpg"/&gt;&lt;/small&gt;
-   &lt;small&gt;&lt;img src="http://4ocf5n.dijingchao.com/upload_dropbox/meta/wechat-pay-s-crop.png"/&gt;&lt;/small&gt;
+   &lt;small&gt;&lt;img src="https://4ocf5n.dijingchao.com/upload_dropbox/201605/qrcode_for_gh_17e2f9c2caa4_258.jpg"/&gt;&lt;/small&gt;
+   &lt;small&gt;&lt;img src="https://4ocf5n.dijingchao.com/upload_dropbox/meta/wechat-pay-s-crop.png"/&gt;&lt;/small&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</summary><category term="Infrastructure"></category><category term="DevOps"></category></entry><entry><title>🔑 也谈 HTTPS - 如何内测</title><link href="https://blog.alswl.com/2016/12/https-2/" rel="alternate"></link><published>2016-12-08T20:16:26+08:00</published><updated>2016-12-08T20:16:26+08:00</updated><author><name>alswl</name></author><id>tag:blog.alswl.com,2016-12-08:2016/12/https-2/</id><summary type="html">&lt;p&gt;&lt;img alt="201612/mouse.jpeg" src="http://4ocf5n.dijingchao.com/upload_dropbox/201612/mouse.jpeg"/&gt;
+</summary><category term="Infrastructure"></category><category term="DevOps"></category></entry><entry><title>🔑 也谈 HTTPS - 如何内测</title><link href="https://blog.alswl.com/2016/12/https-2/" rel="alternate"></link><published>2016-12-08T20:16:26+08:00</published><updated>2016-12-08T20:16:26+08:00</updated><author><name>alswl</name></author><id>tag:blog.alswl.com,2016-12-08:2016/12/https-2/</id><summary type="html">&lt;p&gt;&lt;img alt="201612/mouse.jpeg" src="https://4ocf5n.dijingchao.com/upload_dropbox/201612/mouse.jpeg"/&gt;
 (图片来自 &lt;a href="https://www.duitang.com/blog/?id=48013745"&gt;茶杯中的可爱小白鼠 壁纸 - 2560x1920－堆糖，美好生活研究所&lt;/a&gt;)&lt;/p&gt;
 &lt;p&gt;在上篇文章 &lt;a href="https://blog.alswl.com/2016/11/https-1/"&gt;🔒 也谈 HTTPS - HTTPDNS + HTTPS&lt;/a&gt; 中，
 我们谈了如何基于 HTTPDNS 来部署无坚不摧的 HTTPS 通信环境，
@@ -3798,7 +3798,7 @@ TPS 、Latency 和 Capacity。
 &lt;/ul&gt;
 &lt;p&gt;PS：这里要小心的是，需要配置 proxy.duitang.com 的 &lt;code&gt;resolver&lt;/code&gt; 避免 Nginx 内部请求。&lt;/p&gt;
 &lt;p&gt;流程图：&lt;/p&gt;
-&lt;p&gt;&lt;img alt="201612/https_ros_process.jpg" src="http://4ocf5n.dijingchao.com/upload_dropbox/201612/https_ros_process.jpg"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="201612/https_ros_process.jpg" src="https://4ocf5n.dijingchao.com/upload_dropbox/201612/https_ros_process.jpg"/&gt;&lt;/p&gt;
 &lt;p&gt;这样操作之后，在办公室网络下，所有访问公司网站的 HTTP 流量都会跳转到 HTTPS。&lt;/p&gt;
 &lt;p&gt;PS：我原始方案想使用 ROS 的 L7 防火墙 直接抓 HTTP 包，match HTTP 头数据，
 再修改返回的 TCP 包。
@@ -3854,11 +3854,11 @@ Domain Validation / Orgnization Validation / Extented Validation。
    &lt;small&gt;原文链接: &lt;a href="https://blog.alswl.com/2016/12/https-2/"&gt;https://blog.alswl.com/2016/12/https-2/&lt;/a&gt;&lt;/small&gt;&lt;br&gt;
    &lt;small&gt;3a1ff193cee606bd1e2ea554a16353ee&lt;/small&gt;&lt;br&gt;
    &lt;small&gt;欢迎关注我的微信公众号：&lt;a href="http://mp.weixin.qq.com/mp/getmasssendmsg?__biz=MzIyNTIwMTU3MQ==#wechat_webview_type=1&amp;wechat_redirect"&gt;窥豹&lt;/a&gt;&lt;/small&gt;&lt;br&gt;
-   &lt;small&gt;&lt;img src="http://4ocf5n.dijingchao.com/upload_dropbox/201605/qrcode_for_gh_17e2f9c2caa4_258.jpg"/&gt;&lt;/small&gt;
-   &lt;small&gt;&lt;img src="http://4ocf5n.dijingchao.com/upload_dropbox/meta/wechat-pay-s-crop.png"/&gt;&lt;/small&gt;
+   &lt;small&gt;&lt;img src="https://4ocf5n.dijingchao.com/upload_dropbox/201605/qrcode_for_gh_17e2f9c2caa4_258.jpg"/&gt;&lt;/small&gt;
+   &lt;small&gt;&lt;img src="https://4ocf5n.dijingchao.com/upload_dropbox/meta/wechat-pay-s-crop.png"/&gt;&lt;/small&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</summary><category term="HTTPS"></category><category term="HTTPDNS"></category><category term="MikroTik"></category></entry><entry><title>教你在上海挑房子</title><link href="https://blog.alswl.com/2016/12/house/" rel="alternate"></link><published>2016-12-05T21:29:37+08:00</published><updated>2016-12-05T21:29:37+08:00</updated><author><name>alswl</name></author><id>tag:blog.alswl.com,2016-12-05:2016/12/house/</id><summary type="html">&lt;p&gt;&lt;img alt="201612/shanghai.jpg" src="http://4ocf5n.dijingchao.com/upload_dropbox/201612/shanghai.jpg"/&gt;&lt;/p&gt;
+</summary><category term="HTTPS"></category><category term="HTTPDNS"></category><category term="MikroTik"></category></entry><entry><title>教你在上海挑房子</title><link href="https://blog.alswl.com/2016/12/house/" rel="alternate"></link><published>2016-12-05T21:29:37+08:00</published><updated>2016-12-05T21:29:37+08:00</updated><author><name>alswl</name></author><id>tag:blog.alswl.com,2016-12-05:2016/12/house/</id><summary type="html">&lt;p&gt;&lt;img alt="201612/shanghai.jpg" src="https://4ocf5n.dijingchao.com/upload_dropbox/201612/shanghai.jpg"/&gt;&lt;/p&gt;
 &lt;p&gt;点开的同学别失望，这并不是教你如何快速致富的 😂 &amp;hellip;&amp;hellip;&lt;/p&gt;
 &lt;hr/&gt;
 &lt;p&gt;上海政府在 11-28 出了房屋新政 &lt;a href="http://sh.xinhuanet.com/2016-11/28/c_135864791.htm"&gt;via&lt;/a&gt;，对房价进行进一步调控。
@@ -3907,7 +3907,7 @@ Indicator 的含义是建立一系列评价指标，比如价格、户型、位�
 那么我们就在上海地图上面划几个圈了，数据可以通过链家、中原地产等多网站收集。
 安居客有一个大颗粒度的圈子，展示了社区集中点 &lt;a href="http://shanghai.anjuke.com/"&gt;via&lt;/a&gt;，
 下图是我筛选条件之后形成的几个簇：&lt;/p&gt;
-&lt;p&gt;&lt;img alt="201612/map_thumb.png" src="http://4ocf5n.dijingchao.com/upload_dropbox/201612/map_thumb.png"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="201612/map_thumb.png" src="https://4ocf5n.dijingchao.com/upload_dropbox/201612/map_thumb.png"/&gt;&lt;/p&gt;
 &lt;p&gt;（数据爬取分析这一块，我只服一个人，他专门写了一堆爬虫捞数据然后分析，
 如果对杭州的房地产投资感兴趣，可以私信我，我可以帮忙问问。）&lt;/p&gt;
 &lt;p&gt;从城市级别来看，其实不同区域的变化趋势基本是一致的，但是局部地区可能受外部因素而出现较大波动。
@@ -3945,8 +3945,8 @@ Indicator 的含义是建立一系列评价指标，比如价格、户型、位�
    &lt;small&gt;原文链接: &lt;a href="https://blog.alswl.com/2016/12/house/"&gt;https://blog.alswl.com/2016/12/house/&lt;/a&gt;&lt;/small&gt;&lt;br&gt;
    &lt;small&gt;3a1ff193cee606bd1e2ea554a16353ee&lt;/small&gt;&lt;br&gt;
    &lt;small&gt;欢迎关注我的微信公众号：&lt;a href="http://mp.weixin.qq.com/mp/getmasssendmsg?__biz=MzIyNTIwMTU3MQ==#wechat_webview_type=1&amp;wechat_redirect"&gt;窥豹&lt;/a&gt;&lt;/small&gt;&lt;br&gt;
-   &lt;small&gt;&lt;img src="http://4ocf5n.dijingchao.com/upload_dropbox/201605/qrcode_for_gh_17e2f9c2caa4_258.jpg"/&gt;&lt;/small&gt;
-   &lt;small&gt;&lt;img src="http://4ocf5n.dijingchao.com/upload_dropbox/meta/wechat-pay-s-crop.png"/&gt;&lt;/small&gt;
+   &lt;small&gt;&lt;img src="https://4ocf5n.dijingchao.com/upload_dropbox/201605/qrcode_for_gh_17e2f9c2caa4_258.jpg"/&gt;&lt;/small&gt;
+   &lt;small&gt;&lt;img src="https://4ocf5n.dijingchao.com/upload_dropbox/meta/wechat-pay-s-crop.png"/&gt;&lt;/small&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 </summary><category term="Shanghai"></category></entry><entry><title>🔒 也谈 HTTPS - HTTPDNS + HTTPS</title><link href="https://blog.alswl.com/2016/11/https-1/" rel="alternate"></link><published>2016-11-30T22:02:23+08:00</published><updated>2016-11-30T22:02:23+08:00</updated><author><name>alswl</name></author><id>tag:blog.alswl.com,2016-11-30:2016/11/https-1/</id><summary type="html">&lt;p&gt;最近谈论 HTTPS 的文章很多，其原因之一是运营商作恶底线越来越低，动不动就插播广告，
@@ -3954,7 +3954,7 @@ Indicator 的含义是建立一系列评价指标，比如价格、户型、位�
 另一方面也是苹果 &lt;a href="https://techcrunch.com/2016/06/14/apple-will-require-https-connections-for-ios-apps-by-the-end-of-2016/"&gt;ATS&lt;/a&gt; 政策的大力推动，逼迫大家在 APP 中全部使用 HTTPS 通信。
 上 HTTPS 的好处很多：保护用户的数据不外泄，避免中间人篡改数据，
 对企业信息进行鉴权。&lt;/p&gt;
-&lt;p&gt;&lt;img alt="201611/https.png" src="http://4ocf5n.dijingchao.com/upload_dropbox/201611/https.png"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="201611/https.png" src="https://4ocf5n.dijingchao.com/upload_dropbox/201611/https.png"/&gt;&lt;/p&gt;
 &lt;p&gt;关于 HTTPS 如何购买证书，如何部署，网上的教程已经太多了，实践起来没有太大的难处。
 我们在部署 HTTPS 的时候，遇到了一些新问题，首当其冲的就是 HTTPS 部分网络不可访问的问题：&lt;/p&gt;
 &lt;blockquote&gt;
@@ -3982,7 +3982,7 @@ Indicator 的含义是建立一系列评价指标，比如价格、户型、位�
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img alt="201611/httpdnsjbyl.png" src="http://4ocf5n.dijingchao.com/upload_dropbox/201611/httpdnsjbyl.png"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="201611/httpdnsjbyl.png" src="https://4ocf5n.dijingchao.com/upload_dropbox/201611/httpdnsjbyl.png"/&gt;&lt;/p&gt;
 &lt;p&gt;点击 &lt;a href="https://dns.google.com/resolve?name=www.duitang.com"&gt;https://dns.google.com/resolve?name=www.duitang.com&lt;/a&gt; /
 &lt;a href="http://119.29.29.29/d?dn=www.duitang.com"&gt;http://119.29.29.29/d?dn=www.duitang.com&lt;/a&gt; 感受一下 DNS-over-HTTPS / HTTPDNS。&lt;/p&gt;
 &lt;h2 id="dan-ip-duo-yu-ming-zhi-chi"&gt;单 IP 多域名支持&lt;/h2&gt;
@@ -4025,11 +4025,11 @@ APP 无法在发起连接时候，也没有权限直接操作 socket。
    &lt;small&gt;原文链接: &lt;a href="https://blog.alswl.com/2016/11/https-1/"&gt;https://blog.alswl.com/2016/11/https-1/&lt;/a&gt;&lt;/small&gt;&lt;br&gt;
    &lt;small&gt;3a1ff193cee606bd1e2ea554a16353ee&lt;/small&gt;&lt;br&gt;
    &lt;small&gt;欢迎关注我的微信公众号：&lt;a href="http://mp.weixin.qq.com/mp/getmasssendmsg?__biz=MzIyNTIwMTU3MQ==#wechat_webview_type=1&amp;wechat_redirect"&gt;窥豹&lt;/a&gt;&lt;/small&gt;&lt;br&gt;
-   &lt;small&gt;&lt;img src="http://4ocf5n.dijingchao.com/upload_dropbox/201605/qrcode_for_gh_17e2f9c2caa4_258.jpg"/&gt;&lt;/small&gt;
-   &lt;small&gt;&lt;img src="http://4ocf5n.dijingchao.com/upload_dropbox/meta/wechat-pay-s-crop.png"/&gt;&lt;/small&gt;
+   &lt;small&gt;&lt;img src="https://4ocf5n.dijingchao.com/upload_dropbox/201605/qrcode_for_gh_17e2f9c2caa4_258.jpg"/&gt;&lt;/small&gt;
+   &lt;small&gt;&lt;img src="https://4ocf5n.dijingchao.com/upload_dropbox/meta/wechat-pay-s-crop.png"/&gt;&lt;/small&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</summary><category term="HTTPS"></category><category term="HTTPDNS"></category></entry><entry><title>API 集成测试实践</title><link href="https://blog.alswl.com/2016/08/api-integration-test/" rel="alternate"></link><published>2016-08-14T19:08:20+08:00</published><updated>2016-08-14T19:08:20+08:00</updated><author><name>alswl</name></author><id>tag:blog.alswl.com,2016-08-14:2016/08/api-integration-test/</id><summary type="html">&lt;p&gt;&lt;img alt="abao.png" src="http://4ocf5n.dijingchao.com/upload_dropbox/201608/abao_thumbnail.png"/&gt;&lt;/p&gt;
+</summary><category term="HTTPS"></category><category term="HTTPDNS"></category></entry><entry><title>API 集成测试实践</title><link href="https://blog.alswl.com/2016/08/api-integration-test/" rel="alternate"></link><published>2016-08-14T19:08:20+08:00</published><updated>2016-08-14T19:08:20+08:00</updated><author><name>alswl</name></author><id>tag:blog.alswl.com,2016-08-14:2016/08/api-integration-test/</id><summary type="html">&lt;p&gt;&lt;img alt="abao.png" src="https://4ocf5n.dijingchao.com/upload_dropbox/201608/abao_thumbnail.png"/&gt;&lt;/p&gt;
 &lt;p&gt;为了提高测试，工程师需要对自己提交的产物进行测试，一般是单元测试、集成测试。
 之后提交物流转到 QA 团队，QA 团队根据需求描述对提交物进行测试，
 这个测试过程非常耗费人力。
@@ -4254,8 +4254,8 @@ APP 无法在发起连接时候，也没有权限直接操作 socket。
    &lt;small&gt;原文链接: &lt;a href="https://blog.alswl.com/2016/08/api-integration-test/"&gt;https://blog.alswl.com/2016/08/api-integration-test/&lt;/a&gt;&lt;/small&gt;&lt;br&gt;
    &lt;small&gt;3a1ff193cee606bd1e2ea554a16353ee&lt;/small&gt;&lt;br&gt;
    &lt;small&gt;欢迎关注我的微信公众号：&lt;a href="http://mp.weixin.qq.com/mp/getmasssendmsg?__biz=MzIyNTIwMTU3MQ==#wechat_webview_type=1&amp;wechat_redirect"&gt;窥豹&lt;/a&gt;&lt;/small&gt;&lt;br&gt;
-   &lt;small&gt;&lt;img src="http://4ocf5n.dijingchao.com/upload_dropbox/201605/qrcode_for_gh_17e2f9c2caa4_258.jpg"/&gt;&lt;/small&gt;
-   &lt;small&gt;&lt;img src="http://4ocf5n.dijingchao.com/upload_dropbox/meta/wechat-pay-s-crop.png"/&gt;&lt;/small&gt;
+   &lt;small&gt;&lt;img src="https://4ocf5n.dijingchao.com/upload_dropbox/201605/qrcode_for_gh_17e2f9c2caa4_258.jpg"/&gt;&lt;/small&gt;
+   &lt;small&gt;&lt;img src="https://4ocf5n.dijingchao.com/upload_dropbox/meta/wechat-pay-s-crop.png"/&gt;&lt;/small&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 </summary><category term="Test"></category><category term="API"></category></entry><entry><title>搞定暴涨的流量</title><link href="https://blog.alswl.com/2016/06/capacity-planning/" rel="alternate"></link><published>2016-06-19T23:57:39+08:00</published><updated>2016-06-19T23:57:39+08:00</updated><author><name>alswl</name></author><id>tag:blog.alswl.com,2016-06-19:2016/06/capacity-planning/</id><summary type="html">&lt;p&gt;2013 年左右，我司业务发展迅速，每天晚上都会面临服务器濒临崩溃情况。
@@ -4266,7 +4266,7 @@ APP 无法在发起连接时候，也没有权限直接操作 socket。
 减少故障出现概率，增强系统可用性，降低故障处理时间是 SRE 的最大课题。
 在这里有最常用的两个手段，一个是优化性能，一个是做好容量规划和扩展。
 这里我着重讨论后者「容量规划」。&lt;/p&gt;
-&lt;p&gt;&lt;img alt="看我的一堆报警消息" src="http://4ocf5n.dijingchao.com/upload_dropbox/201606/message.png"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="看我的一堆报警消息" src="https://4ocf5n.dijingchao.com/upload_dropbox/201606/message.png"/&gt;&lt;/p&gt;
 &lt;p&gt;^ 看我的一堆报警消息&lt;/p&gt;
 
 &lt;h2 id="mian-lin-de-wen-ti"&gt;面临的问题&lt;/h2&gt;
@@ -4354,8 +4354,8 @@ APP 无法在发起连接时候，也没有权限直接操作 socket。
    &lt;small&gt;原文链接: &lt;a href="https://blog.alswl.com/2016/06/capacity-planning/"&gt;https://blog.alswl.com/2016/06/capacity-planning/&lt;/a&gt;&lt;/small&gt;&lt;br&gt;
    &lt;small&gt;3a1ff193cee606bd1e2ea554a16353ee&lt;/small&gt;&lt;br&gt;
    &lt;small&gt;欢迎关注我的微信公众号：&lt;a href="http://mp.weixin.qq.com/mp/getmasssendmsg?__biz=MzIyNTIwMTU3MQ==#wechat_webview_type=1&amp;wechat_redirect"&gt;窥豹&lt;/a&gt;&lt;/small&gt;&lt;br&gt;
-   &lt;small&gt;&lt;img src="http://4ocf5n.dijingchao.com/upload_dropbox/201605/qrcode_for_gh_17e2f9c2caa4_258.jpg"/&gt;&lt;/small&gt;
-   &lt;small&gt;&lt;img src="http://4ocf5n.dijingchao.com/upload_dropbox/meta/wechat-pay-s-crop.png"/&gt;&lt;/small&gt;
+   &lt;small&gt;&lt;img src="https://4ocf5n.dijingchao.com/upload_dropbox/201605/qrcode_for_gh_17e2f9c2caa4_258.jpg"/&gt;&lt;/small&gt;
+   &lt;small&gt;&lt;img src="https://4ocf5n.dijingchao.com/upload_dropbox/meta/wechat-pay-s-crop.png"/&gt;&lt;/small&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 </summary><category term="Capacity"></category><category term="SRE"></category><category term="Architect"></category></entry></feed>
