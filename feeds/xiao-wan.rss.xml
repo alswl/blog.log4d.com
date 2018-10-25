@@ -4,7 +4,7 @@
 为了避免沧海遗珠，特意转到这里。&lt;/p&gt;
 &lt;p&gt;英文原文：&lt;a href="http://www.brendangregg.com/usemethod.html"&gt;The USE Method&lt;/a&gt;。&lt;/p&gt;
 &lt;hr/&gt;
-&lt;p&gt;&lt;img alt="201711/performance.jpg" src="http://upload.log4d.com/upload_dropbox/201711/performance_900.jpg"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="201711/performance.jpg" src="http://4ocf5n.dijingchao.com/upload_dropbox/201711/performance_900.jpg"/&gt;&lt;/p&gt;
 &lt;p&gt;USE 方法是一种能分析任何系统性能的方法论。
 我们可以根据能帮助系统分析的结构化清单，来迅速的定位资源的瓶颈和错误所在。
 它通常会先以列出问题为开始，然后再寻找适合的指标，而不是给你制定一些固定的指标，
@@ -77,7 +77,7 @@ CPU 饱和度依然有问题（延迟）监控工具报告了
 &lt;p&gt;另外一种迭代资源的方法，是找到或者绘制一张系统的功能模块示意图。&lt;/p&gt;
 &lt;p&gt;这些显示了模块关系的图，在你查找数据流的瓶颈的时候是非常有用的，这里有一张Sun
 Fire V480 Guide(page 82)的例图：&lt;/p&gt;
-&lt;p&gt;&lt;img alt="201711/v480.png" src="http://upload.log4d.com/upload_dropbox/201711/v480.png"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="201711/v480.png" src="http://4ocf5n.dijingchao.com/upload_dropbox/201711/v480.png"/&gt;&lt;/p&gt;
 &lt;p&gt;我喜欢这些图表，尽管制作出它很难。
 不过，由硬件工程师来画这张图是最适合的-他们最善于做这类事。如果不信的话你可以自己试试。&lt;/p&gt;
 &lt;p&gt;在确定各种总线的利用率的同时，为每个总线的功能图表，注释好它的最大带宽。这样我们就能在进行单次测量之前，得到能将系统瓶颈识别出来的图表。&lt;/p&gt;
@@ -169,7 +169,7 @@ CPU 限制和存储I / O限制。 所有这些资源限制，都可以使用USE 
 &lt;h2 id="strategy"&gt;Strategy&lt;/h2&gt;
 &lt;p&gt;下面是用流程图 的方式画了 USE 方法的示意图。
 请注意，错误检查优先于利用率和饱和度检查（因为通常错误更快的表现出来，并更容易解释）。&lt;/p&gt;
-&lt;p&gt;&lt;img alt="201711/usemethod_flow.png" src="http://upload.log4d.com/upload_dropbox/201711/usemethod_flow.png"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="201711/usemethod_flow.png" src="http://4ocf5n.dijingchao.com/upload_dropbox/201711/usemethod_flow.png"/&gt;&lt;/p&gt;
 &lt;p&gt;USE 方法定位到的问题，可能是系统瓶颈。
 不幸的是，系统可能会遇到多个性能问题，因此您发现的第一个可能的问题最终却不是个问题。
 发现的每个问题都可以用方法持续的挖掘，然后继续使用 USE
@@ -182,7 +182,7 @@ CPU 限制和存储I / O限制。 所有这些资源限制，都可以使用USE 
 我想到了一个我没有完全不了解的系统，并且不知道从哪里开始：阿波罗月球模块指导系统。
 USE 方法提供了一个简单的流程来尝试第一步是寻找一个资源列表，或者更理想的话，找到一个功能模块图表。我在
 【Lunar Module - LM10 Through LM14 Familiarization Manual】中发现了以下内容：&lt;/p&gt;
-&lt;p&gt;&lt;img alt="201711/apollo_LM_guidance.png" src="http://upload.log4d.com/upload_dropbox/201711/apollo_LM_guidance.png"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="201711/apollo_LM_guidance.png" src="http://4ocf5n.dijingchao.com/upload_dropbox/201711/apollo_LM_guidance.png"/&gt;&lt;/p&gt;
 &lt;p&gt;这些组件中的一部分可能未表现出利用率或饱和度特性。在迭代后，
 就可以重新绘制只包含相关组件的图表（还可以包括："可擦除存储"部分的内存，"核心区域"和 "vac区域 "寄存器）。&lt;/p&gt;
 &lt;p&gt;我将从阿波罗主脑（AGC）本身开始。
@@ -287,8 +287,8 @@ USE 方法提供了一个简单的流程来尝试第一步是寻找一个资源�
    &lt;small&gt;原文链接: &lt;a href="https://blog.alswl.com/2017/11/use-method/"&gt;https://blog.alswl.com/2017/11/use-method/&lt;/a&gt;&lt;/small&gt;&lt;br&gt;
    &lt;small&gt;3a1ff193cee606bd1e2ea554a16353ee&lt;/small&gt;&lt;br&gt;
    &lt;small&gt;欢迎关注我的微信公众号：&lt;a href="http://mp.weixin.qq.com/mp/getmasssendmsg?__biz=MzIyNTIwMTU3MQ==#wechat_webview_type=1&amp;wechat_redirect"&gt;窥豹&lt;/a&gt;&lt;/small&gt;&lt;br&gt;
-   &lt;small&gt;&lt;img src="http://upload.log4d.com/upload_dropbox/201605/qrcode_for_gh_17e2f9c2caa4_258.jpg"/&gt;&lt;/small&gt;
-   &lt;small&gt;&lt;img src="http://upload.log4d.com/upload_dropbox/meta/wechat-pay-s-crop.png"/&gt;&lt;/small&gt;
+   &lt;small&gt;&lt;img src="http://4ocf5n.dijingchao.com/upload_dropbox/201605/qrcode_for_gh_17e2f9c2caa4_258.jpg"/&gt;&lt;/small&gt;
+   &lt;small&gt;&lt;img src="http://4ocf5n.dijingchao.com/upload_dropbox/meta/wechat-pay-s-crop.png"/&gt;&lt;/small&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 </description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">小莞</dc:creator><pubDate>Sun, 12 Nov 2017 15:30:12 +0800</pubDate><guid isPermaLink="false">tag:blog.alswl.com,2017-11-12:2017/11/use-method/</guid><category>Metrics</category><category>Brendan Gregg</category><category>译文</category></item></channel></rss>

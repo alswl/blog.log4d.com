@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>Log4D</title><link>https://blog.alswl.com/</link><description></description><lastBuildDate>Wed, 27 Sep 2017 12:07:44 +0800</lastBuildDate><item><title>Stack Overflow 的 HTTPS 化：漫漫长路的终点</title><link>https://blog.alswl.com/2017/09/https-on-stack-overflow/</link><description>&lt;p&gt;&lt;img alt="Stack Overflow" src="http://upload.log4d.com/upload_dropbox/201709/stack-overflow.jpg"/&gt;&lt;/p&gt;
+<rss version="2.0"><channel><title>Log4D</title><link>https://blog.alswl.com/</link><description></description><lastBuildDate>Wed, 27 Sep 2017 12:07:44 +0800</lastBuildDate><item><title>Stack Overflow 的 HTTPS 化：漫漫长路的终点</title><link>https://blog.alswl.com/2017/09/https-on-stack-overflow/</link><description>&lt;p&gt;&lt;img alt="Stack Overflow" src="http://4ocf5n.dijingchao.com/upload_dropbox/201709/stack-overflow.jpg"/&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;原文作者：Nick Craver&lt;/li&gt;
 &lt;li&gt;翻译作者：&lt;a href="https://twitter.com/luosheng"&gt;罗晟 @luosheng&lt;/a&gt; &amp;amp; &lt;a href="https://twitter.com/alswl"&gt;@alswl&lt;/a&gt;&lt;/li&gt;
@@ -150,7 +150,7 @@
 &lt;p&gt;答案是：这个方案不适合我们。 Let&amp;rsquo;s Encrypt 的确是一个伟大的产品，我希望他们能够长期服务于大家。当你只有一个或少数几个域名时，它是非常出色的选择。但是很可惜，我们 Stack Exchange 有&lt;a href="https://stackexchange.com/sites"&gt;数百个站点&lt;/a&gt;，而 Let&amp;rsquo;s Encrypt 并&lt;a href="https://letsencrypt.org/docs/faq/"&gt;不支持通配域名配置&lt;/a&gt;。这导致 Let&amp;rsquo;s Encrypt 无法满足我们的需求。要这么做，我们就不得不在每上一个新的 Q&amp;amp;A 站点的时候都部署一个（或两个）证书。这样会增加我们部署的复杂性，并且我们要么放弃不支持 SNI 的客户端（大约占 2% 的流量）要么提供超多的 IP&amp;mdash;&amp;mdash;而我们目前没这么多的 IP。&lt;/p&gt;
 &lt;p&gt;我们之所以想控制证书，还有另外一个原因是我们想在本地负载均衡器以及 CDN / 代理提供商那边使用完成相同的证书。如果不做到这个，我们无法顺畅地做从代理那里做失效备援（failover）。支持&amp;nbsp;&lt;a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Public_Key_Pinning"&gt;HTTP 公钥固定（HPKP）&lt;/a&gt;的客户端会报认证失败。虽然我们仍在评估是否使用 HPKP，但是如果有一天要用的话我们得提前做好准备。&lt;/p&gt;
 &lt;p&gt;很多朋友在看见我们的主证书时候会吓得目瞪口呆，因为它包含了我们的主域名和通配符子域名。它看上去长成这样：&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://upload.log4d.com/upload_dropbox/201709/HTTPS-MainCertificate.png"&gt;&lt;img alt="Main Certificate" src="http://upload.log4d.com/upload_dropbox/201709/HTTPS-MainCertificate.png"/&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://4ocf5n.dijingchao.com/upload_dropbox/201709/HTTPS-MainCertificate.png"&gt;&lt;img alt="Main Certificate" src="http://4ocf5n.dijingchao.com/upload_dropbox/201709/HTTPS-MainCertificate.png"/&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;为什么这么做？老实说，是我们让&amp;nbsp;&lt;a href="https://www.digicert.com/"&gt;DigiCert&lt;/a&gt;&amp;nbsp;替我们做的。这么做会导致每次发生变化的时候都需要手动合并证书，了　我们为什么要忍受这么麻烦的事呢？首先，我们期望能够尽可能让更多用户使用我们产品。这里面包括了那些还不支持 SNI 的用户（比如在我们项目启动的时候 Android 2.3 势头正猛）。另外，也包括 HTTP/2 与一些现实问题&amp;mdash;&amp;mdash;我们过会儿会谈到这一块。&lt;/p&gt;
 &lt;p&gt;Meta 子域（meta.*.&lt;a href="http://stackexcange.com/"&gt;stackexcange.com&lt;/a&gt;）&lt;/p&gt;
 &lt;p&gt;Stack Exchage 的一个设计理念是，针对每个 Q&amp;amp;A 站点，我们都有一个地方供讨论。我们称之为&amp;nbsp;&lt;a href="https://stackoverflow.blog/2010/04/29/do-trilogy-sites-need-a-third-place/"&gt;&amp;ldquo;second place&amp;rdquo;&lt;/a&gt;。比如&amp;nbsp;&lt;code&gt;meta.gaming.stackexchange.com&lt;/code&gt;&amp;nbsp;用来讨论&amp;nbsp;&lt;code&gt;gaming.stackexchange.com&lt;/code&gt;。这个有什么特别之处呢？好吧，并没有，除了域名：这是一个 4 级域名。&lt;/p&gt;
@@ -237,7 +237,7 @@ cdn.sstatic.net.        724     IN      A       151.101.129.69
 &lt;/ul&gt;
 &lt;p&gt;HAProxy 比较简单，这是我们使用一个 SSL 证书来支持 :433 端口的第一步。事后看来，这也只是一小步。&lt;/p&gt;
 &lt;p&gt;这里是上面描述情况下的架构图，我们马上来说前面的那块云是怎么回事：&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://upload.log4d.com/upload_dropbox/201709/HTTPS-Layout.svg"&gt;&lt;img alt="Logical Architecture" src="http://upload.log4d.com/upload_dropbox/201709/HTTPS-Layout.svg"/&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://4ocf5n.dijingchao.com/upload_dropbox/201709/HTTPS-Layout.svg"&gt;&lt;img alt="Logical Architecture" src="http://4ocf5n.dijingchao.com/upload_dropbox/201709/HTTPS-Layout.svg"/&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id="cdndai-li-ceng-tong-guo-cloudflare-he-fastly-you-hua-yan-chi"&gt;CDN/代理层：通过 Cloudflare 和 Fastly 优化延迟&lt;/h3&gt;
 &lt;p&gt;我对 Stack Overflow&amp;nbsp;&lt;a href="https://nickcraver.com/blog/2016/02/17/stack-overflow-the-architecture-2016-edition/"&gt;架构&lt;/a&gt;&lt;a href="https://stackexchange.com/performance"&gt;的效率&lt;/a&gt;一直很自豪。我们很厉害吧？仅用一个数据中心和几个服务器就撑起了一个大型网站。不过这次不一样了。尽管效率这件事情很好，但是在延迟上就成了个问题。我们不需要那么多服务器，我们也不需要多地扩展（不过我们有一个灾备节点）。这一次，这就成为了问题。由于光速，我们（暂时）无法解决延迟这个基础性问题。我们听说有人已经在处理这个问题了，不过他们造的时间机器好像有点问题。&lt;/p&gt;
 &lt;p&gt;让我们用数字来理解延迟。赤道长度是 40000 公里（光绕地球一圈的最坏情况）。&lt;a href="https://en.wikipedia.org/wiki/Speed_of_light"&gt;光速&lt;/a&gt;在真空中是 299,792,458 米/秒。很多人用这个数字，但光纤并不是真空的。实际上光纤有&amp;nbsp;&lt;a href="https://physics.stackexchange.com/q/80043/653"&gt;30-31% 损耗&lt;/a&gt;，所以我们的这个数字是：(40,075,000 m) / (299,792,458 m/s * .70) = 0.191s，也就是说最坏情况下绕地球一圈是 191ms，对吧？不对。这假设的是一条理想路径，而实际上两个网络节点的之间几乎不可能是直线。中间还有路由器、交换机、缓存、处理器队列等各种各样的延迟。累加起来的延迟相当可观。&lt;/p&gt;
@@ -251,7 +251,7 @@ cdn.sstatic.net.        724     IN      A       151.101.129.69
 &lt;/ul&gt;
 &lt;h3 id="you-hua-dai-li-ceng-de-zhun-bei-ke-hu-duan-xing-neng-ce-shi"&gt;优化代理层的准备：客户端性能测试&lt;/h3&gt;
 &lt;p&gt;开始正式启用终端链路加速之前，我们需要有性能测试报告。我们在浏览器搭好了一整套覆盖全链路性能数据的测试。 浏览器里可以通过 JavaScript 从&amp;nbsp;&lt;a href="https://www.w3.org/TR/navigation-timing/"&gt;&lt;code&gt;window.performance&lt;/code&gt;&lt;/a&gt;&amp;nbsp;取性能耗时。打开你浏览器的审查器，你可以亲手试一下。我们希望这个过程透明，所以从第一天开始就把详细信息&lt;a href="https://teststackoverflow.com/"&gt;放在了 teststackoverflow.com&lt;/a&gt;&amp;nbsp;上。这上面并没有敏感信息，只有一些由页面&lt;em&gt;直接&lt;/em&gt;载入的 URI 和资源，以及它们的耗时。每一张记录下来的页面大概长这样：&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://upload.log4d.com/upload_dropbox/201709/HTTPS-Teststackoverflow.png"&gt;&lt;img alt="teststackoverflow.com" src="http://upload.log4d.com/upload_dropbox/201709/HTTPS-Teststackoverflow.png"/&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://4ocf5n.dijingchao.com/upload_dropbox/201709/HTTPS-Teststackoverflow.png"&gt;&lt;img alt="teststackoverflow.com" src="http://4ocf5n.dijingchao.com/upload_dropbox/201709/HTTPS-Teststackoverflow.png"/&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;我们目前对 5% 的流量做性能监控。这个过程没有那么复杂，但是我们需要做的事情包括：
 1. 把耗时转成 JSON
 2. 页面加载后上传性能测试数据
@@ -259,9 +259,9 @@ cdn.sstatic.net.        724     IN      A       151.101.129.69
 4. 在 SQL Server 中使用&amp;nbsp;&lt;a href="http://www.nikoport.com/columnstore/"&gt;clustered columnstore&lt;/a&gt;&amp;nbsp;存储数据
 5. 使用&amp;nbsp;&lt;a href="https://bosun.org/"&gt;Bosun&lt;/a&gt;&amp;nbsp;(具体是&amp;nbsp;&lt;a href="https://github.com/bretcope/BosunReporter.NET"&gt;BosunReporter.NET&lt;/a&gt;) 汇集数据&lt;/p&gt;
 &lt;p&gt;最终的结果是我们有了一份来自于全球&lt;em&gt;真实&lt;/em&gt;用户的很好的实时汇总。这些数据可供我们分析、监控、报警，以及用于评估变化。它大概长这样：&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://upload.log4d.com/upload_dropbox/201709/HTTPS-ClientTimings.png"&gt;&lt;img alt="Client Timings Dashboard" src="http://upload.log4d.com/upload_dropbox/201709/HTTPS-ClientTimings.png"/&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://4ocf5n.dijingchao.com/upload_dropbox/201709/HTTPS-ClientTimings.png"&gt;&lt;img alt="Client Timings Dashboard" src="http://4ocf5n.dijingchao.com/upload_dropbox/201709/HTTPS-ClientTimings.png"/&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;幸好，我们有持续的流量来获取数据以供我们决策使用，目前的量级是 50 亿，并且还在增长中。这些数据概览如下：&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://upload.log4d.com/upload_dropbox/201709/HTTPS-ClientTimingsDatabase.png"&gt;&lt;img alt="Client Timings Database" src="http://upload.log4d.com/upload_dropbox/201709/HTTPS-ClientTimingsDatabase.png"/&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://4ocf5n.dijingchao.com/upload_dropbox/201709/HTTPS-ClientTimingsDatabase.png"&gt;&lt;img alt="Client Timings Database" src="http://4ocf5n.dijingchao.com/upload_dropbox/201709/HTTPS-ClientTimingsDatabase.png"/&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;OK，我们已经把基础工作准备好了，是时候来测试 CDN/代理层供应商了。&lt;/p&gt;
 &lt;h3 id="cloudflare"&gt;Cloudflare&lt;/h3&gt;
 &lt;p&gt;我们评估了很多 CDN/DDoS 防护层供应商。最终选择了&amp;nbsp;&lt;a href="https://www.cloudflare.com/"&gt;Cloudflare&lt;/a&gt;，主要是考虑到他们的基础设施、快速响应、还有他们承诺的&amp;nbsp;&lt;a href="https://www.cloudflare.com/website-optimization/railgun/"&gt;Railgun&lt;/a&gt;。那么我们如何测试使用了 Cloudfalre 之后用户的真实效果？是否需要部署服务来获取用户数据？答案是不需要！&lt;/p&gt;
@@ -523,9 +523,9 @@ END)
 &lt;li&gt;可以支持更多用户。因为很多老的代理不能很好地处理 websockets。如果使用加密流量，大多数代理就只是透传而不会弄乱流量。对移动用户来说尤其是这样。&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;最大的问题就是：「我们能处理了这个负载吗？」我们全网处理了不少并发 websocket，在我写这估的时候我们有超过 600000 个&lt;strong&gt;并发&lt;/strong&gt;的连接。这个是我们 HAProxy 的仪表盘在 &lt;a href="https://github.com/opserver/Opserver"&gt;Opserver&lt;/a&gt; 中的界面：&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://upload.log4d.com/upload_dropbox/201709/HTTPS-Websockets.png"&gt;&lt;img alt="HAProxy Websockets" src="http://upload.log4d.com/upload_dropbox/201709/HTTPS-Websockets.png"/&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://4ocf5n.dijingchao.com/upload_dropbox/201709/HTTPS-Websockets.png"&gt;&lt;img alt="HAProxy Websockets" src="http://4ocf5n.dijingchao.com/upload_dropbox/201709/HTTPS-Websockets.png"/&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;不管是在终端、抽象命名空间套接字还是前端来说都有很多连接。由于启用了 &lt;a href="https://tools.ietf.org/html/rfc5077"&gt;TLS 会话恢复&lt;/a&gt;，HAProxy 本身的负载也很重。要让用户下一次重新连接更快，第一次协商之后用户会拿到一个令牌，下一次会把这个令牌发送过来。如果我们的内存足够并且没有超时，我们会恢复上次的会话而不是再开一个。这个操作可以节省 CPU，对用户来说有性能提升，但会用到到更多内存。这个多因 key 大小而异（2048，4096 或是更多？）我们现在用的是 4096 位的 key。在开了 600000 个 websocket 的情况下，我们只用掉了负载均衡器 64GB 内存里的 19GB。这里面 12GB 是 HAProxy 在用，大多数为 TLS 会话缓存。所以结果来说还不错，如果&lt;em&gt;我们不得不买内存的话&lt;/em&gt;，这也会是整个 HTTPS 迁移中最便宜的东西。&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://upload.log4d.com/upload_dropbox/201709/HTTPS-WebsocketMemory.png"&gt;&lt;img alt="HAProxy Websocket Memory" src="http://upload.log4d.com/upload_dropbox/201709/HTTPS-WebsocketMemory.png"/&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://4ocf5n.dijingchao.com/upload_dropbox/201709/HTTPS-WebsocketMemory.png"&gt;&lt;img alt="HAProxy Websocket Memory" src="http://4ocf5n.dijingchao.com/upload_dropbox/201709/HTTPS-WebsocketMemory.png"/&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id="wei-zhi"&gt;未知&lt;/h3&gt;
 &lt;p&gt;我猜现在可能是我们来谈论一些未知问题的时候。有些问题是在我们尝试之前无法真正知道的：&lt;/p&gt;
 &lt;ul&gt;
@@ -624,7 +624,7 @@ END)
 &lt;p&gt;记得我们必须修复的帮助文档吗？帮助文档都是按语言区分，只有极少数是按站点来分，所以本来它们是可以共享的。为了不产生大量重复代码及存储结构，我们做了一点小小的处理。我们把实际上的帖子对象（和问题、答案一样）存在了&amp;nbsp;&lt;code&gt;meta.stackexchange.com&lt;/code&gt;&amp;nbsp;或者是这篇帖子关联的站点中。我们把生成的&amp;nbsp;&lt;code&gt;HelpPost&lt;/code&gt;&amp;nbsp;存在中心的&amp;nbsp;&lt;code&gt;Sites&lt;/code&gt;&amp;nbsp;数据库里，其实也就是生成的 HTML。在处理混合内容的时候，我们也处理了单个站里的帖子，简单吧！&lt;/p&gt;
 &lt;p&gt;当原始的帖子修复后，我们只需要为每个站点去再生成 HTML 然后填充回去就行了。但是这个时候我犯了个错误。回填的时候拿的是&lt;em&gt;当前站点&lt;/em&gt;（调用回填的那个站点），而不是原始站。这导致&amp;nbsp;&lt;code&gt;meta.stackexchange.com&lt;/code&gt;&amp;nbsp;里的 12345 帖子被&amp;nbsp;&lt;code&gt;stackoverflow.com&lt;/code&gt;&amp;nbsp;里的 12345 帖子所替代。有的时候是答案、有的时候是问题，有的时候有一个 tag wiki。这也导致了一些&lt;a href="https://meta.stackoverflow.com/q/345280/13249"&gt;很有意思的帮助文档&lt;/a&gt;。这里有一些&lt;a href="https://meta.stackoverflow.com/a/345282/13249"&gt;相应的后果&lt;/a&gt;。&lt;/p&gt;
 &lt;p&gt;我只能说，还好修复的过程挺简单的：&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://upload.log4d.com/upload_dropbox/201709/HTTPS-HelpCommit.png"&gt;&lt;img alt="Me being a dumbass" src="http://upload.log4d.com/upload_dropbox/201709/HTTPS-HelpCommit.png"/&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://4ocf5n.dijingchao.com/upload_dropbox/201709/HTTPS-HelpCommit.png"&gt;&lt;img alt="Me being a dumbass" src="http://4ocf5n.dijingchao.com/upload_dropbox/201709/HTTPS-HelpCommit.png"/&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;再一次将数据填充回去就能修复了。不过怎么说，这个当时算是在公共场合闹了个笑话。抱歉。&lt;/p&gt;
 &lt;h3 id="kai-yuan_1"&gt;开源&lt;/h3&gt;
 &lt;p&gt;这里有我们在这个过程中产出的项目，帮助我们改进了 HTTPS 部署的工作，希望有一天这些能拯救世界吧：&lt;/p&gt;
@@ -686,8 +686,8 @@ END)
    &lt;small&gt;原文链接: &lt;a href="https://blog.alswl.com/2017/09/https-on-stack-overflow/"&gt;https://blog.alswl.com/2017/09/https-on-stack-overflow/&lt;/a&gt;&lt;/small&gt;&lt;br&gt;
    &lt;small&gt;3a1ff193cee606bd1e2ea554a16353ee&lt;/small&gt;&lt;br&gt;
    &lt;small&gt;欢迎关注我的微信公众号：&lt;a href="http://mp.weixin.qq.com/mp/getmasssendmsg?__biz=MzIyNTIwMTU3MQ==#wechat_webview_type=1&amp;wechat_redirect"&gt;窥豹&lt;/a&gt;&lt;/small&gt;&lt;br&gt;
-   &lt;small&gt;&lt;img src="http://upload.log4d.com/upload_dropbox/201605/qrcode_for_gh_17e2f9c2caa4_258.jpg"/&gt;&lt;/small&gt;
-   &lt;small&gt;&lt;img src="http://upload.log4d.com/upload_dropbox/meta/wechat-pay-s-crop.png"/&gt;&lt;/small&gt;
+   &lt;small&gt;&lt;img src="http://4ocf5n.dijingchao.com/upload_dropbox/201605/qrcode_for_gh_17e2f9c2caa4_258.jpg"/&gt;&lt;/small&gt;
+   &lt;small&gt;&lt;img src="http://4ocf5n.dijingchao.com/upload_dropbox/meta/wechat-pay-s-crop.png"/&gt;&lt;/small&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 </description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">罗晟, alswl</dc:creator><pubDate>Wed, 27 Sep 2017 12:07:44 +0800</pubDate><guid isPermaLink="false">tag:blog.alswl.com,2017-09-27:2017/09/https-on-stack-overflow/</guid><category>译文</category><category>HTTPS</category></item></channel></rss>
