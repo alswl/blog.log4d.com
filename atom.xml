@@ -3224,7 +3224,7 @@ SQL Server 默认是 Read Committed，
 &lt;p&gt;不出所料，此时查询果然会被 Block 住。&lt;/p&gt;
 &lt;h3 id="mvcc"&gt;MVCC&lt;/h3&gt;
 &lt;p&gt;并发控制的手段有这些：封锁、时间戳、乐观并发控制、悲观并发控制。
-SQL Server 在 2015 后，引入了 MVCC（多版本控制）。
+SQL Server 在 2005 后，引入了 MVCC（多版本控制）。
 如果最终数据是一致，会允许数据写入，否则其他事务会被阻止写入。
 那么 MVCC 引入是否可以解决 Insert 数据的锁问题？
 同样，我做了以下测试：&lt;/p&gt;
@@ -3248,7 +3248,7 @@ SQL Server 在 2015 后，引入了 MVCC（多版本控制）。
 &lt;p&gt;我们需要思考一下，性能和数据一致性上的权衡上，
 我们是否愿意放弃数据一致性而为了提高一丝丝性能？
 以及我们有多少场景，会频繁使用 &lt;code&gt;SELECT ALL&lt;/code&gt; 操作而没有查询条件？&lt;/p&gt;
-&lt;p&gt;微软官方在 2015 的特性列表里面，明确地指出 &lt;code&gt;nolock&lt;/code&gt; 特性未来会在某个版本被废除：&lt;/p&gt;
+&lt;p&gt;微软官方在 2008 的特性列表里面，明确地指出 &lt;code&gt;nolock&lt;/code&gt; 特性未来会在某个版本被废除：&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Specifying NOLOCK or READUNCOMMITTED in the FROM clause of an UPDATE or DELETE statement.&lt;/p&gt;
 &lt;/blockquote&gt;
