@@ -2265,13 +2265,13 @@ SQL Server 在 2005 后，引入了 MVCC（多版本控制）。
 &lt;p&gt;我们需要思考一下，性能和数据一致性上的权衡上，
 我们是否愿意放弃数据一致性而为了提高一丝丝性能？
 以及我们有多少场景，会频繁使用 &lt;code&gt;SELECT ALL&lt;/code&gt; 操作而没有查询条件？&lt;/p&gt;
-&lt;p&gt;微软官方在 2008 的特性列表里面，明确地指出 &lt;code&gt;nolock&lt;/code&gt; 特性未来会在某个版本被废除：&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;微软官方在 2008 的特性列表里面，明确地指出 &lt;code&gt;nolock&lt;/code&gt; 特性未来会在某个版本被废除：&lt;/del&gt;&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Specifying NOLOCK or READUNCOMMITTED in the FROM clause of an UPDATE or DELETE statement.&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;Specifying NOLOCK or READUNCOMMITTED in the FROM clause of an UPDATE or DELETE statement.&lt;/del&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;而改为推荐：&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;而改为推荐：&lt;/del&gt;&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Remove the NOLOCK or READUNCOMMITTED table hints from the FROM clause.&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;Remove the NOLOCK or READUNCOMMITTED table hints from the FROM clause.&lt;/del&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;事实上，我听过不少团队会禁止在生产环境使用不带 WHERE 条件的 SQL。
 那在这种模式下，产生相关的问题的几率也就更小了。
