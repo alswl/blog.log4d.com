@@ -3066,7 +3066,13 @@ DevOps 工程师掌握相关技能之后，也有机会可以发展为 SRE 工�
    &lt;small&gt;&lt;img src="https://4ocf5n.dijingchao.com/upload_dropbox/meta/wechat-pay-s-crop.png"/&gt;&lt;/small&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">alswl</dc:creator><pubDate>Sun, 29 Jul 2018 19:19:36 +0800</pubDate><guid isPermaLink="false">tag:blog.alswl.com,2018-07-29:2018/07/naming-algorithem/</guid><category>Family</category></item><item><title>从 SQL Server 到 MySQL（三）：愚公移山 - 开源力量</title><link>https://blog.alswl.com/2018/06/sql-server-migration-3/</link><description>&lt;p&gt;&lt;img alt="201806/refactor.png" src="https://4ocf5n.dijingchao.com/upload_dropbox/201806/refactor.png"/&gt;&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">alswl</dc:creator><pubDate>Sun, 29 Jul 2018 19:19:36 +0800</pubDate><guid isPermaLink="false">tag:blog.alswl.com,2018-07-29:2018/07/naming-algorithem/</guid><category>Family</category></item><item><title>从 SQL Server 到 MySQL（三）：愚公移山 - 开源力量</title><link>https://blog.alswl.com/2018/06/sql-server-migration-3/</link><description>&lt;p&gt;该系列三篇文章已经全部完成：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://blog.alswl.com/2018/03/sql-server-migration-1/"&gt;从 SQL Server 到 MySQL（一）：异构数据库迁移 - Log4D&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.alswl.com/2018/05/sql-server-migration-2/"&gt;从 SQL Server 到 MySQL（二）：在线迁移，空中换发动机 - Log4D&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.alswl.com/2018/06/sql-server-migration-3/"&gt;从 SQL Server 到 MySQL（三）：愚公移山 - 开源力量 - Log4D&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img alt="201806/refactor.png" src="https://4ocf5n.dijingchao.com/upload_dropbox/201806/refactor.png"/&gt;&lt;/p&gt;
 &lt;p&gt;我们用了两章文章
 &lt;a href="https://blog.alswl.com/2018/03/sql-server-migration-1/"&gt;从 SQL Server 到 MySQL（一）：异构数据库迁移&lt;/a&gt;
 /
@@ -3238,7 +3244,13 @@ Slide 含金量高，在讲述核心中核心。&lt;/p&gt;
    &lt;small&gt;&lt;img src="https://4ocf5n.dijingchao.com/upload_dropbox/meta/wechat-pay-s-crop.png"/&gt;&lt;/small&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">alswl</dc:creator><pubDate>Wed, 20 Jun 2018 20:18:52 +0800</pubDate><guid isPermaLink="false">tag:blog.alswl.com,2018-06-20:2018/06/sql-server-migration-3/</guid><category>SQLServer</category><category>MySQL</category><category>DB-Migration</category></item><item><title>从 SQL Server 到 MySQL（二）：在线迁移，空中换发动机</title><link>https://blog.alswl.com/2018/05/sql-server-migration-2/</link><description>&lt;p&gt;&lt;img alt="flying-tanker" src="https://4ocf5n.dijingchao.com/upload_dropbox/201805/flying-tanker.png"/&gt;&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">alswl</dc:creator><pubDate>Wed, 20 Jun 2018 20:18:52 +0800</pubDate><guid isPermaLink="false">tag:blog.alswl.com,2018-06-20:2018/06/sql-server-migration-3/</guid><category>SQLServer</category><category>MySQL</category><category>DB-Migration</category></item><item><title>从 SQL Server 到 MySQL（二）：在线迁移，空中换发动机</title><link>https://blog.alswl.com/2018/05/sql-server-migration-2/</link><description>&lt;p&gt;该系列三篇文章已经全部完成：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://blog.alswl.com/2018/03/sql-server-migration-1/"&gt;从 SQL Server 到 MySQL（一）：异构数据库迁移 - Log4D&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.alswl.com/2018/05/sql-server-migration-2/"&gt;从 SQL Server 到 MySQL（二）：在线迁移，空中换发动机 - Log4D&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.alswl.com/2018/06/sql-server-migration-3/"&gt;从 SQL Server 到 MySQL（三）：愚公移山 - 开源力量 - Log4D&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img alt="flying-tanker" src="https://4ocf5n.dijingchao.com/upload_dropbox/201805/flying-tanker.png"/&gt;&lt;/p&gt;
 &lt;p&gt;&lt;smaill&gt;（image via https://pixabay.com/en/military-stealth-bomber-refueling-602729/ ）&lt;/smaill&gt;&lt;/p&gt;
 &lt;p&gt;在上篇文章
 &lt;a href="https://blog.alswl.com/2018/03/sql-server-migration-1/"&gt;从 SQL Server 到 MySQL （一）：异构数据库迁移 - Log4D&lt;/a&gt;
@@ -3814,7 +3826,13 @@ Google 有一系列方法，包括 OKR 透明化，TGIF（Thank God It&amp;rsquo
    &lt;small&gt;&lt;img src="https://4ocf5n.dijingchao.com/upload_dropbox/meta/wechat-pay-s-crop.png"/&gt;&lt;/small&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">alswl</dc:creator><pubDate>Mon, 09 Apr 2018 23:13:03 +0800</pubDate><guid isPermaLink="false">tag:blog.alswl.com,2018-04-09:2018/04/death-sea-effect/</guid><category>management</category><category>team</category></item><item><title>从 SQL Server 到 MySQL（一）：异构数据库迁移</title><link>https://blog.alswl.com/2018/03/sql-server-migration-1/</link><description>&lt;p&gt;&lt;img alt="201803/migration-bird.png" src="https://4ocf5n.dijingchao.com/upload_dropbox/201803/migration-bird.png"/&gt;&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">alswl</dc:creator><pubDate>Mon, 09 Apr 2018 23:13:03 +0800</pubDate><guid isPermaLink="false">tag:blog.alswl.com,2018-04-09:2018/04/death-sea-effect/</guid><category>management</category><category>team</category></item><item><title>从 SQL Server 到 MySQL（一）：异构数据库迁移</title><link>https://blog.alswl.com/2018/03/sql-server-migration-1/</link><description>&lt;p&gt;该系列三篇文章已经全部完成：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://blog.alswl.com/2018/03/sql-server-migration-1/"&gt;从 SQL Server 到 MySQL（一）：异构数据库迁移 - Log4D&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.alswl.com/2018/05/sql-server-migration-2/"&gt;从 SQL Server 到 MySQL（二）：在线迁移，空中换发动机 - Log4D&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.alswl.com/2018/06/sql-server-migration-3/"&gt;从 SQL Server 到 MySQL（三）：愚公移山 - 开源力量 - Log4D&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img alt="201803/migration-bird.png" src="https://4ocf5n.dijingchao.com/upload_dropbox/201803/migration-bird.png"/&gt;&lt;/p&gt;
 &lt;h2 id="bei-jing"&gt;背景&lt;/h2&gt;
 &lt;p&gt;沪江成立于 2001 年，作为较早期的教育学习网站，
 当时技术选型范围并不大：
