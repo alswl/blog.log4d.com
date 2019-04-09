@@ -42,7 +42,7 @@
 |---cache
 |    |---text_html
 |    |---pagelinks
-</pre></div> <p>可以看到，中文名称的 wiki 在存储时候，MoinMoin 会将中文保存为 utf-8 码， 不能直接阅读。并且我需要将目录下面有多级目录，阅读麻烦。</p> <h2 id=yi-ge-jiao-ben>一个脚本</h2> <p>为了解决这个问题，我写了如下小脚本，帮我解决这个问题：</p> <table class=highlighttable><tr><td class=linenos><div class=linenodiv><pre> 1
+</pre></div> <p>可以看到，中文名称的 wiki 在存储时候，MoinMoin 会将中文保存为 utf-8 码， 不能直接阅读。并且我需要将目录下面有多级目录，阅读麻烦。</p> <h2 id=yi-ge-jiao-ben>一个脚本</h2> <p>为了解决这个问题，我写了如下小脚本，帮我解决这个问题：</p> <div style="overflow-x: auto;"><table class=highlighttable><tr><td class=linenos><div class=linenodiv><pre> 1
  2
  3
  4
@@ -175,7 +175,7 @@
 
 <span class=k>if</span> <span class=vm>__name__</span> <span class=o>==</span> <span class=s1>'__main__'</span><span class=p>:</span>
     <span class=n>main</span><span class=p>()</span>
-</pre></div> </td></tr></table> <p>使用帮助：</p> <div class=highlight><pre><span></span><span class=n>usage</span><span class=o>:</span> <span class=n>moin2txt</span><span class=o>.</span><span class=na>py</span> <span class=o>[-</span><span class=n>h</span><span class=o>]</span> <span class=o>--</span><span class=n>input</span> <span class=n>INPUT</span> <span class=o>--</span><span class=n>output</span> <span class=n>OUTPUT</span>
+</pre></div> </td></tr></table></div> <p>使用帮助：</p> <div class=highlight><pre><span></span><span class=n>usage</span><span class=o>:</span> <span class=n>moin2txt</span><span class=o>.</span><span class=na>py</span> <span class=o>[-</span><span class=n>h</span><span class=o>]</span> <span class=o>--</span><span class=n>input</span> <span class=n>INPUT</span> <span class=o>--</span><span class=n>output</span> <span class=n>OUTPUT</span>
 
 <span class=n>Convert</span> <span class=n>moin</span> <span class=n>wiki</span> <span class=n>to</span> <span class=n>text</span> <span class=n>archieves</span>
 

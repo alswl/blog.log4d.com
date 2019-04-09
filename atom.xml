@@ -9,7 +9,6 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 &lt;p&gt;当时我已经有一些想法离开沪江，一些问题逐步暴露出来：
 沪江工作舒适、做事情自由，但技术上缺乏量级挑战，制度上内部流程僵化，部门利益关系错综复杂。
 我深信业务、技术是互相引领促进，在这种环境下无法全力施展拳脚。&lt;/p&gt;
-
 &lt;p&gt;恰好此接到蚂蚁金服 Sourcing 电话，于是开始走面试流程。事后证明，这是不靠谱沟通流程，
 无准备状态的我让一些细节问题考倒(这也让我养成了 Sourcing 候选人时候都会问一句最近有没有做过面试准备)。
 最终我还是走完了流程，以（我以为的） SRE 身份加入了蚂蚁。这里隐含一个巨大风险，
@@ -133,7 +132,7 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 尽管偶尔疲惫不堪，偶尔对自己工作不满，但仍然对未来充满信心和期待。
 机会时代的智慧不仅仅只是等待和希望，更应该是探寻和希望。&lt;/p&gt;
 &lt;h2 id="fu-lu-2018-okr-biao-ge"&gt;附录 2018 OKR 表格&lt;/h2&gt;
-&lt;table cellpadding="0" cellspacing="0"&gt;
+&lt;div style="overflow-x: auto;"&gt;&lt;table cellpadding="0" cellspacing="0"&gt;
 &lt;thead&gt;
 &lt;tr&gt;
 &lt;th&gt;
@@ -201,7 +200,7 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 &lt;p&gt;6.4%&lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
 &lt;p&gt;□□□□&lt;/p&gt;
@@ -230,7 +229,7 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 &lt;p&gt;1.6%&lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
 &lt;p&gt;□□□□&lt;/p&gt;
@@ -265,7 +264,7 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 &lt;p&gt;1%&lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
 &lt;p&gt;■□□□&lt;/p&gt;
@@ -294,7 +293,7 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 &lt;p&gt;1%&lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
 &lt;p&gt;■■□□&lt;/p&gt;
@@ -335,7 +334,7 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 &lt;p&gt;0.6%&lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
 &lt;p&gt;□□□□&lt;/p&gt;
@@ -364,7 +363,7 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 &lt;p&gt;0.6%&lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
 &lt;p&gt;■□□□&lt;/p&gt;
@@ -393,7 +392,7 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 &lt;p&gt;0.6%&lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
 &lt;p&gt;■□□□&lt;/p&gt;
@@ -422,7 +421,7 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 &lt;p&gt;0.6%&lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
 &lt;p&gt;□□□□&lt;/p&gt;
@@ -451,7 +450,7 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 &lt;p&gt;0.6%&lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
 &lt;p&gt;□□□□&lt;/p&gt;
@@ -573,7 +572,7 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 &lt;p&gt;0.6%&lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
 &lt;p&gt;□□□□&lt;/p&gt;
@@ -602,7 +601,7 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 &lt;p&gt;0.8%&lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
 &lt;p&gt;■□□□&lt;/p&gt;
@@ -637,7 +636,7 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 &lt;p&gt;0.6%&lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
 &lt;p&gt;□□□□&lt;/p&gt;
@@ -666,7 +665,7 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 &lt;p&gt;0.9%&lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
 &lt;p&gt;□□□□&lt;/p&gt;
@@ -695,7 +694,7 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 &lt;p&gt;0.9%&lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
 &lt;p&gt;□□□□&lt;/p&gt;
@@ -724,7 +723,7 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 &lt;p&gt;0.6%&lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
 &lt;p&gt;□□□□&lt;/p&gt;
@@ -759,7 +758,7 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 &lt;p&gt;1.6%&lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
 &lt;p&gt;□□□□&lt;/p&gt;
@@ -788,7 +787,7 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 &lt;p&gt;2.4%&lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
 &lt;p&gt;□□□□&lt;/p&gt;
@@ -823,7 +822,7 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 &lt;p&gt;1.2%&lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
 &lt;p&gt;■□□□&lt;/p&gt;
@@ -852,7 +851,7 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 &lt;p&gt;1.2%&lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
 &lt;p&gt;■□□□&lt;/p&gt;
@@ -881,7 +880,7 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 &lt;p&gt;3.6%&lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
 &lt;p&gt;□□□□&lt;/p&gt;
@@ -922,7 +921,7 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 &lt;p&gt;4.5%&lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
 &lt;p&gt;■□□□&lt;/p&gt;
@@ -951,7 +950,7 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 &lt;p&gt;2.25%&lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
 &lt;p&gt;□□□□&lt;/p&gt;
@@ -980,7 +979,7 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 &lt;p&gt;2.25%&lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
 &lt;p&gt;□□□□&lt;/p&gt;
@@ -1015,7 +1014,7 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 &lt;p&gt;3.6%&lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
 &lt;p&gt;□□□□&lt;/p&gt;
@@ -1044,7 +1043,7 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 &lt;p&gt;1.2%&lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
 &lt;p&gt;□□□□&lt;/p&gt;
@@ -1073,7 +1072,7 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 &lt;p&gt;1.2%&lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
 &lt;p&gt;□□□□&lt;/p&gt;
@@ -1108,7 +1107,7 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 &lt;p&gt;3%&lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
 &lt;p&gt;□□□□&lt;/p&gt;
@@ -1137,7 +1136,7 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 &lt;p&gt;1.5%&lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
 &lt;p&gt;□□□□&lt;/p&gt;
@@ -1166,7 +1165,7 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 &lt;p&gt;1.5%&lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
 &lt;p&gt;□□□□&lt;/p&gt;
@@ -1195,7 +1194,7 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 &lt;p&gt;1.5%&lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
 &lt;p&gt;■■■□&lt;/p&gt;
@@ -1224,7 +1223,7 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 &lt;p&gt;3%&lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
 &lt;p&gt;■□□□&lt;/p&gt;
@@ -1253,7 +1252,7 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 &lt;p&gt;4.5%&lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
 &lt;p&gt;□□□□&lt;/p&gt;
@@ -1294,7 +1293,7 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 &lt;p&gt;0.5%&lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
 &lt;p&gt;□□□□&lt;/p&gt;
@@ -1323,7 +1322,7 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 &lt;p&gt;0.5%&lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
 &lt;p&gt;□□□□&lt;/p&gt;
@@ -1393,7 +1392,7 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 &lt;p&gt;1%&lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
 &lt;p&gt;■■■■&lt;/p&gt;
@@ -1498,7 +1497,7 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 &lt;p&gt;0.5%&lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
 &lt;p&gt;■■■■&lt;/p&gt;
@@ -1801,7 +1800,7 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 &lt;p&gt;1.4%&lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
 &lt;p&gt;■■□□&lt;/p&gt;
@@ -1920,43 +1919,43 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
 &lt;p&gt;100%&lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
 &lt;p&gt;100%&lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -1964,40 +1963,40 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 &lt;p&gt;Score for Q&lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -2005,40 +2004,40 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 &lt;p&gt;Score 期望&lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -2046,40 +2045,40 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 &lt;p&gt;Score 推测全年&lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -2087,46 +2086,46 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 &lt;p&gt;Score Total&lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
 &lt;p&gt;27.1694240348692%&lt;/p&gt;
 &lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
-&lt;/table&gt;
+&lt;/table&gt;&lt;/div&gt;
 &lt;h2 id="fu-lu-2019-nian-okr-biao-ge"&gt;附录 2019 年 OKR 表格&lt;/h2&gt;
-&lt;table cellpadding="0" cellspacing="0"&gt;
+&lt;div style="overflow-x: auto;"&gt;&lt;table cellpadding="0" cellspacing="0"&gt;
 &lt;thead&gt;
 &lt;tr&gt;
 &lt;th&gt;
@@ -2597,26 +2596,26 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
 &lt;p&gt;100%&lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
-&lt;/table&gt;
+&lt;/table&gt;&lt;/div&gt;
 &lt;hr&gt;
 &lt;div class="panel"&gt;
 &lt;div class="panel-body"&gt;
@@ -3262,7 +3261,6 @@ Slide 含金量高，在讲述核心中核心。&lt;/p&gt;
 而一旦用户中心停止服务，几乎所有依赖于这个中央服务的系统都会停摆。&lt;/p&gt;
 &lt;p&gt;能不能做到无缝的在线迁移呢？系统不需要或者只需要极短暂的停机？
 作为有追求的技术人，我们一定要想办法解决上面的问题。&lt;/p&gt;
-
 &lt;h2 id="zai-xian-qian-yi-de-yuan-li-he-liu-cheng"&gt;在线迁移的原理和流程&lt;/h2&gt;
 &lt;p&gt;针对 Oracle 到 MySQL，市面上已经有比较成熟的解决方案 - alibaba 的
 &lt;a href="https://github.com/alibaba/yugong"&gt;yugong&lt;/a&gt;
@@ -3478,7 +3476,7 @@ Canal 会模拟成一个 MySQL 实例，作为 Slave 连接到 Master 上面，
 故障预案处理。&lt;/p&gt;
 &lt;p&gt;考虑到多个事业部都需要经历这个一个过程，我们项目组将每一个步骤都固化下来，
 形成了一个最佳实践。我们的迁移步骤如下，供大家参考：&lt;/p&gt;
-&lt;table&gt;
+&lt;div style="overflow-x: auto;"&gt;&lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
 &lt;th&gt;大阶段&lt;/th&gt;
@@ -3725,7 +3723,7 @@ Canal 会模拟成一个 MySQL 实例，作为 Slave 连接到 Master 上面，
 &lt;td&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
-&lt;/table&gt;
+&lt;/table&gt;&lt;/div&gt;
 &lt;h2 id="reference"&gt;Reference&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://docs.oracle.com/cd/B10500_01/server.920/a96567/repmview.htm"&gt;Materialized View Concepts and Architecture&lt;/a&gt;&lt;/li&gt;
@@ -3848,7 +3846,6 @@ Java 的版本是 1.2，C# 尚未诞生，MySQL 还没有被 Sun 收购，
 数据库从 SQL Server 迁移到 MySQL。&lt;/p&gt;
 &lt;p&gt;本系列文章就是向大家介绍，
 从 SQL Server 迁移到 MySQL 所面临的问题和我们的解决方案。&lt;/p&gt;
-
 &lt;h2 id="qian-yi-fang-an-de-ji-ben-liu-cheng"&gt;迁移方案的基本流程&lt;/h2&gt;
 &lt;p&gt;设计迁移方案需要考量以下几个指标：&lt;/p&gt;
 &lt;ul&gt;
@@ -3903,11 +3900,11 @@ MySQL 的白皮书。
 &lt;ul&gt;
 &lt;li&gt;SQL Server to MySQL - Datatypes 数据类型对应表&lt;/li&gt;
 &lt;li&gt;SQL Server to MySQL - Predicates 逻辑算子对应表&lt;/li&gt;
-&lt;li&gt;SQL Server to MySQL &amp;ndash; Operators and Date Functions 函数对应表&lt;/li&gt;
+&lt;li&gt;SQL Server to MySQL – Operators and Date Functions 函数对应表&lt;/li&gt;
 &lt;li&gt;T-SQL Conversion Suggestions 存储过程转换建议&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;需要额外处理的数据类型：&lt;/p&gt;
-&lt;table&gt;
+&lt;div style="overflow-x: auto;"&gt;&lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
 &lt;th&gt;SQL Server&lt;/th&gt;
@@ -3944,7 +3941,7 @@ MySQL 的白皮书。
 &lt;td&gt;CHAR(256)&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
-&lt;/table&gt;
+&lt;/table&gt;&lt;/div&gt;
 &lt;p&gt;在实际进行中，还额外遇到了一个用来解决树形结构存储的字段类型
 Hierarchyid。这个场景需要额外进行业务调整。&lt;/p&gt;
 &lt;p&gt;我们在内部做了针对 MySQL 知识的摸底排查工作，
@@ -3998,7 +3995,7 @@ Hierarchyid。这个场景需要额外进行业务调整。&lt;/p&gt;
 &lt;p&gt;看上去异构数据库迁移工具和方案很多，但是经过我们调研，其中不少是为老派的传统行业服务的。
 比如 Kettle / Ispirerer，他们关注的特性，不能满足互联网公司对性能、迁移耗时的要求。
 简单筛选后，以下几个工具进入我们候选列表（为了做特性对比，加入几个同构数据库迁移工具）：&lt;/p&gt;
-&lt;table&gt;
+&lt;div style="overflow-x: auto;"&gt;&lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
 &lt;th&gt;工具名称&lt;/th&gt;
@@ -4073,7 +4070,7 @@ Hierarchyid。这个场景需要额外进行业务调整。&lt;/p&gt;
 &lt;td&gt;V&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
-&lt;/table&gt;
+&lt;/table&gt;&lt;/div&gt;
 &lt;p&gt;由于异构数据库迁移，真正能够进入我们选型的只有
 DataX / yugong / DB2DB / MySQL Workbench。
 经过综合考虑，我们最终选用了三种方案，
@@ -4188,7 +4185,6 @@ SQL Server 有 &lt;code&gt;physloc&lt;/code&gt;。这种方案可以解决无主
 我无法既渴求爆炸性的增长，又期望在这一过程中低风险，我需要接受这种现状。
 第二是曝光自己的目标，让回顾和计划透明化。
 从社会心理学的角度上来看，公开的承诺有助于个体更努力地驱动目标的完成。&lt;/p&gt;
-
 &lt;h2 id="2017"&gt;2017&lt;/h2&gt;
 &lt;p&gt;2017 年我将个人生活纳入了 OKR 管理的范围，在这之前是琐碎的 Checklist 管理方法。
 OKR 管理的优势在于年初可以关注大方向，保持全年的路线连贯性。
@@ -4274,7 +4270,7 @@ SQL Server 到 MySQL。
     作者有一套「作文四书」，感谢余晟老师赠书。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;「人类简史」 - 尤瓦尔&amp;middot;赫拉利&lt;ul&gt;
+&lt;li&gt;「人类简史」 - 尤瓦尔·赫拉利&lt;ul&gt;
 &lt;li&gt;开脑洞的人类历史学研究，作者妙笔生花，将复杂事情以形象和有趣的方法呈现给大家。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
@@ -4343,7 +4339,7 @@ SQL Server 到 MySQL。
 我思考的结果是，技术发展速度虽然快，但是核心改变是有限的。
 我目前没有足够的想法来做上层的事，那就切入基础领域，花时间补足短板。
 在这个思路指导下，新年的 OKR 对基础领域的投入提高了比例：&lt;/p&gt;
-&lt;table&gt;
+&lt;div style="overflow-x: auto;"&gt;&lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
 &lt;th&gt;Direction&lt;/th&gt;
@@ -4573,7 +4569,7 @@ SQL Server 到 MySQL。
 &lt;td&gt;参加开智的课程&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
-&lt;/table&gt;
+&lt;/table&gt;&lt;/div&gt;
 &lt;p&gt;从目标执行的可行性上来说，年度 OKR 往往是允许甚至是推荐在执行过程中修改的。
 季度的 OKR 在确定之后不允许进行修改。毕竟计划赶不上变化，但是又不能朝令夕改。
 希望我今年在大方向保持稳定，每个季度能够执行贯彻到位，将时间价值最大化。&lt;/p&gt;
