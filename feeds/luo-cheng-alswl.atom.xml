@@ -11,7 +11,7 @@
 &lt;p&gt;今天，我们默认在&amp;nbsp;&lt;a href="https://stackoverflow.com/"&gt;Stack Overflow&lt;/a&gt;&amp;nbsp;上部署了 HTTPS。目前所有的流量都将跳转到&amp;nbsp;&lt;code&gt;https://&lt;/code&gt;&amp;nbsp;上。与此同时，Google 链接也会在接下去的几周内更改。启用的过程本身只是举手之劳，但在此之前我们却花了好几年的时间。到目前为止，HTTPS 在我们所有的 Q&amp;amp;A 网站上都默认启用了。&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://meta.stackoverflow.com/q/345012/13249"&gt;在过去的两个月里&lt;/a&gt;，我们在 Stack Exchange 全网维持发布 HTTPS。Stack Overflow 是最后，也是迄今最大的的一个站点。这对我们来说是一个巨大里程碑，但决不意味着是终点。&lt;a href="#next-steps"&gt;后文会提到&lt;/a&gt;，我们仍有很多需要做的事情。但现在我们总算能看得见终点了，耶！&lt;/p&gt;
 &lt;p&gt;友情提示：这篇文章讲述的是一个漫长的旅程。非常漫长。你可能已经注意到你的滚动条现在非常小。我们遇到的问题并不是只在 Stack Exchange/Overflow 才有，但这些问题的组合还挺罕见。我在文章中会讲到我们的一些尝试、折腾、错误、成功，也会包括一些开源项目&amp;mdash;&amp;mdash;希望这些细节对你们有所帮助。由于它们的关系错综复杂，我难以用时间顺序来组织这篇文章，所以我会将文章拆解成架构、应用层、错误等几个主题。&lt;/p&gt;
-&lt;!-- more --&gt;
+
 &lt;p&gt;首先，我们要提一下为什么我们的处境相对独特：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;我们有几百个域名（&lt;a href="https://stackexchange.com/sites"&gt;大量站点&lt;/a&gt;及服务）&lt;ul&gt;

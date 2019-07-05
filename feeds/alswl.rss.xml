@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>Log4D</title><link>https://blog.alswl.com/</link><description></description><lastBuildDate>Thu, 04 Jul 2019 19:58:28 +0800</lastBuildDate><item><title>从前端后端天花板论技术壁垒</title><link>https://blog.alswl.com/2019/07/frontend-backend-ceiling/</link><description>&lt;blockquote&gt;
+<rss version="2.0"><channel><title>Log4D</title><link>https://blog.alswl.com/</link><description></description><lastBuildDate>Thu, 04 Jul 2019 19:58:28 +0800</lastBuildDate><item><title>漫谈前后端天花板</title><link>https://blog.alswl.com/2019/07/frontend-backend-ceiling/</link><description>&lt;blockquote&gt;
 &lt;p&gt;在阿里，我们不得不承认一个事实：前端的确有价值，但放在全局来看，前端产生的价值并非核心价值。 在阿里，虽然前端的工作已
 经不可或缺，但对大公司而言，不可或缺的岗位多了去呢，不可或缺不代表有核心价值，我就不说了。&lt;/p&gt;
 &lt;p&gt;- 玉伯 2013 年 &lt;a href="https://github.com/lifesinger/blog/issues/141"&gt;阿里前端的困局与突围&lt;/a&gt;&lt;/p&gt;
@@ -7,7 +7,7 @@
 &lt;!--![ceilling.png](./2019-07-04-frontend-backend-ceiling.md.assets/ceilling.png)--&gt;
 &lt;p&gt;&lt;img alt="ceilling" src="https://4ocf5n.dijingchao.com/upload_dropbox/201907/ceilling.jpg"/&gt;&lt;/p&gt;
 &lt;p&gt;&lt;small&gt;image from &lt;a href="https://pixabay.com/photos/abbey-arches-architecture-building-1851493/"&gt;Abbey Arches Architecture - Free photo on Pixabay&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
-&lt;!-- more --&gt;
+
 &lt;h2 id="he-g-zong-lun-dao"&gt;和 G 总论道&lt;/h2&gt;
 &lt;p&gt;前几天和某大厂前端负责人 G 聊职业生涯发展，聊着聊着就谈到了前端和后端职业天花板。
 我表达了自己观点：后端职业天花板更高，这是由职能细分决定。&lt;/p&gt;
@@ -166,7 +166,6 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 &lt;p&gt;当时我已经有一些想法离开沪江，一些问题逐步暴露出来：
 沪江工作舒适、做事情自由，但技术上缺乏量级挑战，制度上内部流程僵化，部门利益关系错综复杂。
 我深信业务、技术是互相引领促进，在这种环境下无法全力施展拳脚。&lt;/p&gt;
-&lt;!-- more --&gt;
 &lt;p&gt;恰好此接到蚂蚁金服 Sourcing 电话，于是开始走面试流程。事后证明，这是不靠谱沟通流程，
 无准备状态的我让一些细节问题考倒(这也让我养成了 Sourcing 候选人时候都会问一句最近有没有做过面试准备)。
 最终我还是走完了流程，以（我以为的） SRE 身份加入了蚂蚁。这里隐含一个巨大风险，
@@ -290,7 +289,7 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 尽管偶尔疲惫不堪，偶尔对自己工作不满，但仍然对未来充满信心和期待。
 机会时代的智慧不仅仅只是等待和希望，更应该是探寻和希望。&lt;/p&gt;
 &lt;h2 id="fu-lu-2018-okr-biao-ge"&gt;附录 2018 OKR 表格&lt;/h2&gt;
-&lt;table cellpadding="0" cellspacing="0"&gt;
+&lt;div style="overflow-x: auto;"&gt;&lt;table cellpadding="0" cellspacing="0"&gt;
 &lt;thead&gt;
 &lt;tr&gt;
 &lt;th&gt;
@@ -358,7 +357,7 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 &lt;p&gt;6.4%&lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
 &lt;p&gt;□□□□&lt;/p&gt;
@@ -387,7 +386,7 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 &lt;p&gt;1.6%&lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
 &lt;p&gt;□□□□&lt;/p&gt;
@@ -422,7 +421,7 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 &lt;p&gt;1%&lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
 &lt;p&gt;■□□□&lt;/p&gt;
@@ -451,7 +450,7 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 &lt;p&gt;1%&lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
 &lt;p&gt;■■□□&lt;/p&gt;
@@ -492,7 +491,7 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 &lt;p&gt;0.6%&lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
 &lt;p&gt;□□□□&lt;/p&gt;
@@ -521,7 +520,7 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 &lt;p&gt;0.6%&lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
 &lt;p&gt;■□□□&lt;/p&gt;
@@ -550,7 +549,7 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 &lt;p&gt;0.6%&lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
 &lt;p&gt;■□□□&lt;/p&gt;
@@ -579,7 +578,7 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 &lt;p&gt;0.6%&lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
 &lt;p&gt;□□□□&lt;/p&gt;
@@ -608,7 +607,7 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 &lt;p&gt;0.6%&lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
 &lt;p&gt;□□□□&lt;/p&gt;
@@ -730,7 +729,7 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 &lt;p&gt;0.6%&lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
 &lt;p&gt;□□□□&lt;/p&gt;
@@ -759,7 +758,7 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 &lt;p&gt;0.8%&lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
 &lt;p&gt;■□□□&lt;/p&gt;
@@ -794,7 +793,7 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 &lt;p&gt;0.6%&lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
 &lt;p&gt;□□□□&lt;/p&gt;
@@ -823,7 +822,7 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 &lt;p&gt;0.9%&lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
 &lt;p&gt;□□□□&lt;/p&gt;
@@ -852,7 +851,7 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 &lt;p&gt;0.9%&lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
 &lt;p&gt;□□□□&lt;/p&gt;
@@ -881,7 +880,7 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 &lt;p&gt;0.6%&lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
 &lt;p&gt;□□□□&lt;/p&gt;
@@ -916,7 +915,7 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 &lt;p&gt;1.6%&lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
 &lt;p&gt;□□□□&lt;/p&gt;
@@ -945,7 +944,7 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 &lt;p&gt;2.4%&lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
 &lt;p&gt;□□□□&lt;/p&gt;
@@ -980,7 +979,7 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 &lt;p&gt;1.2%&lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
 &lt;p&gt;■□□□&lt;/p&gt;
@@ -1009,7 +1008,7 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 &lt;p&gt;1.2%&lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
 &lt;p&gt;■□□□&lt;/p&gt;
@@ -1038,7 +1037,7 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 &lt;p&gt;3.6%&lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
 &lt;p&gt;□□□□&lt;/p&gt;
@@ -1079,7 +1078,7 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 &lt;p&gt;4.5%&lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
 &lt;p&gt;■□□□&lt;/p&gt;
@@ -1108,7 +1107,7 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 &lt;p&gt;2.25%&lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
 &lt;p&gt;□□□□&lt;/p&gt;
@@ -1137,7 +1136,7 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 &lt;p&gt;2.25%&lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
 &lt;p&gt;□□□□&lt;/p&gt;
@@ -1172,7 +1171,7 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 &lt;p&gt;3.6%&lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
 &lt;p&gt;□□□□&lt;/p&gt;
@@ -1201,7 +1200,7 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 &lt;p&gt;1.2%&lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
 &lt;p&gt;□□□□&lt;/p&gt;
@@ -1230,7 +1229,7 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 &lt;p&gt;1.2%&lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
 &lt;p&gt;□□□□&lt;/p&gt;
@@ -1265,7 +1264,7 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 &lt;p&gt;3%&lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
 &lt;p&gt;□□□□&lt;/p&gt;
@@ -1294,7 +1293,7 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 &lt;p&gt;1.5%&lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
 &lt;p&gt;□□□□&lt;/p&gt;
@@ -1323,7 +1322,7 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 &lt;p&gt;1.5%&lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
 &lt;p&gt;□□□□&lt;/p&gt;
@@ -1352,7 +1351,7 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 &lt;p&gt;1.5%&lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
 &lt;p&gt;■■■□&lt;/p&gt;
@@ -1381,7 +1380,7 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 &lt;p&gt;3%&lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
 &lt;p&gt;■□□□&lt;/p&gt;
@@ -1410,7 +1409,7 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 &lt;p&gt;4.5%&lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
 &lt;p&gt;□□□□&lt;/p&gt;
@@ -1451,7 +1450,7 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 &lt;p&gt;0.5%&lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
 &lt;p&gt;□□□□&lt;/p&gt;
@@ -1480,7 +1479,7 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 &lt;p&gt;0.5%&lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
 &lt;p&gt;□□□□&lt;/p&gt;
@@ -1550,7 +1549,7 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 &lt;p&gt;1%&lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
 &lt;p&gt;■■■■&lt;/p&gt;
@@ -1655,7 +1654,7 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 &lt;p&gt;0.5%&lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
 &lt;p&gt;■■■■&lt;/p&gt;
@@ -1958,7 +1957,7 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 &lt;p&gt;1.4%&lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
 &lt;p&gt;■■□□&lt;/p&gt;
@@ -2077,43 +2076,43 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
 &lt;p&gt;100%&lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
 &lt;p&gt;100%&lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -2121,40 +2120,40 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 &lt;p&gt;Score for Q&lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -2162,40 +2161,40 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 &lt;p&gt;Score 期望&lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -2203,40 +2202,40 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 &lt;p&gt;Score 推测全年&lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -2244,46 +2243,46 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 &lt;p&gt;Score Total&lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
 &lt;p&gt;27.1694240348692%&lt;/p&gt;
 &lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
-&lt;/table&gt;
+&lt;/table&gt;&lt;/div&gt;
 &lt;h2 id="fu-lu-2019-nian-okr-biao-ge"&gt;附录 2019 年 OKR 表格&lt;/h2&gt;
-&lt;table cellpadding="0" cellspacing="0"&gt;
+&lt;div style="overflow-x: auto;"&gt;&lt;table cellpadding="0" cellspacing="0"&gt;
 &lt;thead&gt;
 &lt;tr&gt;
 &lt;th&gt;
@@ -2754,26 +2753,26 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
 &lt;p&gt;100%&lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
-&lt;/table&gt;
+&lt;/table&gt;&lt;/div&gt;
 &lt;hr&gt;
 &lt;div class="panel"&gt;
 &lt;div class="panel-body"&gt;
@@ -2797,7 +2796,7 @@ TL 余老师带我们三个架构师逛了圆明园，北京小伙伴热情招�
 &lt;p&gt;让我一一给你讲解吧。&lt;/p&gt;
 &lt;p&gt;&lt;img alt="sre-and-devops.png" src="https://4ocf5n.dijingchao.com/upload_dropbox/201809/sre-and-devops.png"/&gt;
 &lt;small&gt;&lt;a href="https://www.youtube.com/watch?v=uTEL8Ff1Zvk"&gt;image via YouTube&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
-&lt;!-- more --&gt;
+
 &lt;h2 id="devops-he-sre-ding-yi"&gt;DevOps 和 SRE 定义&lt;/h2&gt;
 &lt;p&gt;DevOps 是字面上 Dev 开发 / Ops 运维两者组合，
 严格意义上 DevOps 如下（via &lt;a href="https://en.wikipedia.org/wiki/DevOps"&gt;DevOps - Wikipedia&lt;/a&gt;）：&lt;/p&gt;
@@ -3071,7 +3070,7 @@ DevOps 工程师掌握相关技能之后，也有机会可以发展为 SRE 工�
 &lt;/ul&gt;
 &lt;p&gt;每家网站都写得天花乱坠：易经、五格剖象法、五行起名、五格起名、三格数理。
 这些都不用 Care，因为它们都是来自同一个算法：「三才五格」。&lt;/p&gt;
-&lt;!-- more --&gt;
+
 &lt;h2 id="xiong-qi-jian-weng-de-san-cai-wu-ge"&gt;熊崎健翁的三才五格&lt;/h2&gt;
 &lt;p&gt;我回想先生使用的算命方法，有这么几个特点：&lt;/p&gt;
 &lt;ul&gt;
@@ -3248,7 +3247,7 @@ Otter 配备了相对 yugong 更健壮管理工具、分布式协调工具，
 当然 yugong 本身质量不错，长期运行也没问题。
 我们有个产线小伙伴使用我们魔改后 yugong，
 用来将数据从管理平台同步数据到用户前台，已经稳定跑了半年多了。&lt;/p&gt;
-&lt;!-- more --&gt;
+
 &lt;h2 id="yugong-xi-tong-jie-gou"&gt;yugong 系统结构&lt;/h2&gt;
 &lt;p&gt;这里我不赘述如何使用 yugong，有需求同学直接去
 &lt;a href="https://github.com/alibaba/yugong"&gt;官方文档&lt;/a&gt; 查看使用文档。&lt;/p&gt;
@@ -3419,7 +3418,6 @@ Slide 含金量高，在讲述核心中核心。&lt;/p&gt;
 而一旦用户中心停止服务，几乎所有依赖于这个中央服务的系统都会停摆。&lt;/p&gt;
 &lt;p&gt;能不能做到无缝的在线迁移呢？系统不需要或者只需要极短暂的停机？
 作为有追求的技术人，我们一定要想办法解决上面的问题。&lt;/p&gt;
-&lt;!-- more --&gt;
 &lt;h2 id="zai-xian-qian-yi-de-yuan-li-he-liu-cheng"&gt;在线迁移的原理和流程&lt;/h2&gt;
 &lt;p&gt;针对 Oracle 到 MySQL，市面上已经有比较成熟的解决方案 - alibaba 的
 &lt;a href="https://github.com/alibaba/yugong"&gt;yugong&lt;/a&gt;
@@ -3635,7 +3633,7 @@ Canal 会模拟成一个 MySQL 实例，作为 Slave 连接到 Master 上面，
 故障预案处理。&lt;/p&gt;
 &lt;p&gt;考虑到多个事业部都需要经历这个一个过程，我们项目组将每一个步骤都固化下来，
 形成了一个最佳实践。我们的迁移步骤如下，供大家参考：&lt;/p&gt;
-&lt;table&gt;
+&lt;div style="overflow-x: auto;"&gt;&lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
 &lt;th&gt;大阶段&lt;/th&gt;
@@ -3882,7 +3880,7 @@ Canal 会模拟成一个 MySQL 实例，作为 Slave 连接到 Master 上面，
 &lt;td&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
-&lt;/table&gt;
+&lt;/table&gt;&lt;/div&gt;
 &lt;h2 id="reference"&gt;Reference&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://docs.oracle.com/cd/B10500_01/server.920/a96567/repmview.htm"&gt;Materialized View Concepts and Architecture&lt;/a&gt;&lt;/li&gt;
@@ -3906,7 +3904,7 @@ Canal 会模拟成一个 MySQL 实例，作为 Slave 连接到 Master 上面，
 这也让我想起了一篇文章，
 Bruce F. Webster 在 2008 年写了一篇文章「The Wetware Crisis: the Dead Sea effect」，
 翻译过来是「死海效应」。&lt;/p&gt;
-&lt;!-- more --&gt;
+
 &lt;p&gt;Bruce 在文章中阐述了一个概念：一个团队可能陷入一种反模式，称之为死海效应。
 死海是位于约旦的一个高盐分水域，由于水分被蒸发，这里的盐度是正常海水的 8 倍。
 将水分比喻为高质量人才，盐分比喻为低质量人才。
@@ -4005,7 +4003,6 @@ Java 的版本是 1.2，C# 尚未诞生，MySQL 还没有被 Sun 收购，
 数据库从 SQL Server 迁移到 MySQL。&lt;/p&gt;
 &lt;p&gt;本系列文章就是向大家介绍，
 从 SQL Server 迁移到 MySQL 所面临的问题和我们的解决方案。&lt;/p&gt;
-&lt;!-- more --&gt;
 &lt;h2 id="qian-yi-fang-an-de-ji-ben-liu-cheng"&gt;迁移方案的基本流程&lt;/h2&gt;
 &lt;p&gt;设计迁移方案需要考量以下几个指标：&lt;/p&gt;
 &lt;ul&gt;
@@ -4060,11 +4057,11 @@ MySQL 的白皮书。
 &lt;ul&gt;
 &lt;li&gt;SQL Server to MySQL - Datatypes 数据类型对应表&lt;/li&gt;
 &lt;li&gt;SQL Server to MySQL - Predicates 逻辑算子对应表&lt;/li&gt;
-&lt;li&gt;SQL Server to MySQL &amp;ndash; Operators and Date Functions 函数对应表&lt;/li&gt;
+&lt;li&gt;SQL Server to MySQL – Operators and Date Functions 函数对应表&lt;/li&gt;
 &lt;li&gt;T-SQL Conversion Suggestions 存储过程转换建议&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;需要额外处理的数据类型：&lt;/p&gt;
-&lt;table&gt;
+&lt;div style="overflow-x: auto;"&gt;&lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
 &lt;th&gt;SQL Server&lt;/th&gt;
@@ -4101,7 +4098,7 @@ MySQL 的白皮书。
 &lt;td&gt;CHAR(256)&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
-&lt;/table&gt;
+&lt;/table&gt;&lt;/div&gt;
 &lt;p&gt;在实际进行中，还额外遇到了一个用来解决树形结构存储的字段类型
 Hierarchyid。这个场景需要额外进行业务调整。&lt;/p&gt;
 &lt;p&gt;我们在内部做了针对 MySQL 知识的摸底排查工作，
@@ -4155,7 +4152,7 @@ Hierarchyid。这个场景需要额外进行业务调整。&lt;/p&gt;
 &lt;p&gt;看上去异构数据库迁移工具和方案很多，但是经过我们调研，其中不少是为老派的传统行业服务的。
 比如 Kettle / Ispirerer，他们关注的特性，不能满足互联网公司对性能、迁移耗时的要求。
 简单筛选后，以下几个工具进入我们候选列表（为了做特性对比，加入几个同构数据库迁移工具）：&lt;/p&gt;
-&lt;table&gt;
+&lt;div style="overflow-x: auto;"&gt;&lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
 &lt;th&gt;工具名称&lt;/th&gt;
@@ -4230,7 +4227,7 @@ Hierarchyid。这个场景需要额外进行业务调整。&lt;/p&gt;
 &lt;td&gt;V&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
-&lt;/table&gt;
+&lt;/table&gt;&lt;/div&gt;
 &lt;p&gt;由于异构数据库迁移，真正能够进入我们选型的只有
 DataX / yugong / DB2DB / MySQL Workbench。
 经过综合考虑，我们最终选用了三种方案，
@@ -4345,7 +4342,6 @@ SQL Server 有 &lt;code&gt;physloc&lt;/code&gt;。这种方案可以解决无主
 我无法既渴求爆炸性的增长，又期望在这一过程中低风险，我需要接受这种现状。
 第二是曝光自己的目标，让回顾和计划透明化。
 从社会心理学的角度上来看，公开的承诺有助于个体更努力地驱动目标的完成。&lt;/p&gt;
-&lt;!-- more --&gt;
 &lt;h2 id="2017"&gt;2017&lt;/h2&gt;
 &lt;p&gt;2017 年我将个人生活纳入了 OKR 管理的范围，在这之前是琐碎的 Checklist 管理方法。
 OKR 管理的优势在于年初可以关注大方向，保持全年的路线连贯性。
@@ -4431,7 +4427,7 @@ SQL Server 到 MySQL。
     作者有一套「作文四书」，感谢余晟老师赠书。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;「人类简史」 - 尤瓦尔&amp;middot;赫拉利&lt;ul&gt;
+&lt;li&gt;「人类简史」 - 尤瓦尔·赫拉利&lt;ul&gt;
 &lt;li&gt;开脑洞的人类历史学研究，作者妙笔生花，将复杂事情以形象和有趣的方法呈现给大家。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
@@ -4500,7 +4496,7 @@ SQL Server 到 MySQL。
 我思考的结果是，技术发展速度虽然快，但是核心改变是有限的。
 我目前没有足够的想法来做上层的事，那就切入基础领域，花时间补足短板。
 在这个思路指导下，新年的 OKR 对基础领域的投入提高了比例：&lt;/p&gt;
-&lt;table&gt;
+&lt;div style="overflow-x: auto;"&gt;&lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
 &lt;th&gt;Direction&lt;/th&gt;
@@ -4730,7 +4726,7 @@ SQL Server 到 MySQL。
 &lt;td&gt;参加开智的课程&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
-&lt;/table&gt;
+&lt;/table&gt;&lt;/div&gt;
 &lt;p&gt;从目标执行的可行性上来说，年度 OKR 往往是允许甚至是推荐在执行过程中修改的。
 季度的 OKR 在确定之后不允许进行修改。毕竟计划赶不上变化，但是又不能朝令夕改。
 希望我今年在大方向保持稳定，每个季度能够执行贯彻到位，将时间价值最大化。&lt;/p&gt;
@@ -4755,7 +4751,7 @@ SQL Server 到 MySQL。
 这会进而影响一个人的身心健康，得个抑郁症稀疏平常。&lt;/p&gt;
 &lt;p&gt;如何保持对工作的热情，当自己陷入困境时候如何重新调动工作热情？
 这是职场人需要深思的问题。&lt;/p&gt;
-&lt;!-- more --&gt;
+
 &lt;h2 id="gong-zuo-dai-lai-shi-yao"&gt;工作带来什么？&lt;/h2&gt;
 &lt;p&gt;从因到果，让我们先聊聊工作给我们带来什么？&lt;/p&gt;
 &lt;p&gt;对于不是含着金钥匙出生的群众来说，物质上的回报是重要并且第一位的。
@@ -4872,7 +4868,7 @@ SQL Server 到 MySQL。
 在这个过程中我发现了一个很有趣的现象：历史遗留的 .net 项目中，
 几乎所有的 SQL 中都会使用一个关键字：&lt;code&gt;nolock&lt;/code&gt;。
 这让我很困惑，&lt;code&gt;nolock&lt;/code&gt; 的字面意思是对当前技术不使用锁技术，为什么要这样用呢？&lt;/p&gt;
-&lt;!-- more --&gt;
+
 &lt;p&gt;我找了一个范例如下：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;id&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; 
 &lt;span class="k"&gt;FROM&lt;/span&gt;   &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;dbo&lt;/span&gt;&lt;span class="p"&gt;].[&lt;/span&gt;&lt;span class="n"&gt;foos&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="k"&gt;WITH&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;nolock&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; 
@@ -5167,7 +5163,7 @@ Insert 同时 Query 不会被 Block，
 其实做分享对分享者的作用往往大于参与者。
 这是一次将自己知识的梳理的过程，于是我将这次分享整理成这篇文章。&lt;/p&gt;
 &lt;p&gt;&lt;img alt="201706/stock-exchange.png" src="https://4ocf5n.dijingchao.com/upload_dropbox/201706/stock-exchange.png"/&gt;&lt;/p&gt;
-&lt;!-- more --&gt;
+
 &lt;h2 id="mu-de"&gt;目的 🎯&lt;/h2&gt;
 &lt;p&gt;我们先来聊聊，什么是「监控」，以及我们期望通过「监控」完成哪些目的？&lt;/p&gt;
 &lt;p&gt;传统意义上的监控，是指：&lt;/p&gt;
@@ -5430,7 +5426,7 @@ Freemarker 居然在 2.3.24-rc01 才支持，现在都没有发布，唉&amp;hel
 &lt;p&gt;专家在预测股票趋势变化，天气预报员可以预测未来一周甚至更长时间的天气。
 如果给他们更多的信息和参数，是否可以将未来预测的更准确？
 如果精确的粒度可以达到基本粒子级别，同时给一个计算力超群的计算器，能否精确的推衍未来变化？&lt;/p&gt;
-&lt;!-- more --&gt;
+
 &lt;p&gt;这些想法在我刚接触经典力学时浮现，学习了牛顿三定律之后，异常激动。
 感觉人类可以凭借技术的进步，逐步对未来精确预测。彼时可以解决人类即将遇到的任何问题了，化问题于无形。&lt;/p&gt;
 &lt;p&gt;这想法其实在 200 年前就出现了。法国伟大的数学家拉普拉斯（Laplace）在他的著作「概率论」里面，
@@ -5586,7 +5582,7 @@ TPS 、Latency 和 Capacity。
 &lt;p&gt;在上篇文章 &lt;a href="https://blog.alswl.com/2016/11/https-1/"&gt;🔒 也谈 HTTPS - HTTPDNS + HTTPS&lt;/a&gt; 中，
 我们谈了如何基于 HTTPDNS 来部署无坚不摧的 HTTPS 通信环境，
 这次我们讨论另外一个比较头疼的问题：部署。&lt;/p&gt;
-&lt;!-- more --&gt;
+
 &lt;p&gt;小站点部署 HTTPS 相对成本低，改改前端代码，就可以上线了。
 但作为业务有一定复杂度的大网站，就没办法这么暴力上线了。&lt;/p&gt;
 &lt;p&gt;前端在基础库中调整 Scheme 之后，仍然可能存在很多边边角角没有覆盖到。
@@ -5695,7 +5691,7 @@ Indicator 的含义是建立一系列评价指标，比如价格、户型、位�
 （当然实际情况下这些置业顾问都是吹得天花乱坠，尽睁眼说瞎话。）
 看房的过程可能长达数月，而人的记忆会随着时间逐步失真，只对最近看到的事物有深刻印象。
 使用客观的数字评价房源，则可以进行精准的评价，避免产生主观臆断。&lt;/p&gt;
-&lt;!-- more --&gt;
+
 &lt;p&gt;我使用的 Indicator 和评价细项罗列如下，供参考：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;价格&lt;/li&gt;
@@ -5782,7 +5778,7 @@ Indicator 的含义是建立一系列评价指标，比如价格、户型、位�
   而这些服务器并没有部署 SSL 服务（就算部署了，也会触发 SSL 证书 Common name 不一致报警），
   导致 443 端口直接被拒绝。&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;!-- more --&gt;
+
 &lt;p&gt;这个问题不解决，强行上 HTTPS 的话，会导致一部分用户出现无法访问网站
 一旦用户不爽了，轻则对产品不信任，重则直接导致用户流失。&lt;/p&gt;
 &lt;p&gt;运营商为了赚广告钱、省网间结算是不择手段的。
@@ -6088,7 +6084,7 @@ APP 无法在发起连接时候，也没有权限直接操作 socket。
 这里我着重讨论后者「容量规划」。&lt;/p&gt;
 &lt;p&gt;&lt;img alt="看我的一堆报警消息" src="https://4ocf5n.dijingchao.com/upload_dropbox/201606/message.png"/&gt;&lt;/p&gt;
 &lt;p&gt;^ 看我的一堆报警消息&lt;/p&gt;
-&lt;!-- more --&gt;
+
 &lt;h2 id="mian-lin-de-wen-ti"&gt;面临的问题&lt;/h2&gt;
 &lt;p&gt;面对暴涨流量，一边是业务方的满心欢喜，一边就是工程师的烦恼和压力了。
 也许是一个受欢迎的功能上线了，或者是某个社会活动导致流量爆发，系统开始出现高延迟，磁盘 IO 不够用了。
