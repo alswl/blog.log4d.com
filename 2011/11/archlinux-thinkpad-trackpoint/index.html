@@ -2,7 +2,7 @@
 xinput set-int-prop 12 "Evdev Wheel Emulation Button" 8 2
 xinput set-int-prop 12 "Evdev Wheel Emulation Timeout" 8 200
 </pre></div> <p>现在运行下面代码，启用左右滑动。</p> <div class=highlight><pre><span></span>xinput set-int-prop 12 "Evdev Wheel Emulation Axes" 8 6 7 4 5
-</pre></div> <p>创建自动脚本，在系统启动时候自动执行</p> <div style="overflow-x: auto;"><table class=highlighttable><tr><td class=linenos><div class=linenodiv><pre> 1
+</pre></div> <p>创建自动脚本，在系统启动时候自动执行</p> <table class=highlighttable><tr><td class=linenos><div class=linenodiv><pre> 1
  2
  3
  4
@@ -27,7 +27,7 @@ xinput list <span class=p>|</span> sed -ne <span class=s1>'s/^[^ ][^V].*id=\([0-
                 <span class=p>;;</span>
         <span class=k>esac</span>
 <span class=k>done</span>
-</pre></div> </td></tr></table></div> <h1>disable middle button</h1> <p>xmodmap -e "pointer = 1 9 3 4 5 6 7 8 2"</p> <p>我将这个bash放在 <code>~/.xinitrc</code> 里面执行。</p> <p>PS：如果你使用这个方法有问题，建议检查一下当前环境。另外可以参考一下其他的设置方法 <a href=http://www.thinkwiki.org/wiki/How_to_configure_the_TrackPoint>How to configure the TrackPoint</a> 。</p> </div> <!-- /.entry-content --> <hr> <div class=panel> <div class=panel-body> <small>原文链接: <a href=https://blog.alswl.com/2011/11/archlinux-thinkpad-trackpoint/ >https://blog.alswl.com/2011/11/archlinux-thinkpad-trackpoint/</a></small><br> <small>3a1ff193cee606bd1e2ea554a16353ee</small><br> <small>欢迎关注我的微信公众号：<a href="http://mp.weixin.qq.com/mp/getmasssendmsg?__biz=MzIyNTIwMTU3MQ==#wechat_webview_type=1&wechat_redirect">窥豹</a></small><br> <small><img src=https://4ocf5n.dijingchao.com/upload_dropbox/201605/qrcode_for_gh_17e2f9c2caa4_258.jpg></small> <small><img src=https://4ocf5n.dijingchao.com/upload_dropbox/meta/wechat-pay-s-crop.png></small> </div> </div> <hr> <section class=comments id=comments> <h2>Comments</h2> <div id=disqus_thread></div> <script type=text/javascript>
+</pre></div> </td></tr></table> <h1>disable middle button</h1> <p>xmodmap -e "pointer = 1 9 3 4 5 6 7 8 2"</p> <p>我将这个bash放在 <code>~/.xinitrc</code> 里面执行。</p> <p>PS：如果你使用这个方法有问题，建议检查一下当前环境。另外可以参考一下其他的设置方法 <a href=http://www.thinkwiki.org/wiki/How_to_configure_the_TrackPoint>How to configure the TrackPoint</a> 。</p> </div> <!-- /.entry-content --> <hr> <div class=panel> <div class=panel-body> <small>原文链接: <a href=https://blog.alswl.com/2011/11/archlinux-thinkpad-trackpoint/ >https://blog.alswl.com/2011/11/archlinux-thinkpad-trackpoint/</a></small><br> <small>3a1ff193cee606bd1e2ea554a16353ee</small><br> <small>欢迎关注我的微信公众号：<a href="http://mp.weixin.qq.com/mp/getmasssendmsg?__biz=MzIyNTIwMTU3MQ==#wechat_webview_type=1&wechat_redirect">窥豹</a></small><br> <small><img src=https://4ocf5n.dijingchao.com/upload_dropbox/201605/qrcode_for_gh_17e2f9c2caa4_258.jpg></small> <small><img src=https://4ocf5n.dijingchao.com/upload_dropbox/meta/wechat-pay-s-crop.png></small> </div> </div> <hr> <section class=comments id=comments> <h2>Comments</h2> <div id=disqus_thread></div> <script type=text/javascript>
             /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
             var disqus_shortname = 'log4d'; // required: replace example with your forum shortname
 
