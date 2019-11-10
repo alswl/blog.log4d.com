@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Log4D</title><link href="https://blog.alswl.com/" rel="alternate"></link><link href="https://blog.alswl.com/feeds/xiao-wan.atom.xml" rel="self"></link><id>https://blog.alswl.com/</id><updated>2017-11-12T15:30:12+08:00</updated><entry><title>服务性能监控：USE 方法（The USE Method）</title><link href="https://blog.alswl.com/2017/11/use-method/" rel="alternate"></link><published>2017-11-12T15:30:12+08:00</published><updated>2017-11-12T15:30:12+08:00</updated><author><name>小莞</name></author><id>tag:blog.alswl.com,2017-11-12:2017/11/use-method/</id><summary type="html">&lt;p&gt;本文首发在沪江技术学院公众号，小莞翻译，我做了校对。
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Log4D - 小莞</title><link href="https://blog.alswl.com/" rel="alternate"></link><link href="https://blog.alswl.com/feeds/xiao-wan.atom.xml" rel="self"></link><id>https://blog.alswl.com/</id><updated>2017-11-12T15:30:12+08:00</updated><entry><title>服务性能监控：USE 方法（The USE Method）</title><link href="https://blog.alswl.com/2017/11/use-method/" rel="alternate"></link><published>2017-11-12T15:30:12+08:00</published><updated>2017-11-12T15:30:12+08:00</updated><author><name>小莞</name></author><id>tag:blog.alswl.com,2017-11-12:2017/11/use-method/</id><summary type="html">&lt;p&gt;本文首发在沪江技术学院公众号，小莞翻译，我做了校对。
 由于微信公众号的封闭性，我担心未来文章不容易被发现。
 为了避免沧海遗珠，特意转到这里。&lt;/p&gt;
 &lt;p&gt;英文原文：&lt;a href="http://www.brendangregg.com/usemethod.html"&gt;The USE Method&lt;/a&gt;。&lt;/p&gt;
@@ -15,7 +15,7 @@
 &lt;p&gt;我列出了为不同的操作系统而衍生的 USE 方法列表供大家参考，
 你们可以根据你的环境来为你的站点服务，选择适合的附加监控指标。&lt;/p&gt;
 &lt;p&gt;通过这个工具，可以很方便的筛选出适合不同的系统的建议 metrics：&lt;a href="http://www.brendangregg.com/USEmethod/use-rosetta.html"&gt;USE Method: Rosetta Stone of Performance Checklists&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id="introintroduction"&gt;Intro（Introduction）&lt;/h2&gt;
+&lt;h2 id="intro(introduction)"&gt;Intro（Introduction）&lt;/h2&gt;
 &lt;p&gt;如果你遇到一个很严重的性能问题升级的时候，并且你不能确定它是否由服务导致的，
 这时候你该怎么办？&lt;/p&gt;
 &lt;p&gt;我们都说万事开头难。所以我开发出了 USE 方法，来帮助大家，如何去快速的解决常见的性能问题，而同时又不容易忽略重要的地方。&lt;/p&gt;
@@ -46,14 +46,14 @@
 &lt;/ul&gt;
 &lt;p&gt;我们应该要调查那些错误，因为它们会降低系统的性能，并且当故障模型处于可回复模式的时候，它可能不会立刻被发现。&lt;/p&gt;
 &lt;p&gt;这包括了那些失败和重试等操作，以及那些来自无效设备池的失效设备。&lt;/p&gt;
-&lt;h2 id="di-li-yong-lu-shi-fou-yi-wei-zhao-wei-bao-he"&gt;低利用率是否意味着未饱和？&lt;/h2&gt;
+&lt;h2 id="di li yong lu shi fou yi wei zhao wei bao he ?"&gt;低利用率是否意味着未饱和？&lt;/h2&gt;
 &lt;p&gt;即使在很长一段时间内利用率很低，一个爆发增长的高利用率，也会导致饱和 and
 性能问题，这点要理解起来可能有违三观！&lt;/p&gt;
 &lt;p&gt;我举个例子，有一位客户遇到的问题，即使他们的监控工具显示
 CPU 使用率从来没有超出过 80% ，但是
 CPU 饱和度依然有问题（延迟）监控工具报告了
 5 分钟的平均值，而其中，CPU利用率曾在数秒内高达 100% 。&lt;/p&gt;
-&lt;h2 id="zi-yuan-lie-biao"&gt;资源列表&lt;/h2&gt;
+&lt;h2 id="zi yuan lie biao"&gt;资源列表&lt;/h2&gt;
 &lt;p&gt;下面来看如何开始使用。&lt;/p&gt;
 &lt;p&gt;准备工作时， 你需要一个资源列表来按步就班的去做。
 下面是一个服务器的通用列表：&lt;/p&gt;
@@ -73,7 +73,7 @@ CPU 饱和度依然有问题（延迟）监控工具报告了
 &lt;p&gt;在使用 USE 方法排除系统的瓶颈问题之后
 ，你可以检查缓存利用率和其他的性能属性。&lt;/p&gt;
 &lt;p&gt;如果你不确认要不要监控某一个资源时，不要犹豫，监控它，然后你就能看到那些指标工作的有多么的棒。&lt;/p&gt;
-&lt;h2 id="gong-neng-mo-kuai-shi-yi-tu"&gt;功能模块示意图&lt;/h2&gt;
+&lt;h2 id="gong neng mo kuai shi yi tu"&gt;功能模块示意图&lt;/h2&gt;
 &lt;p&gt;另外一种迭代资源的方法，是找到或者绘制一张系统的功能模块示意图。&lt;/p&gt;
 &lt;p&gt;这些显示了模块关系的图，在你查找数据流的瓶颈的时候是非常有用的，这里有一张Sun
 Fire V480 Guide(page 82)的例图：&lt;/p&gt;
@@ -102,7 +102,7 @@ Storage device I/O   errors        device errors ("soft", "hard", ...)&lt;/p&gt;
 &lt;hr/&gt;
 &lt;p&gt;这些指标是每段间隔或者计数的平均值，作为你的自定义清单，要包括使用的监控软件，以及要查看的统计信息。如果是不可用的指标，可以打个问号。最后，你会完成一个完事的、简单、易读的
 metrics 清单.&lt;/p&gt;
-&lt;h2 id="harder-metrics"&gt;Harder Metrics&lt;/h2&gt;
+&lt;h2 id="harder metrics"&gt;Harder Metrics&lt;/h2&gt;
 &lt;p&gt;再来看几个硬件指标的组合&lt;/p&gt;
 &lt;hr/&gt;
 &lt;p&gt;resource              type          metric
@@ -119,7 +119,7 @@ I/O interconnect      utilization&lt;/p&gt;
 &lt;p&gt;重复所有的组合，并附上获取每个指标的说明，你会完成一个大概有30项指标的列表，其中有些是不能被测量的，还有些是难以测量的。&lt;/p&gt;
 &lt;p&gt;幸运的是，最常见的问题往往是简单的（例如，CPU 饱和度，内存容量饱和度，网络接口利用率，磁盘利用率），这类问题往往第一时间就能被检查出来。&lt;/p&gt;
 &lt;p&gt;本文的顶部，pic-1中的 example checklists 可作为参考。&lt;/p&gt;
-&lt;h2 id="in-practice"&gt;In Practice&lt;/h2&gt;
+&lt;h2 id="in practice"&gt;In Practice&lt;/h2&gt;
 &lt;p&gt;读取系统的所有组合指标，是非常耗时的，特别是当你开始使用总线和 interconnect
 指标的情况下。&lt;/p&gt;
 &lt;p&gt;现在我们可以稍微解放下了，USE 方法可以让你了解你没有检查的部分,你可以只有关注其中几项的时间例如：CPUs,
@@ -130,7 +130,7 @@ I/O interconnect      utilization&lt;/p&gt;
 越多，会使 USE 方法将更容易（发挥它的力量）。
 性能监视软件也可以帮上忙，添加 USE 方法向导to do the work for you（do what
 work? ）。&lt;/p&gt;
-&lt;h2 id="software-resources"&gt;Software Resources&lt;/h2&gt;
+&lt;h2 id="software resources"&gt;Software Resources&lt;/h2&gt;
 &lt;p&gt;有些软件资源可以用类似的方式去分析。
 这通常适用于软件的较小组件，而不是整个应用程序。 例如：&lt;/p&gt;
 &lt;ul&gt;
@@ -142,7 +142,7 @@ work? ）。&lt;/p&gt;
 &lt;li&gt;文件描述符容量(file descriptor capacity)：和上述类似，但是把资源替换成文件描述符。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;如果这几个指标很管用就一直用，要不然软件问题会被遗留给其他方法了（例如，延迟，后文会提到其他方法：other methodologies ）。&lt;/p&gt;
-&lt;h2 id="suggested-interpretations"&gt;Suggested Interpretations&lt;/h2&gt;
+&lt;h2 id="suggested interpretations"&gt;Suggested Interpretations&lt;/h2&gt;
 &lt;p&gt;USE 方法帮助你定位要使用哪些指标。
 在学习了如何从操作系统中读取到这些指标后，你的下一步工作就是诠释它们的值。对于有的人来说，
 这些诠释可能是很清晰的（因为他们可能很早就学习过，或者是做过笔记）。而其他并不那么明了的人，可能取决于系统负载的要求或期望
@@ -160,7 +160,7 @@ work? ）。&lt;/p&gt;
 &lt;/ul&gt;
 &lt;p&gt;要说明负面情况很容易：利用率低，不饱和，没有错误。 这比听起来更有用 -
 缩小调查范围可以快速定位问题区域。&lt;/p&gt;
-&lt;h2 id="cloud-computing"&gt;Cloud Computing&lt;/h2&gt;
+&lt;h2 id="cloud computing"&gt;Cloud Computing&lt;/h2&gt;
 &lt;p&gt;在云计算环境中，软件资源控制可能是为了限制
 使用共享计算服务的 tenants 的流量。在 Joyent 公司，我们主要使用操作系统虚拟化（SmartOS），它强加了内存限制，
 CPU 限制和存储I / O限制。 所有这些资源限制，都可以使用USE Method进行检查，类似于检查物理资源。&lt;/p&gt;
@@ -218,12 +218,12 @@ USE 方法提供了一个简单的流程来尝试第一步是寻找一个资源�
 有三种信号类型： "DATA NO GOOD", "NO TRACK", and "SHAFT- AND TRUNNION-AXIS ERROR"。&lt;/p&gt;
 &lt;p&gt;在有某一小段时间里，我不知道能从哪里开始使用这个方法,
 去寻找和研究具体的指标。&lt;/p&gt;
-&lt;h2 id="other-methodologies"&gt;Other Methodologies&lt;/h2&gt;
+&lt;h2 id="other methodologies"&gt;Other Methodologies&lt;/h2&gt;
 &lt;p&gt;虽然 USE 方法可能会发现 80％ 的服务器问题，但基于延迟的方法（例如Method R）可以找到所有的问题。
 不过，如果你不熟悉软件内部结构，Method R 就有可能需要花费更多时间。
 它们可能更适合已经熟悉它的数据库管理员或应用程序开发人员。&lt;/p&gt;
 &lt;p&gt;而 USE 方法的职责和专长包括操作系统（OS）和硬件，它更适合初级或高级系统管理员，当需要快速检查系统健康时，也可以由其他人员使用。&lt;/p&gt;
-&lt;h2 id="tools-method"&gt;Tools Method&lt;/h2&gt;
+&lt;h2 id="tools method"&gt;Tools Method&lt;/h2&gt;
 &lt;p&gt;以下介绍一个基于工具的方法流程（我称它作"工具方法"），与 USE 方法作比较：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;列出可用的性能工具（可以选择性安装或购买其他的）。&lt;/li&gt;

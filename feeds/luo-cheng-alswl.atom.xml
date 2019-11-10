@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Log4D</title><link href="https://blog.alswl.com/" rel="alternate"></link><link href="https://blog.alswl.com/feeds/luo-cheng-alswl.atom.xml" rel="self"></link><id>https://blog.alswl.com/</id><updated>2017-09-27T12:07:44+08:00</updated><entry><title>Stack Overflow 的 HTTPS 化：漫漫长路的终点</title><link href="https://blog.alswl.com/2017/09/https-on-stack-overflow/" rel="alternate"></link><published>2017-09-27T12:07:44+08:00</published><updated>2017-09-27T12:07:44+08:00</updated><author><name>罗晟, alswl</name></author><id>tag:blog.alswl.com,2017-09-27:2017/09/https-on-stack-overflow/</id><summary type="html">&lt;p&gt;&lt;img alt="Stack Overflow" src="https://4ocf5n.dijingchao.com/upload_dropbox/201709/stack-overflow.jpg"/&gt;&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Log4D - 罗晟, alswl</title><link href="https://blog.alswl.com/" rel="alternate"></link><link href="https://blog.alswl.com/feeds/luo-cheng-alswl.atom.xml" rel="self"></link><id>https://blog.alswl.com/</id><updated>2017-09-27T12:07:44+08:00</updated><entry><title>Stack Overflow 的 HTTPS 化：漫漫长路的终点</title><link href="https://blog.alswl.com/2017/09/https-on-stack-overflow/" rel="alternate"></link><published>2017-09-27T12:07:44+08:00</published><updated>2017-09-27T12:07:44+08:00</updated><author><name>罗晟, alswl</name></author><id>tag:blog.alswl.com,2017-09-27:2017/09/https-on-stack-overflow/</id><summary type="html">&lt;p&gt;&lt;img alt="Stack Overflow" src="https://4ocf5n.dijingchao.com/upload_dropbox/201709/stack-overflow.jpg"/&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;原文作者：Nick Craver&lt;/li&gt;
 &lt;li&gt;翻译作者：&lt;a href="https://twitter.com/luosheng"&gt;罗晟 @luosheng&lt;/a&gt; &amp;amp; &lt;a href="https://twitter.com/alswl"&gt;@alswl&lt;/a&gt;&lt;/li&gt;
@@ -80,7 +80,7 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id="kai-pian"&gt;开篇&lt;/h3&gt;
+&lt;h3 id="kai pian"&gt;开篇&lt;/h3&gt;
 &lt;p&gt;我们&lt;a href="https://nickcraver.com/blog/2013/04/23/stackoverflow-com-the-road-to-ssl/"&gt;早在 2013&lt;/a&gt;&amp;nbsp;年就开始考虑在 Stack Overflow 上部署 HTTPS 了。是的，现在是 2017 年。所以，&lt;strong&gt;究竟是什么拖了我们四年？&lt;/strong&gt;这个问题的答案放在任何一个 IT 项目上都适用：依赖和优先级。老实说，Stack Overflow 在信息安全性上的要求并不像别家那么高。我们不是银行，也不是医院，我们也不涉及信用卡支付，&lt;a href="https://archive.org/details/stackexchange"&gt;甚至于我们每个季度都会通过 HTTP 和 BT 种子的方式发布我们大部分的数据库&lt;/a&gt;。这意味着，从安全的角度来看，这件事情的紧急程度不像它在其他领域里那么高。而从依赖上来说，我们的复杂度比别人要高，在部署 HTTPS 时会在几大领域里踩坑，这些问题的组合是比较特殊的。后文中会看到，有一些域名的问题还是一直存在的。&lt;/p&gt;
 &lt;p&gt;容易踩坑的几个领域包括：&lt;/p&gt;
 &lt;ul&gt;
@@ -91,7 +91,7 @@
 &lt;/ul&gt;
 &lt;p&gt;那我们究竟是为什么需要 HTTPS 呢？因为数据并不是唯一需要安全性的东西。我们的用户中有操作员、开发者、还有各个级别的公司员工。我们希望他们到我们站点的通信是安全的。我们希望每一个用户的浏览历史是安全的。某些用户暗地里喜欢 monad 却又害怕被人发现。同时，Google 会&lt;a href="https://webmasters.googleblog.com/2014/08/https-as-ranking-signal.html"&gt;提升 HTTPS 站点的搜索排名&lt;/a&gt;（虽然我们不知道能提升多少）。&lt;/p&gt;
 &lt;p&gt;哦，还有&lt;strong&gt;性能&lt;/strong&gt;。我们热爱性能。我热爱性能。你热爱性能。我的狗热爱性能。让我给你一个性能的拥抱。很好。谢谢。你闻起来很香。&lt;/p&gt;
-&lt;h3 id="lan-ren-bao"&gt;懒人包&lt;/h3&gt;
+&lt;h3 id="lan ren bao"&gt;懒人包&lt;/h3&gt;
 &lt;p&gt;很多人喜欢情人包，所以我们来一场快速问答（我们喜欢问答！）：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;问：你们支持什么协议？&lt;ul&gt;
@@ -144,7 +144,7 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id="zheng-shu"&gt;证书&lt;/h3&gt;
+&lt;h3 id="zheng shu"&gt;证书&lt;/h3&gt;
 &lt;p&gt;让我们先聊聊证书，因为这是最容易被误解的部分。不少朋友跟我说，他安装了 HTTPS 证书，因此他们已经完成 HTTPS 准备了。呵呵，麻烦你看一眼右侧那个小小的滚动条，这篇文章才刚刚开始，你觉得真的这么简单么？&lt;a href="https://en.wikipedia.org/wiki/Scientific_wild-ass_guess"&gt;我有这个必要告诉你们一点人生的经验&lt;/a&gt;&amp;nbsp;：没这么容易的。&lt;/p&gt;
 &lt;p&gt;一个最常见的问题是：「为何不直接用&amp;nbsp;&lt;a href="https://letsencrypt.org/"&gt;Let&amp;rsquo;s Encrypt&lt;/a&gt;？」&lt;/p&gt;
 &lt;p&gt;答案是：这个方案不适合我们。 Let&amp;rsquo;s Encrypt 的确是一个伟大的产品，我希望他们能够长期服务于大家。当你只有一个或少数几个域名时，它是非常出色的选择。但是很可惜，我们 Stack Exchange 有&lt;a href="https://stackexchange.com/sites"&gt;数百个站点&lt;/a&gt;，而 Let&amp;rsquo;s Encrypt 并&lt;a href="https://letsencrypt.org/docs/faq/"&gt;不支持通配域名配置&lt;/a&gt;。这导致 Let&amp;rsquo;s Encrypt 无法满足我们的需求。要这么做，我们就不得不在每上一个新的 Q&amp;amp;A 站点的时候都部署一个（或两个）证书。这样会增加我们部署的复杂性，并且我们要么放弃不支持 SNI 的客户端（大约占 2% 的流量）要么提供超多的 IP&amp;mdash;&amp;mdash;而我们目前没这么多的 IP。&lt;/p&gt;
@@ -185,7 +185,7 @@
 &lt;p&gt;我们有试过通过代理的方式来访问我们的 Hubspot CRM 网站，在传输过程中可以将 cookies 移除掉。但是很不幸 Hubspot 使用&amp;nbsp;&lt;a href="https://www.akamai.com/"&gt;Akamai&lt;/a&gt;，它会判定我们的 HAProxy 实例是机器人，并将其封掉。头三次的时候还挺有意思的&amp;hellip;&amp;hellip;当然这也说明这个方式真的不管用。我们后来再也没试过了。&lt;/p&gt;
 &lt;p&gt;你是否好奇为什么 Stack Overflow 的博客地址是&amp;nbsp;&amp;nbsp;&lt;a href="https://stackoverflow.blog/"&gt;https://stackoverflow.blog/&lt;/a&gt;？没错，这也是出于安全目的。我们把博客搭在一个外部服务上，这样市场部门和其他团队能够更便利地使用。正因为这样，我们不能把它放在有 cookie 的域名下面。&lt;/p&gt;
 &lt;p&gt;上面的方案会牵涉到子域名，引出&amp;nbsp;&lt;a href="https://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security"&gt;HSTS&lt;/a&gt;&amp;nbsp;&lt;a href="https://hstspreload.org/"&gt;预加载&lt;/a&gt;&amp;nbsp;和&amp;nbsp;&lt;code&gt;includeSubDomains&lt;/code&gt;&amp;nbsp;命令问题，我们一会来谈这块内容。&lt;/p&gt;
-&lt;h3 id="xing-neng-http2"&gt;性能：HTTP/2&lt;/h3&gt;
+&lt;h3 id="xing neng :http/2"&gt;性能：HTTP/2&lt;/h3&gt;
 &lt;p&gt;很久之前，大家都认为 HTTPS 更慢。在那时候也确实是这样。但是时代在变化，我们说 HTTPS 的时候不再是单纯的 HTTPS，而是基于 HTTPS 的 HTTP/2。虽然&amp;nbsp;&lt;a href="https://http2.github.io/faq/#does-http2-require-encryption"&gt;HTTP/2 不要求加密&lt;/a&gt;，但&lt;em&gt;事实上&lt;/em&gt;却是加密的。主流浏览器都要求 HTTP/2 提供加密连接来启用其大部分特性。你可以来说 spec 或者规定上不是这么说的，但浏览器才是你要面对的现实。我诚挚地期望这个协议直接改名叫做 HTTPS/2，这样也能给大家省点时间。各浏览器厂商，你们听见了吗？&lt;/p&gt;
 &lt;p&gt;HTTP/2 有很多功能上的增强，特别是在用户请求之前可以主动推送资源这点。这里我就不展开了，&lt;a href="https://hpbn.co/http2/"&gt;Ilya Grigorik 已经写了一篇非常不错的文章&lt;/a&gt;。我这里简单罗列一下主要优点：&lt;/p&gt;
 &lt;ul&gt;
@@ -221,7 +221,7 @@ cdn.sstatic.net.        724     IN      A       151.101.129.69
 &lt;p&gt;嘿，这些 IP 都是一致的，并且他们也拥有相同的证书！这意味着你可以直接使用 HTTP/2 的服务器推送功能，而无需影响 HTTP/1.1 用户。 HTTP/2 有推送的同时，HTTP/1.1 也有了&lt;a href="https://blog.stackpath.com/glossary/domain-sharding/"&gt;域名共享&lt;/a&gt;（通过&amp;nbsp;&lt;code&gt;sstatic.net&lt;/code&gt;）。我们暂未部署服务器推送功能，但一切都尽在掌握之中。&lt;/p&gt;
 &lt;p&gt;HTTPS 是我们实现性能目标的一个手段。可以这么说，我们的主要目标是性能，而非站点安全性。我们想要安全性，但光是安全性不足以让我们花那么多精力来在全网部署 HTTPS。当我们把所有因素都考虑在一起的时候，我们可以评估出要完成这件事情需要付出的巨大的时间和精力。在 2013 年，HTTP/2 还没有扮演那么重要的角色。而现在形势变了，对其的支持也多了，最终这成为了我们花时间调研 HTTPS 的催化剂。&lt;/p&gt;
 &lt;p&gt;值得注意的是 HTTP/2 标准在我们项目进展时还在持续发生变化。它从&amp;nbsp;&lt;a href="https://en.wikipedia.org/wiki/SPDY"&gt;SPDY&lt;/a&gt;&amp;nbsp;演化为&amp;nbsp;&lt;a href="https://en.wikipedia.org/wiki/HTTP/2"&gt;HTTP/2&lt;/a&gt;，从&amp;nbsp;&lt;a href="https://tools.ietf.org/id/draft-agl-tls-nextprotoneg-03.html"&gt;NPN&lt;/a&gt;&amp;nbsp;演化为&amp;nbsp;&lt;a href="https://en.wikipedia.org/wiki/Application-Layer_Protocol_Negotiation"&gt;ALPN&lt;/a&gt;。我们这里不会过多涉及到这部分细节，因为我们并没有为其做太多贡献。我们观望并从中获准，但整个互联网却在推进其向前发展。如果你感兴趣，可以看看&amp;nbsp;&lt;a href="https://blog.cloudflare.com/introducing-http2/"&gt;Cloudflare 是怎么讲述其演变的&lt;/a&gt;。&lt;/p&gt;
-&lt;h3 id="haproxyzhi-chi-https"&gt;HAProxy：支持 HTTPS&lt;/h3&gt;
+&lt;h3 id="haproxy:zhi chi  https"&gt;HAProxy：支持 HTTPS&lt;/h3&gt;
 &lt;p&gt;我们最早在 2013 年开始在 HAProxy 中使用 HTTPS。为什么是&amp;nbsp;&lt;a href="https://www.haproxy.org/"&gt;HAProxy&lt;/a&gt;&amp;nbsp;呢？这是历史原因，我们已经在使用它了，而它在 2013 年 的&amp;nbsp;&lt;a href="https://www.haproxy.org/news.html"&gt;1.5 开发版&lt;/a&gt;中支持了 HTTPS，并在 2014 年发布了正式版。曾经有段时间，我们把 Nginx 放置在 HAProxy 之前（&lt;a href="https://nickcraver.com/blog/2013/04/23/stackoverflow-com-the-road-to-ssl/"&gt;详情看这里&lt;/a&gt;）。但是简单些总是更好，我们总是想着要避免在链路、部署和其他问题上的复杂问题。&lt;/p&gt;
 &lt;p&gt;我不会探讨太多细节，因为也没什么好说的。HAProxy 在 1.5 之后使用 OpenSSL 支持 HTTPS，配置文件也是清晰易懂的。我们的配置方式如下：&lt;/p&gt;
 &lt;ul&gt;
@@ -238,7 +238,7 @@ cdn.sstatic.net.        724     IN      A       151.101.129.69
 &lt;p&gt;HAProxy 比较简单，这是我们使用一个 SSL 证书来支持 :433 端口的第一步。事后看来，这也只是一小步。&lt;/p&gt;
 &lt;p&gt;这里是上面描述情况下的架构图，我们马上来说前面的那块云是怎么回事：&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://4ocf5n.dijingchao.com/upload_dropbox/201709/HTTPS-Layout.svg"&gt;&lt;img alt="Logical Architecture" src="https://4ocf5n.dijingchao.com/upload_dropbox/201709/HTTPS-Layout.svg"/&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id="cdndai-li-ceng-tong-guo-cloudflare-he-fastly-you-hua-yan-chi"&gt;CDN/代理层：通过 Cloudflare 和 Fastly 优化延迟&lt;/h3&gt;
+&lt;h3 id="cdn/dai li ceng :tong guo  cloudflare he  fastly you hua yan chi"&gt;CDN/代理层：通过 Cloudflare 和 Fastly 优化延迟&lt;/h3&gt;
 &lt;p&gt;我对 Stack Overflow&amp;nbsp;&lt;a href="https://nickcraver.com/blog/2016/02/17/stack-overflow-the-architecture-2016-edition/"&gt;架构&lt;/a&gt;&lt;a href="https://stackexchange.com/performance"&gt;的效率&lt;/a&gt;一直很自豪。我们很厉害吧？仅用一个数据中心和几个服务器就撑起了一个大型网站。不过这次不一样了。尽管效率这件事情很好，但是在延迟上就成了个问题。我们不需要那么多服务器，我们也不需要多地扩展（不过我们有一个灾备节点）。这一次，这就成为了问题。由于光速，我们（暂时）无法解决延迟这个基础性问题。我们听说有人已经在处理这个问题了，不过他们造的时间机器好像有点问题。&lt;/p&gt;
 &lt;p&gt;让我们用数字来理解延迟。赤道长度是 40000 公里（光绕地球一圈的最坏情况）。&lt;a href="https://en.wikipedia.org/wiki/Speed_of_light"&gt;光速&lt;/a&gt;在真空中是 299,792,458 米/秒。很多人用这个数字，但光纤并不是真空的。实际上光纤有&amp;nbsp;&lt;a href="https://physics.stackexchange.com/q/80043/653"&gt;30-31% 损耗&lt;/a&gt;，所以我们的这个数字是：(40,075,000 m) / (299,792,458 m/s * .70) = 0.191s，也就是说最坏情况下绕地球一圈是 191ms，对吧？不对。这假设的是一条理想路径，而实际上两个网络节点的之间几乎不可能是直线。中间还有路由器、交换机、缓存、处理器队列等各种各样的延迟。累加起来的延迟相当可观。&lt;/p&gt;
 &lt;p&gt;这些和 Stack Overflow 有什么关系呢？云主机的优势出来了。如果你用一家云供应商，你访问到的就是相对较近的服务器。但对我们来说不是这样，你离服务部署在纽约或丹佛（主备模式）越远，延迟就越高。而使用 HTTPS，在协商连接的时候需要一个额外的往返。这还是最好的情况（&lt;a href="https://blog.cloudflare.com/introducing-0-rtt/"&gt;使用 0-RTT 优化 TLS 1.3&lt;/a&gt;）。&lt;a href="https://twitter.com/igrigorik"&gt;Ilya Grigorik&lt;/a&gt;&amp;nbsp;的&amp;nbsp;&lt;a href="https://istlsfastyet.com/"&gt;这个总结&lt;/a&gt;&amp;nbsp;讲的很好。&lt;/p&gt;
@@ -249,7 +249,7 @@ cdn.sstatic.net.        724     IN      A       151.101.129.69
 &lt;li&gt;CDN 功能&lt;/li&gt;
 &lt;li&gt;与直连等同或更优的性能&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id="you-hua-dai-li-ceng-de-zhun-bei-ke-hu-duan-xing-neng-ce-shi"&gt;优化代理层的准备：客户端性能测试&lt;/h3&gt;
+&lt;h3 id="you hua dai li ceng de zhun bei :ke hu duan xing neng ce shi"&gt;优化代理层的准备：客户端性能测试&lt;/h3&gt;
 &lt;p&gt;开始正式启用终端链路加速之前，我们需要有性能测试报告。我们在浏览器搭好了一整套覆盖全链路性能数据的测试。 浏览器里可以通过 JavaScript 从&amp;nbsp;&lt;a href="https://www.w3.org/TR/navigation-timing/"&gt;&lt;code&gt;window.performance&lt;/code&gt;&lt;/a&gt;&amp;nbsp;取性能耗时。打开你浏览器的审查器，你可以亲手试一下。我们希望这个过程透明，所以从第一天开始就把详细信息&lt;a href="https://teststackoverflow.com/"&gt;放在了 teststackoverflow.com&lt;/a&gt;&amp;nbsp;上。这上面并没有敏感信息，只有一些由页面&lt;em&gt;直接&lt;/em&gt;载入的 URI 和资源，以及它们的耗时。每一张记录下来的页面大概长这样：&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://4ocf5n.dijingchao.com/upload_dropbox/201709/HTTPS-Teststackoverflow.png"&gt;&lt;img alt="teststackoverflow.com" src="https://4ocf5n.dijingchao.com/upload_dropbox/201709/HTTPS-Teststackoverflow.png"/&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;我们目前对 5% 的流量做性能监控。这个过程没有那么复杂，但是我们需要做的事情包括：
@@ -292,7 +292,7 @@ cdn.sstatic.net.        724     IN      A       151.101.129.69
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;这将给用户能力展示页 3 分钟的缓存时间（数据量还好），其余页面都不设置。这是一个为解决紧急时间的非常便于部署的全局性解决方案。 我们很开心现在有能力在终端做一些事情。我们的&amp;nbsp;&lt;a href="https://twitter.com/alioth"&gt;Jason Harvey&lt;/a&gt;&amp;nbsp;负责 VCL 配置，并写了一些自动化推送的功能。我们基于一个 Go 的开源库&amp;nbsp;&lt;a href="https://github.com/alienth/fastlyctl"&gt;fastlyctl&lt;/a&gt;&amp;nbsp;做了开发。&lt;/p&gt;
 &lt;p&gt;另一个 Fastly 的特点是可以使用我们自己的证书，Cloudflare 虽然也有这个服务，但是费用太高。如我上文提到的，我们现在已经具备使用 HTTP/2 推送的能力。但是，Fastly 就不支持 DNS，这个在 Cloudflare 那里是支持的。现在我们需要自己解决 DNS 的问题了。可能最有意思的就是这些来回的折腾吧？&lt;/p&gt;
-&lt;h3 id="quan-ju-dns"&gt;全局 DNS&lt;/h3&gt;
+&lt;h3 id="quan ju  dns"&gt;全局 DNS&lt;/h3&gt;
 &lt;p&gt;当我们从 Cloudflare 迁移到 Fastly 时候，我们必须评估并部署一个新的 DNS 供应商。这里有篇&amp;nbsp;&lt;a href="https://twitter.com/thefarseeker"&gt;Mark Henderson&lt;/a&gt;&amp;nbsp;写的&amp;nbsp;&lt;a href="http://blog.serverfault.com/2017/01/09/surviving-the-next-dns-attack/"&gt;文章&lt;/a&gt;&amp;nbsp;。鉴于此，我们必须管理：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;我们自己的 DNS 服务器（备用）&lt;/li&gt;
@@ -316,7 +316,7 @@ cdn.sstatic.net.        724     IN      A       151.101.129.69
 END)
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;太棒了，接下来我们就可以使用客户端响应测试工具来测试啦！&lt;a href="#preparing-for-a-proxy-client-timings"&gt;上面提到的工具&lt;/a&gt;可以实时告诉我们真实部署情况，而不是模拟数据。但是我们还需要测试所有部分都正常。&lt;/p&gt;
-&lt;h3 id="ce-shi"&gt;测试&lt;/h3&gt;
+&lt;h3 id="ce shi"&gt;测试&lt;/h3&gt;
 &lt;p&gt;客户端响应测试的追踪可以方便我们做性能测试，但这个并不适合用来做配置测试。客户端响应测试非常适合展现结果，但是配置有时候并没有界面，所以我们开发了&amp;nbsp;&lt;a href="https://godoc.org/github.com/StackExchange/httpunit"&gt;httpUnit&lt;/a&gt;&amp;nbsp;（后来知道&lt;a href="http://httpunit.sourceforge.net/"&gt;这个项目重名了&lt;/a&gt;&amp;nbsp;）。这也是一个使用 Go 语言的&lt;a href="https://github.com/StackExchange/httpunit"&gt;开源项目&lt;/a&gt;。以&amp;nbsp;&lt;code&gt;teststackoverflow.com&lt;/code&gt;&amp;nbsp;举例，使用的配置如下：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;[[plan]]&lt;/span&gt;
     &lt;span class="na"&gt;label&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;"teststackoverflow_com"&lt;/span&gt;
@@ -333,7 +333,7 @@ END)
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;每次我们更新一下防火墙、证书、绑定、跳转时都有必要测一下。我们必须保证我们的修改不会影响用户访问（先在预发布环境进行部署）。 httpUnit 就是我们来做集成测试的工具。&lt;/p&gt;
 &lt;p&gt;我们还有一个开发的内部工具（由亲爱的&amp;nbsp;&lt;a href="https://twitter.com/yesthattom"&gt;Tom Limoncelli&lt;/a&gt;&amp;nbsp;开发），用来管理我们负载均衡上面的&amp;nbsp;&lt;a href="https://en.wikipedia.org/wiki/Virtual_IP_address"&gt;VIP 地址&lt;/a&gt;&amp;nbsp;。我们先在一个备用负载均衡上面测试完成，然后将所有流量切过去，让之前的主负载均衡保持一个稳定状态。如果期间发生任何问题，我们可以轻易回滚。如果一切顺利，我们就把这个变更应用到那台负载均衡上。这个工具叫做&amp;nbsp;&lt;code&gt;keepctl&lt;/code&gt;（keepalived control 的简称），时间允许的话很快就会整理开源出来。&lt;/p&gt;
-&lt;h3 id="ying-yong-ceng-zhun-bei"&gt;应用层准备&lt;/h3&gt;
+&lt;h3 id="ying yong ceng zhun bei"&gt;应用层准备&lt;/h3&gt;
 &lt;p&gt;上面提到的只是架构方面的工作。这通常是由&amp;nbsp;&lt;a href="http://stackoverflow.com/company/team#Engineering"&gt;Stack Overflow 的几名网站可靠性工程师&lt;/a&gt;组成的团队完成的。而应用层也有很多需要完成的工作。这个列表会很长，先让我拿点咖啡和零食再慢慢说。&lt;/p&gt;
 &lt;p&gt;很重要的一点是，&lt;a href="https://nickcraver.com/blog/2016/02/17/stack-overflow-the-architecture-2016-edition/"&gt;Stack Overflow 与 Stack Exchange 的架构&lt;/a&gt;&amp;nbsp;Q&amp;amp;A 采用了&lt;a href="https://en.wikipedia.org/wiki/Multitenancy"&gt;多租户技术&lt;/a&gt;。这意味着如果你访问&amp;nbsp;&lt;code&gt;stackoverflow.com&lt;/code&gt;&amp;nbsp;或者&amp;nbsp;&lt;code&gt;superuser.com&lt;/code&gt;&amp;nbsp;又或者&amp;nbsp;&lt;code&gt;bicycles.stackexchange.com&lt;/code&gt;，你返回到的其实是同一台服务器上的同一个&amp;nbsp;&lt;code&gt;w3wp.exe&lt;/code&gt;&amp;nbsp;进程。我们通过浏览器发送的&amp;nbsp;&lt;a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Host"&gt;&lt;code&gt;Host&lt;/code&gt;&amp;nbsp;请求头&lt;/a&gt;来改变请求的上下文。为了更好地理解我们下文中提到的一些概念，你需要知道我们代码中的&amp;nbsp;&lt;code&gt;Current.Site&lt;/code&gt;&amp;nbsp;其实指的是&amp;nbsp;&lt;em&gt;请求&lt;/em&gt;&amp;nbsp;中的站点。&lt;code&gt;Current.Site.Url()&lt;/code&gt;&amp;nbsp;和&amp;nbsp;&lt;code&gt;Current.Site.Paths.FaviconUrl&lt;/code&gt;&amp;nbsp;也是基于同样的概念。&lt;/p&gt;
 &lt;p&gt;换一句话说：我们的 Q&amp;amp;A 全站都是跑在同一个服务器上的同一个进程，而用户对此没有感知。我们在九台服务器上每一台跑一个进程，只是为了发布版本和冗余的问题。&lt;/p&gt;
@@ -389,7 +389,7 @@ END)
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;这也就是为什么你可以取到 referer。&lt;/p&gt;
 &lt;p&gt;好的，我们已经设置好了，现在该做些什么呢？&lt;/p&gt;
-&lt;h3 id="hun-he-nei-rong-lai-zi-yu-ni-men"&gt;混合内容：来自于你们&lt;/h3&gt;
+&lt;h3 id="hun he nei rong :lai zi yu ni men"&gt;混合内容：来自于你们&lt;/h3&gt;
 &lt;p&gt;混合内容是个筐，什么都能往里装。我们这些年下来积累了哪些混合内容呢？不幸的是，有很多。这个列表里我们必须处理的用户提交内容：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;http://&lt;/code&gt;&amp;nbsp;图片，出现在&lt;a href="https://stackoverflow.com/questions"&gt;问题&lt;/a&gt;、答案、&lt;a href="https://stackoverflow.com/tags"&gt;标签&lt;/a&gt;、wiki 等内容中使用&lt;/li&gt;
@@ -433,7 +433,7 @@ END)
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;h3 id="hun-he-nei-rong-lai-zi-wo-men"&gt;混合内容：来自我们&lt;/h3&gt;
+&lt;h3 id="hun he nei rong :lai zi wo men"&gt;混合内容：来自我们&lt;/h3&gt;
 &lt;p&gt;并不是处理完用户提交的内容就解决问题了。我们自己还是有不少&amp;nbsp;&lt;code&gt;http://&lt;/code&gt;&amp;nbsp;的地方需要处理。这些更改本身没什么特别的，但是这至少能解答「为什么花了那么长时间？」这个问题：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;广告服务（Calculon）&lt;/li&gt;
@@ -470,7 +470,7 @@ END)
 &lt;p&gt;这件事情很枯燥，就是在代码中找出一千个链接然后替换而已（包括注释、许可链接等）。但这就是人生，我们必须要做。把这些链接改成&amp;nbsp;&lt;code&gt;.Url()&lt;/code&gt;&amp;nbsp;的形式之后，一旦站点支持 HTTPS 的时候，我们就可以让链接动态切换过去。比如我们得等到&amp;nbsp;&lt;code&gt;meta.*.stackexchange.com&lt;/code&gt;&amp;nbsp;搬迁完成之后再进行切换。插播一下我们数据中心的密码是「煎饼馃子」拼音全称，应该没有人会读到这里吧，所以在这里存密码很安全。当站点迁完之后，&lt;code&gt;.Url()&lt;/code&gt;&amp;nbsp;仍会正常工作，然后用&amp;nbsp;&lt;code&gt;.Url()&lt;/code&gt;&amp;nbsp;来渲染默认为 HTTPS 的站点也会继续工作。这将静态链接变成了动态。&lt;/p&gt;
 &lt;p&gt;另一件重要的事情：这让我们的开发和本地环境都能正常工作，而不仅仅是链到生产环境上。这件事情虽然枯燥，但还是值得去做的。对了，因为我们的规范网址（canonical）也通过&amp;nbsp;&lt;code&gt;.Url()&lt;/code&gt;&amp;nbsp;来做了，所以一旦用户开始用上 HTTPS，Google 也可以感知到。&lt;/p&gt;
 &lt;p&gt;一旦一个站点迁到 HTTPS 之后，我们会让爬虫来更新站点链接。我们把这个叫修正「Google 果汁」，同时这也可以让用户不再碰到 301。&lt;/p&gt;
-&lt;h3 id="tiao-zhuan-301"&gt;跳转（301）&lt;/h3&gt;
+&lt;h3 id="tiao zhuan (301)"&gt;跳转（301）&lt;/h3&gt;
 &lt;p&gt;当你把站点移动到 HTTPS 之后，为了和 Google 配合，你有两件重要的事情要做：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;更新规范网址，比如&amp;nbsp;&lt;code&gt;&amp;lt;link rel="canonical" href="https://stackoverflow.com/questions/1732348/regex-match-open-tags-except-xhtml-self-contained-tags/1732454" /&amp;gt;&lt;/code&gt;&lt;/li&gt;
@@ -526,7 +526,7 @@ END)
 &lt;p&gt;&lt;a href="https://4ocf5n.dijingchao.com/upload_dropbox/201709/HTTPS-Websockets.png"&gt;&lt;img alt="HAProxy Websockets" src="https://4ocf5n.dijingchao.com/upload_dropbox/201709/HTTPS-Websockets.png"/&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;不管是在终端、抽象命名空间套接字还是前端来说都有很多连接。由于启用了 &lt;a href="https://tools.ietf.org/html/rfc5077"&gt;TLS 会话恢复&lt;/a&gt;，HAProxy 本身的负载也很重。要让用户下一次重新连接更快，第一次协商之后用户会拿到一个令牌，下一次会把这个令牌发送过来。如果我们的内存足够并且没有超时，我们会恢复上次的会话而不是再开一个。这个操作可以节省 CPU，对用户来说有性能提升，但会用到到更多内存。这个多因 key 大小而异（2048，4096 或是更多？）我们现在用的是 4096 位的 key。在开了 600000 个 websocket 的情况下，我们只用掉了负载均衡器 64GB 内存里的 19GB。这里面 12GB 是 HAProxy 在用，大多数为 TLS 会话缓存。所以结果来说还不错，如果&lt;em&gt;我们不得不买内存的话&lt;/em&gt;，这也会是整个 HTTPS 迁移中最便宜的东西。&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://4ocf5n.dijingchao.com/upload_dropbox/201709/HTTPS-WebsocketMemory.png"&gt;&lt;img alt="HAProxy Websocket Memory" src="https://4ocf5n.dijingchao.com/upload_dropbox/201709/HTTPS-WebsocketMemory.png"/&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id="wei-zhi"&gt;未知&lt;/h3&gt;
+&lt;h3 id="wei zhi"&gt;未知&lt;/h3&gt;
 &lt;p&gt;我猜现在可能是我们来谈论一些未知问题的时候。有些问题是在我们尝试之前无法真正知道的：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Google Analytics 里的流量表现怎么样？（我们会失去 referer 吗？）&lt;/li&gt;
@@ -543,15 +543,15 @@ END)
 &lt;/ul&gt;
 &lt;p&gt;对，这些是 Samo 和我会了仔细讨论出来的结果，花了有三分钟那么久吧。Meta 是因为这是我们最重要的反馈网站。Security 站上有很多专家可能会注意到相关的问题，特别是 HTTPS 方面。最后一个，Super User，我们需要知道搜索对我们内容的影响。比起 meta 和 security 来说法，Super User 的流量要大得多。最重要的是，它有&lt;em&gt;来自 Google&lt;/em&gt; 的原生流量。&lt;/p&gt;
 &lt;p&gt;我们一直在观察并评估搜索的影响，所以 Super User 上了之后其他网站过了很久才跟上。到目前为止我们能说的是：基本上没影响。搜索、结果、点击还有排名的周变化都在正常范围内。我们公司&lt;em&gt;依赖&lt;/em&gt;于这个流量，这对我们真的很重要。所幸，没有什么值得我们担心的点，我们可以继续发布。&lt;/p&gt;
-&lt;h3 id="cuo-wu"&gt;错误&lt;/h3&gt;
+&lt;h3 id="cuo wu"&gt;错误&lt;/h3&gt;
 &lt;p&gt;如果不提到我们搞砸的部分，这篇文章就还不够好。错误永远是个选择。让我们来总结一下这一路让我们后悔的事情：&lt;/p&gt;
-&lt;h4 id="cuo-wu-xiang-dui-xie-yi-url"&gt;错误：相对协议 URL&lt;/h4&gt;
+&lt;h4 id="cuo wu :xiang dui xie yi  url"&gt;错误：相对协议 URL&lt;/h4&gt;
 &lt;p&gt;如果你的一个资源有一个 URL 的话，一般来说你会看到一些 &lt;code&gt;http://example.com&lt;/code&gt; 或者 &lt;code&gt;https://example.com&lt;/code&gt; 之类的东西，包括我们图片的路径等等。另一个选项就是你可以使用 &lt;code&gt;//example.com&lt;/code&gt;。这被称为&lt;a href="https://en.wikipedia.org/wiki/Wikipedia:Protocol-relative_URL"&gt;相对协议 URL&lt;/a&gt;。我们很早之前就在图片、JavaScript、CSS 等中这么用了（我们自有的资源，不是指用户提交）。几年后，我们发现这不是一个好主意，至少对我们来说不是。相对协议链接中的「相对」是&lt;em&gt;对于页面而言&lt;/em&gt;。当你在 &lt;code&gt;http://stackoverflow.com&lt;/code&gt; 时，&lt;code&gt;//example.com&lt;/code&gt; 指的是 &lt;code&gt;http://example.com&lt;/code&gt;；如果你在 &lt;code&gt;https://stackoverflow.com&lt;/code&gt; 时，就和 &lt;code&gt;https://example.com&lt;/code&gt; 等同。那么这个有什么问题呢？&lt;/p&gt;
 &lt;p&gt;问题在于，图片 URL 不仅是用在页面中，它们还用在邮件、API 还有移动应用中。当我们理了一下路径结构然后在到处都使用图片路径时我们发现不对了。虽然这个变化极大降低了代码冗余，并且简化了很多东西，结果却是我们在邮件中使用了相对 URL。绝大多数邮件客户端都不能处理相对协议 URL 的图片。因为它们不知道是什么协议。Email 不是 &lt;code&gt;http://&lt;/code&gt; 也不是 &lt;code&gt;https://&lt;/code&gt;。只有你在浏览器里查看邮件，有可能是预期的效果。&lt;/p&gt;
 &lt;p&gt;那该怎么办？我们把所有的地方都换成了 &lt;code&gt;https://&lt;/code&gt;。我把我们所有的路径代码统一到两个变量上：CDN 根路径，和对应特定站点的文件夹。例如 Stack Overflow 的样式表在 &lt;a href="https://cdn.sstatic.net/Sites/stackoverflow/all.css"&gt;&lt;code&gt;https://cdn.sstatic.net/Sites/stackoverflow/all.css&lt;/code&gt;&lt;/a&gt; 上（当然我们有缓存中断器），换成本地就是 &lt;code&gt;https://local.sstatic.net/Sites/stackoverflow/all.css&lt;/code&gt;。你能看出其中的共同点。通过拼接路径，逻辑简单了不少。则　通过强制 &lt;code&gt;https://&lt;/code&gt;，用户还可以在整站切换之前就享受 HTTP/2 的好处，因为所有静态资源都已经就位。都用 &lt;code&gt;https://&lt;/code&gt; 也表示我们可以在页面、邮件、移动还有 API 上使用&lt;strong&gt;同一个&lt;/strong&gt;属性。这种统一也意味着我们有一个固定的地方来处理所有路径&amp;mdash;&amp;mdash;我们到处都有缓存中断器。&lt;/p&gt;
 &lt;p&gt;注意：如果你像我们一样中断缓存，比如 &lt;code&gt;https://cdn.sstatic.net/Sites/stackoverflow/all.css?v=070eac3e8cf4&lt;/code&gt;，请不要用构建号。我们的缓存中断使用的是文件的&lt;a href="https://en.wikipedia.org/wiki/Checksum"&gt;校验值&lt;/a&gt;，也就是说只有当文件真正变化的时候你才会下载一个新的文件。用构建号的话可能会稍微简单点，但同时也会对你的费用还有性能有所损伤。&lt;/p&gt;
 &lt;p&gt;能做这个当然很好，可我们为什么不从一开始就做呢？因为 HTTPS 在那个时候性能还不行。用户通过 &lt;code&gt;https://&lt;/code&gt; 访问会比 &lt;code&gt;http://&lt;/code&gt;慢很多。举一个大一点的例子：我们上个月在 &lt;code&gt;sstatic.net&lt;/code&gt; 上收到了四百万个请求，总共有 94TB。如果 HTTPS 性能不好的话，这里累积下来的延迟就很可观了。不过因为我们上了 HTTP/2，以及设置好 CDN/代理层，性能的问题已经好很多了。对于用户来说更快了，对我们来说则更简单，何乐不为呢！&lt;/p&gt;
-&lt;h4 id="cuo-wu-api-ji-internal"&gt;错误：API 及 .internal&lt;/h4&gt;
+&lt;h4 id="cuo wu :api ji  .internal"&gt;错误：API 及 .internal&lt;/h4&gt;
 &lt;p&gt;当我们把代理架起来开始测试的时候发现了什么？我们忘了一件很重要的事，准确地说，我忘了一件很重要的事。我们在内部 API 里大量地使用了 HTTP。当然这个是正常工作的，只是它们变得更慢、更复杂、也更容易出问题了。&lt;/p&gt;
 &lt;p&gt;比方说一个内部 API 需要访问 &lt;code&gt;stackoverflow.com/some-internal-route&lt;/code&gt;，之前，节点是这些：&lt;/p&gt;
 &lt;ul&gt;
@@ -606,7 +606,7 @@ END)
 &lt;li&gt;目标 web 服务器&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;我们解决了几个问题，还剩下几百个等着我们。&lt;/p&gt;
-&lt;h4 id="cuo-wu-301-huan-cun"&gt;错误：301 缓存&lt;/h4&gt;
+&lt;h4 id="cuo wu :301 huan cun"&gt;错误：301 缓存&lt;/h4&gt;
 &lt;p&gt;在从 &lt;code&gt;http://&lt;/code&gt; 301 跳到 &lt;code&gt;https://&lt;/code&gt; 时有一点我们没有意识的是，Fastly 缓存了我们的返回值。在 Fastly 中，&lt;a href="https://docs.fastly.com/guides/vcl/manipulating-the-cache-key"&gt;默认的缓存键&lt;/a&gt;并不考虑协议。我个人不同意这个行为，因为在源站默认启用 301 跳转会导致无限循环。这个问题是这样造成的：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;用户访问 &lt;code&gt;http://&lt;/code&gt; 上的一个网络&lt;/li&gt;
@@ -626,7 +626,7 @@ END)
 &lt;p&gt;我只能说，还好修复的过程挺简单的：&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://4ocf5n.dijingchao.com/upload_dropbox/201709/HTTPS-HelpCommit.png"&gt;&lt;img alt="Me being a dumbass" src="https://4ocf5n.dijingchao.com/upload_dropbox/201709/HTTPS-HelpCommit.png"/&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;再一次将数据填充回去就能修复了。不过怎么说，这个当时算是在公共场合闹了个笑话。抱歉。&lt;/p&gt;
-&lt;h3 id="kai-yuan_1"&gt;开源&lt;/h3&gt;
+&lt;h3 id="kai yuan_1"&gt;开源&lt;/h3&gt;
 &lt;p&gt;这里有我们在这个过程中产出的项目，帮助我们改进了 HTTPS 部署的工作，希望有一天这些能拯救世界吧：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://github.com/StackExchange/blackbox"&gt;BlackBox&lt;/a&gt;&amp;nbsp;（在版本控制中安全存储私密信息）作者&amp;nbsp;&lt;a href="https://twitter.com/yesthattom"&gt;Tom Limoncelli&lt;/a&gt;&lt;/li&gt;
@@ -637,7 +637,7 @@ END)
 &lt;li&gt;&lt;a href="https://github.com/alienth/fastlyctl"&gt;fastlyctl&lt;/a&gt;（Go 语言的 Fastly API 调用）作者&amp;nbsp;&lt;a href="https://twitter.com/alioth"&gt;Jason Harvey&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://github.com/alienth/fastly-ratelimit"&gt;fastly-ratelimit&lt;/a&gt;（基于 Fastly syslog 流量的限流方案）作者&amp;nbsp;&lt;a href="https://twitter.com/alioth/"&gt;Jason Harvey&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id="xia-yi-bu"&gt;下一步&lt;/h3&gt;
+&lt;h3 id="xia yi bu"&gt;下一步&lt;/h3&gt;
 &lt;p&gt;我们的工作并没有做完。接下去还有一此要做的：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;我们要修复我们聊天域名下的混合内容，如&amp;nbsp;&lt;a href="https://chat.stackoverflow.com/"&gt;chat.stackoverflow.com&lt;/a&gt;，这里有用户嵌入的图片等&lt;/li&gt;
