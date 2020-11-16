@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en"
+>
+<head>
+    <title>Linux 程序员的 Mac 安装记录 - Log4D</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="block-all-mixed-content">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+
+
+
+<link rel="canonical" href="http://127.0.0.1:8000/2013/12/mac/">
+
+        <meta name="author" content="alswl" />
+        <meta name="keywords" content="技术达人,Mac" />
+        <meta name="description" content="作为一个 Linux 的老用户，我再一次验证了那句老话「Linux 用户有钱就换 Mac」。 前段时间，托朋友从香港购入一台 rMBP，下面就是我的 Mac 使用安装记录。 Brew Brew 是 Mac 下面的包管理工具，通过 Github 托管适合 Mac 的编译配置以及 Patch，可以方便的安装开发工具。 安装 Brew： ruby -e &#34;$(curl -fsSL https://raw.github.com/mxcl/homebrew/go/install)&#34; 我安装的 Brew 包：" />
+
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.1.0/css/bootstrap.min.css" type="text/css"/>
+    <link href="https://cdn.staticfile.org/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="http://127.0.0.1:8000/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://127.0.0.1:8000/theme/css/style.css" type="text/css"/>
+
+    <link href="http://127.0.0.1:8000/atom.xml" type="application/atom+xml" rel="alternate" title="Log4D Atom Feed" />
+    <link href="http://127.0.0.1:8000/rss.xml" type="application/rss+xml" rel="alternate" title="Log4D RSS Feed" />
+
+</head>
+<body>
+
+<div class="navbar navbar-default" role="navigation">
+    <div class="container  col-lg-8 col-lg-offset-2">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://127.0.0.1:8000/" class="navbar-brand">
+Log4D            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                    <li><a href="/tags/">Tags</a></li>
+                    <li><a href="/links/">Links</a></li>
+                    <li><a href="/about/">About</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="http://127.0.0.1:8000/archives/"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2">
+
+    <section id="content">
+        <article class="article-detail">
+            <header class="page-header">
+                <h1 class="title">
+                    <a href="http://127.0.0.1:8000/2013/12/mac/"
+                       rel="bookmark"
+                       title="Permalink to Linux 程序员的 Mac 安装记录">
+                        Linux 程序员的 Mac 安装记录
+                    </a>
+                </h1>
+                <nav class="toc col-lg-2">
+                  <div id="toc"><ul><li><a class="toc-href" href="#brew" title="Brew">Brew</a></li><li><a class="toc-href" href="#brew-cask" title="Brew cask">Brew cask</a></li><li><a class="toc-href" href="#按键配置" title="按键配置">按键配置</a></li></ul></div>
+                </nav>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2013-12-08T15:44:00+08:00"> 2013-12-08</time>
+    </span>
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="http://127.0.0.1:8000/tag/ji-zhu-da-ren/">技术达人</a>
+        /
+	<a href="http://127.0.0.1:8000/tag/mac/">Mac</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p>作为一个 Linux 的老用户，我再一次验证了那句老话「Linux 用户有钱就换 Mac」。 前段时间，托朋友从香港购入一台 rMBP，下面就是我的 Mac 使用安装记录。</p>
+<h2 id="brew">Brew</h2>
+<p><a href="http://brew.sh/">Brew</a> 是 Mac 下面的包管理工具，通过 Github 托管适合 Mac 的编译配置以及 Patch，可以方便的安装开发工具。</p>
+<p>安装 Brew：</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">ruby</span> -e <span class="st">"</span><span class="va">$(</span><span class="ex">curl</span> -fsSL https://raw.github.com/mxcl/homebrew/go/install<span class="va">)</span><span class="st">"</span></code></pre></div>
+<p>我安装的 Brew 包：</p>
+<!-- more -->
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">brew</span> install ack
+<span class="ex">brew</span> install adns
+<span class="ex">brew</span> install android-sdk
+<span class="ex">brew</span> install ansible
+<span class="ex">brew</span> install ansible20
+<span class="ex">brew</span> install apple-gcc42
+<span class="ex">brew</span> install apr
+<span class="ex">brew</span> install apr-util
+<span class="ex">brew</span> install archey
+<span class="ex">brew</span> install aria2
+<span class="ex">brew</span> install asciidoc
+<span class="ex">brew</span> install asio
+<span class="ex">brew</span> install atk
+<span class="ex">brew</span> install augeas
+<span class="ex">brew</span> install autoconf
+<span class="ex">brew</span> install autojump
+<span class="ex">brew</span> install automake
+<span class="ex">brew</span> install avr-binutils
+<span class="ex">brew</span> install avr-gcc
+<span class="ex">brew</span> install avr-libc
+<span class="ex">brew</span> install awscli
+<span class="ex">brew</span> install axel
+<span class="ex">brew</span> install bdw-gc
+<span class="ex">brew</span> install bfg
+<span class="ex">brew</span> install boost
+<span class="ex">brew</span> install burp
+<span class="ex">brew</span> install c-ares
+<span class="ex">brew</span> install cabal-install
+<span class="ex">brew</span> install cairo
+<span class="ex">brew</span> install certbot
+<span class="ex">brew</span> install cliclick
+<span class="ex">brew</span> install cloog
+<span class="ex">brew</span> install cmake
+<span class="ex">brew</span> install cmatrix
+<span class="ex">brew</span> install colordiff
+<span class="ex">brew</span> install connect
+<span class="ex">brew</span> install coreutils
+<span class="ex">brew</span> install cowsay
+<span class="ex">brew</span> install cpp-netlib
+<span class="ex">brew</span> install cscope
+<span class="ex">brew</span> install ctags
+<span class="ex">brew</span> install curl
+<span class="ex">brew</span> install curl-ca-bundle
+<span class="ex">brew</span> install dcfldd
+<span class="ex">brew</span> install ddrescue
+<span class="ex">brew</span> install dialog
+<span class="ex">brew</span> install dirmngr
+<span class="ex">brew</span> install dnstop
+<span class="ex">brew</span> install docbook
+<span class="ex">brew</span> install docker
+<span class="ex">brew</span> install docker-compose
+<span class="ex">brew</span> install docker-machine
+<span class="ex">brew</span> install dos2unix
+<span class="ex">brew</span> install erlang
+<span class="ex">brew</span> install ettercap
+<span class="ex">brew</span> install ext4fuse
+<span class="ex">brew</span> install faac
+<span class="ex">brew</span> install fcitx-remote-for-osx
+<span class="ex">brew</span> install fd
+<span class="ex">brew</span> install fetchmail
+<span class="ex">brew</span> install ffind
+<span class="ex">brew</span> install ffmpeg
+<span class="ex">brew</span> install figlet
+<span class="ex">brew</span> install findutils
+<span class="ex">brew</span> install fontconfig
+<span class="ex">brew</span> install fortune
+<span class="ex">brew</span> install fping
+<span class="ex">brew</span> install freetype
+<span class="ex">brew</span> install fzf
+<span class="ex">brew</span> install gcc
+<span class="ex">brew</span> install gd
+<span class="ex">brew</span> install gdbm
+<span class="ex">brew</span> install gdk-pixbuf
+<span class="ex">brew</span> install gettext
+<span class="ex">brew</span> install gflags
+<span class="ex">brew</span> install gfortran
+<span class="ex">brew</span> install ghc
+<span class="ex">brew</span> install ghc@8.0
+<span class="ex">brew</span> install gifsicle
+<span class="ex">brew</span> install git
+<span class="ex">brew</span> install git-extras
+<span class="ex">brew</span> install git-flow
+<span class="ex">brew</span> install git-lfs
+<span class="ex">brew</span> install git-number
+<span class="ex">brew</span> install giter8
+<span class="ex">brew</span> install glew
+<span class="ex">brew</span> install glib
+<span class="ex">brew</span> install glog
+<span class="ex">brew</span> install gmp
+<span class="ex">brew</span> install gmp@4
+<span class="ex">brew</span> install gnu-getopt
+<span class="ex">brew</span> install gnu-sed
+<span class="ex">brew</span> install gnu-tar
+<span class="ex">brew</span> install gnu-time
+<span class="ex">brew</span> install gnupg
+<span class="ex">brew</span> install gnupg2
+<span class="ex">brew</span> install gnutls
+<span class="ex">brew</span> install go
+<span class="ex">brew</span> install goaccess
+<span class="ex">brew</span> install gobject-introspection
+<span class="ex">brew</span> install godep
+<span class="ex">brew</span> install gource
+<span class="ex">brew</span> install gpg-agent
+<span class="ex">brew</span> install gradle
+<span class="ex">brew</span> install grafana
+<span class="ex">brew</span> install graphite2
+<span class="ex">brew</span> install graphviz
+<span class="ex">brew</span> install grep
+<span class="ex">brew</span> install grok
+<span class="ex">brew</span> install groovy
+<span class="ex">brew</span> install gtk+
+<span class="ex">brew</span> install haproxy
+<span class="ex">brew</span> install harfbuzz
+<span class="ex">brew</span> install hicolor-icon-theme
+<span class="ex">brew</span> install html2text
+<span class="ex">brew</span> install htop-osx
+<span class="ex">brew</span> install httpie
+<span class="ex">brew</span> install hydra
+<span class="ex">brew</span> install icu4c
+<span class="ex">brew</span> install ifstat
+<span class="ex">brew</span> install iftop
+<span class="ex">brew</span> install imagemagick
+<span class="ex">brew</span> install influxdb
+<span class="ex">brew</span> install ipcalc
+<span class="ex">brew</span> install iperf
+<span class="ex">brew</span> install isl
+<span class="ex">brew</span> install isl@0.12
+<span class="ex">brew</span> install jansson
+<span class="ex">brew</span> install jemalloc
+<span class="ex">brew</span> install jenv
+<span class="ex">brew</span> install jetty
+<span class="ex">brew</span> install jnettop
+<span class="ex">brew</span> install jpeg
+<span class="ex">brew</span> install jq
+<span class="ex">brew</span> install jshon
+<span class="ex">brew</span> install kafka
+<span class="ex">brew</span> install lame
+<span class="ex">brew</span> install languagetool
+<span class="ex">brew</span> install libao
+<span class="ex">brew</span> install libarchive
+<span class="ex">brew</span> install libassuan
+<span class="ex">brew</span> install libconfig
+<span class="ex">brew</span> install libdaemon
+<span class="ex">brew</span> install libev
+<span class="ex">brew</span> install libevent
+<span class="ex">brew</span> install libexif
+<span class="ex">brew</span> install libffi
+<span class="ex">brew</span> install libgcrypt
+<span class="ex">brew</span> install libgpg-error
+<span class="ex">brew</span> install libiodbc
+<span class="ex">brew</span> install libksba
+<span class="ex">brew</span> install libmagic
+<span class="ex">brew</span> install libmpc
+<span class="ex">brew</span> install libnet
+<span class="ex">brew</span> install libpng
+<span class="ex">brew</span> install librdkafka
+<span class="ex">brew</span> install libressl
+<span class="ex">brew</span> install librsync
+<span class="ex">brew</span> install libsodium
+<span class="ex">brew</span> install libsoxr
+<span class="ex">brew</span> install libssh
+<span class="ex">brew</span> install libtasn1
+<span class="ex">brew</span> install libtermkey
+<span class="ex">brew</span> install libtiff
+<span class="ex">brew</span> install libtool
+<span class="ex">brew</span> install libunistring
+<span class="ex">brew</span> install libusb
+<span class="ex">brew</span> install libusb-compat
+<span class="ex">brew</span> install libuv
+<span class="ex">brew</span> install libvo-aacenc
+<span class="ex">brew</span> install libvterm
+<span class="ex">brew</span> install libxml2
+<span class="ex">brew</span> install libyaml
+<span class="ex">brew</span> install libzip
+<span class="ex">brew</span> install little-cms
+<span class="ex">brew</span> install lldpd
+<span class="ex">brew</span> install lrzsz
+<span class="ex">brew</span> install lsyncd
+<span class="ex">brew</span> install lua
+<span class="ex">brew</span> install lua52
+<span class="ex">brew</span> install luajit
+<span class="ex">brew</span> install luarocks
+<span class="ex">brew</span> install lynx
+<span class="ex">brew</span> install lz4
+<span class="ex">brew</span> install lzlib
+<span class="ex">brew</span> install lzo
+<span class="ex">brew</span> install makedepend
+<span class="ex">brew</span> install maven
+<span class="ex">brew</span> install mbedtls
+<span class="ex">brew</span> install memcache-top
+<span class="ex">brew</span> install memcached
+<span class="ex">brew</span> install mercurial
+<span class="ex">brew</span> install mit-scheme
+<span class="ex">brew</span> install mitmproxy
+<span class="ex">brew</span> install mongodb
+<span class="ex">brew</span> install mono
+<span class="ex">brew</span> install mp4v2
+<span class="ex">brew</span> install mpfr
+<span class="ex">brew</span> install mpg123
+<span class="ex">brew</span> install msgpack
+<span class="ex">brew</span> install msodbcsql
+<span class="ex">brew</span> install mssql-tools
+<span class="ex">brew</span> install mtr
+<span class="ex">brew</span> install multitail
+<span class="ex">brew</span> install mycli
+<span class="ex">brew</span> install mysql
+<span class="ex">brew</span> install neovim
+<span class="ex">brew</span> install nettle
+<span class="ex">brew</span> install nghttp2
+<span class="ex">brew</span> install nginx
+<span class="ex">brew</span> install nload
+<span class="ex">brew</span> install nmap
+<span class="ex">brew</span> install node
+<span class="ex">brew</span> install nodeenv
+<span class="ex">brew</span> install npth
+<span class="ex">brew</span> install nspr
+<span class="ex">brew</span> install nsq
+<span class="ex">brew</span> install nuget
+<span class="ex">brew</span> install objective-caml
+<span class="ex">brew</span> install ocaml
+<span class="ex">brew</span> install oniguruma
+<span class="ex">brew</span> install opencc
+<span class="ex">brew</span> install openssl
+<span class="ex">brew</span> install openssl101
+<span class="ex">brew</span> install openssl@1.1
+<span class="ex">brew</span> install openvpn
+<span class="ex">brew</span> install osquery
+<span class="ex">brew</span> install ossp-uuid
+<span class="ex">brew</span> install p11-kit
+<span class="ex">brew</span> install p7zip
+<span class="ex">brew</span> install pandoc
+<span class="ex">brew</span> install pango
+<span class="ex">brew</span> install pcre
+<span class="ex">brew</span> install perl
+<span class="ex">brew</span> install phantomjs
+<span class="ex">brew</span> install pinentry
+<span class="ex">brew</span> install pixman
+<span class="ex">brew</span> install pkg-config
+<span class="ex">brew</span> install plantuml
+<span class="ex">brew</span> install pngpaste
+<span class="ex">brew</span> install popt
+<span class="ex">brew</span> install privoxy
+<span class="ex">brew</span> install protobuf
+<span class="ex">brew</span> install proxychains-ng
+<span class="ex">brew</span> install pth
+<span class="ex">brew</span> install pwgen
+<span class="ex">brew</span> install python
+<span class="ex">brew</span> install python3
+<span class="ex">brew</span> install qt
+<span class="ex">brew</span> install qt5
+<span class="ex">brew</span> install r
+<span class="ex">brew</span> install rapidjson
+<span class="ex">brew</span> install rclone
+<span class="ex">brew</span> install readline
+<span class="ex">brew</span> install reattach-to-user-namespace
+<span class="ex">brew</span> install redis
+<span class="ex">brew</span> install rename
+<span class="ex">brew</span> install rlwrap
+<span class="ex">brew</span> install rmtrash
+<span class="ex">brew</span> install rocksdb
+<span class="ex">brew</span> install rsync
+<span class="ex">brew</span> install ruby
+<span class="ex">brew</span> install ruby-build
+<span class="ex">brew</span> install s-lang
+<span class="ex">brew</span> install s3cmd
+<span class="ex">brew</span> install sbt
+<span class="ex">brew</span> install scala
+<span class="ex">brew</span> install scons
+<span class="ex">brew</span> install sdl2
+<span class="ex">brew</span> install sdl2_image
+<span class="ex">brew</span> install shadowsocks-libev
+<span class="ex">brew</span> install shairport
+<span class="ex">brew</span> install shairport-sync
+<span class="ex">brew</span> install shared-mime-info
+<span class="ex">brew</span> install shyaml
+<span class="ex">brew</span> install siege
+<span class="ex">brew</span> install sleuthkit
+<span class="ex">brew</span> install snappy
+<span class="ex">brew</span> install sntop
+<span class="ex">brew</span> install socat
+<span class="ex">brew</span> install source-highlight
+<span class="ex">brew</span> install spark
+<span class="ex">brew</span> install spdylay
+<span class="ex">brew</span> install sphinx-doc
+<span class="ex">brew</span> install springboot
+<span class="ex">brew</span> install sqlite
+<span class="ex">brew</span> install sqlmap
+<span class="ex">brew</span> install ssh-copy-id
+<span class="ex">brew</span> install sshfs
+<span class="ex">brew</span> install sshpass
+<span class="ex">brew</span> install stunnel
+<span class="ex">brew</span> install subversion
+<span class="ex">brew</span> install swig
+<span class="ex">brew</span> install sysbench
+<span class="ex">brew</span> install taglib
+<span class="ex">brew</span> install texi2html
+<span class="ex">brew</span> install the_silver_searcher
+<span class="ex">brew</span> install thefuck
+<span class="ex">brew</span> install thrift
+<span class="ex">brew</span> install tidy-html5
+<span class="ex">brew</span> install tig
+<span class="ex">brew</span> install tinyproxy
+<span class="ex">brew</span> install tldr
+<span class="ex">brew</span> install tmate
+<span class="ex">brew</span> install tmux
+<span class="ex">brew</span> install tokyo-cabinet
+<span class="ex">brew</span> install tree
+<span class="ex">brew</span> install typescript
+<span class="ex">brew</span> install udns
+<span class="ex">brew</span> install udptunnel
+<span class="ex">brew</span> install unibilium
+<span class="ex">brew</span> install unison
+<span class="ex">brew</span> install unixodbc
+<span class="ex">brew</span> install utf8proc
+<span class="ex">brew</span> install vim
+<span class="ex">brew</span> install w3m
+<span class="ex">brew</span> install watch
+<span class="ex">brew</span> install watchman
+<span class="ex">brew</span> install webkit2png
+<span class="ex">brew</span> install webp
+<span class="ex">brew</span> install wget
+<span class="ex">brew</span> install wxmac
+<span class="ex">brew</span> install x264
+<span class="ex">brew</span> install xclip
+<span class="ex">brew</span> install xvid
+<span class="ex">brew</span> install xz
+<span class="ex">brew</span> install yara
+<span class="ex">brew</span> install yasm
+<span class="ex">brew</span> install yuicompressor
+<span class="ex">brew</span> install zookeeper
+<span class="ex">brew</span> install zsh
+<span class="ex">brew</span> install zstd</code></pre></div>
+<h2 id="brew-cask">Brew cask</h2>
+<p><a href="https://github.com/phinze/homebrew-cask">Brew cask</a> 是类似 Brew 的管理工具， 直接提供 dmg 级别的二进制包，（Brew 是不带源码，只有对应项目所在的 URL）。</p>
+<p>Brew cask 安装：</p>
+<pre><code>brew tap phinze/homebrew-cask
+brew install brew-cask</code></pre>
+<p>我通过 Brew cask 安装的软件：</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">brew</span> cask install airdisplay
+<span class="ex">brew</span> cask install alfred
+<span class="ex">brew</span> cask install aliwangwang
+<span class="ex">brew</span> cask install android-studio
+<span class="ex">brew</span> cask install apache-directory-studio
+<span class="ex">brew</span> cask install appcleaner
+<span class="ex">brew</span> cask install appium
+<span class="ex">brew</span> cask install atom
+<span class="ex">brew</span> cask install balsamiq-mockups
+<span class="ex">brew</span> cask install battle-net
+<span class="ex">brew</span> cask install bearychat
+<span class="ex">brew</span> cask install bee
+<span class="ex">brew</span> cask install bonjour-browser
+<span class="ex">brew</span> cask install caffeine
+<span class="ex">brew</span> cask install cctalk
+<span class="ex">brew</span> cask install dash
+<span class="ex">brew</span> cask install dbeaver-community
+<span class="ex">brew</span> cask install dingtalk
+<span class="ex">brew</span> cask install dotnet-sdk
+<span class="ex">brew</span> cask install dropbox
+<span class="ex">brew</span> cask install eclipse-java
+<span class="ex">brew</span> cask install evernote
+<span class="ex">brew</span> cask install filezilla
+<span class="ex">brew</span> cask install firefox
+<span class="ex">brew</span> cask install folx
+<span class="ex">brew</span> cask install ganttproject
+<span class="ex">brew</span> cask install gimp
+<span class="ex">brew</span> cask install github-desktop
+<span class="ex">brew</span> cask install gitup
+<span class="ex">brew</span> cask install gnucash
+<span class="ex">brew</span> cask install google-chrome
+<span class="ex">brew</span> cask install google-cloud-sdk
+<span class="ex">brew</span> cask install google-drive
+<span class="ex">brew</span> cask install google-earth
+<span class="ex">brew</span> cask install haroopad
+<span class="ex">brew</span> cask install ichm
+<span class="ex">brew</span> cask install icq
+<span class="ex">brew</span> cask install iina
+<span class="ex">brew</span> cask install inkscape
+<span class="ex">brew</span> cask install intellij-idea
+<span class="ex">brew</span> cask install istat-menus
+<span class="ex">brew</span> cask install iterm2
+<span class="ex">brew</span> cask install itools
+<span class="ex">brew</span> cask install java
+<span class="ex">brew</span> cask install jumpcut
+<span class="ex">brew</span> cask install jxplorer
+<span class="ex">brew</span> cask install karabiner
+<span class="ex">brew</span> cask install keepassx
+<span class="ex">brew</span> cask install kid3
+<span class="ex">brew</span> cask install kindle
+<span class="ex">brew</span> cask install kindlegen
+<span class="ex">brew</span> cask install krita
+<span class="ex">brew</span> cask install licecap
+<span class="ex">brew</span> cask install limechat
+<span class="ex">brew</span> cask install macdown
+<span class="ex">brew</span> cask install mactex
+<span class="ex">brew</span> cask install macvim
+<span class="ex">brew</span> cask install mat
+<span class="ex">brew</span> cask install mongohub
+<span class="ex">brew</span> cask install mono-mdk
+<span class="ex">brew</span> cask install musicbrainz-picard
+<span class="ex">brew</span> cask install mysql-utilities
+<span class="ex">brew</span> cask install mysqlworkbench
+<span class="ex">brew</span> cask install netbeans
+<span class="ex">brew</span> cask install neteasemusic
+<span class="ex">brew</span> cask install omnidisksweeper
+<span class="ex">brew</span> cask install osxfuse
+<span class="ex">brew</span> cask install phoenix
+<span class="ex">brew</span> cask install postman
+<span class="ex">brew</span> cask install proxifier
+<span class="ex">brew</span> cask install psequel
+<span class="ex">brew</span> cask install qlmarkdown
+<span class="ex">brew</span> cask install qq
+<span class="ex">brew</span> cask install qqmusic
+<span class="ex">brew</span> cask install qutebrowser
+<span class="ex">brew</span> cask install rescuetime
+<span class="ex">brew</span> cask install robo-3t
+<span class="ex">brew</span> cask install robomongo
+<span class="ex">brew</span> cask install screenhero
+<span class="ex">brew</span> cask install sequel-pro
+<span class="ex">brew</span> cask install shadowsocksx
+<span class="ex">brew</span> cask install skitch
+<span class="ex">brew</span> cask install slack
+<span class="ex">brew</span> cask install smartsynchronize
+<span class="ex">brew</span> cask install sourcetree
+<span class="ex">brew</span> cask install splayerx
+<span class="ex">brew</span> cask install sqlitebrowser
+<span class="ex">brew</span> cask install sqlpro-for-mssql
+<span class="ex">brew</span> cask install squirrelsql
+<span class="ex">brew</span> cask install steam
+<span class="ex">brew</span> cask install sublime-text
+<span class="ex">brew</span> cask install surge
+<span class="ex">brew</span> cask install taskwarrior-pomodoro
+<span class="ex">brew</span> cask install teamviewer
+<span class="ex">brew</span> cask install teensy
+<span class="ex">brew</span> cask install telegram
+<span class="ex">brew</span> cask install the-unarchiver
+<span class="ex">brew</span> cask install thunder
+<span class="ex">brew</span> cask install toodledo
+<span class="ex">brew</span> cask install tripmode
+<span class="ex">brew</span> cask install typora
+<span class="ex">brew</span> cask install universal-media-server
+<span class="ex">brew</span> cask install vanilla
+<span class="ex">brew</span> cask install vimr
+<span class="ex">brew</span> cask install virtualbox
+<span class="ex">brew</span> cask install virtualbox-extension-pack
+<span class="ex">brew</span> cask install viscosity
+<span class="ex">brew</span> cask install visual-studio-code
+<span class="ex">brew</span> cask install visualvm
+<span class="ex">brew</span> cask install vlc
+<span class="ex">brew</span> cask install vnc-viewer
+<span class="ex">brew</span> cask install wechatwebdevtools
+<span class="ex">brew</span> cask install wewechat
+<span class="ex">brew</span> cask install wifimasterkey
+<span class="ex">brew</span> cask install wireshark
+<span class="ex">brew</span> cask install wxwork
+<span class="ex">brew</span> cask install xamarin-studio
+<span class="ex">brew</span> cask install xiami
+<span class="ex">brew</span> cask install xmind
+<span class="ex">brew</span> cask install xquartz
+<span class="ex">brew</span> cask install yed
+<span class="ex">brew</span> cask install zeronet</code></pre></div>
+<h2 id="按键配置">按键配置</h2>
+<p>（2016-02-23 update: Slate 之后，我尝试了其他的伪平铺式管理系统，最后使用了 <a href="https://github.com/kasper/phoenix">Phoenix</a>，我的配置文件在 <a href="https://github.com/alswl/.oOo./blob/master/mac/.phoenix.js">.oOo./.phoenix.js at master &middot; alswl/.oOo.</a>）</p>
+<p>作为 <a href="http://awesome.naquadah.org/">Awesome</a> 的用户，我实在是受不了 Mac 默认的按键控制，太渣。在两天狂搜之后，尝试了 Divvy / BetterTouchToll 这些按键控制软件之后，还是觉得按键不够自由，直到我发现了 <a href="https://github.com/jigish/slate">Slate</a>。</p>
+<p>Slate 可以管理几乎所有按键，并进行 窗口/Workspace/Shell 控制，配合 <a href="https://github.com/BlueM/cliclick">Cliclick</a> 可以完全完成桌面控制。</p>
+<p>下面是我配置的 <code>.slate</code> 文件：</p>
+<p>详细代码可以参见 <a href="https://github.com/alswl/.oOo.">alswl/.oOo.</a></p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="co"># This is the default .slate file.</span>
+<span class="co"># If no ~/.slate file exists this is the file that will be used.</span>
+
+<span class="ex">config</span> defaultToCurrentScreen true
+<span class="ex">config</span> nudgePercentOf screenSize
+<span class="ex">config</span> resizePercentOf screenSize
+
+<span class="co"># Alias</span>
+<span class="bu">alias</span> mouse_left shell path:~/ <span class="st">'/usr/local/bin/cliclick m:640,400 &amp;&amp; /Users/alswl/dev/myproject/.oOo./local/bin/mouse_restore.sh'</span>
+<span class="bu">alias</span> mouse_right shell path:~/ <span class="st">'/usr/local/bin/cliclick m:1920,400 &amp;&amp; /Users/alswl/dev/myproject/.oOo./local/bin/mouse_restore.sh'</span>
+
+<span class="bu">alias</span> mouse_iTerm shell path:~/ <span class="st">'/Users/alswl/dev/myproject/.oOo./local/bin/mouse_restore.sh iTerm'</span>
+<span class="bu">alias</span> mouse_Firefox shell path:~/ <span class="st">'/Users/alswl/dev/myproject/.oOo./local/bin/mouse_restore.sh Firefox'</span>
+<span class="bu">alias</span> mouse_Google_Chrome shell path:~/ <span class="st">'/Users/alswl/dev/myproject/.oOo./local/bin/mouse_restore.sh Google_Chrome'</span>
+<span class="bu">alias</span> mouse_QQ shell path:~/ <span class="st">'/Users/alswl/dev/myproject/.oOo./local/bin/mouse_restore.sh QQ'</span>
+<span class="bu">alias</span> mouse_MacVim shell path:~/ <span class="st">'/Users/alswl/dev/myproject/.oOo./local/bin/mouse_restore.sh MacVim'</span>
+
+<span class="co"># Resize Bindings</span>
+<span class="co">#bind right:alt       resize +10% +0</span>
+<span class="co">#bind left:alt        resize -10% +0</span>
+<span class="co">#bind up:alt          resize +0   -10%</span>
+<span class="co">#bind down:alt        resize +0   +10%</span>
+<span class="co">#bind right:ctrl;alt  resize -10% +0 bottom-right</span>
+<span class="co">#bind left:ctrl;alt   resize +10% +0 bottom-right</span>
+<span class="co">#bind up:ctrl;alt     resize +0   +10% bottom-right</span>
+<span class="co">#bind down:ctrl;alt   resize +0   -10% bottom-right</span>
+
+<span class="co"># Push Bindings</span>
+<span class="co">#bind right:ctrl;cmd  push right bar-resize:screenSizeX/3</span>
+<span class="co">#bind left:ctrl;cmd   push left  bar-resize:screenSizeX/3</span>
+<span class="co">#bind up:ctrl;cmd     push up    bar-resize:screenSizeY/2</span>
+<span class="co">#bind down:ctrl;cmd   push down  bar-resize:screenSizeY/2</span>
+
+<span class="co"># Nudge Bindings</span>
+<span class="co">#bind right:shift;alt nudge +10% +0</span>
+<span class="co">#bind left:shift;alt  nudge -10% +0</span>
+<span class="co">#bind up:shift;alt    nudge +0   -10%</span>
+<span class="co">#bind down:shift;alt  nudge +0   +10%</span>
+
+<span class="co"># Throw Bindings</span>
+<span class="bu">bind</span> 1:ctrl<span class="kw">;</span><span class="ex">alt</span>         throw 0 resize
+<span class="bu">bind</span> 2:ctrl<span class="kw">;</span><span class="ex">alt</span>         throw 1 resize
+<span class="co">#bind 3:ctrl;alt         throw 2 resize</span>
+<span class="co">#bind right:ctrl;alt;cmd throw right resize</span>
+<span class="co">#bind left:ctrl;alt;cmd  throw left  resize</span>
+<span class="co">#bind up:ctrl;alt;cmd    throw up    resize</span>
+<span class="co">#bind down:ctrl;alt;cmd  throw down  resize</span>
+
+<span class="co"># Focus Bindings</span>
+<span class="bu">bind</span> <span class="kw">`</span>:<span class="ex">alt</span>     sequence <span class="va">${mouse_iTerm}</span> <span class="op">&gt;</span> focus <span class="st">'iTerm'</span>
+<span class="bu">bind</span> 1:alt     sequence <span class="va">${mouse_Firefox}</span> <span class="op">&gt;</span> focus <span class="st">'Firefox'</span>
+<span class="bu">bind</span> 2:alt     sequence <span class="va">${mouse_Google_Chrome}</span> <span class="op">&gt;</span> focus <span class="st">'Google Chrome'</span>
+<span class="bu">bind</span> 3:alt     sequence <span class="va">${mouse_QQ}</span> <span class="op">&gt;</span> focus <span class="st">'QQ'</span>
+<span class="bu">bind</span> q:alt     sequence <span class="va">${mouse_MacVim}</span> <span class="op">&gt;</span> focus <span class="st">'MacVim'</span>
+<span class="bu">bind</span> h:alt     sequence <span class="va">${mouse_left}</span> <span class="op">&gt;</span> focus left
+<span class="bu">bind</span> l:alt     sequence <span class="va">${mouse_right}</span> <span class="op">&gt;</span> focus right
+<span class="co">#bind up:cmd       focus up</span>
+<span class="co">#bind down:cmd     focus down</span>
+<span class="bu">bind</span> k:alt   focus behind
+<span class="bu">bind</span> j:alt focus behind
+
+<span class="co"># Window Hints</span>
+<span class="co">#bind esc:cmd hint</span>
+
+<span class="co"># Toogle Application</span>
+<span class="co">#bind </span><span class="kw">`</span>:alt toggle <span class="st">'iTerm'</span></code></pre></div>
+<p>其中用到的鼠标位置记忆脚本是这样的：</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="co">#!/bin/sh</span>
+
+<span class="co">## Save</span>
+<span class="co"># get current postion, save to last</span>
+<span class="va">CURRENT_WINDOW=</span>iTerm
+<span class="bu">[</span> <span class="ot">-f</span> /tmp/SLATE_M_CURR<span class="bu"> ]</span> <span class="kw">&amp;&amp;</span> <span class="va">CURRENT_WINDOW=</span><span class="kw">`</span><span class="fu">cat</span> /tmp/SLATE_M_CURR<span class="kw">`</span>
+
+<span class="co"># save now pos</span>
+
+<span class="va">NOW_POS=</span><span class="kw">`</span><span class="ex">/usr/local/bin/cliclick</span> p <span class="kw">|</span> <span class="ex">/usr/bin/awk</span> <span class="st">'{print $4}'</span><span class="kw">`</span>
+<span class="bu">echo</span> <span class="va">$NOW_POS</span> <span class="op">&gt;</span> /tmp/SLATE_M_<span class="va">$CURRENT_WINDOW</span>
+
+<span class="co">## Restore</span>
+<span class="kw">if</span><span class="bu"> [</span> <span class="va">$1</span> <span class="ot">!=</span> <span class="st">''</span><span class="bu"> ]</span>; <span class="kw">then</span>
+        <span class="co"># get wanted position</span>
+        <span class="va">POS=</span>500,400
+        [ <span class="ex">-f</span> /tmp/SLATE_M_<span class="va">$1</span> ] <span class="kw">&amp;&amp;</span> <span class="va">POS=</span><span class="kw">`</span><span class="fu">cat</span> /tmp/SLATE_M_<span class="va">$1</span><span class="kw">`</span>
+
+        <span class="co"># restore postion</span>
+        <span class="ex">/usr/local/bin/cliclick</span> m:<span class="va">$POS</span>
+
+        <span class="co">#LAST_WINDOW=iTerm</span>
+        <span class="co">#[ -f /tmp/SLATE_M_LAST_WINDOW ] &amp;&amp; LAST_WINDOW=`cat /tmp/SLATE_M_LAST_WINDOW`</span>
+        <span class="bu">echo</span> <span class="va">$1</span> <span class="op">&gt;</span> /tmp/SLATE_M_CURR
+<span class="kw">fi</span></code></pre></div>
+<ul>
+<li>2016-02-23 updated: brew / brew cask list.</li>
+<li>2017-10-09 updated: brew / brew cask list.</li>
+</ul>
+
+            </div>
+            <!-- /.entry-content -->
+              
+<hr>
+<div class="panel">
+<div class="panel-body">
+   <small>原文链接: <a href="https://blog.alswl.com/2013/12/mac/">https://blog.alswl.com/2013/12/mac/</a></small><br>
+   <small>3a1ff193cee606bd1e2ea554a16353ee</small><br>
+   <small>欢迎关注我的微信公众号：<a href="http://mp.weixin.qq.com/mp/getmasssendmsg?__biz=MzIyNTIwMTU3MQ==#wechat_webview_type=1&wechat_redirect">窥豹</a></small><br>
+   <small><img src="https://4ocf5n.dijingchao.com/upload_dropbox/201605/qrcode_for_gh_17e2f9c2caa4_258.jpg"/></small>
+   <small><img src="https://4ocf5n.dijingchao.com/upload_dropbox/meta/wechat-pay-s-crop.png"/></small>
+</div>
+</div>
+
+        </article>
+    </section>
+
+        </div>
+        <div class="col-lg-3 col-lg-offset-2" id="sidebar">
+
+<aside>
+    <section>
+        <ul class="list-group list-group-flush">
+                <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
+                  <ul class="list-group" id="social">
+                    <li class="list-group-item"><a href="https://blog.alswl.com/atom.xml"><i class="fa fa-rss-square fa-lg"></i> RSS</a></li>
+                    <li class="list-group-item"><a href="https://twitter.com/alswl"><i class="fa fa-twitter-square fa-lg"></i> Twitter</a></li>
+                    <li class="list-group-item"><a href="https://github.com/alswl"><i class="fa fa-github-square fa-lg"></i> Github</a></li>
+                    <li class="list-group-item"><a href="http://weibo.com/alswlx"><i class="fa fa-weibo fa-lg"></i> Weibo</a></li>
+                  </ul>
+                </li>
+
+
+
+
+        </ul>
+    </section>
+
+</aside>        </div>
+    <div class="col-lg-3" id="sidebar">
+<aside>
+    <section>
+        <ul class="list-group list-group-flush">
+                <li class="list-group-item"><a href="http://127.0.0.1:8000/"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Categories</span></h4></a>
+                    <ul class="list-group" id="categories">
+                        <li class="list-group-item">
+                            <a href="http://127.0.0.1:8000/category/coding/">
+                                <i class="fa fa-folder-open fa-lg"></i> Coding
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="http://127.0.0.1:8000/category/efficiency/">
+                                <i class="fa fa-folder-open fa-lg"></i> Efficiency
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="http://127.0.0.1:8000/category/fun/">
+                                <i class="fa fa-folder-open fa-lg"></i> Fun
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="http://127.0.0.1:8000/category/internet/">
+                                <i class="fa fa-folder-open fa-lg"></i> Internet
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="http://127.0.0.1:8000/category/life/">
+                                <i class="fa fa-folder-open fa-lg"></i> Life
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="http://127.0.0.1:8000/category/managment/">
+                                <i class="fa fa-folder-open fa-lg"></i> Managment
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="http://127.0.0.1:8000/category/thinking/">
+                                <i class="fa fa-folder-open fa-lg"></i> Thinking
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="http://127.0.0.1:8000/category/ui/">
+                                <i class="fa fa-folder-open fa-lg"></i> UI
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="http://127.0.0.1:8000/category/viewpoint/">
+                                <i class="fa fa-folder-open fa-lg"></i> Viewpoint
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+
+        </ul>
+    </section>
+
+</aside>    </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2005-2020 alswl
+            &middot; Powered by <a href="https://github.com/alswl/pelican-bootstrap3" target="_blank" style="font-weight: bold">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank" style="font-weight: bold">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank" style="font-weight: bold">Bootstrap</a>,
+            <p>
+              <small> <a href="http://creativecommons.org/licenses/by-nc-nd/4.0/" rel="license"><img alt="Creative Commons License" style="border-width:0" src="https://4ocf5n.dijingchao.com/upload_dropbox/meta/by-nc-nd_4-0_80x15.png"></a> Content licensed under a <a href="http://creativecommons.org/licenses/by-nc-nd/4.0/" rel="license">Creative Commons Attribution 4.0 International-NonCommercial-NoDerivatives License</a>, except where indicated otherwise. </small>
+            </p>
+         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="https://cdn.staticfile.org/jquery/1.11.0/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="https://cdn.staticfile.org/twitter-bootstrap/3.1.0/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+
+    <!-- Google Analytics -->
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-8822123-3']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+    <!-- End Google Analytics Code -->
+</body>
+</html>

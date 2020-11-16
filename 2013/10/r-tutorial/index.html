@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en"
+>
+<head>
+    <title>15 分钟学会 R 语言[译文] - Log4D</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="block-all-mixed-content">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+
+
+
+<link rel="canonical" href="http://127.0.0.1:8000/2013/10/r-tutorial/">
+
+        <meta name="author" content="alswl" />
+        <meta name="keywords" content="综合技术,R,译文" />
+        <meta name="description" content="仗着自己有几门语言的基础，我在学新语言时候，都会选择一些快速入门教程。 比如 Learn X in Y minuts 就是我经常光顾的站点。 前段时间，小柒在用 R 写数据分析脚本，我就建议她把 Learn X in Y minuts 里面的 R 语言教程翻译出来。话说 Learn X in Y minuts 里面的中文贡献还是非常多的，赞。 Learn X in Y minuts 的源码托管在 Github。 小柒被我逼着把这篇 R 语言教程 翻译到 R 语言教程中文版。 下面是译文，有不妥的地方可以留言或者直接去 Github 上面 Pull request。 R 是一门统计语言。它有很多数据分析和挖掘程序包。可以用来统计、分析和制图。 你也可以在 LaTeX 文档中运行 R 命令。" />
+
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.1.0/css/bootstrap.min.css" type="text/css"/>
+    <link href="https://cdn.staticfile.org/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="http://127.0.0.1:8000/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://127.0.0.1:8000/theme/css/style.css" type="text/css"/>
+
+    <link href="http://127.0.0.1:8000/atom.xml" type="application/atom+xml" rel="alternate" title="Log4D Atom Feed" />
+    <link href="http://127.0.0.1:8000/rss.xml" type="application/rss+xml" rel="alternate" title="Log4D RSS Feed" />
+
+</head>
+<body>
+
+<div class="navbar navbar-default" role="navigation">
+    <div class="container  col-lg-8 col-lg-offset-2">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://127.0.0.1:8000/" class="navbar-brand">
+Log4D            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                    <li><a href="/tags/">Tags</a></li>
+                    <li><a href="/links/">Links</a></li>
+                    <li><a href="/about/">About</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="http://127.0.0.1:8000/archives/"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2">
+
+    <section id="content">
+        <article class="article-detail">
+            <header class="page-header">
+                <h1 class="title">
+                    <a href="http://127.0.0.1:8000/2013/10/r-tutorial/"
+                       rel="bookmark"
+                       title="Permalink to 15 分钟学会 R 语言[译文]">
+                        15 分钟学会 R 语言[译文]
+                    </a>
+                </h1>
+                <nav class="toc col-lg-2">
+                  <div id="toc"><ul><li><a class="toc-href" href="#获得-r" title="获得 R">获得 R</a></li></ul></div>
+                </nav>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2013-10-29T22:32:00+08:00"> 2013-10-29</time>
+    </span>
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="http://127.0.0.1:8000/tag/zong-he-ji-zhu/">综合技术</a>
+        /
+	<a href="http://127.0.0.1:8000/tag/r/">R</a>
+        /
+	<a href="http://127.0.0.1:8000/tag/yi-wen/">译文</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p>仗着自己有几门语言的基础，我在学新语言时候，都会选择一些快速入门教程。 比如 <a href="http://learnxinyminutes.com/">Learn X in Y minuts</a> 就是我经常光顾的站点。</p>
+<p>前段时间，小柒在用 R 写数据分析脚本，我就建议她把 Learn X in Y minuts 里面的 R 语言教程翻译出来。话说 Learn X in Y minuts 里面的中文贡献还是非常多的，赞。</p>
+<p>Learn X in Y minuts 的源码托管在 <a href="https://github.com/adambard/learnxinyminutes-docs">Github</a>。 小柒被我逼着把这篇 <a href="http://learnxinyminutes.com/docs/r/">R 语言教程</a> 翻译到 <a href="http://learnxinyminutes.com/docs/zh-cn/r-cn/">R 语言教程中文版</a>。</p>
+<p>下面是译文，有不妥的地方可以留言或者直接去 Github 上面 Pull request。</p>
+<hr/>
+<p>R 是一门统计语言。它有很多数据分析和挖掘程序包。可以用来统计、分析和制图。 你也可以在 LaTeX 文档中运行 <code>R</code> 命令。</p>
+<!-- more -->
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="co"># 评论以 # 开始</span>
+
+<span class="co"># R 语言原生不支持 多行注释</span>
+<span class="co"># 但是你可以像这样来多行注释</span>
+
+<span class="co"># 在窗口里按回车键可以执行一条命令</span>
+
+
+<span class="co">###################################################################</span>
+<span class="co"># 不用懂编程就可以开始动手了</span>
+<span class="co">###################################################################</span>
+
+data()  <span class="co"># 浏览内建的数据集</span>
+data(rivers)    <span class="co"># 北美主要河流的长度（数据集）</span>
+ls()    <span class="co"># 在工作空间中查看「河流」是否出现</span>
+head(rivers)    <span class="co"># 撇一眼数据集</span>
+<span class="co"># 735 320 325 392 524 450</span>
+length(rivers)  <span class="co"># 我们测量了多少条河流？</span>
+<span class="co"># 141</span>
+summary(rivers)
+<span class="co">#   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.</span>
+<span class="co">#  135.0   310.0   425.0   591.2   680.0  3710.0</span>
+stem(rivers)    <span class="co"># 茎叶图（一种类似于直方图的展现形式）</span>
+<span class="co">#</span>
+<span class="co">#  The decimal point is 2 digit(s) to the right of the |</span>
+<span class="co">#</span>
+<span class="co">#   0 | 4</span>
+<span class="co">#   2 | 011223334555566667778888899900001111223333344455555666688888999</span>
+<span class="co">#   4 | 111222333445566779001233344567</span>
+<span class="co">#   6 | 000112233578012234468</span>
+<span class="co">#   8 | 045790018</span>
+<span class="co">#  10 | 04507</span>
+<span class="co">#  12 | 1471</span>
+<span class="co">#  14 | 56</span>
+<span class="co">#  16 | 7</span>
+<span class="co">#  18 | 9</span>
+<span class="co">#  20 |</span>
+<span class="co">#  22 | 25</span>
+<span class="co">#  24 | 3</span>
+<span class="co">#  26 |</span>
+<span class="co">#  28 |</span>
+<span class="co">#  30 |</span>
+<span class="co">#  32 |</span>
+<span class="co">#  34 |</span>
+<span class="co">#  36 | 1</span>
+
+
+stem(log(rivers))   <span class="co"># 查看数据集的方式既不是标准形式，也不是取log后的结果! 看起来，是钟形曲线形式的基本数据集</span>
+
+<span class="co">#  The decimal point is 1 digit(s) to the left of the |</span>
+<span class="co">#</span>
+<span class="co">#  48 | 1</span>
+<span class="co">#  50 |</span>
+<span class="co">#  52 | 15578</span>
+<span class="co">#  54 | 44571222466689</span>
+<span class="co">#  56 | 023334677000124455789</span>
+<span class="co">#  58 | 00122366666999933445777</span>
+<span class="co">#  60 | 122445567800133459</span>
+<span class="co">#  62 | 112666799035</span>
+<span class="co">#  64 | 00011334581257889</span>
+<span class="co">#  66 | 003683579</span>
+<span class="co">#  68 | 0019156</span>
+<span class="co">#  70 | 079357</span>
+<span class="co">#  72 | 89</span>
+<span class="co">#  74 | 84</span>
+<span class="co">#  76 | 56</span>
+<span class="co">#  78 | 4</span>
+<span class="co">#  80 |</span>
+<span class="co">#  82 | 2</span>
+
+
+hist(rivers, col<span class="op">=</span><span class="st">"#333333"</span>, border<span class="op">=</span><span class="st">"white"</span>, breaks<span class="op">=</span><span class="dv">25</span>)  <span class="co"># 试试用这些参数画画 （译者注：给 river 做统计频数直方图，包含了这些参数：数据源，颜色，边框，空格）</span>
+hist(log(rivers), col<span class="op">=</span><span class="st">"#333333"</span>, border<span class="op">=</span><span class="st">"white"</span>, breaks<span class="op">=</span><span class="dv">25</span>) <span class="co">#你还可以做更多式样的绘图</span>
+
+<span class="co"># 还有其他一些简单的数据集可以被用来加载。R 语言包括了大量这种 data()</span>
+data(discoveries)
+plot(discoveries, col<span class="op">=</span><span class="st">"#333333"</span>, lwd<span class="op">=</span><span class="dv">3</span>, xlab<span class="op">=</span><span class="st">"Year"</span>, main<span class="op">=</span><span class="st">"Number of important discoveries per year"</span>)
+<span class="co"># 译者注：参数为（数据源，颜色，线条宽度，X 轴名称，标题）</span>
+plot(discoveries, col<span class="op">=</span><span class="st">"#333333"</span>, lwd<span class="op">=</span><span class="dv">3</span>, <span class="bu">type</span> <span class="op">=</span> <span class="st">"h"</span>, xlab<span class="op">=</span><span class="st">"Year"</span>, main<span class="op">=</span><span class="st">"Number of important discoveries per year"</span>)
+
+
+<span class="co"># 除了按照默认的年份排序，我们还可以排序来发现特征</span>
+sort(discoveries)
+<span class="co">#  [1]  0  0  0  0  0  0  0  0  0  1  1  1  1  1  1  1  1  1  1  1  1  2  2  2  2</span>
+<span class="co"># [26]  2  2  2  2  2  2  2  2  2  2  2  2  2  2  2  2  2  2  2  2  2  2  3  3  3</span>
+<span class="co"># [51]  3  3  3  3  3  3  3  3  3  3  3  3  3  3  3  3  3  4  4  4  4  4  4  4  4</span>
+<span class="co"># [76]  4  4  4  4  5  5  5  5  5  5  5  6  6  6  6  6  6  7  7  7  7  8  9 10 12</span>
+
+stem(discoveries, scale<span class="op">=</span><span class="dv">2</span>) <span class="co"># 译者注：茎叶图（数据，放大系数）</span>
+<span class="co">#</span>
+<span class="co">#  The decimal point is at the |</span>
+<span class="co">#</span>
+<span class="co">#   0 | 000000000</span>
+<span class="co">#   1 | 000000000000</span>
+<span class="co">#   2 | 00000000000000000000000000</span>
+<span class="co">#   3 | 00000000000000000000</span>
+<span class="co">#   4 | 000000000000</span>
+<span class="co">#   5 | 0000000</span>
+<span class="co">#   6 | 000000</span>
+<span class="co">#   7 | 0000</span>
+<span class="co">#   8 | 0</span>
+<span class="co">#   9 | 0</span>
+<span class="co">#  10 | 0</span>
+<span class="co">#  11 |</span>
+<span class="co">#  12 | 0</span>
+
+<span class="bu">max</span>(discoveries)
+<span class="co"># 12</span>
+
+summary(discoveries)
+<span class="co">#   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.</span>
+<span class="co">#    0.0     2.0     3.0     3.1     4.0    12.0</span>
+
+
+
+
+<span class="co">#基本的统计学操作也不需要任何编程知识</span>
+
+<span class="co">#随机生成数据</span>
+<span class="bu">round</span>(runif(<span class="dv">7</span>, <span class="bu">min</span><span class="op">=</span>.<span class="dv">5</span>, <span class="bu">max</span><span class="op">=</span><span class="fl">6.5</span>))
+<span class="co"># 译者注：runif 产生随机数，round 四舍五入</span>
+<span class="co"># 1 4 6 1 4 6 4</span>
+
+<span class="co"># 你输出的结果会和我们给出的不同，除非我们设置了相同的随机种子 random.seed(31337)</span>
+
+
+<span class="co">#从标准高斯函数中随机生成 9 次</span>
+rnorm(<span class="dv">9</span>)
+<span class="co"># [1]  0.07528471  1.03499859  1.34809556 -0.82356087  0.61638975 -1.88757271</span>
+<span class="co"># [7] -0.59975593  0.57629164  1.08455362</span>
+
+
+
+
+
+
+
+
+
+<span class="co">#########################</span>
+<span class="co"># 基础编程</span>
+<span class="co">#########################</span>
+
+<span class="co"># 数值</span>
+
+<span class="co">#&ldquo;数值&rdquo;指的是双精度的浮点数</span>
+<span class="dv">5</span>   <span class="co"># 5</span>
+<span class="kw">class</span>(<span class="dv">5</span>)    <span class="co"># "numeric"</span>
+<span class="fl">5e4</span> <span class="co"># 50000             # 用科学技术法方便的处理极大值、极小值或者可变的量级</span>
+<span class="fl">6.02e23</span> <span class="co"># 阿伏伽德罗常数#</span>
+<span class="fl">1.6e-35</span> <span class="co"># 布朗克长度</span>
+
+<span class="co"># 长整数并用 L 结尾</span>
+5L  <span class="co"># 5</span>
+<span class="co">#输出5L</span>
+<span class="kw">class</span>(5L)   <span class="co"># "integer"</span>
+
+<span class="co"># 可以自己试一试？用 class() 函数获取更多信息</span>
+<span class="co"># 事实上，你可以找一些文件查阅 `xyz` 以及xyz的差别</span>
+<span class="co"># `xyz` 用来查看源码实现，?xyz 用来看帮助</span>
+
+<span class="co"># 算法</span>
+<span class="dv">10</span> <span class="op">+</span> <span class="dv">66</span> <span class="co"># 76</span>
+<span class="fl">53.2</span> <span class="op">-</span> <span class="dv">4</span>    <span class="co"># 49.2</span>
+<span class="dv">2</span> <span class="op">*</span> <span class="fl">2.0</span> <span class="co"># 4</span>
+3L <span class="op">/</span> <span class="dv">4</span>  <span class="co"># 0.75</span>
+<span class="dv">3</span> <span class="op">%%</span> <span class="dv">2</span>  <span class="co"># 1</span>
+
+<span class="co"># 特殊数值类型</span>
+<span class="kw">class</span>(NaN)  <span class="co"># "numeric"</span>
+<span class="kw">class</span>(Inf)  <span class="co"># "numeric"</span>
+<span class="kw">class</span>(<span class="op">-</span>Inf) <span class="co"># "numeric"     # 在以下场景中会用到 integrate( dnorm(x), 3, Inf ) -- 消除 Z 轴数据</span>
+
+<span class="co"># 但要注意，NaN 并不是唯一的特殊数值类型&hellip;&hellip;</span>
+<span class="kw">class</span>(NA)   <span class="co"># 看上面</span>
+<span class="kw">class</span>(NULL) <span class="co"># NULL</span>
+
+
+<span class="co"># 简单列表</span>
+c(<span class="dv">6</span>, <span class="dv">8</span>, <span class="dv">7</span>, <span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">0</span>, <span class="dv">9</span>)  <span class="co"># 6 8 7 5 3 0 9</span>
+c(<span class="st">'alef'</span>, <span class="st">'bet'</span>, <span class="st">'gimmel'</span>, <span class="st">'dalet'</span>, <span class="st">'he'</span>)
+c(<span class="st">'Z'</span>, <span class="st">'o'</span>, <span class="st">'r'</span>, <span class="st">'o'</span>) <span class="op">==</span> <span class="st">"Zoro"</span> <span class="co"># FALSE FALSE FALSE FALSE</span>
+
+<span class="co"># 一些优雅的内置功能</span>
+<span class="dv">5</span>:<span class="dv">15</span>    <span class="co"># 5  6  7  8  9 10 11 12 13 14 15</span>
+
+seq(<span class="im">from</span><span class="op">=</span><span class="dv">0</span>, to<span class="op">=</span><span class="dv">31337</span>, by<span class="op">=</span><span class="dv">1337</span>)
+<span class="co">#  [1]     0  1337  2674  4011  5348  6685  8022  9359 10696 12033 13370 14707</span>
+<span class="co"># [13] 16044 17381 18718 20055 21392 22729 24066 25403 26740 28077 29414 30751</span>
+
+letters
+<span class="co">#  [1] "a" "b" "c" "d" "e" "f" "g" "h" "i" "j" "k" "l" "m" "n" "o" "p" "q" "r" "s"</span>
+<span class="co"># [20] "t" "u" "v" "w" "x" "y" "z"</span>
+
+month.abb   <span class="co"># "Jan" "Feb" "Mar" "Apr" "May" "Jun" "Jul" "Aug" "Sep" "Oct" "Nov" "Dec"</span>
+
+
+<span class="co"># Access the n'th element of a list with list.name[n] or sometimes list.name[[n]]</span>
+<span class="co"># 使用 list.name[n] 来访问第 n 个列表元素，有时候需要使用 list.name[[n]]</span>
+letters[<span class="dv">18</span>] <span class="co"># "r"</span>
+LETTERS[<span class="dv">13</span>] <span class="co"># "M"</span>
+month.name[<span class="dv">9</span>]   <span class="co"># "September"</span>
+c(<span class="dv">6</span>, <span class="dv">8</span>, <span class="dv">7</span>, <span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">0</span>, <span class="dv">9</span>)[<span class="dv">3</span>]   <span class="co"># 7</span>
+
+
+
+<span class="co"># 字符串</span>
+
+<span class="co"># 字符串和字符在 R 语言中没有区别</span>
+<span class="co">"Horatio"</span>   <span class="co"># "Horatio"</span>
+<span class="kw">class</span>(<span class="st">"Horatio"</span>) <span class="co"># "character"</span>
+substr(<span class="st">"Fortuna multis dat nimis, nulli satis."</span>, <span class="dv">9</span>, <span class="dv">15</span>) <span class="co"># "multis "</span>
+gsub(<span class="st">'u'</span>, <span class="st">'&oslash;'</span>, <span class="st">"Fortuna multis dat nimis, nulli satis."</span>)    <span class="co"># "Fort&oslash;na m&oslash;ltis dat nimis, n&oslash;lli satis."</span>
+
+
+
+<span class="co"># 逻辑值</span>
+
+<span class="co"># 布尔值</span>
+<span class="kw">class</span>(TRUE) <span class="co"># "logical"</span>
+<span class="kw">class</span>(FALSE)    <span class="co"># "logical"</span>
+<span class="co"># 和我们预想的一样</span>
+TRUE <span class="op">==</span> TRUE    <span class="co"># TRUE</span>
+TRUE <span class="op">==</span> FALSE   <span class="co"># FALSE</span>
+FALSE <span class="op">!=</span> FALSE  <span class="co"># FALSE</span>
+FALSE <span class="op">!=</span> TRUE   <span class="co"># TRUE</span>
+<span class="co"># 缺失数据（NA）也是逻辑值</span>
+<span class="kw">class</span>(NA)   <span class="co"># "logical"</span>
+<span class="co">#定义NA为逻辑型</span>
+
+
+
+<span class="co"># 因子</span>
+<span class="co"># 因子是为数据分类排序设计的（像是排序小朋友们的年级或性别）</span>
+levels(factor(c(<span class="st">"female"</span>, <span class="st">"male"</span>, <span class="st">"male"</span>, <span class="st">"female"</span>, <span class="st">"NA"</span>, <span class="st">"female"</span>)))   <span class="co"># "female" "male"   "NA"</span>
+
+factor(c(<span class="st">"female"</span>, <span class="st">"female"</span>, <span class="st">"male"</span>, <span class="st">"NA"</span>, <span class="st">"female"</span>))
+<span class="co">#  female female male   NA     female</span>
+<span class="co"># Levels: female male NA</span>
+
+data(infert)    <span class="co"># 自然以及引产导致的不育症</span>
+levels(infert$education)    <span class="co"># "0-5yrs"  "6-11yrs" "12+ yrs"</span>
+
+
+
+<span class="co"># 变量</span>
+
+<span class="co"># 有许多种方式用来赋值</span>
+x <span class="op">=</span> <span class="dv">5</span> <span class="co"># 这样可以</span>
+y <span class="op">&lt;-</span> <span class="st">"1"</span> <span class="co"># 更推荐这样</span>
+TRUE <span class="op">-&gt;</span> z <span class="co"># 这样可行，但是很怪</span>
+
+<span class="co">#我们还可以使用强制转型</span>
+<span class="im">as</span>.numeric(y)   <span class="co"># 1</span>
+<span class="im">as</span>.character(x) <span class="co"># "5"</span>
+
+<span class="co"># 循环</span>
+
+<span class="co"># for 循环语句</span>
+<span class="cf">for</span> (i <span class="kw">in</span> <span class="dv">1</span>:<span class="dv">4</span>) {
+  <span class="bu">print</span>(i)
+}
+
+<span class="co"># while 循环</span>
+a <span class="op">&lt;-</span> <span class="dv">10</span>
+<span class="cf">while</span> (a <span class="op">&gt;</span> <span class="dv">4</span>) {
+    cat(a, <span class="st">"..."</span>, sep <span class="op">=</span> <span class="st">""</span>)
+    a <span class="op">&lt;-</span> a <span class="op">-</span> <span class="dv">1</span>
+}
+
+<span class="co"># 记住，在 R 语言中 for / while 循环都很慢</span>
+<span class="co"># 建议使用 apply()（我们一会介绍）来错做一串数据（比如一列或者一行数据）</span>
+
+<span class="co"># IF/ELSE</span>
+
+<span class="co"># 再来看这些优雅的标准</span>
+<span class="cf">if</span> (<span class="dv">4</span> <span class="op">&gt;</span> <span class="dv">3</span>) {
+    <span class="bu">print</span>(<span class="st">"Huzzah! It worked!"</span>)
+} <span class="cf">else</span> {
+    <span class="bu">print</span>(<span class="st">"Noooo! This is blatantly illogical!"</span>)
+}
+
+<span class="co"># =&gt;</span>
+<span class="co"># [1] "Huzzah! It worked!"</span>
+
+<span class="co"># 函数</span>
+
+<span class="co"># 定义如下</span>
+jiggle <span class="op">&lt;-</span> function(x) {
+    x <span class="op">+</span> rnorm(x, sd<span class="op">=</span>.<span class="dv">1</span>) <span class="co">#add in a bit of (controlled) noise</span>
+    <span class="cf">return</span>(x)
+}
+
+<span class="co"># 和其他 R 语言函数一样调用</span>
+jiggle(<span class="dv">5</span>)   <span class="co"># 5&plusmn;&epsilon;. 使用 set.seed(2716057) 后， jiggle(5)==5.005043</span>
+
+<span class="co">#########################</span>
+<span class="co"># 数据容器：vectors, matrices, data frames, and arrays</span>
+<span class="co">#########################</span>
+
+<span class="co"># 单维度</span>
+<span class="co"># 你可以将目前我们学习到的任何类型矢量化，只要它们拥有相同的类型</span>
+vec <span class="op">&lt;-</span> c(<span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>, <span class="dv">11</span>)
+vec <span class="co">#  8  9 10 11</span>
+<span class="co"># 矢量的类型是这一组数据元素的类型</span>
+<span class="kw">class</span>(vec)  <span class="co"># "numeric"</span>
+<span class="co"># If you vectorize items of different classes, weird coercions happen</span>
+<span class="co">#如果你强制的将不同类型数值矢量化，会出现特殊值</span>
+c(TRUE, <span class="dv">4</span>)  <span class="co"># 1 4</span>
+c(<span class="st">"dog"</span>, TRUE, <span class="dv">4</span>)   <span class="co"># "dog"  "TRUE" "4"</span>
+
+<span class="co">#我们这样来取内部数据，（R 的下标索引顺序 1 开始）</span>
+vec[<span class="dv">1</span>]  <span class="co"># 8</span>
+<span class="co"># 我们可以根据条件查找特定数据</span>
+which(vec <span class="op">%%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>)    <span class="co"># 1 3</span>
+<span class="co"># 抓取矢量中第一个和最后一个字符</span>
+head(vec, <span class="dv">1</span>)    <span class="co"># 8</span>
+tail(vec, <span class="dv">1</span>)    <span class="co"># 11</span>
+<span class="co">#如果下标溢出或不存会得到 NA</span>
+vec[<span class="dv">6</span>]  <span class="co"># NA</span>
+<span class="co"># 你可以使用 length() 获取矢量的长度</span>
+length(vec) <span class="co"># 4</span>
+
+<span class="co"># 你可以直接操作矢量或者矢量的子集</span>
+vec <span class="op">*</span> <span class="dv">4</span> <span class="co"># 16 20 24 28</span>
+vec[<span class="dv">2</span>:<span class="dv">3</span>] <span class="op">*</span> <span class="dv">5</span>    <span class="co"># 25 30</span>
+<span class="co"># 这里有许多内置的函数，来表现向量</span>
+mean(vec)   <span class="co"># 9.5</span>
+var(vec)    <span class="co"># 1.666667</span>
+sd(vec) <span class="co"># 1.290994</span>
+<span class="bu">max</span>(vec)    <span class="co"># 11</span>
+<span class="bu">min</span>(vec)    <span class="co"># 8</span>
+<span class="bu">sum</span>(vec)    <span class="co"># 38</span>
+
+<span class="co"># 二维（相同元素类型）</span>
+
+<span class="co">#你可以为同样类型的变量建立矩阵</span>
+mat <span class="op">&lt;-</span> matrix(nrow <span class="op">=</span> <span class="dv">3</span>, ncol <span class="op">=</span> <span class="dv">2</span>, c(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>))
+mat
+<span class="co"># =&gt;</span>
+<span class="co">#      [,1] [,2]</span>
+<span class="co"># [1,]    1    4</span>
+<span class="co"># [2,]    2    5</span>
+<span class="co"># [3,]    3    6</span>
+<span class="co"># 和 vector 不一样的是，一个矩阵的类型真的是 「matrix」，而不是内部元素的类型</span>
+<span class="kw">class</span>(mat) <span class="co"># =&gt; "matrix"</span>
+<span class="co"># 访问第一行的字符</span>
+mat[<span class="dv">1</span>,] <span class="co"># 1 4</span>
+<span class="co"># 操作第一行数据</span>
+<span class="dv">3</span> <span class="op">*</span> mat[,<span class="dv">1</span>] <span class="co"># 3 6 9</span>
+<span class="co"># 访问一个特定数据</span>
+mat[<span class="dv">3</span>,<span class="dv">2</span>]    <span class="co"># 6</span>
+<span class="co"># 转置整个矩阵（译者注：变成 2 行 3 列）</span>
+t(mat)
+<span class="co"># =&gt;</span>
+<span class="co">#      [,1] [,2] [,3]</span>
+<span class="co"># [1,]    1    2    3</span>
+<span class="co"># [2,]    4    5    6</span>
+
+<span class="co"># 使用 cbind() 函数把两个矩阵按列合并，形成新的矩阵</span>
+mat2 <span class="op">&lt;-</span> cbind(<span class="dv">1</span>:<span class="dv">4</span>, c(<span class="st">"dog"</span>, <span class="st">"cat"</span>, <span class="st">"bird"</span>, <span class="st">"dog"</span>))
+mat2
+<span class="co"># =&gt;</span>
+<span class="co">#      [,1] [,2]</span>
+<span class="co"># [1,] "1"  "dog"</span>
+<span class="co"># [2,] "2"  "cat"</span>
+<span class="co"># [3,] "3"  "bird"</span>
+<span class="co"># [4,] "4"  "dog"</span>
+<span class="kw">class</span>(mat2) <span class="co"># matrix</span>
+<span class="co"># Again, note what happened!</span>
+<span class="co"># 注意</span>
+<span class="co"># 因为矩阵内部元素必须包含同样的类型</span>
+<span class="co"># 所以现在每一个元素都转化成字符串</span>
+c(<span class="kw">class</span>(mat2[,<span class="dv">1</span>]), <span class="kw">class</span>(mat2[,<span class="dv">2</span>]))
+
+<span class="co"># 按行合并两个向量，建立新的矩阵</span>
+mat3 <span class="op">&lt;-</span> rbind(c(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">5</span>), c(<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">0</span>,<span class="dv">4</span>))
+mat3
+<span class="co"># =&gt;</span>
+<span class="co">#      [,1] [,2] [,3] [,4]</span>
+<span class="co"># [1,]    1    2    4    5</span>
+<span class="co"># [2,]    6    7    0    4</span>
+<span class="co"># 哈哈，数据类型都一样的，没有发生强制转换，生活真美好</span>
+
+<span class="co"># 二维(不同的元素类型)</span>
+
+<span class="co"># 利用 data frame 可以将不同类型数据放在一起</span>
+dat <span class="op">&lt;-</span> data.frame(c(<span class="dv">5</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">4</span>), c(<span class="st">"dog"</span>, <span class="st">"cat"</span>, <span class="st">"bird"</span>, <span class="st">"dog"</span>))
+names(dat) <span class="op">&lt;-</span> c(<span class="st">"number"</span>, <span class="st">"species"</span>) <span class="co"># 给数据列命名</span>
+<span class="kw">class</span>(dat)  <span class="co"># "data.frame"</span>
+dat
+<span class="co"># =&gt;</span>
+<span class="co">#   number species</span>
+<span class="co"># 1      5     dog</span>
+<span class="co"># 2      2     cat</span>
+<span class="co"># 3      1    bird</span>
+<span class="co"># 4      4     dog</span>
+<span class="kw">class</span>(dat$number)   <span class="co"># "numeric"</span>
+<span class="kw">class</span>(dat[,<span class="dv">2</span>])  <span class="co"># "factor"</span>
+<span class="co"># data.frame() 会将字符向量转换为 factor 向量</span>
+
+<span class="co"># 有很多精妙的方法来获取 data frame 的子数据集</span>
+dat$number  <span class="co"># 5 2 1 4</span>
+dat[,<span class="dv">1</span>] <span class="co"># 5 2 1 4</span>
+dat[,<span class="st">"number"</span>]  <span class="co"># 5 2 1 4</span>
+
+<span class="co"># 多维（相同元素类型）</span>
+
+<span class="co"># 使用 arry 创造一个 n 维的表格</span>
+<span class="co"># You can make a two-dimensional table (sort of like a matrix)</span>
+<span class="co"># 你可以建立一个 2 维表格（有点像矩阵）</span>
+array(c(c(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">5</span>),c(<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">3</span>,<span class="dv">6</span>)), dim<span class="op">=</span>c(<span class="dv">2</span>,<span class="dv">4</span>))
+<span class="co"># =&gt;</span>
+<span class="co">#      [,1] [,2] [,3] [,4]</span>
+<span class="co"># [1,]    1    4    8    3</span>
+<span class="co"># [2,]    2    5    9    6</span>
+<span class="co">#你也可以利用数组建立一个三维的矩阵</span>
+array(c(c(c(<span class="dv">2</span>,<span class="dv">300</span>,<span class="dv">4</span>),c(<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">0</span>)),c(c(<span class="dv">5</span>,<span class="dv">60</span>,<span class="dv">0</span>),c(<span class="dv">66</span>,<span class="dv">7</span>,<span class="dv">847</span>))), dim<span class="op">=</span>c(<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">2</span>))
+<span class="co"># =&gt;</span>
+<span class="co"># , , 1</span>
+<span class="co">#</span>
+<span class="co">#      [,1] [,2]</span>
+<span class="co"># [1,]    2    8</span>
+<span class="co"># [2,]  300    9</span>
+<span class="co"># [3,]    4    0</span>
+<span class="co">#</span>
+<span class="co"># , , 2</span>
+<span class="co">#</span>
+<span class="co">#      [,1] [,2]</span>
+<span class="co"># [1,]    5   66</span>
+<span class="co"># [2,]   60    7</span>
+<span class="co"># [3,]    0  847</span>
+
+<span class="co">#列表（多维的，不同类型的）</span>
+
+<span class="co"># R语言有列表的形式</span>
+list1 <span class="op">&lt;-</span> <span class="bu">list</span>(time <span class="op">=</span> <span class="dv">1</span>:<span class="dv">40</span>)
+list1$price <span class="op">=</span> c(rnorm(<span class="dv">40</span>,.<span class="dv">5</span><span class="op">*</span>list1$time,<span class="dv">4</span>)) <span class="co"># 随机</span>
+list1
+
+<span class="co"># You can get items in the list like so</span>
+<span class="co"># 你可以这样获得列表的元素</span>
+list1$time
+<span class="co"># You can subset list items like vectors</span>
+<span class="co"># 你也可以和矢量一样获取他们的子集</span>
+list1$price[<span class="dv">4</span>]
+
+<span class="co">#########################</span>
+<span class="co"># apply()函数家族</span>
+<span class="co">#########################</span>
+
+<span class="co"># 还记得 mat 么？</span>
+mat
+<span class="co"># =&gt;</span>
+<span class="co">#      [,1] [,2]</span>
+<span class="co"># [1,]    1    4</span>
+<span class="co"># [2,]    2    5</span>
+<span class="co"># [3,]    3    6</span>
+<span class="co"># Use apply(X, MARGIN, FUN) to apply function FUN to a matrix X</span>
+<span class="co"># 使用(X, MARGIN, FUN)将函数 FUN 应用到矩阵 X 的行 (MAR = 1) 或者 列 (MAR = 2)</span>
+<span class="co"># That is, R does FUN to each row (or column) of X, much faster than a</span>
+<span class="co"># R 在 X 的每一行/列使用 FUN，比循环要快很多</span>
+<span class="bu">apply</span>(mat, MAR <span class="op">=</span> <span class="dv">2</span>, myFunc)
+<span class="co"># =&gt;</span>
+<span class="co">#      [,1] [,2]</span>
+<span class="co"># [1,]    3   15</span>
+<span class="co"># [2,]    7   19</span>
+<span class="co"># [3,]   11   23</span>
+<span class="co"># 还有其他家族函数 ?lapply, ?sapply</span>
+
+<span class="co"># 不要被吓到，虽然许多人在此都被搞混</span>
+<span class="co"># plyr 程序包的作用是用来改进 apply() 函数家族</span>
+
+install.packages(<span class="st">"plyr"</span>)
+require(plyr)
+?plyr
+
+<span class="co">#########################</span>
+<span class="co"># 载入数据</span>
+<span class="co">#########################</span>
+
+<span class="co"># "pets.csv" 是网上的一个文本</span>
+pets <span class="op">&lt;-</span> read.csv(<span class="st">"http://learnxinyminutes.com/docs/pets.csv"</span>)
+pets
+head(pets, <span class="dv">2</span>) <span class="co"># 前两行</span>
+tail(pets, <span class="dv">1</span>) <span class="co"># 最后一行</span>
+
+<span class="co"># 以 .csv 格式来保存数据集或者矩阵</span>
+write.csv(pets, <span class="st">"pets2.csv"</span>) <span class="co"># 保存到新的文件 pets2.csv</span>
+<span class="co"># set working directory with setwd(), look it up with getwd()</span>
+<span class="co"># 使用 setwd() 改变工作目录，使用 getwd() 查看当前工作目录</span>
+
+<span class="co"># 尝试使用 ?read.csv 和 ?write.csv 来查看更多信息</span>
+
+<span class="co">#########################</span>
+<span class="co"># 画图</span>
+<span class="co">#########################</span>
+
+<span class="co"># 散点图</span>
+plot(list1$time, list1$price, main <span class="op">=</span> <span class="st">"fake data"</span>) <span class="co"># 译者注：横轴 list1$time，纵轴 wlist1$price，标题 fake data</span>
+<span class="co"># 回归图</span>
+linearModel <span class="op">&lt;-</span> lm(price  <span class="op">~</span> time, data <span class="op">=</span> list1) <span class="co"># 译者注：线性模型，数据集为list1，以价格对时间做相关分析模型</span>
+linearModel <span class="co"># 拟合结果</span>
+<span class="co"># 将拟合结果展示在图上，颜色设为红色</span>
+abline(linearModel, col <span class="op">=</span> <span class="st">"red"</span>)
+<span class="co"># 也可以获取各种各样漂亮的分析图</span>
+plot(linearModel)
+
+<span class="co"># 直方图</span>
+hist(rpois(n <span class="op">=</span> <span class="dv">10000</span>, <span class="kw">lambda</span> <span class="op">=</span> <span class="dv">5</span>), col <span class="op">=</span> <span class="st">"thistle"</span>) <span class="co"># 译者注：统计频数直方图</span>
+
+<span class="co"># 柱状图</span>
+barplot(c(<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">1</span>,<span class="dv">2</span>), names.arg <span class="op">=</span> c(<span class="st">"red"</span>,<span class="st">"blue"</span>,<span class="st">"purple"</span>,<span class="st">"green"</span>,<span class="st">"yellow"</span>))
+
+<span class="co"># 可以尝试着使用 ggplot2 程序包来美化图片</span>
+install.packages(<span class="st">"ggplot2"</span>)
+require(ggplot2)
+?ggplot2</code></pre></div>
+<h2 id="获得-r">获得 R</h2>
+<ul>
+<li>从 <a class="uri" href="http://www.r-project.org/">http://www.r-project.org/</a> 获得安装包和图形化界面</li>
+<li><a href="http://www.rstudio.com/ide/">RStudio</a> 是另一个图形化界面</li>
+</ul>
+
+            </div>
+            <!-- /.entry-content -->
+              
+<hr>
+<div class="panel">
+<div class="panel-body">
+   <small>原文链接: <a href="https://blog.alswl.com/2013/10/r-tutorial/">https://blog.alswl.com/2013/10/r-tutorial/</a></small><br>
+   <small>3a1ff193cee606bd1e2ea554a16353ee</small><br>
+   <small>欢迎关注我的微信公众号：<a href="http://mp.weixin.qq.com/mp/getmasssendmsg?__biz=MzIyNTIwMTU3MQ==#wechat_webview_type=1&wechat_redirect">窥豹</a></small><br>
+   <small><img src="https://4ocf5n.dijingchao.com/upload_dropbox/201605/qrcode_for_gh_17e2f9c2caa4_258.jpg"/></small>
+   <small><img src="https://4ocf5n.dijingchao.com/upload_dropbox/meta/wechat-pay-s-crop.png"/></small>
+</div>
+</div>
+
+        </article>
+    </section>
+
+        </div>
+        <div class="col-lg-3 col-lg-offset-2" id="sidebar">
+
+<aside>
+    <section>
+        <ul class="list-group list-group-flush">
+                <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
+                  <ul class="list-group" id="social">
+                    <li class="list-group-item"><a href="https://blog.alswl.com/atom.xml"><i class="fa fa-rss-square fa-lg"></i> RSS</a></li>
+                    <li class="list-group-item"><a href="https://twitter.com/alswl"><i class="fa fa-twitter-square fa-lg"></i> Twitter</a></li>
+                    <li class="list-group-item"><a href="https://github.com/alswl"><i class="fa fa-github-square fa-lg"></i> Github</a></li>
+                    <li class="list-group-item"><a href="http://weibo.com/alswlx"><i class="fa fa-weibo fa-lg"></i> Weibo</a></li>
+                  </ul>
+                </li>
+
+
+
+
+        </ul>
+    </section>
+
+</aside>        </div>
+    <div class="col-lg-3" id="sidebar">
+<aside>
+    <section>
+        <ul class="list-group list-group-flush">
+                <li class="list-group-item"><a href="http://127.0.0.1:8000/"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Categories</span></h4></a>
+                    <ul class="list-group" id="categories">
+                        <li class="list-group-item">
+                            <a href="http://127.0.0.1:8000/category/coding/">
+                                <i class="fa fa-folder-open fa-lg"></i> Coding
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="http://127.0.0.1:8000/category/efficiency/">
+                                <i class="fa fa-folder-open fa-lg"></i> Efficiency
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="http://127.0.0.1:8000/category/fun/">
+                                <i class="fa fa-folder-open fa-lg"></i> Fun
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="http://127.0.0.1:8000/category/internet/">
+                                <i class="fa fa-folder-open fa-lg"></i> Internet
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="http://127.0.0.1:8000/category/life/">
+                                <i class="fa fa-folder-open fa-lg"></i> Life
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="http://127.0.0.1:8000/category/managment/">
+                                <i class="fa fa-folder-open fa-lg"></i> Managment
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="http://127.0.0.1:8000/category/thinking/">
+                                <i class="fa fa-folder-open fa-lg"></i> Thinking
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="http://127.0.0.1:8000/category/ui/">
+                                <i class="fa fa-folder-open fa-lg"></i> UI
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="http://127.0.0.1:8000/category/viewpoint/">
+                                <i class="fa fa-folder-open fa-lg"></i> Viewpoint
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+
+        </ul>
+    </section>
+
+</aside>    </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2005-2020 alswl
+            &middot; Powered by <a href="https://github.com/alswl/pelican-bootstrap3" target="_blank" style="font-weight: bold">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank" style="font-weight: bold">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank" style="font-weight: bold">Bootstrap</a>,
+            <p>
+              <small> <a href="http://creativecommons.org/licenses/by-nc-nd/4.0/" rel="license"><img alt="Creative Commons License" style="border-width:0" src="https://4ocf5n.dijingchao.com/upload_dropbox/meta/by-nc-nd_4-0_80x15.png"></a> Content licensed under a <a href="http://creativecommons.org/licenses/by-nc-nd/4.0/" rel="license">Creative Commons Attribution 4.0 International-NonCommercial-NoDerivatives License</a>, except where indicated otherwise. </small>
+            </p>
+         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="https://cdn.staticfile.org/jquery/1.11.0/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="https://cdn.staticfile.org/twitter-bootstrap/3.1.0/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+
+    <!-- Google Analytics -->
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-8822123-3']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+    <!-- End Google Analytics Code -->
+</body>
+</html>
